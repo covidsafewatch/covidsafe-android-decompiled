@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@id/nav_home" app:startDestination="@id/homeFragment"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <fragment android:label="HomeFragment" android:name="au.gov.health.covidsafe.ui.home.HomeFragment" android:id="@id/homeFragment">
+        <action android:id="@id/action_home_to_selfIsolate" app:destination="@id/uploadMasterFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+        <action android:id="@id/action_homeFragment_to_helpFragment" app:destination="@id/helpFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+        <action android:id="@id/action_homeFragment_to_peekActivity" app:destination="@id/peekActivity" />
+    </fragment>
+    <fragment android:name="au.gov.health.covidsafe.ui.upload.UploadContainerFragment" android:id="@id/uploadMasterFragment" />
+    <fragment android:label="HelpFragment" android:name="au.gov.health.covidsafe.ui.home.HelpFragment" android:id="@id/helpFragment" />
+    <activity android:label="PeekActivity" android:name="au.gov.health.covidsafe.PeekActivity" android:id="@id/peekActivity" />
+</navigation>

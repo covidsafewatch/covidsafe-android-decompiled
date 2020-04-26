@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Navigate home</string>
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="abc_action_mode_done">Done</string>
+    <string name="abc_activity_chooser_view_see_all">See all</string>
+    <string name="abc_activitychooserview_choose_application">Choose an app</string>
+    <string name="abc_capital_off">OFF</string>
+    <string name="abc_capital_on">ON</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">space</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">Search…</string>
+    <string name="abc_searchview_description_clear">Clear query</string>
+    <string name="abc_searchview_description_query">Search query</string>
+    <string name="abc_searchview_description_search">Search</string>
+    <string name="abc_searchview_description_submit">Submit query</string>
+    <string name="abc_searchview_description_voice">Voice search</string>
+    <string name="abc_shareactionprovider_share_with">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_got_it">Got it</string>
+    <string name="action_report_an_issue">Report an issue</string>
+    <string name="action_upload_done">Done</string>
+    <string name="action_upload_your_data">Upload your data</string>
+    <string name="action_verify_invalid_pin">Invalid PIN number, please ask the health official to send you another PIN.</string>
+    <string name="action_verify_upload_pin">Upload my data</string>
+    <string name="activity_self_isolation_button">Done</string>
+    <string name="activity_self_isolation_content">"You’vehave successfully uploaded our information to COVIDSafe`s highly secure server
+
+.State and Territory health officials will notify other COVIDSafe users that have recorded instances of close contact with you. Your identity will remain anonymous to other users."</string>
+    <string name="activity_self_isolation_headline">Thank you! You have helped to stop the spread of COVID-19!</string>
+    <string name="app_name">COVIDSafe</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="bottom_sheet_behavior">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="build_config_package">au.gov.health.covidsafe</string>
+    <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
+    <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
+    <string name="character_counter_pattern">%1$d / %2$d</string>
+    <string name="chip_text">Chip text</string>
+    <string name="clear_text_end_icon_content_description">Clear text</string>
+    <string name="data_privacy_button">Next</string>
+    <string name="data_privacy_content">It is important that you read the COVIDSafe <a href="https://www.health.gov.au/using-our-websites/privacy/privacy-notice-for-covidsafe-app">Privacy Policy</a>" before you register for COVIDSafe.
+
+If you are under 16 years of age, your parent/guardian must also read the "<a href="https://www.health.gov.au/using-our-websites/privacy/privacy-notice-for-covidsafe-app">Privacy Policy</a>".
+
+Use of COVIDSafe is completely voluntary. You can install or delete the application at any time. If you delete COVIDSafe, "<a href="https://www.covidsafe.gov.au/help-topics.html">you may also ask for your information</a>" to be deleted from the secure server.
+
+To register for COVIDSafe, you will need to enter your name (or a pseudonym), mobile number, age range and postcode.
+
+Information you submit when you register, and information about your use of COVIDSafe will be collected and stored on a highly secure server.
+
+COVIDSafe will not collect your location information.
+
+COVIDSafe will note the time of contact and an anonymous ID code to identify you on the devices of other COVIDSafe users you come into contact with.
+
+Other COVIDSafe users you come into contact with will record an anonymous ID code and the time of contact for tracing purposes.
+
+If another user tests positive to COVID-19, they may upload their contact information and a State or Territory health official may contact you for tracing purposes.
+
+Your registration details will only be used or disclosed for contact tracing and for the proper and lawful functioning of COVIDSafe.
+
+More information is available at the "<a href="https://www.health.gov.au/">Australian Government Department of Health website</a>".
+
+See the COVIDSafe "<a href="https://www.health.gov.au/using-our-websites/privacy/privacy-notice-for-covidsafe-app">Privacy Policy</a> for further details about your rights about your information and how it will be handled and shared.</string>
+    <string name="data_privacy_headline">Registration and privacy</string>
+    <string name="dialog_error_uploading_message">An error occurred while uploading your data, please try again.</string>
+    <string name="dialog_error_uploading_negative">Cancel</string>
+    <string name="dialog_error_uploading_positive">Try again</string>
+    <string name="dialog_error_uploading_title">Upload error</string>
+    <string name="dialog_uploading">Uploading your information</string>
+    <string name="dialog_uploading_message">Please do not close the app while your information is being uploaded.</string>
+    <string name="enter_number_button">Get PIN</string>
+    <string name="enter_number_content">We’ll send you a six-digit pin to verify your mobile number.</string>
+    <string name="enter_number_headline">Enter your mobile number</string>
+    <string name="enter_number_prefix">+61</string>
+    <string name="enter_number_relative">"Signing up on behalf of a friend or relative?
+
+They will need to sign up using their device and phone number so that COVIDSafe can work for them."</string>
+    <string name="enter_pin_button">Verify</string>
+    <string name="enter_pin_headline" formatted="false">Enter the PIN that was sent to %s %s</string>
+    <string name="enter_pin_invalid_pin">Invalid PIN number</string>
+    <string name="enter_pin_resend_pin">Resend PIN</string>
+    <string name="enter_pin_timer_expire">Your code will expire in  </string>
+    <string name="enter_pin_wrong_number">Wrong number?</string>
+    <string name="error_icon_content_description">Error</string>
+    <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
+    <string name="fab_transformation_scrim_behavior">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
+    <string name="fab_transformation_sheet_behavior">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="feedback_email_address_required">Email address (Required)</string>
+    <string name="feedback_found_an_issue_in_the_covidsafe_app">Found an issue in the COVIDSafe app?</string>
+    <string name="feedback_please_describe_an_issue">Please describe an issue</string>
+    <string name="feedback_we_may_reach_out_to_you_for_further_details_about_your_feedback">"We may reach out to you for further details about your feedback.
+Your email address won`t be used for any other purpose."</string>
+    <string name="font_fontFamily_medium">sans-serif</string>
+    <string name="generic_error">Please try again later</string>
+    <string name="hide_bottom_view_on_scroll_behavior">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="home_app_permission_status">App permission status</string>
+    <string name="home_been_tested_button">Upload my data</string>
+    <string name="home_been_tested_title">Has a health official asked you to upload your data?</string>
+    <string name="home_bluetooth_permission">Bluetooth: %s</string>
+    <string name="home_data_active_message">There is nothing else you need to do except to leave the app running and keep Bluetooth® on</string>
+    <string name="home_data_active_title">COVIDSafe is active</string>
+    <string name="home_data_has_been_uploaded">Your data has been uploaded</string>
+    <string name="home_data_has_been_uploaded_message">You’re helping stop the spread of COVID-19 by uploading your data daily while in self-isolation.</string>
+    <string name="home_data_uploaded">Register for self isolation</string>
+    <string name="home_data_uploaded_button">Register</string>
+    <string name="home_data_uploaded_message">Help stop the spread of COVID-19 and track your symptoms.</string>
+    <string name="home_location_permission">Location: %s</string>
+    <string name="home_non_battery_optimization_permission">Battery optimization: %s</string>
+    <string name="home_permission_off">Off</string>
+    <string name="home_permission_on">On</string>
+    <string name="home_push_notification_permission">Push Notification: %s</string>
+    <string name="home_set_complete_disclaimer_content">For more help, see our <a href="https://www.covidsafe.gov.au/help-topics.html">FAQ</a>.</string>
+    <string name="home_set_complete_disclaimer_title">"Let's stop the spread of COVID-19."</string>
+    <string name="home_set_complete_external_link_app_content">Download the Government app for the latest numbers, news and advice.</string>
+    <string name="home_set_complete_external_link_app_title">Get the Coronavirus app</string>
+    <string name="home_set_complete_external_link_app_url">https://www.health.gov.au/resources/apps-and-tools/coronavirus-australia-app</string>
+    <string name="home_set_complete_external_link_news_content">Head to aus.gov.au for the latest Coronavirus news.</string>
+    <string name="home_set_complete_external_link_news_title">Latest news and updates</string>
+    <string name="home_set_complete_external_link_news_url">https://www.australia.gov.au</string>
+    <string name="home_set_complete_external_link_self_isolation_register_url">https://covid-form.service.gov.au</string>
+    <string name="home_set_complete_external_link_share_content">Invite others to join. Together, we’re stronger.</string>
+    <string name="home_set_complete_external_link_share_title">Share COVIDSafe</string>
+    <string name="home_setup_help">Help</string>
+    <string name="home_setup_incomplete_subtitle">COVIDSafe needs permission to access these features.</string>
+    <string name="home_setup_incomplete_title">"Check
+permissions"</string>
+    <string name="home_version_number">Version Number:%s</string>
+    <string name="how_it_works_button">Next</string>
+    <string name="how_it_works_consent">Your consent will always be requested if health tracing is required.</string>
+    <string name="how_it_works_content">"Bluetooth® signals are used to determine when you're near another COVIDSafe user.
+
+Every instance of close contact between you and other COVIDSafe users is noted to create contact information. The data collected is encrypted and will only be stored on your phone and the other COVIDSafe user’s phone.
+
+If you test positive to COVID-19 we will ask your consent to upload your contact information to a highly secure server.
+
+State or Territory health officials can then contact other COVIDSafe users you have been in close contact with."</string>
+    <string name="how_it_works_headline">How COVIDSafe works</string>
+    <string name="how_it_works_privacy">Read our <a href="https://www.health.gov.au/using-our-websites/privacy/privacy-notice-for-covidsafe-app">Privacy Notice</a></string>
+    <string name="how_it_works_terms_conditions">Read our <a href="https://www.covidsafe.gov.au/terms-and-conditions">Terms and conditions</a></string>
+    <string name="icon_content_description">Dialog Icon</string>
+    <string name="intro_button">I want to help</string>
+    <string name="intro_content">"COVIDSafe has been developed by the Australian Government to help keep the community safe from the spread of Coronavirus.
+
+COVIDSafe will securely record contacts that you have with other users of the app. This will allow State and Territory health officials to contact you, if you have been in close contact with someone who has tested positive to the virus.
+
+Together we can help stop the spread and stay healthy."</string>
+    <string name="intro_disclaimer_data">Please head to <a href="https://www.australia.gov.au/">aus.gov.au</a> for the latest Coronavirus news</string>
+    <string name="intro_headline">Let’s work together to stop the spread of COVID-19</string>
+    <string name="invalid_age">Age cannot be empty</string>
+    <string name="invalid_name">Invalid name</string>
+    <string name="invalid_phone_number">Invalid phone number</string>
+    <string name="invalid_post_code">Invalid postcode</string>
+    <string name="mk_fb_config_err_help">Cannot create feedback. Please check mp_feedback_config.xml in your application resources.</string>
+    <string name="mk_fb_device_offline">Your device is offline.</string>
+    <string name="mk_fb_feedback_empty">Tell us something before sending.</string>
+    <string name="mk_fb_feedback_failed">Sending feedback failed</string>
+    <string name="mk_fb_feedback_sent">Feedback sent</string>
+    <string name="mk_fb_invalid_config_property">"'%s' configuration property value is invalid."</string>
+    <string name="mk_fb_invalid_email_address">Invalid email address</string>
+    <string name="mk_fb_no_config_property">"'%s' configuration property value is empty."</string>
+    <string name="mk_fb_retry">Retry</string>
+    <string name="mk_fb_send">Send</string>
+    <string name="mk_fb_sending">Sending…</string>
+    <string name="mp_feedback_apikey">c7eb4951-5e50-4d06-bf44-dc3215f69929</string>
+    <string name="mp_feedback_host">covidcare.atlassian.net</string>
+    <string name="mp_feedback_projectkey">CFP</string>
+    <string name="mtrl_badge_numberless_content_description">New notification</string>
+    <string name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_suffix">%1$d%2$s</string>
+    <string name="mtrl_picker_a11y_next_month">Change to next month</string>
+    <string name="mtrl_picker_a11y_prev_month">Change to previous month</string>
+    <string name="mtrl_picker_announce_current_selection">Current selection: %1$s</string>
+    <string name="mtrl_picker_cancel">@android:string/cancel</string>
+    <string name="mtrl_picker_confirm">@android:string/ok</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Select a Date</string>
+    <string name="mtrl_picker_date_header_unselected">Selected date</string>
+    <string name="mtrl_picker_day_of_week_column_header">Column of days: %1$s</string>
+    <string name="mtrl_picker_invalid_format">Invalid format.</string>
+    <string name="mtrl_picker_invalid_format_example">Example: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Use: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Invalid range.</string>
+    <string name="mtrl_picker_navigate_to_year_description">Navigate to year %1$s</string>
+    <string name="mtrl_picker_out_of_range">Out of range: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Start date – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – End date</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">Select a Date Range</string>
+    <string name="mtrl_picker_range_header_unselected">Start date – End date</string>
+    <string name="mtrl_picker_save">Save</string>
+    <string name="mtrl_picker_text_input_date_hint">Date</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">End date</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Start date</string>
+    <string name="mtrl_picker_text_input_day_abbr">d</string>
+    <string name="mtrl_picker_text_input_month_abbr">m</string>
+    <string name="mtrl_picker_text_input_year_abbr">y</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Switch to calendar input mode</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Tap to switch to selecting a day</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Switch to text input mode</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Tap to switch to selecting a year</string>
+    <string name="nav_app_bar_navigate_up_description">Navigate up</string>
+    <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
+    <string name="password_toggle_content_description">Show password</string>
+    <string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
+    <string name="permission_button">Proceed</string>
+    <string name="permission_content">"COVIDSafe needs Bluetooth® and notifications enabled to work.
+
+Select ‘Proceed’ to enable:
+
+1. Bluetooth®
+
+2. Location Permissions
+
+3. Battery Optimiser
+
+
+Android needs Location Permissions for Bluetooth® to work."</string>
+    <string name="permission_headline">App permissions</string>
+    <string name="permission_location_rationale">Android requires location access to enable Bluetooth functions for COVIDSafe. COVIDSafe cannot work properly without it</string>
+    <string name="permission_success_button">Continue</string>
+    <string name="permission_success_content">Please keep your Bluetooth® and notifications enabled.</string>
+    <string name="permission_success_headline">"You've successfully registered for COVIDSafe"</string>
+    <string name="permission_success_warning">"Keep push notifications on for COVIDSafe so we can notify you quickly if the app isn't working properly."</string>
+    <string name="personal_details_age_dialog_title">Select your age</string>
+    <string name="personal_details_age_hint">Age</string>
+    <string name="personal_details_age_title">Your age</string>
+    <string name="personal_details_button">Continue</string>
+    <string name="personal_details_dialog_ok">Select</string>
+    <string name="personal_details_disclaimer"><a href="https://www.health.gov.au/using-our-websites/privacy/privacy-notice-for-covidsafe-app">Privacy Policy</a></string>
+    <string name="personal_details_headline">Enter your details to sign up</string>
+    <string name="personal_details_name_hint">Firstname Surname</string>
+    <string name="personal_details_name_title">Full name</string>
+    <string name="personal_details_post_code">Postcode</string>
+    <string name="personal_details_post_code_dialog_title">Postcode</string>
+    <string name="personal_details_post_code_hint">e.g. 2000</string>
+    <string name="rationale_ask">This app may not work correctly without the requested permissions.</string>
+    <string name="rationale_ask_again">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions.</string>
+    <string name="registration_consent_button">Next</string>
+    <string name="registration_consent_checkbox">I consent</string>
+    <string name="registration_consent_content">I consent to the Australian Department of Health collecting:</string>
+    <string name="registration_consent_first_paragraph">My registration information to allow contact tracing by State and Territory Health officials.</string>
+    <string name="registration_consent_headline">Registration consent</string>
+    <string name="registration_consent_second_paragraph">My contact information from other COVIDSafe users after they test positive for COVID-19.</string>
+    <string name="report_issue">Report an issue</string>
+    <string name="search_menu_title">Search</string>
+    <string name="service_not_ok_action">Check app now</string>
+    <string name="service_not_ok_body">Help stop the spread of COVID-19 by keeping your Bluetooth® on and the app open in power saver mode while you`re meeting, public spaces or public transport.</string>
+    <string name="service_not_ok_title">We need you!</string>
+    <string name="service_ok_body">Restart phone if this notification disappears</string>
+    <string name="service_ok_title">COVIDSafe is scanning to keep you safe! :)</string>
+    <string name="share_this_app_content">Join me in stopping the spread of COVID-19! Download COVIDSafe, an app from the Australian Government. #COVID19 #coronavirusaustralia #stayhomesavelives https://covidsafe.gov.au</string>
+    <string name="share_this_app_content_html">Join me in stopping the spread of COVID-19! Download <a href="https://covidsafe.gov.au">COVIDSafe</a>>, an app from the Australian Government. #COVID19 #coronavirusaustralia #stayhomesavelives <a href="https://covidsafe.gov.au">covidsafe.gov.au</a></string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="title_help">Help</string>
+    <string name="title_settings_dialog">Permissions Required</string>
+    <string name="under_sixteen_button">Next</string>
+    <string name="under_sixteen_content">I confirm my parent or guardian consents to the Australian Department of Health collecting:</string>
+    <string name="under_sixteen_first_paragraph">My registration information to allow contact tracing by State and Territory Health officials.</string>
+    <string name="under_sixteen_further_checkbox">I confirm.</string>
+    <string name="under_sixteen_further_info">For further information please read our <a href="https://www.health.gov.au/using-our-websites/privacy/privacy-notice-for-covidsafe-app">Privacy Policy</a>.</string>
+    <string name="under_sixteen_headline">You need the consent of your parent/guardian to proceed</string>
+    <string name="under_sixteen_second_paragraph">My contact information from other COVIDSafe users after they test positive for COVID-19.</string>
+    <string name="upload_answer_no">No</string>
+    <string name="upload_answer_yes">Yes</string>
+    <string name="upload_consent">I consent to upload my information</string>
+    <string name="upload_data_action">Upload data now</string>
+    <string name="upload_failed">Upload failed</string>
+    <string name="upload_finished_header">Thank you! You are helping to stop the spread of COVID-19</string>
+    <string name="upload_finished_sub_header">"You have successfully uploaded your data to COVIDSafe's secure server.
+
+State and Territory health officials will notify other COVIDSafe users that have recorded instances of close contact with you. Your identity will remain anonymous to other users."</string>
+    <string name="upload_step_4_header">Upload consent</string>
+    <string name="upload_step_4_sub_header">"You have tested positive for COVID-19.
+
+Unless you consent, your contact data will not be uploaded.
+
+If you consent, your contact information will be uploaded and shared with State or Territory health officials for contact tracing purposes.
+
+Read the COVIDSafe "<a href="https://www.health.gov.au/using-our-websites/privacy/privacy-notice-for-covidsafe-app">Privacy Policy</a> for further details.</string>
+    <string name="upload_step_verify_pin_header">Upload your information</string>
+    <string name="upload_step_verify_pin_sub_header">A PIN has been sent to your device via text message. Enter it below to upload your information.</string>
+    <string name="upload_your_data_description">Please upload your data today to help stop the spread of COVID-19</string>
+    <string name="upload_your_data_title">Upload your data</string>
+</resources>

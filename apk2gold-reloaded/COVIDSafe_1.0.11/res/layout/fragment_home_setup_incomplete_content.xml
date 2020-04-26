@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Group android:id="@id/content_setup_incomplete_group" android:layout_width="wrap_content" android:layout_height="wrap_content" app:constraint_referenced_ids="home_setup_incomplete_app_permission_title,home_setup_incomplete_permissions_group" />
+    <TextView android:id="@id/home_setup_incomplete_app_permission_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_5" android:text="@string/home_app_permission_status" android:includeFontPadding="false" android:layout_marginStart="36.0dip" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toBottomOf="@id/header_barrier" style="?textAppearanceHeadline3" />
+    <LinearLayout android:orientation="vertical" android:id="@id/home_setup_incomplete_permissions_group" android:paddingBottom="@dimen/keyline_4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_4" android:paddingStart="@dimen/keyline_4" android:paddingEnd="@dimen/keyline_4" app:layout_constraintTop_toBottomOf="@id/home_setup_incomplete_app_permission_title">
+        <au.gov.health.covidsafe.ui.home.view.PermissionStatusCard android:id="@id/bluetooth_card_view" android:layout_width="fill_parent" android:layout_height="wrap_content" app:title="@string/home_bluetooth_permission" />
+        <au.gov.health.covidsafe.ui.home.view.PermissionStatusCard android:id="@id/location_card_view" android:layout_width="fill_parent" android:layout_height="wrap_content" app:title="@string/home_location_permission" />
+        <au.gov.health.covidsafe.ui.home.view.PermissionStatusCard android:id="@id/battery_card_view" android:layout_width="fill_parent" android:layout_height="wrap_content" app:title="@string/home_non_battery_optimization_permission" />
+        <au.gov.health.covidsafe.ui.home.view.PermissionStatusCard android:id="@id/push_card_view" android:layout_width="fill_parent" android:layout_height="wrap_content" app:title="@string/home_push_notification_permission" />
+    </LinearLayout>
+</merge>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@id/upload" app:startDestination="@id/uploadStepFourFragment"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include app:graph="@navigation/nav_register" />
+    <fragment android:name="au.gov.health.covidsafe.ui.upload.presentation.UploadStepFourFragment" android:id="@id/uploadStepFourFragment">
+        <action android:id="@id/action_uploadStepFourFragment_to_verifyUploadPinFragment" app:destination="@id/verifyUploadPinFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="VerifyUploadPinFragment" android:name="au.gov.health.covidsafe.ui.upload.presentation.VerifyUploadPinFragment" android:id="@id/verifyUploadPinFragment">
+        <action android:id="@id/action_verifyUploadPinFragment_to_uploadFinishedFragment" app:destination="@id/uploadFinishedFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" app:popUpTo="@id/uploadStepFourFragment" app:popUpToInclusive="true" />
+        <action android:id="@id/action_verifyUploadPinFragment_to_enterNumberFragment" app:destination="@id/nav_register" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="UploadFinishedFragment" android:name="au.gov.health.covidsafe.ui.upload.presentation.UploadFinishedFragment" android:id="@id/uploadFinishedFragment" />
+</navigation>

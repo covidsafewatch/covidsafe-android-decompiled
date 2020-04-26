@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@id/nav_onboarding" app:startDestination="@id/introFragment"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include app:graph="@navigation/nav_register" />
+    <fragment android:label="IntroductionFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.introduction.IntroductionFragment" android:id="@id/introFragment">
+        <action android:id="@id/action_introFragment_to_howItWorksFragment" app:destination="@id/howItWorksFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="HowItWorksFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.howitworks.HowItWorksFragment" android:id="@id/howItWorksFragment">
+        <action android:id="@id/action_howItWorksFragment_to_dataPrivacy" app:destination="@id/dataPrivacyFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="DataPrivacyFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.dataprivacy.DataPrivacyFragment" android:id="@id/dataPrivacyFragment">
+        <action android:id="@id/action_dataPrivacy_to_registrationConsentFragment" app:destination="@id/resistrationConsentFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="RegistrationContentFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.registrationcontent.RegistrationContentFragment" android:id="@id/resistrationConsentFragment">
+        <action android:id="@id/action_registrationConsentFragment_to_personalDetailsFragment" app:destination="@id/personalDetailsFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="PersonalDetailsFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.personal.PersonalDetailsFragment" android:id="@id/personalDetailsFragment">
+        <action android:id="@id/action_personalDetails_to_enterNumberFragment" app:destination="@id/nav_register" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+        <action android:id="@id/action_personalDetails_to_underSixteenFragment" app:destination="@id/underSixteenFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="UnderSixteenFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.undersixteen.UnderSixteenFragment" android:id="@id/underSixteenFragment">
+        <action android:id="@id/action_underSixteenFragment_to_enterNumberFragment" app:destination="@id/nav_register" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="PermissionFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.permission.PermissionFragment" android:id="@id/permissionFragment">
+        <action android:id="@id/action_permissionFragment_to_permissionSuccessFragment" app:destination="@id/permissionSuccessFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment android:label="PermissionSuccessFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.permissionsuccess.PermissionSuccessFragment" android:id="@id/permissionSuccessFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right" />
+</navigation>

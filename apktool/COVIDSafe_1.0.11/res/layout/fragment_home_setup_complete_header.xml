@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@color/dark_cerulean_4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Group android:id="@id/header_setup_complete" android:layout_width="wrap_content" android:layout_height="wrap_content" app:constraint_referenced_ids="home_header_label_setup_complete_subtitle_bottom_space,home_header_label_setup_complete_title,home_header_picture_setup_complete" />
+    <ImageView android:id="@id/home_header_label_setup_complete_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_home_logo" app:layout_constraintBottom_toBottomOf="@id/home_header_help" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="@id/home_header_help" />
+    <com.airbnb.lottie.LottieAnimationView android:id="@id/home_header_picture_setup_complete" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_2" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toBottomOf="@id/home_header_help" app:lottie_autoPlay="true" app:lottie_fileName="home_anim.json" app:lottie_loop="true" app:lottie_speed="1.0" />
+    <Space android:id="@id/home_header_label_setup_complete_subtitle_bottom_space" android:layout_width="fill_parent" android:layout_height="@dimen/keyline_5" app:layout_constraintTop_toBottomOf="@id/home_header_picture_setup_complete" />
+</merge>

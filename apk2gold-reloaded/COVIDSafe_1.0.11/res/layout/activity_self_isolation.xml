@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/toolbar" android:layout_width="fill_parent" android:layout_height="?actionBarSize" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/keyline_5" android:paddingEnd="@dimen/keyline_5">
+            <ImageView android:id="@id/activity_self_isolation_picture" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/ic_self_isolation_over" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <TextView android:textAppearance="?textAppearanceHeadline2" android:id="@id/activity_self_isolation_headline" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_6" android:text="@string/activity_self_isolation_headline" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/activity_self_isolation_picture" />
+            <TextView android:textAppearance="?textAppearanceBody1" android:id="@id/activity_self_isolation_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_4" android:text="@string/activity_self_isolation_content" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/activity_self_isolation_headline" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <Button android:id="@id/activity_self_isolation_next" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_5" android:layout_marginBottom="@dimen/keyline_7" android:text="@string/activity_self_isolation_button" android:layout_marginStart="@dimen/keyline_5" android:layout_marginEnd="@dimen/keyline_5" style="?textAppearanceButton" />
+</LinearLayout>

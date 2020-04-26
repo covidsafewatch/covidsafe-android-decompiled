@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mp_feedback_components">
+        <item>Android</item>
+    </string-array>
+    <string-array name="personal_details_age_array">
+        <item>8:0–15</item>
+        <item>22:16–29</item>
+        <item>35:30–39</item>
+        <item>45:40–49</item>
+        <item>55:50–59</item>
+        <item>65:60–69</item>
+        <item>75:70–79</item>
+        <item>85:80–89</item>
+        <item>95:90+</item>
+    </string-array>
+</resources>

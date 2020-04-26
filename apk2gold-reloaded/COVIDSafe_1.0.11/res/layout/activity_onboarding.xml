@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar android:id="@id/toolbar" android:layout_width="fill_parent" android:layout_height="?actionBarSize" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:navigationIcon="@drawable/ic_up" />
+    <fragment android:name="androidx.navigation.fragment.NavHostFragment" android:id="@id/fragment_nav_host" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:defaultNavHost="true" app:navGraph="@navigation/nav_onboarding" />
+    <FrameLayout android:id="@id/loadingProgressBarFrame" android:background="#80000000" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="0.0dip" android:layout_height="0.0dip" android:animateLayoutChanges="true" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <ProgressBar android:layout_gravity="center" android:id="@id/loadingProgressBar" android:visibility="visible" android:layout_width="64.0dip" android:layout_height="64.0dip" style="?android:progressBarStyleLarge" />
+    </FrameLayout>
+    <au.gov.health.covidsafe.ui.view.SegmentedProgressBar android:id="@id/onboarding_progress_bar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginTop="@dimen/keyline_4" android:layout_marginStart="@dimen/keyline_7" android:layout_marginEnd="@dimen/keyline_7" app:progress_max_value="5" app:progress_value="1" />
+    <Button android:id="@id/onboarding_next" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_5" android:layout_marginBottom="@dimen/keyline_7" android:text="@string/intro_button" android:layout_marginStart="@dimen/keyline_5" android:layout_marginEnd="@dimen/keyline_5" style="?textAppearanceButton" />
+</LinearLayout>
