@@ -15,7 +15,7 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlinx.coroutines.CoroutineScope;
 
 @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u000e\n\u0000\n\u0002\u0010\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\u0010\u0000\u001a\u00020\u0001*\u00020\u0002H@¢\u0006\u0004\b\u0003\u0010\u0004"}, d2 = {"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"}, k = 3, mv = {1, 1, 16})
-@DebugMetadata(c = "au.gov.health.covidsafe.services.BluetoothMonitoringService$StatusReceiver$onReceive$1", f = "BluetoothMonitoringService.kt", i = {0}, l = {605}, m = "invokeSuspend", n = {"$this$launch"}, s = {"L$0"})
+@DebugMetadata(c = "au.gov.health.covidsafe.services.BluetoothMonitoringService$StatusReceiver$onReceive$1", f = "BluetoothMonitoringService.kt", i = {0}, l = {607}, m = "invokeSuspend", n = {"$this$launch"}, s = {"L$0"})
 /* compiled from: BluetoothMonitoringService.kt */
 final class BluetoothMonitoringService$StatusReceiver$onReceive$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
     final /* synthetic */ StatusRecord $statusRecord;

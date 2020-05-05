@@ -21,6 +21,8 @@ final class PermissionFragment$getUploadButtonLayout$1 extends Lambda implements
     }
 
     public final void invoke() {
+        this.this$0.disableContinueButton();
+        this.this$0.navigationStarted = true;
         FragmentActivity activity = this.this$0.getActivity();
         if (activity != null) {
             Preference preference = Preference.INSTANCE;

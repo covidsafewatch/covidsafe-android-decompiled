@@ -31,11 +31,11 @@ public final class UploadingErrorDialog extends Dialog {
         super.onCreate(bundle);
         requestWindowFeature(1);
         setContentView(R.layout.dialog_error_uploading);
-        ((Button) findViewById(R.id.dialog_error_positive)).setOnClickListener(new UploadingErrorDialog$onCreate$1(this));
-        ((Button) findViewById(R.id.dialog_error_negative)).setOnClickListener(new UploadingErrorDialog$onCreate$2(this));
         Window window = getWindow();
         if (window != null) {
-            window.setLayout(-1, -2);
+            window.setLayout(-1, -1);
         }
+        ((Button) findViewById(R.id.dialog_error_positive)).setOnClickListener(new UploadingErrorDialog$onCreate$1(this));
+        ((Button) findViewById(R.id.dialog_error_negative)).setOnClickListener(new UploadingErrorDialog$onCreate$2(this));
     }
 }

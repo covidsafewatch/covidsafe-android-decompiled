@@ -313,11 +313,11 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
 
         /*  JADX ERROR: IndexOutOfBoundsException in pass: RegionMakerVisitor
             java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-            	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-            	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-            	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
-            	at java.base/java.util.Objects.checkIndex(Objects.java:373)
-            	at java.base/java.util.ArrayList.get(ArrayList.java:425)
+            	at java.base/jdk.internal.util.Preconditions.outOfBounds(Unknown Source)
+            	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Unknown Source)
+            	at java.base/jdk.internal.util.Preconditions.checkIndex(Unknown Source)
+            	at java.base/java.util.Objects.checkIndex(Unknown Source)
+            	at java.base/java.util.ArrayList.get(Unknown Source)
             	at jadx.core.dex.nodes.InsnNode.getArg(InsnNode.java:101)
             	at jadx.core.dex.visitors.regions.RegionMaker.traverseMonitorExits(RegionMaker.java:611)
             	at jadx.core.dex.visitors.regions.RegionMaker.traverseMonitorExits(RegionMaker.java:619)
@@ -457,11 +457,11 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
 
         /*  JADX ERROR: IndexOutOfBoundsException in pass: RegionMakerVisitor
             java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-            	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-            	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-            	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
-            	at java.base/java.util.Objects.checkIndex(Objects.java:373)
-            	at java.base/java.util.ArrayList.get(ArrayList.java:425)
+            	at java.base/jdk.internal.util.Preconditions.outOfBounds(Unknown Source)
+            	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Unknown Source)
+            	at java.base/jdk.internal.util.Preconditions.checkIndex(Unknown Source)
+            	at java.base/java.util.Objects.checkIndex(Unknown Source)
+            	at java.base/java.util.ArrayList.get(Unknown Source)
             	at jadx.core.dex.nodes.InsnNode.getArg(InsnNode.java:101)
             	at jadx.core.dex.visitors.regions.RegionMaker.traverseMonitorExits(RegionMaker.java:611)
             	at jadx.core.dex.visitors.regions.RegionMaker.traverseMonitorExits(RegionMaker.java:619)

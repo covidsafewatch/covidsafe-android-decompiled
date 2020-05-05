@@ -4,6 +4,8 @@
     <fragment android:name="androidx.navigation.fragment.NavHostFragment" android:id="@+id/fragment_nav_host_upload" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" app:defaultNavHost="true" app:navGraph="@navigation/nav_upload"/>
     <au.gov.health.covidsafe.ui.view.SegmentedProgressBar android:id="@+id/upload_progress" android:layout_width="match_parent" android:layout_height="4dp" android:layout_marginTop="@dimen/keyline_4" android:layout_marginStart="@dimen/keyline_5" android:layout_marginEnd="@dimen/keyline_5" app:progress_max_value="5" app:progress_value="1"/>
     <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/keyline_4" android:layout_marginBottom="@dimen/keyline_7" android:layout_marginStart="@dimen/keyline_5" android:layout_marginEnd="@dimen/keyline_5">
+        <Button android:id="@+id/upload_answerNo" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/upload_answer_no" android:layout_weight="1" android:layout_marginEnd="@dimen/keyline_0" style="?attr/textAppearanceButton"/>
+        <Button android:id="@+id/upload_answerYes" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/upload_answer_yes" android:layout_weight="1" android:layout_marginStart="@dimen/keyline_0" style="?attr/textAppearanceButton"/>
         <Button android:id="@+id/upload_continue" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/action_continue" android:layout_weight="1" style="?attr/textAppearanceButton"/>
     </LinearLayout>
 </LinearLayout>

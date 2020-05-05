@@ -152,13 +152,18 @@ public class FeedbackActivity extends AppCompatActivity implements ProgressDialo
 
     /* access modifiers changed from: private */
     public void updateSendButtonState() {
+        MenuItem menuItem;
         String obj = this.feedbackEt.getText().toString();
         String obj2 = this.feedbackEmailEt.getText().toString();
-        if (TextUtils.isEmpty(obj) || !Patterns.EMAIL_ADDRESS.matcher(obj2).matches()) {
-            this.sendMenuItem.setEnabled(false);
-        } else {
-            this.sendMenuItem.setEnabled(true);
+        if (TextUtils.isEmpty(obj) || !Patterns.EMAIL_ADDRESS.matcher(obj2).matches() || (menuItem = this.sendMenuItem) == null) {
+            MenuItem menuItem2 = this.sendMenuItem;
+            if (menuItem2 != null) {
+                menuItem2.setEnabled(false);
+                return;
+            }
+            return;
         }
+        menuItem.setEnabled(true);
     }
 
     public void showProgressDialog() {

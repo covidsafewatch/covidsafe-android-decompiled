@@ -92,7 +92,7 @@ public final class HostnamesKt {
     /* JADX WARNING: Removed duplicated region for block: B:29:0x006b  */
     /* JADX WARNING: Removed duplicated region for block: B:36:0x0084 A[LOOP:0: B:1:0x000e->B:36:0x0084, LOOP_END] */
     /* JADX WARNING: Removed duplicated region for block: B:37:0x0096 A[EDGE_INSN: B:44:0x0096->B:37:0x0096 ?: BREAK  
-    EDGE_INSN: B:50:0x0096->B:37:0x0096 ?: BREAK  , RETURN] */
+EDGE_INSN: B:50:0x0096->B:37:0x0096 ?: BREAK  , RETURN] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     private static final java.net.InetAddress decodeIpv6(java.lang.String r18, int r19, int r20) {
         /*
