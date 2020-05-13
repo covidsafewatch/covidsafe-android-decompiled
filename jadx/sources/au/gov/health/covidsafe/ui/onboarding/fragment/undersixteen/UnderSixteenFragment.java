@@ -1,12 +1,10 @@
 package au.gov.health.covidsafe.ui.onboarding.fragment.undersixteen;
 
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import au.gov.health.covidsafe.R;
 import au.gov.health.covidsafe.ui.PagerChildFragment;
 import au.gov.health.covidsafe.ui.UploadButtonLayout;
@@ -70,9 +68,6 @@ public final class UnderSixteenFragment extends PagerChildFragment {
 
     public void onResume() {
         super.onResume();
-        TextView textView = (TextView) _$_findCachedViewById(R.id.under_sixteen_info);
-        Intrinsics.checkExpressionValueIsNotNull(textView, "under_sixteen_info");
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
         ((MaterialCheckBox) _$_findCachedViewById(R.id.under_sixteen_checkbox)).setOnCheckedChangeListener(new UnderSixteenFragment$onResume$1(this));
     }
 

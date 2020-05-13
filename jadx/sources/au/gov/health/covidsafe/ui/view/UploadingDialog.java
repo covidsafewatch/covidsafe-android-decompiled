@@ -26,7 +26,7 @@ public final class UploadingDialog extends Dialog {
         setContentView(R.layout.dialog_uploading);
         Window window = getWindow();
         if (window != null) {
-            window.setLayout(-1, -2);
+            window.setLayout(-1, -1);
         }
     }
 }

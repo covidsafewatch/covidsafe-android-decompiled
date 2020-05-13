@@ -8,9 +8,9 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import okhttp3.OkHttpClient;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u00008\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\u0018\u00002\u000e\u0012\u0004\u0012\u00020\u0002\u0012\u0004\u0012\u00020\u00020\u0001B'\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u0012\u0006\u0010\u0005\u001a\u00020\u0006\u0012\b\u0010\u0007\u001a\u0004\u0018\u00010\b\u0012\u0006\u0010\t\u001a\u00020\n¢\u0006\u0002\u0010\u000bJ)\u0010\r\u001a\u0012\u0012\b\u0012\u00060\u000fj\u0002`\u0010\u0012\u0004\u0012\u00020\u00020\u000e2\u0006\u0010\u0011\u001a\u00020\u0002H@ø\u0001\u0000¢\u0006\u0002\u0010\u0012J)\u0010\u0013\u001a\u0012\u0012\b\u0012\u00060\u000fj\u0002`\u0010\u0012\u0004\u0012\u00020\u00020\u000e2\u0006\u0010\u0014\u001a\u00020\u0002H@ø\u0001\u0000¢\u0006\u0002\u0010\u0012R\u000e\u0010\f\u001a\u00020\u0002X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0003\u001a\u00020\u0004X\u0004¢\u0006\u0002\n\u0000R\u0010\u0010\u0007\u001a\u0004\u0018\u00010\bX\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0004¢\u0006\u0002\n\u0000\u0002\u0004\n\u0002\b\u0019¨\u0006\u0015"}, d2 = {"Lau/gov/health/covidsafe/interactor/usecase/UploadData;", "Lau/gov/health/covidsafe/interactor/UseCase;", "", "awsClient", "Lau/gov/health/covidsafe/networking/service/AwsClient;", "okHttpClient", "Lokhttp3/OkHttpClient;", "context", "Landroid/content/Context;", "lifecycle", "Landroidx/lifecycle/Lifecycle;", "(Lau/gov/health/covidsafe/networking/service/AwsClient;Lokhttp3/OkHttpClient;Landroid/content/Context;Landroidx/lifecycle/Lifecycle;)V", "TAG", "run", "Lau/gov/health/covidsafe/interactor/Either;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "params", "(Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "zipAndUploadData", "uploadLink", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000<\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\u0018\u00002\u000e\u0012\u0004\u0012\u00020\u0002\u0012\u0004\u0012\u00020\u00030\u0001B'\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0006\u0010\u0006\u001a\u00020\u0007\u0012\b\u0010\b\u001a\u0004\u0018\u00010\t\u0012\u0006\u0010\n\u001a\u00020\u000b¢\u0006\u0002\u0010\fJ)\u0010\u000e\u001a\u0012\u0012\b\u0012\u00060\u0010j\u0002`\u0011\u0012\u0004\u0012\u00020\u00020\u000f2\u0006\u0010\u0012\u001a\u00020\u0003H@ø\u0001\u0000¢\u0006\u0002\u0010\u0013J)\u0010\u0014\u001a\u0012\u0012\b\u0012\u00060\u0010j\u0002`\u0011\u0012\u0004\u0012\u00020\u00020\u000f2\u0006\u0010\u0015\u001a\u00020\u0003H@ø\u0001\u0000¢\u0006\u0002\u0010\u0013R\u000e\u0010\r\u001a\u00020\u0003X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0004\u001a\u00020\u0005X\u0004¢\u0006\u0002\n\u0000R\u0010\u0010\b\u001a\u0004\u0018\u00010\tX\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0004¢\u0006\u0002\n\u0000\u0002\u0004\n\u0002\b\u0019¨\u0006\u0016"}, d2 = {"Lau/gov/health/covidsafe/interactor/usecase/UploadData;", "Lau/gov/health/covidsafe/interactor/UseCase;", "Lau/gov/health/covidsafe/interactor/UseCase$None;", "", "awsClient", "Lau/gov/health/covidsafe/networking/service/AwsClient;", "okHttpClient", "Lokhttp3/OkHttpClient;", "context", "Landroid/content/Context;", "lifecycle", "Landroidx/lifecycle/Lifecycle;", "(Lau/gov/health/covidsafe/networking/service/AwsClient;Lokhttp3/OkHttpClient;Landroid/content/Context;Landroidx/lifecycle/Lifecycle;)V", "TAG", "run", "Lau/gov/health/covidsafe/interactor/Either;", "Ljava/lang/Exception;", "Lkotlin/Exception;", "params", "(Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "zipAndUploadData", "uploadLink", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: UploadData.kt */
-public final class UploadData extends UseCase<String, String> {
+public final class UploadData extends UseCase<UseCase.None, String> {
     private final String TAG;
     /* access modifiers changed from: private */
     public final AwsClient awsClient;
@@ -38,7 +38,7 @@ public final class UploadData extends UseCase<String, String> {
     /* JADX WARNING: Removed duplicated region for block: B:63:0x0126 A[RETURN] */
     /* JADX WARNING: Removed duplicated region for block: B:8:0x0025  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public java.lang.Object run(java.lang.String r11, kotlin.coroutines.Continuation<? super au.gov.health.covidsafe.interactor.Either<? extends java.lang.Exception, java.lang.String>> r12) {
+    public java.lang.Object run(java.lang.String r11, kotlin.coroutines.Continuation<? super au.gov.health.covidsafe.interactor.Either<? extends java.lang.Exception, au.gov.health.covidsafe.interactor.UseCase.None>> r12) {
         /*
             r10 = this;
             boolean r0 = r12 instanceof au.gov.health.covidsafe.interactor.usecase.UploadData$run$1
@@ -227,11 +227,11 @@ public final class UploadData extends UseCase<String, String> {
 
     /* access modifiers changed from: package-private */
     /* JADX WARNING: Removed duplicated region for block: B:14:0x0046  */
-    /* JADX WARNING: Removed duplicated region for block: B:21:0x00bd A[Catch:{ Exception -> 0x00d3 }] */
-    /* JADX WARNING: Removed duplicated region for block: B:22:0x00ca A[Catch:{ Exception -> 0x00d3 }] */
+    /* JADX WARNING: Removed duplicated region for block: B:21:0x00bd A[Catch:{ Exception -> 0x00d4 }] */
+    /* JADX WARNING: Removed duplicated region for block: B:22:0x00ca A[Catch:{ Exception -> 0x00d4 }] */
     /* JADX WARNING: Removed duplicated region for block: B:8:0x0024  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public final /* synthetic */ java.lang.Object zipAndUploadData(java.lang.String r8, kotlin.coroutines.Continuation<? super au.gov.health.covidsafe.interactor.Either<? extends java.lang.Exception, java.lang.String>> r9) {
+    public final /* synthetic */ java.lang.Object zipAndUploadData(java.lang.String r8, kotlin.coroutines.Continuation<? super au.gov.health.covidsafe.interactor.Either<? extends java.lang.Exception, au.gov.health.covidsafe.interactor.UseCase.None>> r9) {
         /*
             r7 = this;
             boolean r0 = r9 instanceof au.gov.health.covidsafe.interactor.usecase.UploadData$zipAndUploadData$1
@@ -264,9 +264,9 @@ public final class UploadData extends UseCase<String, String> {
             au.gov.health.covidsafe.ui.upload.model.ExportData r8 = (au.gov.health.covidsafe.ui.upload.model.ExportData) r8
             java.lang.Object r8 = r0.L$1
             java.lang.String r8 = (java.lang.String) r8
-            java.lang.Object r0 = r0.L$0
-            au.gov.health.covidsafe.interactor.usecase.UploadData r0 = (au.gov.health.covidsafe.interactor.usecase.UploadData) r0
-            kotlin.ResultKt.throwOnFailure(r9)     // Catch:{ Exception -> 0x00d3 }
+            java.lang.Object r8 = r0.L$0
+            au.gov.health.covidsafe.interactor.usecase.UploadData r8 = (au.gov.health.covidsafe.interactor.usecase.UploadData) r8
+            kotlin.ResultKt.throwOnFailure(r9)     // Catch:{ Exception -> 0x00d4 }
             goto L_0x00b9
         L_0x003e:
             java.lang.IllegalStateException r8 = new java.lang.IllegalStateException
@@ -305,35 +305,35 @@ public final class UploadData extends UseCase<String, String> {
             okhttp3.RequestBody r5 = r5.create((java.lang.String) r2, (okhttp3.MediaType) r6)
             okhttp3.Request$Builder r4 = r4.put(r5)
             okhttp3.Request r4 = r4.build()
-            au.gov.health.covidsafe.interactor.usecase.UploadData$zipAndUploadData$response$1 r5 = new au.gov.health.covidsafe.interactor.usecase.UploadData$zipAndUploadData$response$1     // Catch:{ Exception -> 0x00d3 }
-            r5.<init>(r7, r4)     // Catch:{ Exception -> 0x00d3 }
-            kotlin.jvm.functions.Function0 r5 = (kotlin.jvm.functions.Function0) r5     // Catch:{ Exception -> 0x00d3 }
-            r0.L$0 = r7     // Catch:{ Exception -> 0x00d3 }
-            r0.L$1 = r8     // Catch:{ Exception -> 0x00d3 }
-            r0.L$2 = r9     // Catch:{ Exception -> 0x00d3 }
-            r0.L$3 = r2     // Catch:{ Exception -> 0x00d3 }
-            r0.L$4 = r4     // Catch:{ Exception -> 0x00d3 }
-            r0.label = r3     // Catch:{ Exception -> 0x00d3 }
-            java.lang.Object r9 = r7.retryOkhttpCall(r5, r0)     // Catch:{ Exception -> 0x00d3 }
+            au.gov.health.covidsafe.interactor.usecase.UploadData$zipAndUploadData$response$1 r5 = new au.gov.health.covidsafe.interactor.usecase.UploadData$zipAndUploadData$response$1     // Catch:{ Exception -> 0x00d4 }
+            r5.<init>(r7, r4)     // Catch:{ Exception -> 0x00d4 }
+            kotlin.jvm.functions.Function0 r5 = (kotlin.jvm.functions.Function0) r5     // Catch:{ Exception -> 0x00d4 }
+            r0.L$0 = r7     // Catch:{ Exception -> 0x00d4 }
+            r0.L$1 = r8     // Catch:{ Exception -> 0x00d4 }
+            r0.L$2 = r9     // Catch:{ Exception -> 0x00d4 }
+            r0.L$3 = r2     // Catch:{ Exception -> 0x00d4 }
+            r0.L$4 = r4     // Catch:{ Exception -> 0x00d4 }
+            r0.label = r3     // Catch:{ Exception -> 0x00d4 }
+            java.lang.Object r9 = r7.retryOkhttpCall(r5, r0)     // Catch:{ Exception -> 0x00d4 }
             if (r9 != r1) goto L_0x00b9
             return r1
         L_0x00b9:
-            okhttp3.Response r9 = (okhttp3.Response) r9     // Catch:{ Exception -> 0x00d3 }
+            okhttp3.Response r9 = (okhttp3.Response) r9     // Catch:{ Exception -> 0x00d4 }
             if (r9 != 0) goto L_0x00ca
-            au.gov.health.covidsafe.interactor.Failure r8 = new au.gov.health.covidsafe.interactor.Failure     // Catch:{ Exception -> 0x00d3 }
-            java.lang.Exception r9 = new java.lang.Exception     // Catch:{ Exception -> 0x00d3 }
-            r9.<init>()     // Catch:{ Exception -> 0x00d3 }
-            r8.<init>(r9)     // Catch:{ Exception -> 0x00d3 }
-            au.gov.health.covidsafe.interactor.Either r8 = (au.gov.health.covidsafe.interactor.Either) r8     // Catch:{ Exception -> 0x00d3 }
-            goto L_0x00d2
+            au.gov.health.covidsafe.interactor.Failure r8 = new au.gov.health.covidsafe.interactor.Failure     // Catch:{ Exception -> 0x00d4 }
+            java.lang.Exception r9 = new java.lang.Exception     // Catch:{ Exception -> 0x00d4 }
+            r9.<init>()     // Catch:{ Exception -> 0x00d4 }
+            r8.<init>(r9)     // Catch:{ Exception -> 0x00d4 }
+            au.gov.health.covidsafe.interactor.Either r8 = (au.gov.health.covidsafe.interactor.Either) r8     // Catch:{ Exception -> 0x00d4 }
+            goto L_0x00d3
         L_0x00ca:
-            au.gov.health.covidsafe.interactor.Success r9 = new au.gov.health.covidsafe.interactor.Success     // Catch:{ Exception -> 0x00d3 }
-            r9.<init>(r8)     // Catch:{ Exception -> 0x00d3 }
-            r8 = r9
-            au.gov.health.covidsafe.interactor.Either r8 = (au.gov.health.covidsafe.interactor.Either) r8     // Catch:{ Exception -> 0x00d3 }
-        L_0x00d2:
-            return r8
+            au.gov.health.covidsafe.interactor.Success r8 = new au.gov.health.covidsafe.interactor.Success     // Catch:{ Exception -> 0x00d4 }
+            au.gov.health.covidsafe.interactor.UseCase$None r9 = au.gov.health.covidsafe.interactor.UseCase.None.INSTANCE     // Catch:{ Exception -> 0x00d4 }
+            r8.<init>(r9)     // Catch:{ Exception -> 0x00d4 }
+            au.gov.health.covidsafe.interactor.Either r8 = (au.gov.health.covidsafe.interactor.Either) r8     // Catch:{ Exception -> 0x00d4 }
         L_0x00d3:
+            return r8
+        L_0x00d4:
             au.gov.health.covidsafe.interactor.Failure r8 = new au.gov.health.covidsafe.interactor.Failure
             java.lang.Exception r9 = new java.lang.Exception
             r9.<init>()

@@ -104,6 +104,27 @@ public final class UploadContainerFragment extends Fragment implements PagerCont
             Button button = (Button) _$_findCachedViewById(R.id.upload_continue);
             Intrinsics.checkExpressionValueIsNotNull(button, "upload_continue");
             button.setVisibility(0);
+            ((Button) _$_findCachedViewById(R.id.upload_answerNo)).setOnClickListener((View.OnClickListener) null);
+            ((Button) _$_findCachedViewById(R.id.upload_answerYes)).setOnClickListener((View.OnClickListener) null);
+            Button button2 = (Button) _$_findCachedViewById(R.id.upload_answerNo);
+            Intrinsics.checkExpressionValueIsNotNull(button2, "upload_answerNo");
+            button2.setVisibility(8);
+            Button button3 = (Button) _$_findCachedViewById(R.id.upload_answerYes);
+            Intrinsics.checkExpressionValueIsNotNull(button3, "upload_answerYes");
+            button3.setVisibility(8);
+        } else if (uploadButtonLayout instanceof UploadButtonLayout.QuestionLayout) {
+            ((Button) _$_findCachedViewById(R.id.upload_continue)).setOnClickListener((View.OnClickListener) null);
+            Button button4 = (Button) _$_findCachedViewById(R.id.upload_continue);
+            Intrinsics.checkExpressionValueIsNotNull(button4, "upload_continue");
+            button4.setVisibility(8);
+            ((Button) _$_findCachedViewById(R.id.upload_answerNo)).setOnClickListener(new UploadContainerFragment$refreshButton$2(uploadButtonLayout));
+            ((Button) _$_findCachedViewById(R.id.upload_answerYes)).setOnClickListener(new UploadContainerFragment$refreshButton$3(uploadButtonLayout));
+            Button button5 = (Button) _$_findCachedViewById(R.id.upload_answerNo);
+            Intrinsics.checkExpressionValueIsNotNull(button5, "upload_answerNo");
+            button5.setVisibility(0);
+            Button button6 = (Button) _$_findCachedViewById(R.id.upload_answerYes);
+            Intrinsics.checkExpressionValueIsNotNull(button6, "upload_answerYes");
+            button6.setVisibility(0);
         }
     }
 

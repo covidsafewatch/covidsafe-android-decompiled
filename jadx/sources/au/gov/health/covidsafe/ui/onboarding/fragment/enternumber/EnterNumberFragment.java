@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import kotlin.Metadata;
 import kotlin.TuplesKt;
 import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000X\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\n\u0018\u0000 +2\u00020\u0001:\u0001+B\u0005¢\u0006\u0002\u0010\u0002J\b\u0010\u0013\u001a\u00020\u0014H\u0016J\"\u0010\u0015\u001a\u00020\u00162\b\u0010\u0017\u001a\u0004\u0018\u00010\u00182\b\u0010\u0019\u001a\u0004\u0018\u00010\u00182\u0006\u0010\u001a\u001a\u00020\u0018J&\u0010\u001b\u001a\u0004\u0018\u00010\u001c2\u0006\u0010\u001d\u001a\u00020\u001e2\b\u0010\u001f\u001a\u0004\u0018\u00010 2\b\u0010!\u001a\u0004\u0018\u00010\"H\u0016J\b\u0010#\u001a\u00020\u0016H\u0016J\b\u0010$\u001a\u00020\u0016H\u0016J\b\u0010%\u001a\u00020\u0016H\u0016J\u001a\u0010&\u001a\u00020\u00162\u0006\u0010'\u001a\u00020\u001c2\b\u0010!\u001a\u0004\u0018\u00010\"H\u0016J\u0006\u0010(\u001a\u00020\u0016J\u0006\u0010)\u001a\u00020\u0016J\b\u0010*\u001a\u00020\u0016H\u0016R\u0010\u0010\u0003\u001a\u0004\u0018\u00010\u0004X\u000e¢\u0006\u0002\n\u0000R\u0016\u0010\u0005\u001a\u0004\u0018\u00010\u00068\u0002@\u0002X\u000e¢\u0006\u0004\n\u0002\u0010\u0007R\u000e\u0010\b\u001a\u00020\tX\u0004¢\u0006\u0002\n\u0000R\u0018\u0010\n\u001a\u0004\u0018\u00010\u0006XD¢\u0006\n\n\u0002\u0010\u0007\u001a\u0004\b\u000b\u0010\fR\u000e\u0010\r\u001a\u00020\u000eX\u0004¢\u0006\u0002\n\u0000R\u001e\u0010\u000f\u001a\u0004\u0018\u00010\u0006X\u000e¢\u0006\u0010\n\u0002\u0010\u0007\u001a\u0004\b\u0010\u0010\f\"\u0004\b\u0011\u0010\u0012¨\u0006,"}, d2 = {"Lau/gov/health/covidsafe/ui/onboarding/fragment/enternumber/EnterNumberFragment;", "Lau/gov/health/covidsafe/ui/PagerChildFragment;", "()V", "alertDialog", "Landroid/app/AlertDialog;", "destinationId", "", "Ljava/lang/Integer;", "enterNumberPresenter", "Lau/gov/health/covidsafe/ui/onboarding/fragment/enternumber/EnterNumberPresenter;", "navigationIcon", "getNavigationIcon", "()Ljava/lang/Integer;", "phoneNumberTextWatcher", "Landroid/text/TextWatcher;", "stepProgress", "getStepProgress", "setStepProgress", "(Ljava/lang/Integer;)V", "getUploadButtonLayout", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$ContinueLayout;", "navigateToOTPPage", "", "session", "", "challengeName", "phoneNumber", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPause", "onResume", "onViewCreated", "view", "showGenericError", "showInvalidPhoneNumber", "updateButtonState", "Companion", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000X\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u000b\u0018\u0000 ,2\u00020\u0001:\u0001,B\u0005¢\u0006\u0002\u0010\u0002J\b\u0010\u0013\u001a\u00020\u0014H\u0016J\"\u0010\u0015\u001a\u00020\u00162\b\u0010\u0017\u001a\u0004\u0018\u00010\u00182\b\u0010\u0019\u001a\u0004\u0018\u00010\u00182\u0006\u0010\u001a\u001a\u00020\u0018J&\u0010\u001b\u001a\u0004\u0018\u00010\u001c2\u0006\u0010\u001d\u001a\u00020\u001e2\b\u0010\u001f\u001a\u0004\u0018\u00010 2\b\u0010!\u001a\u0004\u0018\u00010\"H\u0016J\b\u0010#\u001a\u00020\u0016H\u0016J\b\u0010$\u001a\u00020\u0016H\u0016J\b\u0010%\u001a\u00020\u0016H\u0016J\u001a\u0010&\u001a\u00020\u00162\u0006\u0010'\u001a\u00020\u001c2\b\u0010!\u001a\u0004\u0018\u00010\"H\u0016J\u0006\u0010(\u001a\u00020\u0016J\u0006\u0010)\u001a\u00020\u0016J\u0006\u0010*\u001a\u00020\u0016J\b\u0010+\u001a\u00020\u0016H\u0016R\u0010\u0010\u0003\u001a\u0004\u0018\u00010\u0004X\u000e¢\u0006\u0002\n\u0000R\u0016\u0010\u0005\u001a\u0004\u0018\u00010\u00068\u0002@\u0002X\u000e¢\u0006\u0004\n\u0002\u0010\u0007R\u000e\u0010\b\u001a\u00020\tX\u0004¢\u0006\u0002\n\u0000R\u0018\u0010\n\u001a\u0004\u0018\u00010\u0006XD¢\u0006\n\n\u0002\u0010\u0007\u001a\u0004\b\u000b\u0010\fR\u000e\u0010\r\u001a\u00020\u000eX\u0004¢\u0006\u0002\n\u0000R\u001e\u0010\u000f\u001a\u0004\u0018\u00010\u0006X\u000e¢\u0006\u0010\n\u0002\u0010\u0007\u001a\u0004\b\u0010\u0010\f\"\u0004\b\u0011\u0010\u0012¨\u0006-"}, d2 = {"Lau/gov/health/covidsafe/ui/onboarding/fragment/enternumber/EnterNumberFragment;", "Lau/gov/health/covidsafe/ui/PagerChildFragment;", "()V", "alertDialog", "Landroid/app/AlertDialog;", "destinationId", "", "Ljava/lang/Integer;", "enterNumberPresenter", "Lau/gov/health/covidsafe/ui/onboarding/fragment/enternumber/EnterNumberPresenter;", "navigationIcon", "getNavigationIcon", "()Ljava/lang/Integer;", "phoneNumberTextWatcher", "Landroid/text/TextWatcher;", "stepProgress", "getStepProgress", "setStepProgress", "(Ljava/lang/Integer;)V", "getUploadButtonLayout", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$ContinueLayout;", "navigateToOTPPage", "", "session", "", "challengeName", "phoneNumber", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPause", "onResume", "onViewCreated", "view", "showCheckInternetError", "showGenericError", "showInvalidPhoneNumber", "updateButtonState", "Companion", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: EnterNumberFragment.kt */
 public final class EnterNumberFragment extends PagerChildFragment {
     public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
@@ -93,6 +94,9 @@ public final class EnterNumberFragment extends PagerChildFragment {
     public void onViewCreated(View view, Bundle bundle) {
         Intrinsics.checkParameterIsNotNull(view, "view");
         super.onViewCreated(view, bundle);
+        TextView textView = (TextView) view.findViewById(R.id.use_oz_phone_number);
+        Intrinsics.checkExpressionValueIsNotNull(textView, "view.use_oz_phone_number");
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
         Bundle arguments = getArguments();
         if (arguments != null) {
             this.destinationId = Integer.valueOf(arguments.getInt("destination_id"));
@@ -183,5 +187,13 @@ public final class EnterNumberFragment extends PagerChildFragment {
 
     public UploadButtonLayout.ContinueLayout getUploadButtonLayout() {
         return new UploadButtonLayout.ContinueLayout(R.string.enter_number_button, new EnterNumberFragment$getUploadButtonLayout$1(this));
+    }
+
+    public final void showCheckInternetError() {
+        AlertDialog alertDialog2 = this.alertDialog;
+        if (alertDialog2 != null) {
+            alertDialog2.dismiss();
+        }
+        this.alertDialog = new AlertDialog.Builder(getActivity()).setMessage(R.string.generic_internet_error).setIcon(17301543).setPositiveButton(17039379, (DialogInterface.OnClickListener) null).show();
     }
 }

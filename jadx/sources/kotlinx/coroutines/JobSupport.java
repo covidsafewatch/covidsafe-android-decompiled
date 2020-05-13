@@ -814,7 +814,7 @@ public class JobSupport implements Job, ChildJob, ParentJob, SelectClause0 {
         notifyCancelling(((kotlinx.coroutines.JobSupport.Finishing) r2).getList(), r0);
      */
     /* JADX WARNING: Code restructure failed: missing block: B:28:0x0050, code lost:
-        return kotlinx.coroutines.JobSupportKt.COMPLETING_ALREADY;
+        return kotlinx.coroutines.JobSupportKt.access$getCOMPLETING_ALREADY$p();
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     private final java.lang.Object makeCancelling(java.lang.Object r7) {
@@ -1210,7 +1210,7 @@ public class JobSupport implements Job, ChildJob, ParentJob, SelectClause0 {
             this._rootCause = th;
         }
 
-        /* JADX WARNING: type inference failed for: r0v0, types: [int, boolean] */
+        /* JADX WARNING: type inference failed for: r0v0, types: [boolean, int] */
         public final boolean isCompleting() {
             return this._isCompleting;
         }

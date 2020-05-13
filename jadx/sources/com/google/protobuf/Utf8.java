@@ -997,10 +997,10 @@ final class Utf8 {
         /* access modifiers changed from: package-private */
         /* JADX WARNING: Removed duplicated region for block: B:11:0x0036  */
         /* JADX WARNING: Removed duplicated region for block: B:14:0x003d A[LOOP:1: B:14:0x003d->B:38:0x0106, LOOP_START, PHI: r2 r3 r4 r11 
-          PHI: (r2v3 int) = (r2v2 int), (r2v5 int) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]
-          PHI: (r3v2 char) = (r3v1 char), (r3v3 char) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]
-          PHI: (r4v4 long) = (r4v3 long), (r4v6 long) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]
-          PHI: (r11v3 long) = (r11v2 long), (r11v5 long) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]] */
+  PHI: (r2v3 int) = (r2v2 int), (r2v5 int) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]
+  PHI: (r3v2 char) = (r3v1 char), (r3v3 char) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]
+  PHI: (r4v4 long) = (r4v3 long), (r4v6 long) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]
+  PHI: (r11v3 long) = (r11v2 long), (r11v5 long) binds: [B:10:0x0034, B:38:0x0106] A[DONT_GENERATE, DONT_INLINE]] */
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public int encodeUtf8(java.lang.CharSequence r22, byte[] r23, int r24, int r25) {
             /*
@@ -1207,11 +1207,11 @@ final class Utf8 {
 
         /* access modifiers changed from: package-private */
         /* JADX WARNING: Removed duplicated region for block: B:11:0x0042 A[LOOP:1: B:11:0x0042->B:36:0x0107, LOOP_START, PHI: r2 r4 r6 r9 r12 
-          PHI: (r2v2 long) = (r2v0 long), (r2v3 long) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
-          PHI: (r4v4 long) = (r4v3 long), (r4v6 long) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
-          PHI: (r6v3 long) = (r6v2 long), (r6v4 long) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
-          PHI: (r9v4 int) = (r9v3 int), (r9v6 int) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
-          PHI: (r12v1 char) = (r12v0 char), (r12v2 char) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]] */
+  PHI: (r2v2 long) = (r2v0 long), (r2v3 long) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
+  PHI: (r4v4 long) = (r4v3 long), (r4v6 long) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
+  PHI: (r6v3 long) = (r6v2 long), (r6v4 long) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
+  PHI: (r9v4 int) = (r9v3 int), (r9v6 int) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]
+  PHI: (r12v1 char) = (r12v0 char), (r12v2 char) binds: [B:8:0x003a, B:36:0x0107] A[DONT_GENERATE, DONT_INLINE]] */
         /* JADX WARNING: Removed duplicated region for block: B:9:0x003c  */
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public void encodeUtf8Direct(java.lang.CharSequence r22, java.nio.ByteBuffer r23) {

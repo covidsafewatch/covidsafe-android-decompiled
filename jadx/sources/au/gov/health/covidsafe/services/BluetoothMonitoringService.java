@@ -681,8 +681,10 @@ public final class BluetoothMonitoringService extends LifecycleService implement
             streetPassWorker2.unregisterReceivers();
         }
         Job.DefaultImpls.cancel$default(this.job, (CancellationException) null, 1, (Object) null);
-        unbindService(this.connection);
-        this.mBound = false;
+        if (this.mBound) {
+            unbindService(this.connection);
+            this.mBound = false;
+        }
         CentralLog.Companion.i(TAG, "BluetoothMonitoringService destroyed");
     }
 

@@ -166,6 +166,8 @@
     <dimen name="keyline_5">24dp</dimen>
     <dimen name="keyline_6">28dp</dimen>
     <dimen name="keyline_7">32dp</dimen>
+    <dimen name="keyline_8">48dp</dimen>
+    <dimen name="keyline_9">60dp</dimen>
     <dimen name="material_emphasis_disabled">0.38</dimen>
     <dimen name="material_emphasis_high_type">0.87</dimen>
     <dimen name="material_emphasis_medium">0.6</dimen>

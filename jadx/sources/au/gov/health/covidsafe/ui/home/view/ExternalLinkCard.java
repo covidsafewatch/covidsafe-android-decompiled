@@ -60,11 +60,13 @@ public final class ExternalLinkCard extends ConstraintLayout {
         TypedArray obtainStyledAttributes = context.obtainStyledAttributes(attributeSet, R.styleable.ExternalLinkCard);
         Intrinsics.checkExpressionValueIsNotNull(obtainStyledAttributes, "context.obtainStyledAttr…yleable.ExternalLinkCard)");
         Drawable drawable = obtainStyledAttributes.getDrawable(1);
-        String string = obtainStyledAttributes.getString(3);
+        String string = obtainStyledAttributes.getString(4);
         String string2 = obtainStyledAttributes.getString(0);
+        int dimension = (int) obtainStyledAttributes.getDimension(3, 0.0f);
         int resourceId = obtainStyledAttributes.getResourceId(2, R.color.transparent);
         ((ImageView) _$_findCachedViewById(R.id.external_link_round_image)).setImageDrawable(drawable);
         ((ImageView) _$_findCachedViewById(R.id.external_link_round_image)).setBackgroundResource(resourceId);
+        ((ImageView) _$_findCachedViewById(R.id.external_link_round_image)).setPadding(dimension, dimension, dimension, dimension);
         TextView textView = (TextView) _$_findCachedViewById(R.id.external_link_headline);
         Intrinsics.checkExpressionValueIsNotNull(textView, "external_link_headline");
         textView.setText(string);

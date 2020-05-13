@@ -2,6 +2,7 @@ package au.gov.health.covidsafe.ui.upload.presentation;
 
 import android.content.Context;
 import au.gov.health.covidsafe.Preference;
+import au.gov.health.covidsafe.interactor.UseCase;
 import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecordStorage;
 import kotlin.Metadata;
 import kotlin.ResultKt;
@@ -20,9 +21,9 @@ import kotlinx.coroutines.CoroutineStart;
 import kotlinx.coroutines.GlobalScope;
 import kotlinx.coroutines.Job;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u000e\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u0003H\n¢\u0006\u0002\b\u0004"}, d2 = {"<anonymous>", "", "it", "", "invoke"}, k = 3, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u000e\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u0003H\n¢\u0006\u0002\b\u0004"}, d2 = {"<anonymous>", "", "it", "Lau/gov/health/covidsafe/interactor/UseCase$None;", "invoke"}, k = 3, mv = {1, 1, 16})
 /* compiled from: VerifyUploadPinPresenter.kt */
-final class VerifyUploadPinPresenter$uploadData$1 extends Lambda implements Function1<String, Unit> {
+final class VerifyUploadPinPresenter$uploadData$1 extends Lambda implements Function1<UseCase.None, Unit> {
     final /* synthetic */ VerifyUploadPinPresenter this$0;
 
     /* JADX INFO: super call moved to the top of the method (can break code semantics) */
@@ -32,7 +33,7 @@ final class VerifyUploadPinPresenter$uploadData$1 extends Lambda implements Func
     }
 
     public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-        invoke((String) obj);
+        invoke((UseCase.None) obj);
         return Unit.INSTANCE;
     }
 
@@ -83,8 +84,8 @@ final class VerifyUploadPinPresenter$uploadData$1 extends Lambda implements Func
         }
     }
 
-    public final void invoke(String str) {
-        Intrinsics.checkParameterIsNotNull(str, "it");
+    public final void invoke(UseCase.None none) {
+        Intrinsics.checkParameterIsNotNull(none, "it");
         Job unused = BuildersKt__Builders_commonKt.launch$default(GlobalScope.INSTANCE, (CoroutineContext) null, (CoroutineStart) null, new AnonymousClass1(this, (Continuation) null), 3, (Object) null);
         Context context = this.this$0.fragment.getContext();
         if (context != null) {
