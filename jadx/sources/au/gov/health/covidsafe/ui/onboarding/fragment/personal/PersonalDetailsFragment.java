@@ -102,6 +102,7 @@ public final class PersonalDetailsFragment extends PagerChildFragment {
         Intrinsics.checkExpressionValueIsNotNull(textView, "personal_details_age");
         Pair<String, String> pair = this.ageSelected;
         textView.setText(pair != null ? pair.getSecond() : null);
+        ((TextView) _$_findCachedViewById(R.id.personal_details_headline)).sendAccessibilityEvent(8);
     }
 
     public void onPause() {

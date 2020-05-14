@@ -30,7 +30,7 @@ public final class NotificationTemplates {
         public final Notification getRunningNotification(Context context, String str) {
             Intrinsics.checkParameterIsNotNull(context, "context");
             Intrinsics.checkParameterIsNotNull(str, "channel");
-            Notification build = new NotificationCompat.Builder(context, str).setContentTitle(context.getText(R.string.service_ok_title)).setContentText(context.getText(R.string.service_ok_body)).setOngoing(true).setPriority(-1).setSmallIcon(R.drawable.ic_notification_icon).setContentIntent(PendingIntent.getActivity(context, 5, new Intent(context, HomeActivity.class), 0)).setTicker(context.getText(R.string.service_ok_body)).setStyle(new NotificationCompat.BigTextStyle().bigText(context.getText(R.string.service_ok_body))).setWhen(System.currentTimeMillis()).setSound((Uri) null).setVibrate((long[]) null).setColor(ContextCompat.getColor(context, R.color.notification_tint)).build();
+            Notification build = new NotificationCompat.Builder(context, str).setOngoing(true).setPriority(-1).setSmallIcon(R.drawable.ic_notification_icon).setContentIntent(PendingIntent.getActivity(context, 5, new Intent(context, HomeActivity.class), 0)).setWhen(System.currentTimeMillis()).setSound((Uri) null).setVibrate((long[]) null).setColor(ContextCompat.getColor(context, R.color.notification_tint)).build();
             Intrinsics.checkExpressionValueIsNotNull(build, "builder.build()");
             return build;
         }

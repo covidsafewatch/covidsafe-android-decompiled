@@ -93,6 +93,7 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
         ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_share)).setOnClickListener(new HomeFragment$onResume$5(this));
         ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_news)).setOnClickListener(new HomeFragment$onResume$6(this));
         ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_app)).setOnClickListener(new HomeFragment$onResume$7(this));
+        ((ExternalLinkCard) _$_findCachedViewById(R.id.help_topics_link)).setOnClickListener(new HomeFragment$onResume$8(this));
         if (!this.mIsBroadcastListenerRegistered) {
             registerBroadcast();
         }
@@ -108,6 +109,7 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
         ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_share)).setOnClickListener((View.OnClickListener) null);
         ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_news)).setOnClickListener((View.OnClickListener) null);
         ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_app)).setOnClickListener((View.OnClickListener) null);
+        ((ExternalLinkCard) _$_findCachedViewById(R.id.help_topics_link)).setOnClickListener((View.OnClickListener) null);
         FragmentActivity activity = getActivity();
         if (activity != null && this.mIsBroadcastListenerRegistered) {
             activity.unregisterReceiver(this.mBroadcastListener);

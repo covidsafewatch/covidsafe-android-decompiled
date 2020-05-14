@@ -82,9 +82,7 @@ public final class BLEAdvertiser {
             if (substring != null) {
                 byte[] bytes = substring.getBytes(charset);
                 Intrinsics.checkExpressionValueIsNotNull(bytes, "(this as java.lang.String).getBytes(charset)");
-                if (this.data == null) {
-                    this.data = new AdvertiseData.Builder().setIncludeDeviceName(false).setIncludeTxPowerLevel(true).addServiceUuid(this.pUuid).addManufacturerData(1023, bytes).build();
-                }
+                this.data = new AdvertiseData.Builder().setIncludeDeviceName(false).setIncludeTxPowerLevel(true).addServiceUuid(this.pUuid).addManufacturerData(1023, bytes).build();
                 try {
                     CentralLog.Companion.d(this.TAG, "Start advertising");
                     BluetoothLeAdvertiser bluetoothLeAdvertiser = this.advertiser;
