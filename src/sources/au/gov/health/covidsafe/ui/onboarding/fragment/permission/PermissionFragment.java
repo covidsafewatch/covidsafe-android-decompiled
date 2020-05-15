@@ -25,7 +25,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import pub.devrel.easypermissions.EasyPermissions;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000f\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\b\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010!\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u0011\n\u0000\n\u0002\u0010\u0015\n\u0002\b\u0004\u0018\u0000 .2\u00020\u00012\u00020\u0002:\u0001.B\u0005¢\u0006\u0002\u0010\u0003J\b\u0010\r\u001a\u00020\u000eH\u0016J\b\u0010\u000f\u001a\u00020\u0010H\u0002J\b\u0010\u0011\u001a\u00020\u0012H\u0002J\b\u0010\u0013\u001a\u00020\u0012H\u0002J\"\u0010\u0014\u001a\u00020\u00122\u0006\u0010\u0015\u001a\u00020\u00052\u0006\u0010\u0016\u001a\u00020\u00052\b\u0010\u0017\u001a\u0004\u0018\u00010\u0018H\u0016J&\u0010\u0019\u001a\u0004\u0018\u00010\u001a2\u0006\u0010\u001b\u001a\u00020\u001c2\b\u0010\u001d\u001a\u0004\u0018\u00010\u001e2\b\u0010\u001f\u001a\u0004\u0018\u00010 H\u0016J\b\u0010!\u001a\u00020\u0012H\u0016J\u001e\u0010\"\u001a\u00020\u00122\u0006\u0010\u0015\u001a\u00020\u00052\f\u0010#\u001a\b\u0012\u0004\u0012\u00020%0$H\u0016J\u001e\u0010&\u001a\u00020\u00122\u0006\u0010\u0015\u001a\u00020\u00052\f\u0010#\u001a\b\u0012\u0004\u0012\u00020%0$H\u0016J-\u0010'\u001a\u00020\u00122\u0006\u0010\u0015\u001a\u00020\u00052\u000e\u0010(\u001a\n\u0012\u0006\b\u0001\u0012\u00020%0)2\u0006\u0010*\u001a\u00020+H\u0016¢\u0006\u0002\u0010,J\b\u0010-\u001a\u00020\u0012H\u0016R\u0018\u0010\u0004\u001a\u0004\u0018\u00010\u0005XD¢\u0006\n\n\u0002\u0010\b\u001a\u0004\b\u0006\u0010\u0007R\u001e\u0010\t\u001a\u0004\u0018\u00010\u0005X\u000e¢\u0006\u0010\n\u0002\u0010\b\u001a\u0004\b\n\u0010\u0007\"\u0004\b\u000b\u0010\f¨\u0006/"}, d2 = {"Lau/gov/health/covidsafe/ui/onboarding/fragment/permission/PermissionFragment;", "Lau/gov/health/covidsafe/ui/PagerChildFragment;", "Lpub/devrel/easypermissions/EasyPermissions$PermissionCallbacks;", "()V", "navigationIcon", "", "getNavigationIcon", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "stepProgress", "getStepProgress", "setStepProgress", "(Ljava/lang/Integer;)V", "getUploadButtonLayout", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$ContinueLayout;", "hasAllPermissionsAndBluetoothOn", "", "navigateToMainActivity", "", "navigateToNextPage", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPermissionsDenied", "perms", "", "", "onPermissionsGranted", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "updateButtonState", "Companion", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000j\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0004\n\u0002\u0010\u000b\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010!\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u0011\n\u0000\n\u0002\u0010\u0015\n\u0002\b\u0004\u0018\u0000 /2\u00020\u00012\u00020\u0002:\u0001/B\u0005¢\u0006\u0002\u0010\u0003J\b\u0010\u000f\u001a\u00020\u0010H\u0016J\b\u0010\u0011\u001a\u00020\nH\u0002J\b\u0010\u0012\u001a\u00020\u0013H\u0002J\b\u0010\u0014\u001a\u00020\u0013H\u0002J\"\u0010\u0015\u001a\u00020\u00132\u0006\u0010\u0016\u001a\u00020\u00052\u0006\u0010\u0017\u001a\u00020\u00052\b\u0010\u0018\u001a\u0004\u0018\u00010\u0019H\u0016J&\u0010\u001a\u001a\u0004\u0018\u00010\u001b2\u0006\u0010\u001c\u001a\u00020\u001d2\b\u0010\u001e\u001a\u0004\u0018\u00010\u001f2\b\u0010 \u001a\u0004\u0018\u00010!H\u0016J\b\u0010\"\u001a\u00020\u0013H\u0016J\u001e\u0010#\u001a\u00020\u00132\u0006\u0010\u0016\u001a\u00020\u00052\f\u0010$\u001a\b\u0012\u0004\u0012\u00020&0%H\u0016J\u001e\u0010'\u001a\u00020\u00132\u0006\u0010\u0016\u001a\u00020\u00052\f\u0010$\u001a\b\u0012\u0004\u0012\u00020&0%H\u0016J-\u0010(\u001a\u00020\u00132\u0006\u0010\u0016\u001a\u00020\u00052\u000e\u0010)\u001a\n\u0012\u0006\b\u0001\u0012\u00020&0*2\u0006\u0010+\u001a\u00020,H\u0016¢\u0006\u0002\u0010-J\b\u0010.\u001a\u00020\u0013H\u0016R\u0018\u0010\u0004\u001a\u0004\u0018\u00010\u0005XD¢\u0006\n\n\u0002\u0010\b\u001a\u0004\b\u0006\u0010\u0007R\u000e\u0010\t\u001a\u00020\nX\u000e¢\u0006\u0002\n\u0000R\u001e\u0010\u000b\u001a\u0004\u0018\u00010\u0005X\u000e¢\u0006\u0010\n\u0002\u0010\b\u001a\u0004\b\f\u0010\u0007\"\u0004\b\r\u0010\u000e¨\u00060"}, d2 = {"Lau/gov/health/covidsafe/ui/onboarding/fragment/permission/PermissionFragment;", "Lau/gov/health/covidsafe/ui/PagerChildFragment;", "Lpub/devrel/easypermissions/EasyPermissions$PermissionCallbacks;", "()V", "navigationIcon", "", "getNavigationIcon", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "navigationStarted", "", "stepProgress", "getStepProgress", "setStepProgress", "(Ljava/lang/Integer;)V", "getUploadButtonLayout", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$ContinueLayout;", "hasAllPermissionsAndBluetoothOn", "navigateToMainActivity", "", "navigateToNextPage", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPermissionsDenied", "perms", "", "", "onPermissionsGranted", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "updateButtonState", "Companion", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: PermissionFragment.kt */
 public final class PermissionFragment extends PagerChildFragment implements EasyPermissions.PermissionCallbacks {
     public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
@@ -33,6 +33,8 @@ public final class PermissionFragment extends PagerChildFragment implements Easy
     public static final String[] requiredPermissions = {"android.permission.BLUETOOTH", "android.permission.BLUETOOTH_ADMIN", "android.permission.ACCESS_FINE_LOCATION"};
     private HashMap _$_findViewCache;
     private final Integer navigationIcon = Integer.valueOf(R.drawable.ic_up);
+    /* access modifiers changed from: private */
+    public boolean navigationStarted;
     private Integer stepProgress = 5;
 
     public void _$_clearFindViewByIdCache() {
@@ -107,6 +109,7 @@ public final class PermissionFragment extends PagerChildFragment implements Easy
 
     /* access modifiers changed from: private */
     public final void navigateToNextPage() {
+        this.navigationStarted = false;
         if (hasAllPermissionsAndBluetoothOn()) {
             BaseFragment.navigateTo$default(this, R.id.action_permissionFragment_to_permissionSuccessFragment, (Bundle) null, (Navigator.Extras) null, 6, (Object) null);
         } else {
@@ -181,7 +184,11 @@ public final class PermissionFragment extends PagerChildFragment implements Easy
     }
 
     public void updateButtonState() {
-        enableContinueButton();
+        if (this.navigationStarted) {
+            disableContinueButton();
+        } else {
+            enableContinueButton();
+        }
     }
 
     public void onDestroyView() {

@@ -47,7 +47,7 @@ public final class ViewExtensionsKt {
         }
         spannableString.setSpan(new URLSpan(""), i, i2, 33);
         textView.setText(spannableString, TextView.BufferType.SPANNABLE);
-        textView.setLinkTextColor(ContextCompat.getColor(textView.getContext(), R.color.hyperlink_enabled));
+        textView.setLinkTextColor(ContextCompat.getColor(textView.getContext(), R.color.dark_green));
         textView.setOnClickListener(new ViewExtensionsKt$toHyperlink$1(function0));
     }
 }

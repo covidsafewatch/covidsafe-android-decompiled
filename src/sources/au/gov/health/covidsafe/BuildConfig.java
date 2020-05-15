@@ -14,13 +14,12 @@ public final class BuildConfig {
     public static final boolean ENABLE_DEBUG_SCREEN = false;
     public static final String END_POINT_PREFIX = "/prod";
     public static final String FLAVOR = "";
-    public static final String GITHASH = "452f03f";
+    public static final String GITHASH = "fb94c05";
     public static final long HEALTH_CHECK_INTERVAL = 900000;
     public static final long MAX_QUEUE_TIME = 7000;
     public static final long MAX_SCAN_INTERVAL = 43000;
     public static final long MIN_SCAN_INTERVAL = 36000;
     public static final String ORG = "AU_DTA";
-    public static final String PRIVACY_URL = "https://www.homeaffairs.gov.au/access-and-accountability/using-our-website/web-privacy";
     public static final int PROTOCOL_VERSION = 1;
     public static final String PUSH_NOTIFICATION_CHANNEL_NAME = "COVIDSafe Notifications";
     public static final int PUSH_NOTIFICATION_ID = 771578;
@@ -28,7 +27,6 @@ public final class BuildConfig {
     public static final String SERVICE_FOREGROUND_CHANNEL_ID = "COVIDSafe Updates";
     public static final String SERVICE_FOREGROUND_CHANNEL_NAME = "Foreground Service";
     public static final int SERVICE_FOREGROUND_NOTIFICATION_ID = 771579;
-    public static final String STORE_URL = "https://play.google.com/store/apps/details?id=sg.gov.tech.covidafe";
-    public static final int VERSION_CODE = 11;
-    public static final String VERSION_NAME = "1.0.11";
+    public static final int VERSION_CODE = 15;
+    public static final String VERSION_NAME = "1.0.15";
 }

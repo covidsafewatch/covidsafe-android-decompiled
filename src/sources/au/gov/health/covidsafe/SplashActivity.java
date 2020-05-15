@@ -2,14 +2,12 @@ package au.gov.health.covidsafe;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 import au.gov.health.covidsafe.ui.onboarding.OnboardingActivity;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -20,7 +18,7 @@ import kotlin.jvm.internal.Intrinsics;
 /* compiled from: SplashActivity.kt */
 public final class SplashActivity extends AppCompatActivity {
     private final int ERROR_DIALOG_REQUEST_CODE = 1;
-    private final long SPLASH_TIME = 2000;
+    private final long SPLASH_TIME = 20000;
     private HashMap _$_findViewCache;
     private Handler mHandler;
     private boolean retryProviderInstall;
@@ -48,26 +46,13 @@ public final class SplashActivity extends AppCompatActivity {
 
     /* access modifiers changed from: protected */
     public void onCreate(Bundle bundle) {
-        String string;
         super.onCreate(bundle);
         setContentView((int) R.layout.activity_splash);
         hideSystemUI();
         this.mHandler = new Handler();
-        String string2 = Settings.Secure.getString(getContentResolver(), "android_id");
-        Intrinsics.checkExpressionValueIsNotNull(string2, "Settings.Secure.getStrin…ttings.Secure.ANDROID_ID)");
-        Preference.INSTANCE.putDeviceID(this, string2);
-        Intent intent = getIntent();
-        Intrinsics.checkExpressionValueIsNotNull(intent, "intent");
-        Bundle extras = intent.getExtras();
-        if (extras != null && (string = extras.getString(NotificationCompat.CATEGORY_EVENT, (String) null)) != null && Intrinsics.areEqual((Object) string, (Object) "update")) {
-            this.updateFlag = true;
-            setIntent(new Intent("android.intent.action.VIEW"));
-            Intent intent2 = getIntent();
-            Intrinsics.checkExpressionValueIsNotNull(intent2, "intent");
-            intent2.setData(Uri.parse(BuildConfig.STORE_URL));
-            startActivity(getIntent());
-            finish();
-        }
+        String string = Settings.Secure.getString(getContentResolver(), "android_id");
+        Intrinsics.checkExpressionValueIsNotNull(string, "Settings.Secure.getStrin…ttings.Secure.ANDROID_ID)");
+        Preference.INSTANCE.putDeviceID(this, string);
     }
 
     /* access modifiers changed from: protected */

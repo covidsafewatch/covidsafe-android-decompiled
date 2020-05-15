@@ -191,7 +191,7 @@ public final class CoroutineScheduler implements Executor, Closeable {
         return controlState$FU.addAndGet(this, 4398046511104L);
     }
 
-    /* JADX WARNING: type inference failed for: r0v0, types: [boolean, int] */
+    /* JADX WARNING: type inference failed for: r0v0, types: [int, boolean] */
     public final boolean isTerminated() {
         return this._isTerminated;
     }

@@ -2,10 +2,12 @@ package au.gov.health.covidsafe.ui.onboarding.fragment.enterpin;
 
 import android.content.Context;
 import android.text.TextUtils;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import au.gov.health.covidsafe.Preference;
+import au.gov.health.covidsafe.extensions.NetworkExtensionsKt;
 import au.gov.health.covidsafe.factory.NetworkFactory;
 import au.gov.health.covidsafe.interactor.usecase.GetOnboardingOtp;
 import au.gov.health.covidsafe.interactor.usecase.GetOtpParams;
@@ -50,31 +52,34 @@ public final class EnterPinPresenter implements LifecycleObserver {
     }
 
     public final void resendCode$app_release() {
-        if (this.enterPinFragment.getActivity() == null) {
-            return;
+        FragmentActivity activity = this.enterPinFragment.getActivity();
+        if (activity != null) {
+            Intrinsics.checkExpressionValueIsNotNull(activity, "it");
+            if (!NetworkExtensionsKt.isInternetAvailable(activity)) {
+                this.enterPinFragment.showCheckInternetError();
+            } else if (this.phoneNumber == null) {
+                this.enterPinFragment.showGenericError();
+            } else {
+                GetOnboardingOtp getOnboardingOtp = this.getOtp;
+                if (getOnboardingOtp == null) {
+                    Intrinsics.throwUninitializedPropertyAccessException("getOtp");
+                }
+                String str = this.phoneNumber;
+                String deviceID = Preference.INSTANCE.getDeviceID(this.enterPinFragment.requireContext());
+                Preference preference = Preference.INSTANCE;
+                Context requireContext = this.enterPinFragment.requireContext();
+                Intrinsics.checkExpressionValueIsNotNull(requireContext, "enterPinFragment.requireContext()");
+                String postCode = preference.getPostCode(requireContext);
+                Preference preference2 = Preference.INSTANCE;
+                Context requireContext2 = this.enterPinFragment.requireContext();
+                Intrinsics.checkExpressionValueIsNotNull(requireContext2, "enterPinFragment.requireContext()");
+                String age = preference2.getAge(requireContext2);
+                Preference preference3 = Preference.INSTANCE;
+                Context requireContext3 = this.enterPinFragment.requireContext();
+                Intrinsics.checkExpressionValueIsNotNull(requireContext3, "enterPinFragment.requireContext()");
+                getOnboardingOtp.invoke(new GetOtpParams(str, deviceID, postCode, age, preference3.getName(requireContext3)), new EnterPinPresenter$resendCode$$inlined$let$lambda$1(this), new EnterPinPresenter$resendCode$$inlined$let$lambda$2(this));
+            }
         }
-        if (this.phoneNumber == null) {
-            this.enterPinFragment.showGenericError();
-            return;
-        }
-        GetOnboardingOtp getOnboardingOtp = this.getOtp;
-        if (getOnboardingOtp == null) {
-            Intrinsics.throwUninitializedPropertyAccessException("getOtp");
-        }
-        String str = this.phoneNumber;
-        String deviceID = Preference.INSTANCE.getDeviceID(this.enterPinFragment.requireContext());
-        Preference preference = Preference.INSTANCE;
-        Context requireContext = this.enterPinFragment.requireContext();
-        Intrinsics.checkExpressionValueIsNotNull(requireContext, "enterPinFragment.requireContext()");
-        String postCode = preference.getPostCode(requireContext);
-        Preference preference2 = Preference.INSTANCE;
-        Context requireContext2 = this.enterPinFragment.requireContext();
-        Intrinsics.checkExpressionValueIsNotNull(requireContext2, "enterPinFragment.requireContext()");
-        String age = preference2.getAge(requireContext2);
-        Preference preference3 = Preference.INSTANCE;
-        Context requireContext3 = this.enterPinFragment.requireContext();
-        Intrinsics.checkExpressionValueIsNotNull(requireContext3, "enterPinFragment.requireContext()");
-        getOnboardingOtp.invoke(new GetOtpParams(str, deviceID, postCode, age, preference3.getName(requireContext3)), new EnterPinPresenter$resendCode$$inlined$let$lambda$1(this), new EnterPinPresenter$resendCode$$inlined$let$lambda$2(this));
     }
 
     public final void validateOTP$app_release(String str) {
@@ -83,9 +88,14 @@ public final class EnterPinPresenter implements LifecycleObserver {
             this.enterPinFragment.showErrorOtpMustBeSixDigits();
             return;
         }
-        this.enterPinFragment.disableContinueButton();
-        this.enterPinFragment.showLoading();
-        this.awsClient.respondToAuthChallenge(new AuthChallengeRequest(this.session, str)).enqueue(new EnterPinPresenter$validateOTP$1(this));
+        FragmentActivity activity = this.enterPinFragment.getActivity();
+        if (activity == null || NetworkExtensionsKt.isInternetAvailable(activity)) {
+            this.enterPinFragment.disableContinueButton();
+            this.enterPinFragment.showLoading();
+            this.awsClient.respondToAuthChallenge(new AuthChallengeRequest(this.session, str)).enqueue(new EnterPinPresenter$validateOTP$1(this));
+            return;
+        }
+        this.enterPinFragment.showCheckInternetError();
     }
 
     /* access modifiers changed from: private */

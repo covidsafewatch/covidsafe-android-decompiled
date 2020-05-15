@@ -1210,7 +1210,7 @@ public class JobSupport implements Job, ChildJob, ParentJob, SelectClause0 {
             this._rootCause = th;
         }
 
-        /* JADX WARNING: type inference failed for: r0v0, types: [boolean, int] */
+        /* JADX WARNING: type inference failed for: r0v0, types: [int, boolean] */
         public final boolean isCompleting() {
             return this._isCompleting;
         }

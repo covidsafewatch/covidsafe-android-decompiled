@@ -59,7 +59,7 @@ public final class GetOnboardingOtp extends UseCase<OTPChallengeResponse, GetOtp
             }
         } catch (Exception e) {
             CentralLog.Companion.d(this.TAG, "AWSAuthInvalidChallengeRequest", e);
-            return new Failure(GetOnboardingOtpException.GetOtpInvalidNumberException.INSTANCE);
+            return new Failure(new GetOnboardingOtpException.GetOtpServiceException((Integer) null, 1, (DefaultConstructorMarker) null));
         }
     }
 }

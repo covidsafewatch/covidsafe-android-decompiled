@@ -1,12 +1,14 @@
 package au.gov.health.covidsafe.ui.onboarding.fragment.enternumber;
 
 import android.content.Context;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import au.gov.health.covidsafe.Preference;
 import au.gov.health.covidsafe.R;
 import au.gov.health.covidsafe.TracerApp;
+import au.gov.health.covidsafe.extensions.NetworkExtensionsKt;
 import au.gov.health.covidsafe.factory.NetworkFactory;
 import au.gov.health.covidsafe.interactor.usecase.GetOnboardingOtp;
 import au.gov.health.covidsafe.interactor.usecase.GetOtpParams;
@@ -43,16 +45,19 @@ public final class EnterNumberPresenter implements LifecycleObserver {
 
     public final void requestOTP$app_release(String str) {
         Intrinsics.checkParameterIsNotNull(str, "phoneNumber");
-        if (validateAuNumber$app_release(str)) {
+        FragmentActivity activity = this.enterNumberFragment.getActivity();
+        if (activity != null && !NetworkExtensionsKt.isInternetAvailable(activity)) {
+            this.enterNumberFragment.showCheckInternetError();
+        } else if (validateAuNumber$app_release(str)) {
             if (StringsKt.startsWith$default(str, "0", false, 2, (Object) null)) {
                 str = StringsKt.takeLast(str, TracerApp.Companion.getAppContext().getResources().getInteger(R.integer.australian_phone_number_length));
             }
             Preference.INSTANCE.putPhoneNumber(TracerApp.Companion.getAppContext(), this.enterNumberFragment.getResources().getString(R.string.enter_number_prefix) + str);
             this.phoneNumber = str;
             makeOTPCall(str);
-            return;
+        } else {
+            this.enterNumberFragment.showInvalidPhoneNumber();
         }
-        this.enterNumberFragment.showInvalidPhoneNumber();
     }
 
     private final void makeOTPCall(String str) {

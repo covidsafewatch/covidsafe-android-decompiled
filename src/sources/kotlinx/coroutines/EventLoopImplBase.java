@@ -37,7 +37,7 @@ public abstract class EventLoopImplBase extends EventLoopImplPlatform implements
         return Delay.DefaultImpls.invokeOnTimeout(this, j, runnable);
     }
 
-    /* JADX WARNING: type inference failed for: r0v0, types: [boolean, int] */
+    /* JADX WARNING: type inference failed for: r0v0, types: [int, boolean] */
     /* access modifiers changed from: private */
     public final boolean isCompleted() {
         return this._isCompleted;
