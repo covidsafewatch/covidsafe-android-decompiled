@@ -118,7 +118,7 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
             java.lang.Object r5 = r12.body()
             if (r5 != 0) goto L_0x0093
         L_0x0066:
-            int r5 = au.gov.health.covidsafe.interactor.UseCaseKt.RETRIES_LIMIT
+            int r5 = au.gov.health.covidsafe.interactor.UseCaseKt.access$getRETRIES_LIMIT$p()
             if (r2 >= r5) goto L_0x0093
             r5 = 2
             double r5 = (double) r5

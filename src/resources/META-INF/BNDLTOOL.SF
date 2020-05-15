@@ -1,10 +1,10 @@
 Signature-Version: 1.0
 Created-By: 1.0 (Android)
-SHA-256-Digest-Manifest: 3w/hlPbkY3XPNFLFzbecKIKIYPVMO25bhMaKiRhWVmU=
+SHA-256-Digest-Manifest: m2iiGEx1ehITPU4Sqo20Meyn5Q80p0V1o4P88b4ybTo=
 X-Android-APK-Signed: 2
 
 Name: AndroidManifest.xml
-SHA-256-Digest: Z8TGQUUIL+je1NKEHYoQgRPmTl6yyeKOufFi+y1fkUE=
+SHA-256-Digest: IGcmlwjGEuIlXvxAPlQxqn6VWT8rky5Qj/qXEdB2xOg=
 
 Name: META-INF/activity-ktx_release.kotlin_module
 SHA-256-Digest: GnNZrTtG5dB5SUVm5vT/t+SV17XBZn20qsaCtK5PXKs=
@@ -263,7 +263,7 @@ Name: build-data.properties
 SHA-256-Digest: XtzyOXWZGuKpg/3u8E7ArNdi+5A6sIeTzlowVuhn7X8=
 
 Name: classes.dex
-SHA-256-Digest: O4VKjrOM0gz/8fyVoJC/QsBIKPaQm7VDLT3VgPy+b3g=
+SHA-256-Digest: x8dmhWLk8nlCL6HLwgQtRRiJ0CKo6D48uPG+Ewblkyg=
 
 Name: classes2.dex
 SHA-256-Digest: 94HGIZemfmTBm5Z4qPz218XmSYg7Us+J3A7ksJPpcSQ=

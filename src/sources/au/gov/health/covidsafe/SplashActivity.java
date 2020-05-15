@@ -18,7 +18,7 @@ import kotlin.jvm.internal.Intrinsics;
 /* compiled from: SplashActivity.kt */
 public final class SplashActivity extends AppCompatActivity {
     private final int ERROR_DIALOG_REQUEST_CODE = 1;
-    private final long SPLASH_TIME = 20000;
+    private final long SPLASH_TIME = 2000;
     private HashMap _$_findViewCache;
     private Handler mHandler;
     private boolean retryProviderInstall;

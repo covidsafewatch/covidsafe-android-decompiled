@@ -3,7 +3,7 @@ Built-By: BundleTool
 Created-By: BundleTool
 
 Name: AndroidManifest.xml
-SHA-256-Digest: 9ofGFV8JOd+Q3AdqbfGCr8iwyCZTJPB1t+0J//cpia0=
+SHA-256-Digest: Ov7VdhO2LPWq5zUgNR/lv+pA5zp0NtbAzzdcNFcvB98=
 
 Name: META-INF/activity-ktx_release.kotlin_module
 SHA-256-Digest: 4bhzit1vLHtHiqQ2B5VTtB9h+y+R4qyIjXDwF+I80gs=
@@ -262,7 +262,7 @@ Name: build-data.properties
 SHA-256-Digest: kbn1sJfbEFY+umpDDygWExn08H6WXzCRfB3iIRSEkn4=
 
 Name: classes.dex
-SHA-256-Digest: q03KNfKW6n9gjNfA6nsjLX9AzbabLuNBms/2OT7KMP4=
+SHA-256-Digest: Yrw35kLYzbu4iLTwhDt7iAnF6OfFO+WDTCjGPTQVWl4=
 
 Name: classes2.dex
 SHA-256-Digest: AUPqFVxtga+BLK6D8m5EU9wQPJZjjXQkfsxUZL6/ubU=
