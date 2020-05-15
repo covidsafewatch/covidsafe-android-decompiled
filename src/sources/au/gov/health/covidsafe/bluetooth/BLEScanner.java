@@ -7,6 +7,8 @@ import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.os.ParcelUuid;
+import android.util.Base64;
+import au.gov.health.covidsafe.BuildConfig;
 import au.gov.health.covidsafe.Utils;
 import au.gov.health.covidsafe.logging.CentralLog;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import kotlin.properties.Delegates;
 import kotlin.properties.ReadWriteProperty;
 import kotlin.reflect.KProperty;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u00004\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\t\n\u0002\b\u000f\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0010\u0002\n\u0002\b\u0002\u0018\u00002\u00020\u0001B\u001d\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0006\u0010\u0006\u001a\u00020\u0007¢\u0006\u0002\u0010\bJ\u000e\u0010 \u001a\u00020!2\u0006\u0010\u0016\u001a\u00020\u0017J\u0006\u0010\"\u001a\u00020!R\u000e\u0010\t\u001a\u00020\u0005XD¢\u0006\u0002\n\u0000R+\u0010\u0002\u001a\u00020\u00032\u0006\u0010\n\u001a\u00020\u00038B@BX\u0002¢\u0006\u0012\n\u0004\b\u000f\u0010\u0010\u001a\u0004\b\u000b\u0010\f\"\u0004\b\r\u0010\u000eR+\u0010\u0006\u001a\u00020\u00072\u0006\u0010\n\u001a\u00020\u00078B@BX\u0002¢\u0006\u0012\n\u0004\b\u0015\u0010\u0010\u001a\u0004\b\u0011\u0010\u0012\"\u0004\b\u0013\u0010\u0014R\u0010\u0010\u0016\u001a\u0004\u0018\u00010\u0017X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\u0018\u001a\u0004\u0018\u00010\u0019X\u000e¢\u0006\u0002\n\u0000R+\u0010\u001a\u001a\u00020\u00052\u0006\u0010\n\u001a\u00020\u00058B@BX\u0002¢\u0006\u0012\n\u0004\b\u001f\u0010\u0010\u001a\u0004\b\u001b\u0010\u001c\"\u0004\b\u001d\u0010\u001e¨\u0006#"}, d2 = {"Lau/gov/health/covidsafe/bluetooth/BLEScanner;", "", "context", "Landroid/content/Context;", "uuid", "", "reportDelay", "", "(Landroid/content/Context;Ljava/lang/String;J)V", "TAG", "<set-?>", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "context$delegate", "Lkotlin/properties/ReadWriteProperty;", "getReportDelay", "()J", "setReportDelay", "(J)V", "reportDelay$delegate", "scanCallback", "Landroid/bluetooth/le/ScanCallback;", "scanner", "Landroid/bluetooth/le/BluetoothLeScanner;", "serviceUUID", "getServiceUUID", "()Ljava/lang/String;", "setServiceUUID", "(Ljava/lang/String;)V", "serviceUUID$delegate", "startScan", "", "stopScan", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u00004\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\t\n\u0002\b\u000f\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0010\u0002\n\u0002\b\u0003\u0018\u00002\u00020\u0001:\u0001#B\u001d\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0006\u0010\u0006\u001a\u00020\u0007¢\u0006\u0002\u0010\bJ\u000e\u0010 \u001a\u00020!2\u0006\u0010\u0016\u001a\u00020\u0017J\u0006\u0010\"\u001a\u00020!R\u000e\u0010\t\u001a\u00020\u0005XD¢\u0006\u0002\n\u0000R+\u0010\u0002\u001a\u00020\u00032\u0006\u0010\n\u001a\u00020\u00038B@BX\u0002¢\u0006\u0012\n\u0004\b\u000f\u0010\u0010\u001a\u0004\b\u000b\u0010\f\"\u0004\b\r\u0010\u000eR+\u0010\u0006\u001a\u00020\u00072\u0006\u0010\n\u001a\u00020\u00078B@BX\u0002¢\u0006\u0012\n\u0004\b\u0015\u0010\u0010\u001a\u0004\b\u0011\u0010\u0012\"\u0004\b\u0013\u0010\u0014R\u0010\u0010\u0016\u001a\u0004\u0018\u00010\u0017X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\u0018\u001a\u0004\u0018\u00010\u0019X\u000e¢\u0006\u0002\n\u0000R+\u0010\u001a\u001a\u00020\u00052\u0006\u0010\n\u001a\u00020\u00058B@BX\u0002¢\u0006\u0012\n\u0004\b\u001f\u0010\u0010\u001a\u0004\b\u001b\u0010\u001c\"\u0004\b\u001d\u0010\u001e¨\u0006$"}, d2 = {"Lau/gov/health/covidsafe/bluetooth/BLEScanner;", "", "context", "Landroid/content/Context;", "uuid", "", "reportDelay", "", "(Landroid/content/Context;Ljava/lang/String;J)V", "TAG", "<set-?>", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "context$delegate", "Lkotlin/properties/ReadWriteProperty;", "getReportDelay", "()J", "setReportDelay", "(J)V", "reportDelay$delegate", "scanCallback", "Landroid/bluetooth/le/ScanCallback;", "scanner", "Landroid/bluetooth/le/BluetoothLeScanner;", "serviceUUID", "getServiceUUID", "()Ljava/lang/String;", "setServiceUUID", "(Ljava/lang/String;)V", "serviceUUID$delegate", "startScan", "", "stopScan", "FilterConstant", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: BLEScanner.kt */
 public final class BLEScanner {
     static final /* synthetic */ KProperty[] $$delegatedProperties;
@@ -71,12 +73,35 @@ public final class BLEScanner {
         setReportDelay(j);
     }
 
+    @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u0012\n\u0002\b\u0003\bÆ\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002R\u000e\u0010\u0003\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u0011\u0010\u0005\u001a\u00020\u0006¢\u0006\b\n\u0000\u001a\u0004\b\u0007\u0010\b¨\u0006\t"}, d2 = {"Lau/gov/health/covidsafe/bluetooth/BLEScanner$FilterConstant;", "", "()V", "APPLE_MANUFACTURER_ID", "", "BACKGROUND_IOS_SERVICE_UUID", "", "getBACKGROUND_IOS_SERVICE_UUID", "()[B", "app_release"}, k = 1, mv = {1, 1, 16})
+    /* compiled from: BLEScanner.kt */
+    public static final class FilterConstant {
+        public static final int APPLE_MANUFACTURER_ID = 76;
+        private static final byte[] BACKGROUND_IOS_SERVICE_UUID;
+        public static final FilterConstant INSTANCE = new FilterConstant();
+
+        static {
+            byte[] decode = Base64.decode(BuildConfig.IOS_BACKGROUND_UUID, 0);
+            Intrinsics.checkExpressionValueIsNotNull(decode, "decode(BuildConfig.IOS_B…UND_UUID, Base64.DEFAULT)");
+            BACKGROUND_IOS_SERVICE_UUID = decode;
+        }
+
+        private FilterConstant() {
+        }
+
+        public final byte[] getBACKGROUND_IOS_SERVICE_UUID() {
+            return BACKGROUND_IOS_SERVICE_UUID;
+        }
+    }
+
     public final void startScan(ScanCallback scanCallback2) {
         Intrinsics.checkParameterIsNotNull(scanCallback2, "scanCallback");
         ScanFilter build = new ScanFilter.Builder().setServiceUuid(new ParcelUuid(UUID.fromString(getServiceUUID()))).build();
+        ScanFilter build2 = new ScanFilter.Builder().setServiceUuid((ParcelUuid) null).setManufacturerData(76, FilterConstant.INSTANCE.getBACKGROUND_IOS_SERVICE_UUID()).build();
         ArrayList arrayList = new ArrayList();
         arrayList.add(build);
-        ScanSettings build2 = new ScanSettings.Builder().setReportDelay(getReportDelay()).setScanMode(2).build();
+        arrayList.add(build2);
+        ScanSettings build3 = new ScanSettings.Builder().setReportDelay(getReportDelay()).setScanMode(2).build();
         this.scanCallback = scanCallback2;
         BluetoothLeScanner bluetoothLeScanner = this.scanner;
         if (bluetoothLeScanner == null) {
@@ -86,7 +111,7 @@ public final class BLEScanner {
         }
         this.scanner = bluetoothLeScanner;
         if (bluetoothLeScanner != null) {
-            bluetoothLeScanner.startScan(arrayList, build2, scanCallback2);
+            bluetoothLeScanner.startScan(arrayList, build3, scanCallback2);
         }
     }
 

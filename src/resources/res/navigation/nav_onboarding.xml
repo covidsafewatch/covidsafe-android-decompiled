@@ -10,7 +10,7 @@
     <fragment android:label="DataPrivacyFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.dataprivacy.DataPrivacyFragment" android:id="@+id/dataPrivacyFragment">
         <action android:id="@+id/action_dataPrivacy_to_registrationConsentFragment" app:destination="@+id/resistrationConsentFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-    <fragment android:label="RegistrationContentFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.registrationcontent.RegistrationContentFragment" android:id="@+id/resistrationConsentFragment">
+    <fragment android:label="RegistrationContentFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.registrationconsent.RegistrationConsentFragment" android:id="@+id/resistrationConsentFragment">
         <action android:id="@+id/action_registrationConsentFragment_to_personalDetailsFragment" app:destination="@+id/personalDetailsFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment android:label="PersonalDetailsFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.personal.PersonalDetailsFragment" android:id="@+id/personalDetailsFragment">

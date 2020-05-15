@@ -14,8 +14,10 @@ import au.gov.health.covidsafe.streetpass.ConnectionRecord;
 import java.util.HashMap;
 import java.util.Map;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.collections.ArraysKt;
 import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.TypeIntrinsics;
 import kotlin.text.Charsets;
 
 @Metadata(bv = {1, 0, 3}, d1 = {"\u0000?\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010%\n\u0002\u0010\u000e\n\u0002\u0010\u0012\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\t*\u0001\u0000\b\n\u0018\u00002\u00020\u0001J,\u0010\n\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u000f2\b\u0010\u0011\u001a\u0004\u0018\u00010\u0012H\u0016JD\u0010\u0013\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0011\u001a\u00020\u00122\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u00152\u0006\u0010\u0010\u001a\u00020\u000f2\b\u0010\u0017\u001a\u0004\u0018\u00010\u0005H\u0016J\"\u0010\u0018\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u0019\u001a\u00020\u000f2\u0006\u0010\u001a\u001a\u00020\u000fH\u0016J \u0010\u001b\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u001c\u001a\u00020\u0015H\u0016J\u000e\u0010\u001d\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\rR\u001d\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001d\u0010\b\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0003¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\u0007¨\u0006\u001e"}, d2 = {"au/gov/health/covidsafe/bluetooth/gatt/GattServer$gattServerCallback$1", "Landroid/bluetooth/BluetoothGattServerCallback;", "readPayloadMap", "", "", "", "getReadPayloadMap", "()Ljava/util/Map;", "writeDataPayload", "getWriteDataPayload", "onCharacteristicReadRequest", "", "device", "Landroid/bluetooth/BluetoothDevice;", "requestId", "", "offset", "characteristic", "Landroid/bluetooth/BluetoothGattCharacteristic;", "onCharacteristicWriteRequest", "preparedWrite", "", "responseNeeded", "value", "onConnectionStateChange", "status", "newState", "onExecuteWrite", "execute", "saveDataSaved", "app_release"}, k = 1, mv = {1, 1, 16})
@@ -43,15 +45,22 @@ public final class GattServer$gattServerCallback$1 extends BluetoothGattServerCa
             CentralLog.Companion companion = CentralLog.Companion;
             String access$getTAG$p = this.this$0.TAG;
             StringBuilder sb = new StringBuilder();
+            sb.append(bluetoothDevice != null ? bluetoothDevice.getAddress() : null);
+            sb.append(" Disconnected from local GATT server.");
+            companion.i(access$getTAG$p, sb.toString());
+            Map<String, byte[]> map = this.readPayloadMap;
             if (bluetoothDevice != null) {
                 str = bluetoothDevice.getAddress();
             }
-            sb.append(str);
-            sb.append(" Disconnected from local GATT server.");
-            companion.i(access$getTAG$p, sb.toString());
-            if (bluetoothDevice != null) {
-                Utils.INSTANCE.broadcastDeviceDisconnected(this.this$0.getContext(), bluetoothDevice);
+            if (map != null) {
+                TypeIntrinsics.asMutableMap(map).remove(str);
+                if (bluetoothDevice != null) {
+                    Utils.INSTANCE.broadcastDeviceDisconnected(this.this$0.getContext(), bluetoothDevice);
+                    return;
+                }
+                return;
             }
+            throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
         } else if (i2 != 2) {
             CentralLog.Companion companion2 = CentralLog.Companion;
             String access$getTAG$p2 = this.this$0.TAG;
