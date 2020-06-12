@@ -46,55 +46,55 @@ public class Optimizer {
 
     /* JADX WARNING: Removed duplicated region for block: B:27:0x003d A[RETURN] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    private static boolean optimizableMatchConstraint(androidx.constraintlayout.solver.widgets.ConstraintWidget r3, int r4) {
+    private static boolean optimizableMatchConstraint(androidx.constraintlayout.solver.widgets.ConstraintWidget r4, int r5) {
         /*
-            androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] r0 = r3.mListDimensionBehaviors
-            r0 = r0[r4]
+            androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] r0 = r4.mListDimensionBehaviors
+            r0 = r0[r5]
             androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r1 = androidx.constraintlayout.solver.widgets.ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT
             r2 = 0
             if (r0 == r1) goto L_0x000a
             return r2
         L_0x000a:
-            float r0 = r3.mDimensionRatio
+            float r0 = r4.mDimensionRatio
             r1 = 0
+            r3 = 1
             int r0 = (r0 > r1 ? 1 : (r0 == r1 ? 0 : -1))
-            r1 = 1
             if (r0 == 0) goto L_0x001f
-            androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] r3 = r3.mListDimensionBehaviors
-            if (r4 != 0) goto L_0x0017
+            androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour[] r4 = r4.mListDimensionBehaviors
+            if (r5 != 0) goto L_0x0017
             goto L_0x0018
         L_0x0017:
-            r1 = r2
+            r3 = 0
         L_0x0018:
-            r3 = r3[r1]
-            androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r4 = androidx.constraintlayout.solver.widgets.ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT
-            if (r3 != r4) goto L_0x001e
+            r4 = r4[r3]
+            androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r5 = androidx.constraintlayout.solver.widgets.ConstraintWidget.DimensionBehaviour.MATCH_CONSTRAINT
+            if (r4 != r5) goto L_0x001e
         L_0x001e:
             return r2
         L_0x001f:
-            if (r4 != 0) goto L_0x002f
-            int r4 = r3.mMatchConstraintDefaultWidth
-            if (r4 == 0) goto L_0x0026
+            if (r5 != 0) goto L_0x002f
+            int r5 = r4.mMatchConstraintDefaultWidth
+            if (r5 == 0) goto L_0x0026
             return r2
         L_0x0026:
-            int r4 = r3.mMatchConstraintMinWidth
-            if (r4 != 0) goto L_0x002e
-            int r3 = r3.mMatchConstraintMaxWidth
-            if (r3 == 0) goto L_0x003d
+            int r5 = r4.mMatchConstraintMinWidth
+            if (r5 != 0) goto L_0x002e
+            int r4 = r4.mMatchConstraintMaxWidth
+            if (r4 == 0) goto L_0x003d
         L_0x002e:
             return r2
         L_0x002f:
-            int r4 = r3.mMatchConstraintDefaultHeight
-            if (r4 == 0) goto L_0x0034
+            int r5 = r4.mMatchConstraintDefaultHeight
+            if (r5 == 0) goto L_0x0034
             return r2
         L_0x0034:
-            int r4 = r3.mMatchConstraintMinHeight
-            if (r4 != 0) goto L_0x003e
-            int r3 = r3.mMatchConstraintMaxHeight
-            if (r3 == 0) goto L_0x003d
+            int r5 = r4.mMatchConstraintMinHeight
+            if (r5 != 0) goto L_0x003e
+            int r4 = r4.mMatchConstraintMaxHeight
+            if (r4 == 0) goto L_0x003d
             goto L_0x003e
         L_0x003d:
-            return r1
+            return r3
         L_0x003e:
             return r2
         */
@@ -301,7 +301,7 @@ public class Optimizer {
     /* JADX WARNING: Code restructure failed: missing block: B:23:0x0048, code lost:
         if (r7.mVerticalChainStyle == 2) goto L_0x0034;
      */
-    /* JADX WARNING: Removed duplicated region for block: B:123:0x01db  */
+    /* JADX WARNING: Removed duplicated region for block: B:123:0x01dc  */
     /* JADX WARNING: Removed duplicated region for block: B:72:0x0103  */
     /* JADX WARNING: Removed duplicated region for block: B:73:0x0106  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
@@ -327,14 +327,14 @@ public class Optimizer {
             if (r1 != 0) goto L_0x0038
             int r11 = r7.mHorizontalChainStyle
             if (r11 != 0) goto L_0x0028
-            r11 = r10
+            r11 = 1
             goto L_0x0029
         L_0x0028:
             r11 = 0
         L_0x0029:
             int r12 = r7.mHorizontalChainStyle
             if (r12 != r10) goto L_0x002f
-            r12 = r10
+            r12 = 1
             goto L_0x0030
         L_0x002f:
             r12 = 0
@@ -342,7 +342,7 @@ public class Optimizer {
             int r7 = r7.mHorizontalChainStyle
             if (r7 != r2) goto L_0x0036
         L_0x0034:
-            r2 = r10
+            r2 = 1
             goto L_0x004b
         L_0x0036:
             r2 = 0
@@ -350,14 +350,14 @@ public class Optimizer {
         L_0x0038:
             int r11 = r7.mVerticalChainStyle
             if (r11 != 0) goto L_0x003e
-            r11 = r10
+            r11 = 1
             goto L_0x003f
         L_0x003e:
             r11 = 0
         L_0x003f:
             int r12 = r7.mVerticalChainStyle
             if (r12 != r10) goto L_0x0045
-            r12 = r10
+            r12 = 1
             goto L_0x0046
         L_0x0045:
             r12 = 0
@@ -491,20 +491,20 @@ public class Optimizer {
             r13 = r13[r19]
             androidx.constraintlayout.solver.widgets.ResolutionAnchor r13 = r13.getResolutionNode()
             androidx.constraintlayout.solver.widgets.ResolutionAnchor r7 = r9.target
-            if (r7 == 0) goto L_0x0390
+            if (r7 == 0) goto L_0x0392
             androidx.constraintlayout.solver.widgets.ResolutionAnchor r7 = r13.target
             if (r7 != 0) goto L_0x0125
-            goto L_0x0390
+            goto L_0x0392
         L_0x0125:
             androidx.constraintlayout.solver.widgets.ResolutionAnchor r7 = r9.target
             int r7 = r7.state
             r20 = r3
             r3 = 1
-            if (r7 != r3) goto L_0x038e
+            if (r7 != r3) goto L_0x0390
             androidx.constraintlayout.solver.widgets.ResolutionAnchor r7 = r13.target
             int r7 = r7.state
             if (r7 == r3) goto L_0x0136
-            goto L_0x038e
+            goto L_0x0390
         L_0x0136:
             if (r10 <= 0) goto L_0x013c
             if (r10 == r15) goto L_0x013c
@@ -548,8 +548,8 @@ public class Optimizer {
         L_0x016e:
             float r7 = r7 - r16
             r21 = 1
-            if (r10 <= 0) goto L_0x0228
-            if (r10 != r15) goto L_0x0228
+            if (r10 <= 0) goto L_0x0229
+            if (r10 != r15) goto L_0x0229
             androidx.constraintlayout.solver.widgets.ConstraintWidget r2 = r14.getParent()
             if (r2 == 0) goto L_0x018a
             androidx.constraintlayout.solver.widgets.ConstraintWidget r2 = r14.getParent()
@@ -564,7 +564,7 @@ public class Optimizer {
             float r7 = r7 - r17
             r3 = r20
         L_0x0190:
-            if (r3 == 0) goto L_0x0226
+            if (r3 == 0) goto L_0x0227
             androidx.constraintlayout.solver.Metrics r2 = androidx.constraintlayout.solver.LinearSystem.sMetrics
             if (r2 == 0) goto L_0x01ae
             androidx.constraintlayout.solver.Metrics r2 = androidx.constraintlayout.solver.LinearSystem.sMetrics
@@ -583,33 +583,33 @@ public class Optimizer {
             androidx.constraintlayout.solver.widgets.ConstraintWidget[] r2 = r3.mNextChainWidget
             r2 = r2[r1]
             if (r2 != 0) goto L_0x01b6
-            if (r3 != r4) goto L_0x0223
+            if (r3 != r4) goto L_0x0224
         L_0x01b6:
             float r5 = (float) r10
             float r5 = r7 / r5
             r11 = 0
             int r12 = (r8 > r11 ? 1 : (r8 == r11 ? 0 : -1))
-            if (r12 <= 0) goto L_0x01d1
+            if (r12 <= 0) goto L_0x01d2
             float[] r5 = r3.mWeight
             r5 = r5[r1]
             r11 = -1082130432(0xffffffffbf800000, float:-1.0)
             int r5 = (r5 > r11 ? 1 : (r5 == r11 ? 0 : -1))
             if (r5 != 0) goto L_0x01cb
             r18 = 0
-            goto L_0x01d3
+            goto L_0x01d4
         L_0x01cb:
             float[] r5 = r3.mWeight
             r5 = r5[r1]
             float r5 = r5 * r7
             float r5 = r5 / r8
-        L_0x01d1:
+        L_0x01d2:
             r18 = r5
-        L_0x01d3:
+        L_0x01d4:
             int r5 = r3.getVisibility()
             r11 = 8
-            if (r5 != r11) goto L_0x01dd
+            if (r5 != r11) goto L_0x01de
             r18 = 0
-        L_0x01dd:
+        L_0x01de:
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r5 = r3.mListAnchors
             r5 = r5[r26]
             int r5 = r5.getMargin()
@@ -639,31 +639,31 @@ public class Optimizer {
             int r3 = r3.getMargin()
             float r3 = (float) r3
             float r6 = r6 + r3
-        L_0x0223:
+        L_0x0224:
             r3 = r2
             goto L_0x0190
-        L_0x0226:
+        L_0x0227:
             r2 = 1
             return r2
-        L_0x0228:
+        L_0x0229:
             r8 = 0
             int r8 = (r7 > r8 ? 1 : (r7 == r8 ? 0 : -1))
-            if (r8 >= 0) goto L_0x0230
+            if (r8 >= 0) goto L_0x0231
             r2 = 1
             r11 = 0
             r12 = 0
-        L_0x0230:
-            if (r2 == 0) goto L_0x02b4
+        L_0x0231:
+            if (r2 == 0) goto L_0x02b6
             float r7 = r7 - r3
             r2 = r20
             float r3 = r2.getBiasPercent(r1)
             float r7 = r7 * r3
             float r6 = r6 + r7
-        L_0x023b:
+        L_0x023d:
             r3 = r2
-            if (r3 == 0) goto L_0x02bb
+            if (r3 == 0) goto L_0x02bd
             androidx.constraintlayout.solver.Metrics r2 = androidx.constraintlayout.solver.LinearSystem.sMetrics
-            if (r2 == 0) goto L_0x025a
+            if (r2 == 0) goto L_0x025c
             androidx.constraintlayout.solver.Metrics r2 = androidx.constraintlayout.solver.LinearSystem.sMetrics
             long r7 = r2.nonresolvedWidgets
             long r7 = r7 - r21
@@ -676,18 +676,18 @@ public class Optimizer {
             long r7 = r2.chainConnectionResolved
             long r7 = r7 + r21
             r2.chainConnectionResolved = r7
-        L_0x025a:
+        L_0x025c:
             androidx.constraintlayout.solver.widgets.ConstraintWidget[] r2 = r3.mNextChainWidget
             r2 = r2[r1]
-            if (r2 != 0) goto L_0x0262
-            if (r3 != r4) goto L_0x023b
-        L_0x0262:
-            if (r1 != 0) goto L_0x0269
+            if (r2 != 0) goto L_0x0264
+            if (r3 != r4) goto L_0x023d
+        L_0x0264:
+            if (r1 != 0) goto L_0x026b
             int r5 = r3.getWidth()
-            goto L_0x026d
-        L_0x0269:
+            goto L_0x026f
+        L_0x026b:
             int r5 = r3.getHeight()
-        L_0x026d:
+        L_0x026f:
             float r5 = (float) r5
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r7 = r3.mListAnchors
             r7 = r7[r26]
@@ -718,66 +718,66 @@ public class Optimizer {
             int r3 = r3.getMargin()
             float r3 = (float) r3
             float r6 = r6 + r3
-            goto L_0x023b
-        L_0x02b4:
+            goto L_0x023d
+        L_0x02b6:
             r2 = r20
-            if (r11 != 0) goto L_0x02be
-            if (r12 == 0) goto L_0x02bb
-            goto L_0x02be
-        L_0x02bb:
-            r0 = 1
-            goto L_0x038d
-        L_0x02be:
-            if (r11 == 0) goto L_0x02c2
-        L_0x02c0:
-            float r7 = r7 - r3
-            goto L_0x02c5
-        L_0x02c2:
-            if (r12 == 0) goto L_0x02c5
+            if (r11 != 0) goto L_0x02c0
+            if (r12 == 0) goto L_0x02bd
             goto L_0x02c0
-        L_0x02c5:
+        L_0x02bd:
+            r0 = 1
+            goto L_0x038f
+        L_0x02c0:
+            if (r11 == 0) goto L_0x02c4
+        L_0x02c2:
+            float r7 = r7 - r3
+            goto L_0x02c7
+        L_0x02c4:
+            if (r12 == 0) goto L_0x02c7
+            goto L_0x02c2
+        L_0x02c7:
             int r3 = r15 + 1
             float r3 = (float) r3
             float r3 = r7 / r3
-            if (r12 == 0) goto L_0x02d7
+            if (r12 == 0) goto L_0x02d9
             r8 = 1
-            if (r15 <= r8) goto L_0x02d3
+            if (r15 <= r8) goto L_0x02d5
             int r3 = r15 + -1
             float r3 = (float) r3
-            goto L_0x02d5
-        L_0x02d3:
-            r3 = 1073741824(0x40000000, float:2.0)
+            goto L_0x02d7
         L_0x02d5:
-            float r3 = r7 / r3
+            r3 = 1073741824(0x40000000, float:2.0)
         L_0x02d7:
+            float r3 = r7 / r3
+        L_0x02d9:
             int r7 = r2.getVisibility()
             r8 = 8
-            if (r7 == r8) goto L_0x02e2
+            if (r7 == r8) goto L_0x02e4
             float r7 = r6 + r3
-            goto L_0x02e3
-        L_0x02e2:
+            goto L_0x02e5
+        L_0x02e4:
             r7 = r6
-        L_0x02e3:
-            if (r12 == 0) goto L_0x02f2
+        L_0x02e5:
+            if (r12 == 0) goto L_0x02f4
             r8 = 1
-            if (r15 <= r8) goto L_0x02f2
+            if (r15 <= r8) goto L_0x02f4
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r7 = r5.mListAnchors
             r7 = r7[r26]
             int r7 = r7.getMargin()
             float r7 = (float) r7
             float r7 = r7 + r6
-        L_0x02f2:
-            if (r11 == 0) goto L_0x0300
-            if (r5 == 0) goto L_0x0300
+        L_0x02f4:
+            if (r11 == 0) goto L_0x0302
+            if (r5 == 0) goto L_0x0302
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r6 = r5.mListAnchors
             r6 = r6[r26]
             int r6 = r6.getMargin()
             float r6 = (float) r6
             float r7 = r7 + r6
-        L_0x0300:
-            if (r2 == 0) goto L_0x02bb
+        L_0x0302:
+            if (r2 == 0) goto L_0x02bd
             androidx.constraintlayout.solver.Metrics r6 = androidx.constraintlayout.solver.LinearSystem.sMetrics
-            if (r6 == 0) goto L_0x031e
+            if (r6 == 0) goto L_0x0320
             androidx.constraintlayout.solver.Metrics r6 = androidx.constraintlayout.solver.LinearSystem.sMetrics
             long r10 = r6.nonresolvedWidgets
             long r10 = r10 - r21
@@ -790,30 +790,30 @@ public class Optimizer {
             long r10 = r6.chainConnectionResolved
             long r10 = r10 + r21
             r6.chainConnectionResolved = r10
-        L_0x031e:
+        L_0x0320:
             androidx.constraintlayout.solver.widgets.ConstraintWidget[] r6 = r2.mNextChainWidget
             r6 = r6[r1]
-            if (r6 != 0) goto L_0x032a
-            if (r2 != r4) goto L_0x0327
-            goto L_0x032a
-        L_0x0327:
+            if (r6 != 0) goto L_0x032c
+            if (r2 != r4) goto L_0x0329
+            goto L_0x032c
+        L_0x0329:
             r8 = 8
-            goto L_0x038a
-        L_0x032a:
-            if (r1 != 0) goto L_0x0331
+            goto L_0x038c
+        L_0x032c:
+            if (r1 != 0) goto L_0x0333
             int r8 = r2.getWidth()
-            goto L_0x0335
-        L_0x0331:
+            goto L_0x0337
+        L_0x0333:
             int r8 = r2.getHeight()
-        L_0x0335:
+        L_0x0337:
             float r8 = (float) r8
-            if (r2 == r5) goto L_0x0342
+            if (r2 == r5) goto L_0x0344
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r10 = r2.mListAnchors
             r10 = r10[r26]
             int r10 = r10.getMargin()
             float r10 = (float) r10
             float r7 = r7 + r10
-        L_0x0342:
+        L_0x0344:
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r10 = r2.mListAnchors
             r10 = r10[r26]
             androidx.constraintlayout.solver.widgets.ResolutionAnchor r10 = r10.getResolutionNode()
@@ -839,20 +839,20 @@ public class Optimizer {
             float r2 = (float) r2
             float r8 = r8 + r2
             float r7 = r7 + r8
-            if (r6 == 0) goto L_0x0327
+            if (r6 == 0) goto L_0x0329
             int r2 = r6.getVisibility()
             r8 = 8
-            if (r2 == r8) goto L_0x038a
+            if (r2 == r8) goto L_0x038c
             float r7 = r7 + r3
-        L_0x038a:
+        L_0x038c:
             r2 = r6
-            goto L_0x0300
-        L_0x038d:
-            return r0
-        L_0x038e:
-            r0 = 0
+            goto L_0x0302
+        L_0x038f:
             return r0
         L_0x0390:
+            r0 = 0
+            return r0
+        L_0x0392:
             r0 = 0
             return r0
         */

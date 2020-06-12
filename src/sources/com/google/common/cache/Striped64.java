@@ -102,7 +102,7 @@ abstract class Striped64 extends Number {
             java.util.Random r5 = rng
             int r5 = r5.nextInt()
             if (r5 != 0) goto L_0x0018
-            r5 = r0
+            r5 = 1
         L_0x0018:
             r6[r4] = r5
             goto L_0x001f
@@ -110,8 +110,8 @@ abstract class Striped64 extends Number {
             r5 = r19[r4]
             r6 = r19
         L_0x001f:
-            r8 = r4
             r7 = r5
+            r8 = 0
             r5 = r20
         L_0x0023:
             com.google.common.cache.Striped64$Cell[] r9 = r1.cells
@@ -139,10 +139,10 @@ abstract class Striped64 extends Number {
             r12 = r10[r11]     // Catch:{ all -> 0x005d }
             if (r12 != 0) goto L_0x0056
             r10[r11] = r9     // Catch:{ all -> 0x005d }
-            r9 = r0
+            r9 = 1
             goto L_0x0057
         L_0x0056:
-            r9 = r4
+            r9 = 0
         L_0x0057:
             r1.busy = r4
             if (r9 == 0) goto L_0x0023
@@ -152,11 +152,11 @@ abstract class Striped64 extends Number {
             r1.busy = r4
             throw r0
         L_0x0061:
-            r8 = r4
+            r8 = 0
             goto L_0x00a9
         L_0x0063:
             if (r5 != 0) goto L_0x0067
-            r5 = r0
+            r5 = 1
             goto L_0x00a9
         L_0x0067:
             long r12 = r11.value
@@ -172,7 +172,7 @@ abstract class Striped64 extends Number {
             goto L_0x0061
         L_0x007e:
             if (r8 != 0) goto L_0x0082
-            r8 = r0
+            r8 = 1
             goto L_0x00a9
         L_0x0082:
             int r11 = r1.busy
@@ -183,7 +183,7 @@ abstract class Striped64 extends Number {
             if (r8 != r9) goto L_0x00a0
             int r8 = r10 << 1
             com.google.common.cache.Striped64$Cell[] r8 = new com.google.common.cache.Striped64.Cell[r8]     // Catch:{ all -> 0x00a5 }
-            r11 = r4
+            r11 = 0
         L_0x0095:
             if (r11 >= r10) goto L_0x009e
             r12 = r9[r11]     // Catch:{ all -> 0x00a5 }
@@ -194,7 +194,7 @@ abstract class Striped64 extends Number {
             r1.cells = r8     // Catch:{ all -> 0x00a5 }
         L_0x00a0:
             r1.busy = r4
-            r8 = r4
+            r8 = 0
             goto L_0x0023
         L_0x00a5:
             r0 = move-exception
@@ -225,10 +225,10 @@ abstract class Striped64 extends Number {
             r11.<init>(r2)     // Catch:{ all -> 0x00de }
             r9[r10] = r11     // Catch:{ all -> 0x00de }
             r1.cells = r9     // Catch:{ all -> 0x00de }
-            r9 = r0
+            r9 = 1
             goto L_0x00d9
         L_0x00d8:
-            r9 = r4
+            r9 = 0
         L_0x00d9:
             r1.busy = r4
             if (r9 == 0) goto L_0x0023

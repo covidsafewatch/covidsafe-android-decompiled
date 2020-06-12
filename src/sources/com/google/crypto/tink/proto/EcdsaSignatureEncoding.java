@@ -1,6 +1,6 @@
 package com.google.crypto.tink.proto;
 
-import com.google.protobuf.Internal;
+import com.google.crypto.tink.shaded.protobuf.Internal;
 
 public enum EcdsaSignatureEncoding implements Internal.EnumLite {
     UNKNOWN_ENCODING(0),
@@ -23,7 +23,10 @@ public enum EcdsaSignatureEncoding implements Internal.EnumLite {
     }
 
     public final int getNumber() {
-        return this.value;
+        if (this != UNRECOGNIZED) {
+            return this.value;
+        }
+        throw new IllegalArgumentException("Can't get the number of an unknown enum value.");
     }
 
     @Deprecated
@@ -46,6 +49,25 @@ public enum EcdsaSignatureEncoding implements Internal.EnumLite {
 
     public static Internal.EnumLiteMap<EcdsaSignatureEncoding> internalGetValueMap() {
         return internalValueMap;
+    }
+
+    public static Internal.EnumVerifier internalGetVerifier() {
+        return EcdsaSignatureEncodingVerifier.INSTANCE;
+    }
+
+    private static final class EcdsaSignatureEncodingVerifier implements Internal.EnumVerifier {
+        static final Internal.EnumVerifier INSTANCE = null;
+
+        private EcdsaSignatureEncodingVerifier() {
+        }
+
+        static {
+            INSTANCE = new EcdsaSignatureEncodingVerifier();
+        }
+
+        public boolean isInRange(int i) {
+            return EcdsaSignatureEncoding.forNumber(i) != null;
+        }
     }
 
     private EcdsaSignatureEncoding(int i) {

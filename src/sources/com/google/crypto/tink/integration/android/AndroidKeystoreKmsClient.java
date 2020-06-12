@@ -80,4 +80,11 @@ public final class AndroidKeystoreKmsClient implements KmsClient {
         instance.init(new KeyGenParameterSpec.Builder(validateKmsKeyUriAndRemovePrefix, 3).setKeySize(256).setBlockModes(new String[]{"GCM"}).setEncryptionPaddings(new String[]{"NoPadding"}).build());
         instance.generateKey();
     }
+
+    static void delete(String str) throws GeneralSecurityException, IOException {
+        String validateKmsKeyUriAndRemovePrefix = Validators.validateKmsKeyUriAndRemovePrefix(PREFIX, str);
+        KeyStore instance = KeyStore.getInstance("AndroidKeyStore");
+        instance.load((KeyStore.LoadStoreParameter) null);
+        instance.deleteEntry(validateKmsKeyUriAndRemovePrefix);
+    }
 }

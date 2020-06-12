@@ -1,26 +1,28 @@
 package com.google.crypto.tink.mac;
 
-import com.google.crypto.tink.KeyManager;
+import com.google.crypto.tink.KeyTemplate;
+import com.google.crypto.tink.KeyTypeManager;
 import com.google.crypto.tink.Mac;
+import com.google.crypto.tink.Registry;
 import com.google.crypto.tink.proto.HashType;
 import com.google.crypto.tink.proto.HmacKey;
 import com.google.crypto.tink.proto.HmacKeyFormat;
 import com.google.crypto.tink.proto.HmacParams;
 import com.google.crypto.tink.proto.KeyData;
+import com.google.crypto.tink.shaded.protobuf.ByteString;
+import com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite;
+import com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException;
 import com.google.crypto.tink.subtle.MacJce;
 import com.google.crypto.tink.subtle.Random;
 import com.google.crypto.tink.subtle.Validators;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.MessageLite;
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import javax.crypto.spec.SecretKeySpec;
 
-class HmacKeyManager implements KeyManager<Mac> {
+public final class HmacKeyManager extends KeyTypeManager<HmacKey> {
     private static final int MIN_KEY_SIZE_IN_BYTES = 16;
     private static final int MIN_TAG_SIZE_IN_BYTES = 10;
-    public static final String TYPE_URL = "type.googleapis.com/google.crypto.tink.HmacKey";
-    private static final int VERSION = 0;
 
     public String getKeyType() {
         return "type.googleapis.com/google.crypto.tink.HmacKey";
@@ -30,41 +32,29 @@ class HmacKeyManager implements KeyManager<Mac> {
         return 0;
     }
 
-    HmacKeyManager() {
+    public HmacKeyManager() {
+        super(HmacKey.class, new KeyTypeManager.PrimitiveFactory<Mac, HmacKey>(Mac.class) {
+            public Mac getPrimitive(HmacKey hmacKey) throws GeneralSecurityException {
+                HashType hash = hmacKey.getParams().getHash();
+                SecretKeySpec secretKeySpec = new SecretKeySpec(hmacKey.getKeyValue().toByteArray(), "HMAC");
+                int tagSize = hmacKey.getParams().getTagSize();
+                int i = AnonymousClass3.$SwitchMap$com$google$crypto$tink$proto$HashType[hash.ordinal()];
+                if (i == 1) {
+                    return new MacJce("HMACSHA1", secretKeySpec, tagSize);
+                }
+                if (i == 2) {
+                    return new MacJce("HMACSHA256", secretKeySpec, tagSize);
+                }
+                if (i == 3) {
+                    return new MacJce("HMACSHA512", secretKeySpec, tagSize);
+                }
+                throw new GeneralSecurityException("unknown hash");
+            }
+        });
     }
 
-    public Mac getPrimitive(ByteString byteString) throws GeneralSecurityException {
-        try {
-            return getPrimitive((MessageLite) HmacKey.parseFrom(byteString));
-        } catch (InvalidProtocolBufferException e) {
-            throw new GeneralSecurityException("expected serialized HmacKey proto", e);
-        }
-    }
-
-    public Mac getPrimitive(MessageLite messageLite) throws GeneralSecurityException {
-        if (messageLite instanceof HmacKey) {
-            HmacKey hmacKey = (HmacKey) messageLite;
-            validate(hmacKey);
-            HashType hash = hmacKey.getParams().getHash();
-            SecretKeySpec secretKeySpec = new SecretKeySpec(hmacKey.getKeyValue().toByteArray(), "HMAC");
-            int tagSize = hmacKey.getParams().getTagSize();
-            int i = AnonymousClass1.$SwitchMap$com$google$crypto$tink$proto$HashType[hash.ordinal()];
-            if (i == 1) {
-                return new MacJce("HMACSHA1", secretKeySpec, tagSize);
-            }
-            if (i == 2) {
-                return new MacJce("HMACSHA256", secretKeySpec, tagSize);
-            }
-            if (i == 3) {
-                return new MacJce("HMACSHA512", secretKeySpec, tagSize);
-            }
-            throw new GeneralSecurityException("unknown hash");
-        }
-        throw new GeneralSecurityException("expected HmacKey proto");
-    }
-
-    /* renamed from: com.google.crypto.tink.mac.HmacKeyManager$1  reason: invalid class name */
-    static /* synthetic */ class AnonymousClass1 {
+    /* renamed from: com.google.crypto.tink.mac.HmacKeyManager$3  reason: invalid class name */
+    static /* synthetic */ class AnonymousClass3 {
         static final /* synthetic */ int[] $SwitchMap$com$google$crypto$tink$proto$HashType;
 
         /* JADX WARNING: Can't wrap try/catch for region: R(6:0|1|2|3|4|(3:5|6|8)) */
@@ -96,55 +86,31 @@ class HmacKeyManager implements KeyManager<Mac> {
             L_0x0028:
                 return
             */
-            throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.mac.HmacKeyManager.AnonymousClass1.<clinit>():void");
+            throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.mac.HmacKeyManager.AnonymousClass3.<clinit>():void");
         }
     }
 
-    public MessageLite newKey(ByteString byteString) throws GeneralSecurityException {
-        try {
-            return newKey((MessageLite) HmacKeyFormat.parseFrom(byteString));
-        } catch (InvalidProtocolBufferException e) {
-            throw new GeneralSecurityException("expected serialized HmacKeyFormat proto", e);
-        }
+    public KeyData.KeyMaterialType keyMaterialType() {
+        return KeyData.KeyMaterialType.SYMMETRIC;
     }
 
-    public MessageLite newKey(MessageLite messageLite) throws GeneralSecurityException {
-        if (messageLite instanceof HmacKeyFormat) {
-            HmacKeyFormat hmacKeyFormat = (HmacKeyFormat) messageLite;
-            validate(hmacKeyFormat);
-            return HmacKey.newBuilder().setVersion(0).setParams(hmacKeyFormat.getParams()).setKeyValue(ByteString.copyFrom(Random.randBytes(hmacKeyFormat.getKeySize()))).build();
-        }
-        throw new GeneralSecurityException("expected HmacKeyFormat proto");
-    }
-
-    public KeyData newKeyData(ByteString byteString) throws GeneralSecurityException {
-        return (KeyData) KeyData.newBuilder().setTypeUrl("type.googleapis.com/google.crypto.tink.HmacKey").setValue(((HmacKey) newKey(byteString)).toByteString()).setKeyMaterialType(KeyData.KeyMaterialType.SYMMETRIC).build();
-    }
-
-    public boolean doesSupport(String str) {
-        return str.equals("type.googleapis.com/google.crypto.tink.HmacKey");
-    }
-
-    private void validate(HmacKey hmacKey) throws GeneralSecurityException {
-        Validators.validateVersion(hmacKey.getVersion(), 0);
+    public void validateKey(HmacKey hmacKey) throws GeneralSecurityException {
+        Validators.validateVersion(hmacKey.getVersion(), getVersion());
         if (hmacKey.getKeyValue().size() >= 16) {
-            validate(hmacKey.getParams());
+            validateParams(hmacKey.getParams());
             return;
         }
         throw new GeneralSecurityException("key too short");
     }
 
-    private void validate(HmacKeyFormat hmacKeyFormat) throws GeneralSecurityException {
-        if (hmacKeyFormat.getKeySize() >= 16) {
-            validate(hmacKeyFormat.getParams());
-            return;
-        }
-        throw new GeneralSecurityException("key too short");
+    public HmacKey parseKey(ByteString byteString) throws InvalidProtocolBufferException {
+        return HmacKey.parseFrom(byteString, ExtensionRegistryLite.getEmptyRegistry());
     }
 
-    private void validate(HmacParams hmacParams) throws GeneralSecurityException {
+    /* access modifiers changed from: private */
+    public static void validateParams(HmacParams hmacParams) throws GeneralSecurityException {
         if (hmacParams.getTagSize() >= 10) {
-            int i = AnonymousClass1.$SwitchMap$com$google$crypto$tink$proto$HashType[hmacParams.getHash().ordinal()];
+            int i = AnonymousClass3.$SwitchMap$com$google$crypto$tink$proto$HashType[hmacParams.getHash().ordinal()];
             if (i != 1) {
                 if (i != 2) {
                     if (i != 3) {
@@ -161,5 +127,62 @@ class HmacKeyManager implements KeyManager<Mac> {
         } else {
             throw new GeneralSecurityException("tag size too small");
         }
+    }
+
+    public KeyTypeManager.KeyFactory<HmacKeyFormat, HmacKey> keyFactory() {
+        return new KeyTypeManager.KeyFactory<HmacKeyFormat, HmacKey>(HmacKeyFormat.class) {
+            public void validateKeyFormat(HmacKeyFormat hmacKeyFormat) throws GeneralSecurityException {
+                if (hmacKeyFormat.getKeySize() >= 16) {
+                    HmacKeyManager.validateParams(hmacKeyFormat.getParams());
+                    return;
+                }
+                throw new GeneralSecurityException("key too short");
+            }
+
+            public HmacKeyFormat parseKeyFormat(ByteString byteString) throws InvalidProtocolBufferException {
+                return HmacKeyFormat.parseFrom(byteString, ExtensionRegistryLite.getEmptyRegistry());
+            }
+
+            public HmacKey createKey(HmacKeyFormat hmacKeyFormat) throws GeneralSecurityException {
+                return (HmacKey) HmacKey.newBuilder().setVersion(HmacKeyManager.this.getVersion()).setParams(hmacKeyFormat.getParams()).setKeyValue(ByteString.copyFrom(Random.randBytes(hmacKeyFormat.getKeySize()))).build();
+            }
+
+            public HmacKey deriveKey(HmacKeyFormat hmacKeyFormat, InputStream inputStream) throws GeneralSecurityException {
+                Validators.validateVersion(hmacKeyFormat.getVersion(), HmacKeyManager.this.getVersion());
+                byte[] bArr = new byte[hmacKeyFormat.getKeySize()];
+                try {
+                    if (inputStream.read(bArr) == hmacKeyFormat.getKeySize()) {
+                        return (HmacKey) HmacKey.newBuilder().setVersion(HmacKeyManager.this.getVersion()).setParams(hmacKeyFormat.getParams()).setKeyValue(ByteString.copyFrom(bArr)).build();
+                    }
+                    throw new GeneralSecurityException("Not enough pseudorandomness given");
+                } catch (IOException e) {
+                    throw new GeneralSecurityException("Reading pseudorandomness failed", e);
+                }
+            }
+        };
+    }
+
+    public static void register(boolean z) throws GeneralSecurityException {
+        Registry.registerKeyManager(new HmacKeyManager(), z);
+    }
+
+    public static final KeyTemplate hmacSha256HalfDigestTemplate() {
+        return createTemplate(32, 16, HashType.SHA256);
+    }
+
+    public static final KeyTemplate hmacSha256Template() {
+        return createTemplate(32, 32, HashType.SHA256);
+    }
+
+    public static final KeyTemplate hmacSha512HalfDigestTemplate() {
+        return createTemplate(64, 32, HashType.SHA512);
+    }
+
+    public static final KeyTemplate hmacSha512Template() {
+        return createTemplate(64, 64, HashType.SHA512);
+    }
+
+    private static KeyTemplate createTemplate(int i, int i2, HashType hashType) {
+        return KeyTemplate.create(new HmacKeyManager().getKeyType(), ((HmacKeyFormat) HmacKeyFormat.newBuilder().setParams((HmacParams) HmacParams.newBuilder().setHash(hashType).setTagSize(i2).build()).setKeySize(i).build()).toByteArray(), KeyTemplate.OutputPrefixType.TINK);
     }
 }

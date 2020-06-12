@@ -379,15 +379,15 @@ public final class Http2Stream {
 
         /* JADX INFO: finally extract failed */
         public long read(Buffer buffer, long j) throws IOException {
+            IOException iOException;
             long j2;
             boolean z;
             Buffer buffer2 = buffer;
             long j3 = j;
             Intrinsics.checkParameterIsNotNull(buffer2, "sink");
-            long j4 = 0;
             if (j3 >= 0) {
-                while (true) {
-                    IOException iOException = null;
+                do {
+                    iOException = null;
                     synchronized (Http2Stream.this) {
                         Http2Stream.this.getReadTimeout$okhttp().enter();
                         try {
@@ -402,7 +402,7 @@ public final class Http2Stream {
                                 }
                             }
                             if (!this.closed) {
-                                if (this.readBuffer.size() > j4) {
+                                if (this.readBuffer.size() > 0) {
                                     j2 = this.readBuffer.read(buffer2, Math.min(j3, this.readBuffer.size()));
                                     Http2Stream http2Stream = Http2Stream.this;
                                     http2Stream.setReadBytesTotal$okhttp(http2Stream.getReadBytesTotal() + j2);
@@ -431,19 +431,17 @@ public final class Http2Stream {
                             throw th;
                         }
                     }
-                    if (z) {
-                        j4 = 0;
-                    } else if (j2 != -1) {
-                        updateConnectionFlowControl(j2);
-                        return j2;
-                    } else if (iOException == null) {
-                        return -1;
-                    } else {
-                        if (iOException == null) {
-                            Intrinsics.throwNpe();
-                        }
-                        throw iOException;
+                } while (z);
+                if (j2 != -1) {
+                    updateConnectionFlowControl(j2);
+                    return j2;
+                } else if (iOException == null) {
+                    return -1;
+                } else {
+                    if (iOException == null) {
+                        Intrinsics.throwNpe();
                     }
+                    throw iOException;
                 }
             } else {
                 throw new IllegalArgumentException(("byteCount < 0: " + j3).toString());
@@ -797,10 +795,10 @@ public final class Http2Stream {
                 r2 = 0
                 r3 = 1
                 if (r1 != 0) goto L_0x0050
-                r1 = r3
+                r1 = 1
                 goto L_0x0051
             L_0x0050:
-                r1 = r2
+                r1 = 0
             L_0x0051:
                 kotlin.Unit r4 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x00de }
                 monitor-exit(r0)
@@ -813,17 +811,17 @@ public final class Http2Stream {
                 r6 = 0
                 int r0 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
                 if (r0 <= 0) goto L_0x006c
-                r0 = r3
+                r0 = 1
                 goto L_0x006d
             L_0x006c:
-                r0 = r2
+                r0 = 0
             L_0x006d:
                 okhttp3.Headers r4 = r10.trailers
                 if (r4 == 0) goto L_0x0073
-                r4 = r3
+                r4 = 1
                 goto L_0x0074
             L_0x0073:
-                r4 = r2
+                r4 = 0
             L_0x0074:
                 if (r4 == 0) goto L_0x009f
             L_0x0076:
@@ -850,8 +848,8 @@ public final class Http2Stream {
             L_0x00a1:
                 okio.Buffer r0 = r10.sendBuffer
                 long r0 = r0.size()
-                int r0 = (r0 > r6 ? 1 : (r0 == r6 ? 0 : -1))
-                if (r0 <= 0) goto L_0x00c4
+                int r2 = (r0 > r6 ? 1 : (r0 == r6 ? 0 : -1))
+                if (r2 <= 0) goto L_0x00c4
                 r10.emitFrame(r3)
                 goto L_0x00a1
             L_0x00af:

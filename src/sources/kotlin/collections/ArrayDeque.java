@@ -537,10 +537,10 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r0 = r0.length
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 == 0) goto L_0x0016
             goto L_0x00ca
@@ -568,7 +568,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             r3 = r8
             goto L_0x0051
         L_0x0050:
-            r1 = r2
+            r1 = 1
         L_0x0051:
             int r4 = r4 + 1
             goto L_0x0032
@@ -580,7 +580,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r4 = r11.head
             java.lang.Object[] r6 = r11.elementData
             int r6 = r6.length
-            r7 = r1
+            r7 = 0
         L_0x0066:
             if (r4 >= r6) goto L_0x008e
             java.lang.Object[] r8 = r11.elementData
@@ -597,7 +597,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             r3 = r10
             goto L_0x008b
         L_0x008a:
-            r7 = r2
+            r7 = 1
         L_0x008b:
             int r4 = r4 + 1
             goto L_0x0066
@@ -618,7 +618,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r3 = r11.incremented(r3)
             goto L_0x00b8
         L_0x00b7:
-            r7 = r2
+            r7 = 1
         L_0x00b8:
             int r1 = r1 + 1
             goto L_0x0092
@@ -694,10 +694,10 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r0 = r0.length
             r2 = 1
             if (r0 != 0) goto L_0x0016
-            r0 = r2
+            r0 = 1
             goto L_0x0017
         L_0x0016:
-            r0 = r1
+            r0 = 0
         L_0x0017:
             if (r0 == 0) goto L_0x001b
             goto L_0x00c0
@@ -724,7 +724,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             r3 = r8
             goto L_0x0051
         L_0x0050:
-            r1 = r2
+            r1 = 1
         L_0x0051:
             int r4 = r4 + 1
             goto L_0x0037
@@ -736,7 +736,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r4 = r11.head
             java.lang.Object[] r6 = r11.elementData
             int r6 = r6.length
-            r7 = r1
+            r7 = 0
         L_0x0066:
             if (r4 >= r6) goto L_0x0089
             java.lang.Object[] r8 = r11.elementData
@@ -752,7 +752,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             r3 = r10
             goto L_0x0086
         L_0x0085:
-            r7 = r2
+            r7 = 1
         L_0x0086:
             int r4 = r4 + 1
             goto L_0x0066
@@ -772,7 +772,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r3 = r11.incremented(r3)
             goto L_0x00ae
         L_0x00ad:
-            r7 = r2
+            r7 = 1
         L_0x00ae:
             int r1 = r1 + 1
             goto L_0x008d
@@ -814,10 +814,10 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r0 = r0.length
             r2 = 1
             if (r0 != 0) goto L_0x0016
-            r0 = r2
+            r0 = 1
             goto L_0x0017
         L_0x0016:
-            r0 = r1
+            r0 = 0
         L_0x0017:
             if (r0 == 0) goto L_0x001b
             goto L_0x00bd
@@ -843,7 +843,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             r3 = r8
             goto L_0x0050
         L_0x004f:
-            r1 = r2
+            r1 = 1
         L_0x0050:
             int r4 = r4 + 1
             goto L_0x0037
@@ -855,7 +855,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r4 = r11.head
             java.lang.Object[] r6 = r11.elementData
             int r6 = r6.length
-            r7 = r1
+            r7 = 0
         L_0x0065:
             if (r4 >= r6) goto L_0x0087
             java.lang.Object[] r8 = r11.elementData
@@ -870,7 +870,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             r3 = r10
             goto L_0x0084
         L_0x0083:
-            r7 = r2
+            r7 = 1
         L_0x0084:
             int r4 = r4 + 1
             goto L_0x0065
@@ -889,7 +889,7 @@ public final class ArrayDeque<E> extends AbstractMutableList<E> {
             int r3 = r11.incremented(r3)
             goto L_0x00ab
         L_0x00aa:
-            r7 = r2
+            r7 = 1
         L_0x00ab:
             int r1 = r1 + 1
             goto L_0x008b

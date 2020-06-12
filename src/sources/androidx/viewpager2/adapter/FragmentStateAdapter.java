@@ -140,13 +140,10 @@ public abstract class FragmentStateAdapter extends RecyclerView.Adapter<Fragment
             return true;
         }
         Fragment fragment = this.mFragments.get(j);
-        if (fragment == null || (view = fragment.getView()) == null) {
+        if (fragment == null || (view = fragment.getView()) == null || view.getParent() == null) {
             return false;
         }
-        if (view.getParent() != null) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private Long itemForViewHolder(int i) {

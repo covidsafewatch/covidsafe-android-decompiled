@@ -28,10 +28,14 @@ public final class SharedPrefKeysetWriter implements KeysetWriter {
     }
 
     public void write(Keyset keyset) throws IOException {
-        this.editor.putString(this.keysetName, Hex.encode(keyset.toByteArray())).apply();
+        if (!this.editor.putString(this.keysetName, Hex.encode(keyset.toByteArray())).commit()) {
+            throw new IOException("Failed to write to SharedPreferences");
+        }
     }
 
     public void write(EncryptedKeyset encryptedKeyset) throws IOException {
-        this.editor.putString(this.keysetName, Hex.encode(encryptedKeyset.toByteArray())).apply();
+        if (!this.editor.putString(this.keysetName, Hex.encode(encryptedKeyset.toByteArray())).commit()) {
+            throw new IOException("Failed to write to SharedPreferences");
+        }
     }
 }

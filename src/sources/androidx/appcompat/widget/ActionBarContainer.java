@@ -263,104 +263,48 @@ public class ActionBarContainer extends FrameLayout {
         }
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:34:0x00c2  */
-    /* JADX WARNING: Removed duplicated region for block: B:36:? A[RETURN, SYNTHETIC] */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public void onLayout(boolean r6, int r7, int r8, int r9, int r10) {
-        /*
-            r5 = this;
-            super.onLayout(r6, r7, r8, r9, r10)
-            android.view.View r6 = r5.mTabContainer
-            r8 = 8
-            r10 = 1
-            r0 = 0
-            if (r6 == 0) goto L_0x0013
-            int r1 = r6.getVisibility()
-            if (r1 == r8) goto L_0x0013
-            r1 = r10
-            goto L_0x0014
-        L_0x0013:
-            r1 = r0
-        L_0x0014:
-            if (r6 == 0) goto L_0x0035
-            int r2 = r6.getVisibility()
-            if (r2 == r8) goto L_0x0035
-            int r8 = r5.getMeasuredHeight()
-            android.view.ViewGroup$LayoutParams r2 = r6.getLayoutParams()
-            android.widget.FrameLayout$LayoutParams r2 = (android.widget.FrameLayout.LayoutParams) r2
-            int r3 = r6.getMeasuredHeight()
-            int r3 = r8 - r3
-            int r4 = r2.bottomMargin
-            int r3 = r3 - r4
-            int r2 = r2.bottomMargin
-            int r8 = r8 - r2
-            r6.layout(r7, r3, r9, r8)
-        L_0x0035:
-            boolean r7 = r5.mIsSplit
-            if (r7 == 0) goto L_0x004d
-            android.graphics.drawable.Drawable r6 = r5.mSplitBackground
-            if (r6 == 0) goto L_0x004a
-            int r7 = r5.getMeasuredWidth()
-            int r8 = r5.getMeasuredHeight()
-            r6.setBounds(r0, r0, r7, r8)
-            goto L_0x00c0
-        L_0x004a:
-            r10 = r0
-            goto L_0x00c0
-        L_0x004d:
-            android.graphics.drawable.Drawable r7 = r5.mBackground
-            if (r7 == 0) goto L_0x00a5
-            android.view.View r7 = r5.mActionBarView
-            int r7 = r7.getVisibility()
-            if (r7 != 0) goto L_0x0077
-            android.graphics.drawable.Drawable r7 = r5.mBackground
-            android.view.View r8 = r5.mActionBarView
-            int r8 = r8.getLeft()
-            android.view.View r9 = r5.mActionBarView
-            int r9 = r9.getTop()
-            android.view.View r0 = r5.mActionBarView
-            int r0 = r0.getRight()
-            android.view.View r2 = r5.mActionBarView
-            int r2 = r2.getBottom()
-            r7.setBounds(r8, r9, r0, r2)
-            goto L_0x00a4
-        L_0x0077:
-            android.view.View r7 = r5.mContextView
-            if (r7 == 0) goto L_0x009f
-            int r7 = r7.getVisibility()
-            if (r7 != 0) goto L_0x009f
-            android.graphics.drawable.Drawable r7 = r5.mBackground
-            android.view.View r8 = r5.mContextView
-            int r8 = r8.getLeft()
-            android.view.View r9 = r5.mContextView
-            int r9 = r9.getTop()
-            android.view.View r0 = r5.mContextView
-            int r0 = r0.getRight()
-            android.view.View r2 = r5.mContextView
-            int r2 = r2.getBottom()
-            r7.setBounds(r8, r9, r0, r2)
-            goto L_0x00a4
-        L_0x009f:
-            android.graphics.drawable.Drawable r7 = r5.mBackground
-            r7.setBounds(r0, r0, r0, r0)
-        L_0x00a4:
-            r0 = r10
-        L_0x00a5:
-            r5.mIsStacked = r1
-            if (r1 == 0) goto L_0x004a
-            android.graphics.drawable.Drawable r7 = r5.mStackedBackground
-            if (r7 == 0) goto L_0x004a
-            int r8 = r6.getLeft()
-            int r9 = r6.getTop()
-            int r0 = r6.getRight()
-            int r6 = r6.getBottom()
-            r7.setBounds(r8, r9, r0, r6)
-        L_0x00c0:
-            if (r10 == 0) goto L_0x00c5
-            r5.invalidate()
-        L_0x00c5:
-            return
-        */
-        throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.ActionBarContainer.onLayout(boolean, int, int, int, int):void");
+    public void onLayout(boolean z, int i, int i2, int i3, int i4) {
+        Drawable drawable;
+        super.onLayout(z, i, i2, i3, i4);
+        View view = this.mTabContainer;
+        boolean z2 = true;
+        boolean z3 = false;
+        boolean z4 = (view == null || view.getVisibility() == 8) ? false : true;
+        if (!(view == null || view.getVisibility() == 8)) {
+            int measuredHeight = getMeasuredHeight();
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) view.getLayoutParams();
+            view.layout(i, (measuredHeight - view.getMeasuredHeight()) - layoutParams.bottomMargin, i3, measuredHeight - layoutParams.bottomMargin);
+        }
+        if (this.mIsSplit) {
+            Drawable drawable2 = this.mSplitBackground;
+            if (drawable2 != null) {
+                drawable2.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+            } else {
+                z2 = false;
+            }
+        } else {
+            if (this.mBackground != null) {
+                if (this.mActionBarView.getVisibility() == 0) {
+                    this.mBackground.setBounds(this.mActionBarView.getLeft(), this.mActionBarView.getTop(), this.mActionBarView.getRight(), this.mActionBarView.getBottom());
+                } else {
+                    View view2 = this.mContextView;
+                    if (view2 == null || view2.getVisibility() != 0) {
+                        this.mBackground.setBounds(0, 0, 0, 0);
+                    } else {
+                        this.mBackground.setBounds(this.mContextView.getLeft(), this.mContextView.getTop(), this.mContextView.getRight(), this.mContextView.getBottom());
+                    }
+                }
+                z3 = true;
+            }
+            this.mIsStacked = z4;
+            if (!z4 || (drawable = this.mStackedBackground) == null) {
+                z2 = z3;
+            } else {
+                drawable.setBounds(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
+            }
+        }
+        if (z2) {
+            invalidate();
+        }
     }
 }

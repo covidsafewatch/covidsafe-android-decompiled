@@ -2,15 +2,15 @@ package com.google.crypto.tink.proto;
 
 import com.google.crypto.tink.proto.AesCtrKey;
 import com.google.crypto.tink.proto.HmacKey;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.CodedInputStream;
-import com.google.protobuf.CodedOutputStream;
-import com.google.protobuf.ExtensionRegistryLite;
-import com.google.protobuf.GeneratedMessageLite;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Parser;
+import com.google.crypto.tink.shaded.protobuf.ByteString;
+import com.google.crypto.tink.shaded.protobuf.CodedInputStream;
+import com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite;
+import com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite;
+import com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException;
+import com.google.crypto.tink.shaded.protobuf.Parser;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAeadKey, Builder> implements AesCtrHmacAeadKeyOrBuilder {
     public static final int AES_CTR_KEY_FIELD_NUMBER = 2;
@@ -51,20 +51,13 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
 
     /* access modifiers changed from: private */
     public void setAesCtrKey(AesCtrKey aesCtrKey) {
-        if (aesCtrKey != null) {
-            this.aesCtrKey_ = aesCtrKey;
-            return;
-        }
-        throw null;
-    }
-
-    /* access modifiers changed from: private */
-    public void setAesCtrKey(AesCtrKey.Builder builder) {
-        this.aesCtrKey_ = (AesCtrKey) builder.build();
+        aesCtrKey.getClass();
+        this.aesCtrKey_ = aesCtrKey;
     }
 
     /* access modifiers changed from: private */
     public void mergeAesCtrKey(AesCtrKey aesCtrKey) {
+        aesCtrKey.getClass();
         AesCtrKey aesCtrKey2 = this.aesCtrKey_;
         if (aesCtrKey2 == null || aesCtrKey2 == AesCtrKey.getDefaultInstance()) {
             this.aesCtrKey_ = aesCtrKey;
@@ -89,20 +82,13 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
 
     /* access modifiers changed from: private */
     public void setHmacKey(HmacKey hmacKey) {
-        if (hmacKey != null) {
-            this.hmacKey_ = hmacKey;
-            return;
-        }
-        throw null;
-    }
-
-    /* access modifiers changed from: private */
-    public void setHmacKey(HmacKey.Builder builder) {
-        this.hmacKey_ = (HmacKey) builder.build();
+        hmacKey.getClass();
+        this.hmacKey_ = hmacKey;
     }
 
     /* access modifiers changed from: private */
     public void mergeHmacKey(HmacKey hmacKey) {
+        hmacKey.getClass();
         HmacKey hmacKey2 = this.hmacKey_;
         if (hmacKey2 == null || hmacKey2 == HmacKey.getDefaultInstance()) {
             this.hmacKey_ = hmacKey;
@@ -116,37 +102,12 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
         this.hmacKey_ = null;
     }
 
-    public void writeTo(CodedOutputStream codedOutputStream) throws IOException {
-        int i = this.version_;
-        if (i != 0) {
-            codedOutputStream.writeUInt32(1, i);
-        }
-        if (this.aesCtrKey_ != null) {
-            codedOutputStream.writeMessage(2, getAesCtrKey());
-        }
-        if (this.hmacKey_ != null) {
-            codedOutputStream.writeMessage(3, getHmacKey());
-        }
+    public static AesCtrHmacAeadKey parseFrom(ByteBuffer byteBuffer) throws InvalidProtocolBufferException {
+        return (AesCtrHmacAeadKey) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer);
     }
 
-    public int getSerializedSize() {
-        int i = this.memoizedSerializedSize;
-        if (i != -1) {
-            return i;
-        }
-        int i2 = 0;
-        int i3 = this.version_;
-        if (i3 != 0) {
-            i2 = 0 + CodedOutputStream.computeUInt32Size(1, i3);
-        }
-        if (this.aesCtrKey_ != null) {
-            i2 += CodedOutputStream.computeMessageSize(2, getAesCtrKey());
-        }
-        if (this.hmacKey_ != null) {
-            i2 += CodedOutputStream.computeMessageSize(3, getHmacKey());
-        }
-        this.memoizedSerializedSize = i2;
-        return i2;
+    public static AesCtrHmacAeadKey parseFrom(ByteBuffer byteBuffer, ExtensionRegistryLite extensionRegistryLite) throws InvalidProtocolBufferException {
+        return (AesCtrHmacAeadKey) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer, extensionRegistryLite);
     }
 
     public static AesCtrHmacAeadKey parseFrom(ByteString byteString) throws InvalidProtocolBufferException {
@@ -190,11 +151,11 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
     }
 
     public static Builder newBuilder() {
-        return (Builder) DEFAULT_INSTANCE.toBuilder();
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
 
     public static Builder newBuilder(AesCtrHmacAeadKey aesCtrHmacAeadKey) {
-        return (Builder) ((Builder) DEFAULT_INSTANCE.toBuilder()).mergeFrom(aesCtrHmacAeadKey);
+        return (Builder) DEFAULT_INSTANCE.createBuilder(aesCtrHmacAeadKey);
     }
 
     public static final class Builder extends GeneratedMessageLite.Builder<AesCtrHmacAeadKey, Builder> implements AesCtrHmacAeadKeyOrBuilder {
@@ -238,7 +199,7 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
 
         public Builder setAesCtrKey(AesCtrKey.Builder builder) {
             copyOnWrite();
-            ((AesCtrHmacAeadKey) this.instance).setAesCtrKey(builder);
+            ((AesCtrHmacAeadKey) this.instance).setAesCtrKey((AesCtrKey) builder.build());
             return this;
         }
 
@@ -270,7 +231,7 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
 
         public Builder setHmacKey(HmacKey.Builder builder) {
             copyOnWrite();
-            ((AesCtrHmacAeadKey) this.instance).setHmacKey(builder);
+            ((AesCtrHmacAeadKey) this.instance).setHmacKey((HmacKey) builder.build());
             return this;
         }
 
@@ -291,71 +252,62 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
     static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke;
 
-        /* JADX WARNING: Can't wrap try/catch for region: R(18:0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|18) */
-        /* JADX WARNING: Code restructure failed: missing block: B:19:?, code lost:
-            return;
-         */
+        /* JADX WARNING: Can't wrap try/catch for region: R(14:0|1|2|3|4|5|6|7|8|9|10|11|12|(3:13|14|16)) */
+        /* JADX WARNING: Can't wrap try/catch for region: R(16:0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|16) */
         /* JADX WARNING: Failed to process nested try/catch */
         /* JADX WARNING: Missing exception handler attribute for start block: B:11:0x003e */
         /* JADX WARNING: Missing exception handler attribute for start block: B:13:0x0049 */
-        /* JADX WARNING: Missing exception handler attribute for start block: B:15:0x0054 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:3:0x0012 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:5:0x001d */
         /* JADX WARNING: Missing exception handler attribute for start block: B:7:0x0028 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:9:0x0033 */
         static {
             /*
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke[] r0 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.values()
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke[] r0 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.values()
                 int r0 = r0.length
                 int[] r0 = new int[r0]
                 $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke = r0
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_MUTABLE_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0012 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_MUTABLE_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0012 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0012 }
                 r2 = 1
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0012 }
             L_0x0012:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x001d }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x001d }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_BUILDER     // Catch:{ NoSuchFieldError -> 0x001d }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x001d }
                 r2 = 2
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x001d }
             L_0x001d:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0028 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.MAKE_IMMUTABLE     // Catch:{ NoSuchFieldError -> 0x0028 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.BUILD_MESSAGE_INFO     // Catch:{ NoSuchFieldError -> 0x0028 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0028 }
                 r2 = 3
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0028 }
             L_0x0028:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0033 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_BUILDER     // Catch:{ NoSuchFieldError -> 0x0033 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_DEFAULT_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0033 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0033 }
                 r2 = 4
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0033 }
             L_0x0033:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x003e }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.VISIT     // Catch:{ NoSuchFieldError -> 0x003e }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_PARSER     // Catch:{ NoSuchFieldError -> 0x003e }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x003e }
                 r2 = 5
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x003e }
             L_0x003e:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0049 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.MERGE_FROM_STREAM     // Catch:{ NoSuchFieldError -> 0x0049 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_MEMOIZED_IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x0049 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0049 }
                 r2 = 6
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0049 }
             L_0x0049:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0054 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.GET_DEFAULT_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0054 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.SET_MEMOIZED_IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x0054 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0054 }
                 r2 = 7
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0054 }
             L_0x0054:
-                int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0060 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.GET_PARSER     // Catch:{ NoSuchFieldError -> 0x0060 }
-                int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0060 }
-                r2 = 8
-                r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0060 }
-            L_0x0060:
                 return
             */
             throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.proto.AesCtrHmacAeadKey.AnonymousClass1.<clinit>():void");
@@ -364,86 +316,40 @@ public final class AesCtrHmacAeadKey extends GeneratedMessageLite<AesCtrHmacAead
 
     /* access modifiers changed from: protected */
     public final Object dynamicMethod(GeneratedMessageLite.MethodToInvoke methodToInvoke, Object obj, Object obj2) {
-        boolean z = false;
         switch (AnonymousClass1.$SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke[methodToInvoke.ordinal()]) {
             case 1:
                 return new AesCtrHmacAeadKey();
             case 2:
-                return DEFAULT_INSTANCE;
-            case 3:
-                return null;
-            case 4:
                 return new Builder((AnonymousClass1) null);
+            case 3:
+                return newMessageInfo(DEFAULT_INSTANCE, "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u000b\u0002\t\u0003\t", new Object[]{"version_", "aesCtrKey_", "hmacKey_"});
+            case 4:
+                return DEFAULT_INSTANCE;
             case 5:
-                GeneratedMessageLite.Visitor visitor = (GeneratedMessageLite.Visitor) obj;
-                AesCtrHmacAeadKey aesCtrHmacAeadKey = (AesCtrHmacAeadKey) obj2;
-                boolean z2 = this.version_ != 0;
-                int i = this.version_;
-                if (aesCtrHmacAeadKey.version_ != 0) {
-                    z = true;
-                }
-                this.version_ = visitor.visitInt(z2, i, z, aesCtrHmacAeadKey.version_);
-                this.aesCtrKey_ = (AesCtrKey) visitor.visitMessage(this.aesCtrKey_, aesCtrHmacAeadKey.aesCtrKey_);
-                this.hmacKey_ = (HmacKey) visitor.visitMessage(this.hmacKey_, aesCtrHmacAeadKey.hmacKey_);
-                GeneratedMessageLite.MergeFromVisitor mergeFromVisitor = GeneratedMessageLite.MergeFromVisitor.INSTANCE;
-                return this;
-            case 6:
-                CodedInputStream codedInputStream = (CodedInputStream) obj;
-                ExtensionRegistryLite extensionRegistryLite = (ExtensionRegistryLite) obj2;
-                while (!z) {
-                    try {
-                        int readTag = codedInputStream.readTag();
-                        if (readTag != 0) {
-                            if (readTag == 8) {
-                                this.version_ = codedInputStream.readUInt32();
-                            } else if (readTag == 18) {
-                                AesCtrKey.Builder builder = this.aesCtrKey_ != null ? (AesCtrKey.Builder) this.aesCtrKey_.toBuilder() : null;
-                                AesCtrKey aesCtrKey = (AesCtrKey) codedInputStream.readMessage(AesCtrKey.parser(), extensionRegistryLite);
-                                this.aesCtrKey_ = aesCtrKey;
-                                if (builder != null) {
-                                    builder.mergeFrom(aesCtrKey);
-                                    this.aesCtrKey_ = (AesCtrKey) builder.buildPartial();
-                                }
-                            } else if (readTag == 26) {
-                                HmacKey.Builder builder2 = this.hmacKey_ != null ? (HmacKey.Builder) this.hmacKey_.toBuilder() : null;
-                                HmacKey hmacKey = (HmacKey) codedInputStream.readMessage(HmacKey.parser(), extensionRegistryLite);
-                                this.hmacKey_ = hmacKey;
-                                if (builder2 != null) {
-                                    builder2.mergeFrom(hmacKey);
-                                    this.hmacKey_ = (HmacKey) builder2.buildPartial();
-                                }
-                            } else if (!codedInputStream.skipField(readTag)) {
-                            }
-                        }
-                        z = true;
-                    } catch (InvalidProtocolBufferException e) {
-                        throw new RuntimeException(e.setUnfinishedMessage(this));
-                    } catch (IOException e2) {
-                        throw new RuntimeException(new InvalidProtocolBufferException(e2.getMessage()).setUnfinishedMessage(this));
-                    }
-                }
-                break;
-            case 7:
-                break;
-            case 8:
-                if (PARSER == null) {
+                Parser<AesCtrHmacAeadKey> parser = PARSER;
+                if (parser == null) {
                     synchronized (AesCtrHmacAeadKey.class) {
-                        if (PARSER == null) {
-                            PARSER = new GeneratedMessageLite.DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                        parser = PARSER;
+                        if (parser == null) {
+                            parser = new GeneratedMessageLite.DefaultInstanceBasedParser<>(DEFAULT_INSTANCE);
+                            PARSER = parser;
                         }
                     }
                 }
-                return PARSER;
+                return parser;
+            case 6:
+                return (byte) 1;
+            case 7:
+                return null;
             default:
                 throw new UnsupportedOperationException();
         }
-        return DEFAULT_INSTANCE;
     }
 
     static {
         AesCtrHmacAeadKey aesCtrHmacAeadKey = new AesCtrHmacAeadKey();
         DEFAULT_INSTANCE = aesCtrHmacAeadKey;
-        aesCtrHmacAeadKey.makeImmutable();
+        GeneratedMessageLite.registerDefaultInstance(AesCtrHmacAeadKey.class, aesCtrHmacAeadKey);
     }
 
     public static AesCtrHmacAeadKey getDefaultInstance() {

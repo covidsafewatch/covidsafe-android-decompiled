@@ -148,7 +148,7 @@ public final class ObservableSwitchMap<T, R> extends AbstractObservableWithUpstr
                 java.util.concurrent.atomic.AtomicReference<io.reactivex.internal.operators.observable.ObservableSwitchMap$SwitchMapInnerObserver<T, R>> r1 = r13.active
                 boolean r2 = r13.delayErrors
                 r3 = 1
-                r4 = r3
+                r4 = 1
             L_0x000f:
                 boolean r5 = r13.cancelled
                 if (r5 == 0) goto L_0x0014
@@ -159,10 +159,10 @@ public final class ObservableSwitchMap<T, R> extends AbstractObservableWithUpstr
                 if (r5 == 0) goto L_0x0052
                 java.lang.Object r5 = r1.get()
                 if (r5 != 0) goto L_0x0021
-                r5 = r3
+                r5 = 1
                 goto L_0x0022
             L_0x0021:
-                r5 = r6
+                r5 = 0
             L_0x0022:
                 if (r2 == 0) goto L_0x0038
                 if (r5 == 0) goto L_0x0052
@@ -217,7 +217,7 @@ public final class ObservableSwitchMap<T, R> extends AbstractObservableWithUpstr
                 r1.compareAndSet(r5, r9)
                 goto L_0x000f
             L_0x0089:
-                r8 = r6
+                r8 = 0
             L_0x008a:
                 boolean r10 = r13.cancelled
                 if (r10 == 0) goto L_0x008f
@@ -226,7 +226,7 @@ public final class ObservableSwitchMap<T, R> extends AbstractObservableWithUpstr
                 java.lang.Object r10 = r1.get()
                 if (r5 == r10) goto L_0x0097
             L_0x0095:
-                r8 = r3
+                r8 = 1
                 goto L_0x00e1
             L_0x0097:
                 if (r2 != 0) goto L_0x00ad
@@ -257,14 +257,14 @@ public final class ObservableSwitchMap<T, R> extends AbstractObservableWithUpstr
             L_0x00cd:
                 r5.cancel()
             L_0x00d0:
-                r8 = r3
                 r11 = r9
+                r8 = 1
             L_0x00d2:
                 if (r11 != 0) goto L_0x00d6
-                r12 = r3
+                r12 = 1
                 goto L_0x00d7
             L_0x00d6:
-                r12 = r6
+                r12 = 0
             L_0x00d7:
                 if (r10 == 0) goto L_0x00df
                 if (r12 == 0) goto L_0x00df

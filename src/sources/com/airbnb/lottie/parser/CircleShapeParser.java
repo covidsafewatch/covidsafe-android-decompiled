@@ -16,10 +16,10 @@ class CircleShapeParser {
 
     static CircleShape parse(JsonReader jsonReader, LottieComposition lottieComposition, int i) throws IOException {
         boolean z = i == 3;
-        boolean z2 = false;
         String str = null;
         AnimatableValue<PointF, PointF> animatableValue = null;
         AnimatablePointValue animatablePointValue = null;
+        boolean z2 = false;
         while (jsonReader.hasNext()) {
             int selectName = jsonReader.selectName(NAMES);
             if (selectName == 0) {

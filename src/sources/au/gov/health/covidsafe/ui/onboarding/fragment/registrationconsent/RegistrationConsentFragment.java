@@ -11,7 +11,6 @@ import au.gov.health.covidsafe.R;
 import au.gov.health.covidsafe.ui.PagerChildFragment;
 import au.gov.health.covidsafe.ui.PagerContainer;
 import au.gov.health.covidsafe.ui.UploadButtonLayout;
-import com.google.android.material.checkbox.MaterialCheckBox;
 import java.util.HashMap;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -66,33 +65,18 @@ public final class RegistrationConsentFragment extends PagerChildFragment {
 
     public void onResume() {
         super.onResume();
-        ((MaterialCheckBox) _$_findCachedViewById(R.id.registration_consent_checkbox)).setOnCheckedChangeListener(new RegistrationConsentFragment$onResume$1(this));
         ((TextView) _$_findCachedViewById(R.id.registration_consent_text)).sendAccessibilityEvent(8);
+        updateButtonState();
     }
 
     public void updateButtonState() {
-        MaterialCheckBox materialCheckBox = (MaterialCheckBox) _$_findCachedViewById(R.id.registration_consent_checkbox);
-        Intrinsics.checkExpressionValueIsNotNull(materialCheckBox, "registration_consent_checkbox");
-        PagerContainer pagerContainer = null;
-        if (materialCheckBox.isChecked()) {
-            FragmentActivity activity = getActivity();
-            if (activity instanceof PagerContainer) {
-                pagerContainer = activity;
-            }
-            PagerContainer pagerContainer2 = (PagerContainer) pagerContainer;
-            if (pagerContainer2 != null) {
-                pagerContainer2.enableNextButton();
-                return;
-            }
-            return;
+        FragmentActivity activity = getActivity();
+        if (!(activity instanceof PagerContainer)) {
+            activity = null;
         }
-        FragmentActivity activity2 = getActivity();
-        if (activity2 instanceof PagerContainer) {
-            pagerContainer = activity2;
-        }
-        PagerContainer pagerContainer3 = pagerContainer;
-        if (pagerContainer3 != null) {
-            pagerContainer3.disableNextButton();
+        PagerContainer pagerContainer = (PagerContainer) activity;
+        if (pagerContainer != null) {
+            pagerContainer.enableNextButton();
         }
     }
 
@@ -103,6 +87,6 @@ public final class RegistrationConsentFragment extends PagerChildFragment {
     }
 
     public UploadButtonLayout.ContinueLayout getUploadButtonLayout() {
-        return new UploadButtonLayout.ContinueLayout(R.string.registration_consent_button, new RegistrationConsentFragment$getUploadButtonLayout$1(this));
+        return new UploadButtonLayout.ContinueLayout(R.string.consent_button, new RegistrationConsentFragment$getUploadButtonLayout$1(this));
     }
 }

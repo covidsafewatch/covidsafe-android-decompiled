@@ -249,7 +249,7 @@ public final class BigIntegerMath {
         int log22 = LongMath.log2(j3, RoundingMode.FLOOR) + 1;
         int i3 = 1 << (log22 - 1);
         while (j3 <= ((long) i2)) {
-            if ((j3 & ((long) i3)) != 0) {
+            if ((((long) i3) & j3) != 0) {
                 i3 <<= 1;
                 log22++;
             }

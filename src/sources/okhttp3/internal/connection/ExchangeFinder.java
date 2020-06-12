@@ -178,7 +178,7 @@ public final class ExchangeFinder {
             if (r9 == 0) goto L_0x008a
             okhttp3.internal.connection.RealCall r2 = r1.call     // Catch:{ all -> 0x0221 }
             okhttp3.internal.connection.RealConnection r2 = r2.getConnection()     // Catch:{ all -> 0x0221 }
-            r9 = r7
+            r9 = 1
             goto L_0x0096
         L_0x008a:
             okhttp3.Route r9 = r1.nextRouteToTry     // Catch:{ all -> 0x0221 }
@@ -188,7 +188,7 @@ public final class ExchangeFinder {
             okhttp3.Route r9 = (okhttp3.Route) r9     // Catch:{ all -> 0x0221 }
             r1.nextRouteToTry = r9     // Catch:{ all -> 0x0221 }
         L_0x0095:
-            r9 = r8
+            r9 = 0
         L_0x0096:
             kotlin.Unit r10 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0221 }
             monitor-exit(r5)
@@ -250,10 +250,10 @@ public final class ExchangeFinder {
         L_0x0101:
             okhttp3.internal.connection.RouteSelector$Selection r4 = r4.next()
             r1.routeSelection = r4
-            r4 = r7
+            r4 = 1
             goto L_0x010a
         L_0x0109:
-            r4 = r8
+            r4 = 0
         L_0x010a:
             r5 = r0
             java.util.List r5 = (java.util.List) r5
@@ -275,7 +275,7 @@ public final class ExchangeFinder {
             if (r4 == 0) goto L_0x0138
             okhttp3.internal.connection.RealCall r2 = r1.call     // Catch:{ all -> 0x0214 }
             okhttp3.internal.connection.RealConnection r2 = r2.getConnection()     // Catch:{ all -> 0x0214 }
-            r9 = r7
+            r9 = 1
         L_0x0138:
             if (r9 != 0) goto L_0x0155
             if (r3 != 0) goto L_0x0147

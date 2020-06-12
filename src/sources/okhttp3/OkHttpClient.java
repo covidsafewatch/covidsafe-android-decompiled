@@ -174,7 +174,7 @@ public class OkHttpClient implements Cloneable, Call.Factory, WebSocket.Factory 
             boolean r2 = r2.isEmpty()
             if (r2 == 0) goto L_0x00e1
         L_0x00df:
-            r0 = r1
+            r0 = 1
             goto L_0x00f8
         L_0x00e1:
             java.util.Iterator r0 = r0.iterator()

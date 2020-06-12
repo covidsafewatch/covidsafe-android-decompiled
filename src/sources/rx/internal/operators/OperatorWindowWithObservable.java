@@ -164,13 +164,13 @@ public final class OperatorWindowWithObservable<T, U> implements Observable.Oper
                 r3 = 1
                 r6.emitting = r3     // Catch:{ all -> 0x0066 }
                 monitor-exit(r0)     // Catch:{ all -> 0x0066 }
-                r0 = r3
+                r0 = 1
             L_0x0023:
                 r4 = 0
                 r6.drain(r1)     // Catch:{ all -> 0x0057 }
                 if (r0 == 0) goto L_0x002d
                 r6.emitValue(r7)     // Catch:{ all -> 0x0057 }
-                r0 = r4
+                r0 = 0
             L_0x002d:
                 java.lang.Object r1 = r6.guard     // Catch:{ all -> 0x0057 }
                 monitor-enter(r1)     // Catch:{ all -> 0x0057 }
@@ -199,7 +199,7 @@ public final class OperatorWindowWithObservable<T, U> implements Observable.Oper
                 goto L_0x0023
             L_0x004f:
                 r7 = move-exception
-                r3 = r4
+                r3 = 0
             L_0x0051:
                 monitor-exit(r1)     // Catch:{ all -> 0x0055 }
                 throw r7     // Catch:{ all -> 0x0053 }
@@ -211,7 +211,7 @@ public final class OperatorWindowWithObservable<T, U> implements Observable.Oper
                 goto L_0x0051
             L_0x0057:
                 r7 = move-exception
-                r3 = r4
+                r3 = 0
             L_0x0059:
                 if (r3 != 0) goto L_0x0065
                 java.lang.Object r0 = r6.guard
@@ -432,13 +432,13 @@ public final class OperatorWindowWithObservable<T, U> implements Observable.Oper
                 r3 = 1
                 r6.emitting = r3     // Catch:{ all -> 0x0068 }
                 monitor-exit(r0)     // Catch:{ all -> 0x0068 }
-                r0 = r3
+                r0 = 1
             L_0x0025:
                 r4 = 0
                 r6.drain(r1)     // Catch:{ all -> 0x0059 }
                 if (r0 == 0) goto L_0x002f
                 r6.replaceSubject()     // Catch:{ all -> 0x0059 }
-                r0 = r4
+                r0 = 0
             L_0x002f:
                 java.lang.Object r1 = r6.guard     // Catch:{ all -> 0x0059 }
                 monitor-enter(r1)     // Catch:{ all -> 0x0059 }
@@ -467,7 +467,7 @@ public final class OperatorWindowWithObservable<T, U> implements Observable.Oper
                 goto L_0x0025
             L_0x0051:
                 r0 = move-exception
-                r3 = r4
+                r3 = 0
             L_0x0053:
                 monitor-exit(r1)     // Catch:{ all -> 0x0057 }
                 throw r0     // Catch:{ all -> 0x0055 }
@@ -479,7 +479,7 @@ public final class OperatorWindowWithObservable<T, U> implements Observable.Oper
                 goto L_0x0053
             L_0x0059:
                 r0 = move-exception
-                r3 = r4
+                r3 = 0
             L_0x005b:
                 if (r3 != 0) goto L_0x0067
                 java.lang.Object r1 = r6.guard

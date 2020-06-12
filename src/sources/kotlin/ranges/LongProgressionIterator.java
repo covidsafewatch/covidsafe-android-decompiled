@@ -16,8 +16,9 @@ public final class LongProgressionIterator extends LongIterator {
         this.step = j3;
         this.finalElement = j2;
         boolean z = true;
-        int i = (j > j2 ? 1 : (j == j2 ? 0 : -1));
-        if (j3 <= 0 ? i < 0 : i > 0) {
+        int i = (j3 > 0 ? 1 : (j3 == 0 ? 0 : -1));
+        int i2 = (j > j2 ? 1 : (j == j2 ? 0 : -1));
+        if (i <= 0 ? i2 < 0 : i2 > 0) {
             z = false;
         }
         this.hasNext = z;

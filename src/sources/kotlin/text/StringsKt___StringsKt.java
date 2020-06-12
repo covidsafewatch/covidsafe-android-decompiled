@@ -999,7 +999,7 @@ class StringsKt___StringsKt extends StringsKt___StringsJvmKt {
             java.lang.String r0 = "operation"
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r6, r0)
             r0 = 0
-            r1 = r0
+            r1 = 0
         L_0x000c:
             int r2 = r4.length()
             if (r0 >= r2) goto L_0x0027
@@ -1381,10 +1381,10 @@ class StringsKt___StringsKt extends StringsKt___StringsJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0014
-            r0 = r2
+            r0 = 1
             goto L_0x0015
         L_0x0014:
-            r0 = r1
+            r0 = 0
         L_0x0015:
             if (r0 == 0) goto L_0x001c
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -1424,10 +1424,10 @@ class StringsKt___StringsKt extends StringsKt___StringsJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0014
-            r0 = r2
+            r0 = 1
             goto L_0x0015
         L_0x0014:
-            r0 = r1
+            r0 = 0
         L_0x0015:
             if (r0 == 0) goto L_0x001c
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)

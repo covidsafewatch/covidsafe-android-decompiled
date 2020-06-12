@@ -218,10 +218,10 @@ final class Utils {
             java.lang.reflect.Type r0 = r10.getOwnerType()
             java.lang.reflect.Type r3 = resolve(r8, r9, r0)
             if (r3 == r0) goto L_0x0058
-            r0 = r1
+            r0 = 1
             goto L_0x0059
         L_0x0058:
-            r0 = r2
+            r0 = 0
         L_0x0059:
             java.lang.reflect.Type[] r4 = r10.getActualTypeArguments()
             int r5 = r4.length
@@ -235,7 +235,7 @@ final class Utils {
             java.lang.Object r0 = r4.clone()
             r4 = r0
             java.lang.reflect.Type[] r4 = (java.lang.reflect.Type[]) r4
-            r0 = r1
+            r0 = 1
         L_0x0074:
             r4[r2] = r6
         L_0x0076:

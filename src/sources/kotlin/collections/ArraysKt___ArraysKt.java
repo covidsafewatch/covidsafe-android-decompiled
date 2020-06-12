@@ -2295,8 +2295,8 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
     public static final <T> T singleOrNull(T[] tArr, Function1<? super T, Boolean> function1) {
         Intrinsics.checkParameterIsNotNull(tArr, "$this$singleOrNull");
         Intrinsics.checkParameterIsNotNull(function1, "predicate");
-        boolean z = false;
         T t = null;
+        boolean z = false;
         for (T t2 : tArr) {
             if (function1.invoke(t2).booleanValue()) {
                 if (z) {
@@ -9185,7 +9185,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x001e
             r3 = r5[r1]
@@ -9211,7 +9211,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             byte r3 = r5[r1]
@@ -9238,7 +9238,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             short r3 = r5[r1]
@@ -9265,7 +9265,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             r3 = r5[r1]
@@ -9292,7 +9292,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r8, r0)
             int r0 = r6.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             r3 = r6[r1]
@@ -9319,7 +9319,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             r3 = r5[r1]
@@ -9346,7 +9346,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r8, r0)
             int r0 = r6.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             r3 = r6[r1]
@@ -9373,7 +9373,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             boolean r3 = r5[r1]
@@ -9400,7 +9400,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x000d:
             if (r1 >= r0) goto L_0x0022
             char r3 = r5[r1]
@@ -11662,10 +11662,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 != 0) goto L_0x0028
             r0 = r4[r1]
@@ -11870,10 +11870,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 != 0) goto L_0x002c
             r0 = r5[r1]
@@ -12079,10 +12079,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 == 0) goto L_0x0016
             r4 = 0
@@ -12670,10 +12670,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 == 0) goto L_0x0019
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -12708,10 +12708,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -12747,10 +12747,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -12786,10 +12786,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -12825,10 +12825,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -12864,10 +12864,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -12903,10 +12903,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -12942,10 +12942,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -12981,10 +12981,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r4 = kotlin.collections.CollectionsKt.listOf(r5)
@@ -13024,10 +13024,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 == 0) goto L_0x0019
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -13063,10 +13063,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -13103,10 +13103,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -13143,10 +13143,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -13183,10 +13183,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r6 = kotlin.collections.CollectionsKt.listOf(r7)
@@ -13223,10 +13223,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -13263,10 +13263,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r6 = kotlin.collections.CollectionsKt.listOf(r7)
@@ -13303,10 +13303,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -13343,10 +13343,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0007
-            r0 = r2
+            r0 = 1
             goto L_0x0008
         L_0x0007:
-            r0 = r1
+            r0 = 0
         L_0x0008:
             if (r0 == 0) goto L_0x000f
             java.util.List r5 = kotlin.collections.CollectionsKt.listOf(r6)
@@ -13387,10 +13387,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 == 0) goto L_0x0019
             java.util.List r5 = kotlin.collections.CollectionsKt.emptyList()
@@ -13549,10 +13549,10 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             r1 = 0
             r2 = 1
             if (r0 != 0) goto L_0x0011
-            r0 = r2
+            r0 = 1
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             if (r0 == 0) goto L_0x0019
             java.util.List r6 = kotlin.collections.CollectionsKt.emptyList()
@@ -14698,10 +14698,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14734,10 +14731,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14770,10 +14764,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14806,10 +14797,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14842,10 +14830,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14878,10 +14863,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14914,10 +14896,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14950,10 +14929,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }
@@ -14986,10 +14962,7 @@ class ArraysKt___ArraysKt extends ArraysKt___ArraysJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }

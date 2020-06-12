@@ -355,17 +355,17 @@ public final class IntMath {
             if (r7 == r6) goto L_0x0058
             java.math.RoundingMode r6 = java.math.RoundingMode.HALF_EVEN
             if (r7 != r6) goto L_0x003b
-            r6 = r2
+            r6 = 1
             goto L_0x003c
         L_0x003b:
-            r6 = r4
+            r6 = 0
         L_0x003c:
             r7 = r0 & 1
             if (r7 == 0) goto L_0x0042
-            r7 = r2
+            r7 = 1
             goto L_0x0043
         L_0x0042:
-            r7 = r4
+            r7 = 0
         L_0x0043:
             r6 = r6 & r7
             if (r6 == 0) goto L_0x0057
@@ -383,11 +383,11 @@ public final class IntMath {
             if (r1 != 0) goto L_0x0053
             goto L_0x0054
         L_0x0053:
-            r2 = r4
+            r2 = 0
         L_0x0054:
             com.google.common.math.MathPreconditions.checkRoundingUnnecessary(r2)
         L_0x0057:
-            r2 = r4
+            r2 = 0
         L_0x0058:
             if (r2 == 0) goto L_0x005b
             int r0 = r0 + r5

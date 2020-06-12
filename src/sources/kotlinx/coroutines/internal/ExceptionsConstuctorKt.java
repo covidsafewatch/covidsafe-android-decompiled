@@ -74,9 +74,9 @@ public final class ExceptionsConstuctorKt {
             int r4 = r0.getReadHoldCount()
             goto L_0x0068
         L_0x0067:
-            r4 = r3
+            r4 = 0
         L_0x0068:
-            r5 = r3
+            r5 = 0
         L_0x0069:
             if (r5 >= r4) goto L_0x0071
             r2.unlock()
@@ -134,9 +134,9 @@ public final class ExceptionsConstuctorKt {
             int r5 = r2.getReadHoldCount()
             goto L_0x00de
         L_0x00dd:
-            r5 = r3
+            r5 = 0
         L_0x00de:
-            r6 = r3
+            r6 = 0
         L_0x00df:
             if (r6 >= r5) goto L_0x00e7
             r4.unlock()

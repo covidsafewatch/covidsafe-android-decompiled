@@ -45,10 +45,7 @@ public class DateValidatorPointForward implements CalendarConstraints.DateValida
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof DateValidatorPointForward)) {
-            return false;
-        }
-        if (this.point == ((DateValidatorPointForward) obj).point) {
+        if ((obj instanceof DateValidatorPointForward) && this.point == ((DateValidatorPointForward) obj).point) {
             return true;
         }
         return false;

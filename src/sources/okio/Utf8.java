@@ -178,14 +178,14 @@ public final class Utf8 {
             java.lang.Integer r4 = java.lang.Integer.valueOf(r10)
             r2.invoke(r4)
         L_0x004b:
-            r7 = r11
+            r7 = 1
             goto L_0x006d
         L_0x004d:
             byte r5 = r0[r3]
             byte r4 = r0[r4]
             r6 = r4 & 192(0xc0, float:2.69E-43)
             if (r6 != r9) goto L_0x0056
-            r8 = r11
+            r8 = 1
         L_0x0056:
             if (r8 != 0) goto L_0x0059
             goto L_0x0044
@@ -220,7 +220,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r4 = r4 & 192(0xc0, float:2.69E-43)
             if (r4 != r9) goto L_0x0090
-            r8 = r11
+            r8 = 1
         L_0x0090:
             if (r8 != 0) goto L_0x006c
             goto L_0x004b
@@ -230,10 +230,10 @@ public final class Utf8 {
             byte r6 = r0[r6]
             r15 = r6 & 192(0xc0, float:2.69E-43)
             if (r15 != r9) goto L_0x009f
-            r15 = r11
+            r15 = 1
             goto L_0x00a0
         L_0x009f:
-            r15 = r8
+            r15 = 0
         L_0x00a0:
             if (r15 != 0) goto L_0x00aa
             java.lang.Integer r4 = java.lang.Integer.valueOf(r10)
@@ -243,7 +243,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r15 = r4 & 192(0xc0, float:2.69E-43)
             if (r15 != r9) goto L_0x00b1
-            r8 = r11
+            r8 = 1
         L_0x00b1:
             if (r8 != 0) goto L_0x00bb
             java.lang.Integer r4 = java.lang.Integer.valueOf(r10)
@@ -273,7 +273,7 @@ public final class Utf8 {
             java.lang.Integer r4 = java.lang.Integer.valueOf(r4)
             goto L_0x00cd
         L_0x00dc:
-            r7 = r14
+            r7 = 3
             goto L_0x006d
         L_0x00de:
             int r4 = r4 >> 3
@@ -287,10 +287,10 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r4 = r4 & 192(0xc0, float:2.69E-43)
             if (r4 != r9) goto L_0x00f9
-            r4 = r11
+            r4 = 1
             goto L_0x00fa
         L_0x00f9:
-            r4 = r8
+            r4 = 0
         L_0x00fa:
             if (r4 != 0) goto L_0x00fe
             goto L_0x004b
@@ -300,7 +300,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r4 = r4 & 192(0xc0, float:2.69E-43)
             if (r4 != r9) goto L_0x0109
-            r8 = r11
+            r8 = 1
         L_0x0109:
             if (r8 != 0) goto L_0x00dc
             goto L_0x006c
@@ -310,10 +310,10 @@ public final class Utf8 {
             byte r6 = r0[r6]
             r15 = r6 & 192(0xc0, float:2.69E-43)
             if (r15 != r9) goto L_0x0119
-            r15 = r11
+            r15 = 1
             goto L_0x011a
         L_0x0119:
-            r15 = r8
+            r15 = 0
         L_0x011a:
             if (r15 != 0) goto L_0x0125
             java.lang.Integer r4 = java.lang.Integer.valueOf(r10)
@@ -324,10 +324,10 @@ public final class Utf8 {
             byte r15 = r0[r15]
             r7 = r15 & 192(0xc0, float:2.69E-43)
             if (r7 != r9) goto L_0x012f
-            r7 = r11
+            r7 = 1
             goto L_0x0130
         L_0x012f:
-            r7 = r8
+            r7 = 0
         L_0x0130:
             if (r7 != 0) goto L_0x013b
             java.lang.Integer r4 = java.lang.Integer.valueOf(r10)
@@ -337,7 +337,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r7 = r4 & 192(0xc0, float:2.69E-43)
             if (r7 != r9) goto L_0x0142
-            r8 = r11
+            r8 = 1
         L_0x0142:
             if (r8 != 0) goto L_0x014c
             java.lang.Integer r4 = java.lang.Integer.valueOf(r10)
@@ -437,14 +437,14 @@ public final class Utf8 {
             java.lang.Character r4 = java.lang.Character.valueOf(r4)
             r2.invoke(r4)
         L_0x004e:
-            r7 = r11
+            r7 = 1
             goto L_0x006e
         L_0x0050:
             byte r5 = r0[r3]
             byte r4 = r0[r4]
             r6 = r4 & 192(0xc0, float:2.69E-43)
             if (r6 != r9) goto L_0x0059
-            r8 = r11
+            r8 = 1
         L_0x0059:
             if (r8 != 0) goto L_0x005c
             goto L_0x0046
@@ -481,7 +481,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r4 = r4 & 192(0xc0, float:2.69E-43)
             if (r4 != r9) goto L_0x0092
-            r8 = r11
+            r8 = 1
         L_0x0092:
             if (r8 != 0) goto L_0x006d
             goto L_0x004e
@@ -491,10 +491,10 @@ public final class Utf8 {
             byte r6 = r0[r6]
             r15 = r6 & 192(0xc0, float:2.69E-43)
             if (r15 != r9) goto L_0x00a1
-            r15 = r11
+            r15 = 1
             goto L_0x00a2
         L_0x00a1:
-            r15 = r8
+            r15 = 0
         L_0x00a2:
             if (r15 != 0) goto L_0x00ad
             char r4 = (char) r10
@@ -505,7 +505,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r15 = r4 & 192(0xc0, float:2.69E-43)
             if (r15 != r9) goto L_0x00b4
-            r8 = r11
+            r8 = 1
         L_0x00b4:
             if (r8 != 0) goto L_0x00bf
             char r4 = (char) r10
@@ -537,7 +537,7 @@ public final class Utf8 {
             char r4 = (char) r4
             goto L_0x00ce
         L_0x00de:
-            r7 = r14
+            r7 = 3
             goto L_0x006e
         L_0x00e0:
             int r4 = r4 >> 3
@@ -551,10 +551,10 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r4 = r4 & 192(0xc0, float:2.69E-43)
             if (r4 != r9) goto L_0x00fb
-            r4 = r11
+            r4 = 1
             goto L_0x00fc
         L_0x00fb:
-            r4 = r8
+            r4 = 0
         L_0x00fc:
             if (r4 != 0) goto L_0x0100
             goto L_0x004e
@@ -564,7 +564,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r4 = r4 & 192(0xc0, float:2.69E-43)
             if (r4 != r9) goto L_0x010b
-            r8 = r11
+            r8 = 1
         L_0x010b:
             if (r8 != 0) goto L_0x00de
             goto L_0x006d
@@ -574,10 +574,10 @@ public final class Utf8 {
             byte r6 = r0[r6]
             r15 = r6 & 192(0xc0, float:2.69E-43)
             if (r15 != r9) goto L_0x011b
-            r15 = r11
+            r15 = 1
             goto L_0x011c
         L_0x011b:
-            r15 = r8
+            r15 = 0
         L_0x011c:
             if (r15 != 0) goto L_0x0127
             java.lang.Character r4 = java.lang.Character.valueOf(r10)
@@ -588,10 +588,10 @@ public final class Utf8 {
             byte r15 = r0[r15]
             r7 = r15 & 192(0xc0, float:2.69E-43)
             if (r7 != r9) goto L_0x0131
-            r7 = r11
+            r7 = 1
             goto L_0x0132
         L_0x0131:
-            r7 = r8
+            r7 = 0
         L_0x0132:
             if (r7 != 0) goto L_0x013d
             java.lang.Character r4 = java.lang.Character.valueOf(r10)
@@ -601,7 +601,7 @@ public final class Utf8 {
             byte r4 = r0[r4]
             r7 = r4 & 192(0xc0, float:2.69E-43)
             if (r7 != r9) goto L_0x0144
-            r8 = r11
+            r8 = 1
         L_0x0144:
             if (r8 != 0) goto L_0x014e
             java.lang.Character r4 = java.lang.Character.valueOf(r10)

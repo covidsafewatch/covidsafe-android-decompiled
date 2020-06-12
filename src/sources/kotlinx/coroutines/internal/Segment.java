@@ -63,28 +63,28 @@ public abstract class Segment<S extends Segment<S>> {
 
     /* JADX WARNING: Removed duplicated region for block: B:0:0x0000 A[LOOP_START, MTH_ENTER_BLOCK] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    private final void moveNextToRight(S r6) {
+    private final void moveNextToRight(S r7) {
         /*
-            r5 = this;
+            r6 = this;
         L_0x0000:
-            java.lang.Object r0 = r5._next
+            java.lang.Object r0 = r6._next
             if (r0 == 0) goto L_0x0018
             kotlinx.coroutines.internal.Segment r0 = (kotlinx.coroutines.internal.Segment) r0
-            long r1 = r6.id
+            long r1 = r7.id
             long r3 = r0.id
-            int r1 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
-            if (r1 > 0) goto L_0x000f
+            int r5 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
+            if (r5 > 0) goto L_0x000f
             return
         L_0x000f:
             java.util.concurrent.atomic.AtomicReferenceFieldUpdater r1 = _next$FU
-            boolean r0 = r1.compareAndSet(r5, r0, r6)
+            boolean r0 = r1.compareAndSet(r6, r0, r7)
             if (r0 == 0) goto L_0x0000
             return
         L_0x0018:
-            kotlin.TypeCastException r6 = new kotlin.TypeCastException
+            kotlin.TypeCastException r7 = new kotlin.TypeCastException
             java.lang.String r0 = "null cannot be cast to non-null type S"
-            r6.<init>(r0)
-            throw r6
+            r7.<init>(r0)
+            throw r7
         */
         throw new UnsupportedOperationException("Method not decompiled: kotlinx.coroutines.internal.Segment.moveNextToRight(kotlinx.coroutines.internal.Segment):void");
     }
@@ -94,21 +94,21 @@ public abstract class Segment<S extends Segment<S>> {
         	at jadx.core.utils.ErrorsCounter.addError(ErrorsCounter.java:47)
         	at jadx.core.utils.ErrorsCounter.methodError(ErrorsCounter.java:81)
         */
-    private final void movePrevToLeft(S r6) {
+    private final void movePrevToLeft(S r7) {
         /*
-            r5 = this;
+            r6 = this;
         L_0x0000:
-            java.lang.Object r0 = r5.prev
+            java.lang.Object r0 = r6.prev
             kotlinx.coroutines.internal.Segment r0 = (kotlinx.coroutines.internal.Segment) r0
             if (r0 == 0) goto L_0x0017
             long r1 = r0.id
-            long r3 = r6.id
-            int r1 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
-            if (r1 > 0) goto L_0x000f
+            long r3 = r7.id
+            int r5 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
+            if (r5 > 0) goto L_0x000f
             return
         L_0x000f:
             java.util.concurrent.atomic.AtomicReferenceFieldUpdater r1 = prev$FU
-            boolean r0 = r1.compareAndSet(r5, r0, r6)
+            boolean r0 = r1.compareAndSet(r6, r0, r7)
             if (r0 == 0) goto L_0x0000
         L_0x0017:
             return

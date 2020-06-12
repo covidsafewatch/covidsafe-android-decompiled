@@ -29,18 +29,24 @@ public final class AesSiv implements DeterministicAead {
 
     private byte[] s2v(byte[]... bArr) throws GeneralSecurityException {
         byte[] bArr2;
+        byte[] bArr3;
         if (bArr.length == 0) {
             return this.cmacForS2V.computeMac(BLOCK_ONE);
         }
         byte[] computeMac = this.cmacForS2V.computeMac(BLOCK_ZERO);
         for (int i = 0; i < bArr.length - 1; i++) {
-            computeMac = Bytes.xor(AesUtil.dbl(computeMac), this.cmacForS2V.computeMac(bArr[i]));
+            if (bArr[i] == null) {
+                bArr3 = new byte[0];
+            } else {
+                bArr3 = bArr[i];
+            }
+            computeMac = Bytes.xor(AesUtil.dbl(computeMac), this.cmacForS2V.computeMac(bArr3));
         }
-        byte[] bArr3 = bArr[bArr.length - 1];
-        if (bArr3.length >= 16) {
-            bArr2 = Bytes.xorEnd(bArr3, computeMac);
+        byte[] bArr4 = bArr[bArr.length - 1];
+        if (bArr4.length >= 16) {
+            bArr2 = Bytes.xorEnd(bArr4, computeMac);
         } else {
-            bArr2 = Bytes.xor(AesUtil.cmacPad(bArr3), AesUtil.dbl(computeMac));
+            bArr2 = Bytes.xor(AesUtil.cmacPad(bArr4), AesUtil.dbl(computeMac));
         }
         return this.cmacForS2V.computeMac(bArr2);
     }

@@ -14,16 +14,16 @@ class FontParser {
         jsonReader.beginObject();
         String str = null;
         String str2 = null;
-        float f = 0.0f;
         String str3 = null;
+        float f = 0.0f;
         while (jsonReader.hasNext()) {
             int selectName = jsonReader.selectName(NAMES);
             if (selectName == 0) {
                 str = jsonReader.nextString();
             } else if (selectName == 1) {
-                str3 = jsonReader.nextString();
-            } else if (selectName == 2) {
                 str2 = jsonReader.nextString();
+            } else if (selectName == 2) {
+                str3 = jsonReader.nextString();
             } else if (selectName != 3) {
                 jsonReader.skipName();
                 jsonReader.skipValue();
@@ -32,6 +32,6 @@ class FontParser {
             }
         }
         jsonReader.endObject();
-        return new Font(str, str3, str2, f);
+        return new Font(str, str2, str3, f);
     }
 }

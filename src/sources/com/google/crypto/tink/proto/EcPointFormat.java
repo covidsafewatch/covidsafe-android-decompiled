@@ -1,6 +1,6 @@
 package com.google.crypto.tink.proto;
 
-import com.google.protobuf.Internal;
+import com.google.crypto.tink.shaded.protobuf.Internal;
 
 public enum EcPointFormat implements Internal.EnumLite {
     UNKNOWN_FORMAT(0),
@@ -25,7 +25,10 @@ public enum EcPointFormat implements Internal.EnumLite {
     }
 
     public final int getNumber() {
-        return this.value;
+        if (this != UNRECOGNIZED) {
+            return this.value;
+        }
+        throw new IllegalArgumentException("Can't get the number of an unknown enum value.");
     }
 
     @Deprecated
@@ -51,6 +54,25 @@ public enum EcPointFormat implements Internal.EnumLite {
 
     public static Internal.EnumLiteMap<EcPointFormat> internalGetValueMap() {
         return internalValueMap;
+    }
+
+    public static Internal.EnumVerifier internalGetVerifier() {
+        return EcPointFormatVerifier.INSTANCE;
+    }
+
+    private static final class EcPointFormatVerifier implements Internal.EnumVerifier {
+        static final Internal.EnumVerifier INSTANCE = null;
+
+        private EcPointFormatVerifier() {
+        }
+
+        static {
+            INSTANCE = new EcPointFormatVerifier();
+        }
+
+        public boolean isInRange(int i) {
+            return EcPointFormat.forNumber(i) != null;
+        }
     }
 
     private EcPointFormat(int i) {

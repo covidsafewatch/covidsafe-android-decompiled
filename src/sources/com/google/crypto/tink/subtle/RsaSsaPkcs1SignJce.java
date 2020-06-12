@@ -14,6 +14,8 @@ public final class RsaSsaPkcs1SignJce implements PublicKeySign {
     private final String signatureAlgorithm;
 
     public RsaSsaPkcs1SignJce(RSAPrivateCrtKey rSAPrivateCrtKey, Enums.HashType hashType) throws GeneralSecurityException {
+        Validators.validateSignatureHash(hashType);
+        Validators.validateRsaModulusSize(rSAPrivateCrtKey.getModulus().bitLength());
         this.privateKey = rSAPrivateCrtKey;
         this.signatureAlgorithm = SubtleUtil.toRsaSsaPkcs1Algo(hashType);
         this.publicKey = (RSAPublicKey) EngineFactory.KEY_FACTORY.getInstance("RSA").generatePublic(new RSAPublicKeySpec(rSAPrivateCrtKey.getModulus(), rSAPrivateCrtKey.getPublicExponent()));

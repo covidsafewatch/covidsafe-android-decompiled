@@ -104,12 +104,12 @@ class AppCompatTextHelper {
             str = (Build.VERSION.SDK_INT < 26 || !obtainStyledAttributes2.hasValue(R.styleable.TextAppearance_fontVariationSettings)) ? null : obtainStyledAttributes2.getString(R.styleable.TextAppearance_fontVariationSettings);
             obtainStyledAttributes2.recycle();
         } else {
-            z2 = false;
-            z = false;
             str2 = null;
             colorStateList3 = null;
             str = null;
             colorStateList2 = null;
+            z2 = false;
+            z = false;
             colorStateList = null;
         }
         TintTypedArray obtainStyledAttributes3 = TintTypedArray.obtainStyledAttributes(context, attributeSet2, R.styleable.TextAppearance, i3, 0);

@@ -79,12 +79,11 @@ public final class FlowableOnBackpressureBufferStrategy<T> extends AbstractFlowa
                             deque2.poll();
                             deque2.offer(t);
                         }
-                        z2 = false;
                         z = true;
                     } else {
                         deque2.offer(t);
-                        z2 = false;
                     }
+                    z2 = false;
                 }
                 if (z) {
                     Action action = this.onOverflow;

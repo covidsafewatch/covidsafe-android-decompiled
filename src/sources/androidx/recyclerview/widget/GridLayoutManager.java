@@ -376,8 +376,8 @@ public class GridLayoutManager extends LinearLayoutManager {
     }
 
     /* access modifiers changed from: package-private */
-    /* JADX WARNING: Removed duplicated region for block: B:115:0x021a A[SYNTHETIC] */
-    /* JADX WARNING: Removed duplicated region for block: B:94:0x0218  */
+    /* JADX WARNING: Removed duplicated region for block: B:115:0x021b A[SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:94:0x0219  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public void layoutChunk(androidx.recyclerview.widget.RecyclerView.Recycler r18, androidx.recyclerview.widget.RecyclerView.State r19, androidx.recyclerview.widget.LinearLayoutManager.LayoutState r20, androidx.recyclerview.widget.LinearLayoutManager.LayoutChunkResult r21) {
         /*
@@ -393,10 +393,10 @@ public class GridLayoutManager extends LinearLayoutManager {
             r8 = 1
             r5 = 0
             if (r3 == r4) goto L_0x0018
-            r9 = r8
+            r9 = 1
             goto L_0x0019
         L_0x0018:
-            r9 = r5
+            r9 = 0
         L_0x0019:
             int r10 = r17.getChildCount()
             if (r10 <= 0) goto L_0x0026
@@ -405,17 +405,17 @@ public class GridLayoutManager extends LinearLayoutManager {
             r10 = r10[r11]
             goto L_0x0027
         L_0x0026:
-            r10 = r5
+            r10 = 0
         L_0x0027:
             if (r9 == 0) goto L_0x002c
             r17.updateMeasurements()
         L_0x002c:
             int r11 = r2.mItemDirection
             if (r11 != r8) goto L_0x0032
-            r11 = r8
+            r11 = 1
             goto L_0x0033
         L_0x0032:
-            r11 = r5
+            r11 = 0
         L_0x0033:
             int r12 = r6.mSpanCount
             if (r11 != 0) goto L_0x0044
@@ -425,7 +425,7 @@ public class GridLayoutManager extends LinearLayoutManager {
             int r13 = r6.getSpanSize(r0, r1, r13)
             int r12 = r12 + r13
         L_0x0044:
-            r13 = r5
+            r13 = 0
         L_0x0045:
             int r14 = r6.mSpanCount
             if (r13 >= r14) goto L_0x009d
@@ -475,10 +475,10 @@ public class GridLayoutManager extends LinearLayoutManager {
         L_0x00a2:
             r4 = 0
             r6.assignSpans(r0, r1, r13, r11)
-            r0 = r5
-            r1 = r0
+            r0 = 0
+            r1 = 0
         L_0x00a8:
-            if (r0 >= r13) goto L_0x00f3
+            if (r0 >= r13) goto L_0x00f4
             android.view.View[] r12 = r6.mSet
             r12 = r12[r0]
             java.util.List<androidx.recyclerview.widget.RecyclerView$ViewHolder> r14 = r2.mScrapList
@@ -515,39 +515,39 @@ public class GridLayoutManager extends LinearLayoutManager {
             float r12 = (float) r12
             float r5 = r5 / r12
             int r12 = (r5 > r4 ? 1 : (r5 == r4 ? 0 : -1))
-            if (r12 <= 0) goto L_0x00ef
+            if (r12 <= 0) goto L_0x00f0
             r4 = r5
-        L_0x00ef:
+        L_0x00f0:
             int r0 = r0 + 1
             r5 = 0
             goto L_0x00a8
-        L_0x00f3:
-            if (r9 == 0) goto L_0x0111
+        L_0x00f4:
+            if (r9 == 0) goto L_0x0112
             r6.guessMeasurement(r4, r10)
             r0 = 0
             r1 = 0
-        L_0x00fa:
-            if (r0 >= r13) goto L_0x0111
+        L_0x00fb:
+            if (r0 >= r13) goto L_0x0112
             android.view.View[] r3 = r6.mSet
             r3 = r3[r0]
             r4 = 1073741824(0x40000000, float:2.0)
             r6.measureChild(r3, r4, r8)
             androidx.recyclerview.widget.OrientationHelper r4 = r6.mOrientationHelper
             int r3 = r4.getDecoratedMeasurement(r3)
-            if (r3 <= r1) goto L_0x010e
+            if (r3 <= r1) goto L_0x010f
             r1 = r3
-        L_0x010e:
+        L_0x010f:
             int r0 = r0 + 1
-            goto L_0x00fa
-        L_0x0111:
-            r0 = 0
+            goto L_0x00fb
         L_0x0112:
-            if (r0 >= r13) goto L_0x0174
+            r0 = 0
+        L_0x0113:
+            if (r0 >= r13) goto L_0x0175
             android.view.View[] r3 = r6.mSet
             r3 = r3[r0]
             androidx.recyclerview.widget.OrientationHelper r4 = r6.mOrientationHelper
             int r4 = r4.getDecoratedMeasurement(r3)
-            if (r4 == r1) goto L_0x016e
+            if (r4 == r1) goto L_0x016f
             android.view.ViewGroup$LayoutParams r4 = r3.getLayoutParams()
             androidx.recyclerview.widget.GridLayoutManager$LayoutParams r4 = (androidx.recyclerview.widget.GridLayoutManager.LayoutParams) r4
             android.graphics.Rect r5 = r4.mDecorInsets
@@ -569,15 +569,15 @@ public class GridLayoutManager extends LinearLayoutManager {
             int r11 = r4.mSpanSize
             int r5 = r6.getSpaceForSpanRange(r5, r11)
             int r11 = r6.mOrientation
-            if (r11 != r8) goto L_0x015a
+            if (r11 != r8) goto L_0x015b
             int r4 = r4.width
             r11 = 1073741824(0x40000000, float:2.0)
             r12 = 0
             int r4 = getChildMeasureSpec(r5, r11, r10, r4, r12)
             int r5 = r1 - r9
             int r5 = android.view.View.MeasureSpec.makeMeasureSpec(r5, r11)
-            goto L_0x016a
-        L_0x015a:
+            goto L_0x016b
+        L_0x015b:
             r11 = 1073741824(0x40000000, float:2.0)
             r12 = 0
             int r10 = r1 - r10
@@ -585,63 +585,63 @@ public class GridLayoutManager extends LinearLayoutManager {
             int r4 = r4.height
             int r5 = getChildMeasureSpec(r5, r11, r9, r4, r12)
             r4 = r10
-        L_0x016a:
+        L_0x016b:
             r6.measureChildWithDecorationsAndMargin(r3, r4, r5, r8)
-            goto L_0x0171
-        L_0x016e:
+            goto L_0x0172
+        L_0x016f:
             r11 = 1073741824(0x40000000, float:2.0)
             r12 = 0
-        L_0x0171:
+        L_0x0172:
             int r0 = r0 + 1
-            goto L_0x0112
-        L_0x0174:
+            goto L_0x0113
+        L_0x0175:
             r12 = 0
             r7.mConsumed = r1
             int r0 = r6.mOrientation
             r3 = -1
-            if (r0 != r8) goto L_0x018e
+            if (r0 != r8) goto L_0x018f
             int r0 = r2.mLayoutDirection
-            if (r0 != r3) goto L_0x0186
+            if (r0 != r3) goto L_0x0187
             int r0 = r2.mOffset
             int r1 = r0 - r1
             r2 = r1
-            goto L_0x018b
-        L_0x0186:
+            goto L_0x018c
+        L_0x0187:
             int r0 = r2.mOffset
             int r1 = r1 + r0
             r2 = r0
             r0 = r1
-        L_0x018b:
-            r1 = r12
-            r3 = r1
-            goto L_0x01a1
-        L_0x018e:
+        L_0x018c:
+            r1 = 0
+            r3 = 0
+            goto L_0x01a2
+        L_0x018f:
             int r0 = r2.mLayoutDirection
-            if (r0 != r3) goto L_0x019b
+            if (r0 != r3) goto L_0x019c
             int r0 = r2.mOffset
             int r1 = r0 - r1
             r3 = r1
-            r2 = r12
+            r2 = 0
             r1 = r0
-            r0 = r2
-            goto L_0x01a1
-        L_0x019b:
+            r0 = 0
+            goto L_0x01a2
+        L_0x019c:
             int r0 = r2.mOffset
             int r1 = r1 + r0
             r3 = r0
-            r0 = r12
-            r2 = r0
-        L_0x01a1:
-            if (r12 >= r13) goto L_0x022c
+            r0 = 0
+            r2 = 0
+        L_0x01a2:
+            if (r12 >= r13) goto L_0x022d
             android.view.View[] r4 = r6.mSet
             r9 = r4[r12]
             android.view.ViewGroup$LayoutParams r4 = r9.getLayoutParams()
             r10 = r4
             androidx.recyclerview.widget.GridLayoutManager$LayoutParams r10 = (androidx.recyclerview.widget.GridLayoutManager.LayoutParams) r10
             int r4 = r6.mOrientation
-            if (r4 != r8) goto L_0x01ea
+            if (r4 != r8) goto L_0x01eb
             boolean r1 = r17.isLayoutRTL()
-            if (r1 == 0) goto L_0x01d2
+            if (r1 == 0) goto L_0x01d3
             int r1 = r17.getPaddingLeft()
             int[] r3 = r6.mCachedBorders
             int r4 = r6.mSpanCount
@@ -655,8 +655,8 @@ public class GridLayoutManager extends LinearLayoutManager {
             r11 = r0
             r14 = r1
             r15 = r2
-            goto L_0x01ff
-        L_0x01d2:
+            goto L_0x0200
+        L_0x01d3:
             int r1 = r17.getPaddingLeft()
             int[] r3 = r6.mCachedBorders
             int r4 = r10.mSpanIndex
@@ -669,8 +669,8 @@ public class GridLayoutManager extends LinearLayoutManager {
             r16 = r1
             r15 = r2
             r14 = r3
-            goto L_0x0201
-        L_0x01ea:
+            goto L_0x0202
+        L_0x01eb:
             int r0 = r17.getPaddingTop()
             int[] r2 = r6.mCachedBorders
             int r4 = r10.mSpanIndex
@@ -682,9 +682,9 @@ public class GridLayoutManager extends LinearLayoutManager {
             r15 = r0
             r14 = r1
             r11 = r2
-        L_0x01ff:
+        L_0x0200:
             r16 = r3
-        L_0x0201:
+        L_0x0202:
             r0 = r17
             r1 = r9
             r2 = r16
@@ -693,12 +693,12 @@ public class GridLayoutManager extends LinearLayoutManager {
             r5 = r11
             r0.layoutDecoratedWithMargins(r1, r2, r3, r4, r5)
             boolean r0 = r10.isItemRemoved()
-            if (r0 != 0) goto L_0x0218
+            if (r0 != 0) goto L_0x0219
             boolean r0 = r10.isItemChanged()
-            if (r0 == 0) goto L_0x021a
-        L_0x0218:
+            if (r0 == 0) goto L_0x021b
+        L_0x0219:
             r7.mIgnoreConsumed = r8
-        L_0x021a:
+        L_0x021b:
             boolean r0 = r7.mFocusable
             boolean r1 = r9.hasFocusable()
             r0 = r0 | r1
@@ -708,8 +708,8 @@ public class GridLayoutManager extends LinearLayoutManager {
             r1 = r14
             r2 = r15
             r3 = r16
-            goto L_0x01a1
-        L_0x022c:
+            goto L_0x01a2
+        L_0x022d:
             android.view.View[] r0 = r6.mSet
             r1 = 0
             java.util.Arrays.fill(r0, r1)
@@ -761,9 +761,9 @@ public class GridLayoutManager extends LinearLayoutManager {
         int i4 = 0;
         int i5 = -1;
         if (z) {
-            i2 = 1;
             i5 = i;
             i3 = 0;
+            i2 = 1;
         } else {
             i3 = i - 1;
             i2 = -1;
@@ -882,14 +882,14 @@ public class GridLayoutManager extends LinearLayoutManager {
                 int r3 = r3 + r4
                 goto L_0x0030
             L_0x0020:
-                r2 = r1
-                r3 = r2
+                r2 = 0
+                r3 = 0
             L_0x0022:
                 if (r2 >= r6) goto L_0x0033
                 int r4 = r5.getSpanSize(r2)
                 int r3 = r3 + r4
                 if (r3 != r7) goto L_0x002d
-                r3 = r1
+                r3 = 0
                 goto L_0x0030
             L_0x002d:
                 if (r3 <= r7) goto L_0x0030
@@ -925,38 +925,59 @@ public class GridLayoutManager extends LinearLayoutManager {
             return sparseIntArray.keyAt(i4);
         }
 
-        public int getSpanGroupIndex(int i, int i2) {
-            int i3;
-            int i4;
-            int i5;
-            int findFirstKeyLessThan;
-            if (!this.mCacheSpanGroupIndices || (findFirstKeyLessThan = findFirstKeyLessThan(this.mSpanGroupIndexCache, i)) == -1) {
-                i5 = 0;
-                i4 = 0;
-                i3 = 0;
-            } else {
-                i5 = this.mSpanGroupIndexCache.get(findFirstKeyLessThan);
-                i4 = findFirstKeyLessThan + 1;
-                i3 = getCachedSpanIndex(findFirstKeyLessThan, i2) + getSpanSize(findFirstKeyLessThan);
-                if (i3 == i2) {
-                    i5++;
-                    i3 = 0;
-                }
-            }
-            int spanSize = getSpanSize(i);
-            while (i4 < i) {
-                int spanSize2 = getSpanSize(i4);
-                int i6 = i3 + spanSize2;
-                if (i6 == i2) {
-                    i5++;
-                    i6 = 0;
-                } else if (i6 > i2) {
-                    i5++;
-                    i6 = spanSize2;
-                }
-                i4++;
-            }
-            return i3 + spanSize > i2 ? i5 + 1 : i5;
+        /* JADX WARNING: Removed duplicated region for block: B:11:0x002d  */
+        /* JADX WARNING: Removed duplicated region for block: B:19:0x0043  */
+        /* JADX WARNING: Removed duplicated region for block: B:25:? A[RETURN, SYNTHETIC] */
+        /* Code decompiled incorrectly, please refer to instructions dump. */
+        public int getSpanGroupIndex(int r7, int r8) {
+            /*
+                r6 = this;
+                boolean r0 = r6.mCacheSpanGroupIndices
+                r1 = 0
+                if (r0 == 0) goto L_0x0024
+                android.util.SparseIntArray r0 = r6.mSpanGroupIndexCache
+                int r0 = findFirstKeyLessThan(r0, r7)
+                r2 = -1
+                if (r0 == r2) goto L_0x0024
+                android.util.SparseIntArray r2 = r6.mSpanGroupIndexCache
+                int r2 = r2.get(r0)
+                int r3 = r0 + 1
+                int r4 = r6.getCachedSpanIndex(r0, r8)
+                int r0 = r6.getSpanSize(r0)
+                int r4 = r4 + r0
+                if (r4 != r8) goto L_0x0027
+                int r2 = r2 + 1
+                goto L_0x0026
+            L_0x0024:
+                r2 = 0
+                r3 = 0
+            L_0x0026:
+                r4 = 0
+            L_0x0027:
+                int r0 = r6.getSpanSize(r7)
+            L_0x002b:
+                if (r3 >= r7) goto L_0x0040
+                int r5 = r6.getSpanSize(r3)
+                int r4 = r4 + r5
+                if (r4 != r8) goto L_0x0038
+                int r2 = r2 + 1
+                r4 = 0
+                goto L_0x003d
+            L_0x0038:
+                if (r4 <= r8) goto L_0x003d
+                int r2 = r2 + 1
+                r4 = r5
+            L_0x003d:
+                int r3 = r3 + 1
+                goto L_0x002b
+            L_0x0040:
+                int r4 = r4 + r0
+                if (r4 <= r8) goto L_0x0045
+                int r2 = r2 + 1
+            L_0x0045:
+                return r2
+            */
+            throw new UnsupportedOperationException("Method not decompiled: androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup.getSpanGroupIndex(int, int):int");
         }
     }
 
@@ -993,14 +1014,14 @@ public class GridLayoutManager extends LinearLayoutManager {
             int r5 = r0.convertFocusDirectionToLayoutDirection(r5)
             r9 = 1
             if (r5 != r9) goto L_0x002d
-            r5 = r9
+            r5 = 1
             goto L_0x002e
         L_0x002d:
             r5 = 0
         L_0x002e:
             boolean r10 = r0.mShouldReverseLayout
             if (r5 == r10) goto L_0x0034
-            r5 = r9
+            r5 = 1
             goto L_0x0035
         L_0x0034:
             r5 = 0
@@ -1009,30 +1030,30 @@ public class GridLayoutManager extends LinearLayoutManager {
             if (r5 == 0) goto L_0x0040
             int r5 = r22.getChildCount()
             int r5 = r5 - r9
-            r11 = r10
-            r12 = r11
+            r11 = -1
+            r12 = -1
             goto L_0x0047
         L_0x0040:
             int r5 = r22.getChildCount()
             r11 = r5
-            r12 = r9
             r5 = 0
+            r12 = 1
         L_0x0047:
             int r13 = r0.mOrientation
             if (r13 != r9) goto L_0x0053
             boolean r13 = r22.isLayoutRTL()
             if (r13 == 0) goto L_0x0053
-            r13 = r9
+            r13 = 1
             goto L_0x0054
         L_0x0053:
             r13 = 0
         L_0x0054:
             int r14 = r0.getSpanGroupIndex(r1, r2, r5)
-            r15 = r10
-            r16 = r15
-            r8 = 0
-            r17 = 0
             r10 = r5
+            r8 = 0
+            r15 = -1
+            r16 = -1
+            r17 = 0
             r5 = r4
         L_0x0060:
             if (r10 == r11) goto L_0x014a

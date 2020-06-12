@@ -430,7 +430,7 @@ public final class Http1ExchangeCodec implements ExchangeCodec {
             Intrinsics.checkParameterIsNotNull(buffer, "sink");
             if (!(j >= 0)) {
                 throw new IllegalArgumentException(("byteCount < 0: " + j).toString());
-            } else if (!getClosed()) {
+            } else if (true ^ getClosed()) {
                 long j2 = this.bytesRemaining;
                 if (j2 == 0) {
                     return -1;
@@ -484,7 +484,7 @@ public final class Http1ExchangeCodec implements ExchangeCodec {
             Intrinsics.checkParameterIsNotNull(buffer, "sink");
             if (!(j >= 0)) {
                 throw new IllegalArgumentException(("byteCount < 0: " + j).toString());
-            } else if (!(!getClosed())) {
+            } else if (!(true ^ getClosed())) {
                 throw new IllegalStateException("closed".toString());
             } else if (!this.hasMoreChunks) {
                 return -1;

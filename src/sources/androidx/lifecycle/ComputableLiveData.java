@@ -37,7 +37,7 @@ public abstract class ComputableLiveData<T> {
                     boolean r0 = r0.compareAndSet(r2, r1)
                     if (r0 == 0) goto L_0x003b
                     r0 = 0
-                    r3 = r2
+                    r3 = 0
                 L_0x000e:
                     androidx.lifecycle.ComputableLiveData r4 = androidx.lifecycle.ComputableLiveData.this     // Catch:{ all -> 0x0032 }
                     java.util.concurrent.atomic.AtomicBoolean r4 = r4.mInvalid     // Catch:{ all -> 0x0032 }
@@ -45,7 +45,7 @@ public abstract class ComputableLiveData<T> {
                     if (r4 == 0) goto L_0x0020
                     androidx.lifecycle.ComputableLiveData r0 = androidx.lifecycle.ComputableLiveData.this     // Catch:{ all -> 0x0032 }
                     java.lang.Object r0 = r0.compute()     // Catch:{ all -> 0x0032 }
-                    r3 = r1
+                    r3 = 1
                     goto L_0x000e
                 L_0x0020:
                     if (r3 == 0) goto L_0x0029

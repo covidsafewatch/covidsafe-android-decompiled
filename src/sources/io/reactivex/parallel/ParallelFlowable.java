@@ -58,9 +58,8 @@ public abstract class ParallelFlowable<T> {
             return true;
         }
         IllegalArgumentException illegalArgumentException = new IllegalArgumentException("parallelism = " + parallelism + ", subscribers = " + subscriberArr.length);
-        int length = subscriberArr.length;
-        for (int i = 0; i < length; i++) {
-            EmptySubscription.error(illegalArgumentException, subscriberArr[i]);
+        for (Subscriber<?> error : subscriberArr) {
+            EmptySubscription.error(illegalArgumentException, error);
         }
         return false;
     }

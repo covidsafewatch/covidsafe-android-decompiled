@@ -166,23 +166,23 @@ public final class FlowableFlattenIterable<T, R> extends AbstractFlowableWithUps
                 r4 = 0
                 r5 = 1
                 if (r0 == r5) goto L_0x0015
-                r0 = r5
+                r0 = 1
                 goto L_0x0016
             L_0x0015:
-                r0 = r4
+                r0 = 0
             L_0x0016:
                 java.util.Iterator<? extends R> r6 = r1.current
                 r7 = 0
-                r8 = r5
+                r8 = 1
             L_0x001a:
                 if (r6 != 0) goto L_0x0080
                 boolean r9 = r1.done
                 java.lang.Object r10 = r3.poll()     // Catch:{ all -> 0x0062 }
                 if (r10 != 0) goto L_0x0026
-                r11 = r5
+                r11 = 1
                 goto L_0x0027
             L_0x0026:
-                r11 = r4
+                r11 = 0
             L_0x0027:
                 boolean r9 = r1.checkTerminated(r9, r11, r2, r3)
                 if (r9 == 0) goto L_0x002e
@@ -295,7 +295,7 @@ public final class FlowableFlattenIterable<T, R> extends AbstractFlowableWithUps
                 r15 = 1
                 goto L_0x0107
             L_0x0106:
-                r15 = r4
+                r15 = 0
             L_0x0107:
                 boolean r5 = r1.checkTerminated(r5, r15, r2, r3)
                 if (r5 == 0) goto L_0x010e

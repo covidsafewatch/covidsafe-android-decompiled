@@ -14,6 +14,26 @@ public final class AesEaxJce implements Aead {
     static final /* synthetic */ boolean $assertionsDisabled = false;
     static final int BLOCK_SIZE_IN_BYTES = 16;
     static final int TAG_SIZE_IN_BYTES = 16;
+    private static final ThreadLocal<Cipher> localCtrCipher = new ThreadLocal<Cipher>() {
+        /* access modifiers changed from: protected */
+        public Cipher initialValue() {
+            try {
+                return EngineFactory.CIPHER.getInstance("AES/CTR/NOPADDING");
+            } catch (GeneralSecurityException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+    };
+    private static final ThreadLocal<Cipher> localEcbCipher = new ThreadLocal<Cipher>() {
+        /* access modifiers changed from: protected */
+        public Cipher initialValue() {
+            try {
+                return EngineFactory.CIPHER.getInstance("AES/ECB/NOPADDING");
+            } catch (GeneralSecurityException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+    };
     private final byte[] b;
     private final int ivSizeInBytes;
     private final SecretKeySpec keySpec;
@@ -24,9 +44,9 @@ public final class AesEaxJce implements Aead {
             this.ivSizeInBytes = i;
             Validators.validateAesKeySize(bArr.length);
             this.keySpec = new SecretKeySpec(bArr, "AES");
-            Cipher instance = Cipher.getInstance("AES/ECB/NOPADDING");
-            instance.init(1, this.keySpec);
-            byte[] multiplyByX = multiplyByX(instance.doFinal(new byte[16]));
+            Cipher cipher = localEcbCipher.get();
+            cipher.init(1, this.keySpec);
+            byte[] multiplyByX = multiplyByX(cipher.doFinal(new byte[16]));
             this.b = multiplyByX;
             this.p = multiplyByX(multiplyByX);
             return;
@@ -98,15 +118,15 @@ public final class AesEaxJce implements Aead {
             byte[] bArr4 = new byte[(bArr3.length + i + 16)];
             byte[] randBytes = Random.randBytes(i);
             System.arraycopy(randBytes, 0, bArr4, 0, this.ivSizeInBytes);
-            Cipher instance = Cipher.getInstance("AES/ECB/NOPADDING");
-            instance.init(1, this.keySpec);
-            byte[] omac = omac(instance, 0, randBytes, 0, randBytes.length);
+            Cipher cipher = localEcbCipher.get();
+            cipher.init(1, this.keySpec);
+            byte[] omac = omac(cipher, 0, randBytes, 0, randBytes.length);
             byte[] bArr5 = bArr2 == null ? new byte[0] : bArr2;
-            byte[] omac2 = omac(instance, 1, bArr5, 0, bArr5.length);
-            Cipher instance2 = Cipher.getInstance("AES/CTR/NOPADDING");
-            instance2.init(1, this.keySpec, new IvParameterSpec(omac));
-            instance2.doFinal(bArr, 0, bArr3.length, bArr4, this.ivSizeInBytes);
-            byte[] omac3 = omac(instance, 2, bArr4, this.ivSizeInBytes, bArr3.length);
+            byte[] omac2 = omac(cipher, 1, bArr5, 0, bArr5.length);
+            Cipher cipher2 = localCtrCipher.get();
+            cipher2.init(1, this.keySpec, new IvParameterSpec(omac));
+            cipher2.doFinal(bArr, 0, bArr3.length, bArr4, this.ivSizeInBytes);
+            byte[] omac3 = omac(cipher, 2, bArr4, this.ivSizeInBytes, bArr3.length);
             int length2 = bArr3.length + this.ivSizeInBytes;
             for (int i2 = 0; i2 < 16; i2++) {
                 bArr4[length2 + i2] = (byte) ((omac2[i2] ^ omac[i2]) ^ omac3[i2]);
@@ -119,24 +139,24 @@ public final class AesEaxJce implements Aead {
     public byte[] decrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
         int length = (bArr.length - this.ivSizeInBytes) - 16;
         if (length >= 0) {
-            Cipher instance = Cipher.getInstance("AES/ECB/NOPADDING");
-            instance.init(1, this.keySpec);
-            byte[] omac = omac(instance, 0, bArr, 0, this.ivSizeInBytes);
+            Cipher cipher = localEcbCipher.get();
+            cipher.init(1, this.keySpec);
+            byte[] omac = omac(cipher, 0, bArr, 0, this.ivSizeInBytes);
             if (bArr2 == null) {
                 bArr2 = new byte[0];
             }
             byte[] bArr3 = bArr2;
-            byte[] omac2 = omac(instance, 1, bArr3, 0, bArr3.length);
-            byte[] omac3 = omac(instance, 2, bArr, this.ivSizeInBytes, length);
+            byte[] omac2 = omac(cipher, 1, bArr3, 0, bArr3.length);
+            byte[] omac3 = omac(cipher, 2, bArr, this.ivSizeInBytes, length);
             int length2 = bArr.length - 16;
             byte b2 = 0;
             for (int i = 0; i < 16; i++) {
                 b2 = (byte) (b2 | (((bArr[length2 + i] ^ omac2[i]) ^ omac[i]) ^ omac3[i]));
             }
             if (b2 == 0) {
-                Cipher instance2 = Cipher.getInstance("AES/CTR/NOPADDING");
-                instance2.init(1, this.keySpec, new IvParameterSpec(omac));
-                return instance2.doFinal(bArr, this.ivSizeInBytes, length);
+                Cipher cipher2 = localCtrCipher.get();
+                cipher2.init(1, this.keySpec, new IvParameterSpec(omac));
+                return cipher2.doFinal(bArr, this.ivSizeInBytes, length);
             }
             throw new AEADBadTagException("tag mismatch");
         }

@@ -17,12 +17,12 @@ public class DocumentDataParser implements ValueParser<DocumentData> {
         DocumentData.Justification justification2 = justification;
         String str = null;
         String str2 = null;
-        int i = 0;
-        int i2 = 0;
-        int i3 = 0;
         float f2 = 0.0f;
+        int i = 0;
         float f3 = 0.0f;
         float f4 = 0.0f;
+        int i2 = 0;
+        int i3 = 0;
         float f5 = 0.0f;
         boolean z = true;
         while (jsonReader.hasNext()) {

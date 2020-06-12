@@ -159,18 +159,18 @@ public class SolverVariable {
     /* access modifiers changed from: package-private */
     public String strengthsToString() {
         String str = this + "[";
-        boolean z = true;
-        boolean z2 = false;
+        boolean z = false;
+        boolean z2 = true;
         for (int i = 0; i < this.strengthVector.length; i++) {
             String str2 = str + this.strengthVector[i];
             float[] fArr = this.strengthVector;
             if (fArr[i] > 0.0f) {
-                z2 = false;
+                z = false;
             } else if (fArr[i] < 0.0f) {
-                z2 = true;
+                z = true;
             }
             if (this.strengthVector[i] != 0.0f) {
-                z = false;
+                z2 = false;
             }
             if (i < this.strengthVector.length - 1) {
                 str = str2 + ", ";
@@ -178,10 +178,10 @@ public class SolverVariable {
                 str = str2 + "] ";
             }
         }
-        if (z2) {
+        if (z) {
             str = str + " (-)";
         }
-        if (!z) {
+        if (!z2) {
             return str;
         }
         return str + " (*)";

@@ -398,13 +398,13 @@ public final class LocalBroadcastManager {
             r3.clear()     // Catch:{ all -> 0x0044 }
             monitor-exit(r0)     // Catch:{ all -> 0x0044 }
             r0 = 0
-            r3 = r0
+            r3 = 0
         L_0x001c:
             if (r3 >= r1) goto L_0x0000
             r4 = r2[r3]
             java.util.ArrayList<androidx.localbroadcastmanager.content.LocalBroadcastManager$ReceiverRecord> r5 = r4.receivers
             int r5 = r5.size()
-            r6 = r0
+            r6 = 0
         L_0x0027:
             if (r6 >= r5) goto L_0x0041
             java.util.ArrayList<androidx.localbroadcastmanager.content.LocalBroadcastManager$ReceiverRecord> r7 = r4.receivers

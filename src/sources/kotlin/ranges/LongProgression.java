@@ -81,10 +81,9 @@ public class LongProgression implements Iterable<Long>, KMappedMarker {
     }
 
     public String toString() {
-        long j;
         StringBuilder sb;
+        long j;
         if (this.step > 0) {
-            sb = new StringBuilder();
             sb.append(this.first);
             sb.append("..");
             sb.append(this.last);

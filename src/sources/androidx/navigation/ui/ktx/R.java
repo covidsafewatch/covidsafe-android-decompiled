@@ -1206,12 +1206,12 @@ public final class R {
         public static final int transition_position = 2131362277;
         public static final int transition_scene_layoutid_cache = 2131362278;
         public static final int transition_transform = 2131362279;
-        public static final int uniform = 2131362290;
-        public static final int unlabeled = 2131362291;
-        public static final int up = 2131362292;
-        public static final int view_offset_helper = 2131362310;
-        public static final int visible = 2131362311;
-        public static final int wrap_content = 2131362317;
+        public static final int uniform = 2131362289;
+        public static final int unlabeled = 2131362290;
+        public static final int up = 2131362291;
+        public static final int view_offset_helper = 2131362308;
+        public static final int visible = 2131362309;
+        public static final int wrap_content = 2131362315;
 
         private id() {
         }
@@ -1341,17 +1341,17 @@ public final class R {
         public static final int bottom_sheet_behavior = 2131951654;
         public static final int character_counter_content_description = 2131951664;
         public static final int character_counter_pattern = 2131951666;
-        public static final int fab_transformation_scrim_behavior = 2131951689;
-        public static final int fab_transformation_sheet_behavior = 2131951690;
-        public static final int hide_bottom_view_on_scroll_behavior = 2131951698;
-        public static final int mtrl_chip_close_icon_content_description = 2131951771;
-        public static final int nav_app_bar_navigate_up_description = 2131951804;
-        public static final int nav_app_bar_open_drawer_description = 2131951805;
-        public static final int password_toggle_content_description = 2131951808;
-        public static final int path_password_eye = 2131951809;
-        public static final int path_password_eye_mask_strike_through = 2131951810;
-        public static final int path_password_eye_mask_visible = 2131951811;
-        public static final int path_password_strike_through = 2131951812;
+        public static final int fab_transformation_scrim_behavior = 2131951691;
+        public static final int fab_transformation_sheet_behavior = 2131951692;
+        public static final int hide_bottom_view_on_scroll_behavior = 2131951700;
+        public static final int mtrl_chip_close_icon_content_description = 2131951773;
+        public static final int nav_app_bar_navigate_up_description = 2131951806;
+        public static final int nav_app_bar_open_drawer_description = 2131951807;
+        public static final int password_toggle_content_description = 2131951810;
+        public static final int path_password_eye = 2131951811;
+        public static final int path_password_eye_mask_strike_through = 2131951812;
+        public static final int path_password_eye_mask_visible = 2131951813;
+        public static final int path_password_strike_through = 2131951814;
         public static final int search_menu_title = 2131951845;
         public static final int status_bar_notification_info_overflow = 2131951851;
 

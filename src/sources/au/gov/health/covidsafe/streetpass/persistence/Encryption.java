@@ -182,8 +182,8 @@ public final class Encryption {
             r4 = 450000(0x6ddd0, float:6.30584E-40)
             long r4 = (long) r4     // Catch:{ all -> 0x004d }
             long r2 = r2 - r4
-            int r0 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r0 <= 0) goto L_0x001f
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 <= 0) goto L_0x001f
             int r0 = counter     // Catch:{ all -> 0x004d }
             r1 = 65535(0xffff, float:9.1834E-41)
             if (r0 < r1) goto L_0x0018

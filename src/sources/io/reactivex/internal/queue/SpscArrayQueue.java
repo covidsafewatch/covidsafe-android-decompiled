@@ -84,7 +84,7 @@ public final class SpscArrayQueue<E> extends AtomicReferenceArray<E> implements 
 
     /* access modifiers changed from: package-private */
     public int calcElementOffset(long j) {
-        return ((int) j) & this.mask;
+        return this.mask & ((int) j);
     }
 
     /* access modifiers changed from: package-private */

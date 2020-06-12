@@ -248,7 +248,7 @@ public final class ObservableCombineLatest<T, R> extends Observable<R> {
             L_0x0014:
                 r3 = r4[r3]     // Catch:{ all -> 0x002a }
                 if (r3 != 0) goto L_0x001a
-                r3 = r0
+                r3 = 1
                 goto L_0x001b
             L_0x001a:
                 r3 = 0
@@ -312,7 +312,7 @@ public final class ObservableCombineLatest<T, R> extends Observable<R> {
                 r4 = r0[r4]     // Catch:{ all -> 0x0025 }
                 r1 = 1
                 if (r4 != 0) goto L_0x000e
-                r4 = r1
+                r4 = 1
                 goto L_0x000f
             L_0x000e:
                 r4 = 0

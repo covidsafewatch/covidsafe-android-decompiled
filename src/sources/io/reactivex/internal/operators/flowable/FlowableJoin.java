@@ -130,9 +130,9 @@ public final class FlowableJoin<TLeft, TRight, TLeftEnd, TRightEnd, R> extends A
                         errorAll(subscriber);
                         return;
                     }
-                    boolean z2 = this.active.get() == 0 ? z : false;
+                    boolean z2 = this.active.get() == 0;
                     Integer num = (Integer) spscLinkedArrayQueue.poll();
-                    boolean z3 = num == null ? z : false;
+                    boolean z3 = num == null;
                     if (z2 && z3) {
                         this.lefts.clear();
                         this.rights.clear();

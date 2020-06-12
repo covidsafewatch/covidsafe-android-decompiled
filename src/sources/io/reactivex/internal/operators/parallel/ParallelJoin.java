@@ -165,7 +165,7 @@ public final class ParallelJoin<T> extends Flowable<T> {
 
         /* access modifiers changed from: package-private */
         /* JADX WARNING: Code restructure failed: missing block: B:27:0x005d, code lost:
-            if (r12 == false) goto L_0x0065;
+            if (r13 == false) goto L_0x0065;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:28:0x005f, code lost:
             if (r15 == false) goto L_0x0065;
@@ -194,28 +194,28 @@ public final class ParallelJoin<T> extends Flowable<T> {
                 r8 = 0
                 r10 = r8
             L_0x0011:
-                int r12 = (r10 > r6 ? 1 : (r10 == r6 ? 0 : -1))
-                if (r12 == 0) goto L_0x0067
-                boolean r12 = r0.cancelled
-                if (r12 == 0) goto L_0x001d
+                int r13 = (r10 > r6 ? 1 : (r10 == r6 ? 0 : -1))
+                if (r13 == 0) goto L_0x0067
+                boolean r13 = r0.cancelled
+                if (r13 == 0) goto L_0x001d
                 r18.cleanup()
                 return
             L_0x001d:
-                io.reactivex.internal.util.AtomicThrowable r12 = r0.errors
-                java.lang.Object r12 = r12.get()
-                java.lang.Throwable r12 = (java.lang.Throwable) r12
-                if (r12 == 0) goto L_0x002e
+                io.reactivex.internal.util.AtomicThrowable r13 = r0.errors
+                java.lang.Object r13 = r13.get()
+                java.lang.Throwable r13 = (java.lang.Throwable) r13
+                if (r13 == 0) goto L_0x002e
                 r18.cleanup()
-                r3.onError(r12)
+                r3.onError(r13)
                 return
             L_0x002e:
-                java.util.concurrent.atomic.AtomicInteger r12 = r0.done
-                int r12 = r12.get()
-                if (r12 != 0) goto L_0x0038
-                r12 = 1
+                java.util.concurrent.atomic.AtomicInteger r13 = r0.done
+                int r13 = r13.get()
+                if (r13 != 0) goto L_0x0038
+                r13 = 1
                 goto L_0x0039
             L_0x0038:
-                r12 = 0
+                r13 = 0
             L_0x0039:
                 r14 = 0
                 r15 = 1
@@ -223,11 +223,11 @@ public final class ParallelJoin<T> extends Flowable<T> {
                 int r4 = r1.length
                 if (r14 >= r4) goto L_0x005d
                 r4 = r1[r14]
-                io.reactivex.internal.fuseable.SimplePlainQueue<T> r13 = r4.queue
-                if (r13 == 0) goto L_0x005a
-                java.lang.Object r13 = r13.poll()
-                if (r13 == 0) goto L_0x005a
-                r3.onNext(r13)
+                io.reactivex.internal.fuseable.SimplePlainQueue<T> r12 = r4.queue
+                if (r12 == 0) goto L_0x005a
+                java.lang.Object r12 = r12.poll()
+                if (r12 == 0) goto L_0x005a
+                r3.onNext(r12)
                 r4.requestOne()
                 r16 = 1
                 long r10 = r10 + r16
@@ -240,7 +240,7 @@ public final class ParallelJoin<T> extends Flowable<T> {
                 int r14 = r14 + 1
                 goto L_0x003b
             L_0x005d:
-                if (r12 == 0) goto L_0x0065
+                if (r13 == 0) goto L_0x0065
                 if (r15 == 0) goto L_0x0065
                 r3.onComplete()
                 return
@@ -278,16 +278,16 @@ public final class ParallelJoin<T> extends Flowable<T> {
                 if (r13 == 0) goto L_0x00a0
                 boolean r13 = r13.isEmpty()
                 if (r13 != 0) goto L_0x00a0
-                r13 = 0
+                r12 = 0
                 goto L_0x00a4
             L_0x00a0:
                 int r12 = r12 + 1
                 goto L_0x0090
             L_0x00a3:
-                r13 = 1
+                r12 = 1
             L_0x00a4:
                 if (r4 == 0) goto L_0x00ac
-                if (r13 == 0) goto L_0x00ac
+                if (r12 == 0) goto L_0x00ac
                 r3.onComplete()
                 return
             L_0x00ac:
@@ -374,7 +374,7 @@ public final class ParallelJoin<T> extends Flowable<T> {
 
         /* access modifiers changed from: package-private */
         /* JADX WARNING: Code restructure failed: missing block: B:22:0x004b, code lost:
-            if (r12 == false) goto L_0x0067;
+            if (r13 == false) goto L_0x0067;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:23:0x004d, code lost:
             if (r15 == false) goto L_0x0067;
@@ -412,31 +412,31 @@ public final class ParallelJoin<T> extends Flowable<T> {
                 r8 = 0
                 r10 = r8
             L_0x0011:
-                int r12 = (r10 > r6 ? 1 : (r10 == r6 ? 0 : -1))
-                if (r12 == 0) goto L_0x0069
-                boolean r12 = r0.cancelled
-                if (r12 == 0) goto L_0x001d
+                int r13 = (r10 > r6 ? 1 : (r10 == r6 ? 0 : -1))
+                if (r13 == 0) goto L_0x0069
+                boolean r13 = r0.cancelled
+                if (r13 == 0) goto L_0x001d
                 r18.cleanup()
                 return
             L_0x001d:
-                java.util.concurrent.atomic.AtomicInteger r12 = r0.done
-                int r12 = r12.get()
-                if (r12 != 0) goto L_0x0027
-                r12 = 1
+                java.util.concurrent.atomic.AtomicInteger r13 = r0.done
+                int r13 = r13.get()
+                if (r13 != 0) goto L_0x0027
+                r13 = 1
                 goto L_0x0028
             L_0x0027:
-                r12 = 0
+                r13 = 0
             L_0x0028:
                 r14 = 0
                 r15 = 1
             L_0x002a:
                 if (r14 >= r2) goto L_0x004b
                 r4 = r1[r14]
-                io.reactivex.internal.fuseable.SimplePlainQueue<T> r13 = r4.queue
-                if (r13 == 0) goto L_0x0048
-                java.lang.Object r13 = r13.poll()
-                if (r13 == 0) goto L_0x0048
-                r3.onNext(r13)
+                io.reactivex.internal.fuseable.SimplePlainQueue<T> r12 = r4.queue
+                if (r12 == 0) goto L_0x0048
+                java.lang.Object r12 = r12.poll()
+                if (r12 == 0) goto L_0x0048
+                r3.onNext(r12)
                 r4.requestOne()
                 r16 = 1
                 long r10 = r10 + r16
@@ -449,7 +449,7 @@ public final class ParallelJoin<T> extends Flowable<T> {
                 int r14 = r14 + 1
                 goto L_0x002a
             L_0x004b:
-                if (r12 == 0) goto L_0x0067
+                if (r13 == 0) goto L_0x0067
                 if (r15 == 0) goto L_0x0067
                 io.reactivex.internal.util.AtomicThrowable r1 = r0.errors
                 java.lang.Object r1 = r1.get()
@@ -489,16 +489,16 @@ public final class ParallelJoin<T> extends Flowable<T> {
                 if (r13 == 0) goto L_0x0091
                 boolean r13 = r13.isEmpty()
                 if (r13 != 0) goto L_0x0091
-                r13 = 0
+                r12 = 0
                 goto L_0x0095
             L_0x0091:
                 int r12 = r12 + 1
                 goto L_0x0081
             L_0x0094:
-                r13 = 1
+                r12 = 1
             L_0x0095:
                 if (r4 == 0) goto L_0x00b1
-                if (r13 == 0) goto L_0x00b1
+                if (r12 == 0) goto L_0x00b1
                 io.reactivex.internal.util.AtomicThrowable r1 = r0.errors
                 java.lang.Object r1 = r1.get()
                 java.lang.Throwable r1 = (java.lang.Throwable) r1

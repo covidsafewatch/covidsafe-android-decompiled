@@ -205,7 +205,7 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
 
     private final boolean allPermissionsEnabled() {
         Boolean isBlueToothEnabled = PermissionExtensionsKt.isBlueToothEnabled(this);
-        boolean booleanValue = isBlueToothEnabled != null ? isBlueToothEnabled.booleanValue() : true;
+        boolean booleanValue = isBlueToothEnabled != null ? isBlueToothEnabled.booleanValue() : false;
         Boolean isPushNotificationEnabled = PermissionExtensionsKt.isPushNotificationEnabled(this);
         boolean booleanValue2 = isPushNotificationEnabled != null ? isPushNotificationEnabled.booleanValue() : true;
         Boolean isNonBatteryOptimizationAllowed = PermissionExtensionsKt.isNonBatteryOptimizationAllowed(this);

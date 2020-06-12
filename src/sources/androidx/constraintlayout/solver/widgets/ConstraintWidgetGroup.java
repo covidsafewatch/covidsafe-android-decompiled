@@ -127,10 +127,10 @@ public class ConstraintWidgetGroup {
             r1 = 0
             r2 = 1
             if (r0 == 0) goto L_0x0015
-            r0 = r2
+            r0 = 1
             goto L_0x0016
         L_0x0015:
-            r0 = r1
+            r0 = 0
         L_0x0016:
             if (r0 == 0) goto L_0x001d
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r3 = r7.mRight
@@ -164,7 +164,7 @@ public class ConstraintWidgetGroup {
             int r4 = r3.mX
             goto L_0x004c
         L_0x004b:
-            r4 = r1
+            r4 = 0
         L_0x004c:
             if (r0 == 0) goto L_0x0056
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r0 = r7.mRight
@@ -208,7 +208,7 @@ public class ConstraintWidgetGroup {
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r0 = r7.mBottom
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r0 = r0.mTarget
             if (r0 == 0) goto L_0x009c
-            r1 = r2
+            r1 = 1
         L_0x009c:
             if (r1 == 0) goto L_0x00a3
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r0 = r7.mBottom

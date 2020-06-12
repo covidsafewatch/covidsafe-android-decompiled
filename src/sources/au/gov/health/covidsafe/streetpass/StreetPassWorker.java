@@ -164,7 +164,7 @@ public final class StreetPassWorker {
             boolean r2 = r2.isEmpty()
             if (r2 == 0) goto L_0x0049
         L_0x0047:
-            r0 = r1
+            r0 = 0
             goto L_0x006c
         L_0x0049:
             java.util.Iterator r0 = r0.iterator()
@@ -178,7 +178,7 @@ public final class StreetPassWorker {
             java.lang.String r4 = r4.getAddress()
             boolean r2 = kotlin.jvm.internal.Intrinsics.areEqual((java.lang.Object) r2, (java.lang.Object) r4)
             if (r2 == 0) goto L_0x004d
-            r0 = r3
+            r0 = 1
         L_0x006c:
             if (r0 == 0) goto L_0x008f
             au.gov.health.covidsafe.logging.CentralLog$Companion r0 = au.gov.health.covidsafe.logging.CentralLog.Companion
@@ -203,7 +203,7 @@ public final class StreetPassWorker {
             boolean r2 = r2.isEmpty()
             if (r2 == 0) goto L_0x00a2
         L_0x00a0:
-            r0 = r3
+            r0 = 1
             goto L_0x00c9
         L_0x00a2:
             java.util.Iterator r0 = r0.iterator()
@@ -218,7 +218,7 @@ public final class StreetPassWorker {
             java.lang.String r4 = r4.getAddress()
             boolean r2 = kotlin.jvm.internal.Intrinsics.areEqual((java.lang.Object) r2, (java.lang.Object) r4)
             if (r2 == 0) goto L_0x00a6
-            r0 = r1
+            r0 = 0
         L_0x00c9:
             if (r0 == 0) goto L_0x0106
             java.util.concurrent.PriorityBlockingQueue<au.gov.health.covidsafe.streetpass.Work> r0 = r6.workQueue
@@ -337,18 +337,18 @@ public final class StreetPassWorker {
         L_0x003e:
             r5 = 0
         L_0x0040:
-            int r0 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r0 <= 0) goto L_0x0045
+            int r7 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
+            if (r7 <= 0) goto L_0x0045
             goto L_0x0046
         L_0x0045:
-            r3 = r2
+            r3 = 0
         L_0x0046:
             au.gov.health.covidsafe.streetpass.Work r0 = r15.currentPendingConnection
             if (r0 == 0) goto L_0x004f
             boolean r0 = r0.getFinished()
             goto L_0x0050
         L_0x004f:
-            r0 = r2
+            r0 = 0
         L_0x0050:
             if (r0 != 0) goto L_0x0054
             if (r3 == 0) goto L_0x00e6
@@ -460,8 +460,8 @@ public final class StreetPassWorker {
             long r8 = r7.getTimeStamp()
             long r8 = r5 - r8
             r10 = 7000(0x1b58, double:3.4585E-320)
-            int r8 = (r8 > r10 ? 1 : (r8 == r10 ? 0 : -1))
-            if (r8 <= 0) goto L_0x011f
+            int r12 = (r8 > r10 ? 1 : (r8 == r10 ? 0 : -1))
+            if (r12 <= 0) goto L_0x011f
             au.gov.health.covidsafe.logging.CentralLog$Companion r8 = au.gov.health.covidsafe.logging.CentralLog.Companion
             java.lang.String r9 = r15.TAG
             java.lang.StringBuilder r10 = new java.lang.StringBuilder

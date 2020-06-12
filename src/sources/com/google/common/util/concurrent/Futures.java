@@ -251,7 +251,7 @@ public final class Futures extends GwtFuturesCatchingSpecialization {
             r0.<init>(r6)
             com.google.common.collect.ImmutableList$Builder r2 = com.google.common.collect.ImmutableList.builder()
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x0025:
             int r5 = r6.length
             if (r4 >= r5) goto L_0x0033

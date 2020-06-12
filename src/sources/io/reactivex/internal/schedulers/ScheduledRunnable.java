@@ -103,10 +103,10 @@ public final class ScheduledRunnable extends AtomicReferenceArray<Object> implem
             java.lang.Object r2 = r5.get(r2)
             java.lang.Thread r4 = java.lang.Thread.currentThread()
             if (r2 == r4) goto L_0x0020
-            r2 = r0
+            r2 = 1
             goto L_0x0021
         L_0x0020:
-            r2 = r3
+            r2 = 0
         L_0x0021:
             if (r2 == 0) goto L_0x0026
             java.lang.Object r4 = ASYNC_DISPOSED

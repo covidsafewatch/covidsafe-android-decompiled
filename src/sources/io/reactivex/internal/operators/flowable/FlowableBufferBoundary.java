@@ -191,7 +191,7 @@ public final class FlowableBufferBoundary<T, U extends Collection<? super T>, Op
                 if (r4 != 0) goto L_0x0015
                 java.util.concurrent.atomic.AtomicReference<org.reactivestreams.Subscription> r4 = r3.upstream
                 io.reactivex.internal.subscriptions.SubscriptionHelper.cancel(r4)
-                r4 = r0
+                r4 = 1
                 goto L_0x0016
             L_0x0015:
                 r4 = 0

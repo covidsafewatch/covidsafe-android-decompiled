@@ -188,7 +188,7 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
             drawable.jumpToCurrentState();
             this.mLastDrawable = null;
             this.mLastIndex = -1;
-            z = true;
+            z = DEFAULT_DITHER;
         } else {
             z = false;
         }
@@ -201,7 +201,7 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
         }
         if (this.mExitAnimationEnd != 0) {
             this.mExitAnimationEnd = 0;
-            z = true;
+            z = DEFAULT_DITHER;
         }
         if (this.mEnterAnimationEnd != 0) {
             this.mEnterAnimationEnd = 0;
@@ -468,9 +468,9 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
     }
 
     /* access modifiers changed from: package-private */
-    /* JADX WARNING: Removed duplicated region for block: B:12:0x003f  */
-    /* JADX WARNING: Removed duplicated region for block: B:18:0x0068  */
-    /* JADX WARNING: Removed duplicated region for block: B:21:0x006d A[ADDED_TO_REGION] */
+    /* JADX WARNING: Removed duplicated region for block: B:12:0x0041  */
+    /* JADX WARNING: Removed duplicated region for block: B:18:0x006c  */
+    /* JADX WARNING: Removed duplicated region for block: B:21:0x0071 A[ADDED_TO_REGION] */
     /* JADX WARNING: Removed duplicated region for block: B:24:? A[ADDED_TO_REGION, RETURN, SYNTHETIC] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public void animate(boolean r14) {
@@ -483,16 +483,16 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
             r4 = 255(0xff, double:1.26E-321)
             r6 = 0
             r7 = 0
-            if (r3 == 0) goto L_0x0038
+            if (r3 == 0) goto L_0x003a
             long r9 = r13.mEnterAnimationEnd
             int r11 = (r9 > r7 ? 1 : (r9 == r7 ? 0 : -1))
-            if (r11 == 0) goto L_0x003a
+            if (r11 == 0) goto L_0x003c
             int r11 = (r9 > r1 ? 1 : (r9 == r1 ? 0 : -1))
             if (r11 > 0) goto L_0x0022
             int r9 = r13.mAlpha
             r3.setAlpha(r9)
             r13.mEnterAnimationEnd = r7
-            goto L_0x003a
+            goto L_0x003c
         L_0x0022:
             long r9 = r9 - r1
             long r9 = r9 * r4
@@ -506,28 +506,28 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
             int r3 = r3 * r10
             int r3 = r3 / 255
             r9.setAlpha(r3)
-            r3 = r0
-            goto L_0x003b
-        L_0x0038:
-            r13.mEnterAnimationEnd = r7
+            r3 = 1
+            goto L_0x003d
         L_0x003a:
-            r3 = r6
-        L_0x003b:
+            r13.mEnterAnimationEnd = r7
+        L_0x003c:
+            r3 = 0
+        L_0x003d:
             android.graphics.drawable.Drawable r9 = r13.mLastDrawable
-            if (r9 == 0) goto L_0x0068
+            if (r9 == 0) goto L_0x006c
             long r10 = r13.mExitAnimationEnd
             int r12 = (r10 > r7 ? 1 : (r10 == r7 ? 0 : -1))
-            if (r12 == 0) goto L_0x006a
+            if (r12 == 0) goto L_0x006e
             int r12 = (r10 > r1 ? 1 : (r10 == r1 ? 0 : -1))
-            if (r12 > 0) goto L_0x0055
+            if (r12 > 0) goto L_0x0057
             r9.setVisible(r6, r6)
             r0 = 0
             r13.mLastDrawable = r0
             r0 = -1
             r13.mLastIndex = r0
             r13.mExitAnimationEnd = r7
-            goto L_0x006a
-        L_0x0055:
+            goto L_0x006e
+        L_0x0057:
             long r10 = r10 - r1
             long r10 = r10 * r4
             int r3 = (int) r10
@@ -539,19 +539,19 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
             int r3 = r3 * r5
             int r3 = r3 / 255
             r4.setAlpha(r3)
-            goto L_0x006b
-        L_0x0068:
+            goto L_0x006f
+        L_0x006c:
             r13.mExitAnimationEnd = r7
-        L_0x006a:
+        L_0x006e:
             r0 = r3
-        L_0x006b:
-            if (r14 == 0) goto L_0x0077
-            if (r0 == 0) goto L_0x0077
+        L_0x006f:
+            if (r14 == 0) goto L_0x007b
+            if (r0 == 0) goto L_0x007b
             java.lang.Runnable r14 = r13.mAnimationRunnable
             r3 = 16
             long r1 = r1 + r3
             r13.scheduleSelf(r14, r1)
-        L_0x0077:
+        L_0x007b:
             return
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.graphics.drawable.DrawableContainer.animate(boolean):void");
@@ -1032,7 +1032,7 @@ class DrawableContainer extends Drawable implements Drawable.Callback {
                 if (i2 >= i) {
                     break;
                 } else if (drawableArr[i2].isStateful()) {
-                    z = true;
+                    z = DrawableContainer.DEFAULT_DITHER;
                     break;
                 } else {
                     i2++;

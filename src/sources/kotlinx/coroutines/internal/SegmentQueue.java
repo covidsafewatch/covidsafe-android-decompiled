@@ -99,20 +99,20 @@ public abstract class SegmentQueue<S extends Segment<S>> {
 
     /* JADX WARNING: Removed duplicated region for block: B:0:0x0000 A[LOOP_START, MTH_ENTER_BLOCK] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    private final void moveTailForward(S r6) {
+    private final void moveTailForward(S r7) {
         /*
-            r5 = this;
+            r6 = this;
         L_0x0000:
-            java.lang.Object r0 = r5._tail
+            java.lang.Object r0 = r6._tail
             kotlinx.coroutines.internal.Segment r0 = (kotlinx.coroutines.internal.Segment) r0
             long r1 = r0.getId()
-            long r3 = r6.getId()
-            int r1 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
-            if (r1 <= 0) goto L_0x0011
+            long r3 = r7.getId()
+            int r5 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
+            if (r5 <= 0) goto L_0x0011
             return
         L_0x0011:
             java.util.concurrent.atomic.AtomicReferenceFieldUpdater r1 = _tail$FU
-            boolean r0 = r1.compareAndSet(r5, r0, r6)
+            boolean r0 = r1.compareAndSet(r6, r0, r7)
             if (r0 == 0) goto L_0x0000
             return
         */

@@ -83,7 +83,7 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
             if (r1 == 0) goto L_0x0036
             goto L_0x0037
         L_0x0036:
-            r2 = r3
+            r2 = 0
         L_0x0037:
             r5.accept(r0)     // Catch:{ all -> 0x0042 }
             if (r2 == 0) goto L_0x0041
@@ -267,28 +267,28 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
         }
 
         /* access modifiers changed from: package-private */
-        /* JADX WARNING: Code restructure failed: missing block: B:74:0x013b, code lost:
-            if (r11 == 0) goto L_0x014e;
+        /* JADX WARNING: Code restructure failed: missing block: B:73:0x0136, code lost:
+            if (r11 == 0) goto L_0x0149;
          */
-        /* JADX WARNING: Code restructure failed: missing block: B:75:0x013d, code lost:
-            r3 = true;
+        /* JADX WARNING: Code restructure failed: missing block: B:74:0x0138, code lost:
+            r3 = 1;
          */
-        /* JADX WARNING: Code restructure failed: missing block: B:76:0x0140, code lost:
-            if (r1.sourceMode == 1) goto L_0x014f;
+        /* JADX WARNING: Code restructure failed: missing block: B:75:0x013b, code lost:
+            if (r1.sourceMode == 1) goto L_0x014a;
          */
-        /* JADX WARNING: Code restructure failed: missing block: B:77:0x0142, code lost:
+        /* JADX WARNING: Code restructure failed: missing block: B:76:0x013d, code lost:
             r1.upstream.get().request(r12);
          */
-        /* JADX WARNING: Code restructure failed: missing block: B:78:0x014e, code lost:
-            r3 = true;
+        /* JADX WARNING: Code restructure failed: missing block: B:77:0x0149, code lost:
+            r3 = 1;
          */
-        /* JADX WARNING: Code restructure failed: missing block: B:80:0x0153, code lost:
-            if (r14 == 0) goto L_0x0159;
+        /* JADX WARNING: Code restructure failed: missing block: B:79:0x014e, code lost:
+            if (r14 == 0) goto L_0x0154;
          */
-        /* JADX WARNING: Code restructure failed: missing block: B:81:0x0155, code lost:
-            if (r8 != false) goto L_0x0159;
+        /* JADX WARNING: Code restructure failed: missing block: B:80:0x0150, code lost:
+            if (r8 != false) goto L_0x0154;
          */
-        /* JADX WARNING: Code restructure failed: missing block: B:94:0x0014, code lost:
+        /* JADX WARNING: Code restructure failed: missing block: B:93:0x0014, code lost:
             continue;
          */
         /* Code decompiled incorrectly, please refer to instructions dump. */
@@ -305,7 +305,7 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
                 io.reactivex.internal.operators.flowable.FlowablePublish$InnerSubscriber[] r0 = (io.reactivex.internal.operators.flowable.FlowablePublish.InnerSubscriber[]) r0
                 r3 = 1
                 r4 = r0
-                r5 = r3
+                r5 = 1
             L_0x0014:
                 java.lang.Object r0 = r1.terminalEvent
                 io.reactivex.internal.fuseable.SimpleQueue<T> r6 = r1.queue
@@ -317,13 +317,13 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
                 r8 = 0
                 goto L_0x0024
             L_0x0023:
-                r8 = r3
+                r8 = 1
             L_0x0024:
                 boolean r0 = r1.checkTerminated(r0, r8)
                 if (r0 == 0) goto L_0x002b
                 return
             L_0x002b:
-                if (r8 != 0) goto L_0x0159
+                if (r8 != 0) goto L_0x0154
                 int r0 = r4.length
                 int r9 = r4.length
                 r12 = 0
@@ -334,8 +334,8 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
                 if (r12 >= r9) goto L_0x0052
                 r7 = r4[r12]
                 long r18 = r7.get()
-                int r16 = (r18 > r16 ? 1 : (r18 == r16 ? 0 : -1))
-                if (r16 == 0) goto L_0x004d
+                int r20 = (r18 > r16 ? 1 : (r18 == r16 ? 0 : -1))
+                if (r20 == 0) goto L_0x004d
                 long r10 = r7.emitted
                 long r10 = r18 - r10
                 long r14 = java.lang.Math.min(r14, r10)
@@ -364,7 +364,7 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
                 r7 = 0
             L_0x0074:
                 if (r7 != 0) goto L_0x0078
-                r7 = r3
+                r7 = 1
                 goto L_0x0079
             L_0x0078:
                 r7 = 0
@@ -385,7 +385,7 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
             L_0x0091:
                 long r12 = (long) r11
                 int r0 = (r12 > r14 ? 1 : (r12 == r14 ? 0 : -1))
-                if (r0 >= 0) goto L_0x013b
+                if (r0 >= 0) goto L_0x0136
                 java.lang.Object r0 = r1.terminalEvent
                 java.lang.Object r8 = r6.poll()     // Catch:{ all -> 0x009d }
                 goto L_0x00b4
@@ -402,7 +402,7 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
                 r8 = 0
             L_0x00b4:
                 if (r8 != 0) goto L_0x00b8
-                r7 = r3
+                r7 = 1
                 goto L_0x00b9
             L_0x00b8:
                 r7 = 0
@@ -413,98 +413,94 @@ public final class FlowablePublish<T> extends ConnectableFlowable<T> implements 
             L_0x00c0:
                 if (r7 == 0) goto L_0x00c5
                 r8 = r7
-                goto L_0x013b
+                goto L_0x0136
             L_0x00c5:
                 java.lang.Object r0 = io.reactivex.internal.util.NotificationLite.getValue(r8)
                 int r8 = r4.length
                 r12 = 0
                 r13 = 0
             L_0x00cc:
-                if (r12 >= r8) goto L_0x0107
+                if (r12 >= r8) goto L_0x0102
                 r3 = r4[r12]
                 long r22 = r3.get()
                 int r24 = (r22 > r16 ? 1 : (r22 == r16 ? 0 : -1))
-                if (r24 == 0) goto L_0x00f5
+                if (r24 == 0) goto L_0x00f0
                 r20 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                int r22 = (r22 > r20 ? 1 : (r22 == r20 ? 0 : -1))
-                if (r22 == 0) goto L_0x00eb
+                int r24 = (r22 > r20 ? 1 : (r22 == r20 ? 0 : -1))
                 r22 = r6
                 r23 = r7
+                if (r24 == 0) goto L_0x00ea
                 long r6 = r3.emitted
                 long r6 = r6 + r9
                 r3.emitted = r6
-                goto L_0x00ef
-            L_0x00eb:
-                r22 = r6
-                r23 = r7
-            L_0x00ef:
+            L_0x00ea:
                 org.reactivestreams.Subscriber<? super T> r3 = r3.child
                 r3.onNext(r0)
-                goto L_0x00ff
-            L_0x00f5:
+                goto L_0x00fa
+            L_0x00f0:
                 r22 = r6
                 r23 = r7
                 r20 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
                 r13 = 1
-            L_0x00ff:
+            L_0x00fa:
                 int r12 = r12 + 1
                 r6 = r22
                 r7 = r23
                 r3 = 1
                 goto L_0x00cc
-            L_0x0107:
+            L_0x0102:
                 r22 = r6
                 r23 = r7
                 r20 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
                 int r11 = r11 + 1
                 java.lang.Object r0 = r2.get()
                 io.reactivex.internal.operators.flowable.FlowablePublish$InnerSubscriber[] r0 = (io.reactivex.internal.operators.flowable.FlowablePublish.InnerSubscriber[]) r0
-                if (r13 != 0) goto L_0x0124
-                if (r0 == r4) goto L_0x011d
-                goto L_0x0124
-            L_0x011d:
+                if (r13 != 0) goto L_0x011f
+                if (r0 == r4) goto L_0x0118
+                goto L_0x011f
+            L_0x0118:
                 r6 = r22
                 r8 = r23
                 r3 = 1
                 goto L_0x0091
-            L_0x0124:
-                if (r11 == 0) goto L_0x0137
+            L_0x011f:
+                if (r11 == 0) goto L_0x0132
                 int r3 = r1.sourceMode
                 r4 = 1
-                if (r3 == r4) goto L_0x0137
+                if (r3 == r4) goto L_0x0132
                 java.util.concurrent.atomic.AtomicReference<org.reactivestreams.Subscription> r3 = r1.upstream
                 java.lang.Object r3 = r3.get()
                 org.reactivestreams.Subscription r3 = (org.reactivestreams.Subscription) r3
                 long r6 = (long) r11
                 r3.request(r6)
-            L_0x0137:
+            L_0x0132:
                 r4 = r0
                 r3 = 1
                 goto L_0x0014
-            L_0x013b:
-                if (r11 == 0) goto L_0x014e
+            L_0x0136:
+                if (r11 == 0) goto L_0x0149
                 int r0 = r1.sourceMode
                 r3 = 1
-                if (r0 == r3) goto L_0x014f
+                if (r0 == r3) goto L_0x014a
                 java.util.concurrent.atomic.AtomicReference<org.reactivestreams.Subscription> r0 = r1.upstream
                 java.lang.Object r0 = r0.get()
                 org.reactivestreams.Subscription r0 = (org.reactivestreams.Subscription) r0
                 r0.request(r12)
-                goto L_0x014f
-            L_0x014e:
+                goto L_0x014a
+            L_0x0149:
                 r3 = 1
-            L_0x014f:
+            L_0x014a:
                 r6 = 0
                 int r0 = (r14 > r6 ? 1 : (r14 == r6 ? 0 : -1))
-                if (r0 == 0) goto L_0x0159
-                if (r8 != 0) goto L_0x0159
+                if (r0 == 0) goto L_0x0154
+                if (r8 != 0) goto L_0x0154
                 goto L_0x0014
-            L_0x0159:
+            L_0x0154:
                 int r0 = -r5
                 int r5 = r1.addAndGet(r0)
-                if (r5 != 0) goto L_0x0161
+                if (r5 != 0) goto L_0x015c
                 return
-            L_0x0161:
+            L_0x015c:
                 java.lang.Object r0 = r2.get()
                 r4 = r0
                 io.reactivex.internal.operators.flowable.FlowablePublish$InnerSubscriber[] r4 = (io.reactivex.internal.operators.flowable.FlowablePublish.InnerSubscriber[]) r4

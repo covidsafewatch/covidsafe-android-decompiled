@@ -135,12 +135,12 @@ public class DiffUtil {
             java.util.Arrays.fill(r2, r8, r9, r3)
             int r8 = r6 % 2
             if (r8 == 0) goto L_0x002d
-            r8 = r5
+            r8 = 1
             goto L_0x002e
         L_0x002d:
-            r8 = r10
+            r8 = 0
         L_0x002e:
-            r9 = r10
+            r9 = 0
         L_0x002f:
             if (r9 > r7) goto L_0x012b
             int r11 = -r9
@@ -161,13 +161,13 @@ public class DiffUtil {
             int r13 = r13 - r5
             r13 = r1[r13]
             int r13 = r13 + r5
-            r14 = r5
+            r14 = 1
             goto L_0x0053
         L_0x004d:
             int r13 = r26 + r12
             int r13 = r13 + r5
             r13 = r1[r13]
-            r14 = r10
+            r14 = 0
         L_0x0053:
             int r15 = r13 - r12
         L_0x0055:
@@ -214,11 +214,11 @@ public class DiffUtil {
         L_0x009c:
             r13 = 0
             int r12 = r12 + 2
-            r10 = r13
             r5 = 1
+            r10 = 0
             goto L_0x0033
         L_0x00a2:
-            r13 = r10
+            r13 = 0
             r5 = r11
         L_0x00a4:
             if (r5 > r9) goto L_0x0120
@@ -242,7 +242,7 @@ public class DiffUtil {
             int r12 = r12 + r15
             r12 = r2[r12]
             int r12 = r12 - r15
-            r14 = r15
+            r14 = 1
             goto L_0x00cd
         L_0x00c6:
             r15 = 1
@@ -250,7 +250,7 @@ public class DiffUtil {
             int r12 = r26 + r10
             int r12 = r12 - r15
             r12 = r2[r12]
-            r14 = r13
+            r14 = 0
         L_0x00cd:
             int r16 = r12 - r10
         L_0x00cf:
@@ -305,8 +305,8 @@ public class DiffUtil {
             r18 = r3
             r3 = 1
             int r9 = r9 + 1
-            r5 = r3
             r3 = r18
+            r5 = 1
             r10 = 0
             goto L_0x002f
         L_0x012b:

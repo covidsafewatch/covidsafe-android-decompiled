@@ -317,7 +317,7 @@ public final class FlowablePublishMulticast<T, R> extends AbstractFlowableWithUp
                 int r4 = r1.sourceMode
                 r6 = 1
                 if (r4 == r6) goto L_0x0018
-                r4 = r6
+                r4 = 1
                 goto L_0x0019
             L_0x0018:
                 r4 = 0
@@ -325,7 +325,7 @@ public final class FlowablePublishMulticast<T, R> extends AbstractFlowableWithUp
                 java.util.concurrent.atomic.AtomicReference<io.reactivex.internal.operators.flowable.FlowablePublishMulticast$MulticastSubscription<T>[]> r7 = r1.subscribers
                 java.lang.Object r8 = r7.get()
                 io.reactivex.internal.operators.flowable.FlowablePublishMulticast$MulticastSubscription[] r8 = (io.reactivex.internal.operators.flowable.FlowablePublishMulticast.MulticastSubscription[]) r8
-                r9 = r6
+                r9 = 1
             L_0x0022:
                 int r10 = r8.length
                 if (r0 == 0) goto L_0x0128

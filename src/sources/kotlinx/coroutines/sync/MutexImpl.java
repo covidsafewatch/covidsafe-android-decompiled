@@ -167,7 +167,9 @@ public final class MutexImpl implements Mutex, SelectClause2<Object, Mutex> {
             if (((Empty) obj2).locked == obj) {
                 return true;
             }
-        } else if ((obj2 instanceof LockedQueue) && ((LockedQueue) obj2).owner == obj) {
+        } else if (!(obj2 instanceof LockedQueue) || ((LockedQueue) obj2).owner != obj) {
+            return false;
+        } else {
             return true;
         }
         return false;

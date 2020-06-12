@@ -83,7 +83,7 @@ public final class RealBufferedSource implements BufferedSource {
         Intrinsics.checkParameterIsNotNull(buffer, "sink");
         if (!(j >= 0)) {
             throw new IllegalArgumentException(("byteCount < 0: " + j).toString());
-        } else if (!(!this.closed)) {
+        } else if (!(true ^ this.closed)) {
             throw new IllegalStateException("closed".toString());
         } else if (this.bufferField.size() == 0 && this.source.read(this.bufferField, (long) 8192) == -1) {
             return -1;

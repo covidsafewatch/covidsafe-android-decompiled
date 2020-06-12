@@ -68,7 +68,7 @@ public final class ProduceKt {
             kotlin.coroutines.CoroutineContext$Element r6 = r6.get(r2)
             kotlinx.coroutines.Job r6 = (kotlinx.coroutines.Job) r6
             if (r6 != r4) goto L_0x0052
-            r6 = r3
+            r6 = 1
             goto L_0x0053
         L_0x0052:
             r6 = 0
@@ -142,10 +142,7 @@ public final class ProduceKt {
             coroutineContext = EmptyCoroutineContext.INSTANCE;
         }
         CoroutineContext coroutineContext2 = coroutineContext;
-        if ((i2 & 2) != 0) {
-            i = 0;
-        }
-        int i3 = i;
+        int i3 = (i2 & 2) != 0 ? 0 : i;
         if ((i2 & 4) != 0) {
             coroutineStart = CoroutineStart.DEFAULT;
         }

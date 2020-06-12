@@ -74,8 +74,8 @@ public class RxRingBuffer implements Subscription {
             z = true;
             z2 = false;
             if (queue2 != null) {
-                z = false;
                 z2 = !queue2.offer(NotificationLite.next(obj));
+                z = false;
             }
         }
         if (z) {

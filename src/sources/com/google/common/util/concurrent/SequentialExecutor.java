@@ -127,7 +127,7 @@ final class SequentialExecutor implements Executor {
             if (r3 == r4) goto L_0x0034
             goto L_0x0035
         L_0x0034:
-            r8 = r0
+            r8 = 0
         L_0x0035:
             if (r8 == 0) goto L_0x0038
             return
@@ -169,7 +169,7 @@ final class SequentialExecutor implements Executor {
             if (r3 == 0) goto L_0x006b
             goto L_0x006c
         L_0x006b:
-            r8 = r0
+            r8 = 0
         L_0x006c:
             boolean r0 = r1 instanceof java.util.concurrent.RejectedExecutionException     // Catch:{ all -> 0x0075 }
             if (r0 == 0) goto L_0x0074
@@ -245,7 +245,7 @@ final class SequentialExecutor implements Executor {
             /*
                 r8 = this;
                 r0 = 0
-                r1 = r0
+                r1 = 0
             L_0x0002:
                 com.google.common.util.concurrent.SequentialExecutor r2 = com.google.common.util.concurrent.SequentialExecutor.this     // Catch:{ all -> 0x0076 }
                 java.util.Deque r2 = r2.queue     // Catch:{ all -> 0x0076 }

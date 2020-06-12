@@ -101,7 +101,7 @@ final class ChannelsKt__Channels_commonKt$drop$1 extends SuspendLambda implement
             kotlinx.coroutines.channels.ProducerScope r10 = r9.p$
             int r1 = r9.$n
             if (r1 < 0) goto L_0x005e
-            r1 = r4
+            r1 = 1
             goto L_0x005f
         L_0x005e:
             r1 = 0

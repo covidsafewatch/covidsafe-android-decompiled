@@ -88,7 +88,9 @@ final class ListenerCallQueue<L> {
                 } catch (RuntimeException e) {
                     synchronized (this) {
                         this.isThreadScheduled = false;
-                        ListenerCallQueue.logger.log(Level.SEVERE, "Exception while running callbacks for " + this.listener + " on " + this.executor, e);
+                        Logger access$000 = ListenerCallQueue.logger;
+                        Level level = Level.SEVERE;
+                        access$000.log(level, "Exception while running callbacks for " + this.listener + " on " + this.executor, e);
                         throw e;
                     }
                 }
@@ -123,7 +125,7 @@ final class ListenerCallQueue<L> {
             L_0x0000:
                 r0 = 0
                 r1 = 1
-                monitor-enter(r9)     // Catch:{ all -> 0x0059 }
+                monitor-enter(r9)     // Catch:{ all -> 0x0058 }
                 boolean r2 = r9.isThreadScheduled     // Catch:{ all -> 0x004c }
                 com.google.common.base.Preconditions.checkState(r2)     // Catch:{ all -> 0x004c }
                 java.util.Queue<com.google.common.util.concurrent.ListenerCallQueue$Event<L>> r2 = r9.waitQueue     // Catch:{ all -> 0x004c }
@@ -137,8 +139,8 @@ final class ListenerCallQueue<L> {
                 return
             L_0x001c:
                 r1 = move-exception
-                r2 = r0
-                goto L_0x0050
+                r2 = 0
+                goto L_0x004f
             L_0x001f:
                 monitor-exit(r9)     // Catch:{ all -> 0x004c }
                 L r4 = r9.listener     // Catch:{ RuntimeException -> 0x0026 }
@@ -146,50 +148,49 @@ final class ListenerCallQueue<L> {
                 goto L_0x0000
             L_0x0026:
                 r2 = move-exception
-                java.util.logging.Logger r4 = com.google.common.util.concurrent.ListenerCallQueue.logger     // Catch:{ all -> 0x0059 }
-                java.util.logging.Level r5 = java.util.logging.Level.SEVERE     // Catch:{ all -> 0x0059 }
-                java.lang.StringBuilder r6 = new java.lang.StringBuilder     // Catch:{ all -> 0x0059 }
-                r6.<init>()     // Catch:{ all -> 0x0059 }
+                java.util.logging.Logger r4 = com.google.common.util.concurrent.ListenerCallQueue.logger     // Catch:{ all -> 0x0058 }
+                java.util.logging.Level r5 = java.util.logging.Level.SEVERE     // Catch:{ all -> 0x0058 }
+                java.lang.StringBuilder r6 = new java.lang.StringBuilder     // Catch:{ all -> 0x0058 }
+                r6.<init>()     // Catch:{ all -> 0x0058 }
                 java.lang.String r7 = "Exception while executing callback: "
-                r6.append(r7)     // Catch:{ all -> 0x0059 }
-                L r7 = r9.listener     // Catch:{ all -> 0x0059 }
-                r6.append(r7)     // Catch:{ all -> 0x0059 }
+                r6.append(r7)     // Catch:{ all -> 0x0058 }
+                L r7 = r9.listener     // Catch:{ all -> 0x0058 }
+                r6.append(r7)     // Catch:{ all -> 0x0058 }
                 java.lang.String r7 = " "
-                r6.append(r7)     // Catch:{ all -> 0x0059 }
-                r6.append(r3)     // Catch:{ all -> 0x0059 }
-                java.lang.String r3 = r6.toString()     // Catch:{ all -> 0x0059 }
-                r4.log(r5, r3, r2)     // Catch:{ all -> 0x0059 }
+                r6.append(r7)     // Catch:{ all -> 0x0058 }
+                r6.append(r3)     // Catch:{ all -> 0x0058 }
+                java.lang.String r3 = r6.toString()     // Catch:{ all -> 0x0058 }
+                r4.log(r5, r3, r2)     // Catch:{ all -> 0x0058 }
                 goto L_0x0000
             L_0x004c:
                 r2 = move-exception
-                r8 = r2
-                r2 = r1
-                r1 = r8
-            L_0x0050:
-                monitor-exit(r9)     // Catch:{ all -> 0x0057 }
-                throw r1     // Catch:{ all -> 0x0052 }
-            L_0x0052:
+                r1 = r2
+                r2 = 1
+            L_0x004f:
+                monitor-exit(r9)     // Catch:{ all -> 0x0056 }
+                throw r1     // Catch:{ all -> 0x0051 }
+            L_0x0051:
                 r1 = move-exception
                 r8 = r2
                 r2 = r1
                 r1 = r8
-                goto L_0x005a
-            L_0x0057:
+                goto L_0x0059
+            L_0x0056:
                 r1 = move-exception
-                goto L_0x0050
-            L_0x0059:
+                goto L_0x004f
+            L_0x0058:
                 r2 = move-exception
-            L_0x005a:
-                if (r1 == 0) goto L_0x0064
+            L_0x0059:
+                if (r1 == 0) goto L_0x0063
                 monitor-enter(r9)
-                r9.isThreadScheduled = r0     // Catch:{ all -> 0x0061 }
-                monitor-exit(r9)     // Catch:{ all -> 0x0061 }
-                goto L_0x0064
-            L_0x0061:
+                r9.isThreadScheduled = r0     // Catch:{ all -> 0x0060 }
+                monitor-exit(r9)     // Catch:{ all -> 0x0060 }
+                goto L_0x0063
+            L_0x0060:
                 r0 = move-exception
-                monitor-exit(r9)     // Catch:{ all -> 0x0061 }
+                monitor-exit(r9)     // Catch:{ all -> 0x0060 }
                 throw r0
-            L_0x0064:
+            L_0x0063:
                 throw r2
             */
             throw new UnsupportedOperationException("Method not decompiled: com.google.common.util.concurrent.ListenerCallQueue.PerListenerQueue.run():void");

@@ -3,6 +3,8 @@ package au.gov.health.covidsafe.extensions;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 
@@ -10,12 +12,27 @@ import kotlin.jvm.internal.Intrinsics;
 /* compiled from: NetworkExtensions.kt */
 public final class NetworkExtensionsKt {
     public static final boolean isInternetAvailable(Context context) {
+        int type;
         Intrinsics.checkParameterIsNotNull(context, "$this$isInternetAvailable");
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
-        NetworkCapabilities networkCapabilities = connectivityManager != null ? connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork()) : null;
-        if (networkCapabilities == null || (!networkCapabilities.hasTransport(0) && !networkCapabilities.hasTransport(1) && !networkCapabilities.hasTransport(3))) {
-            return false;
+        if (connectivityManager != null) {
+            if (Build.VERSION.SDK_INT >= 23) {
+                NetworkCapabilities networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
+                if (networkCapabilities == null) {
+                    return false;
+                }
+                if (networkCapabilities.hasTransport(0) || networkCapabilities.hasTransport(1) || networkCapabilities.hasTransport(3)) {
+                    return true;
+                }
+                return false;
+            }
+            for (NetworkInfo networkInfo : connectivityManager.getAllNetworkInfo()) {
+                Intrinsics.checkExpressionValueIsNotNull(networkInfo, "networkInfo");
+                if (networkInfo.isConnected() && ((type = networkInfo.getType()) == 0 || type == 1 || type == 9)) {
+                    return true;
+                }
+            }
         }
-        return true;
+        return false;
     }
 }

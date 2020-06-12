@@ -61,7 +61,7 @@ public final class OnSubscribeCombineLatest<T, R> implements Observable.OnSubscr
             rx.Observable[] r1 = new rx.Observable[r1]
             java.util.Iterator r0 = r0.iterator()
             r2 = 0
-            r3 = r2
+            r3 = 0
         L_0x0026:
             boolean r4 = r0.hasNext()
             if (r4 == 0) goto L_0x0044

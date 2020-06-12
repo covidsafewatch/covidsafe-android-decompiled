@@ -102,7 +102,7 @@ public final class ParallelSortedJoin<T> extends Flowable<T> {
 
         /* access modifiers changed from: package-private */
         /* JADX WARNING: Code restructure failed: missing block: B:42:0x00a3, code lost:
-            if (r13 != 0) goto L_0x00e0;
+            if (r15 != 0) goto L_0x00e0;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:44:0x00a7, code lost:
             if (r1.cancelled == false) goto L_0x00ae;
@@ -137,16 +137,16 @@ public final class ParallelSortedJoin<T> extends Flowable<T> {
             if (r0[r5] == r3[r5].size()) goto L_0x00d2;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:55:0x00d0, code lost:
-            r14 = false;
+            r13 = false;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:56:0x00d2, code lost:
             r5 = r5 + 1;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:57:0x00d5, code lost:
-            r14 = true;
+            r13 = true;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:58:0x00d6, code lost:
-            if (r14 == false) goto L_0x00e0;
+            if (r13 == false) goto L_0x00e0;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:59:0x00d8, code lost:
             java.util.Arrays.fill(r3, (java.lang.Object) null);
@@ -198,36 +198,36 @@ public final class ParallelSortedJoin<T> extends Flowable<T> {
                 long r7 = r7.get()
                 r11 = 0
             L_0x0019:
-                int r13 = (r11 > r7 ? 1 : (r11 == r7 ? 0 : -1))
-                r15 = 0
-                if (r13 == 0) goto L_0x00a2
-                boolean r13 = r1.cancelled
-                if (r13 == 0) goto L_0x0026
-                java.util.Arrays.fill(r3, r15)
+                r14 = 0
+                int r15 = (r11 > r7 ? 1 : (r11 == r7 ? 0 : -1))
+                if (r15 == 0) goto L_0x00a2
+                boolean r15 = r1.cancelled
+                if (r15 == 0) goto L_0x0026
+                java.util.Arrays.fill(r3, r14)
                 return
             L_0x0026:
-                java.util.concurrent.atomic.AtomicReference<java.lang.Throwable> r13 = r1.error
-                java.lang.Object r13 = r13.get()
-                java.lang.Throwable r13 = (java.lang.Throwable) r13
-                if (r13 == 0) goto L_0x003a
+                java.util.concurrent.atomic.AtomicReference<java.lang.Throwable> r15 = r1.error
+                java.lang.Object r15 = r15.get()
+                java.lang.Throwable r15 = (java.lang.Throwable) r15
+                if (r15 == 0) goto L_0x003a
                 r16.cancelAll()
-                java.util.Arrays.fill(r3, r15)
-                r2.onError(r13)
+                java.util.Arrays.fill(r3, r14)
+                r2.onError(r15)
                 return
             L_0x003a:
-                r13 = -1
-                r9 = r15
-                r14 = 0
+                r15 = -1
+                r9 = r14
+                r13 = 0
             L_0x003d:
-                if (r14 >= r4) goto L_0x008a
-                r10 = r3[r14]
-                r5 = r0[r14]
-                int r15 = r10.size()
-                if (r15 == r5) goto L_0x0086
+                if (r13 >= r4) goto L_0x008a
+                r10 = r3[r13]
+                r5 = r0[r13]
+                int r14 = r10.size()
+                if (r14 == r5) goto L_0x0086
                 if (r9 != 0) goto L_0x0051
                 java.lang.Object r9 = r10.get(r5)
             L_0x004f:
-                r13 = r14
+                r15 = r13
                 goto L_0x0086
             L_0x0051:
                 java.lang.Object r5 = r10.get(r5)
@@ -259,8 +259,8 @@ public final class ParallelSortedJoin<T> extends Flowable<T> {
                 r2.onError(r0)
                 return
             L_0x0086:
-                int r14 = r14 + 1
-                r15 = 0
+                int r13 = r13 + 1
+                r14 = 0
                 goto L_0x003d
             L_0x008a:
                 if (r9 != 0) goto L_0x0094
@@ -270,16 +270,16 @@ public final class ParallelSortedJoin<T> extends Flowable<T> {
                 return
             L_0x0094:
                 r2.onNext(r9)
-                r5 = r0[r13]
+                r5 = r0[r15]
                 r9 = 1
                 int r5 = r5 + r9
-                r0[r13] = r5
+                r0[r15] = r5
                 r13 = 1
                 long r11 = r11 + r13
                 goto L_0x0019
             L_0x00a2:
                 r9 = 1
-                if (r13 != 0) goto L_0x00e0
+                if (r15 != 0) goto L_0x00e0
                 boolean r5 = r1.cancelled
                 if (r5 == 0) goto L_0x00ae
                 r5 = 0
@@ -303,15 +303,15 @@ public final class ParallelSortedJoin<T> extends Flowable<T> {
                 r13 = r3[r5]
                 int r13 = r13.size()
                 if (r10 == r13) goto L_0x00d2
-                r14 = 0
+                r13 = 0
                 goto L_0x00d6
             L_0x00d2:
                 int r5 = r5 + 1
                 goto L_0x00c4
             L_0x00d5:
-                r14 = r9
+                r13 = 1
             L_0x00d6:
-                if (r14 == 0) goto L_0x00e0
+                if (r13 == 0) goto L_0x00e0
                 r5 = 0
                 java.util.Arrays.fill(r3, r5)
                 r2.onComplete()

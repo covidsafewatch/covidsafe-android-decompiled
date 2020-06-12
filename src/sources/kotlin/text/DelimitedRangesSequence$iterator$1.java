@@ -144,7 +144,7 @@ public final class DelimitedRangesSequence$iterator$1 implements Iterator<IntRan
             int r2 = r2 + r0
             r6.currentStartIndex = r2
             if (r0 != 0) goto L_0x009b
-            r1 = r3
+            r1 = 1
         L_0x009b:
             int r2 = r2 + r1
             r6.nextSearchIndex = r2

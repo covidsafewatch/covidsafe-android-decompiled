@@ -363,10 +363,10 @@ public abstract class AbstractFuture<V> extends InternalFutureFailureAccess impl
             r1 = 1
             r2 = 0
             if (r0 != 0) goto L_0x0008
-            r3 = r1
+            r3 = 1
             goto L_0x0009
         L_0x0008:
-            r3 = r2
+            r3 = 0
         L_0x0009:
             boolean r4 = r0 instanceof com.google.common.util.concurrent.AbstractFuture.SetFuture
             r3 = r3 | r4
@@ -386,8 +386,8 @@ public abstract class AbstractFuture<V> extends InternalFutureFailureAccess impl
         L_0x0024:
             com.google.common.util.concurrent.AbstractFuture$Cancellation r3 = com.google.common.util.concurrent.AbstractFuture.Cancellation.CAUSELESS_CANCELLED
         L_0x0026:
+            r5 = 0
             r4 = r7
-            r5 = r2
         L_0x0028:
             com.google.common.util.concurrent.AbstractFuture$AtomicHelper r6 = ATOMIC_HELPER
             boolean r6 = r6.casValue(r4, r0, r3)
@@ -406,15 +406,15 @@ public abstract class AbstractFuture<V> extends InternalFutureFailureAccess impl
             com.google.common.util.concurrent.AbstractFuture r4 = (com.google.common.util.concurrent.AbstractFuture) r4
             java.lang.Object r0 = r4.value
             if (r0 != 0) goto L_0x004d
-            r5 = r1
+            r5 = 1
             goto L_0x004e
         L_0x004d:
-            r5 = r2
+            r5 = 0
         L_0x004e:
             boolean r6 = r0 instanceof com.google.common.util.concurrent.AbstractFuture.SetFuture
             r5 = r5 | r6
             if (r5 == 0) goto L_0x0062
-            r5 = r1
+            r5 = 1
             goto L_0x0028
         L_0x0055:
             r0.cancel(r8)
@@ -426,7 +426,7 @@ public abstract class AbstractFuture<V> extends InternalFutureFailureAccess impl
             r1 = r5
             goto L_0x0062
         L_0x0061:
-            r1 = r2
+            r1 = 0
         L_0x0062:
             return r1
         */

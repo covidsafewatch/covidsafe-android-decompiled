@@ -226,7 +226,7 @@ public class ChangeTransform extends Transition {
             if (r4 != r5) goto L_0x001d
             goto L_0x001e
         L_0x001d:
-            r1 = r2
+            r1 = 0
         L_0x001e:
             r2 = r1
         L_0x001f:

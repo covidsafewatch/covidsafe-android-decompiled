@@ -543,12 +543,12 @@ public class LinearSystem {
             }
             i2++;
             float f2 = Float.MAX_VALUE;
-            int i3 = -1;
+            int i3 = 0;
             int i4 = -1;
-            int i5 = 0;
+            int i5 = -1;
             int i6 = 0;
-            while (i5 < this.mNumRows) {
-                ArrayRow arrayRow = this.mRows[i5];
+            while (i3 < this.mNumRows) {
+                ArrayRow arrayRow = this.mRows[i3];
                 if (arrayRow.variable.mType != SolverVariable.Type.UNRESTRICTED && !arrayRow.isSimpleDefinition && arrayRow.constantValue < f) {
                     int i7 = 1;
                     while (i7 < this.mNumColumns) {
@@ -558,10 +558,10 @@ public class LinearSystem {
                             for (int i8 = 0; i8 < 7; i8++) {
                                 float f4 = solverVariable.strengthVector[i8] / f3;
                                 if ((f4 < f2 && i8 == i6) || i8 > i6) {
-                                    i4 = i7;
+                                    i5 = i7;
                                     i6 = i8;
                                     f2 = f4;
-                                    i3 = i5;
+                                    i4 = i3;
                                 }
                             }
                         }
@@ -569,18 +569,18 @@ public class LinearSystem {
                         f = 0.0f;
                     }
                 }
-                i5++;
+                i3++;
                 f = 0.0f;
             }
-            if (i3 != -1) {
-                ArrayRow arrayRow2 = this.mRows[i3];
+            if (i4 != -1) {
+                ArrayRow arrayRow2 = this.mRows[i4];
                 arrayRow2.variable.definitionId = -1;
                 Metrics metrics2 = sMetrics;
                 if (metrics2 != null) {
                     metrics2.pivots++;
                 }
-                arrayRow2.pivot(this.mCache.mIndexedVariables[i4]);
-                arrayRow2.variable.definitionId = i3;
+                arrayRow2.pivot(this.mCache.mIndexedVariables[i5]);
+                arrayRow2.variable.definitionId = i4;
                 arrayRow2.variable.updateReferencesWithNewDefinition(arrayRow2);
             } else {
                 z2 = true;

@@ -120,7 +120,6 @@ public final class HttpLoggingInterceptor implements Interceptor {
     public Response intercept(Interceptor.Chain chain) throws IOException {
         String str;
         String str2;
-        char c;
         String str3;
         String str4;
         String str5;
@@ -217,18 +216,16 @@ public final class HttpLoggingInterceptor implements Interceptor {
             if (proceed.message().length() == 0) {
                 str3 = "-byte body omitted)";
                 str4 = "";
-                c = ' ';
             } else {
                 String message = proceed.message();
                 StringBuilder sb4 = new StringBuilder();
                 str3 = "-byte body omitted)";
-                c = ' ';
                 sb4.append(String.valueOf(' '));
                 sb4.append(message);
                 str4 = sb4.toString();
             }
             sb3.append(str4);
-            sb3.append(c);
+            sb3.append(' ');
             sb3.append(proceed.request().url());
             sb3.append(" (");
             sb3.append(millis);

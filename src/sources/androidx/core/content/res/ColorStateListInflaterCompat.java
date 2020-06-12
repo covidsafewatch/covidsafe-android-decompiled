@@ -71,7 +71,7 @@ public final class ColorStateListInflaterCompat {
             int[][] r4 = new int[r3][]
             int[] r3 = new int[r3]
             r5 = 0
-            r6 = r5
+            r6 = 0
         L_0x0010:
             int r7 = r18.next()
             if (r7 == r2) goto L_0x00b1
@@ -113,8 +113,8 @@ public final class ColorStateListInflaterCompat {
             r7.recycle()
             int r7 = r19.getAttributeCount()
             int[] r12 = new int[r7]
-            r13 = r5
-            r14 = r13
+            r13 = 0
+            r14 = 0
         L_0x006f:
             if (r13 >= r7) goto L_0x0094
             int r15 = r0.getAttributeNameResource(r13)

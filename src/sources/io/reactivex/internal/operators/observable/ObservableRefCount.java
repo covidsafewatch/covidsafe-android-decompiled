@@ -83,15 +83,15 @@ public final class ObservableRefCount<T> extends Observable<T> {
             long r0 = r0 - r2
             r6.subscriberCount = r0     // Catch:{ all -> 0x0041 }
             r2 = 0
-            int r0 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r0 != 0) goto L_0x003d
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 != 0) goto L_0x003d
             boolean r0 = r6.connected     // Catch:{ all -> 0x0041 }
             if (r0 != 0) goto L_0x001c
             goto L_0x003d
         L_0x001c:
             long r0 = r5.timeout     // Catch:{ all -> 0x0041 }
-            int r0 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r0 != 0) goto L_0x0027
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 != 0) goto L_0x0027
             r5.timeout(r6)     // Catch:{ all -> 0x0041 }
             monitor-exit(r5)     // Catch:{ all -> 0x0041 }
             return

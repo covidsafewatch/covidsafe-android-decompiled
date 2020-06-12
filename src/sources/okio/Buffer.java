@@ -25,6 +25,7 @@ import kotlin.jvm.internal.LongCompanionObject;
 import kotlin.jvm.internal.StringCompanionObject;
 import kotlin.text.Charsets;
 import kotlin.text.Typography;
+import okhttp3.internal.connection.RealConnection;
 import okio.internal.BufferKt;
 
 @Metadata(bv = {1, 0, 3}, d1 = {"\u0000ª\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u001a\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0002\b\u0006\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0000\n\u0002\b\u0003\n\u0002\u0010\u0005\n\u0002\b\u0005\n\u0002\u0010\b\n\u0002\b\r\n\u0002\u0018\u0002\n\u0002\b\b\n\u0002\u0018\u0002\n\u0002\u0010\u0012\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u000f\n\u0002\u0010\n\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\n\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0002\b\u0017\u0018\u00002\u00020\u00012\u00020\u00022\u00020\u00032\u00020\u0004:\u0002\u0001B\u0005¢\u0006\u0002\u0010\u0005J\b\u0010\u0006\u001a\u00020\u0000H\u0016J\u0006\u0010\u0011\u001a\u00020\u0012J\b\u0010\u0013\u001a\u00020\u0000H\u0016J\b\u0010\u0014\u001a\u00020\u0012H\u0016J\u0006\u0010\u0015\u001a\u00020\fJ\u0006\u0010\u0016\u001a\u00020\u0000J$\u0010\u0017\u001a\u00020\u00002\u0006\u0010\u0018\u001a\u00020\u00192\b\b\u0002\u0010\u001a\u001a\u00020\f2\b\b\u0002\u0010\u001b\u001a\u00020\fH\u0007J\u0018\u0010\u0017\u001a\u00020\u00002\u0006\u0010\u0018\u001a\u00020\u00002\b\b\u0002\u0010\u001a\u001a\u00020\fJ \u0010\u0017\u001a\u00020\u00002\u0006\u0010\u0018\u001a\u00020\u00002\b\b\u0002\u0010\u001a\u001a\u00020\f2\u0006\u0010\u001b\u001a\u00020\fJ\u0010\u0010\u001c\u001a\u00020\u001d2\u0006\u0010\u001e\u001a\u00020\u001fH\u0002J\b\u0010 \u001a\u00020\u0000H\u0016J\b\u0010!\u001a\u00020\u0000H\u0016J\u0013\u0010\"\u001a\u00020#2\b\u0010$\u001a\u0004\u0018\u00010%H\u0002J\b\u0010&\u001a\u00020#H\u0016J\b\u0010'\u001a\u00020\u0012H\u0016J\u0016\u0010(\u001a\u00020)2\u0006\u0010*\u001a\u00020\fH\u0002¢\u0006\u0002\b+J\u0015\u0010+\u001a\u00020)2\u0006\u0010,\u001a\u00020\fH\u0007¢\u0006\u0002\b-J\b\u0010.\u001a\u00020/H\u0016J\u0018\u00100\u001a\u00020\u001d2\u0006\u0010\u001e\u001a\u00020\u001f2\u0006\u00101\u001a\u00020\u001dH\u0002J\u000e\u00102\u001a\u00020\u001d2\u0006\u00101\u001a\u00020\u001dJ\u000e\u00103\u001a\u00020\u001d2\u0006\u00101\u001a\u00020\u001dJ\u000e\u00104\u001a\u00020\u001d2\u0006\u00101\u001a\u00020\u001dJ\u0010\u00105\u001a\u00020\f2\u0006\u00106\u001a\u00020)H\u0016J\u0018\u00105\u001a\u00020\f2\u0006\u00106\u001a\u00020)2\u0006\u00107\u001a\u00020\fH\u0016J \u00105\u001a\u00020\f2\u0006\u00106\u001a\u00020)2\u0006\u00107\u001a\u00020\f2\u0006\u00108\u001a\u00020\fH\u0016J\u0010\u00105\u001a\u00020\f2\u0006\u00109\u001a\u00020\u001dH\u0016J\u0018\u00105\u001a\u00020\f2\u0006\u00109\u001a\u00020\u001d2\u0006\u00107\u001a\u00020\fH\u0016J\u0010\u0010:\u001a\u00020\f2\u0006\u0010;\u001a\u00020\u001dH\u0016J\u0018\u0010:\u001a\u00020\f2\u0006\u0010;\u001a\u00020\u001d2\u0006\u00107\u001a\u00020\fH\u0016J\b\u0010<\u001a\u00020=H\u0016J\b\u0010>\u001a\u00020#H\u0016J\u0006\u0010?\u001a\u00020\u001dJ\b\u0010@\u001a\u00020\u0019H\u0016J\b\u0010A\u001a\u00020\u0001H\u0016J\u0018\u0010B\u001a\u00020#2\u0006\u0010\u001a\u001a\u00020\f2\u0006\u00109\u001a\u00020\u001dH\u0016J(\u0010B\u001a\u00020#2\u0006\u0010\u001a\u001a\u00020\f2\u0006\u00109\u001a\u00020\u001d2\u0006\u0010C\u001a\u00020/2\u0006\u0010\u001b\u001a\u00020/H\u0016J\u0010\u0010D\u001a\u00020/2\u0006\u0010E\u001a\u00020FH\u0016J\u0010\u0010D\u001a\u00020/2\u0006\u0010E\u001a\u00020GH\u0016J \u0010D\u001a\u00020/2\u0006\u0010E\u001a\u00020G2\u0006\u0010\u001a\u001a\u00020/2\u0006\u0010\u001b\u001a\u00020/H\u0016J\u0018\u0010D\u001a\u00020\f2\u0006\u0010E\u001a\u00020\u00002\u0006\u0010\u001b\u001a\u00020\fH\u0016J\u0010\u0010H\u001a\u00020\f2\u0006\u0010E\u001a\u00020IH\u0016J\u0012\u0010J\u001a\u00020K2\b\b\u0002\u0010L\u001a\u00020KH\u0007J\b\u0010M\u001a\u00020)H\u0016J\b\u0010N\u001a\u00020GH\u0016J\u0010\u0010N\u001a\u00020G2\u0006\u0010\u001b\u001a\u00020\fH\u0016J\b\u0010O\u001a\u00020\u001dH\u0016J\u0010\u0010O\u001a\u00020\u001d2\u0006\u0010\u001b\u001a\u00020\fH\u0016J\b\u0010P\u001a\u00020\fH\u0016J\u000e\u0010Q\u001a\u00020\u00002\u0006\u0010R\u001a\u00020=J\u0016\u0010Q\u001a\u00020\u00002\u0006\u0010R\u001a\u00020=2\u0006\u0010\u001b\u001a\u00020\fJ \u0010Q\u001a\u00020\u00122\u0006\u0010R\u001a\u00020=2\u0006\u0010\u001b\u001a\u00020\f2\u0006\u0010S\u001a\u00020#H\u0002J\u0010\u0010T\u001a\u00020\u00122\u0006\u0010E\u001a\u00020GH\u0016J\u0018\u0010T\u001a\u00020\u00122\u0006\u0010E\u001a\u00020\u00002\u0006\u0010\u001b\u001a\u00020\fH\u0016J\b\u0010U\u001a\u00020\fH\u0016J\b\u0010V\u001a\u00020/H\u0016J\b\u0010W\u001a\u00020/H\u0016J\b\u0010X\u001a\u00020\fH\u0016J\b\u0010Y\u001a\u00020\fH\u0016J\b\u0010Z\u001a\u00020[H\u0016J\b\u0010\\\u001a\u00020[H\u0016J\u0010\u0010]\u001a\u00020\u001f2\u0006\u0010^\u001a\u00020_H\u0016J\u0018\u0010]\u001a\u00020\u001f2\u0006\u0010\u001b\u001a\u00020\f2\u0006\u0010^\u001a\u00020_H\u0016J\u0012\u0010`\u001a\u00020K2\b\b\u0002\u0010L\u001a\u00020KH\u0007J\b\u0010a\u001a\u00020\u001fH\u0016J\u0010\u0010a\u001a\u00020\u001f2\u0006\u0010\u001b\u001a\u00020\fH\u0016J\b\u0010b\u001a\u00020/H\u0016J\n\u0010c\u001a\u0004\u0018\u00010\u001fH\u0016J\b\u0010d\u001a\u00020\u001fH\u0016J\u0010\u0010d\u001a\u00020\u001f2\u0006\u0010e\u001a\u00020\fH\u0016J\u0010\u0010f\u001a\u00020#2\u0006\u0010\u001b\u001a\u00020\fH\u0016J\u0010\u0010g\u001a\u00020\u00122\u0006\u0010\u001b\u001a\u00020\fH\u0016J\u0010\u0010h\u001a\u00020/2\u0006\u0010i\u001a\u00020jH\u0016J\u0006\u0010k\u001a\u00020\u001dJ\u0006\u0010l\u001a\u00020\u001dJ\u0006\u0010m\u001a\u00020\u001dJ\r\u0010\r\u001a\u00020\fH\u0007¢\u0006\u0002\bnJ\u0010\u0010o\u001a\u00020\u00122\u0006\u0010\u001b\u001a\u00020\fH\u0016J\u0006\u0010p\u001a\u00020\u001dJ\u000e\u0010p\u001a\u00020\u001d2\u0006\u0010\u001b\u001a\u00020/J\b\u0010q\u001a\u00020rH\u0016J\b\u0010s\u001a\u00020\u001fH\u0016J\u0015\u0010t\u001a\u00020\n2\u0006\u0010u\u001a\u00020/H\u0000¢\u0006\u0002\bvJ\u0010\u0010w\u001a\u00020/2\u0006\u0010x\u001a\u00020FH\u0016J\u0010\u0010w\u001a\u00020\u00002\u0006\u0010x\u001a\u00020GH\u0016J \u0010w\u001a\u00020\u00002\u0006\u0010x\u001a\u00020G2\u0006\u0010\u001a\u001a\u00020/2\u0006\u0010\u001b\u001a\u00020/H\u0016J\u0018\u0010w\u001a\u00020\u00122\u0006\u0010x\u001a\u00020\u00002\u0006\u0010\u001b\u001a\u00020\fH\u0016J\u0010\u0010w\u001a\u00020\u00002\u0006\u0010y\u001a\u00020\u001dH\u0016J \u0010w\u001a\u00020\u00002\u0006\u0010y\u001a\u00020\u001d2\u0006\u0010\u001a\u001a\u00020/2\u0006\u0010\u001b\u001a\u00020/H\u0016J\u0018\u0010w\u001a\u00020\u00002\u0006\u0010x\u001a\u00020z2\u0006\u0010\u001b\u001a\u00020\fH\u0016J\u0010\u0010{\u001a\u00020\f2\u0006\u0010x\u001a\u00020zH\u0016J\u0010\u0010|\u001a\u00020\u00002\u0006\u00106\u001a\u00020/H\u0016J\u0010\u0010}\u001a\u00020\u00002\u0006\u0010~\u001a\u00020\fH\u0016J\u0010\u0010\u001a\u00020\u00002\u0006\u0010~\u001a\u00020\fH\u0016J\u0012\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020/H\u0016J\u0012\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020/H\u0016J\u0011\u0010\u0001\u001a\u00020\u00002\u0006\u0010~\u001a\u00020\fH\u0016J\u0011\u0010\u0001\u001a\u00020\u00002\u0006\u0010~\u001a\u00020\fH\u0016J\u0012\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020/H\u0016J\u0012\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020/H\u0016J\u001a\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020\u001f2\u0006\u0010^\u001a\u00020_H\u0016J,\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020\u001f2\u0007\u0010\u0001\u001a\u00020/2\u0007\u0010\u0001\u001a\u00020/2\u0006\u0010^\u001a\u00020_H\u0016J\u001b\u0010\u0001\u001a\u00020\u00002\u0006\u0010\u0018\u001a\u00020\u00192\b\b\u0002\u0010\u001b\u001a\u00020\fH\u0007J\u0012\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020\u001fH\u0016J$\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020\u001f2\u0007\u0010\u0001\u001a\u00020/2\u0007\u0010\u0001\u001a\u00020/H\u0016J\u0012\u0010\u0001\u001a\u00020\u00002\u0007\u0010\u0001\u001a\u00020/H\u0016R\u0014\u0010\u0006\u001a\u00020\u00008VX\u0004¢\u0006\u0006\u001a\u0004\b\u0007\u0010\bR\u0014\u0010\t\u001a\u0004\u0018\u00010\n8\u0000@\u0000X\u000e¢\u0006\u0002\n\u0000R&\u0010\r\u001a\u00020\f2\u0006\u0010\u000b\u001a\u00020\f8G@@X\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\r\u0010\u000e\"\u0004\b\u000f\u0010\u0010¨\u0006\u0001"}, d2 = {"Lokio/Buffer;", "Lokio/BufferedSource;", "Lokio/BufferedSink;", "", "Ljava/nio/channels/ByteChannel;", "()V", "buffer", "getBuffer", "()Lokio/Buffer;", "head", "Lokio/Segment;", "<set-?>", "", "size", "()J", "setSize$okio", "(J)V", "clear", "", "clone", "close", "completeSegmentByteCount", "copy", "copyTo", "out", "Ljava/io/OutputStream;", "offset", "byteCount", "digest", "Lokio/ByteString;", "algorithm", "", "emit", "emitCompleteSegments", "equals", "", "other", "", "exhausted", "flush", "get", "", "pos", "getByte", "index", "-deprecated_getByte", "hashCode", "", "hmac", "key", "hmacSha1", "hmacSha256", "hmacSha512", "indexOf", "b", "fromIndex", "toIndex", "bytes", "indexOfElement", "targetBytes", "inputStream", "Ljava/io/InputStream;", "isOpen", "md5", "outputStream", "peek", "rangeEquals", "bytesOffset", "read", "sink", "Ljava/nio/ByteBuffer;", "", "readAll", "Lokio/Sink;", "readAndWriteUnsafe", "Lokio/Buffer$UnsafeCursor;", "unsafeCursor", "readByte", "readByteArray", "readByteString", "readDecimalLong", "readFrom", "input", "forever", "readFully", "readHexadecimalUnsignedLong", "readInt", "readIntLe", "readLong", "readLongLe", "readShort", "", "readShortLe", "readString", "charset", "Ljava/nio/charset/Charset;", "readUnsafe", "readUtf8", "readUtf8CodePoint", "readUtf8Line", "readUtf8LineStrict", "limit", "request", "require", "select", "options", "Lokio/Options;", "sha1", "sha256", "sha512", "-deprecated_size", "skip", "snapshot", "timeout", "Lokio/Timeout;", "toString", "writableSegment", "minimumCapacity", "writableSegment$okio", "write", "source", "byteString", "Lokio/Source;", "writeAll", "writeByte", "writeDecimalLong", "v", "writeHexadecimalUnsignedLong", "writeInt", "i", "writeIntLe", "writeLong", "writeLongLe", "writeShort", "s", "writeShortLe", "writeString", "string", "beginIndex", "endIndex", "writeTo", "writeUtf8", "writeUtf8CodePoint", "codePoint", "UnsafeCursor", "okio"}, k = 1, mv = {1, 1, 16})
@@ -673,9 +674,9 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
                 throw new IllegalStateException("not attached to a buffer".toString());
             } else if (this.readWrite) {
                 long size = buffer2.size();
-                int i = (j2 > size ? 1 : (j2 == size ? 0 : -1));
-                int i2 = 1;
-                if (i <= 0) {
+                int i = 1;
+                int i2 = (j2 > size ? 1 : (j2 == size ? 0 : -1));
+                if (i2 <= 0) {
                     if (j2 >= 0) {
                         long j3 = size - j2;
                         while (true) {
@@ -708,11 +709,11 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
                     } else {
                         throw new IllegalArgumentException(("newSize < 0: " + j2).toString());
                     }
-                } else if (i > 0) {
+                } else if (i2 > 0) {
                     long j5 = j2 - size;
                     boolean z = true;
                     while (j5 > 0) {
-                        Segment writableSegment$okio = buffer2.writableSegment$okio(i2);
+                        Segment writableSegment$okio = buffer2.writableSegment$okio(i);
                         int min = (int) Math.min(j5, (long) (8192 - writableSegment$okio.limit));
                         writableSegment$okio.limit += min;
                         j5 -= (long) min;
@@ -724,7 +725,7 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
                             this.end = writableSegment$okio.limit;
                             z = false;
                         }
-                        i2 = 1;
+                        i = 1;
                     }
                 }
                 buffer2.setSize$okio(j2);
@@ -982,13 +983,15 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             int i3 = i + 1;
             int i4 = i3 + 1;
             int i5 = i4 + 1;
+            long j = ((((long) bArr[i]) & 255) << 56) | ((((long) bArr[i3]) & 255) << 48) | ((((long) bArr[i4]) & 255) << 40);
             int i6 = i5 + 1;
+            long j2 = ((((long) bArr[i5]) & 255) << 32) | j;
             int i7 = i6 + 1;
             int i8 = i7 + 1;
-            long j = ((((long) bArr[i]) & 255) << 56) | ((((long) bArr[i3]) & 255) << 48) | ((((long) bArr[i4]) & 255) << 40) | ((((long) bArr[i5]) & 255) << 32) | ((((long) bArr[i6]) & 255) << 24) | ((((long) bArr[i7]) & 255) << 16);
+            long j3 = j2 | ((((long) bArr[i6]) & 255) << 24) | ((((long) bArr[i7]) & 255) << 16);
             int i9 = i8 + 1;
             int i10 = i9 + 1;
-            long j2 = j | ((((long) bArr[i8]) & 255) << 8) | (((long) bArr[i9]) & 255);
+            long j4 = j3 | ((((long) bArr[i8]) & 255) << 8) | (((long) bArr[i9]) & 255);
             setSize$okio(size() - 8);
             if (i10 == i2) {
                 this.head = segment.pop();
@@ -996,23 +999,23 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             } else {
                 segment.pos = i10;
             }
-            return j2;
+            return j4;
         }
         throw new EOFException();
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:35:0x00b1, code lost:
-        if (r10 != r11) goto L_0x00c1;
+    /* JADX WARNING: Code restructure failed: missing block: B:35:0x00b2, code lost:
+        if (r10 != r11) goto L_0x00c2;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:36:0x00b3, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:36:0x00b4, code lost:
         r0.head = r16.pop();
         okio.SegmentPool.INSTANCE.recycle(r16);
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:37:0x00c1, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:37:0x00c2, code lost:
         r16.pos = r10;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:38:0x00c5, code lost:
-        if (r7 != false) goto L_0x00cb;
+    /* JADX WARNING: Code restructure failed: missing block: B:38:0x00c6, code lost:
+        if (r7 != false) goto L_0x00cc;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public long readDecimalLong() throws java.io.EOFException {
@@ -1021,12 +1024,12 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             r0 = r17
             long r1 = r17.size()
             r3 = 0
-            int r1 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
-            if (r1 == 0) goto L_0x00d9
+            int r5 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
+            if (r5 == 0) goto L_0x00da
             r1 = -7
             r5 = 0
-            r6 = r5
-            r7 = r6
+            r6 = 0
+            r7 = 0
         L_0x0011:
             okio.Segment r8 = r0.head
             if (r8 != 0) goto L_0x0018
@@ -1037,39 +1040,39 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             int r11 = r8.limit
         L_0x001e:
             r12 = 1
-            if (r10 >= r11) goto L_0x00ae
+            if (r10 >= r11) goto L_0x00af
             byte r13 = r9[r10]
             r14 = 48
             byte r14 = (byte) r14
-            if (r13 < r14) goto L_0x0077
+            if (r13 < r14) goto L_0x0078
             r15 = 57
             byte r15 = (byte) r15
-            if (r13 > r15) goto L_0x0077
+            if (r13 > r15) goto L_0x0078
             int r14 = r14 - r13
             r15 = -922337203685477580(0xf333333333333334, double:-8.390303882365713E246)
             int r12 = (r3 > r15 ? 1 : (r3 == r15 ? 0 : -1))
-            if (r12 < 0) goto L_0x0048
+            if (r12 < 0) goto L_0x0049
             r15 = r7
             r16 = r8
             if (r12 != 0) goto L_0x0042
             long r7 = (long) r14
-            int r7 = (r7 > r1 ? 1 : (r7 == r1 ? 0 : -1))
-            if (r7 >= 0) goto L_0x0042
-            goto L_0x0048
+            int r12 = (r7 > r1 ? 1 : (r7 == r1 ? 0 : -1))
+            if (r12 >= 0) goto L_0x0042
+            goto L_0x0049
         L_0x0042:
             r7 = 10
             long r3 = r3 * r7
             long r7 = (long) r14
             long r3 = r3 + r7
-            goto L_0x0085
-        L_0x0048:
+            goto L_0x0086
+        L_0x0049:
             okio.Buffer r1 = new okio.Buffer
             r1.<init>()
             okio.Buffer r1 = r1.writeDecimalLong((long) r3)
             okio.Buffer r1 = r1.writeByte((int) r13)
-            if (r6 != 0) goto L_0x005a
+            if (r6 != 0) goto L_0x005b
             r1.readByte()
-        L_0x005a:
+        L_0x005b:
             java.lang.NumberFormatException r2 = new java.lang.NumberFormatException
             java.lang.StringBuilder r3 = new java.lang.StringBuilder
             r3.<init>()
@@ -1081,27 +1084,27 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             r2.<init>(r1)
             java.lang.Throwable r2 = (java.lang.Throwable) r2
             throw r2
-        L_0x0077:
+        L_0x0078:
             r15 = r7
             r16 = r8
             r7 = 45
             byte r7 = (byte) r7
-            if (r13 != r7) goto L_0x008d
-            if (r5 != 0) goto L_0x008d
+            if (r13 != r7) goto L_0x008e
+            if (r5 != 0) goto L_0x008e
             r6 = 1
             long r1 = r1 - r6
-            r6 = r12
-        L_0x0085:
+            r6 = 1
+        L_0x0086:
             int r10 = r10 + 1
             int r5 = r5 + 1
             r7 = r15
             r8 = r16
             goto L_0x001e
-        L_0x008d:
-            if (r5 == 0) goto L_0x0091
-            r7 = r12
-            goto L_0x00b1
-        L_0x0091:
+        L_0x008e:
+            if (r5 == 0) goto L_0x0092
+            r7 = 1
+            goto L_0x00b2
+        L_0x0092:
             java.lang.NumberFormatException r1 = new java.lang.NumberFormatException
             java.lang.StringBuilder r2 = new java.lang.StringBuilder
             r2.<init>()
@@ -1113,36 +1116,36 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             r1.<init>(r2)
             java.lang.Throwable r1 = (java.lang.Throwable) r1
             throw r1
-        L_0x00ae:
+        L_0x00af:
             r15 = r7
             r16 = r8
-        L_0x00b1:
-            if (r10 != r11) goto L_0x00c1
+        L_0x00b2:
+            if (r10 != r11) goto L_0x00c2
             okio.Segment r8 = r16.pop()
             r0.head = r8
             okio.SegmentPool r8 = okio.SegmentPool.INSTANCE
             r9 = r16
             r8.recycle(r9)
-            goto L_0x00c5
-        L_0x00c1:
+            goto L_0x00c6
+        L_0x00c2:
             r9 = r16
             r9.pos = r10
-        L_0x00c5:
-            if (r7 != 0) goto L_0x00cb
+        L_0x00c6:
+            if (r7 != 0) goto L_0x00cc
             okio.Segment r8 = r0.head
             if (r8 != 0) goto L_0x0011
-        L_0x00cb:
+        L_0x00cc:
             long r1 = r17.size()
             long r7 = (long) r5
             long r1 = r1 - r7
             r0.setSize$okio(r1)
-            if (r6 == 0) goto L_0x00d7
-            goto L_0x00d8
-        L_0x00d7:
-            long r3 = -r3
+            if (r6 == 0) goto L_0x00d8
+            goto L_0x00d9
         L_0x00d8:
-            return r3
+            long r3 = -r3
         L_0x00d9:
+            return r3
+        L_0x00da:
             java.io.EOFException r1 = new java.io.EOFException
             r1.<init>()
             java.lang.Throwable r1 = (java.lang.Throwable) r1
@@ -1155,7 +1158,7 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
         if (r8 != r9) goto L_0x00ae;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:32:0x00a2, code lost:
-        r14.head = r6.pop();
+        r15.head = r6.pop();
         okio.SegmentPool.INSTANCE.recycle(r6);
      */
     /* JADX WARNING: Code restructure failed: missing block: B:33:0x00ae, code lost:
@@ -1169,16 +1172,16 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public long readHexadecimalUnsignedLong() throws java.io.EOFException {
         /*
-            r14 = this;
-            long r0 = r14.size()
+            r15 = this;
+            long r0 = r15.size()
             r2 = 0
-            int r0 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r0 == 0) goto L_0x00c0
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 == 0) goto L_0x00c0
             r0 = 0
-            r1 = r0
             r4 = r2
+            r1 = 0
         L_0x000d:
-            okio.Segment r6 = r14.head
+            okio.Segment r6 = r15.head
             if (r6 != 0) goto L_0x0014
             kotlin.jvm.internal.Intrinsics.throwNpe()
         L_0x0014:
@@ -1218,8 +1221,8 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
         L_0x0045:
             r12 = -1152921504606846976(0xf000000000000000, double:-3.105036184601418E231)
             long r12 = r12 & r4
-            int r12 = (r12 > r2 ? 1 : (r12 == r2 ? 0 : -1))
-            if (r12 != 0) goto L_0x0055
+            int r14 = (r12 > r2 ? 1 : (r12 == r2 ? 0 : -1))
+            if (r14 != 0) goto L_0x0055
             r10 = 4
             long r4 = r4 << r10
             long r10 = (long) r11
@@ -1262,7 +1265,7 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
         L_0x00a0:
             if (r8 != r9) goto L_0x00ae
             okio.Segment r7 = r6.pop()
-            r14.head = r7
+            r15.head = r7
             okio.SegmentPool r7 = okio.SegmentPool.INSTANCE
             r7.recycle(r6)
             goto L_0x00b0
@@ -1270,13 +1273,13 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             r6.pos = r8
         L_0x00b0:
             if (r1 != 0) goto L_0x00b6
-            okio.Segment r6 = r14.head
+            okio.Segment r6 = r15.head
             if (r6 != 0) goto L_0x000d
         L_0x00b6:
-            long r1 = r14.size()
+            long r1 = r15.size()
             long r6 = (long) r0
             long r1 = r1 - r6
-            r14.setSize$okio(r1)
+            r15.setSize$okio(r1)
             return r4
         L_0x00c0:
             java.io.EOFException r0 = new java.io.EOFException
@@ -1375,8 +1378,8 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             int i2 = 1;
             if ((b3 & 128) == 0) {
                 b2 = b3 & Byte.MAX_VALUE;
-                b = 0;
                 i = 1;
+                b = 0;
             } else if ((b3 & 224) == 192) {
                 b2 = b3 & Ascii.US;
                 i = 2;
@@ -1724,182 +1727,47 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
         return this;
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:65:0x00e3  */
-    /* JADX WARNING: Removed duplicated region for block: B:69:0x00f2 A[LOOP:0: B:67:0x00ee->B:69:0x00f2, LOOP_END] */
-    /* JADX WARNING: Removed duplicated region for block: B:71:0x0104  */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public okio.Buffer writeDecimalLong(long r13) {
-        /*
-            r12 = this;
-            r0 = 0
-            int r2 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
-            if (r2 != 0) goto L_0x000e
-            r13 = 48
-            okio.Buffer r13 = r12.writeByte((int) r13)
-            goto L_0x011a
-        L_0x000e:
-            r3 = 0
-            r4 = 1
-            if (r2 >= 0) goto L_0x0020
-            long r13 = -r13
-            int r2 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
-            if (r2 >= 0) goto L_0x001f
-            java.lang.String r13 = "-9223372036854775808"
-            okio.Buffer r13 = r12.writeUtf8((java.lang.String) r13)
-            goto L_0x011a
-        L_0x001f:
-            r3 = r4
-        L_0x0020:
-            r5 = 100000000(0x5f5e100, double:4.94065646E-316)
-            int r2 = (r13 > r5 ? 1 : (r13 == r5 ? 0 : -1))
-            r5 = 10
-            if (r2 >= 0) goto L_0x006a
-            r6 = 10000(0x2710, double:4.9407E-320)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x004c
-            r6 = 100
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0040
-            r6 = 10
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x003d
-            goto L_0x00e1
-        L_0x003d:
-            r4 = 2
-            goto L_0x00e1
-        L_0x0040:
-            r6 = 1000(0x3e8, double:4.94E-321)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0048
-            r2 = 3
-            goto L_0x0049
-        L_0x0048:
-            r2 = 4
-        L_0x0049:
-            r4 = r2
-            goto L_0x00e1
-        L_0x004c:
-            r6 = 1000000(0xf4240, double:4.940656E-318)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x005e
-            r6 = 100000(0x186a0, double:4.94066E-319)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x005c
-            r2 = 5
-            goto L_0x0049
-        L_0x005c:
-            r2 = 6
-            goto L_0x0049
-        L_0x005e:
-            r6 = 10000000(0x989680, double:4.9406565E-317)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0067
-            r2 = 7
-            goto L_0x0049
-        L_0x0067:
-            r2 = 8
-            goto L_0x0049
-        L_0x006a:
-            r6 = 1000000000000(0xe8d4a51000, double:4.94065645841E-312)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0097
-            r6 = 10000000000(0x2540be400, double:4.9406564584E-314)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0088
-            r6 = 1000000000(0x3b9aca00, double:4.94065646E-315)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0086
-            r4 = 9
-            goto L_0x00e1
-        L_0x0086:
-            r4 = r5
-            goto L_0x00e1
-        L_0x0088:
-            r6 = 100000000000(0x174876e800, double:4.9406564584E-313)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0094
-            r2 = 11
-            goto L_0x0049
-        L_0x0094:
-            r2 = 12
-            goto L_0x0049
-        L_0x0097:
-            r6 = 1000000000000000(0x38d7ea4c68000, double:4.940656458412465E-309)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00bb
-            r6 = 10000000000000(0x9184e72a000, double:4.9406564584125E-311)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00ac
-            r4 = 13
-            goto L_0x00e1
-        L_0x00ac:
-            r6 = 100000000000000(0x5af3107a4000, double:4.94065645841247E-310)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00b8
-            r2 = 14
-            goto L_0x0049
-        L_0x00b8:
-            r2 = 15
-            goto L_0x0049
-        L_0x00bb:
-            r6 = 100000000000000000(0x16345785d8a0000, double:5.620395787888205E-302)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00d3
-            r6 = 10000000000000000(0x2386f26fc10000, double:5.431165199810528E-308)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00d0
-            r4 = 16
-            goto L_0x00e1
-        L_0x00d0:
-            r4 = 17
-            goto L_0x00e1
-        L_0x00d3:
-            r6 = 1000000000000000000(0xde0b6b3a7640000, double:7.832953389245686E-242)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00df
-            r4 = 18
-            goto L_0x00e1
-        L_0x00df:
-            r4 = 19
-        L_0x00e1:
-            if (r3 == 0) goto L_0x00e5
-            int r4 = r4 + 1
-        L_0x00e5:
-            okio.Segment r2 = r12.writableSegment$okio(r4)
-            byte[] r6 = r2.data
-            int r7 = r2.limit
-            int r7 = r7 + r4
-        L_0x00ee:
-            int r8 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
-            if (r8 == 0) goto L_0x0102
-            long r8 = (long) r5
-            long r10 = r13 % r8
-            int r10 = (int) r10
-            int r7 = r7 + -1
-            byte[] r11 = okio.internal.BufferKt.getHEX_DIGIT_BYTES()
-            byte r10 = r11[r10]
-            r6[r7] = r10
-            long r13 = r13 / r8
-            goto L_0x00ee
-        L_0x0102:
-            if (r3 == 0) goto L_0x010b
-            int r7 = r7 + -1
-            r13 = 45
-            byte r13 = (byte) r13
-            r6[r7] = r13
-        L_0x010b:
-            int r13 = r2.limit
-            int r13 = r13 + r4
-            r2.limit = r13
-            long r13 = r12.size()
-            long r0 = (long) r4
-            long r13 = r13 + r0
-            r12.setSize$okio(r13)
-            r13 = r12
-        L_0x011a:
-            return r13
-        */
-        throw new UnsupportedOperationException("Method not decompiled: okio.Buffer.writeDecimalLong(long):okio.Buffer");
+    public Buffer writeDecimalLong(long j) {
+        int i = (j > 0 ? 1 : (j == 0 ? 0 : -1));
+        if (i == 0) {
+            return writeByte(48);
+        }
+        boolean z = false;
+        int i2 = 1;
+        if (i < 0) {
+            j = -j;
+            if (j < 0) {
+                return writeUtf8("-9223372036854775808");
+            }
+            z = true;
+        }
+        if (j >= 100000000) {
+            i2 = j < 1000000000000L ? j < RealConnection.IDLE_CONNECTION_HEALTHY_NS ? j < 1000000000 ? 9 : 10 : j < 100000000000L ? 11 : 12 : j < 1000000000000000L ? j < 10000000000000L ? 13 : j < 100000000000000L ? 14 : 15 : j < 100000000000000000L ? j < 10000000000000000L ? 16 : 17 : j < 1000000000000000000L ? 18 : 19;
+        } else if (j >= 10000) {
+            i2 = j < 1000000 ? j < 100000 ? 5 : 6 : j < 10000000 ? 7 : 8;
+        } else if (j >= 100) {
+            i2 = j < 1000 ? 3 : 4;
+        } else if (j >= 10) {
+            i2 = 2;
+        }
+        if (z) {
+            i2++;
+        }
+        Segment writableSegment$okio = writableSegment$okio(i2);
+        byte[] bArr = writableSegment$okio.data;
+        int i3 = writableSegment$okio.limit + i2;
+        while (j != 0) {
+            long j2 = (long) 10;
+            i3--;
+            bArr[i3] = BufferKt.getHEX_DIGIT_BYTES()[(int) (j % j2)];
+            j /= j2;
+        }
+        if (z) {
+            bArr[i3 - 1] = (byte) 45;
+        }
+        writableSegment$okio.limit += i2;
+        setSize$okio(size() + ((long) i2));
+        return this;
     }
 
     public Buffer writeHexadecimalUnsignedLong(long j) {
@@ -2375,7 +2243,7 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             r3 = 1
             if (r0 != r1) goto L_0x000b
         L_0x0008:
-            r2 = r3
+            r2 = 1
             goto L_0x008b
         L_0x000b:
             boolean r4 = r1 instanceof okio.Buffer
@@ -2385,14 +2253,14 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             long r4 = r20.size()
             okio.Buffer r1 = (okio.Buffer) r1
             long r6 = r1.size()
-            int r4 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
-            if (r4 == 0) goto L_0x0021
+            int r8 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
+            if (r8 == 0) goto L_0x0021
             goto L_0x008b
         L_0x0021:
             long r4 = r20.size()
             r6 = 0
-            int r4 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
-            if (r4 != 0) goto L_0x002c
+            int r8 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
+            if (r8 != 0) goto L_0x002c
             goto L_0x0008
         L_0x002c:
             okio.Segment r4 = r0.head
@@ -2408,8 +2276,8 @@ public final class Buffer implements BufferedSource, BufferedSink, Cloneable, By
             r9 = r6
         L_0x003f:
             long r11 = r20.size()
-            int r11 = (r9 > r11 ? 1 : (r9 == r11 ? 0 : -1))
-            if (r11 >= 0) goto L_0x0008
+            int r13 = (r9 > r11 ? 1 : (r9 == r11 ? 0 : -1))
+            if (r13 >= 0) goto L_0x0008
             int r11 = r4.limit
             int r11 = r11 - r5
             int r12 = r1.limit

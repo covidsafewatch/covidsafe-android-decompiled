@@ -15,14 +15,14 @@ class StreamingAeadDecryptingStream extends FilterInputStream {
     private ByteBuffer ciphertextSegment;
     private final int ciphertextSegmentSize;
     private final StreamSegmentDecrypter decrypter;
-    private boolean definedState;
-    private boolean endOfCiphertext;
-    private boolean endOfPlaintext;
+    private boolean definedState = true;
+    private boolean endOfCiphertext = false;
+    private boolean endOfPlaintext = false;
     private final int firstCiphertextSegmentSize;
     private int headerLength;
     private boolean headerRead = false;
     private ByteBuffer plaintextSegment;
-    private int segmentNr;
+    private int segmentNr = 0;
 
     public boolean markSupported() {
         return false;
@@ -42,11 +42,6 @@ class StreamingAeadDecryptingStream extends FilterInputStream {
         ByteBuffer allocate2 = ByteBuffer.allocate(nonceBasedStreamingAead.getPlaintextSegmentSize() + 16);
         this.plaintextSegment = allocate2;
         allocate2.limit(0);
-        this.headerRead = false;
-        this.endOfCiphertext = false;
-        this.endOfPlaintext = false;
-        this.segmentNr = 0;
-        this.definedState = true;
     }
 
     private void readHeader() throws IOException {
@@ -202,6 +197,21 @@ class StreamingAeadDecryptingStream extends FilterInputStream {
     }
 
     public synchronized void mark(int i) {
+    }
+
+    public long skip(long j) throws IOException {
+        int read;
+        long j2 = (long) this.ciphertextSegmentSize;
+        if (j <= 0) {
+            return 0;
+        }
+        int min = (int) Math.min(j2, j);
+        byte[] bArr = new byte[min];
+        long j3 = j;
+        while (j3 > 0 && (read = read(bArr, 0, (int) Math.min((long) min, j3))) > 0) {
+            j3 -= (long) read;
+        }
+        return j - j3;
     }
 
     public synchronized String toString() {

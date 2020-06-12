@@ -55,10 +55,7 @@ public final class Utils {
         if (i2 < i5) {
             return false;
         }
-        if (i2 > i5) {
-            return true;
-        }
-        return i3 >= i6;
+        return i2 > i5 || i3 >= i6;
     }
 
     private Utils() {

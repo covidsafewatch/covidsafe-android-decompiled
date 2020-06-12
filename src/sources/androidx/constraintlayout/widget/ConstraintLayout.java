@@ -548,25 +548,25 @@ public class ConstraintLayout extends ViewGroup {
                     constraintWidget.setVisibility(childAt.getVisibility());
                     int i8 = layoutParams.width;
                     int i9 = layoutParams.height;
-                    if (layoutParams.horizontalDimensionFixed || layoutParams.verticalDimensionFixed || (!layoutParams.horizontalDimensionFixed && layoutParams.matchConstraintDefaultWidth == 1) || layoutParams.width == -1 || (!layoutParams.verticalDimensionFixed && (layoutParams.matchConstraintDefaultHeight == 1 || layoutParams.height == -1))) {
+                    if ((layoutParams.horizontalDimensionFixed || layoutParams.verticalDimensionFixed || (!layoutParams.horizontalDimensionFixed && layoutParams.matchConstraintDefaultWidth == 1) || layoutParams.width == -1 || (!layoutParams.verticalDimensionFixed && (layoutParams.matchConstraintDefaultHeight == 1 || layoutParams.height == -1))) ? USE_CONSTRAINTS_HELPER : false) {
                         if (i8 == 0) {
                             i3 = getChildMeasureSpec(i5, paddingLeft, -2);
-                            z2 = true;
+                            z2 = USE_CONSTRAINTS_HELPER;
                         } else if (i8 == -1) {
                             i3 = getChildMeasureSpec(i5, paddingLeft, -1);
                             z2 = false;
                         } else {
-                            z2 = i8 == -2;
+                            z2 = i8 == -2 ? USE_CONSTRAINTS_HELPER : false;
                             i3 = getChildMeasureSpec(i5, paddingLeft, i8);
                         }
                         if (i9 == 0) {
-                            z = true;
                             i4 = getChildMeasureSpec(i6, paddingTop, -2);
+                            z = USE_CONSTRAINTS_HELPER;
                         } else if (i9 == -1) {
                             i4 = getChildMeasureSpec(i6, paddingTop, -1);
                             z = false;
                         } else {
-                            z = i9 == -2;
+                            z = i9 == -2 ? USE_CONSTRAINTS_HELPER : false;
                             i4 = getChildMeasureSpec(i6, paddingTop, i9);
                         }
                         childAt.measure(i3, i4);
@@ -1080,10 +1080,10 @@ public class ConstraintLayout extends ViewGroup {
             androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer r9 = r0.mLayoutWidget
             int r12 = r23.getLayoutDirection()
             if (r12 != r11) goto L_0x004b
-            r12 = r11
+            r12 = 1
             goto L_0x004c
         L_0x004b:
-            r12 = r10
+            r12 = 0
         L_0x004c:
             r9.setRtl(r12)
         L_0x004f:
@@ -1096,19 +1096,19 @@ public class ConstraintLayout extends ViewGroup {
             if (r13 == 0) goto L_0x0069
             r0.mDirtyHierarchy = r10
             r23.updateHierarchy()
-            r13 = r11
+            r13 = 1
             goto L_0x006a
         L_0x0069:
-            r13 = r10
+            r13 = 0
         L_0x006a:
             int r14 = r0.mOptimizationLevel
             r15 = 8
             r14 = r14 & r15
             if (r14 != r15) goto L_0x0073
-            r14 = r11
+            r14 = 1
             goto L_0x0074
         L_0x0073:
-            r14 = r10
+            r14 = 0
         L_0x0074:
             if (r14 == 0) goto L_0x0084
             androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer r15 = r0.mLayoutWidget
@@ -1230,19 +1230,19 @@ public class ConstraintLayout extends ViewGroup {
             androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r6 = r6.getHorizontalDimensionBehaviour()
             androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r11 = androidx.constraintlayout.solver.widgets.ConstraintWidget.DimensionBehaviour.WRAP_CONTENT
             if (r6 != r11) goto L_0x015d
-            r6 = r4
+            r6 = 1
             goto L_0x015e
         L_0x015d:
-            r6 = r10
+            r6 = 0
         L_0x015e:
             androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer r11 = r0.mLayoutWidget
             androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r11 = r11.getVerticalDimensionBehaviour()
             androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r13 = androidx.constraintlayout.solver.widgets.ConstraintWidget.DimensionBehaviour.WRAP_CONTENT
             if (r11 != r13) goto L_0x016a
-            r11 = r4
+            r11 = 1
             goto L_0x016b
         L_0x016a:
-            r11 = r10
+            r11 = 0
         L_0x016b:
             androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer r13 = r0.mLayoutWidget
             int r13 = r13.getWidth()
@@ -2410,17 +2410,17 @@ public class ConstraintLayout extends ViewGroup {
                 r3 = 0
                 r4 = 1
                 if (r4 != r2) goto L_0x0036
-                r2 = r4
+                r2 = 1
                 goto L_0x0037
             L_0x0036:
-                r2 = r3
+                r2 = 0
             L_0x0037:
                 if (r2 == 0) goto L_0x009a
                 int r2 = r6.startToEnd
                 if (r2 == r7) goto L_0x0041
                 r6.resolvedRightToLeft = r2
             L_0x003f:
-                r3 = r4
+                r3 = 1
                 goto L_0x0048
             L_0x0041:
                 int r2 = r6.startToStart
@@ -2431,12 +2431,12 @@ public class ConstraintLayout extends ViewGroup {
                 int r2 = r6.endToStart
                 if (r2 == r7) goto L_0x004f
                 r6.resolvedLeftToRight = r2
-                r3 = r4
+                r3 = 1
             L_0x004f:
                 int r2 = r6.endToEnd
                 if (r2 == r7) goto L_0x0056
                 r6.resolvedLeftToLeft = r2
-                r3 = r4
+                r3 = 1
             L_0x0056:
                 int r2 = r6.goneStartMargin
                 if (r2 == r7) goto L_0x005c

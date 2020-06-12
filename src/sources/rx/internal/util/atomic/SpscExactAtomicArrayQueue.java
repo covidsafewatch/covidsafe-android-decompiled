@@ -48,7 +48,7 @@ public final class SpscExactAtomicArrayQueue<T> extends AtomicReferenceArray<T> 
     }
 
     public T peek() {
-        return get(((int) this.consumerIndex.get()) & this.mask);
+        return get(this.mask & ((int) this.consumerIndex.get()));
     }
 
     public void clear() {

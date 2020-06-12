@@ -420,8 +420,8 @@ public final class OperatorSwitch<T> implements Observable.Operator<T, Observabl
                 monitor-enter(r20)
                 long r0 = r8.requested     // Catch:{ all -> 0x00c5 }
                 r2 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-                if (r2 == 0) goto L_0x00a2
+                int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+                if (r4 == 0) goto L_0x00a2
                 long r0 = r0 - r16
                 r8.requested = r0     // Catch:{ all -> 0x00c5 }
             L_0x00a2:

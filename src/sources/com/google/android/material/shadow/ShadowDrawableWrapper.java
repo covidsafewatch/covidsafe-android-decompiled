@@ -250,15 +250,10 @@ public class ShadowDrawableWrapper extends DrawableWrapper {
             float f4 = this.cornerRadius / f3;
             Paint paint = this.cornerShadowPaint;
             RadialGradient radialGradient = r8;
-            float[] fArr = {0.0f, f4, ((1.0f - f4) / 2.0f) + f4, 1.0f};
-            RadialGradient radialGradient2 = new RadialGradient(0.0f, 0.0f, f3, new int[]{0, this.shadowStartColor, this.shadowMiddleColor, this.shadowEndColor}, fArr, Shader.TileMode.CLAMP);
+            RadialGradient radialGradient2 = new RadialGradient(0.0f, 0.0f, f3, new int[]{0, this.shadowStartColor, this.shadowMiddleColor, this.shadowEndColor}, new float[]{0.0f, f4, ((1.0f - f4) / 2.0f) + f4, 1.0f}, Shader.TileMode.CLAMP);
             paint.setShader(radialGradient);
         }
-        Paint paint2 = this.edgeShadowPaint;
-        float f5 = rectF.top;
-        float f6 = rectF2.top;
-        int[] iArr = {this.shadowStartColor, this.shadowMiddleColor, this.shadowEndColor};
-        paint2.setShader(new LinearGradient(0.0f, f5, 0.0f, f6, iArr, new float[]{0.0f, SHADOW_HORIZ_SCALE, 1.0f}, Shader.TileMode.CLAMP));
+        this.edgeShadowPaint.setShader(new LinearGradient(0.0f, rectF.top, 0.0f, rectF2.top, new int[]{this.shadowStartColor, this.shadowMiddleColor, this.shadowEndColor}, new float[]{0.0f, SHADOW_HORIZ_SCALE, 1.0f}, Shader.TileMode.CLAMP));
         this.edgeShadowPaint.setAntiAlias(false);
     }
 

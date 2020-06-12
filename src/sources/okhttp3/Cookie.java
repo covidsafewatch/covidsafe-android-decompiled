@@ -408,10 +408,10 @@ public final class Cookie {
                 java.lang.CharSequence r4 = (java.lang.CharSequence) r4
                 int r4 = r4.length()
                 if (r4 != 0) goto L_0x0037
-                r4 = r3
+                r4 = 1
                 goto L_0x0038
             L_0x0037:
-                r4 = r2
+                r4 = 0
             L_0x0038:
                 if (r4 != 0) goto L_0x0184
                 int r4 = okhttp3.internal.Util.indexOfControlOrNonAscii(r10)
@@ -431,11 +431,11 @@ public final class Cookie {
                 int r4 = r28.length()
                 r12 = -1
                 r5 = r0
-                r16 = r2
-                r17 = r16
-                r18 = r17
-                r19 = r3
                 r20 = r12
+                r16 = 0
+                r17 = 0
+                r18 = 0
+                r19 = 1
                 r22 = 253402300799999(0xe677d21fdbff, double:1.251973714024093E-309)
             L_0x0069:
                 if (r8 >= r4) goto L_0x00e4
@@ -467,7 +467,7 @@ public final class Cookie {
                 okhttp3.Cookie$Companion r8 = (okhttp3.Cookie.Companion) r8     // Catch:{  }
                 long r20 = r8.parseMaxAge(r1)     // Catch:{  }
             L_0x00ab:
-                r18 = r3
+                r18 = 1
                 goto L_0x00e0
             L_0x00ae:
                 java.lang.String r14 = "domain"
@@ -476,7 +476,7 @@ public final class Cookie {
                 r8 = r24
                 okhttp3.Cookie$Companion r8 = (okhttp3.Cookie.Companion) r8     // Catch:{ IllegalArgumentException -> 0x00e0 }
                 java.lang.String r0 = r8.parseDomain(r1)     // Catch:{ IllegalArgumentException -> 0x00e0 }
-                r19 = r2
+                r19 = 0
                 goto L_0x00e0
             L_0x00c1:
                 java.lang.String r14 = "path"
@@ -488,13 +488,13 @@ public final class Cookie {
                 java.lang.String r1 = "secure"
                 boolean r1 = kotlin.text.StringsKt.equals(r8, r1, r3)
                 if (r1 == 0) goto L_0x00d6
-                r16 = r3
+                r16 = 1
                 goto L_0x00e0
             L_0x00d6:
                 java.lang.String r1 = "httponly"
                 boolean r1 = kotlin.text.StringsKt.equals(r8, r1, r3)
                 if (r1 == 0) goto L_0x00e0
-                r17 = r3
+                r17 = 1
             L_0x00e0:
                 int r8 = r9 + 1
                 r1 = 0

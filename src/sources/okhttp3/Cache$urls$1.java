@@ -40,16 +40,16 @@ public final class Cache$urls$1 implements Iterator<String>, KMutableIterator {
         this.canRemove = z;
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:18:0x0033, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:17:0x0033, code lost:
         r4 = move-exception;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:19:0x0034, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:18:0x0034, code lost:
         continue;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:20:?, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:19:?, code lost:
         kotlin.io.CloseableKt.closeFinally(r2, r3);
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:21:0x0037, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:20:0x0037, code lost:
         throw r4;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:25:?, code lost:
@@ -69,28 +69,30 @@ public final class Cache$urls$1 implements Iterator<String>, KMutableIterator {
         L_0x0009:
             java.util.Iterator<okhttp3.internal.cache.DiskLruCache$Snapshot> r2 = r5.delegate
             boolean r2 = r2.hasNext()
-            if (r2 == 0) goto L_0x0038
-            java.util.Iterator<okhttp3.internal.cache.DiskLruCache$Snapshot> r2 = r5.delegate     // Catch:{ IOException -> 0x0009 }
-            java.lang.Object r2 = r2.next()     // Catch:{ IOException -> 0x0009 }
-            java.io.Closeable r2 = (java.io.Closeable) r2     // Catch:{ IOException -> 0x0009 }
+            if (r2 == 0) goto L_0x003a
+            java.util.Iterator<okhttp3.internal.cache.DiskLruCache$Snapshot> r2 = r5.delegate     // Catch:{ IOException -> 0x0038 }
+            java.lang.Object r2 = r2.next()     // Catch:{ IOException -> 0x0038 }
+            java.io.Closeable r2 = (java.io.Closeable) r2     // Catch:{ IOException -> 0x0038 }
             r3 = 0
-            java.lang.Throwable r3 = (java.lang.Throwable) r3     // Catch:{ IOException -> 0x0009 }
+            java.lang.Throwable r3 = (java.lang.Throwable) r3     // Catch:{ IOException -> 0x0038 }
             r4 = r2
             okhttp3.internal.cache.DiskLruCache$Snapshot r4 = (okhttp3.internal.cache.DiskLruCache.Snapshot) r4     // Catch:{ all -> 0x0031 }
             okio.Source r4 = r4.getSource(r0)     // Catch:{ all -> 0x0031 }
             okio.BufferedSource r4 = okio.Okio.buffer((okio.Source) r4)     // Catch:{ all -> 0x0031 }
             java.lang.String r4 = r4.readUtf8LineStrict()     // Catch:{ all -> 0x0031 }
             r5.nextUrl = r4     // Catch:{ all -> 0x0031 }
-            kotlin.io.CloseableKt.closeFinally(r2, r3)     // Catch:{ IOException -> 0x0009 }
+            kotlin.io.CloseableKt.closeFinally(r2, r3)     // Catch:{ IOException -> 0x0038 }
             return r1
         L_0x0031:
             r3 = move-exception
             throw r3     // Catch:{ all -> 0x0033 }
         L_0x0033:
             r4 = move-exception
-            kotlin.io.CloseableKt.closeFinally(r2, r3)     // Catch:{ IOException -> 0x0009 }
-            throw r4     // Catch:{ IOException -> 0x0009 }
+            kotlin.io.CloseableKt.closeFinally(r2, r3)     // Catch:{ IOException -> 0x0038 }
+            throw r4     // Catch:{ IOException -> 0x0038 }
         L_0x0038:
+            goto L_0x0009
+        L_0x003a:
             return r0
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.Cache$urls$1.hasNext():boolean");

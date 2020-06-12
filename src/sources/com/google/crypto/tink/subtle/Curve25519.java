@@ -65,7 +65,7 @@ final class Curve25519 {
     static void swapConditional(long[] jArr, long[] jArr2, int i) {
         int i2 = -i;
         for (int i3 = 0; i3 < 10; i3++) {
-            int i4 = (((int) jArr[i3]) ^ ((int) jArr2[i3])) & i2;
+            int i4 = (((int) jArr2[i3]) ^ ((int) jArr[i3])) & i2;
             jArr[i3] = (long) (((int) jArr[i3]) ^ i4);
             jArr2[i3] = (long) (i4 ^ ((int) jArr2[i3]));
         }
@@ -74,7 +74,7 @@ final class Curve25519 {
     static void copyConditional(long[] jArr, long[] jArr2, int i) {
         int i2 = -i;
         for (int i3 = 0; i3 < 10; i3++) {
-            jArr[i3] = (long) (((((int) jArr[i3]) ^ ((int) jArr2[i3])) & i2) ^ ((int) jArr[i3]));
+            jArr[i3] = (long) (((((int) jArr2[i3]) ^ ((int) jArr[i3])) & i2) ^ ((int) jArr[i3]));
         }
     }
 
@@ -84,7 +84,6 @@ final class Curve25519 {
         long[] expand = Field25519.expand(bArr2);
         long[] jArr3 = new long[19];
         long[] jArr4 = new long[19];
-        int i = 0;
         jArr4[0] = 1;
         long[] jArr5 = new long[19];
         jArr5[0] = 1;
@@ -95,26 +94,25 @@ final class Curve25519 {
         long[] jArr9 = new long[19];
         long[] jArr10 = new long[19];
         jArr10[0] = 1;
-        int i2 = 10;
         System.arraycopy(expand, 0, jArr3, 0, 10);
-        int i3 = 0;
-        while (i3 < 32) {
-            byte b = bArr[(32 - i3) - 1] & 255;
+        int i = 0;
+        while (i < 32) {
+            byte b = bArr[(32 - i) - 1] & 255;
             long[] jArr11 = jArr7;
             long[] jArr12 = jArr8;
             long[] jArr13 = jArr3;
             long[] jArr14 = jArr4;
-            int i4 = i;
             long[] jArr15 = jArr9;
+            int i2 = 0;
             long[] jArr16 = jArr10;
             long[] jArr17 = jArr6;
             long[] jArr18 = jArr5;
             long[] jArr19 = jArr17;
-            while (i4 < 8) {
-                int i5 = (b >> (7 - i4)) & 1;
-                swapConditional(jArr18, jArr13, i5);
-                swapConditional(jArr19, jArr14, i5);
-                int i6 = i5;
+            while (i2 < 8) {
+                int i3 = (b >> (7 - i2)) & 1;
+                swapConditional(jArr18, jArr13, i3);
+                swapConditional(jArr19, jArr14, i3);
+                int i4 = i3;
                 long[] jArr20 = jArr15;
                 byte b2 = b;
                 long[] jArr21 = jArr11;
@@ -123,10 +121,10 @@ final class Curve25519 {
                 long[] jArr24 = jArr14;
                 long[] jArr25 = jArr13;
                 monty(jArr15, jArr16, jArr11, jArr12, jArr18, jArr19, jArr13, jArr14, expand);
-                swapConditional(jArr20, jArr21, i6);
+                swapConditional(jArr20, jArr21, i4);
                 long[] jArr26 = jArr12;
-                swapConditional(jArr16, jArr26, i6);
-                i4++;
+                swapConditional(jArr16, jArr26, i4);
+                i2++;
                 jArr14 = jArr26;
                 jArr19 = jArr16;
                 jArr18 = jArr20;
@@ -141,7 +139,7 @@ final class Curve25519 {
             long[] jArr28 = jArr14;
             long[] jArr29 = jArr13;
             jArr8 = jArr12;
-            i3++;
+            i++;
             jArr10 = jArr16;
             jArr9 = jArr15;
             jArr7 = jArr11;
@@ -149,10 +147,8 @@ final class Curve25519 {
             jArr5 = jArr27;
             jArr4 = jArr28;
             jArr3 = jArr29;
-            i = 0;
-            i2 = 10;
         }
-        long[] jArr30 = new long[i2];
+        long[] jArr30 = new long[10];
         Field25519.inverse(jArr30, jArr6);
         Field25519.mult(jArr2, jArr5, jArr30);
         if (!isCollinear(expand, jArr2, jArr3, jArr4)) {

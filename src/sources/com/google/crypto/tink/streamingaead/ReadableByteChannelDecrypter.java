@@ -19,40 +19,40 @@ final class ReadableByteChannelDecrypter implements ReadableByteChannel {
         this.associatedData = (byte[]) bArr.clone();
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:31:0x0059, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:27:0x0059, code lost:
         return r3;
      */
-    /* JADX WARNING: Missing exception handler attribute for start block: B:32:0x005a */
+    /* JADX WARNING: Missing exception handler attribute for start block: B:28:0x005a */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public synchronized int read(java.nio.ByteBuffer r6) throws java.io.IOException {
         /*
             r5 = this;
             monitor-enter(r5)
-            int r0 = r6.remaining()     // Catch:{ all -> 0x007f }
+            int r0 = r6.remaining()     // Catch:{ all -> 0x0076 }
             r1 = 0
             if (r0 != 0) goto L_0x000a
             monitor-exit(r5)
             return r1
         L_0x000a:
-            java.nio.channels.ReadableByteChannel r0 = r5.matchingChannel     // Catch:{ all -> 0x007f }
+            java.nio.channels.ReadableByteChannel r0 = r5.matchingChannel     // Catch:{ all -> 0x0076 }
             if (r0 == 0) goto L_0x0016
-            java.nio.channels.ReadableByteChannel r0 = r5.matchingChannel     // Catch:{ all -> 0x007f }
-            int r6 = r0.read(r6)     // Catch:{ all -> 0x007f }
+            java.nio.channels.ReadableByteChannel r0 = r5.matchingChannel     // Catch:{ all -> 0x0076 }
+            int r6 = r0.read(r6)     // Catch:{ all -> 0x0076 }
             monitor-exit(r5)
             return r6
         L_0x0016:
-            boolean r0 = r5.attemptedMatching     // Catch:{ all -> 0x007f }
-            if (r0 != 0) goto L_0x0077
+            boolean r0 = r5.attemptedMatching     // Catch:{ all -> 0x0076 }
+            if (r0 != 0) goto L_0x006e
             r0 = 1
-            r5.attemptedMatching = r0     // Catch:{ all -> 0x007f }
-            com.google.crypto.tink.PrimitiveSet<com.google.crypto.tink.StreamingAead> r0 = r5.primitives     // Catch:{ GeneralSecurityException -> 0x006e }
-            java.util.List r0 = r0.getRawPrimitives()     // Catch:{ GeneralSecurityException -> 0x006e }
-            java.util.Iterator r0 = r0.iterator()     // Catch:{ all -> 0x007f }
+            r5.attemptedMatching = r0     // Catch:{ all -> 0x0076 }
+            com.google.crypto.tink.PrimitiveSet<com.google.crypto.tink.StreamingAead> r0 = r5.primitives     // Catch:{ all -> 0x0076 }
+            java.util.List r0 = r0.getRawPrimitives()     // Catch:{ all -> 0x0076 }
+            java.util.Iterator r0 = r0.iterator()     // Catch:{ all -> 0x0076 }
         L_0x0027:
-            boolean r2 = r0.hasNext()     // Catch:{ all -> 0x007f }
+            boolean r2 = r0.hasNext()     // Catch:{ all -> 0x0076 }
             if (r2 == 0) goto L_0x0066
-            java.lang.Object r2 = r0.next()     // Catch:{ all -> 0x007f }
-            com.google.crypto.tink.PrimitiveSet$Entry r2 = (com.google.crypto.tink.PrimitiveSet.Entry) r2     // Catch:{ all -> 0x007f }
+            java.lang.Object r2 = r0.next()     // Catch:{ all -> 0x0076 }
+            com.google.crypto.tink.PrimitiveSet$Entry r2 = (com.google.crypto.tink.PrimitiveSet.Entry) r2     // Catch:{ all -> 0x0076 }
             java.lang.Object r2 = r2.getPrimitive()     // Catch:{ IOException -> 0x0060, GeneralSecurityException -> 0x005a }
             com.google.crypto.tink.StreamingAead r2 = (com.google.crypto.tink.StreamingAead) r2     // Catch:{ IOException -> 0x0060, GeneralSecurityException -> 0x005a }
             com.google.crypto.tink.subtle.RewindableReadableByteChannel r3 = r5.ciphertextChannel     // Catch:{ IOException -> 0x0060, GeneralSecurityException -> 0x005a }
@@ -73,30 +73,24 @@ final class ReadableByteChannelDecrypter implements ReadableByteChannel {
             monitor-exit(r5)
             return r3
         L_0x005a:
-            com.google.crypto.tink.subtle.RewindableReadableByteChannel r2 = r5.ciphertextChannel     // Catch:{ all -> 0x007f }
-            r2.rewind()     // Catch:{ all -> 0x007f }
+            com.google.crypto.tink.subtle.RewindableReadableByteChannel r2 = r5.ciphertextChannel     // Catch:{ all -> 0x0076 }
+            r2.rewind()     // Catch:{ all -> 0x0076 }
             goto L_0x0027
         L_0x0060:
-            com.google.crypto.tink.subtle.RewindableReadableByteChannel r2 = r5.ciphertextChannel     // Catch:{ all -> 0x007f }
-            r2.rewind()     // Catch:{ all -> 0x007f }
+            com.google.crypto.tink.subtle.RewindableReadableByteChannel r2 = r5.ciphertextChannel     // Catch:{ all -> 0x0076 }
+            r2.rewind()     // Catch:{ all -> 0x0076 }
             goto L_0x0027
         L_0x0066:
-            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x007f }
+            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x0076 }
             java.lang.String r0 = "No matching key found for the ciphertext in the stream."
-            r6.<init>(r0)     // Catch:{ all -> 0x007f }
-            throw r6     // Catch:{ all -> 0x007f }
+            r6.<init>(r0)     // Catch:{ all -> 0x0076 }
+            throw r6     // Catch:{ all -> 0x0076 }
         L_0x006e:
-            r6 = move-exception
-            java.io.IOException r0 = new java.io.IOException     // Catch:{ all -> 0x007f }
-            java.lang.String r1 = "Keyset failure: "
-            r0.<init>(r1, r6)     // Catch:{ all -> 0x007f }
-            throw r0     // Catch:{ all -> 0x007f }
-        L_0x0077:
-            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x007f }
+            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x0076 }
             java.lang.String r0 = "No matching key found for the ciphertext in the stream."
-            r6.<init>(r0)     // Catch:{ all -> 0x007f }
-            throw r6     // Catch:{ all -> 0x007f }
-        L_0x007f:
+            r6.<init>(r0)     // Catch:{ all -> 0x0076 }
+            throw r6     // Catch:{ all -> 0x0076 }
+        L_0x0076:
             r6 = move-exception
             monitor-exit(r5)
             throw r6

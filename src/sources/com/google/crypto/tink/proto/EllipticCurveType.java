@@ -1,14 +1,16 @@
 package com.google.crypto.tink.proto;
 
-import com.google.protobuf.Internal;
+import com.google.crypto.tink.shaded.protobuf.Internal;
 
 public enum EllipticCurveType implements Internal.EnumLite {
     UNKNOWN_CURVE(0),
     NIST_P256(2),
     NIST_P384(3),
     NIST_P521(4),
+    CURVE25519(5),
     UNRECOGNIZED(-1);
     
+    public static final int CURVE25519_VALUE = 5;
     public static final int NIST_P256_VALUE = 2;
     public static final int NIST_P384_VALUE = 3;
     public static final int NIST_P521_VALUE = 4;
@@ -25,7 +27,10 @@ public enum EllipticCurveType implements Internal.EnumLite {
     }
 
     public final int getNumber() {
-        return this.value;
+        if (this != UNRECOGNIZED) {
+            return this.value;
+        }
+        throw new IllegalArgumentException("Can't get the number of an unknown enum value.");
     }
 
     @Deprecated
@@ -43,14 +48,36 @@ public enum EllipticCurveType implements Internal.EnumLite {
         if (i == 3) {
             return NIST_P384;
         }
-        if (i != 4) {
+        if (i == 4) {
+            return NIST_P521;
+        }
+        if (i != 5) {
             return null;
         }
-        return NIST_P521;
+        return CURVE25519;
     }
 
     public static Internal.EnumLiteMap<EllipticCurveType> internalGetValueMap() {
         return internalValueMap;
+    }
+
+    public static Internal.EnumVerifier internalGetVerifier() {
+        return EllipticCurveTypeVerifier.INSTANCE;
+    }
+
+    private static final class EllipticCurveTypeVerifier implements Internal.EnumVerifier {
+        static final Internal.EnumVerifier INSTANCE = null;
+
+        private EllipticCurveTypeVerifier() {
+        }
+
+        static {
+            INSTANCE = new EllipticCurveTypeVerifier();
+        }
+
+        public boolean isInRange(int i) {
+            return EllipticCurveType.forNumber(i) != null;
+        }
     }
 
     private EllipticCurveType(int i) {

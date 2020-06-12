@@ -130,16 +130,17 @@ public final class Strings {
         while (i < objArr.length && (indexOf = valueOf.indexOf("%s", i3)) != -1) {
             sb.append(valueOf, i3, indexOf);
             sb.append(objArr[i]);
+            int i4 = i + 1;
             i3 = indexOf + 2;
-            i++;
+            i = i4;
         }
         sb.append(valueOf, i3, valueOf.length());
         if (i < objArr.length) {
             sb.append(" [");
             sb.append(objArr[i]);
-            for (int i4 = i + 1; i4 < objArr.length; i4++) {
+            for (int i5 = i + 1; i5 < objArr.length; i5++) {
                 sb.append(", ");
-                sb.append(objArr[i4]);
+                sb.append(objArr[i5]);
             }
             sb.append(']');
         }

@@ -318,7 +318,7 @@ public final class CacheControl {
 
         /* JADX WARNING: Removed duplicated region for block: B:12:0x004a  */
         /* JADX WARNING: Removed duplicated region for block: B:44:0x0102  */
-        /* JADX WARNING: Removed duplicated region for block: B:46:0x0106  */
+        /* JADX WARNING: Removed duplicated region for block: B:45:0x0106  */
         @kotlin.jvm.JvmStatic
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public final okhttp3.CacheControl parse(okhttp3.Headers r35) {
@@ -332,8 +332,8 @@ public final class CacheControl {
                 int r2 = r35.size()
                 r5 = 1
                 r8 = r1
-                r7 = r5
                 r6 = 0
+                r7 = 1
                 r9 = 0
                 r10 = 0
                 r11 = -1
@@ -347,7 +347,7 @@ public final class CacheControl {
                 r19 = 0
                 r20 = 0
             L_0x0023:
-                if (r6 >= r2) goto L_0x01c0
+                if (r6 >= r2) goto L_0x01d3
                 java.lang.String r4 = r0.name(r6)
                 java.lang.String r3 = r0.value(r6)
                 java.lang.String r0 = "Cache-Control"
@@ -361,28 +361,28 @@ public final class CacheControl {
             L_0x003a:
                 java.lang.String r0 = "Pragma"
                 boolean r0 = kotlin.text.StringsKt.equals(r4, r0, r5)
-                if (r0 == 0) goto L_0x01b1
+                if (r0 == 0) goto L_0x01c4
             L_0x0042:
                 r7 = 0
             L_0x0043:
                 r0 = 0
             L_0x0044:
                 int r4 = r3.length()
-                if (r0 >= r4) goto L_0x01a6
+                if (r0 >= r4) goto L_0x01b9
                 r4 = r34
                 okhttp3.CacheControl$Companion r4 = (okhttp3.CacheControl.Companion) r4
                 java.lang.String r5 = "=,;"
                 int r5 = r4.indexOfElement(r3, r5, r0)
                 r23 = r1
                 java.lang.String r1 = "null cannot be cast to non-null type java.lang.String"
-                if (r3 == 0) goto L_0x01a0
+                if (r3 == 0) goto L_0x01b3
                 java.lang.String r0 = r3.substring(r0, r5)
                 r24 = r2
                 java.lang.String r2 = "(this as java.lang.Strin…ing(startIndex, endIndex)"
                 kotlin.jvm.internal.Intrinsics.checkExpressionValueIsNotNull(r0, r2)
                 r25 = r7
                 java.lang.String r7 = "null cannot be cast to non-null type kotlin.CharSequence"
-                if (r0 == 0) goto L_0x019a
+                if (r0 == 0) goto L_0x01ad
                 java.lang.CharSequence r0 = (java.lang.CharSequence) r0
                 java.lang.CharSequence r0 = kotlin.text.StringsKt.trim((java.lang.CharSequence) r0)
                 java.lang.String r0 = r0.toString()
@@ -454,125 +454,134 @@ public final class CacheControl {
                 r5 = 1
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
                 if (r2 == 0) goto L_0x0106
-                r9 = r5
-            L_0x0103:
                 r2 = -1
-                goto L_0x018f
+                r9 = 1
+                goto L_0x01a2
             L_0x0106:
                 java.lang.String r2 = "no-store"
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
-                if (r2 == 0) goto L_0x0112
-                r10 = r5
-            L_0x010f:
+                if (r2 == 0) goto L_0x0114
                 r9 = r27
-                goto L_0x0103
-            L_0x0112:
+                r2 = -1
+                r10 = 1
+                goto L_0x01a2
+            L_0x0114:
                 java.lang.String r2 = "max-age"
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
-                if (r2 == 0) goto L_0x0123
+                if (r2 == 0) goto L_0x0125
                 r2 = -1
                 int r11 = okhttp3.internal.Util.toNonNegativeInt(r1, r2)
-            L_0x011f:
+            L_0x0121:
                 r9 = r27
-                goto L_0x018f
-            L_0x0123:
+                goto L_0x01a2
+            L_0x0125:
                 r2 = -1
                 java.lang.String r7 = "s-maxage"
                 boolean r7 = kotlin.text.StringsKt.equals(r7, r0, r5)
-                if (r7 == 0) goto L_0x0131
+                if (r7 == 0) goto L_0x0133
                 int r12 = okhttp3.internal.Util.toNonNegativeInt(r1, r2)
-                goto L_0x011f
-            L_0x0131:
+                goto L_0x0121
+            L_0x0133:
                 java.lang.String r2 = "private"
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
-                if (r2 == 0) goto L_0x013b
-                r13 = r5
-                goto L_0x010f
-            L_0x013b:
+                if (r2 == 0) goto L_0x0140
+                r9 = r27
+                r2 = -1
+                r13 = 1
+                goto L_0x01a2
+            L_0x0140:
                 java.lang.String r2 = "public"
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
-                if (r2 == 0) goto L_0x0145
-                r14 = r5
-                goto L_0x010f
-            L_0x0145:
+                if (r2 == 0) goto L_0x014d
+                r9 = r27
+                r2 = -1
+                r14 = 1
+                goto L_0x01a2
+            L_0x014d:
                 java.lang.String r2 = "must-revalidate"
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
-                if (r2 == 0) goto L_0x014f
-                r15 = r5
-                goto L_0x010f
-            L_0x014f:
+                if (r2 == 0) goto L_0x015a
+                r9 = r27
+                r2 = -1
+                r15 = 1
+                goto L_0x01a2
+            L_0x015a:
                 java.lang.String r2 = "max-stale"
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
-                if (r2 == 0) goto L_0x015f
+                if (r2 == 0) goto L_0x016d
                 r0 = 2147483647(0x7fffffff, float:NaN)
                 int r16 = okhttp3.internal.Util.toNonNegativeInt(r1, r0)
-                goto L_0x010f
-            L_0x015f:
+                r9 = r27
+                r2 = -1
+                goto L_0x01a2
+            L_0x016d:
                 java.lang.String r2 = "min-fresh"
                 boolean r2 = kotlin.text.StringsKt.equals(r2, r0, r5)
-                if (r2 == 0) goto L_0x016d
+                if (r2 == 0) goto L_0x017b
                 r2 = -1
                 int r17 = okhttp3.internal.Util.toNonNegativeInt(r1, r2)
-                goto L_0x011f
-            L_0x016d:
+                goto L_0x0121
+            L_0x017b:
                 r2 = -1
                 java.lang.String r1 = "only-if-cached"
                 boolean r1 = kotlin.text.StringsKt.equals(r1, r0, r5)
-                if (r1 == 0) goto L_0x0179
-                r18 = r5
-                goto L_0x011f
-            L_0x0179:
+                if (r1 == 0) goto L_0x0189
+                r9 = r27
+                r18 = 1
+                goto L_0x01a2
+            L_0x0189:
                 java.lang.String r1 = "no-transform"
                 boolean r1 = kotlin.text.StringsKt.equals(r1, r0, r5)
-                if (r1 == 0) goto L_0x0184
-                r19 = r5
-                goto L_0x011f
-            L_0x0184:
+                if (r1 == 0) goto L_0x0196
+                r9 = r27
+                r19 = 1
+                goto L_0x01a2
+            L_0x0196:
                 java.lang.String r1 = "immutable"
                 boolean r0 = kotlin.text.StringsKt.equals(r1, r0, r5)
-                if (r0 == 0) goto L_0x011f
-                r20 = r5
-                goto L_0x011f
-            L_0x018f:
+                r9 = r27
+                if (r0 == 0) goto L_0x01a2
+                r20 = 1
+            L_0x01a2:
                 r0 = r4
                 r1 = r23
                 r2 = r24
                 r7 = r25
                 r8 = r26
                 goto L_0x0044
-            L_0x019a:
+            L_0x01ad:
                 kotlin.TypeCastException r0 = new kotlin.TypeCastException
                 r0.<init>(r7)
                 throw r0
-            L_0x01a0:
+            L_0x01b3:
                 kotlin.TypeCastException r0 = new kotlin.TypeCastException
                 r0.<init>(r1)
                 throw r0
-            L_0x01a6:
+            L_0x01b9:
                 r23 = r1
                 r24 = r2
                 r25 = r7
                 r26 = r8
                 r27 = r9
-                goto L_0x01b5
-            L_0x01b1:
+                goto L_0x01c8
+            L_0x01c4:
                 r23 = r1
                 r24 = r2
-            L_0x01b5:
+            L_0x01c8:
                 r2 = -1
                 int r6 = r6 + 1
                 r0 = r35
                 r1 = r23
                 r2 = r24
                 goto L_0x0023
-            L_0x01c0:
+            L_0x01d3:
                 r23 = r1
-                if (r7 != 0) goto L_0x01c7
+                if (r7 != 0) goto L_0x01da
                 r21 = r23
-                goto L_0x01c9
-            L_0x01c7:
+                goto L_0x01dc
+            L_0x01da:
                 r21 = r8
-            L_0x01c9:
+            L_0x01dc:
                 okhttp3.CacheControl r0 = new okhttp3.CacheControl
                 r22 = 0
                 r8 = r0

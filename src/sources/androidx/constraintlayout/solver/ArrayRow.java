@@ -27,8 +27,8 @@ public class ArrayRow implements LinearSystem.Row {
     }
 
     /* access modifiers changed from: package-private */
-    /* JADX WARNING: Removed duplicated region for block: B:25:0x00ae  */
-    /* JADX WARNING: Removed duplicated region for block: B:26:0x00be  */
+    /* JADX WARNING: Removed duplicated region for block: B:25:0x00af  */
+    /* JADX WARNING: Removed duplicated region for block: B:26:0x00bf  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public java.lang.String toReadableString() {
         /*
@@ -54,9 +54,9 @@ public class ArrayRow implements LinearSystem.Row {
             java.lang.String r0 = r1.toString()
             float r1 = r10.constantValue
             r2 = 0
-            int r1 = (r1 > r2 ? 1 : (r1 == r2 ? 0 : -1))
-            r3 = 0
-            r4 = 1
+            r3 = 1
+            r4 = 0
+            int r1 = (r1 > r4 ? 1 : (r1 == r4 ? 0 : -1))
             if (r1 == 0) goto L_0x0047
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
@@ -64,31 +64,31 @@ public class ArrayRow implements LinearSystem.Row {
             float r0 = r10.constantValue
             r1.append(r0)
             java.lang.String r0 = r1.toString()
-            r1 = r4
+            r1 = 1
             goto L_0x0048
         L_0x0047:
-            r1 = r3
+            r1 = 0
         L_0x0048:
             androidx.constraintlayout.solver.ArrayLinkedVariables r5 = r10.variables
             int r5 = r5.currentSize
         L_0x004c:
-            if (r3 >= r5) goto L_0x00da
+            if (r2 >= r5) goto L_0x00db
             androidx.constraintlayout.solver.ArrayLinkedVariables r6 = r10.variables
-            androidx.constraintlayout.solver.SolverVariable r6 = r6.getVariable(r3)
+            androidx.constraintlayout.solver.SolverVariable r6 = r6.getVariable(r2)
             if (r6 != 0) goto L_0x0058
-            goto L_0x00d6
+            goto L_0x00d7
         L_0x0058:
             androidx.constraintlayout.solver.ArrayLinkedVariables r7 = r10.variables
-            float r7 = r7.getVariableValue(r3)
-            int r8 = (r7 > r2 ? 1 : (r7 == r2 ? 0 : -1))
+            float r7 = r7.getVariableValue(r2)
+            int r8 = (r7 > r4 ? 1 : (r7 == r4 ? 0 : -1))
             if (r8 != 0) goto L_0x0064
-            goto L_0x00d6
+            goto L_0x00d7
         L_0x0064:
             java.lang.String r6 = r6.toString()
             r9 = -1082130432(0xffffffffbf800000, float:-1.0)
             if (r1 != 0) goto L_0x0082
-            int r1 = (r7 > r2 ? 1 : (r7 == r2 ? 0 : -1))
-            if (r1 >= 0) goto L_0x00a8
+            int r1 = (r7 > r4 ? 1 : (r7 == r4 ? 0 : -1))
+            if (r1 >= 0) goto L_0x00a9
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
             r1.append(r0)
@@ -104,7 +104,7 @@ public class ArrayRow implements LinearSystem.Row {
             java.lang.String r0 = " + "
             r1.append(r0)
             java.lang.String r0 = r1.toString()
-            goto L_0x00a8
+            goto L_0x00a9
         L_0x0096:
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
@@ -114,17 +114,17 @@ public class ArrayRow implements LinearSystem.Row {
             java.lang.String r0 = r1.toString()
         L_0x00a7:
             float r7 = r7 * r9
-        L_0x00a8:
+        L_0x00a9:
             r1 = 1065353216(0x3f800000, float:1.0)
             int r1 = (r7 > r1 ? 1 : (r7 == r1 ? 0 : -1))
-            if (r1 != 0) goto L_0x00be
+            if (r1 != 0) goto L_0x00bf
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
             r1.append(r0)
             r1.append(r6)
             java.lang.String r0 = r1.toString()
-            goto L_0x00d5
-        L_0x00be:
+            goto L_0x00d6
+        L_0x00bf:
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
             r1.append(r0)
@@ -133,20 +133,20 @@ public class ArrayRow implements LinearSystem.Row {
             r1.append(r0)
             r1.append(r6)
             java.lang.String r0 = r1.toString()
-        L_0x00d5:
-            r1 = r4
         L_0x00d6:
-            int r3 = r3 + 1
+            r1 = 1
+        L_0x00d7:
+            int r2 = r2 + 1
             goto L_0x004c
-        L_0x00da:
-            if (r1 != 0) goto L_0x00ed
+        L_0x00db:
+            if (r1 != 0) goto L_0x00ee
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
             r1.append(r0)
             java.lang.String r0 = "0.0"
             r1.append(r0)
             java.lang.String r0 = r1.toString()
-        L_0x00ed:
+        L_0x00ee:
             return r0
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.solver.ArrayRow.toReadableString():java.lang.String");

@@ -3467,7 +3467,7 @@ class UArraysKt___UArraysKt extends UArraysKt___UArraysJvmKt {
         /*
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x0003:
             if (r1 >= r0) goto L_0x0018
             r3 = r5[r1]
@@ -3491,7 +3491,7 @@ class UArraysKt___UArraysKt extends UArraysKt___UArraysJvmKt {
         /*
             int r0 = r6.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x0003:
             if (r1 >= r0) goto L_0x0018
             r3 = r6[r1]
@@ -3515,7 +3515,7 @@ class UArraysKt___UArraysKt extends UArraysKt___UArraysJvmKt {
         /*
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x0003:
             if (r1 >= r0) goto L_0x0018
             byte r3 = r5[r1]
@@ -3539,7 +3539,7 @@ class UArraysKt___UArraysKt extends UArraysKt___UArraysJvmKt {
         /*
             int r0 = r5.length
             r1 = 0
-            r2 = r1
+            r2 = 0
         L_0x0003:
             if (r1 >= r0) goto L_0x0018
             short r3 = r5[r1]

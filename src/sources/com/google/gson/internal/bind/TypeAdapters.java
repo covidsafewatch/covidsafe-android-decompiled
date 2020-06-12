@@ -356,7 +356,7 @@ public final class TypeAdapters {
                     r8.beginArray()
                     com.google.gson.stream.JsonToken r1 = r8.peek()
                     r2 = 0
-                    r3 = r2
+                    r3 = 0
                 L_0x000e:
                     com.google.gson.stream.JsonToken r4 = com.google.gson.stream.JsonToken.END_ARRAY
                     if (r1 == r4) goto L_0x0075
@@ -374,7 +374,7 @@ public final class TypeAdapters {
                     if (r1 == 0) goto L_0x002e
                     goto L_0x0069
                 L_0x002e:
-                    r5 = r2
+                    r5 = 0
                     goto L_0x0069
                 L_0x0030:
                     com.google.gson.JsonSyntaxException r8 = new com.google.gson.JsonSyntaxException

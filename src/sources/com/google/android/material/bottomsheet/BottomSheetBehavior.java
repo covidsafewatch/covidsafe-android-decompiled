@@ -398,10 +398,10 @@ public class BottomSheetBehavior<V extends View> extends CoordinatorLayout.Behav
             int r4 = r9.initialY
             boolean r11 = r10.isPointInChildBounds(r11, r6, r4)
             if (r11 != 0) goto L_0x0079
-            r11 = r2
+            r11 = 1
             goto L_0x007a
         L_0x0079:
-            r11 = r1
+            r11 = 0
         L_0x007a:
             r9.ignoreEvents = r11
         L_0x007c:
@@ -443,7 +443,7 @@ public class BottomSheetBehavior<V extends View> extends CoordinatorLayout.Behav
             float r11 = (float) r11
             int r10 = (r10 > r11 ? 1 : (r10 == r11 ? 0 : -1))
             if (r10 <= 0) goto L_0x00ce
-            r1 = r2
+            r1 = 1
         L_0x00ce:
             return r1
         */
@@ -625,7 +625,7 @@ public class BottomSheetBehavior<V extends View> extends CoordinatorLayout.Behav
             if (r2 == r4) goto L_0x0015
             goto L_0x0017
         L_0x0015:
-            r0 = r1
+            r0 = 0
             goto L_0x001f
         L_0x0017:
             r3.peekHeightAuto = r1
@@ -853,10 +853,7 @@ public class BottomSheetBehavior<V extends View> extends CoordinatorLayout.Behav
         if (this.skipCollapsed) {
             return true;
         }
-        if (view.getTop() < this.collapsedOffset) {
-            return false;
-        }
-        if (Math.abs((((float) view.getTop()) + (f * HIDE_FRICTION)) - ((float) this.collapsedOffset)) / ((float) this.peekHeight) > HIDE_THRESHOLD) {
+        if (view.getTop() >= this.collapsedOffset && Math.abs((((float) view.getTop()) + (f * HIDE_FRICTION)) - ((float) this.collapsedOffset)) / ((float) this.peekHeight) > HIDE_THRESHOLD) {
             return true;
         }
         return false;
@@ -940,8 +937,8 @@ public class BottomSheetBehavior<V extends View> extends CoordinatorLayout.Behav
             if (!this.fitToContents || i4 > (i3 = this.fitToContentsOffset)) {
                 i2 = i4;
             } else {
-                i = 3;
                 i2 = i3;
+                i = 3;
             }
         } else if (i == 3) {
             i2 = getExpandedOffset();

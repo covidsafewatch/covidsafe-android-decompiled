@@ -49,13 +49,12 @@ public class ULongProgression implements Iterable<ULong>, KMappedMarker {
 
     public boolean isEmpty() {
         int i = (this.step > 0 ? 1 : (this.step == 0 ? 0 : -1));
-        long j = this.first;
-        long j2 = this.last;
+        int ulongCompare = UnsignedKt.ulongCompare(this.first, this.last);
         if (i > 0) {
-            if (UnsignedKt.ulongCompare(j, j2) > 0) {
+            if (ulongCompare > 0) {
                 return true;
             }
-        } else if (UnsignedKt.ulongCompare(j, j2) < 0) {
+        } else if (ulongCompare < 0) {
             return true;
         }
         return false;
@@ -81,14 +80,13 @@ public class ULongProgression implements Iterable<ULong>, KMappedMarker {
         long j = this.first;
         long j2 = this.last;
         long j3 = this.step;
-        return (((((int) ULong.m158constructorimpl(j ^ ULong.m158constructorimpl(j >>> 32))) * 31) + ((int) ULong.m158constructorimpl(j2 ^ ULong.m158constructorimpl(j2 >>> 32)))) * 31) + ((int) ((j3 >>> 32) ^ j3));
+        return ((int) (j3 ^ (j3 >>> 32))) + (((((int) ULong.m158constructorimpl(j ^ ULong.m158constructorimpl(j >>> 32))) * 31) + ((int) ULong.m158constructorimpl(j2 ^ ULong.m158constructorimpl(j2 >>> 32)))) * 31);
     }
 
     public String toString() {
-        long j;
         StringBuilder sb;
+        long j;
         if (this.step > 0) {
-            sb = new StringBuilder();
             sb.append(ULong.m195toStringimpl(this.first));
             sb.append("..");
             sb.append(ULong.m195toStringimpl(this.last));

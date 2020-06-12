@@ -15,12 +15,12 @@ class ShapeFillParser {
     }
 
     static ShapeFill parse(JsonReader jsonReader, LottieComposition lottieComposition) throws IOException {
-        boolean z = false;
-        boolean z2 = false;
-        int i = 1;
         String str = null;
         AnimatableColorValue animatableColorValue = null;
         AnimatableIntegerValue animatableIntegerValue = null;
+        int i = 1;
+        boolean z = false;
+        boolean z2 = false;
         while (jsonReader.hasNext()) {
             int selectName = jsonReader.selectName(NAMES);
             if (selectName == 0) {

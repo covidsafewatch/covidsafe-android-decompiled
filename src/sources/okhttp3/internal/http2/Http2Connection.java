@@ -270,7 +270,7 @@ public final class Http2Connection implements Closeable {
             r13 = 0
             goto L_0x0044
         L_0x0043:
-            r13 = r0
+            r13 = 1
         L_0x0044:
             boolean r1 = r9.isOpen()     // Catch:{ all -> 0x0089 }
             if (r1 == 0) goto L_0x0053
@@ -329,9 +329,9 @@ public final class Http2Connection implements Closeable {
 
     /* JADX WARNING: Can't wrap try/catch for region: R(3:27|28|29) */
     /* JADX WARNING: Code restructure failed: missing block: B:17:?, code lost:
-        r2.element = (int) java.lang.Math.min(r12, r8.writeBytesMaximum - r8.writeBytesTotal);
-        r2.element = java.lang.Math.min(r2.element, r8.writer.maxDataLength());
-        r8.writeBytesTotal += (long) r2.element;
+        r3.element = (int) java.lang.Math.min(r13, r9.writeBytesMaximum - r9.writeBytesTotal);
+        r3.element = java.lang.Math.min(r3.element, r9.writer.maxDataLength());
+        r9.writeBytesTotal += (long) r3.element;
         r4 = kotlin.Unit.INSTANCE;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:28:?, code lost:
@@ -342,88 +342,88 @@ public final class Http2Connection implements Closeable {
      */
     /* JADX WARNING: Missing exception handler attribute for start block: B:27:0x0078 */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public final void writeData(int r9, boolean r10, okio.Buffer r11, long r12) throws java.io.IOException {
+    public final void writeData(int r10, boolean r11, okio.Buffer r12, long r13) throws java.io.IOException {
         /*
-            r8 = this;
+            r9 = this;
             r0 = 0
-            int r2 = (r12 > r0 ? 1 : (r12 == r0 ? 0 : -1))
-            r3 = 0
-            if (r2 != 0) goto L_0x000d
-            okhttp3.internal.http2.Http2Writer r12 = r8.writer
-            r12.data(r10, r9, r11, r3)
+            r1 = 0
+            int r3 = (r13 > r1 ? 1 : (r13 == r1 ? 0 : -1))
+            if (r3 != 0) goto L_0x000d
+            okhttp3.internal.http2.Http2Writer r13 = r9.writer
+            r13.data(r11, r10, r12, r0)
             return
         L_0x000d:
-            int r2 = (r12 > r0 ? 1 : (r12 == r0 ? 0 : -1))
-            if (r2 <= 0) goto L_0x0089
-            kotlin.jvm.internal.Ref$IntRef r2 = new kotlin.jvm.internal.Ref$IntRef
-            r2.<init>()
-            monitor-enter(r8)
+            int r3 = (r13 > r1 ? 1 : (r13 == r1 ? 0 : -1))
+            if (r3 <= 0) goto L_0x0089
+            kotlin.jvm.internal.Ref$IntRef r3 = new kotlin.jvm.internal.Ref$IntRef
+            r3.<init>()
+            monitor-enter(r9)
         L_0x0017:
-            long r4 = r8.writeBytesTotal     // Catch:{ InterruptedException -> 0x0078 }
-            long r6 = r8.writeBytesMaximum     // Catch:{ InterruptedException -> 0x0078 }
-            int r4 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
-            if (r4 < 0) goto L_0x003c
-            java.util.Map<java.lang.Integer, okhttp3.internal.http2.Http2Stream> r4 = r8.streams     // Catch:{ InterruptedException -> 0x0078 }
-            java.lang.Integer r5 = java.lang.Integer.valueOf(r9)     // Catch:{ InterruptedException -> 0x0078 }
+            long r4 = r9.writeBytesTotal     // Catch:{ InterruptedException -> 0x0078 }
+            long r6 = r9.writeBytesMaximum     // Catch:{ InterruptedException -> 0x0078 }
+            int r8 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
+            if (r8 < 0) goto L_0x003c
+            java.util.Map<java.lang.Integer, okhttp3.internal.http2.Http2Stream> r4 = r9.streams     // Catch:{ InterruptedException -> 0x0078 }
+            java.lang.Integer r5 = java.lang.Integer.valueOf(r10)     // Catch:{ InterruptedException -> 0x0078 }
             boolean r4 = r4.containsKey(r5)     // Catch:{ InterruptedException -> 0x0078 }
             if (r4 == 0) goto L_0x0032
-            r4 = r8
+            r4 = r9
             java.lang.Object r4 = (java.lang.Object) r4     // Catch:{ InterruptedException -> 0x0078 }
             r4.wait()     // Catch:{ InterruptedException -> 0x0078 }
             goto L_0x0017
         L_0x0032:
-            java.io.IOException r9 = new java.io.IOException     // Catch:{ InterruptedException -> 0x0078 }
-            java.lang.String r10 = "stream closed"
-            r9.<init>(r10)     // Catch:{ InterruptedException -> 0x0078 }
-            java.lang.Throwable r9 = (java.lang.Throwable) r9     // Catch:{ InterruptedException -> 0x0078 }
-            throw r9     // Catch:{ InterruptedException -> 0x0078 }
+            java.io.IOException r10 = new java.io.IOException     // Catch:{ InterruptedException -> 0x0078 }
+            java.lang.String r11 = "stream closed"
+            r10.<init>(r11)     // Catch:{ InterruptedException -> 0x0078 }
+            java.lang.Throwable r10 = (java.lang.Throwable) r10     // Catch:{ InterruptedException -> 0x0078 }
+            throw r10     // Catch:{ InterruptedException -> 0x0078 }
         L_0x003c:
-            long r4 = r8.writeBytesMaximum     // Catch:{ all -> 0x0076 }
-            long r6 = r8.writeBytesTotal     // Catch:{ all -> 0x0076 }
+            long r4 = r9.writeBytesMaximum     // Catch:{ all -> 0x0076 }
+            long r6 = r9.writeBytesTotal     // Catch:{ all -> 0x0076 }
             long r4 = r4 - r6
-            long r4 = java.lang.Math.min(r12, r4)     // Catch:{ all -> 0x0076 }
-            int r4 = (int) r4     // Catch:{ all -> 0x0076 }
-            r2.element = r4     // Catch:{ all -> 0x0076 }
-            int r4 = r2.element     // Catch:{ all -> 0x0076 }
-            okhttp3.internal.http2.Http2Writer r5 = r8.writer     // Catch:{ all -> 0x0076 }
+            long r4 = java.lang.Math.min(r13, r4)     // Catch:{ all -> 0x0076 }
+            int r5 = (int) r4     // Catch:{ all -> 0x0076 }
+            r3.element = r5     // Catch:{ all -> 0x0076 }
+            int r4 = r3.element     // Catch:{ all -> 0x0076 }
+            okhttp3.internal.http2.Http2Writer r5 = r9.writer     // Catch:{ all -> 0x0076 }
             int r5 = r5.maxDataLength()     // Catch:{ all -> 0x0076 }
             int r4 = java.lang.Math.min(r4, r5)     // Catch:{ all -> 0x0076 }
-            r2.element = r4     // Catch:{ all -> 0x0076 }
-            long r4 = r8.writeBytesTotal     // Catch:{ all -> 0x0076 }
-            int r6 = r2.element     // Catch:{ all -> 0x0076 }
+            r3.element = r4     // Catch:{ all -> 0x0076 }
+            long r4 = r9.writeBytesTotal     // Catch:{ all -> 0x0076 }
+            int r6 = r3.element     // Catch:{ all -> 0x0076 }
             long r6 = (long) r6     // Catch:{ all -> 0x0076 }
             long r4 = r4 + r6
-            r8.writeBytesTotal = r4     // Catch:{ all -> 0x0076 }
+            r9.writeBytesTotal = r4     // Catch:{ all -> 0x0076 }
             kotlin.Unit r4 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0076 }
-            monitor-exit(r8)
-            int r4 = r2.element
+            monitor-exit(r9)
+            int r4 = r3.element
             long r4 = (long) r4
-            long r12 = r12 - r4
-            okhttp3.internal.http2.Http2Writer r4 = r8.writer
-            if (r10 == 0) goto L_0x006f
-            int r5 = (r12 > r0 ? 1 : (r12 == r0 ? 0 : -1))
+            long r13 = r13 - r4
+            okhttp3.internal.http2.Http2Writer r4 = r9.writer
+            if (r11 == 0) goto L_0x006f
+            int r5 = (r13 > r1 ? 1 : (r13 == r1 ? 0 : -1))
             if (r5 != 0) goto L_0x006f
             r5 = 1
             goto L_0x0070
         L_0x006f:
-            r5 = r3
+            r5 = 0
         L_0x0070:
-            int r2 = r2.element
-            r4.data(r5, r9, r11, r2)
+            int r3 = r3.element
+            r4.data(r5, r10, r12, r3)
             goto L_0x000d
         L_0x0076:
-            r9 = move-exception
+            r10 = move-exception
             goto L_0x0087
         L_0x0078:
-            java.lang.Thread r9 = java.lang.Thread.currentThread()     // Catch:{ all -> 0x0076 }
-            r9.interrupt()     // Catch:{ all -> 0x0076 }
-            java.io.InterruptedIOException r9 = new java.io.InterruptedIOException     // Catch:{ all -> 0x0076 }
-            r9.<init>()     // Catch:{ all -> 0x0076 }
-            java.lang.Throwable r9 = (java.lang.Throwable) r9     // Catch:{ all -> 0x0076 }
-            throw r9     // Catch:{ all -> 0x0076 }
+            java.lang.Thread r10 = java.lang.Thread.currentThread()     // Catch:{ all -> 0x0076 }
+            r10.interrupt()     // Catch:{ all -> 0x0076 }
+            java.io.InterruptedIOException r10 = new java.io.InterruptedIOException     // Catch:{ all -> 0x0076 }
+            r10.<init>()     // Catch:{ all -> 0x0076 }
+            java.lang.Throwable r10 = (java.lang.Throwable) r10     // Catch:{ all -> 0x0076 }
+            throw r10     // Catch:{ all -> 0x0076 }
         L_0x0087:
-            monitor-exit(r8)
-            throw r9
+            monitor-exit(r9)
+            throw r10
         L_0x0089:
             return
         */
@@ -909,92 +909,92 @@ public final class Http2Connection implements Closeable {
                 okhttp3.internal.http2.Http2Connection r1 = r12.this$0
                 okhttp3.internal.http2.Http2Writer r16 = r1.getWriter()
                 monitor-enter(r16)
-                okhttp3.internal.http2.Http2Connection r11 = r12.this$0     // Catch:{ all -> 0x0112 }
-                monitor-enter(r11)     // Catch:{ all -> 0x0112 }
-                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010d }
-                okhttp3.internal.http2.Settings r1 = r1.getPeerSettings()     // Catch:{ all -> 0x010d }
+                okhttp3.internal.http2.Http2Connection r11 = r12.this$0     // Catch:{ all -> 0x0111 }
+                monitor-enter(r11)     // Catch:{ all -> 0x0111 }
+                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010c }
+                okhttp3.internal.http2.Settings r1 = r1.getPeerSettings()     // Catch:{ all -> 0x010c }
                 if (r22 == 0) goto L_0x002d
-                r15.element = r0     // Catch:{ all -> 0x010d }
+                r15.element = r0     // Catch:{ all -> 0x010c }
                 goto L_0x003a
             L_0x002d:
-                okhttp3.internal.http2.Settings r2 = new okhttp3.internal.http2.Settings     // Catch:{ all -> 0x010d }
-                r2.<init>()     // Catch:{ all -> 0x010d }
-                r2.merge(r1)     // Catch:{ all -> 0x010d }
-                r2.merge(r0)     // Catch:{ all -> 0x010d }
-                r15.element = r2     // Catch:{ all -> 0x010d }
+                okhttp3.internal.http2.Settings r2 = new okhttp3.internal.http2.Settings     // Catch:{ all -> 0x010c }
+                r2.<init>()     // Catch:{ all -> 0x010c }
+                r2.merge(r1)     // Catch:{ all -> 0x010c }
+                r2.merge(r0)     // Catch:{ all -> 0x010c }
+                r15.element = r2     // Catch:{ all -> 0x010c }
             L_0x003a:
-                T r2 = r15.element     // Catch:{ all -> 0x010d }
-                okhttp3.internal.http2.Settings r2 = (okhttp3.internal.http2.Settings) r2     // Catch:{ all -> 0x010d }
-                int r2 = r2.getInitialWindowSize()     // Catch:{ all -> 0x010d }
-                long r2 = (long) r2     // Catch:{ all -> 0x010d }
-                int r1 = r1.getInitialWindowSize()     // Catch:{ all -> 0x010d }
-                long r4 = (long) r1     // Catch:{ all -> 0x010d }
+                T r2 = r15.element     // Catch:{ all -> 0x010c }
+                okhttp3.internal.http2.Settings r2 = (okhttp3.internal.http2.Settings) r2     // Catch:{ all -> 0x010c }
+                int r2 = r2.getInitialWindowSize()     // Catch:{ all -> 0x010c }
+                long r2 = (long) r2     // Catch:{ all -> 0x010c }
+                int r1 = r1.getInitialWindowSize()     // Catch:{ all -> 0x010c }
+                long r4 = (long) r1     // Catch:{ all -> 0x010c }
                 long r2 = r2 - r4
-                r13.element = r2     // Catch:{ all -> 0x010d }
-                long r1 = r13.element     // Catch:{ all -> 0x010d }
-                r9 = 0
-                int r1 = (r1 > r9 ? 1 : (r1 == r9 ? 0 : -1))
+                r13.element = r2     // Catch:{ all -> 0x010c }
+                long r1 = r13.element     // Catch:{ all -> 0x010c }
+                r10 = 0
                 r8 = 0
-                if (r1 == 0) goto L_0x007e
-                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010d }
-                java.util.Map r1 = r1.getStreams$okhttp()     // Catch:{ all -> 0x010d }
-                boolean r1 = r1.isEmpty()     // Catch:{ all -> 0x010d }
+                int r3 = (r1 > r8 ? 1 : (r1 == r8 ? 0 : -1))
+                if (r3 == 0) goto L_0x007e
+                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010c }
+                java.util.Map r1 = r1.getStreams$okhttp()     // Catch:{ all -> 0x010c }
+                boolean r1 = r1.isEmpty()     // Catch:{ all -> 0x010c }
                 if (r1 == 0) goto L_0x0061
                 goto L_0x007e
             L_0x0061:
-                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010d }
-                java.util.Map r1 = r1.getStreams$okhttp()     // Catch:{ all -> 0x010d }
-                java.util.Collection r1 = r1.values()     // Catch:{ all -> 0x010d }
-                okhttp3.internal.http2.Http2Stream[] r2 = new okhttp3.internal.http2.Http2Stream[r8]     // Catch:{ all -> 0x010d }
-                java.lang.Object[] r1 = r1.toArray(r2)     // Catch:{ all -> 0x010d }
+                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010c }
+                java.util.Map r1 = r1.getStreams$okhttp()     // Catch:{ all -> 0x010c }
+                java.util.Collection r1 = r1.values()     // Catch:{ all -> 0x010c }
+                okhttp3.internal.http2.Http2Stream[] r2 = new okhttp3.internal.http2.Http2Stream[r10]     // Catch:{ all -> 0x010c }
+                java.lang.Object[] r1 = r1.toArray(r2)     // Catch:{ all -> 0x010c }
                 if (r1 == 0) goto L_0x0076
-                okhttp3.internal.http2.Http2Stream[] r1 = (okhttp3.internal.http2.Http2Stream[]) r1     // Catch:{ all -> 0x010d }
+                okhttp3.internal.http2.Http2Stream[] r1 = (okhttp3.internal.http2.Http2Stream[]) r1     // Catch:{ all -> 0x010c }
                 goto L_0x007f
             L_0x0076:
-                kotlin.TypeCastException r0 = new kotlin.TypeCastException     // Catch:{ all -> 0x010d }
+                kotlin.TypeCastException r0 = new kotlin.TypeCastException     // Catch:{ all -> 0x010c }
                 java.lang.String r1 = "null cannot be cast to non-null type kotlin.Array<T>"
-                r0.<init>(r1)     // Catch:{ all -> 0x010d }
-                throw r0     // Catch:{ all -> 0x010d }
+                r0.<init>(r1)     // Catch:{ all -> 0x010c }
+                throw r0     // Catch:{ all -> 0x010c }
             L_0x007e:
                 r1 = 0
             L_0x007f:
-                r14.element = r1     // Catch:{ all -> 0x010d }
-                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010d }
-                T r2 = r15.element     // Catch:{ all -> 0x010d }
-                okhttp3.internal.http2.Settings r2 = (okhttp3.internal.http2.Settings) r2     // Catch:{ all -> 0x010d }
-                r1.setPeerSettings(r2)     // Catch:{ all -> 0x010d }
-                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010d }
-                okhttp3.internal.concurrent.TaskQueue r7 = r1.settingsListenerQueue     // Catch:{ all -> 0x010d }
-                java.lang.StringBuilder r1 = new java.lang.StringBuilder     // Catch:{ all -> 0x010d }
-                r1.<init>()     // Catch:{ all -> 0x010d }
-                okhttp3.internal.http2.Http2Connection r2 = r12.this$0     // Catch:{ all -> 0x010d }
-                java.lang.String r2 = r2.getConnectionName$okhttp()     // Catch:{ all -> 0x010d }
-                r1.append(r2)     // Catch:{ all -> 0x010d }
+                r14.element = r1     // Catch:{ all -> 0x010c }
+                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010c }
+                T r2 = r15.element     // Catch:{ all -> 0x010c }
+                okhttp3.internal.http2.Settings r2 = (okhttp3.internal.http2.Settings) r2     // Catch:{ all -> 0x010c }
+                r1.setPeerSettings(r2)     // Catch:{ all -> 0x010c }
+                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x010c }
+                okhttp3.internal.concurrent.TaskQueue r7 = r1.settingsListenerQueue     // Catch:{ all -> 0x010c }
+                java.lang.StringBuilder r1 = new java.lang.StringBuilder     // Catch:{ all -> 0x010c }
+                r1.<init>()     // Catch:{ all -> 0x010c }
+                okhttp3.internal.http2.Http2Connection r2 = r12.this$0     // Catch:{ all -> 0x010c }
+                java.lang.String r2 = r2.getConnectionName$okhttp()     // Catch:{ all -> 0x010c }
+                r1.append(r2)     // Catch:{ all -> 0x010c }
                 java.lang.String r2 = " onSettings"
-                r1.append(r2)     // Catch:{ all -> 0x010d }
-                java.lang.String r4 = r1.toString()     // Catch:{ all -> 0x010d }
+                r1.append(r2)     // Catch:{ all -> 0x010c }
+                java.lang.String r4 = r1.toString()     // Catch:{ all -> 0x010c }
                 r5 = 1
-                okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1 r17 = new okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1     // Catch:{ all -> 0x010d }
+                okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1 r17 = new okhttp3.internal.http2.Http2Connection$ReaderRunnable$applyAndAckSettings$$inlined$synchronized$lambda$1     // Catch:{ all -> 0x010c }
                 r1 = r17
                 r2 = r4
                 r3 = r5
                 r6 = r21
                 r18 = r7
                 r7 = r22
-                r19 = r8
                 r8 = r15
                 r9 = r23
+                r19 = 0
                 r10 = r13
                 r20 = r11
                 r11 = r14
-                r1.<init>(r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)     // Catch:{ all -> 0x010b }
+                r1.<init>(r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)     // Catch:{ all -> 0x010a }
                 r0 = r17
-                okhttp3.internal.concurrent.Task r0 = (okhttp3.internal.concurrent.Task) r0     // Catch:{ all -> 0x010b }
+                okhttp3.internal.concurrent.Task r0 = (okhttp3.internal.concurrent.Task) r0     // Catch:{ all -> 0x010a }
                 r1 = r18
                 r2 = 0
-                r1.schedule(r0, r2)     // Catch:{ all -> 0x010b }
-                kotlin.Unit r0 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x010b }
-                monitor-exit(r20)     // Catch:{ all -> 0x0112 }
+                r1.schedule(r0, r2)     // Catch:{ all -> 0x010a }
+                kotlin.Unit r0 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x010a }
+                monitor-exit(r20)     // Catch:{ all -> 0x0111 }
                 okhttp3.internal.http2.Http2Connection r0 = r12.this$0     // Catch:{ IOException -> 0x00dc }
                 okhttp3.internal.http2.Http2Writer r0 = r0.getWriter()     // Catch:{ IOException -> 0x00dc }
                 T r1 = r15.element     // Catch:{ IOException -> 0x00dc }
@@ -1003,47 +1003,47 @@ public final class Http2Connection implements Closeable {
                 goto L_0x00e2
             L_0x00dc:
                 r0 = move-exception
-                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x0112 }
-                r1.failConnection(r0)     // Catch:{ all -> 0x0112 }
+                okhttp3.internal.http2.Http2Connection r1 = r12.this$0     // Catch:{ all -> 0x0111 }
+                r1.failConnection(r0)     // Catch:{ all -> 0x0111 }
             L_0x00e2:
-                kotlin.Unit r0 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0112 }
+                kotlin.Unit r0 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0111 }
                 monitor-exit(r16)
                 T r0 = r14.element
                 okhttp3.internal.http2.Http2Stream[] r0 = (okhttp3.internal.http2.Http2Stream[]) r0
-                if (r0 == 0) goto L_0x010a
+                if (r0 == 0) goto L_0x0109
                 T r0 = r14.element
                 okhttp3.internal.http2.Http2Stream[] r0 = (okhttp3.internal.http2.Http2Stream[]) r0
                 if (r0 != 0) goto L_0x00f4
                 kotlin.jvm.internal.Intrinsics.throwNpe()
             L_0x00f4:
                 int r1 = r0.length
-                r8 = r19
-            L_0x00f7:
-                if (r8 >= r1) goto L_0x010a
-                r2 = r0[r8]
+                r10 = 0
+            L_0x00f6:
+                if (r10 >= r1) goto L_0x0109
+                r2 = r0[r10]
                 monitor-enter(r2)
-                long r3 = r13.element     // Catch:{ all -> 0x0107 }
-                r2.addBytesToWriteWindow(r3)     // Catch:{ all -> 0x0107 }
-                kotlin.Unit r3 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0107 }
+                long r3 = r13.element     // Catch:{ all -> 0x0106 }
+                r2.addBytesToWriteWindow(r3)     // Catch:{ all -> 0x0106 }
+                kotlin.Unit r3 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0106 }
                 monitor-exit(r2)
-                int r8 = r8 + 1
-                goto L_0x00f7
-            L_0x0107:
+                int r10 = r10 + 1
+                goto L_0x00f6
+            L_0x0106:
                 r0 = move-exception
                 monitor-exit(r2)
                 throw r0
-            L_0x010a:
+            L_0x0109:
                 return
-            L_0x010b:
+            L_0x010a:
                 r0 = move-exception
-                goto L_0x0110
-            L_0x010d:
+                goto L_0x010f
+            L_0x010c:
                 r0 = move-exception
                 r20 = r11
-            L_0x0110:
-                monitor-exit(r20)     // Catch:{ all -> 0x0112 }
-                throw r0     // Catch:{ all -> 0x0112 }
-            L_0x0112:
+            L_0x010f:
+                monitor-exit(r20)     // Catch:{ all -> 0x0111 }
+                throw r0     // Catch:{ all -> 0x0111 }
+            L_0x0111:
                 r0 = move-exception
                 monitor-exit(r16)
                 throw r0

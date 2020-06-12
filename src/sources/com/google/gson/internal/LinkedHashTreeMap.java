@@ -103,52 +103,55 @@ public final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements 
         int i;
         Node<K, V> node;
         Node<K, V> node2;
+        int i2;
+        Node<K, V> node3;
         Comparator<? super K> comparator2 = this.comparator;
         Node<K, V>[] nodeArr = this.table;
         int secondaryHash = secondaryHash(k.hashCode());
         int length = (nodeArr.length - 1) & secondaryHash;
-        Node<K, V> node3 = nodeArr[length];
-        if (node3 != null) {
+        Node<K, V> node4 = nodeArr[length];
+        if (node4 != null) {
             Comparable comparable = comparator2 == NATURAL_ORDER ? (Comparable) k : null;
             while (true) {
                 if (comparable != null) {
-                    i = comparable.compareTo(node3.key);
+                    i2 = comparable.compareTo(node4.key);
                 } else {
-                    i = comparator2.compare(k, node3.key);
+                    i2 = comparator2.compare(k, node4.key);
                 }
-                if (i == 0) {
-                    return node3;
+                if (i2 == 0) {
+                    return node4;
                 }
-                if (i < 0) {
-                    node2 = node3.left;
+                if (i2 < 0) {
+                    node3 = node4.left;
                 } else {
-                    node2 = node3.right;
+                    node3 = node4.right;
                 }
-                if (node2 == null) {
+                if (node3 == null) {
+                    node = node4;
+                    i = i2;
                     break;
                 }
-                node3 = node2;
+                node4 = node3;
             }
         } else {
+            node = node4;
             i = 0;
         }
-        Node<K, V> node4 = node3;
-        int i2 = i;
         if (!z) {
             return null;
         }
         Node<K, V> node5 = this.header;
-        if (node4 != null) {
-            node = new Node<>(node4, k, secondaryHash, node5, node5.prev);
-            if (i2 < 0) {
-                node4.left = node;
+        if (node != null) {
+            node2 = new Node<>(node, k, secondaryHash, node5, node5.prev);
+            if (i < 0) {
+                node.left = node2;
             } else {
-                node4.right = node;
+                node.right = node2;
             }
-            rebalance(node4, true);
+            rebalance(node, true);
         } else if (comparator2 != NATURAL_ORDER || (k instanceof Comparable)) {
-            node = new Node<>(node4, k, secondaryHash, node5, node5.prev);
-            nodeArr[length] = node;
+            node2 = new Node<>(node, k, secondaryHash, node5, node5.prev);
+            nodeArr[length] = node2;
         } else {
             throw new ClassCastException(k.getClass().getName() + " is not Comparable");
         }
@@ -158,7 +161,7 @@ public final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements 
             doubleCapacity();
         }
         this.modCount++;
-        return node;
+        return node2;
     }
 
     /* access modifiers changed from: package-private */

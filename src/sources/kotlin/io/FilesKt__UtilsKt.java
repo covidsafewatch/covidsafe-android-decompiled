@@ -316,7 +316,7 @@ class FilesKt__UtilsKt extends FilesKt__FileTreeWalkKt {
             if (r11 == r12) goto L_0x002e
             goto L_0x002f
         L_0x002e:
-            r1 = r2
+            r1 = 0
         L_0x002f:
             return r1
         L_0x0030:
@@ -359,7 +359,7 @@ class FilesKt__UtilsKt extends FilesKt__FileTreeWalkKt {
         L_0x0087:
             if (r13 != 0) goto L_0x008b
         L_0x0089:
-            r4 = r1
+            r4 = 1
             goto L_0x00a0
         L_0x008b:
             boolean r4 = r5.isDirectory()     // Catch:{ TerminateException -> 0x00e6 }
@@ -372,7 +372,7 @@ class FilesKt__UtilsKt extends FilesKt__FileTreeWalkKt {
             if (r4 != 0) goto L_0x009f
             goto L_0x0089
         L_0x009f:
-            r4 = r2
+            r4 = 0
         L_0x00a0:
             if (r4 == 0) goto L_0x00b4
             kotlin.io.FileAlreadyExistsException r4 = new kotlin.io.FileAlreadyExistsException     // Catch:{ TerminateException -> 0x00e6 }
@@ -397,8 +397,8 @@ class FilesKt__UtilsKt extends FilesKt__FileTreeWalkKt {
             java.io.File r4 = kotlin.io.FilesKt.copyTo$default(r4, r5, r6, r7, r8, r9)     // Catch:{ TerminateException -> 0x00e6 }
             long r4 = r4.length()     // Catch:{ TerminateException -> 0x00e6 }
             long r6 = r3.length()     // Catch:{ TerminateException -> 0x00e6 }
-            int r4 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
-            if (r4 == 0) goto L_0x0043
+            int r8 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
+            if (r8 == 0) goto L_0x0043
             java.io.IOException r4 = new java.io.IOException     // Catch:{ TerminateException -> 0x00e6 }
             java.lang.String r5 = "Source file wasn't copied completely, length of destination file differs."
             r4.<init>(r5)     // Catch:{ TerminateException -> 0x00e6 }

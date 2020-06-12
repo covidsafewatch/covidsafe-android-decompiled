@@ -227,7 +227,7 @@ public class CollapsingToolbarLayout extends FrameLayout {
             r2 = 0
             if (r1 != 0) goto L_0x003c
             int r1 = r6.getChildCount()
-            r3 = r2
+            r3 = 0
         L_0x0029:
             if (r3 >= r1) goto L_0x003a
             android.view.View r4 = r6.getChildAt(r3)

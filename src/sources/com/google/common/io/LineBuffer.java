@@ -27,10 +27,10 @@ abstract class LineBuffer {
             if (r9 <= 0) goto L_0x001a
             char r0 = r7[r8]
             if (r0 != r2) goto L_0x0010
-            r0 = r3
+            r0 = 1
             goto L_0x0011
         L_0x0010:
-            r0 = r1
+            r0 = 0
         L_0x0011:
             boolean r0 = r6.finishLine(r0)
             if (r0 == 0) goto L_0x001a
@@ -57,10 +57,10 @@ abstract class LineBuffer {
             if (r9 >= r8) goto L_0x004e
             char r4 = r7[r9]
             if (r4 != r2) goto L_0x003b
-            r4 = r3
+            r4 = 1
             goto L_0x003c
         L_0x003b:
-            r4 = r1
+            r4 = 0
         L_0x003c:
             boolean r4 = r6.finishLine(r4)
             if (r4 == 0) goto L_0x004e

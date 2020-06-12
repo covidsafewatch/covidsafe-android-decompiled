@@ -166,22 +166,22 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             if (r3 != r1) goto L_0x0020
             boolean r3 = r12.isLayoutRTL()
             if (r3 == 0) goto L_0x0020
-            r3 = r1
+            r3 = 1
             goto L_0x0021
         L_0x0020:
-            r3 = r5
+            r3 = -1
         L_0x0021:
             boolean r6 = r12.mShouldReverseLayout
             if (r6 == 0) goto L_0x0027
-            r6 = r5
+            r6 = -1
             goto L_0x002b
         L_0x0027:
             int r0 = r0 + 1
             r6 = r0
-            r0 = r4
+            r0 = 0
         L_0x002b:
             if (r0 >= r6) goto L_0x002e
-            r5 = r1
+            r5 = 1
         L_0x002e:
             if (r0 == r6) goto L_0x00ab
             android.view.View r7 = r12.getChildAt(r0)
@@ -228,10 +228,10 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
         L_0x0086:
             if (r10 != r11) goto L_0x008a
         L_0x0088:
-            r10 = r1
+            r10 = 1
             goto L_0x008b
         L_0x008a:
-            r10 = r4
+            r10 = 0
         L_0x008b:
             if (r10 == 0) goto L_0x00a9
             android.view.ViewGroup$LayoutParams r9 = r9.getLayoutParams()
@@ -242,16 +242,16 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             int r9 = r9.mIndex
             int r8 = r8 - r9
             if (r8 >= 0) goto L_0x00a0
-            r8 = r1
+            r8 = 1
             goto L_0x00a1
         L_0x00a0:
-            r8 = r4
+            r8 = 0
         L_0x00a1:
             if (r3 >= 0) goto L_0x00a5
-            r9 = r1
+            r9 = 1
             goto L_0x00a6
         L_0x00a5:
-            r9 = r4
+            r9 = 0
         L_0x00a6:
             if (r8 == r9) goto L_0x00a9
             return r7
@@ -413,10 +413,10 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             if (r1 == 0) goto L_0x0027
             goto L_0x0029
         L_0x0027:
-            r1 = r3
+            r1 = 0
             goto L_0x002a
         L_0x0029:
-            r1 = r4
+            r1 = 1
         L_0x002a:
             if (r1 == 0) goto L_0x0043
             r0.reset()
@@ -456,7 +456,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
         L_0x006e:
             boolean r5 = r0.mInvalidateOffsets
             if (r5 == 0) goto L_0x0090
-            r1 = r3
+            r1 = 0
         L_0x0073:
             int r5 = r8.mSpanCount
             if (r1 >= r5) goto L_0x00cb
@@ -480,7 +480,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             if (r1 != 0) goto L_0x0099
             goto L_0x00b1
         L_0x0099:
-            r1 = r3
+            r1 = 0
         L_0x009a:
             int r5 = r8.mSpanCount
             if (r1 >= r5) goto L_0x00cb
@@ -494,7 +494,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             int r1 = r1 + 1
             goto L_0x009a
         L_0x00b1:
-            r1 = r3
+            r1 = 0
         L_0x00b2:
             int r5 = r8.mSpanCount
             if (r1 >= r5) goto L_0x00c4
@@ -572,10 +572,10 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             android.view.View r11 = r8.hasGapsToFix()
             if (r11 == 0) goto L_0x0155
         L_0x0153:
-            r11 = r4
+            r11 = 1
             goto L_0x0156
         L_0x0155:
-            r11 = r3
+            r11 = 0
         L_0x0156:
             if (r11 == 0) goto L_0x0164
             java.lang.Runnable r11 = r8.mCheckForGapsRunnable
@@ -584,7 +584,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             if (r11 == 0) goto L_0x0164
             goto L_0x0165
         L_0x0164:
-            r4 = r3
+            r4 = 0
         L_0x0165:
             boolean r11 = r10.isPreLayout()
             if (r11 == 0) goto L_0x0170
@@ -1000,20 +1000,11 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             return;
         }
         LayoutParams layoutParams2 = (LayoutParams) layoutParams;
-        int i = 1;
         if (this.mOrientation == 0) {
-            int spanIndex = layoutParams2.getSpanIndex();
-            if (layoutParams2.mFullSpan) {
-                i = this.mSpanCount;
-            }
-            accessibilityNodeInfoCompat.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(spanIndex, i, -1, -1, false, false));
-            return;
+            accessibilityNodeInfoCompat.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(layoutParams2.getSpanIndex(), layoutParams2.mFullSpan ? this.mSpanCount : 1, -1, -1, false, false));
+        } else {
+            accessibilityNodeInfoCompat.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(-1, -1, layoutParams2.getSpanIndex(), layoutParams2.mFullSpan ? this.mSpanCount : 1, false, false));
         }
-        int spanIndex2 = layoutParams2.getSpanIndex();
-        if (layoutParams2.mFullSpan) {
-            i = this.mSpanCount;
-        }
-        accessibilityNodeInfoCompat.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(-1, -1, spanIndex2, i, false, false));
     }
 
     public void onInitializeAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
@@ -1127,39 +1118,85 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
         }
     }
 
-    private void updateLayoutState(int i, RecyclerView.State state) {
-        int i2;
-        int i3;
-        int targetScrollPosition;
-        boolean z = false;
-        this.mLayoutState.mAvailable = 0;
-        this.mLayoutState.mCurrentPosition = i;
-        if (!isSmoothScrolling() || (targetScrollPosition = state.getTargetScrollPosition()) == -1) {
-            i3 = 0;
-            i2 = 0;
-        } else {
-            if (this.mShouldReverseLayout == (targetScrollPosition < i)) {
-                i3 = this.mPrimaryOrientation.getTotalSpace();
-                i2 = 0;
-            } else {
-                i2 = this.mPrimaryOrientation.getTotalSpace();
-                i3 = 0;
-            }
-        }
-        if (getClipToPadding()) {
-            this.mLayoutState.mStartLine = this.mPrimaryOrientation.getStartAfterPadding() - i2;
-            this.mLayoutState.mEndLine = this.mPrimaryOrientation.getEndAfterPadding() + i3;
-        } else {
-            this.mLayoutState.mEndLine = this.mPrimaryOrientation.getEnd() + i3;
-            this.mLayoutState.mStartLine = -i2;
-        }
-        this.mLayoutState.mStopInFocusable = false;
-        this.mLayoutState.mRecycle = true;
-        LayoutState layoutState = this.mLayoutState;
-        if (this.mPrimaryOrientation.getMode() == 0 && this.mPrimaryOrientation.getEnd() == 0) {
-            z = true;
-        }
-        layoutState.mInfinite = z;
+    /* JADX WARNING: Removed duplicated region for block: B:15:0x0038  */
+    /* JADX WARNING: Removed duplicated region for block: B:16:0x004f  */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    private void updateLayoutState(int r5, androidx.recyclerview.widget.RecyclerView.State r6) {
+        /*
+            r4 = this;
+            androidx.recyclerview.widget.LayoutState r0 = r4.mLayoutState
+            r1 = 0
+            r0.mAvailable = r1
+            androidx.recyclerview.widget.LayoutState r0 = r4.mLayoutState
+            r0.mCurrentPosition = r5
+            boolean r0 = r4.isSmoothScrolling()
+            r2 = 1
+            if (r0 == 0) goto L_0x0030
+            int r6 = r6.getTargetScrollPosition()
+            r0 = -1
+            if (r6 == r0) goto L_0x0030
+            boolean r0 = r4.mShouldReverseLayout
+            if (r6 >= r5) goto L_0x001d
+            r5 = 1
+            goto L_0x001e
+        L_0x001d:
+            r5 = 0
+        L_0x001e:
+            if (r0 != r5) goto L_0x0027
+            androidx.recyclerview.widget.OrientationHelper r5 = r4.mPrimaryOrientation
+            int r5 = r5.getTotalSpace()
+            goto L_0x0031
+        L_0x0027:
+            androidx.recyclerview.widget.OrientationHelper r5 = r4.mPrimaryOrientation
+            int r5 = r5.getTotalSpace()
+            r6 = r5
+            r5 = 0
+            goto L_0x0032
+        L_0x0030:
+            r5 = 0
+        L_0x0031:
+            r6 = 0
+        L_0x0032:
+            boolean r0 = r4.getClipToPadding()
+            if (r0 == 0) goto L_0x004f
+            androidx.recyclerview.widget.LayoutState r0 = r4.mLayoutState
+            androidx.recyclerview.widget.OrientationHelper r3 = r4.mPrimaryOrientation
+            int r3 = r3.getStartAfterPadding()
+            int r3 = r3 - r6
+            r0.mStartLine = r3
+            androidx.recyclerview.widget.LayoutState r6 = r4.mLayoutState
+            androidx.recyclerview.widget.OrientationHelper r0 = r4.mPrimaryOrientation
+            int r0 = r0.getEndAfterPadding()
+            int r0 = r0 + r5
+            r6.mEndLine = r0
+            goto L_0x005f
+        L_0x004f:
+            androidx.recyclerview.widget.LayoutState r0 = r4.mLayoutState
+            androidx.recyclerview.widget.OrientationHelper r3 = r4.mPrimaryOrientation
+            int r3 = r3.getEnd()
+            int r3 = r3 + r5
+            r0.mEndLine = r3
+            androidx.recyclerview.widget.LayoutState r5 = r4.mLayoutState
+            int r6 = -r6
+            r5.mStartLine = r6
+        L_0x005f:
+            androidx.recyclerview.widget.LayoutState r5 = r4.mLayoutState
+            r5.mStopInFocusable = r1
+            androidx.recyclerview.widget.LayoutState r5 = r4.mLayoutState
+            r5.mRecycle = r2
+            androidx.recyclerview.widget.LayoutState r5 = r4.mLayoutState
+            androidx.recyclerview.widget.OrientationHelper r6 = r4.mPrimaryOrientation
+            int r6 = r6.getMode()
+            if (r6 != 0) goto L_0x007a
+            androidx.recyclerview.widget.OrientationHelper r6 = r4.mPrimaryOrientation
+            int r6 = r6.getEnd()
+            if (r6 != 0) goto L_0x007a
+            r1 = 1
+        L_0x007a:
+            r5.mInfinite = r1
+            return
+        */
+        throw new UnsupportedOperationException("Method not decompiled: androidx.recyclerview.widget.StaggeredGridLayoutManager.updateLayoutState(int, androidx.recyclerview.widget.RecyclerView$State):void");
     }
 
     private void setLayoutStateDirection(int i) {
@@ -1277,7 +1314,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
     }
 
     /* JADX WARNING: type inference failed for: r9v0 */
-    /* JADX WARNING: type inference failed for: r9v1, types: [boolean, int] */
+    /* JADX WARNING: type inference failed for: r9v1, types: [int, boolean] */
     /* JADX WARNING: type inference failed for: r9v5 */
     private int fill(RecyclerView.Recycler recycler, LayoutState layoutState, RecyclerView.State state) {
         int i;
@@ -1288,39 +1325,41 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
         int i5;
         int i6;
         int i7;
-        boolean z;
         int i8;
         int i9;
-        boolean z2;
+        boolean z;
         int i10;
         int i11;
+        int i12;
         RecyclerView.Recycler recycler2 = recycler;
         LayoutState layoutState2 = layoutState;
         ? r9 = 0;
         this.mRemainingSpans.set(0, this.mSpanCount, true);
         if (this.mLayoutState.mInfinite) {
             i = layoutState2.mLayoutDirection == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-        } else if (layoutState2.mLayoutDirection == 1) {
-            i = layoutState2.mEndLine + layoutState2.mAvailable;
         } else {
-            i = layoutState2.mStartLine - layoutState2.mAvailable;
+            if (layoutState2.mLayoutDirection == 1) {
+                i12 = layoutState2.mEndLine + layoutState2.mAvailable;
+            } else {
+                i12 = layoutState2.mStartLine - layoutState2.mAvailable;
+            }
+            i = i12;
         }
-        int i12 = i;
-        updateAllRemainingSpans(layoutState2.mLayoutDirection, i12);
+        updateAllRemainingSpans(layoutState2.mLayoutDirection, i);
         if (this.mShouldReverseLayout) {
             i2 = this.mPrimaryOrientation.getEndAfterPadding();
         } else {
             i2 = this.mPrimaryOrientation.getStartAfterPadding();
         }
         int i13 = i2;
-        boolean z3 = false;
+        boolean z2 = false;
         while (layoutState.hasMore(state) && (this.mLayoutState.mInfinite || !this.mRemainingSpans.isEmpty())) {
             View next = layoutState2.next(recycler2);
             LayoutParams layoutParams = (LayoutParams) next.getLayoutParams();
             int viewLayoutPosition = layoutParams.getViewLayoutPosition();
             int span2 = this.mLazySpanLookup.getSpan(viewLayoutPosition);
-            boolean z4 = span2 == -1 ? true : r9;
-            if (z4) {
+            boolean z3 = span2 == -1;
+            if (z3) {
                 span = layoutParams.mFullSpan ? this.mSpans[r9] : getNextSpan(layoutState2);
                 this.mLazySpanLookup.setSpan(viewLayoutPosition, span);
             } else {
@@ -1341,7 +1380,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
                     i11 = span3.getEndLine(i13);
                 }
                 int decoratedMeasurement = this.mPrimaryOrientation.getDecoratedMeasurement(next) + i11;
-                if (z4 && layoutParams.mFullSpan) {
+                if (z3 && layoutParams.mFullSpan) {
                     LazySpanLookup.FullSpanItem createFullSpanItemFromEnd = createFullSpanItemFromEnd(i11);
                     createFullSpanItemFromEnd.mGapDir = -1;
                     createFullSpanItemFromEnd.mPosition = viewLayoutPosition;
@@ -1356,7 +1395,7 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
                     i10 = span3.getStartLine(i13);
                 }
                 i5 = i10 - this.mPrimaryOrientation.getDecoratedMeasurement(next);
-                if (z4 && layoutParams.mFullSpan) {
+                if (z3 && layoutParams.mFullSpan) {
                     LazySpanLookup.FullSpanItem createFullSpanItemFromStart = createFullSpanItemFromStart(i10);
                     createFullSpanItemFromStart.mGapDir = 1;
                     createFullSpanItemFromStart.mPosition = viewLayoutPosition;
@@ -1365,15 +1404,15 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
                 i4 = i10;
             }
             if (layoutParams.mFullSpan && layoutState2.mItemDirection == -1) {
-                if (z4) {
+                if (z3) {
                     this.mLaidOutInvalidFullSpan = true;
                 } else {
                     if (layoutState2.mLayoutDirection == 1) {
-                        z2 = areAllEndsEqual();
+                        z = areAllEndsEqual();
                     } else {
-                        z2 = areAllStartsEqual();
+                        z = areAllStartsEqual();
                     }
-                    if (!z2) {
+                    if (!z) {
                         LazySpanLookup.FullSpanItem fullSpanItem = this.mLazySpanLookup.getFullSpanItem(viewLayoutPosition);
                         if (fullSpanItem != null) {
                             fullSpanItem.mHasUnwantedGapAfter = true;
@@ -1406,27 +1445,24 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
                 layoutDecoratedWithMargins(next, i5, i7, i4, i6);
             }
             if (layoutParams.mFullSpan) {
-                updateAllRemainingSpans(this.mLayoutState.mLayoutDirection, i12);
+                updateAllRemainingSpans(this.mLayoutState.mLayoutDirection, i);
             } else {
-                updateRemainingSpans(span3, this.mLayoutState.mLayoutDirection, i12);
+                updateRemainingSpans(span3, this.mLayoutState.mLayoutDirection, i);
             }
             recycle(recycler2, this.mLayoutState);
             if (this.mLayoutState.mStopInFocusable && next.hasFocusable()) {
                 if (layoutParams.mFullSpan) {
                     this.mRemainingSpans.clear();
                 } else {
-                    z = false;
                     this.mRemainingSpans.set(span3.mIndex, false);
-                    r9 = z;
-                    z3 = true;
+                    z2 = true;
+                    r9 = 0;
                 }
             }
-            z = false;
-            r9 = z;
-            z3 = true;
+            z2 = true;
+            r9 = 0;
         }
-        int i14 = r9;
-        if (!z3) {
+        if (!z2) {
             recycle(recycler2, this.mLayoutState);
         }
         if (this.mLayoutState.mLayoutDirection == -1) {
@@ -1434,7 +1470,10 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
         } else {
             i3 = getMaxEnd(this.mPrimaryOrientation.getEndAfterPadding()) - this.mPrimaryOrientation.getEndAfterPadding();
         }
-        return i3 > 0 ? Math.min(layoutState2.mAvailable, i3) : i14;
+        if (i3 > 0) {
+            return Math.min(layoutState2.mAvailable, i3);
+        }
+        return 0;
     }
 
     private LazySpanLookup.FullSpanItem createFullSpanItemFromEnd(int i) {
@@ -1824,8 +1863,8 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
             i3 = getLastChildPosition();
             i2 = 1;
         } else {
-            i2 = -1;
             i3 = getFirstChildPosition();
+            i2 = -1;
         }
         this.mLayoutState.mRecycle = true;
         updateLayoutState(i3, state);
@@ -2018,15 +2057,12 @@ public class StaggeredGridLayoutManager extends RecyclerView.LayoutManager imple
         if (i != 17) {
             if (i != 33) {
                 if (i != 66) {
-                    if (i != 130) {
-                        return Integer.MIN_VALUE;
-                    }
-                    return this.mOrientation == 1 ? 1 : Integer.MIN_VALUE;
-                } else if (this.mOrientation == 0) {
-                    return 1;
-                } else {
-                    return Integer.MIN_VALUE;
+                    return (i == 130 && this.mOrientation == 1) ? 1 : Integer.MIN_VALUE;
                 }
+                if (this.mOrientation == 0) {
+                    return 1;
+                }
+                return Integer.MIN_VALUE;
             } else if (this.mOrientation == 1) {
                 return -1;
             } else {

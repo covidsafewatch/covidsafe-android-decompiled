@@ -2,12 +2,14 @@ package com.google.crypto.tink.config;
 
 import com.google.crypto.tink.daead.DeterministicAeadConfig;
 import com.google.crypto.tink.hybrid.HybridConfig;
+import com.google.crypto.tink.prf.PrfConfig;
 import com.google.crypto.tink.proto.RegistryConfig;
 import com.google.crypto.tink.signature.SignatureConfig;
 import com.google.crypto.tink.streamingaead.StreamingAeadConfig;
 import java.security.GeneralSecurityException;
 
 public final class TinkConfig {
+    @Deprecated
     public static final RegistryConfig LATEST = ((RegistryConfig) ((RegistryConfig.Builder) ((RegistryConfig.Builder) ((RegistryConfig.Builder) ((RegistryConfig.Builder) RegistryConfig.newBuilder().mergeFrom(HybridConfig.LATEST)).mergeFrom(SignatureConfig.LATEST)).mergeFrom(DeterministicAeadConfig.LATEST)).mergeFrom(StreamingAeadConfig.LATEST)).setConfigName("TINK").build());
     @Deprecated
     public static final RegistryConfig TINK_1_0_0 = ((RegistryConfig) ((RegistryConfig.Builder) ((RegistryConfig.Builder) RegistryConfig.newBuilder().mergeFrom(HybridConfig.TINK_1_0_0)).mergeFrom(SignatureConfig.TINK_1_0_0)).setConfigName("TINK_1_0_0").build());
@@ -23,5 +25,6 @@ public final class TinkConfig {
         DeterministicAeadConfig.register();
         HybridConfig.register();
         SignatureConfig.register();
+        PrfConfig.register();
     }
 }

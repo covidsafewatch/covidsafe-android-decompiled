@@ -136,8 +136,8 @@ public class SelfDestructiveThread {
             return r13
         L_0x004d:
             r0 = 0
-            int r0 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
-            if (r0 <= 0) goto L_0x0054
+            int r2 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
+            if (r2 <= 0) goto L_0x0054
             goto L_0x003b
         L_0x0054:
             java.lang.InterruptedException r13 = new java.lang.InterruptedException     // Catch:{ all -> 0x005c }

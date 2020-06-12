@@ -31,7 +31,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import androidx.customview.view.AbsSavedState;
-import com.google.common.primitives.Ints;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -706,7 +705,7 @@ public class ViewPager extends ViewGroup {
             int r1 = java.lang.Math.min(r7, r8)
             int r7 = r0.mExpectedAdapterCount
             if (r6 != r7) goto L_0x0212
-            r7 = r5
+            r7 = 0
         L_0x004a:
             java.util.ArrayList<androidx.viewpager.widget.ViewPager$ItemInfo> r8 = r0.mItems
             int r8 = r8.size()
@@ -746,7 +745,7 @@ public class ViewPager extends ViewGroup {
             int r12 = r17.getClientWidth()
             r13 = 1073741824(0x40000000, float:2.0)
             if (r12 > 0) goto L_0x0090
-            r14 = r9
+            r14 = 0
             goto L_0x009c
         L_0x0090:
             float r14 = r8.widthFactor
@@ -759,7 +758,7 @@ public class ViewPager extends ViewGroup {
         L_0x009c:
             int r3 = r0.mCurItem
             int r3 = r3 + -1
-            r15 = r9
+            r15 = 0
         L_0x00a1:
             if (r3 < 0) goto L_0x0101
             int r16 = (r15 > r14 ? 1 : (r15 == r14 ? 0 : -1))
@@ -831,7 +830,7 @@ public class ViewPager extends ViewGroup {
             r5 = 0
         L_0x011b:
             if (r12 > 0) goto L_0x011f
-            r10 = r9
+            r10 = 0
             goto L_0x0127
         L_0x011f:
             int r10 = r17.getPaddingRight()
@@ -1251,77 +1250,166 @@ public class ViewPager extends ViewGroup {
     }
 
     /* access modifiers changed from: protected */
-    public void onMeasure(int i, int i2) {
-        LayoutParams layoutParams;
-        LayoutParams layoutParams2;
-        int i3;
-        int i4;
-        int i5;
-        int i6;
-        boolean z = false;
-        setMeasuredDimension(getDefaultSize(0, i), getDefaultSize(0, i2));
-        int measuredWidth = getMeasuredWidth();
-        this.mGutterSize = Math.min(measuredWidth / 10, this.mDefaultGutterSize);
-        int paddingLeft = (measuredWidth - getPaddingLeft()) - getPaddingRight();
-        int measuredHeight = (getMeasuredHeight() - getPaddingTop()) - getPaddingBottom();
-        int childCount = getChildCount();
-        int i7 = 0;
-        while (true) {
-            boolean z2 = true;
-            int i8 = Ints.MAX_POWER_OF_TWO;
-            if (i7 >= childCount) {
-                break;
-            }
-            View childAt = getChildAt(i7);
-            if (!(childAt.getVisibility() == 8 || (layoutParams2 = (LayoutParams) childAt.getLayoutParams()) == null || !layoutParams2.isDecor)) {
-                int i9 = layoutParams2.gravity & 7;
-                int i10 = layoutParams2.gravity & 112;
-                boolean z3 = (i10 == 48 || i10 == 80) ? true : z;
-                if (!(i9 == 3 || i9 == 5)) {
-                    z2 = z;
-                }
-                int i11 = Integer.MIN_VALUE;
-                if (z3) {
-                    i3 = Integer.MIN_VALUE;
-                    i11 = 1073741824;
-                } else {
-                    i3 = z2 ? 1073741824 : Integer.MIN_VALUE;
-                }
-                if (layoutParams2.width != -2) {
-                    i5 = layoutParams2.width != -1 ? layoutParams2.width : paddingLeft;
-                    i4 = 1073741824;
-                } else {
-                    i4 = i11;
-                    i5 = paddingLeft;
-                }
-                if (layoutParams2.height != -2) {
-                    i6 = layoutParams2.height != -1 ? layoutParams2.height : measuredHeight;
-                } else {
-                    i6 = measuredHeight;
-                    i8 = i3;
-                }
-                childAt.measure(View.MeasureSpec.makeMeasureSpec(i5, i4), View.MeasureSpec.makeMeasureSpec(i6, i8));
-                if (z3) {
-                    measuredHeight -= childAt.getMeasuredHeight();
-                } else if (z2) {
-                    paddingLeft -= childAt.getMeasuredWidth();
-                }
-            }
-            i7++;
-            z = false;
-        }
-        this.mChildWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(paddingLeft, Ints.MAX_POWER_OF_TWO);
-        this.mChildHeightMeasureSpec = View.MeasureSpec.makeMeasureSpec(measuredHeight, Ints.MAX_POWER_OF_TWO);
-        this.mInLayout = true;
-        populate();
-        this.mInLayout = false;
-        int childCount2 = getChildCount();
-        for (int i12 = 0; i12 < childCount2; i12++) {
-            View childAt2 = getChildAt(i12);
-            if (childAt2.getVisibility() != 8 && ((layoutParams = (LayoutParams) childAt2.getLayoutParams()) == null || !layoutParams.isDecor)) {
-                childAt2.measure(View.MeasureSpec.makeMeasureSpec((int) (((float) paddingLeft) * layoutParams.widthFactor), Ints.MAX_POWER_OF_TWO), this.mChildHeightMeasureSpec);
-            }
-        }
+    /* JADX WARNING: Removed duplicated region for block: B:28:0x008a  */
+    /* JADX WARNING: Removed duplicated region for block: B:33:0x0095  */
+    /* JADX WARNING: Removed duplicated region for block: B:36:0x009b  */
+    /* JADX WARNING: Removed duplicated region for block: B:40:0x00a4  */
+    /* JADX WARNING: Removed duplicated region for block: B:43:0x00b3  */
+    /* JADX WARNING: Removed duplicated region for block: B:44:0x00b9  */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public void onMeasure(int r17, int r18) {
+        /*
+            r16 = this;
+            r0 = r16
+            r1 = 0
+            r2 = r17
+            int r2 = getDefaultSize(r1, r2)
+            r3 = r18
+            int r3 = getDefaultSize(r1, r3)
+            r0.setMeasuredDimension(r2, r3)
+            int r2 = r16.getMeasuredWidth()
+            int r3 = r2 / 10
+            int r4 = r0.mDefaultGutterSize
+            int r3 = java.lang.Math.min(r3, r4)
+            r0.mGutterSize = r3
+            int r3 = r16.getPaddingLeft()
+            int r2 = r2 - r3
+            int r3 = r16.getPaddingRight()
+            int r2 = r2 - r3
+            int r3 = r16.getMeasuredHeight()
+            int r4 = r16.getPaddingTop()
+            int r3 = r3 - r4
+            int r4 = r16.getPaddingBottom()
+            int r3 = r3 - r4
+            int r4 = r16.getChildCount()
+            r5 = 0
+        L_0x003d:
+            r6 = 8
+            r7 = 1
+            r8 = 1073741824(0x40000000, float:2.0)
+            if (r5 >= r4) goto L_0x00c5
+            android.view.View r9 = r0.getChildAt(r5)
+            int r10 = r9.getVisibility()
+            if (r10 == r6) goto L_0x00c0
+            android.view.ViewGroup$LayoutParams r6 = r9.getLayoutParams()
+            androidx.viewpager.widget.ViewPager$LayoutParams r6 = (androidx.viewpager.widget.ViewPager.LayoutParams) r6
+            if (r6 == 0) goto L_0x00c0
+            boolean r10 = r6.isDecor
+            if (r10 == 0) goto L_0x00c0
+            int r10 = r6.gravity
+            r10 = r10 & 7
+            int r11 = r6.gravity
+            r11 = r11 & 112(0x70, float:1.57E-43)
+            r12 = 48
+            if (r11 == r12) goto L_0x006d
+            r12 = 80
+            if (r11 != r12) goto L_0x006b
+            goto L_0x006d
+        L_0x006b:
+            r11 = 0
+            goto L_0x006e
+        L_0x006d:
+            r11 = 1
+        L_0x006e:
+            r12 = 3
+            if (r10 == r12) goto L_0x0076
+            r12 = 5
+            if (r10 != r12) goto L_0x0075
+            goto L_0x0076
+        L_0x0075:
+            r7 = 0
+        L_0x0076:
+            r10 = -2147483648(0xffffffff80000000, float:-0.0)
+            if (r11 == 0) goto L_0x007d
+            r10 = 1073741824(0x40000000, float:2.0)
+            goto L_0x0082
+        L_0x007d:
+            if (r7 == 0) goto L_0x0082
+            r12 = 1073741824(0x40000000, float:2.0)
+            goto L_0x0084
+        L_0x0082:
+            r12 = -2147483648(0xffffffff80000000, float:-0.0)
+        L_0x0084:
+            int r13 = r6.width
+            r14 = -1
+            r15 = -2
+            if (r13 == r15) goto L_0x0095
+            int r10 = r6.width
+            if (r10 == r14) goto L_0x0091
+            int r10 = r6.width
+            goto L_0x0092
+        L_0x0091:
+            r10 = r2
+        L_0x0092:
+            r13 = 1073741824(0x40000000, float:2.0)
+            goto L_0x0097
+        L_0x0095:
+            r13 = r10
+            r10 = r2
+        L_0x0097:
+            int r1 = r6.height
+            if (r1 == r15) goto L_0x00a4
+            int r1 = r6.height
+            if (r1 == r14) goto L_0x00a2
+            int r1 = r6.height
+            goto L_0x00a6
+        L_0x00a2:
+            r1 = r3
+            goto L_0x00a6
+        L_0x00a4:
+            r1 = r3
+            r8 = r12
+        L_0x00a6:
+            int r6 = android.view.View.MeasureSpec.makeMeasureSpec(r10, r13)
+            int r1 = android.view.View.MeasureSpec.makeMeasureSpec(r1, r8)
+            r9.measure(r6, r1)
+            if (r11 == 0) goto L_0x00b9
+            int r1 = r9.getMeasuredHeight()
+            int r3 = r3 - r1
+            goto L_0x00c0
+        L_0x00b9:
+            if (r7 == 0) goto L_0x00c0
+            int r1 = r9.getMeasuredWidth()
+            int r2 = r2 - r1
+        L_0x00c0:
+            int r5 = r5 + 1
+            r1 = 0
+            goto L_0x003d
+        L_0x00c5:
+            int r1 = android.view.View.MeasureSpec.makeMeasureSpec(r2, r8)
+            r0.mChildWidthMeasureSpec = r1
+            int r1 = android.view.View.MeasureSpec.makeMeasureSpec(r3, r8)
+            r0.mChildHeightMeasureSpec = r1
+            r0.mInLayout = r7
+            r16.populate()
+            r1 = 0
+            r0.mInLayout = r1
+            int r3 = r16.getChildCount()
+        L_0x00dd:
+            if (r1 >= r3) goto L_0x0107
+            android.view.View r4 = r0.getChildAt(r1)
+            int r5 = r4.getVisibility()
+            if (r5 == r6) goto L_0x0104
+            android.view.ViewGroup$LayoutParams r5 = r4.getLayoutParams()
+            androidx.viewpager.widget.ViewPager$LayoutParams r5 = (androidx.viewpager.widget.ViewPager.LayoutParams) r5
+            if (r5 == 0) goto L_0x00f5
+            boolean r7 = r5.isDecor
+            if (r7 != 0) goto L_0x0104
+        L_0x00f5:
+            float r7 = (float) r2
+            float r5 = r5.widthFactor
+            float r7 = r7 * r5
+            int r5 = (int) r7
+            int r5 = android.view.View.MeasureSpec.makeMeasureSpec(r5, r8)
+            int r7 = r0.mChildHeightMeasureSpec
+            r4.measure(r5, r7)
+        L_0x0104:
+            int r1 = r1 + 1
+            goto L_0x00dd
+        L_0x0107:
+            return
+        */
+        throw new UnsupportedOperationException("Method not decompiled: androidx.viewpager.widget.ViewPager.onMeasure(int, int):void");
     }
 
     /* access modifiers changed from: protected */
@@ -1455,23 +1543,23 @@ public class ViewPager extends ViewGroup {
             int r2 = r2 - r6
             r6 = 0
         L_0x00bb:
-            if (r6 >= r1) goto L_0x0108
+            if (r6 >= r1) goto L_0x010a
             android.view.View r8 = r0.getChildAt(r6)
             int r9 = r8.getVisibility()
-            if (r9 == r12) goto L_0x0105
+            if (r9 == r12) goto L_0x0107
             android.view.ViewGroup$LayoutParams r9 = r8.getLayoutParams()
             androidx.viewpager.widget.ViewPager$LayoutParams r9 = (androidx.viewpager.widget.ViewPager.LayoutParams) r9
             boolean r10 = r9.isDecor
-            if (r10 != 0) goto L_0x0105
+            if (r10 != 0) goto L_0x0107
             androidx.viewpager.widget.ViewPager$ItemInfo r10 = r0.infoForChild(r8)
-            if (r10 == 0) goto L_0x0105
+            if (r10 == 0) goto L_0x0107
             float r13 = (float) r2
             float r10 = r10.offset
             float r10 = r10 * r13
             int r10 = (int) r10
             int r10 = r10 + r4
             boolean r14 = r9.needsMeasure
-            if (r14 == 0) goto L_0x00f8
+            if (r14 == 0) goto L_0x00fa
             r14 = 0
             r9.needsMeasure = r14
             float r9 = r9.widthFactor
@@ -1483,29 +1571,29 @@ public class ViewPager extends ViewGroup {
             int r14 = r14 - r7
             int r13 = android.view.View.MeasureSpec.makeMeasureSpec(r14, r13)
             r8.measure(r9, r13)
-        L_0x00f8:
+        L_0x00fa:
             int r9 = r8.getMeasuredWidth()
             int r9 = r9 + r10
             int r13 = r8.getMeasuredHeight()
             int r13 = r13 + r5
             r8.layout(r10, r5, r9, r13)
-        L_0x0105:
+        L_0x0107:
             int r6 = r6 + 1
             goto L_0x00bb
-        L_0x0108:
+        L_0x010a:
             r0.mTopPageBounds = r5
             int r3 = r3 - r7
             r0.mBottomPageBounds = r3
             r0.mDecorChildCount = r11
             boolean r1 = r0.mFirstLayout
-            if (r1 == 0) goto L_0x011a
+            if (r1 == 0) goto L_0x011c
             int r1 = r0.mCurItem
             r2 = 0
             r0.scrollToItem(r1, r2, r2, r2)
-            goto L_0x011b
-        L_0x011a:
+            goto L_0x011d
+        L_0x011c:
             r2 = 0
-        L_0x011b:
+        L_0x011d:
             r0.mFirstLayout = r2
             return
         */
@@ -1574,7 +1662,7 @@ public class ViewPager extends ViewGroup {
             int r4 = r12.getPaddingRight()
             int r5 = r12.getWidth()
             int r6 = r12.getChildCount()
-            r7 = r1
+            r7 = 0
         L_0x001b:
             if (r7 >= r6) goto L_0x006b
             android.view.View r8 = r12.getChildAt(r7)
@@ -2000,32 +2088,32 @@ public class ViewPager extends ViewGroup {
         float scrollX = clientWidth > 0 ? ((float) getScrollX()) / ((float) clientWidth) : 0.0f;
         float f2 = clientWidth > 0 ? ((float) this.mPageMargin) / ((float) clientWidth) : 0.0f;
         ItemInfo itemInfo = null;
-        int i2 = 0;
-        int i3 = -1;
-        boolean z = true;
         float f3 = 0.0f;
-        while (i2 < this.mItems.size()) {
-            ItemInfo itemInfo2 = this.mItems.get(i2);
-            if (!z && itemInfo2.position != (i = i3 + 1)) {
+        int i2 = -1;
+        int i3 = 0;
+        boolean z = true;
+        while (i3 < this.mItems.size()) {
+            ItemInfo itemInfo2 = this.mItems.get(i3);
+            if (!z && itemInfo2.position != (i = i2 + 1)) {
                 itemInfo2 = this.mTempItem;
                 itemInfo2.offset = f + f3 + f2;
                 itemInfo2.position = i;
                 itemInfo2.widthFactor = this.mAdapter.getPageWidth(itemInfo2.position);
-                i2--;
+                i3--;
             }
             f = itemInfo2.offset;
             float f4 = itemInfo2.widthFactor + f + f2;
             if (!z && scrollX < f) {
                 return itemInfo;
             }
-            if (scrollX < f4 || i2 == this.mItems.size() - 1) {
+            if (scrollX < f4 || i3 == this.mItems.size() - 1) {
                 return itemInfo2;
             }
-            i3 = itemInfo2.position;
+            i2 = itemInfo2.position;
             f3 = itemInfo2.widthFactor;
-            i2++;
-            z = false;
+            i3++;
             itemInfo = itemInfo2;
+            z = false;
         }
         return itemInfo;
     }
@@ -2327,13 +2415,13 @@ public class ViewPager extends ViewGroup {
             boolean r5 = r4 instanceof android.view.ViewGroup
             if (r5 == 0) goto L_0x001e
             if (r4 != r6) goto L_0x0019
-            r4 = r1
+            r4 = 1
             goto L_0x001f
         L_0x0019:
             android.view.ViewParent r4 = r4.getParent()
             goto L_0x0011
         L_0x001e:
-            r4 = r2
+            r4 = 0
         L_0x001f:
             if (r4 != 0) goto L_0x0069
             java.lang.StringBuilder r4 = new java.lang.StringBuilder

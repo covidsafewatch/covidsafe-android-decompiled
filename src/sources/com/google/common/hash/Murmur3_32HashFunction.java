@@ -68,7 +68,8 @@ final class Murmur3_32HashFunction extends AbstractHashFunction implements Seria
     }
 
     public HashCode hashLong(long j) {
-        return fmix(mixH1(mixH1(this.seed, mixK1((int) j)), mixK1((int) (j >>> 32))), 8);
+        int i = (int) (j >>> 32);
+        return fmix(mixH1(mixH1(this.seed, mixK1((int) j)), mixK1(i)), 8);
     }
 
     public HashCode hashUnencodedChars(CharSequence charSequence) {

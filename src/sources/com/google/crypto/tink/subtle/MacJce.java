@@ -1,21 +1,25 @@
 package com.google.crypto.tink.subtle;
 
 import com.google.crypto.tink.Mac;
+import com.google.errorprone.annotations.Immutable;
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
+@Immutable
 public final class MacJce implements Mac {
     static final int MIN_KEY_SIZE_IN_BYTES = 16;
     static final int MIN_TAG_SIZE_IN_BYTES = 10;
     private final String algorithm;
     private final int digestSize;
     private final Key key;
-    private javax.crypto.Mac mac;
+    private final javax.crypto.Mac mac;
 
     public MacJce(String str, Key key2, int i) throws GeneralSecurityException {
-        if (i >= 10) {
+        if (i < 10) {
+            throw new InvalidAlgorithmParameterException("tag size too small, need at least 10 bytes");
+        } else if (key2.getEncoded().length >= 16) {
             char c = 65535;
             int hashCode = str.hashCode();
             if (hashCode != -1823053428) {
@@ -48,9 +52,9 @@ public final class MacJce implements Mac {
             javax.crypto.Mac instance = EngineFactory.MAC.getInstance(str);
             this.mac = instance;
             instance.init(key2);
-            return;
+        } else {
+            throw new InvalidAlgorithmParameterException("key size too small, need at least 16 bytes");
         }
-        throw new InvalidAlgorithmParameterException("tag size too small, need at least 10 bytes");
     }
 
     public byte[] computeMac(byte[] bArr) throws GeneralSecurityException {

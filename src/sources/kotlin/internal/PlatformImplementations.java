@@ -31,7 +31,7 @@ public class PlatformImplementations {
                 kotlin.jvm.internal.Intrinsics.checkExpressionValueIsNotNull(r1, r2)
                 int r2 = r1.length
                 r3 = 0
-                r4 = r3
+                r4 = 0
             L_0x0015:
                 if (r4 >= r2) goto L_0x0048
                 r5 = r1[r4]
@@ -51,7 +51,7 @@ public class PlatformImplementations {
                 r6 = 1
                 goto L_0x0042
             L_0x0041:
-                r6 = r3
+                r6 = 0
             L_0x0042:
                 if (r6 == 0) goto L_0x0045
                 goto L_0x0049

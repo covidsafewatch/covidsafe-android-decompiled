@@ -46,9 +46,9 @@ public final class LocksKt {
             int r1 = r4.getReadHoldCount()
             goto L_0x0011
         L_0x0010:
-            r1 = r2
+            r1 = 0
         L_0x0011:
-            r3 = r2
+            r3 = 0
         L_0x0012:
             if (r3 >= r1) goto L_0x001a
             r0.unlock()

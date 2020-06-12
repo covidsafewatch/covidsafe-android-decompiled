@@ -3,65 +3,30 @@ package com.google.crypto.tink.aead;
 import com.google.crypto.tink.Aead;
 import com.google.crypto.tink.KeyManager;
 import com.google.crypto.tink.KeysetHandle;
-import com.google.crypto.tink.PrimitiveSet;
-import com.google.crypto.tink.Registry;
-import com.google.crypto.tink.subtle.Bytes;
 import java.security.GeneralSecurityException;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Logger;
 
+@Deprecated
 public final class AeadFactory {
-    /* access modifiers changed from: private */
-    public static final Logger logger = Logger.getLogger(AeadFactory.class.getName());
-
+    @Deprecated
     public static Aead getPrimitive(KeysetHandle keysetHandle) throws GeneralSecurityException {
         return getPrimitive(keysetHandle, (KeyManager<Aead>) null);
     }
 
-    public static Aead getPrimitive(KeysetHandle keysetHandle, KeyManager<Aead> keyManager) throws GeneralSecurityException {
-        final PrimitiveSet<Aead> primitives = Registry.getPrimitives(keysetHandle, keyManager);
-        validate(primitives);
-        return new Aead() {
-            public byte[] encrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
-                return Bytes.concat(PrimitiveSet.this.getPrimary().getIdentifier(), ((Aead) PrimitiveSet.this.getPrimary().getPrimitive()).encrypt(bArr, bArr2));
-            }
-
-            public byte[] decrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
-                if (bArr.length > 5) {
-                    byte[] copyOfRange = Arrays.copyOfRange(bArr, 0, 5);
-                    byte[] copyOfRange2 = Arrays.copyOfRange(bArr, 5, bArr.length);
-                    for (PrimitiveSet.Entry primitive : PrimitiveSet.this.getPrimitive(copyOfRange)) {
-                        try {
-                            return ((Aead) primitive.getPrimitive()).decrypt(copyOfRange2, bArr2);
-                        } catch (GeneralSecurityException e) {
-                            Logger access$000 = AeadFactory.logger;
-                            access$000.info("ciphertext prefix matches a key, but cannot decrypt: " + e.toString());
-                        }
-                    }
-                }
-                for (PrimitiveSet.Entry primitive2 : PrimitiveSet.this.getRawPrimitives()) {
-                    try {
-                        return ((Aead) primitive2.getPrimitive()).decrypt(bArr, bArr2);
-                    } catch (GeneralSecurityException unused) {
-                    }
-                }
-                throw new GeneralSecurityException("decryption failed");
-            }
-        };
-    }
-
-    private static void validate(PrimitiveSet<Aead> primitiveSet) throws GeneralSecurityException {
-        for (List<PrimitiveSet.Entry<Aead>> it : primitiveSet.getAll()) {
-            Iterator it2 = it.iterator();
-            while (true) {
-                if (it2.hasNext()) {
-                    if (!(((PrimitiveSet.Entry) it2.next()).getPrimitive() instanceof Aead)) {
-                        throw new GeneralSecurityException("invalid AEAD key material");
-                    }
-                }
-            }
-        }
+    /* JADX WARNING: type inference failed for: r2v0, types: [com.google.crypto.tink.KeyManager, com.google.crypto.tink.KeyManager<com.google.crypto.tink.Aead>] */
+    /* JADX WARNING: Unknown variable types count: 1 */
+    @java.lang.Deprecated
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public static com.google.crypto.tink.Aead getPrimitive(com.google.crypto.tink.KeysetHandle r1, com.google.crypto.tink.KeyManager<com.google.crypto.tink.Aead> r2) throws java.security.GeneralSecurityException {
+        /*
+            com.google.crypto.tink.aead.AeadWrapper r0 = new com.google.crypto.tink.aead.AeadWrapper
+            r0.<init>()
+            com.google.crypto.tink.Registry.registerPrimitiveWrapper(r0)
+            java.lang.Class<com.google.crypto.tink.Aead> r0 = com.google.crypto.tink.Aead.class
+            com.google.crypto.tink.PrimitiveSet r1 = com.google.crypto.tink.Registry.getPrimitives(r1, r2, r0)
+            java.lang.Object r1 = com.google.crypto.tink.Registry.wrap(r1)
+            com.google.crypto.tink.Aead r1 = (com.google.crypto.tink.Aead) r1
+            return r1
+        */
+        throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.aead.AeadFactory.getPrimitive(com.google.crypto.tink.KeysetHandle, com.google.crypto.tink.KeyManager):com.google.crypto.tink.Aead");
     }
 }

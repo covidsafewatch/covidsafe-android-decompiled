@@ -865,7 +865,7 @@ public class TabLayout extends HorizontalScrollView {
             int r1 = r6.getMeasuredWidth()
             if (r0 == r1) goto L_0x008a
         L_0x007d:
-            r4 = r5
+            r4 = 1
             goto L_0x008a
         L_0x007f:
             int r0 = r7.getMeasuredWidth()

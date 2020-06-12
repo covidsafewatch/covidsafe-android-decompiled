@@ -496,8 +496,8 @@ public class ActivityChooserView extends ViewGroup implements ActivityChooserMod
             int makeMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, 0);
             int makeMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(0, 0);
             int count = getCount();
-            int i2 = 0;
             View view = null;
+            int i2 = 0;
             for (int i3 = 0; i3 < count; i3++) {
                 view = getView(i3, view, (ViewGroup) null);
                 view.measure(makeMeasureSpec, makeMeasureSpec2);

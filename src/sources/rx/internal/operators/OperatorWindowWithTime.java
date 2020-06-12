@@ -259,7 +259,7 @@ public final class OperatorWindowWithTime<T> implements Observable.Operator<Obse
                 throw r0
             L_0x004d:
                 r2 = move-exception
-                r1 = r0
+                r1 = 0
             L_0x004f:
                 monitor-exit(r5)     // Catch:{ all -> 0x0053 }
                 throw r2     // Catch:{ all -> 0x0051 }
@@ -271,7 +271,7 @@ public final class OperatorWindowWithTime<T> implements Observable.Operator<Obse
                 goto L_0x004f
             L_0x0055:
                 r5 = move-exception
-                r1 = r0
+                r1 = 0
             L_0x0057:
                 if (r1 != 0) goto L_0x0063
                 java.lang.Object r1 = r4.guard
@@ -588,7 +588,7 @@ public final class OperatorWindowWithTime<T> implements Observable.Operator<Obse
                 throw r0
             L_0x004f:
                 r3 = move-exception
-                r1 = r0
+                r1 = 0
             L_0x0051:
                 monitor-exit(r2)     // Catch:{ all -> 0x0058 }
                 throw r3     // Catch:{ all -> 0x0053 }
@@ -603,7 +603,7 @@ public final class OperatorWindowWithTime<T> implements Observable.Operator<Obse
                 goto L_0x0051
             L_0x005a:
                 r1 = move-exception
-                r2 = r0
+                r2 = 0
             L_0x005c:
                 if (r2 != 0) goto L_0x0068
                 java.lang.Object r2 = r6.guard

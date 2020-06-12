@@ -302,10 +302,7 @@ public final class ConcurrentHashMultiset<E> extends AbstractMultiset<E> impleme
         } else if (i != 0) {
             return false;
         } else {
-            if (i2 == 0) {
-                return true;
-            }
-            if (this.countMap.putIfAbsent(e, new AtomicInteger(i2)) == null) {
+            if (i2 == 0 || this.countMap.putIfAbsent(e, new AtomicInteger(i2)) == null) {
                 return true;
             }
             return false;

@@ -37,8 +37,8 @@ public class AnimatablePathValueParser {
         jsonReader.beginObject();
         AnimatablePathValue animatablePathValue = null;
         AnimatableFloatValue animatableFloatValue = null;
-        boolean z = false;
         AnimatableFloatValue animatableFloatValue2 = null;
+        boolean z = false;
         while (jsonReader.peek() != JsonReader.Token.END_OBJECT) {
             int selectName = jsonReader.selectName(NAMES);
             if (selectName != 0) {
@@ -49,12 +49,12 @@ public class AnimatablePathValueParser {
                     } else if (jsonReader.peek() == JsonReader.Token.STRING) {
                         jsonReader.skipValue();
                     } else {
-                        animatableFloatValue = AnimatableValueParser.parseFloat(jsonReader, lottieComposition);
+                        animatableFloatValue2 = AnimatableValueParser.parseFloat(jsonReader, lottieComposition);
                     }
                 } else if (jsonReader.peek() == JsonReader.Token.STRING) {
                     jsonReader.skipValue();
                 } else {
-                    animatableFloatValue2 = AnimatableValueParser.parseFloat(jsonReader, lottieComposition);
+                    animatableFloatValue = AnimatableValueParser.parseFloat(jsonReader, lottieComposition);
                 }
                 z = true;
             } else {
@@ -68,6 +68,6 @@ public class AnimatablePathValueParser {
         if (animatablePathValue != null) {
             return animatablePathValue;
         }
-        return new AnimatableSplitDimensionPathValue(animatableFloatValue2, animatableFloatValue);
+        return new AnimatableSplitDimensionPathValue(animatableFloatValue, animatableFloatValue2);
     }
 }

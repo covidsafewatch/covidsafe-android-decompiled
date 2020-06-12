@@ -301,22 +301,22 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
         }
         int i = 0;
         int i2 = 1;
-        int i3 = 0;
-        int i4 = 1;
-        while (i4 < this.concurrencyLevel && (!evictsBySize() || ((long) (i4 * 20)) <= this.maxWeight)) {
-            i3++;
-            i4 <<= 1;
+        int i3 = 1;
+        int i4 = 0;
+        while (i3 < this.concurrencyLevel && (!evictsBySize() || ((long) (i3 * 20)) <= this.maxWeight)) {
+            i4++;
+            i3 <<= 1;
         }
-        this.segmentShift = 32 - i3;
-        this.segmentMask = i4 - 1;
-        this.segments = newSegmentArray(i4);
-        int i5 = min / i4;
-        while (i2 < (i5 * i4 < min ? i5 + 1 : i5)) {
+        this.segmentShift = 32 - i4;
+        this.segmentMask = i3 - 1;
+        this.segments = newSegmentArray(i3);
+        int i5 = min / i3;
+        while (i2 < (i5 * i3 < min ? i5 + 1 : i5)) {
             i2 <<= 1;
         }
         if (evictsBySize()) {
             long j = this.maxWeight;
-            long j2 = (long) i4;
+            long j2 = (long) i3;
             long j3 = (j / j2) + 1;
             long j4 = j % j2;
             while (i < this.segments.length) {
@@ -1461,8 +1461,8 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
         /* access modifiers changed from: package-private */
         public V lockedGetOrLoad(K k, int i, CacheLoader<? super K, V> cacheLoader) throws ExecutionException {
             LoadingValueReference loadingValueReference;
-            boolean z;
             ValueReference valueReference;
+            boolean z;
             V loadSync;
             K k2 = k;
             int i2 = i;
@@ -1478,7 +1478,6 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
                 while (true) {
                     loadingValueReference = null;
                     if (referenceEntry2 == null) {
-                        z = true;
                         valueReference = null;
                         break;
                     }
@@ -1489,6 +1488,7 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
                         ValueReference valueReference2 = referenceEntry2.getValueReference();
                         if (valueReference2.isLoading()) {
                             z = false;
+                            valueReference = valueReference2;
                         } else {
                             V v = valueReference2.get();
                             if (v == null) {
@@ -1505,11 +1505,11 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
                             this.writeQueue.remove(referenceEntry2);
                             this.accessQueue.remove(referenceEntry2);
                             this.count = i3;
-                            z = true;
+                            valueReference = valueReference2;
                         }
-                        valueReference = valueReference2;
                     }
                 }
+                z = true;
                 if (z) {
                     loadingValueReference = new LoadingValueReference();
                     if (referenceEntry2 == null) {
@@ -1634,30 +1634,30 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
 
         /* access modifiers changed from: package-private */
         /* JADX WARNING: Code restructure failed: missing block: B:6:0x001f, code lost:
-            r3 = refresh(r4, r5, r9, true);
+            r4 = refresh(r5, r6, r10, true);
          */
         /* Code decompiled incorrectly, please refer to instructions dump. */
-        public V scheduleRefresh(com.google.common.cache.ReferenceEntry<K, V> r3, K r4, int r5, V r6, long r7, com.google.common.cache.CacheLoader<? super K, V> r9) {
+        public V scheduleRefresh(com.google.common.cache.ReferenceEntry<K, V> r4, K r5, int r6, V r7, long r8, com.google.common.cache.CacheLoader<? super K, V> r10) {
             /*
-                r2 = this;
-                com.google.common.cache.LocalCache<K, V> r0 = r2.map
+                r3 = this;
+                com.google.common.cache.LocalCache<K, V> r0 = r3.map
                 boolean r0 = r0.refreshes()
                 if (r0 == 0) goto L_0x0027
-                long r0 = r3.getWriteTime()
-                long r7 = r7 - r0
-                com.google.common.cache.LocalCache<K, V> r0 = r2.map
+                long r0 = r4.getWriteTime()
+                long r8 = r8 - r0
+                com.google.common.cache.LocalCache<K, V> r0 = r3.map
                 long r0 = r0.refreshNanos
-                int r7 = (r7 > r0 ? 1 : (r7 == r0 ? 0 : -1))
-                if (r7 <= 0) goto L_0x0027
-                com.google.common.cache.LocalCache$ValueReference r3 = r3.getValueReference()
-                boolean r3 = r3.isLoading()
-                if (r3 != 0) goto L_0x0027
-                r3 = 1
-                java.lang.Object r3 = r2.refresh(r4, r5, r9, r3)
-                if (r3 == 0) goto L_0x0027
-                return r3
+                int r2 = (r8 > r0 ? 1 : (r8 == r0 ? 0 : -1))
+                if (r2 <= 0) goto L_0x0027
+                com.google.common.cache.LocalCache$ValueReference r4 = r4.getValueReference()
+                boolean r4 = r4.isLoading()
+                if (r4 != 0) goto L_0x0027
+                r4 = 1
+                java.lang.Object r4 = r3.refresh(r5, r6, r10, r4)
+                if (r4 == 0) goto L_0x0027
+                return r4
             L_0x0027:
-                return r6
+                return r7
             */
             throw new UnsupportedOperationException("Method not decompiled: com.google.common.cache.LocalCache.Segment.scheduleRefresh(com.google.common.cache.ReferenceEntry, java.lang.Object, int, java.lang.Object, long, com.google.common.cache.CacheLoader):java.lang.Object");
         }
@@ -3419,7 +3419,7 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
             java.util.LinkedHashSet r1 = com.google.common.collect.Sets.newLinkedHashSet()
             java.util.Iterator r8 = r8.iterator()
             r2 = 0
-            r3 = r2
+            r3 = 0
         L_0x000e:
             boolean r4 = r8.hasNext()
             if (r4 == 0) goto L_0x0030
@@ -3563,7 +3563,6 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
 
     public boolean containsValue(@NullableDecl Object obj) {
         Object obj2 = obj;
-        boolean z = false;
         if (obj2 == null) {
             return false;
         }
@@ -3574,12 +3573,12 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
         while (i < 3) {
             long j2 = 0;
             int length = segmentArr.length;
-            int i2 = z;
+            int i2 = 0;
             while (i2 < length) {
                 Segment<K, V> segment = segmentArr[i2];
                 int i3 = segment.count;
                 AtomicReferenceArray<ReferenceEntry<K, V>> atomicReferenceArray = segment.table;
-                for (int i4 = z; i4 < atomicReferenceArray.length(); i4++) {
+                for (int i4 = 0; i4 < atomicReferenceArray.length(); i4++) {
                     ReferenceEntry referenceEntry = atomicReferenceArray.get(i4);
                     while (referenceEntry != null) {
                         Segment<K, V>[] segmentArr2 = segmentArr;
@@ -3599,7 +3598,6 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
                 j2 += (long) segment.modCount;
                 i2++;
                 read = read;
-                z = false;
             }
             long j5 = read;
             Segment<K, V>[] segmentArr5 = segmentArr;
@@ -3610,9 +3608,8 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
             j = j2;
             segmentArr = segmentArr5;
             read = j5;
-            z = false;
         }
-        return z;
+        return false;
     }
 
     public V put(K k, V v) {

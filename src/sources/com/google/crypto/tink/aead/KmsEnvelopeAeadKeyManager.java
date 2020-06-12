@@ -1,21 +1,19 @@
 package com.google.crypto.tink.aead;
 
 import com.google.crypto.tink.Aead;
-import com.google.crypto.tink.KeyManager;
+import com.google.crypto.tink.KeyTypeManager;
 import com.google.crypto.tink.KmsClients;
+import com.google.crypto.tink.Registry;
 import com.google.crypto.tink.proto.KeyData;
 import com.google.crypto.tink.proto.KmsEnvelopeAeadKey;
 import com.google.crypto.tink.proto.KmsEnvelopeAeadKeyFormat;
+import com.google.crypto.tink.shaded.protobuf.ByteString;
+import com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite;
+import com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException;
 import com.google.crypto.tink.subtle.Validators;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.MessageLite;
 import java.security.GeneralSecurityException;
 
-class KmsEnvelopeAeadKeyManager implements KeyManager<Aead> {
-    public static final String TYPE_URL = "type.googleapis.com/google.crypto.tink.KmsEnvelopeAeadKey";
-    private static final int VERSION = 0;
-
+public class KmsEnvelopeAeadKeyManager extends KeyTypeManager<KmsEnvelopeAeadKey> {
     public String getKeyType() {
         return "type.googleapis.com/google.crypto.tink.KmsEnvelopeAeadKey";
     }
@@ -25,50 +23,42 @@ class KmsEnvelopeAeadKeyManager implements KeyManager<Aead> {
     }
 
     KmsEnvelopeAeadKeyManager() {
+        super(KmsEnvelopeAeadKey.class, new KeyTypeManager.PrimitiveFactory<Aead, KmsEnvelopeAeadKey>(Aead.class) {
+            public Aead getPrimitive(KmsEnvelopeAeadKey kmsEnvelopeAeadKey) throws GeneralSecurityException {
+                String kekUri = kmsEnvelopeAeadKey.getParams().getKekUri();
+                return new KmsEnvelopeAead(kmsEnvelopeAeadKey.getParams().getDekTemplate(), KmsClients.get(kekUri).getAead(kekUri));
+            }
+        });
     }
 
-    public Aead getPrimitive(ByteString byteString) throws GeneralSecurityException {
-        try {
-            return getPrimitive((MessageLite) KmsEnvelopeAeadKey.parseFrom(byteString));
-        } catch (InvalidProtocolBufferException e) {
-            throw new GeneralSecurityException("expected serialized KmSEnvelopeAeadKey proto", e);
-        }
+    public KeyData.KeyMaterialType keyMaterialType() {
+        return KeyData.KeyMaterialType.REMOTE;
     }
 
-    public Aead getPrimitive(MessageLite messageLite) throws GeneralSecurityException {
-        if (messageLite instanceof KmsEnvelopeAeadKey) {
-            KmsEnvelopeAeadKey kmsEnvelopeAeadKey = (KmsEnvelopeAeadKey) messageLite;
-            validate(kmsEnvelopeAeadKey);
-            String kekUri = kmsEnvelopeAeadKey.getParams().getKekUri();
-            return new KmsEnvelopeAead(kmsEnvelopeAeadKey.getParams().getDekTemplate(), KmsClients.get(kekUri).getAead(kekUri));
-        }
-        throw new GeneralSecurityException("expected KmsEnvelopeAeadKey proto");
+    public void validateKey(KmsEnvelopeAeadKey kmsEnvelopeAeadKey) throws GeneralSecurityException {
+        Validators.validateVersion(kmsEnvelopeAeadKey.getVersion(), getVersion());
     }
 
-    public MessageLite newKey(ByteString byteString) throws GeneralSecurityException {
-        try {
-            return newKey((MessageLite) KmsEnvelopeAeadKeyFormat.parseFrom(byteString));
-        } catch (InvalidProtocolBufferException e) {
-            throw new GeneralSecurityException("expected serialized KmsEnvelopeAeadKeyFormat proto", e);
-        }
+    public KmsEnvelopeAeadKey parseKey(ByteString byteString) throws InvalidProtocolBufferException {
+        return KmsEnvelopeAeadKey.parseFrom(byteString, ExtensionRegistryLite.getEmptyRegistry());
     }
 
-    public MessageLite newKey(MessageLite messageLite) throws GeneralSecurityException {
-        if (messageLite instanceof KmsEnvelopeAeadKeyFormat) {
-            return KmsEnvelopeAeadKey.newBuilder().setParams((KmsEnvelopeAeadKeyFormat) messageLite).setVersion(0).build();
-        }
-        throw new GeneralSecurityException("expected KmsEnvelopeAeadKeyFormat proto");
+    public KeyTypeManager.KeyFactory<KmsEnvelopeAeadKeyFormat, KmsEnvelopeAeadKey> keyFactory() {
+        return new KeyTypeManager.KeyFactory<KmsEnvelopeAeadKeyFormat, KmsEnvelopeAeadKey>(KmsEnvelopeAeadKeyFormat.class) {
+            public void validateKeyFormat(KmsEnvelopeAeadKeyFormat kmsEnvelopeAeadKeyFormat) throws GeneralSecurityException {
+            }
+
+            public KmsEnvelopeAeadKeyFormat parseKeyFormat(ByteString byteString) throws InvalidProtocolBufferException {
+                return KmsEnvelopeAeadKeyFormat.parseFrom(byteString, ExtensionRegistryLite.getEmptyRegistry());
+            }
+
+            public KmsEnvelopeAeadKey createKey(KmsEnvelopeAeadKeyFormat kmsEnvelopeAeadKeyFormat) throws GeneralSecurityException {
+                return (KmsEnvelopeAeadKey) KmsEnvelopeAeadKey.newBuilder().setParams(kmsEnvelopeAeadKeyFormat).setVersion(KmsEnvelopeAeadKeyManager.this.getVersion()).build();
+            }
+        };
     }
 
-    public KeyData newKeyData(ByteString byteString) throws GeneralSecurityException {
-        return (KeyData) KeyData.newBuilder().setTypeUrl("type.googleapis.com/google.crypto.tink.KmsEnvelopeAeadKey").setValue(((KmsEnvelopeAeadKey) newKey(byteString)).toByteString()).setKeyMaterialType(KeyData.KeyMaterialType.REMOTE).build();
-    }
-
-    public boolean doesSupport(String str) {
-        return str.equals("type.googleapis.com/google.crypto.tink.KmsEnvelopeAeadKey");
-    }
-
-    private void validate(KmsEnvelopeAeadKey kmsEnvelopeAeadKey) throws GeneralSecurityException {
-        Validators.validateVersion(kmsEnvelopeAeadKey.getVersion(), 0);
+    public static void register(boolean z) throws GeneralSecurityException {
+        Registry.registerKeyManager(new KmsEnvelopeAeadKeyManager(), z);
     }
 }

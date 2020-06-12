@@ -52,22 +52,22 @@ abstract class AbstractCatchingFuture<V, X extends Throwable, F, T> extends Flue
             r3 = 1
             r4 = 0
             if (r0 != 0) goto L_0x000c
-            r5 = r3
+            r5 = 1
             goto L_0x000d
         L_0x000c:
-            r5 = r4
+            r5 = 0
         L_0x000d:
             if (r1 != 0) goto L_0x0011
-            r6 = r3
+            r6 = 1
             goto L_0x0012
         L_0x0011:
-            r6 = r4
+            r6 = 0
         L_0x0012:
             r5 = r5 | r6
             if (r2 != 0) goto L_0x0016
             goto L_0x0017
         L_0x0016:
-            r3 = r4
+            r3 = 0
         L_0x0017:
             r3 = r3 | r5
             if (r3 != 0) goto L_0x009b

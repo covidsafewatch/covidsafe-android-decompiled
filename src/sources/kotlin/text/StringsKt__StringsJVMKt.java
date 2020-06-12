@@ -510,7 +510,7 @@ class StringsKt__StringsJVMKt extends StringsKt__StringNumberConversionsKt {
         throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:18:? A[RETURN, SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:17:? A[RETURN, SYNTHETIC] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public static final boolean isBlank(java.lang.CharSequence r4) {
         /*
@@ -529,7 +529,7 @@ class StringsKt__StringsJVMKt extends StringsKt__StringNumberConversionsKt {
             boolean r3 = r3.isEmpty()
             if (r3 == 0) goto L_0x0022
         L_0x0020:
-            r4 = r2
+            r4 = 1
             goto L_0x003e
         L_0x0022:
             java.util.Iterator r0 = r0.iterator()
@@ -542,11 +542,11 @@ class StringsKt__StringsJVMKt extends StringsKt__StringNumberConversionsKt {
             char r3 = r4.charAt(r3)
             boolean r3 = kotlin.text.CharsKt.isWhitespace(r3)
             if (r3 != 0) goto L_0x0026
-            r4 = r1
+            r4 = 0
         L_0x003e:
             if (r4 == 0) goto L_0x0041
         L_0x0040:
-            r1 = r2
+            r1 = 1
         L_0x0041:
             return r1
         */
@@ -561,10 +561,7 @@ class StringsKt__StringsJVMKt extends StringsKt__StringNumberConversionsKt {
     }
 
     public static /* synthetic */ boolean regionMatches$default(CharSequence charSequence, int i, CharSequence charSequence2, int i2, int i3, boolean z, int i4, Object obj) {
-        if ((i4 & 16) != 0) {
-            z = false;
-        }
-        return StringsKt.regionMatches(charSequence, i, charSequence2, i2, i3, z);
+        return StringsKt.regionMatches(charSequence, i, charSequence2, i2, i3, (i4 & 16) != 0 ? false : z);
     }
 
     public static final boolean regionMatches(CharSequence charSequence, int i, CharSequence charSequence2, int i2, int i3, boolean z) {
@@ -577,10 +574,7 @@ class StringsKt__StringsJVMKt extends StringsKt__StringNumberConversionsKt {
     }
 
     public static /* synthetic */ boolean regionMatches$default(String str, int i, String str2, int i2, int i3, boolean z, int i4, Object obj) {
-        if ((i4 & 16) != 0) {
-            z = false;
-        }
-        return StringsKt.regionMatches(str, i, str2, i2, i3, z);
+        return StringsKt.regionMatches(str, i, str2, i2, i3, (i4 & 16) != 0 ? false : z);
     }
 
     public static final boolean regionMatches(String str, int i, String str2, int i2, int i3, boolean z) {

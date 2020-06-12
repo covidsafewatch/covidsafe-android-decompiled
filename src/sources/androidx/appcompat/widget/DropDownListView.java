@@ -154,10 +154,10 @@ class DropDownListView extends ListView {
             dividerHeight = 0;
         }
         int count = adapter.getCount();
+        View view = null;
         int i8 = 0;
         int i9 = 0;
         int i10 = 0;
-        View view = null;
         while (i8 < count) {
             int itemViewType = adapter.getItemViewType(i8);
             if (itemViewType != i9) {
@@ -295,18 +295,18 @@ class DropDownListView extends ListView {
             r9 = 3
             if (r0 == r9) goto L_0x0011
         L_0x000e:
-            r9 = r1
-            r3 = r2
+            r9 = 0
+            r3 = 1
             goto L_0x0046
         L_0x0011:
-            r9 = r1
-            r3 = r9
+            r9 = 0
+            r3 = 0
             goto L_0x0046
         L_0x0014:
-            r3 = r2
+            r3 = 1
             goto L_0x0017
         L_0x0016:
-            r3 = r1
+            r3 = 0
         L_0x0017:
             int r9 = r8.findPointerIndex(r9)
             if (r9 >= 0) goto L_0x001e
@@ -319,7 +319,7 @@ class DropDownListView extends ListView {
             int r5 = r7.pointToPosition(r4, r9)
             r6 = -1
             if (r5 != r6) goto L_0x0031
-            r9 = r2
+            r9 = 1
             goto L_0x0046
         L_0x0031:
             int r3 = r7.getFirstVisiblePosition()

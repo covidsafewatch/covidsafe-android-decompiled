@@ -14,11 +14,11 @@ class RepeaterParser {
     }
 
     static Repeater parse(JsonReader jsonReader, LottieComposition lottieComposition) throws IOException {
-        boolean z = false;
         String str = null;
         AnimatableFloatValue animatableFloatValue = null;
         AnimatableFloatValue animatableFloatValue2 = null;
         AnimatableTransform animatableTransform = null;
+        boolean z = false;
         while (jsonReader.hasNext()) {
             int selectName = jsonReader.selectName(NAMES);
             if (selectName == 0) {

@@ -39,7 +39,6 @@ public class LayerParser {
     public static Layer parse(JsonReader jsonReader, LottieComposition lottieComposition) throws IOException {
         ArrayList arrayList;
         ArrayList arrayList2;
-        float f;
         JsonReader jsonReader2 = jsonReader;
         LottieComposition lottieComposition2 = lottieComposition;
         Layer.MatteType matteType = Layer.MatteType.NONE;
@@ -49,23 +48,23 @@ public class LayerParser {
         Float valueOf = Float.valueOf(1.0f);
         Float valueOf2 = Float.valueOf(0.0f);
         Layer.MatteType matteType2 = matteType;
-        float f2 = 1.0f;
-        int i = 0;
-        int i2 = 0;
-        int i3 = 0;
-        int i4 = 0;
-        int i5 = 0;
-        boolean z = false;
         Layer.LayerType layerType = null;
         String str = null;
         AnimatableTransform animatableTransform = null;
         AnimatableTextFrame animatableTextFrame = null;
         AnimatableTextProperties animatableTextProperties = null;
         AnimatableFloatValue animatableFloatValue = null;
-        float f3 = 0.0f;
-        float f4 = 0.0f;
-        float f5 = 0.0f;
         long j = -1;
+        float f = 0.0f;
+        float f2 = 0.0f;
+        int i = 0;
+        int i2 = 0;
+        int i3 = 0;
+        float f3 = 1.0f;
+        float f4 = 0.0f;
+        int i4 = 0;
+        int i5 = 0;
+        boolean z = false;
         long j2 = 0;
         String str2 = null;
         String str3 = "UNSET";
@@ -167,10 +166,10 @@ public class LayerParser {
                     lottieComposition2.addWarning("Lottie doesn't support layer effects. If you are using them for  fills, strokes, trim paths etc. then try adding them directly as contents  in your shape. Found: " + arrayList5);
                     break;
                 case 14:
-                    f2 = (float) jsonReader.nextDouble();
+                    f3 = (float) jsonReader.nextDouble();
                     break;
                 case 15:
-                    f5 = (float) jsonReader.nextDouble();
+                    f4 = (float) jsonReader.nextDouble();
                     break;
                 case 16:
                     i4 = (int) (((float) jsonReader.nextInt()) * Utils.dpScale());
@@ -179,10 +178,10 @@ public class LayerParser {
                     i5 = (int) (((float) jsonReader.nextInt()) * Utils.dpScale());
                     break;
                 case 18:
-                    f3 = (float) jsonReader.nextDouble();
+                    f = (float) jsonReader.nextDouble();
                     break;
                 case 19:
-                    f4 = (float) jsonReader.nextDouble();
+                    f2 = (float) jsonReader.nextDouble();
                     break;
                 case 20:
                     animatableFloatValue = AnimatableValueParser.parseFloat(jsonReader2, lottieComposition2, false);
@@ -200,30 +199,28 @@ public class LayerParser {
             }
         }
         jsonReader.endObject();
-        float f6 = f3 / f2;
-        float f7 = f4 / f2;
+        float f5 = f / f3;
+        float f6 = f2 / f3;
         ArrayList arrayList6 = new ArrayList();
-        if (f6 > 0.0f) {
+        if (f5 > 0.0f) {
             Keyframe keyframe = r0;
             arrayList = arrayList3;
             arrayList2 = arrayList6;
-            Keyframe keyframe2 = new Keyframe(lottieComposition, valueOf2, valueOf2, (Interpolator) null, 0.0f, Float.valueOf(f6));
+            Keyframe keyframe2 = new Keyframe(lottieComposition, valueOf2, valueOf2, (Interpolator) null, 0.0f, Float.valueOf(f5));
             arrayList2.add(keyframe);
-            f = 0.0f;
         } else {
             arrayList = arrayList3;
             arrayList2 = arrayList6;
-            f = 0.0f;
         }
-        if (f7 <= f) {
-            f7 = lottieComposition.getEndFrame();
+        if (f6 <= 0.0f) {
+            f6 = lottieComposition.getEndFrame();
         }
         LottieComposition lottieComposition3 = lottieComposition;
-        arrayList2.add(new Keyframe(lottieComposition3, valueOf, valueOf, (Interpolator) null, f6, Float.valueOf(f7)));
-        arrayList2.add(new Keyframe(lottieComposition3, valueOf2, valueOf2, (Interpolator) null, f7, Float.valueOf(Float.MAX_VALUE)));
+        arrayList2.add(new Keyframe(lottieComposition3, valueOf, valueOf, (Interpolator) null, f5, Float.valueOf(f6)));
+        arrayList2.add(new Keyframe(lottieComposition3, valueOf2, valueOf2, (Interpolator) null, f6, Float.valueOf(Float.MAX_VALUE)));
         if (str3.endsWith(".ai") || "ai".equals(str2)) {
             lottieComposition2.addWarning("Convert your Illustrator layers to shape layers.");
         }
-        return new Layer(arrayList4, lottieComposition, str3, j2, layerType, j, str, arrayList, animatableTransform, i, i2, i3, f2, f5, i4, i5, animatableTextFrame, animatableTextProperties, arrayList2, matteType2, animatableFloatValue, z);
+        return new Layer(arrayList4, lottieComposition, str3, j2, layerType, j, str, arrayList, animatableTransform, i, i2, i3, f3, f4, i4, i5, animatableTextFrame, animatableTextProperties, arrayList2, matteType2, animatableFloatValue, z);
     }
 }

@@ -133,10 +133,10 @@ public final class FlowableReplay<T> extends ConnectableFlowable<T> implements H
             java.util.concurrent.atomic.AtomicBoolean r1 = r0.shouldConnect
             boolean r1 = r1.compareAndSet(r3, r2)
             if (r1 == 0) goto L_0x003b
-            r1 = r2
+            r1 = 1
             goto L_0x003c
         L_0x003b:
-            r1 = r3
+            r1 = 0
         L_0x003c:
             r5.accept(r0)     // Catch:{ all -> 0x0047 }
             if (r1 == 0) goto L_0x0046
@@ -531,7 +531,7 @@ public final class FlowableReplay<T> extends ConnectableFlowable<T> implements H
                 int r2 = r2.intValue()
                 goto L_0x0027
             L_0x0026:
-                r2 = r3
+                r2 = 0
             L_0x0027:
                 long r4 = r15.get()
                 r6 = 0
@@ -572,8 +572,8 @@ public final class FlowableReplay<T> extends ConnectableFlowable<T> implements H
                 java.lang.Integer r1 = java.lang.Integer.valueOf(r2)
                 r15.index = r1
                 r1 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                int r1 = (r4 > r1 ? 1 : (r4 == r1 ? 0 : -1))
-                if (r1 == 0) goto L_0x007b
+                int r6 = (r4 > r1 ? 1 : (r4 == r1 ? 0 : -1))
+                if (r6 == 0) goto L_0x007b
                 r15.produced(r10)
             L_0x007b:
                 monitor-enter(r15)
@@ -720,10 +720,10 @@ public final class FlowableReplay<T> extends ConnectableFlowable<T> implements H
             if (r3 != kotlin.jvm.internal.LongCompanionObject.MAX_VALUE) goto L_0x0027;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:15:0x0025, code lost:
-            r0 = true;
+            r5 = true;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:16:0x0027, code lost:
-            r0 = false;
+            r5 = false;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:17:0x0028, code lost:
             r6 = (io.reactivex.internal.operators.flowable.FlowableReplay.Node) r15.index();
@@ -797,7 +797,7 @@ public final class FlowableReplay<T> extends ConnectableFlowable<T> implements H
             r15.index = r6;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:45:0x008d, code lost:
-            if (r0 != false) goto L_0x0092;
+            if (r5 != false) goto L_0x0092;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:46:0x008f, code lost:
             r15.produced(r9);
@@ -852,13 +852,13 @@ public final class FlowableReplay<T> extends ConnectableFlowable<T> implements H
             L_0x0017:
                 long r3 = r15.get()
                 r5 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                int r0 = (r3 > r5 ? 1 : (r3 == r5 ? 0 : -1))
-                r5 = 0
-                if (r0 != 0) goto L_0x0027
-                r0 = r1
+                r0 = 0
+                int r7 = (r3 > r5 ? 1 : (r3 == r5 ? 0 : -1))
+                if (r7 != 0) goto L_0x0027
+                r5 = 1
                 goto L_0x0028
             L_0x0027:
-                r0 = r5
+                r5 = 0
             L_0x0028:
                 java.lang.Object r6 = r15.index()
                 io.reactivex.internal.operators.flowable.FlowableReplay$Node r6 = (io.reactivex.internal.operators.flowable.FlowableReplay.Node) r6
@@ -912,17 +912,17 @@ public final class FlowableReplay<T> extends ConnectableFlowable<T> implements H
                 int r2 = (r9 > r7 ? 1 : (r9 == r7 ? 0 : -1))
                 if (r2 == 0) goto L_0x0092
                 r15.index = r6
-                if (r0 != 0) goto L_0x0092
+                if (r5 != 0) goto L_0x0092
                 r15.produced(r9)
             L_0x0092:
                 monitor-enter(r15)
-                boolean r0 = r15.missed     // Catch:{ all -> 0x00a0 }
-                if (r0 != 0) goto L_0x009b
-                r15.emitting = r5     // Catch:{ all -> 0x00a0 }
+                boolean r2 = r15.missed     // Catch:{ all -> 0x00a0 }
+                if (r2 != 0) goto L_0x009b
+                r15.emitting = r0     // Catch:{ all -> 0x00a0 }
                 monitor-exit(r15)     // Catch:{ all -> 0x00a0 }
                 return
             L_0x009b:
-                r15.missed = r5     // Catch:{ all -> 0x00a0 }
+                r15.missed = r0     // Catch:{ all -> 0x00a0 }
                 monitor-exit(r15)     // Catch:{ all -> 0x00a0 }
                 goto L_0x000d
             L_0x00a0:

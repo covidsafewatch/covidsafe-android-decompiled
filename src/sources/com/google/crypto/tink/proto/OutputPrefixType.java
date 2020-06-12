@@ -1,6 +1,6 @@
 package com.google.crypto.tink.proto;
 
-import com.google.protobuf.Internal;
+import com.google.crypto.tink.shaded.protobuf.Internal;
 
 public enum OutputPrefixType implements Internal.EnumLite {
     UNKNOWN_PREFIX(0),
@@ -27,7 +27,10 @@ public enum OutputPrefixType implements Internal.EnumLite {
     }
 
     public final int getNumber() {
-        return this.value;
+        if (this != UNRECOGNIZED) {
+            return this.value;
+        }
+        throw new IllegalArgumentException("Can't get the number of an unknown enum value.");
     }
 
     @Deprecated
@@ -56,6 +59,25 @@ public enum OutputPrefixType implements Internal.EnumLite {
 
     public static Internal.EnumLiteMap<OutputPrefixType> internalGetValueMap() {
         return internalValueMap;
+    }
+
+    public static Internal.EnumVerifier internalGetVerifier() {
+        return OutputPrefixTypeVerifier.INSTANCE;
+    }
+
+    private static final class OutputPrefixTypeVerifier implements Internal.EnumVerifier {
+        static final Internal.EnumVerifier INSTANCE = null;
+
+        private OutputPrefixTypeVerifier() {
+        }
+
+        static {
+            INSTANCE = new OutputPrefixTypeVerifier();
+        }
+
+        public boolean isInRange(int i) {
+            return OutputPrefixType.forNumber(i) != null;
+        }
     }
 
     private OutputPrefixType(int i) {

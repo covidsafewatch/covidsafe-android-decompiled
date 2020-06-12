@@ -1106,84 +1106,83 @@ public class SearchView extends LinearLayoutCompat implements CollapsibleActionV
             this.mActualBounds.set(rect2);
         }
 
-        /* JADX WARNING: Removed duplicated region for block: B:18:0x0043  */
-        /* JADX WARNING: Removed duplicated region for block: B:25:? A[RETURN, SYNTHETIC] */
+        /* JADX WARNING: Removed duplicated region for block: B:19:0x0041  */
+        /* JADX WARNING: Removed duplicated region for block: B:26:? A[RETURN, SYNTHETIC] */
         /* Code decompiled incorrectly, please refer to instructions dump. */
-        public boolean onTouchEvent(android.view.MotionEvent r9) {
+        public boolean onTouchEvent(android.view.MotionEvent r8) {
             /*
-                r8 = this;
-                float r0 = r9.getX()
+                r7 = this;
+                float r0 = r8.getX()
                 int r0 = (int) r0
-                float r1 = r9.getY()
+                float r1 = r8.getY()
                 int r1 = (int) r1
-                int r2 = r9.getAction()
+                int r2 = r8.getAction()
                 r3 = 2
                 r4 = 1
                 r5 = 0
-                if (r2 == 0) goto L_0x0033
+                if (r2 == 0) goto L_0x0032
                 if (r2 == r4) goto L_0x0020
                 if (r2 == r3) goto L_0x0020
                 r6 = 3
                 if (r2 == r6) goto L_0x001b
-                goto L_0x003f
+                goto L_0x003d
             L_0x001b:
-                boolean r2 = r8.mDelegateTargeted
-                r8.mDelegateTargeted = r5
+                boolean r2 = r7.mDelegateTargeted
+                r7.mDelegateTargeted = r5
                 goto L_0x002f
             L_0x0020:
-                boolean r2 = r8.mDelegateTargeted
+                boolean r2 = r7.mDelegateTargeted
                 if (r2 == 0) goto L_0x002f
-                android.graphics.Rect r6 = r8.mSlopBounds
+                android.graphics.Rect r6 = r7.mSlopBounds
                 boolean r6 = r6.contains(r0, r1)
                 if (r6 != 0) goto L_0x002f
                 r4 = r2
-                r2 = r5
-                goto L_0x0041
+                r2 = 0
+                goto L_0x003f
             L_0x002f:
-                r7 = r4
                 r4 = r2
-                r2 = r7
-                goto L_0x0041
-            L_0x0033:
-                android.graphics.Rect r2 = r8.mTargetBounds
+            L_0x0030:
+                r2 = 1
+                goto L_0x003f
+            L_0x0032:
+                android.graphics.Rect r2 = r7.mTargetBounds
                 boolean r2 = r2.contains(r0, r1)
-                if (r2 == 0) goto L_0x003f
-                r8.mDelegateTargeted = r4
-                r2 = r4
-                goto L_0x0041
+                if (r2 == 0) goto L_0x003d
+                r7.mDelegateTargeted = r4
+                goto L_0x0030
+            L_0x003d:
+                r2 = 1
+                r4 = 0
             L_0x003f:
-                r2 = r4
-                r4 = r5
-            L_0x0041:
-                if (r4 == 0) goto L_0x0076
-                if (r2 == 0) goto L_0x0061
-                android.graphics.Rect r2 = r8.mActualBounds
+                if (r4 == 0) goto L_0x0074
+                if (r2 == 0) goto L_0x005f
+                android.graphics.Rect r2 = r7.mActualBounds
                 boolean r2 = r2.contains(r0, r1)
-                if (r2 != 0) goto L_0x0061
-                android.view.View r0 = r8.mDelegateView
+                if (r2 != 0) goto L_0x005f
+                android.view.View r0 = r7.mDelegateView
                 int r0 = r0.getWidth()
                 int r0 = r0 / r3
                 float r0 = (float) r0
-                android.view.View r1 = r8.mDelegateView
+                android.view.View r1 = r7.mDelegateView
                 int r1 = r1.getHeight()
                 int r1 = r1 / r3
                 float r1 = (float) r1
-                r9.setLocation(r0, r1)
-                goto L_0x0070
-            L_0x0061:
-                android.graphics.Rect r2 = r8.mActualBounds
+                r8.setLocation(r0, r1)
+                goto L_0x006e
+            L_0x005f:
+                android.graphics.Rect r2 = r7.mActualBounds
                 int r2 = r2.left
                 int r0 = r0 - r2
                 float r0 = (float) r0
-                android.graphics.Rect r2 = r8.mActualBounds
+                android.graphics.Rect r2 = r7.mActualBounds
                 int r2 = r2.top
                 int r1 = r1 - r2
                 float r1 = (float) r1
-                r9.setLocation(r0, r1)
-            L_0x0070:
-                android.view.View r0 = r8.mDelegateView
-                boolean r5 = r0.dispatchTouchEvent(r9)
-            L_0x0076:
+                r8.setLocation(r0, r1)
+            L_0x006e:
+                android.view.View r0 = r7.mDelegateView
+                boolean r5 = r0.dispatchTouchEvent(r8)
+            L_0x0074:
                 return r5
             */
             throw new UnsupportedOperationException("Method not decompiled: androidx.appcompat.widget.SearchView.UpdatableTouchDelegate.onTouchEvent(android.view.MotionEvent):boolean");

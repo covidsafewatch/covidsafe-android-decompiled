@@ -37,7 +37,7 @@ public abstract class EventLoopImplBase extends EventLoopImplPlatform implements
         return Delay.DefaultImpls.invokeOnTimeout(this, j, runnable);
     }
 
-    /* JADX WARNING: type inference failed for: r0v0, types: [boolean, int] */
+    /* JADX WARNING: type inference failed for: r0v0, types: [int, boolean] */
     /* access modifiers changed from: private */
     public final boolean isCompleted() {
         return this._isCompleted;
@@ -62,9 +62,10 @@ public abstract class EventLoopImplBase extends EventLoopImplPlatform implements
             if (obj instanceof LockFreeTaskQueueCore) {
                 return ((LockFreeTaskQueueCore) obj).isEmpty();
             }
-            if (obj != EventLoop_commonKt.CLOSED_EMPTY) {
-                return false;
+            if (obj == EventLoop_commonKt.CLOSED_EMPTY) {
+                return true;
             }
+            return false;
         }
         return true;
     }
@@ -166,7 +167,7 @@ public abstract class EventLoopImplBase extends EventLoopImplPlatform implements
             boolean r4 = r8.enqueueImpl(r4)     // Catch:{ all -> 0x0051 }
             goto L_0x0042
         L_0x0041:
-            r4 = r7
+            r4 = 0
         L_0x0042:
             if (r4 == 0) goto L_0x0049
             kotlinx.coroutines.internal.ThreadSafeHeapNode r4 = r3.removeAtImpl(r7)     // Catch:{ all -> 0x0051 }

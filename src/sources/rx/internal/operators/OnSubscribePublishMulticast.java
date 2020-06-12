@@ -246,7 +246,7 @@ public final class OnSubscribePublishMulticast<T> extends AtomicInteger implemen
             r1 = -1
             int r2 = r0.length     // Catch:{ all -> 0x0047 }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x001b:
             if (r4 >= r2) goto L_0x0026
             r5 = r0[r4]     // Catch:{ all -> 0x0047 }

@@ -458,7 +458,7 @@ public final class Cache implements Closeable, Flushable {
                 r3.writeByte(r4)     // Catch:{ all -> 0x011b }
                 okhttp3.Headers r3 = r9.varyHeaders     // Catch:{ all -> 0x011b }
                 int r3 = r3.size()     // Catch:{ all -> 0x011b }
-                r5 = r0
+                r5 = 0
             L_0x003f:
                 java.lang.String r6 = ": "
                 if (r5 >= r3) goto L_0x0061

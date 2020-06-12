@@ -82,7 +82,7 @@ final class ChannelsKt__Channels_commonKt$take$1 extends SuspendLambda implement
             return r10
         L_0x0042:
             if (r1 < 0) goto L_0x0046
-            r1 = r3
+            r1 = 1
             goto L_0x0047
         L_0x0046:
             r1 = 0

@@ -136,6 +136,7 @@ public final class Quantiles {
         public Map<Integer, Double> computeInPlace(double... dArr) {
             double[] dArr2 = dArr;
             int i = 0;
+            int i2 = 1;
             Preconditions.checkArgument(dArr2.length > 0, "Cannot calculate quantiles of an empty dataset");
             if (Quantiles.containsNaN(dArr)) {
                 LinkedHashMap linkedHashMap = new LinkedHashMap();
@@ -151,40 +152,42 @@ public final class Quantiles {
             int[] iArr3 = new int[iArr2.length];
             int[] iArr4 = new int[iArr2.length];
             int[] iArr5 = new int[(iArr2.length * 2)];
-            int i2 = 0;
             int i3 = 0;
+            int i4 = 0;
             while (true) {
                 int[] iArr6 = this.indexes;
-                if (i2 >= iArr6.length) {
+                if (i3 >= iArr6.length) {
                     break;
                 }
-                long length2 = ((long) iArr6[i2]) * ((long) (dArr2.length - 1));
+                long length2 = ((long) iArr6[i3]) * ((long) (dArr2.length - i2));
                 int divide = (int) LongMath.divide(length2, (long) this.scale, RoundingMode.DOWN);
-                int i4 = (int) (length2 - (((long) divide) * ((long) this.scale)));
-                iArr3[i2] = divide;
-                iArr4[i2] = i4;
-                iArr5[i3] = divide;
-                i3++;
-                if (i4 != 0) {
-                    iArr5[i3] = divide + 1;
-                    i3++;
+                int i5 = i3;
+                int i6 = (int) (length2 - (((long) divide) * ((long) this.scale)));
+                iArr3[i5] = divide;
+                iArr4[i5] = i6;
+                iArr5[i4] = divide;
+                i4++;
+                if (i6 != 0) {
+                    iArr5[i4] = divide + 1;
+                    i4++;
                 }
-                i2++;
+                i3 = i5 + 1;
+                i2 = 1;
             }
-            Arrays.sort(iArr5, 0, i3);
-            Quantiles.selectAllInPlace(iArr5, 0, i3 - 1, dArr, 0, dArr2.length - 1);
+            Arrays.sort(iArr5, 0, i4);
+            Quantiles.selectAllInPlace(iArr5, 0, i4 - 1, dArr, 0, dArr2.length - 1);
             LinkedHashMap linkedHashMap2 = new LinkedHashMap();
             while (true) {
                 int[] iArr7 = this.indexes;
                 if (i >= iArr7.length) {
                     return Collections.unmodifiableMap(linkedHashMap2);
                 }
-                int i5 = iArr3[i];
-                int i6 = iArr4[i];
-                if (i6 == 0) {
-                    linkedHashMap2.put(Integer.valueOf(iArr7[i]), Double.valueOf(dArr2[i5]));
+                int i7 = iArr3[i];
+                int i8 = iArr4[i];
+                if (i8 == 0) {
+                    linkedHashMap2.put(Integer.valueOf(iArr7[i]), Double.valueOf(dArr2[i7]));
                 } else {
-                    linkedHashMap2.put(Integer.valueOf(iArr7[i]), Double.valueOf(Quantiles.interpolate(dArr2[i5], dArr2[i5 + 1], (double) i6, (double) this.scale)));
+                    linkedHashMap2.put(Integer.valueOf(iArr7[i]), Double.valueOf(Quantiles.interpolate(dArr2[i7], dArr2[i7 + 1], (double) i8, (double) this.scale)));
                 }
                 i++;
             }

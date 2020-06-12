@@ -66,40 +66,74 @@ public class SwipeDismissBehavior<V extends View> extends CoordinatorLayout.Beha
             }
         }
 
-        private boolean shouldDismiss(View view, float f) {
-            int i = (f > 0.0f ? 1 : (f == 0.0f ? 0 : -1));
-            if (i != 0) {
-                boolean z = ViewCompat.getLayoutDirection(view) == 1;
-                if (SwipeDismissBehavior.this.swipeDirection == 2) {
-                    return true;
-                }
-                if (SwipeDismissBehavior.this.swipeDirection == 0) {
-                    if (z) {
-                        if (f >= 0.0f) {
-                            return false;
-                        }
-                    } else if (i <= 0) {
-                        return false;
-                    }
-                    return true;
-                } else if (SwipeDismissBehavior.this.swipeDirection != 1) {
-                    return false;
-                } else {
-                    if (z) {
-                        if (i <= 0) {
-                            return false;
-                        }
-                    } else if (f >= 0.0f) {
-                        return false;
-                    }
-                    return true;
-                }
-            } else {
-                if (Math.abs(view.getLeft() - this.originalCapturedViewLeft) >= Math.round(((float) view.getWidth()) * SwipeDismissBehavior.this.dragDismissThreshold)) {
-                    return true;
-                }
-                return false;
-            }
+        /* JADX WARNING: Removed duplicated region for block: B:15:0x0027 A[ORIG_RETURN, RETURN, SYNTHETIC] */
+        /* JADX WARNING: Removed duplicated region for block: B:22:0x0038 A[ORIG_RETURN, RETURN, SYNTHETIC] */
+        /* Code decompiled incorrectly, please refer to instructions dump. */
+        private boolean shouldDismiss(android.view.View r7, float r8) {
+            /*
+                r6 = this;
+                r0 = 0
+                r1 = 0
+                r2 = 1
+                int r3 = (r8 > r0 ? 1 : (r8 == r0 ? 0 : -1))
+                if (r3 == 0) goto L_0x003a
+                int r7 = androidx.core.view.ViewCompat.getLayoutDirection(r7)
+                if (r7 != r2) goto L_0x000f
+                r7 = 1
+                goto L_0x0010
+            L_0x000f:
+                r7 = 0
+            L_0x0010:
+                com.google.android.material.behavior.SwipeDismissBehavior r4 = com.google.android.material.behavior.SwipeDismissBehavior.this
+                int r4 = r4.swipeDirection
+                r5 = 2
+                if (r4 != r5) goto L_0x0018
+                return r2
+            L_0x0018:
+                com.google.android.material.behavior.SwipeDismissBehavior r4 = com.google.android.material.behavior.SwipeDismissBehavior.this
+                int r4 = r4.swipeDirection
+                if (r4 != 0) goto L_0x0029
+                if (r7 == 0) goto L_0x0025
+                int r7 = (r8 > r0 ? 1 : (r8 == r0 ? 0 : -1))
+                if (r7 >= 0) goto L_0x0028
+                goto L_0x0027
+            L_0x0025:
+                if (r3 <= 0) goto L_0x0028
+            L_0x0027:
+                r1 = 1
+            L_0x0028:
+                return r1
+            L_0x0029:
+                com.google.android.material.behavior.SwipeDismissBehavior r4 = com.google.android.material.behavior.SwipeDismissBehavior.this
+                int r4 = r4.swipeDirection
+                if (r4 != r2) goto L_0x0039
+                if (r7 == 0) goto L_0x0034
+                if (r3 <= 0) goto L_0x0039
+                goto L_0x0038
+            L_0x0034:
+                int r7 = (r8 > r0 ? 1 : (r8 == r0 ? 0 : -1))
+                if (r7 >= 0) goto L_0x0039
+            L_0x0038:
+                r1 = 1
+            L_0x0039:
+                return r1
+            L_0x003a:
+                int r8 = r7.getLeft()
+                int r0 = r6.originalCapturedViewLeft
+                int r8 = r8 - r0
+                int r7 = r7.getWidth()
+                float r7 = (float) r7
+                com.google.android.material.behavior.SwipeDismissBehavior r0 = com.google.android.material.behavior.SwipeDismissBehavior.this
+                float r0 = r0.dragDismissThreshold
+                float r7 = r7 * r0
+                int r7 = java.lang.Math.round(r7)
+                int r8 = java.lang.Math.abs(r8)
+                if (r8 < r7) goto L_0x0057
+                r1 = 1
+            L_0x0057:
+                return r1
+            */
+            throw new UnsupportedOperationException("Method not decompiled: com.google.android.material.behavior.SwipeDismissBehavior.AnonymousClass1.shouldDismiss(android.view.View, float):boolean");
         }
 
         public int getViewHorizontalDragRange(View view) {

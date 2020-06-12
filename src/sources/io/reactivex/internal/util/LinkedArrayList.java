@@ -75,16 +75,17 @@ public class LinkedArrayList {
         ArrayList arrayList = new ArrayList(i2 + 1);
         Object[] head2 = head();
         int i3 = 0;
-        int i4 = 0;
-        while (i3 < i2) {
-            arrayList.add(head2[i4]);
-            i3++;
-            i4++;
-            if (i4 == i) {
-                head2 = (Object[]) head2[i];
-                i4 = 0;
+        while (true) {
+            int i4 = 0;
+            while (i3 < i2) {
+                arrayList.add(head2[i4]);
+                i3++;
+                i4++;
+                if (i4 == i) {
+                    head2 = head2[i];
+                }
             }
+            return arrayList.toString();
         }
-        return arrayList.toString();
     }
 }

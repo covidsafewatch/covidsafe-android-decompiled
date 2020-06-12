@@ -1,19 +1,18 @@
 package com.google.crypto.tink.proto;
 
 import com.google.crypto.tink.proto.KeyData;
-import com.google.protobuf.AbstractMessageLite;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.CodedInputStream;
-import com.google.protobuf.CodedOutputStream;
-import com.google.protobuf.ExtensionRegistryLite;
-import com.google.protobuf.GeneratedMessageLite;
-import com.google.protobuf.Internal;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.MessageLite;
-import com.google.protobuf.MessageLiteOrBuilder;
-import com.google.protobuf.Parser;
+import com.google.crypto.tink.shaded.protobuf.AbstractMessageLite;
+import com.google.crypto.tink.shaded.protobuf.ByteString;
+import com.google.crypto.tink.shaded.protobuf.CodedInputStream;
+import com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite;
+import com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite;
+import com.google.crypto.tink.shaded.protobuf.Internal;
+import com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException;
+import com.google.crypto.tink.shaded.protobuf.MessageLiteOrBuilder;
+import com.google.crypto.tink.shaded.protobuf.Parser;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,7 +22,6 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
     public static final int KEY_FIELD_NUMBER = 2;
     private static volatile Parser<Keyset> PARSER = null;
     public static final int PRIMARY_KEY_ID_FIELD_NUMBER = 1;
-    private int bitField0_;
     private Internal.ProtobufList<Key> key_ = emptyProtobufList();
     private int primaryKeyId_;
 
@@ -73,20 +71,13 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
         /* access modifiers changed from: private */
         public void setKeyData(KeyData keyData) {
-            if (keyData != null) {
-                this.keyData_ = keyData;
-                return;
-            }
-            throw null;
-        }
-
-        /* access modifiers changed from: private */
-        public void setKeyData(KeyData.Builder builder) {
-            this.keyData_ = (KeyData) builder.build();
+            keyData.getClass();
+            this.keyData_ = keyData;
         }
 
         /* access modifiers changed from: private */
         public void mergeKeyData(KeyData keyData) {
+            keyData.getClass();
             KeyData keyData2 = this.keyData_;
             if (keyData2 == null || keyData2 == KeyData.getDefaultInstance()) {
                 this.keyData_ = keyData;
@@ -116,11 +107,7 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
         /* access modifiers changed from: private */
         public void setStatus(KeyStatusType keyStatusType) {
-            if (keyStatusType != null) {
-                this.status_ = keyStatusType.getNumber();
-                return;
-            }
-            throw null;
+            this.status_ = keyStatusType.getNumber();
         }
 
         /* access modifiers changed from: private */
@@ -158,11 +145,7 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
         /* access modifiers changed from: private */
         public void setOutputPrefixType(OutputPrefixType outputPrefixType) {
-            if (outputPrefixType != null) {
-                this.outputPrefixType_ = outputPrefixType.getNumber();
-                return;
-            }
-            throw null;
+            this.outputPrefixType_ = outputPrefixType.getNumber();
         }
 
         /* access modifiers changed from: private */
@@ -170,43 +153,12 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
             this.outputPrefixType_ = 0;
         }
 
-        public void writeTo(CodedOutputStream codedOutputStream) throws IOException {
-            if (this.keyData_ != null) {
-                codedOutputStream.writeMessage(1, getKeyData());
-            }
-            if (this.status_ != KeyStatusType.UNKNOWN_STATUS.getNumber()) {
-                codedOutputStream.writeEnum(2, this.status_);
-            }
-            int i = this.keyId_;
-            if (i != 0) {
-                codedOutputStream.writeUInt32(3, i);
-            }
-            if (this.outputPrefixType_ != OutputPrefixType.UNKNOWN_PREFIX.getNumber()) {
-                codedOutputStream.writeEnum(4, this.outputPrefixType_);
-            }
+        public static Key parseFrom(ByteBuffer byteBuffer) throws InvalidProtocolBufferException {
+            return (Key) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer);
         }
 
-        public int getSerializedSize() {
-            int i = this.memoizedSerializedSize;
-            if (i != -1) {
-                return i;
-            }
-            int i2 = 0;
-            if (this.keyData_ != null) {
-                i2 = 0 + CodedOutputStream.computeMessageSize(1, getKeyData());
-            }
-            if (this.status_ != KeyStatusType.UNKNOWN_STATUS.getNumber()) {
-                i2 += CodedOutputStream.computeEnumSize(2, this.status_);
-            }
-            int i3 = this.keyId_;
-            if (i3 != 0) {
-                i2 += CodedOutputStream.computeUInt32Size(3, i3);
-            }
-            if (this.outputPrefixType_ != OutputPrefixType.UNKNOWN_PREFIX.getNumber()) {
-                i2 += CodedOutputStream.computeEnumSize(4, this.outputPrefixType_);
-            }
-            this.memoizedSerializedSize = i2;
-            return i2;
+        public static Key parseFrom(ByteBuffer byteBuffer, ExtensionRegistryLite extensionRegistryLite) throws InvalidProtocolBufferException {
+            return (Key) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer, extensionRegistryLite);
         }
 
         public static Key parseFrom(ByteString byteString) throws InvalidProtocolBufferException {
@@ -250,11 +202,11 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
         }
 
         public static Builder newBuilder() {
-            return (Builder) DEFAULT_INSTANCE.toBuilder();
+            return (Builder) DEFAULT_INSTANCE.createBuilder();
         }
 
         public static Builder newBuilder(Key key) {
-            return (Builder) ((Builder) DEFAULT_INSTANCE.toBuilder()).mergeFrom(key);
+            return (Builder) DEFAULT_INSTANCE.createBuilder(key);
         }
 
         public static final class Builder extends GeneratedMessageLite.Builder<Key, Builder> implements KeyOrBuilder {
@@ -282,7 +234,7 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
             public Builder setKeyData(KeyData.Builder builder) {
                 copyOnWrite();
-                ((Key) this.instance).setKeyData(builder);
+                ((Key) this.instance).setKeyData((KeyData) builder.build());
                 return this;
             }
 
@@ -369,83 +321,40 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
         /* access modifiers changed from: protected */
         public final Object dynamicMethod(GeneratedMessageLite.MethodToInvoke methodToInvoke, Object obj, Object obj2) {
-            boolean z = false;
             switch (AnonymousClass1.$SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke[methodToInvoke.ordinal()]) {
                 case 1:
                     return new Key();
                 case 2:
-                    return DEFAULT_INSTANCE;
-                case 3:
-                    return null;
-                case 4:
                     return new Builder((AnonymousClass1) null);
+                case 3:
+                    return newMessageInfo(DEFAULT_INSTANCE, "\u0000\u0004\u0000\u0000\u0001\u0004\u0004\u0000\u0000\u0000\u0001\t\u0002\f\u0003\u000b\u0004\f", new Object[]{"keyData_", "status_", "keyId_", "outputPrefixType_"});
+                case 4:
+                    return DEFAULT_INSTANCE;
                 case 5:
-                    GeneratedMessageLite.Visitor visitor = (GeneratedMessageLite.Visitor) obj;
-                    Key key = (Key) obj2;
-                    this.keyData_ = (KeyData) visitor.visitMessage(this.keyData_, key.keyData_);
-                    this.status_ = visitor.visitInt(this.status_ != 0, this.status_, key.status_ != 0, key.status_);
-                    this.keyId_ = visitor.visitInt(this.keyId_ != 0, this.keyId_, key.keyId_ != 0, key.keyId_);
-                    boolean z2 = this.outputPrefixType_ != 0;
-                    int i = this.outputPrefixType_;
-                    if (key.outputPrefixType_ != 0) {
-                        z = true;
-                    }
-                    this.outputPrefixType_ = visitor.visitInt(z2, i, z, key.outputPrefixType_);
-                    GeneratedMessageLite.MergeFromVisitor mergeFromVisitor = GeneratedMessageLite.MergeFromVisitor.INSTANCE;
-                    return this;
-                case 6:
-                    CodedInputStream codedInputStream = (CodedInputStream) obj;
-                    ExtensionRegistryLite extensionRegistryLite = (ExtensionRegistryLite) obj2;
-                    while (!z) {
-                        try {
-                            int readTag = codedInputStream.readTag();
-                            if (readTag != 0) {
-                                if (readTag == 10) {
-                                    KeyData.Builder builder = this.keyData_ != null ? (KeyData.Builder) this.keyData_.toBuilder() : null;
-                                    KeyData keyData = (KeyData) codedInputStream.readMessage(KeyData.parser(), extensionRegistryLite);
-                                    this.keyData_ = keyData;
-                                    if (builder != null) {
-                                        builder.mergeFrom(keyData);
-                                        this.keyData_ = (KeyData) builder.buildPartial();
-                                    }
-                                } else if (readTag == 16) {
-                                    this.status_ = codedInputStream.readEnum();
-                                } else if (readTag == 24) {
-                                    this.keyId_ = codedInputStream.readUInt32();
-                                } else if (readTag == 32) {
-                                    this.outputPrefixType_ = codedInputStream.readEnum();
-                                } else if (!codedInputStream.skipField(readTag)) {
-                                }
-                            }
-                            z = true;
-                        } catch (InvalidProtocolBufferException e) {
-                            throw new RuntimeException(e.setUnfinishedMessage(this));
-                        } catch (IOException e2) {
-                            throw new RuntimeException(new InvalidProtocolBufferException(e2.getMessage()).setUnfinishedMessage(this));
-                        }
-                    }
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    if (PARSER == null) {
+                    Parser<Key> parser = PARSER;
+                    if (parser == null) {
                         synchronized (Key.class) {
-                            if (PARSER == null) {
-                                PARSER = new GeneratedMessageLite.DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                            parser = PARSER;
+                            if (parser == null) {
+                                parser = new GeneratedMessageLite.DefaultInstanceBasedParser<>(DEFAULT_INSTANCE);
+                                PARSER = parser;
                             }
                         }
                     }
-                    return PARSER;
+                    return parser;
+                case 6:
+                    return (byte) 1;
+                case 7:
+                    return null;
                 default:
                     throw new UnsupportedOperationException();
             }
-            return DEFAULT_INSTANCE;
         }
 
         static {
             Key key = new Key();
             DEFAULT_INSTANCE = key;
-            key.makeImmutable();
+            GeneratedMessageLite.registerDefaultInstance(Key.class, key);
         }
 
         public static Key getDefaultInstance() {
@@ -461,71 +370,62 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
     static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke;
 
-        /* JADX WARNING: Can't wrap try/catch for region: R(18:0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|18) */
-        /* JADX WARNING: Code restructure failed: missing block: B:19:?, code lost:
-            return;
-         */
+        /* JADX WARNING: Can't wrap try/catch for region: R(14:0|1|2|3|4|5|6|7|8|9|10|11|12|(3:13|14|16)) */
+        /* JADX WARNING: Can't wrap try/catch for region: R(16:0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|16) */
         /* JADX WARNING: Failed to process nested try/catch */
         /* JADX WARNING: Missing exception handler attribute for start block: B:11:0x003e */
         /* JADX WARNING: Missing exception handler attribute for start block: B:13:0x0049 */
-        /* JADX WARNING: Missing exception handler attribute for start block: B:15:0x0054 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:3:0x0012 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:5:0x001d */
         /* JADX WARNING: Missing exception handler attribute for start block: B:7:0x0028 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:9:0x0033 */
         static {
             /*
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke[] r0 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.values()
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke[] r0 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.values()
                 int r0 = r0.length
                 int[] r0 = new int[r0]
                 $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke = r0
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_MUTABLE_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0012 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_MUTABLE_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0012 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0012 }
                 r2 = 1
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0012 }
             L_0x0012:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x001d }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x001d }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_BUILDER     // Catch:{ NoSuchFieldError -> 0x001d }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x001d }
                 r2 = 2
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x001d }
             L_0x001d:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0028 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.MAKE_IMMUTABLE     // Catch:{ NoSuchFieldError -> 0x0028 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.BUILD_MESSAGE_INFO     // Catch:{ NoSuchFieldError -> 0x0028 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0028 }
                 r2 = 3
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0028 }
             L_0x0028:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0033 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_BUILDER     // Catch:{ NoSuchFieldError -> 0x0033 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_DEFAULT_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0033 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0033 }
                 r2 = 4
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0033 }
             L_0x0033:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x003e }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.VISIT     // Catch:{ NoSuchFieldError -> 0x003e }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_PARSER     // Catch:{ NoSuchFieldError -> 0x003e }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x003e }
                 r2 = 5
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x003e }
             L_0x003e:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0049 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.MERGE_FROM_STREAM     // Catch:{ NoSuchFieldError -> 0x0049 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_MEMOIZED_IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x0049 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0049 }
                 r2 = 6
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0049 }
             L_0x0049:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0054 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.GET_DEFAULT_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0054 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.SET_MEMOIZED_IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x0054 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0054 }
                 r2 = 7
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0054 }
             L_0x0054:
-                int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0060 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.GET_PARSER     // Catch:{ NoSuchFieldError -> 0x0060 }
-                int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0060 }
-                r2 = 8
-                r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0060 }
-            L_0x0060:
                 return
             */
             throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.proto.Keyset.AnonymousClass1.<clinit>():void");
@@ -574,50 +474,23 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
     /* access modifiers changed from: private */
     public void setKey(int i, Key key) {
-        if (key != null) {
-            ensureKeyIsMutable();
-            this.key_.set(i, key);
-            return;
-        }
-        throw null;
-    }
-
-    /* access modifiers changed from: private */
-    public void setKey(int i, Key.Builder builder) {
+        key.getClass();
         ensureKeyIsMutable();
-        this.key_.set(i, builder.build());
+        this.key_.set(i, key);
     }
 
     /* access modifiers changed from: private */
     public void addKey(Key key) {
-        if (key != null) {
-            ensureKeyIsMutable();
-            this.key_.add(key);
-            return;
-        }
-        throw null;
+        key.getClass();
+        ensureKeyIsMutable();
+        this.key_.add(key);
     }
 
     /* access modifiers changed from: private */
     public void addKey(int i, Key key) {
-        if (key != null) {
-            ensureKeyIsMutable();
-            this.key_.add(i, key);
-            return;
-        }
-        throw null;
-    }
-
-    /* access modifiers changed from: private */
-    public void addKey(Key.Builder builder) {
+        key.getClass();
         ensureKeyIsMutable();
-        this.key_.add(builder.build());
-    }
-
-    /* access modifiers changed from: private */
-    public void addKey(int i, Key.Builder builder) {
-        ensureKeyIsMutable();
-        this.key_.add(i, builder.build());
+        this.key_.add(i, key);
     }
 
     /* access modifiers changed from: private */
@@ -637,28 +510,12 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
         this.key_.remove(i);
     }
 
-    public void writeTo(CodedOutputStream codedOutputStream) throws IOException {
-        int i = this.primaryKeyId_;
-        if (i != 0) {
-            codedOutputStream.writeUInt32(1, i);
-        }
-        for (int i2 = 0; i2 < this.key_.size(); i2++) {
-            codedOutputStream.writeMessage(2, (MessageLite) this.key_.get(i2));
-        }
+    public static Keyset parseFrom(ByteBuffer byteBuffer) throws InvalidProtocolBufferException {
+        return (Keyset) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer);
     }
 
-    public int getSerializedSize() {
-        int i = this.memoizedSerializedSize;
-        if (i != -1) {
-            return i;
-        }
-        int i2 = this.primaryKeyId_;
-        int computeUInt32Size = i2 != 0 ? CodedOutputStream.computeUInt32Size(1, i2) + 0 : 0;
-        for (int i3 = 0; i3 < this.key_.size(); i3++) {
-            computeUInt32Size += CodedOutputStream.computeMessageSize(2, (MessageLite) this.key_.get(i3));
-        }
-        this.memoizedSerializedSize = computeUInt32Size;
-        return computeUInt32Size;
+    public static Keyset parseFrom(ByteBuffer byteBuffer, ExtensionRegistryLite extensionRegistryLite) throws InvalidProtocolBufferException {
+        return (Keyset) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer, extensionRegistryLite);
     }
 
     public static Keyset parseFrom(ByteString byteString) throws InvalidProtocolBufferException {
@@ -702,11 +559,11 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
     }
 
     public static Builder newBuilder() {
-        return (Builder) DEFAULT_INSTANCE.toBuilder();
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
 
     public static Builder newBuilder(Keyset keyset) {
-        return (Builder) ((Builder) DEFAULT_INSTANCE.toBuilder()).mergeFrom(keyset);
+        return (Builder) DEFAULT_INSTANCE.createBuilder(keyset);
     }
 
     public static final class Builder extends GeneratedMessageLite.Builder<Keyset, Builder> implements KeysetOrBuilder {
@@ -754,7 +611,7 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
         public Builder setKey(int i, Key.Builder builder) {
             copyOnWrite();
-            ((Keyset) this.instance).setKey(i, builder);
+            ((Keyset) this.instance).setKey(i, (Key) builder.build());
             return this;
         }
 
@@ -772,13 +629,13 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
         public Builder addKey(Key.Builder builder) {
             copyOnWrite();
-            ((Keyset) this.instance).addKey(builder);
+            ((Keyset) this.instance).addKey((Key) builder.build());
             return this;
         }
 
         public Builder addKey(int i, Key.Builder builder) {
             copyOnWrite();
-            ((Keyset) this.instance).addKey(i, builder);
+            ((Keyset) this.instance).addKey(i, (Key) builder.build());
             return this;
         }
 
@@ -803,77 +660,40 @@ public final class Keyset extends GeneratedMessageLite<Keyset, Builder> implemen
 
     /* access modifiers changed from: protected */
     public final Object dynamicMethod(GeneratedMessageLite.MethodToInvoke methodToInvoke, Object obj, Object obj2) {
-        boolean z = false;
         switch (AnonymousClass1.$SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke[methodToInvoke.ordinal()]) {
             case 1:
                 return new Keyset();
             case 2:
-                return DEFAULT_INSTANCE;
-            case 3:
-                this.key_.makeImmutable();
-                return null;
-            case 4:
                 return new Builder((AnonymousClass1) null);
+            case 3:
+                return newMessageInfo(DEFAULT_INSTANCE, "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0001\u0000\u0001\u000b\u0002\u001b", new Object[]{"primaryKeyId_", "key_", Key.class});
+            case 4:
+                return DEFAULT_INSTANCE;
             case 5:
-                GeneratedMessageLite.Visitor visitor = (GeneratedMessageLite.Visitor) obj;
-                Keyset keyset = (Keyset) obj2;
-                boolean z2 = this.primaryKeyId_ != 0;
-                int i = this.primaryKeyId_;
-                if (keyset.primaryKeyId_ != 0) {
-                    z = true;
-                }
-                this.primaryKeyId_ = visitor.visitInt(z2, i, z, keyset.primaryKeyId_);
-                this.key_ = visitor.visitList(this.key_, keyset.key_);
-                if (visitor == GeneratedMessageLite.MergeFromVisitor.INSTANCE) {
-                    this.bitField0_ |= keyset.bitField0_;
-                }
-                return this;
-            case 6:
-                CodedInputStream codedInputStream = (CodedInputStream) obj;
-                ExtensionRegistryLite extensionRegistryLite = (ExtensionRegistryLite) obj2;
-                while (!z) {
-                    try {
-                        int readTag = codedInputStream.readTag();
-                        if (readTag != 0) {
-                            if (readTag == 8) {
-                                this.primaryKeyId_ = codedInputStream.readUInt32();
-                            } else if (readTag == 18) {
-                                if (!this.key_.isModifiable()) {
-                                    this.key_ = GeneratedMessageLite.mutableCopy(this.key_);
-                                }
-                                this.key_.add(codedInputStream.readMessage(Key.parser(), extensionRegistryLite));
-                            } else if (!codedInputStream.skipField(readTag)) {
-                            }
-                        }
-                        z = true;
-                    } catch (InvalidProtocolBufferException e) {
-                        throw new RuntimeException(e.setUnfinishedMessage(this));
-                    } catch (IOException e2) {
-                        throw new RuntimeException(new InvalidProtocolBufferException(e2.getMessage()).setUnfinishedMessage(this));
-                    }
-                }
-                break;
-            case 7:
-                break;
-            case 8:
-                if (PARSER == null) {
+                Parser<Keyset> parser = PARSER;
+                if (parser == null) {
                     synchronized (Keyset.class) {
-                        if (PARSER == null) {
-                            PARSER = new GeneratedMessageLite.DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                        parser = PARSER;
+                        if (parser == null) {
+                            parser = new GeneratedMessageLite.DefaultInstanceBasedParser<>(DEFAULT_INSTANCE);
+                            PARSER = parser;
                         }
                     }
                 }
-                return PARSER;
+                return parser;
+            case 6:
+                return (byte) 1;
+            case 7:
+                return null;
             default:
                 throw new UnsupportedOperationException();
         }
-        return DEFAULT_INSTANCE;
     }
 
     static {
         Keyset keyset = new Keyset();
         DEFAULT_INSTANCE = keyset;
-        keyset.makeImmutable();
+        GeneratedMessageLite.registerDefaultInstance(Keyset.class, keyset);
     }
 
     public static Keyset getDefaultInstance() {

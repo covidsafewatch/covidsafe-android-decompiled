@@ -49,7 +49,7 @@ public final class Huffman {
             r1 = 0
             r2 = 0
             r3 = r2
-            r2 = r1
+            r2 = 0
         L_0x0013:
             r5 = 8
             if (r1 >= r0) goto L_0x003b
@@ -68,8 +68,8 @@ public final class Huffman {
             if (r2 < r5) goto L_0x0038
             int r2 = r2 + -8
             long r6 = r3 >> r2
-            int r6 = (int) r6
-            r11.writeByte(r6)
+            int r7 = (int) r6
+            r11.writeByte(r7)
             goto L_0x002d
         L_0x0038:
             int r1 = r1 + 1

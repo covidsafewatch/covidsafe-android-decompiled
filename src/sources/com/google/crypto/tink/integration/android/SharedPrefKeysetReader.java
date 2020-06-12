@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import com.google.crypto.tink.KeysetReader;
 import com.google.crypto.tink.proto.EncryptedKeyset;
 import com.google.crypto.tink.proto.Keyset;
+import com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite;
 import com.google.crypto.tink.subtle.Hex;
 import java.io.IOException;
 
@@ -40,10 +41,10 @@ public final class SharedPrefKeysetReader implements KeysetReader {
     }
 
     public Keyset read() throws IOException {
-        return Keyset.parseFrom(readPref());
+        return Keyset.parseFrom(readPref(), ExtensionRegistryLite.getEmptyRegistry());
     }
 
     public EncryptedKeyset readEncrypted() throws IOException {
-        return EncryptedKeyset.parseFrom(readPref());
+        return EncryptedKeyset.parseFrom(readPref(), ExtensionRegistryLite.getEmptyRegistry());
     }
 }

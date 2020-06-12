@@ -118,8 +118,8 @@ public final class BloomFilter<T> implements Predicate<T>, Serializable {
 
     static <T> BloomFilter<T> create(Funnel<? super T> funnel2, long j, double d, Strategy strategy2) {
         Preconditions.checkNotNull(funnel2);
-        int i = (j > 0 ? 1 : (j == 0 ? 0 : -1));
         boolean z = true;
+        int i = (j > 0 ? 1 : (j == 0 ? 0 : -1));
         Preconditions.checkArgument(i >= 0, "Expected insertions (%s) must be >= 0", j);
         Preconditions.checkArgument(d > 0.0d, "False positive probability (%s) must be > 0.0", (Object) Double.valueOf(d));
         if (d >= 1.0d) {
@@ -194,6 +194,7 @@ public final class BloomFilter<T> implements Predicate<T>, Serializable {
     public static <T> BloomFilter<T> readFrom(InputStream inputStream, Funnel<? super T> funnel2) throws IOException {
         int i;
         int i2;
+        int readInt;
         Preconditions.checkNotNull(inputStream, "InputStream");
         Preconditions.checkNotNull(funnel2, "Funnel");
         byte b = -1;
@@ -202,29 +203,37 @@ public final class BloomFilter<T> implements Predicate<T>, Serializable {
             byte readByte = dataInputStream.readByte();
             try {
                 i2 = UnsignedBytes.toInt(dataInputStream.readByte());
-                try {
-                    int readInt = dataInputStream.readInt();
-                    BloomFilterStrategies bloomFilterStrategies = BloomFilterStrategies.values()[readByte];
-                    long[] jArr = new long[readInt];
-                    for (int i3 = 0; i3 < readInt; i3++) {
-                        jArr[i3] = dataInputStream.readLong();
-                    }
-                    return new BloomFilter<>(new BloomFilterStrategies.LockFreeBitArray(jArr), i2, funnel2, bloomFilterStrategies);
-                } catch (RuntimeException e) {
-                    e = e;
-                    b = readByte;
-                    i = -1;
-                    throw new IOException("Unable to deserialize BloomFilter from InputStream. strategyOrdinal: " + b + " numHashFunctions: " + i2 + " dataLength: " + i, e);
-                }
-            } catch (RuntimeException e2) {
-                e = e2;
+            } catch (RuntimeException e) {
+                e = e;
                 i2 = -1;
                 b = readByte;
                 i = -1;
                 throw new IOException("Unable to deserialize BloomFilter from InputStream. strategyOrdinal: " + b + " numHashFunctions: " + i2 + " dataLength: " + i, e);
             }
-        } catch (RuntimeException e3) {
-            e = e3;
+            try {
+                readInt = dataInputStream.readInt();
+            } catch (RuntimeException e2) {
+                e = e2;
+                b = readByte;
+                i = -1;
+                throw new IOException("Unable to deserialize BloomFilter from InputStream. strategyOrdinal: " + b + " numHashFunctions: " + i2 + " dataLength: " + i, e);
+            }
+            try {
+                BloomFilterStrategies bloomFilterStrategies = BloomFilterStrategies.values()[readByte];
+                long[] jArr = new long[readInt];
+                for (int i3 = 0; i3 < readInt; i3++) {
+                    jArr[i3] = dataInputStream.readLong();
+                }
+                return new BloomFilter<>(new BloomFilterStrategies.LockFreeBitArray(jArr), i2, funnel2, bloomFilterStrategies);
+            } catch (RuntimeException e3) {
+                e = e3;
+                int i4 = readInt;
+                b = readByte;
+                i = i4;
+                throw new IOException("Unable to deserialize BloomFilter from InputStream. strategyOrdinal: " + b + " numHashFunctions: " + i2 + " dataLength: " + i, e);
+            }
+        } catch (RuntimeException e4) {
+            e = e4;
             i = -1;
             i2 = -1;
             throw new IOException("Unable to deserialize BloomFilter from InputStream. strategyOrdinal: " + b + " numHashFunctions: " + i2 + " dataLength: " + i, e);

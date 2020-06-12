@@ -23,30 +23,30 @@ public class BaselineLayout extends ViewGroup {
     /* access modifiers changed from: protected */
     public void onMeasure(int i, int i2) {
         int childCount = getChildCount();
-        int i3 = -1;
-        int i4 = -1;
+        int i3 = 0;
+        int i4 = 0;
         int i5 = 0;
-        int i6 = 0;
-        int i7 = 0;
+        int i6 = -1;
+        int i7 = -1;
         for (int i8 = 0; i8 < childCount; i8++) {
             View childAt = getChildAt(i8);
             if (childAt.getVisibility() != 8) {
                 measureChild(childAt, i, i2);
                 int baseline2 = childAt.getBaseline();
                 if (baseline2 != -1) {
-                    i3 = Math.max(i3, baseline2);
-                    i4 = Math.max(i4, childAt.getMeasuredHeight() - baseline2);
+                    i6 = Math.max(i6, baseline2);
+                    i7 = Math.max(i7, childAt.getMeasuredHeight() - baseline2);
                 }
-                i6 = Math.max(i6, childAt.getMeasuredWidth());
-                i5 = Math.max(i5, childAt.getMeasuredHeight());
-                i7 = View.combineMeasuredStates(i7, childAt.getMeasuredState());
+                i4 = Math.max(i4, childAt.getMeasuredWidth());
+                i3 = Math.max(i3, childAt.getMeasuredHeight());
+                i5 = View.combineMeasuredStates(i5, childAt.getMeasuredState());
             }
         }
-        if (i3 != -1) {
-            i5 = Math.max(i5, Math.max(i4, getPaddingBottom()) + i3);
-            this.baseline = i3;
+        if (i6 != -1) {
+            i3 = Math.max(i3, Math.max(i7, getPaddingBottom()) + i6);
+            this.baseline = i6;
         }
-        setMeasuredDimension(View.resolveSizeAndState(Math.max(i6, getSuggestedMinimumWidth()), i, i7), View.resolveSizeAndState(Math.max(i5, getSuggestedMinimumHeight()), i2, i7 << 16));
+        setMeasuredDimension(View.resolveSizeAndState(Math.max(i4, getSuggestedMinimumWidth()), i, i5), View.resolveSizeAndState(Math.max(i3, getSuggestedMinimumHeight()), i2, i5 << 16));
     }
 
     /* access modifiers changed from: protected */

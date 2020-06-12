@@ -83,14 +83,14 @@ public class SidePropagation extends VisibilityPropagation {
             if (r7 != r4) goto L_0x0012
             goto L_0x0013
         L_0x0012:
-            r4 = r3
+            r4 = 0
         L_0x0013:
             if (r4 == 0) goto L_0x0017
         L_0x0015:
-            r0 = r1
+            r0 = 5
             goto L_0x0029
         L_0x0017:
-            r0 = r2
+            r0 = 3
             goto L_0x0029
         L_0x0019:
             r5 = 8388613(0x800005, float:1.175495E-38)
@@ -99,7 +99,7 @@ public class SidePropagation extends VisibilityPropagation {
             if (r7 != r4) goto L_0x0025
             goto L_0x0026
         L_0x0025:
-            r4 = r3
+            r4 = 0
         L_0x0026:
             if (r4 == 0) goto L_0x0015
             goto L_0x0017

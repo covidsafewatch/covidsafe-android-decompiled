@@ -493,6 +493,17 @@ final class Field25519 {
         throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.subtle.Field25519.product(long[], long[], long[]):void");
     }
 
+    static void reduce(long[] jArr, long[] jArr2) {
+        if (jArr.length != 19) {
+            long[] jArr3 = new long[19];
+            System.arraycopy(jArr, 0, jArr3, 0, jArr.length);
+            jArr = jArr3;
+        }
+        reduceSizeByModularReduction(jArr);
+        reduceCoefficients(jArr);
+        System.arraycopy(jArr, 0, jArr2, 0, 10);
+    }
+
     static void reduceSizeByModularReduction(long[] jArr) {
         jArr[8] = jArr[8] + (jArr[18] << 4);
         jArr[8] = jArr[8] + (jArr[18] << 1);
@@ -548,9 +559,7 @@ final class Field25519 {
     static void mult(long[] jArr, long[] jArr2, long[] jArr3) {
         long[] jArr4 = new long[19];
         product(jArr4, jArr2, jArr3);
-        reduceSizeByModularReduction(jArr4);
-        reduceCoefficients(jArr4);
-        System.arraycopy(jArr4, 0, jArr, 0, 10);
+        reduce(jArr4, jArr);
     }
 
     /* JADX WARNING: type inference failed for: r23v0, types: [long[]] */
@@ -831,9 +840,7 @@ final class Field25519 {
     static void square(long[] jArr, long[] jArr2) {
         long[] jArr3 = new long[19];
         squareInner(jArr3, jArr2);
-        reduceSizeByModularReduction(jArr3);
-        reduceCoefficients(jArr3);
-        System.arraycopy(jArr3, 0, jArr, 0, 10);
+        reduce(jArr3, jArr);
     }
 
     static long[] expand(byte[] bArr) {
@@ -869,39 +876,40 @@ final class Field25519 {
             int i8 = 0;
             while (i8 < 9) {
                 int i9 = i8 & 1;
-                copyOf[i8] = copyOf[i8] & ((long) MASK[i9]);
+                int i10 = (int) (copyOf[i8] >> SHIFT[i9]);
+                copyOf[i8] = ((long) MASK[i9]) & copyOf[i8];
                 i8++;
-                copyOf[i8] = copyOf[i8] + ((long) ((int) (copyOf[i8] >> SHIFT[i9])));
+                copyOf[i8] = copyOf[i8] + ((long) i10);
             }
         }
         copyOf[9] = copyOf[9] & 33554431;
         copyOf[0] = copyOf[0] + ((long) (((int) (copyOf[9] >> 25)) * 19));
         int gte = gte((int) copyOf[0], 67108845);
-        for (int i10 = 1; i10 < 10; i10++) {
-            gte &= eq((int) copyOf[i10], MASK[i10 & 1]);
+        for (int i11 = 1; i11 < 10; i11++) {
+            gte &= eq((int) copyOf[i11], MASK[i11 & 1]);
         }
         copyOf[0] = copyOf[0] - ((long) (67108845 & gte));
         long j2 = (long) (33554431 & gte);
         copyOf[1] = copyOf[1] - j2;
-        for (int i11 = 2; i11 < 10; i11 += 2) {
-            copyOf[i11] = copyOf[i11] - ((long) (67108863 & gte));
-            int i12 = i11 + 1;
-            copyOf[i12] = copyOf[i12] - j2;
+        for (int i12 = 2; i12 < 10; i12 += 2) {
+            copyOf[i12] = copyOf[i12] - ((long) (67108863 & gte));
+            int i13 = i12 + 1;
+            copyOf[i13] = copyOf[i13] - j2;
         }
-        for (int i13 = 0; i13 < 10; i13++) {
-            copyOf[i13] = copyOf[i13] << EXPAND_SHIFT[i13];
+        for (int i14 = 0; i14 < 10; i14++) {
+            copyOf[i14] = copyOf[i14] << EXPAND_SHIFT[i14];
         }
         byte[] bArr = new byte[32];
-        for (int i14 = 0; i14 < 10; i14++) {
+        for (int i15 = 0; i15 < 10; i15++) {
             int[] iArr2 = EXPAND_START;
-            int i15 = iArr2[i14];
-            bArr[i15] = (byte) ((int) (((long) bArr[i15]) | (copyOf[i14] & 255)));
-            int i16 = iArr2[i14] + 1;
-            bArr[i16] = (byte) ((int) (((long) bArr[i16]) | ((copyOf[i14] >> 8) & 255)));
-            int i17 = iArr2[i14] + 2;
-            bArr[i17] = (byte) ((int) (((long) bArr[i17]) | ((copyOf[i14] >> 16) & 255)));
-            int i18 = iArr2[i14] + 3;
-            bArr[i18] = (byte) ((int) (((long) bArr[i18]) | ((copyOf[i14] >> 24) & 255)));
+            int i16 = iArr2[i15];
+            bArr[i16] = (byte) ((int) (((long) bArr[i16]) | (copyOf[i15] & 255)));
+            int i17 = iArr2[i15] + 1;
+            bArr[i17] = (byte) ((int) (((long) bArr[i17]) | ((copyOf[i15] >> 8) & 255)));
+            int i18 = iArr2[i15] + 2;
+            bArr[i18] = (byte) ((int) (((long) bArr[i18]) | ((copyOf[i15] >> 16) & 255)));
+            int i19 = iArr2[i15] + 3;
+            bArr[i19] = (byte) ((int) (((long) bArr[i19]) | ((copyOf[i15] >> 24) & 255)));
         }
         return bArr;
     }

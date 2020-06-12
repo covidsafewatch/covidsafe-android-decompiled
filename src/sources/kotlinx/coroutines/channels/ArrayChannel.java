@@ -312,34 +312,33 @@ public class ArrayChannel<E> extends AbstractChannel<E> {
     /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r1v3, resolved type: kotlinx.coroutines.channels.Send} */
     /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r1v5, resolved type: kotlinx.coroutines.channels.Send} */
     /* access modifiers changed from: protected */
-    /* JADX WARNING: Code restructure failed: missing block: B:26:0x0060, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:27:0x0060, code lost:
         if (r7 != kotlinx.coroutines.selects.SelectKt.getALREADY_SELECTED()) goto L_0x006e;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:27:0x0062, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:28:0x0062, code lost:
         r8.size = r3;
         r8.buffer[r8.head] = r4;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:28:0x006a, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:29:0x006a, code lost:
         r2.unlock();
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:29:0x006d, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:30:0x006d, code lost:
         return r7;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:32:0x0070, code lost:
-        if ((r7 instanceof kotlinx.coroutines.channels.Closed) == false) goto L_0x0078;
+    /* JADX WARNING: Code restructure failed: missing block: B:33:0x0070, code lost:
+        if ((r7 instanceof kotlinx.coroutines.channels.Closed) == false) goto L_0x0077;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:33:0x0072, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:34:0x0072, code lost:
         r1 = (kotlinx.coroutines.channels.Send) r7;
-        r5 = true;
         r0 = r7;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:35:0x0094, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:36:0x0093, code lost:
         throw new java.lang.IllegalStateException(("performAtomicTrySelect(describeTryOffer) returned " + r7).toString());
      */
     /* JADX WARNING: Multi-variable type inference failed */
-    /* JADX WARNING: Removed duplicated region for block: B:41:0x009e A[Catch:{ all -> 0x00db }] */
-    /* JADX WARNING: Removed duplicated region for block: B:42:0x00ac A[Catch:{ all -> 0x00db }] */
-    /* JADX WARNING: Removed duplicated region for block: B:51:0x00d2  */
+    /* JADX WARNING: Removed duplicated region for block: B:42:0x009d A[Catch:{ all -> 0x00da }] */
+    /* JADX WARNING: Removed duplicated region for block: B:43:0x00ab A[Catch:{ all -> 0x00da }] */
+    /* JADX WARNING: Removed duplicated region for block: B:52:0x00d1  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public java.lang.Object pollSelectInternal(kotlinx.coroutines.selects.SelectInstance<?> r9) {
         /*
@@ -350,124 +349,124 @@ public class ArrayChannel<E> extends AbstractChannel<E> {
             java.util.concurrent.locks.ReentrantLock r2 = r8.lock
             java.util.concurrent.locks.Lock r2 = (java.util.concurrent.locks.Lock) r2
             r2.lock()
-            int r3 = r8.size     // Catch:{ all -> 0x00db }
+            int r3 = r8.size     // Catch:{ all -> 0x00da }
             if (r3 != 0) goto L_0x001c
-            kotlinx.coroutines.channels.Closed r9 = r8.getClosedForSend()     // Catch:{ all -> 0x00db }
+            kotlinx.coroutines.channels.Closed r9 = r8.getClosedForSend()     // Catch:{ all -> 0x00da }
             if (r9 == 0) goto L_0x0016
             goto L_0x0018
         L_0x0016:
-            java.lang.Object r9 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00db }
+            java.lang.Object r9 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00da }
         L_0x0018:
             r2.unlock()
             return r9
         L_0x001c:
-            java.lang.Object[] r4 = r8.buffer     // Catch:{ all -> 0x00db }
-            int r5 = r8.head     // Catch:{ all -> 0x00db }
-            r4 = r4[r5]     // Catch:{ all -> 0x00db }
-            java.lang.Object[] r5 = r8.buffer     // Catch:{ all -> 0x00db }
-            int r6 = r8.head     // Catch:{ all -> 0x00db }
-            r5[r6] = r0     // Catch:{ all -> 0x00db }
+            java.lang.Object[] r4 = r8.buffer     // Catch:{ all -> 0x00da }
+            int r5 = r8.head     // Catch:{ all -> 0x00da }
+            r4 = r4[r5]     // Catch:{ all -> 0x00da }
+            java.lang.Object[] r5 = r8.buffer     // Catch:{ all -> 0x00da }
+            int r6 = r8.head     // Catch:{ all -> 0x00da }
+            r5[r6] = r0     // Catch:{ all -> 0x00da }
             int r0 = r3 + -1
-            r8.size = r0     // Catch:{ all -> 0x00db }
-            java.lang.Object r0 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00db }
-            int r5 = r8.capacity     // Catch:{ all -> 0x00db }
+            r8.size = r0     // Catch:{ all -> 0x00da }
+            java.lang.Object r0 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00da }
+            int r5 = r8.capacity     // Catch:{ all -> 0x00da }
             r6 = 1
-            if (r3 != r5) goto L_0x0095
+            if (r3 != r5) goto L_0x0094
         L_0x0033:
-            kotlinx.coroutines.channels.AbstractChannel$TryPollDesc r5 = r8.describeTryPoll()     // Catch:{ all -> 0x00db }
+            kotlinx.coroutines.channels.AbstractChannel$TryPollDesc r5 = r8.describeTryPoll()     // Catch:{ all -> 0x00da }
             r7 = r5
-            kotlinx.coroutines.internal.AtomicDesc r7 = (kotlinx.coroutines.internal.AtomicDesc) r7     // Catch:{ all -> 0x00db }
-            java.lang.Object r7 = r9.performAtomicTrySelect(r7)     // Catch:{ all -> 0x00db }
+            kotlinx.coroutines.internal.AtomicDesc r7 = (kotlinx.coroutines.internal.AtomicDesc) r7     // Catch:{ all -> 0x00da }
+            java.lang.Object r7 = r9.performAtomicTrySelect(r7)     // Catch:{ all -> 0x00da }
             if (r7 != 0) goto L_0x0052
-            java.lang.Object r0 = r5.getResult()     // Catch:{ all -> 0x00db }
+            java.lang.Object r0 = r5.getResult()     // Catch:{ all -> 0x00da }
             r1 = r0
-            kotlinx.coroutines.channels.Send r1 = (kotlinx.coroutines.channels.Send) r1     // Catch:{ all -> 0x00db }
+            kotlinx.coroutines.channels.Send r1 = (kotlinx.coroutines.channels.Send) r1     // Catch:{ all -> 0x00da }
             if (r1 != 0) goto L_0x004c
-            kotlin.jvm.internal.Intrinsics.throwNpe()     // Catch:{ all -> 0x00db }
+            kotlin.jvm.internal.Intrinsics.throwNpe()     // Catch:{ all -> 0x00da }
         L_0x004c:
-            java.lang.Object r0 = r1.getPollResult()     // Catch:{ all -> 0x00db }
-            r5 = r6
-            goto L_0x0096
-        L_0x0052:
-            java.lang.Object r5 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00db }
-            if (r7 != r5) goto L_0x0057
+            java.lang.Object r0 = r1.getPollResult()     // Catch:{ all -> 0x00da }
+        L_0x0050:
+            r5 = 1
             goto L_0x0095
+        L_0x0052:
+            java.lang.Object r5 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00da }
+            if (r7 != r5) goto L_0x0057
+            goto L_0x0094
         L_0x0057:
-            java.lang.Object r5 = kotlinx.coroutines.internal.AtomicKt.RETRY_ATOMIC     // Catch:{ all -> 0x00db }
+            java.lang.Object r5 = kotlinx.coroutines.internal.AtomicKt.RETRY_ATOMIC     // Catch:{ all -> 0x00da }
             if (r7 != r5) goto L_0x005c
             goto L_0x0033
         L_0x005c:
-            java.lang.Object r0 = kotlinx.coroutines.selects.SelectKt.getALREADY_SELECTED()     // Catch:{ all -> 0x00db }
+            java.lang.Object r0 = kotlinx.coroutines.selects.SelectKt.getALREADY_SELECTED()     // Catch:{ all -> 0x00da }
             if (r7 != r0) goto L_0x006e
-            r8.size = r3     // Catch:{ all -> 0x00db }
-            java.lang.Object[] r9 = r8.buffer     // Catch:{ all -> 0x00db }
-            int r0 = r8.head     // Catch:{ all -> 0x00db }
-            r9[r0] = r4     // Catch:{ all -> 0x00db }
+            r8.size = r3     // Catch:{ all -> 0x00da }
+            java.lang.Object[] r9 = r8.buffer     // Catch:{ all -> 0x00da }
+            int r0 = r8.head     // Catch:{ all -> 0x00da }
+            r9[r0] = r4     // Catch:{ all -> 0x00da }
             r2.unlock()
             return r7
         L_0x006e:
-            boolean r0 = r7 instanceof kotlinx.coroutines.channels.Closed     // Catch:{ all -> 0x00db }
-            if (r0 == 0) goto L_0x0078
+            boolean r0 = r7 instanceof kotlinx.coroutines.channels.Closed     // Catch:{ all -> 0x00da }
+            if (r0 == 0) goto L_0x0077
             r1 = r7
-            kotlinx.coroutines.channels.Send r1 = (kotlinx.coroutines.channels.Send) r1     // Catch:{ all -> 0x00db }
-            r5 = r6
+            kotlinx.coroutines.channels.Send r1 = (kotlinx.coroutines.channels.Send) r1     // Catch:{ all -> 0x00da }
             r0 = r7
-            goto L_0x0096
-        L_0x0078:
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ all -> 0x00db }
-            r9.<init>()     // Catch:{ all -> 0x00db }
+            goto L_0x0050
+        L_0x0077:
+            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ all -> 0x00da }
+            r9.<init>()     // Catch:{ all -> 0x00da }
             java.lang.String r0 = "performAtomicTrySelect(describeTryOffer) returned "
-            r9.append(r0)     // Catch:{ all -> 0x00db }
-            r9.append(r7)     // Catch:{ all -> 0x00db }
-            java.lang.String r9 = r9.toString()     // Catch:{ all -> 0x00db }
-            java.lang.IllegalStateException r0 = new java.lang.IllegalStateException     // Catch:{ all -> 0x00db }
-            java.lang.String r9 = r9.toString()     // Catch:{ all -> 0x00db }
-            r0.<init>(r9)     // Catch:{ all -> 0x00db }
-            java.lang.Throwable r0 = (java.lang.Throwable) r0     // Catch:{ all -> 0x00db }
-            throw r0     // Catch:{ all -> 0x00db }
-        L_0x0095:
+            r9.append(r0)     // Catch:{ all -> 0x00da }
+            r9.append(r7)     // Catch:{ all -> 0x00da }
+            java.lang.String r9 = r9.toString()     // Catch:{ all -> 0x00da }
+            java.lang.IllegalStateException r0 = new java.lang.IllegalStateException     // Catch:{ all -> 0x00da }
+            java.lang.String r9 = r9.toString()     // Catch:{ all -> 0x00da }
+            r0.<init>(r9)     // Catch:{ all -> 0x00da }
+            java.lang.Throwable r0 = (java.lang.Throwable) r0     // Catch:{ all -> 0x00da }
+            throw r0     // Catch:{ all -> 0x00da }
+        L_0x0094:
             r5 = 0
-        L_0x0096:
-            java.lang.Object r7 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00db }
-            if (r0 == r7) goto L_0x00ac
-            boolean r7 = r0 instanceof kotlinx.coroutines.channels.Closed     // Catch:{ all -> 0x00db }
-            if (r7 != 0) goto L_0x00ac
-            r8.size = r3     // Catch:{ all -> 0x00db }
-            java.lang.Object[] r9 = r8.buffer     // Catch:{ all -> 0x00db }
-            int r7 = r8.head     // Catch:{ all -> 0x00db }
+        L_0x0095:
+            java.lang.Object r7 = kotlinx.coroutines.channels.AbstractChannelKt.POLL_FAILED     // Catch:{ all -> 0x00da }
+            if (r0 == r7) goto L_0x00ab
+            boolean r7 = r0 instanceof kotlinx.coroutines.channels.Closed     // Catch:{ all -> 0x00da }
+            if (r7 != 0) goto L_0x00ab
+            r8.size = r3     // Catch:{ all -> 0x00da }
+            java.lang.Object[] r9 = r8.buffer     // Catch:{ all -> 0x00da }
+            int r7 = r8.head     // Catch:{ all -> 0x00da }
             int r7 = r7 + r3
-            java.lang.Object[] r3 = r8.buffer     // Catch:{ all -> 0x00db }
-            int r3 = r3.length     // Catch:{ all -> 0x00db }
+            java.lang.Object[] r3 = r8.buffer     // Catch:{ all -> 0x00da }
+            int r3 = r3.length     // Catch:{ all -> 0x00da }
             int r7 = r7 % r3
-            r9[r7] = r0     // Catch:{ all -> 0x00db }
-            goto L_0x00c2
-        L_0x00ac:
-            boolean r9 = r9.trySelect()     // Catch:{ all -> 0x00db }
-            if (r9 != 0) goto L_0x00c2
-            r8.size = r3     // Catch:{ all -> 0x00db }
-            java.lang.Object[] r9 = r8.buffer     // Catch:{ all -> 0x00db }
-            int r0 = r8.head     // Catch:{ all -> 0x00db }
-            r9[r0] = r4     // Catch:{ all -> 0x00db }
-            java.lang.Object r9 = kotlinx.coroutines.selects.SelectKt.getALREADY_SELECTED()     // Catch:{ all -> 0x00db }
+            r9[r7] = r0     // Catch:{ all -> 0x00da }
+            goto L_0x00c1
+        L_0x00ab:
+            boolean r9 = r9.trySelect()     // Catch:{ all -> 0x00da }
+            if (r9 != 0) goto L_0x00c1
+            r8.size = r3     // Catch:{ all -> 0x00da }
+            java.lang.Object[] r9 = r8.buffer     // Catch:{ all -> 0x00da }
+            int r0 = r8.head     // Catch:{ all -> 0x00da }
+            r9[r0] = r4     // Catch:{ all -> 0x00da }
+            java.lang.Object r9 = kotlinx.coroutines.selects.SelectKt.getALREADY_SELECTED()     // Catch:{ all -> 0x00da }
             r2.unlock()
             return r9
-        L_0x00c2:
-            int r9 = r8.head     // Catch:{ all -> 0x00db }
+        L_0x00c1:
+            int r9 = r8.head     // Catch:{ all -> 0x00da }
             int r9 = r9 + r6
-            java.lang.Object[] r0 = r8.buffer     // Catch:{ all -> 0x00db }
-            int r0 = r0.length     // Catch:{ all -> 0x00db }
+            java.lang.Object[] r0 = r8.buffer     // Catch:{ all -> 0x00da }
+            int r0 = r0.length     // Catch:{ all -> 0x00da }
             int r9 = r9 % r0
-            r8.head = r9     // Catch:{ all -> 0x00db }
-            kotlin.Unit r9 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x00db }
+            r8.head = r9     // Catch:{ all -> 0x00da }
+            kotlin.Unit r9 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x00da }
             r2.unlock()
-            if (r5 == 0) goto L_0x00da
-            if (r1 != 0) goto L_0x00d7
+            if (r5 == 0) goto L_0x00d9
+            if (r1 != 0) goto L_0x00d6
             kotlin.jvm.internal.Intrinsics.throwNpe()
-        L_0x00d7:
+        L_0x00d6:
             r1.completeResumeSend()
-        L_0x00da:
+        L_0x00d9:
             return r4
-        L_0x00db:
+        L_0x00da:
             r9 = move-exception
             r2.unlock()
             throw r9

@@ -1,8 +1,8 @@
 package com.google.crypto.tink;
 
 import com.google.crypto.tink.proto.KeyData;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.MessageLite;
+import com.google.crypto.tink.shaded.protobuf.ByteString;
+import com.google.crypto.tink.shaded.protobuf.MessageLite;
 import java.security.GeneralSecurityException;
 
 public interface KeyManager<P> {
@@ -13,6 +13,8 @@ public interface KeyManager<P> {
     P getPrimitive(ByteString byteString) throws GeneralSecurityException;
 
     P getPrimitive(MessageLite messageLite) throws GeneralSecurityException;
+
+    Class<P> getPrimitiveClass();
 
     int getVersion();
 

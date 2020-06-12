@@ -54,11 +54,11 @@ class Poly1305 {
             long j4 = load265 * 5;
             byte[] bArr5 = new byte[17];
             long j5 = 0;
-            int i3 = 0;
             long j6 = 0;
             long j7 = 0;
             long j8 = 0;
             long j9 = 0;
+            int i3 = 0;
             while (i3 < bArr4.length) {
                 copyBlockSize(bArr5, bArr4, i3);
                 long load266 = j9 + load26(bArr5, i, i);

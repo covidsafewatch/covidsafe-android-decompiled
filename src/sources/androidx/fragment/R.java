@@ -158,7 +158,7 @@ public final class R {
         public static final int text2 = 2131362253;
         public static final int time = 2131362265;
         public static final int title = 2131362267;
-        public static final int visible_removing_fragment_view_tag = 2131362312;
+        public static final int visible_removing_fragment_view_tag = 2131362310;
 
         private id() {
         }

@@ -117,7 +117,7 @@ public final class Pipe {
             okio.Sink r1 = r7.foldedSink     // Catch:{ all -> 0x0083 }
             r2 = 1
             if (r1 != 0) goto L_0x000f
-            r1 = r2
+            r1 = 1
             goto L_0x0010
         L_0x000f:
             r1 = 0

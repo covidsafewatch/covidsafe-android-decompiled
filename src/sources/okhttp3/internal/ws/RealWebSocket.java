@@ -385,65 +385,65 @@ public final class RealWebSocket implements WebSocket, WebSocketReader.FrameCall
         return false;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public final synchronized boolean close(int r8, java.lang.String r9, long r10) {
+    public final synchronized boolean close(int r9, java.lang.String r10, long r11) {
         /*
-            r7 = this;
-            monitor-enter(r7)
+            r8 = this;
+            monitor-enter(r8)
             okhttp3.internal.ws.WebSocketProtocol r0 = okhttp3.internal.ws.WebSocketProtocol.INSTANCE     // Catch:{ all -> 0x005d }
-            r0.validateCloseCode(r8)     // Catch:{ all -> 0x005d }
+            r0.validateCloseCode(r9)     // Catch:{ all -> 0x005d }
             r0 = 0
             okio.ByteString r0 = (okio.ByteString) r0     // Catch:{ all -> 0x005d }
             r1 = 0
             r2 = 1
-            if (r9 == 0) goto L_0x0041
+            if (r10 == 0) goto L_0x0041
             okio.ByteString$Companion r0 = okio.ByteString.Companion     // Catch:{ all -> 0x005d }
-            okio.ByteString r0 = r0.encodeUtf8(r9)     // Catch:{ all -> 0x005d }
+            okio.ByteString r0 = r0.encodeUtf8(r10)     // Catch:{ all -> 0x005d }
             int r3 = r0.size()     // Catch:{ all -> 0x005d }
             long r3 = (long) r3     // Catch:{ all -> 0x005d }
             r5 = 123(0x7b, double:6.1E-322)
-            int r3 = (r3 > r5 ? 1 : (r3 == r5 ? 0 : -1))
-            if (r3 > 0) goto L_0x0020
-            r3 = r2
+            int r7 = (r3 > r5 ? 1 : (r3 == r5 ? 0 : -1))
+            if (r7 > 0) goto L_0x0020
+            r3 = 1
             goto L_0x0021
         L_0x0020:
-            r3 = r1
+            r3 = 0
         L_0x0021:
             if (r3 == 0) goto L_0x0024
             goto L_0x0041
         L_0x0024:
-            java.lang.StringBuilder r8 = new java.lang.StringBuilder     // Catch:{ all -> 0x005d }
-            r8.<init>()     // Catch:{ all -> 0x005d }
-            java.lang.String r10 = "reason.size() > 123: "
-            r8.append(r10)     // Catch:{ all -> 0x005d }
-            r8.append(r9)     // Catch:{ all -> 0x005d }
-            java.lang.String r8 = r8.toString()     // Catch:{ all -> 0x005d }
-            java.lang.IllegalArgumentException r9 = new java.lang.IllegalArgumentException     // Catch:{ all -> 0x005d }
-            java.lang.String r8 = r8.toString()     // Catch:{ all -> 0x005d }
-            r9.<init>(r8)     // Catch:{ all -> 0x005d }
-            java.lang.Throwable r9 = (java.lang.Throwable) r9     // Catch:{ all -> 0x005d }
-            throw r9     // Catch:{ all -> 0x005d }
+            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ all -> 0x005d }
+            r9.<init>()     // Catch:{ all -> 0x005d }
+            java.lang.String r11 = "reason.size() > 123: "
+            r9.append(r11)     // Catch:{ all -> 0x005d }
+            r9.append(r10)     // Catch:{ all -> 0x005d }
+            java.lang.String r9 = r9.toString()     // Catch:{ all -> 0x005d }
+            java.lang.IllegalArgumentException r10 = new java.lang.IllegalArgumentException     // Catch:{ all -> 0x005d }
+            java.lang.String r9 = r9.toString()     // Catch:{ all -> 0x005d }
+            r10.<init>(r9)     // Catch:{ all -> 0x005d }
+            java.lang.Throwable r10 = (java.lang.Throwable) r10     // Catch:{ all -> 0x005d }
+            throw r10     // Catch:{ all -> 0x005d }
         L_0x0041:
-            boolean r9 = r7.failed     // Catch:{ all -> 0x005d }
-            if (r9 != 0) goto L_0x005b
-            boolean r9 = r7.enqueuedClose     // Catch:{ all -> 0x005d }
-            if (r9 == 0) goto L_0x004a
+            boolean r10 = r8.failed     // Catch:{ all -> 0x005d }
+            if (r10 != 0) goto L_0x005b
+            boolean r10 = r8.enqueuedClose     // Catch:{ all -> 0x005d }
+            if (r10 == 0) goto L_0x004a
             goto L_0x005b
         L_0x004a:
-            r7.enqueuedClose = r2     // Catch:{ all -> 0x005d }
-            java.util.ArrayDeque<java.lang.Object> r9 = r7.messageAndCloseQueue     // Catch:{ all -> 0x005d }
+            r8.enqueuedClose = r2     // Catch:{ all -> 0x005d }
+            java.util.ArrayDeque<java.lang.Object> r10 = r8.messageAndCloseQueue     // Catch:{ all -> 0x005d }
             okhttp3.internal.ws.RealWebSocket$Close r1 = new okhttp3.internal.ws.RealWebSocket$Close     // Catch:{ all -> 0x005d }
-            r1.<init>(r8, r0, r10)     // Catch:{ all -> 0x005d }
-            r9.add(r1)     // Catch:{ all -> 0x005d }
-            r7.runWriter()     // Catch:{ all -> 0x005d }
-            monitor-exit(r7)
+            r1.<init>(r9, r0, r11)     // Catch:{ all -> 0x005d }
+            r10.add(r1)     // Catch:{ all -> 0x005d }
+            r8.runWriter()     // Catch:{ all -> 0x005d }
+            monitor-exit(r8)
             return r2
         L_0x005b:
-            monitor-exit(r7)
+            monitor-exit(r8)
             return r1
         L_0x005d:
-            r8 = move-exception
-            monitor-exit(r7)
-            throw r8
+            r9 = move-exception
+            monitor-exit(r8)
+            throw r9
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.ws.RealWebSocket.close(int, java.lang.String, long):boolean");
     }
@@ -891,7 +891,7 @@ public final class RealWebSocket implements WebSocket, WebSocketReader.FrameCall
             int r1 = r7.sentPingCount     // Catch:{ all -> 0x005e }
             goto L_0x0012
         L_0x0011:
-            r1 = r2
+            r1 = -1
         L_0x0012:
             int r3 = r7.sentPingCount     // Catch:{ all -> 0x005e }
             r4 = 1

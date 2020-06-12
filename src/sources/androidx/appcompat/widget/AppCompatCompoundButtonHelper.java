@@ -50,7 +50,7 @@ class AppCompatCompoundButtonHelper {
             r5 = 1
             goto L_0x002f
         L_0x002e:
-            r5 = r2
+            r5 = 0
         L_0x002f:
             if (r5 != 0) goto L_0x0050
             int r5 = androidx.appcompat.R.styleable.CompoundButton_android_button     // Catch:{ all -> 0x0080 }

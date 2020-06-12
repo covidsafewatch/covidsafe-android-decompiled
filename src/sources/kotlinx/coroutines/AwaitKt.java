@@ -45,7 +45,7 @@ public final class AwaitKt {
             kotlin.ResultKt.throwOnFailure(r5)
             int r5 = r4.length
             if (r5 != 0) goto L_0x003e
-            r5 = r3
+            r5 = 1
             goto L_0x003f
         L_0x003e:
             r5 = 0
@@ -197,12 +197,12 @@ public final class AwaitKt {
             int r8 = r7.length
             r2 = 0
             r5 = r8
+            r2 = r0
             r4 = r1
             r8 = r7
-            r1 = r8
-            r7 = r2
-            r2 = r0
-            r0 = r1
+            r0 = r8
+            r1 = r0
+            r7 = 0
         L_0x005c:
             if (r7 >= r5) goto L_0x0079
             r6 = r8[r7]

@@ -18,7 +18,11 @@ public final class Config {
 
     public static void registerKeyType(KeyTypeEntry keyTypeEntry) throws GeneralSecurityException {
         validate(keyTypeEntry);
-        Registry.registerKeyManager(Registry.getCatalogue(keyTypeEntry.getCatalogueName()).getKeyManager(keyTypeEntry.getTypeUrl(), keyTypeEntry.getPrimitiveName(), keyTypeEntry.getKeyManagerVersion()), keyTypeEntry.getNewKeyAllowed());
+        if (!keyTypeEntry.getCatalogueName().equals("TinkAead") && !keyTypeEntry.getCatalogueName().equals("TinkMac") && !keyTypeEntry.getCatalogueName().equals("TinkHybridDecrypt") && !keyTypeEntry.getCatalogueName().equals("TinkHybridEncrypt") && !keyTypeEntry.getCatalogueName().equals("TinkPublicKeySign") && !keyTypeEntry.getCatalogueName().equals("TinkPublicKeyVerify") && !keyTypeEntry.getCatalogueName().equals("TinkStreamingAead") && !keyTypeEntry.getCatalogueName().equals("TinkDeterministicAead")) {
+            Catalogue<?> catalogue = Registry.getCatalogue(keyTypeEntry.getCatalogueName());
+            Registry.registerPrimitiveWrapper(catalogue.getPrimitiveWrapper());
+            Registry.registerKeyManager(catalogue.getKeyManager(keyTypeEntry.getTypeUrl(), keyTypeEntry.getPrimitiveName(), keyTypeEntry.getKeyManagerVersion()), keyTypeEntry.getNewKeyAllowed());
+        }
     }
 
     private static void validate(KeyTypeEntry keyTypeEntry) throws GeneralSecurityException {

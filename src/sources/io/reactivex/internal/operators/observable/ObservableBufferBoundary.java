@@ -182,7 +182,7 @@ public final class ObservableBufferBoundary<T, U extends Collection<? super T>, 
                 if (r4 != 0) goto L_0x0015
                 java.util.concurrent.atomic.AtomicReference<io.reactivex.disposables.Disposable> r4 = r3.upstream
                 io.reactivex.internal.disposables.DisposableHelper.dispose(r4)
-                r4 = r0
+                r4 = 1
                 goto L_0x0016
             L_0x0015:
                 r4 = 0

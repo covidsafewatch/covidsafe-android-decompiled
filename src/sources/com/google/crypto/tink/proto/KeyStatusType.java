@@ -1,6 +1,6 @@
 package com.google.crypto.tink.proto;
 
-import com.google.protobuf.Internal;
+import com.google.crypto.tink.shaded.protobuf.Internal;
 
 public enum KeyStatusType implements Internal.EnumLite {
     UNKNOWN_STATUS(0),
@@ -25,7 +25,10 @@ public enum KeyStatusType implements Internal.EnumLite {
     }
 
     public final int getNumber() {
-        return this.value;
+        if (this != UNRECOGNIZED) {
+            return this.value;
+        }
+        throw new IllegalArgumentException("Can't get the number of an unknown enum value.");
     }
 
     @Deprecated
@@ -51,6 +54,25 @@ public enum KeyStatusType implements Internal.EnumLite {
 
     public static Internal.EnumLiteMap<KeyStatusType> internalGetValueMap() {
         return internalValueMap;
+    }
+
+    public static Internal.EnumVerifier internalGetVerifier() {
+        return KeyStatusTypeVerifier.INSTANCE;
+    }
+
+    private static final class KeyStatusTypeVerifier implements Internal.EnumVerifier {
+        static final Internal.EnumVerifier INSTANCE = null;
+
+        private KeyStatusTypeVerifier() {
+        }
+
+        static {
+            INSTANCE = new KeyStatusTypeVerifier();
+        }
+
+        public boolean isInRange(int i) {
+            return KeyStatusType.forNumber(i) != null;
+        }
     }
 
     private KeyStatusType(int i) {

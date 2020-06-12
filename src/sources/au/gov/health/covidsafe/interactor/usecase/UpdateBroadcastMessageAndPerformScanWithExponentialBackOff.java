@@ -30,14 +30,14 @@ public final class UpdateBroadcastMessageAndPerformScanWithExponentialBackOff ex
         this.TAG = simpleName;
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:42:0x00e0, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:42:0x00e1, code lost:
         r2 = kotlin.text.StringsKt.toLongOrNull(r2);
      */
     /* JADX WARNING: Removed duplicated region for block: B:12:0x0052  */
     /* JADX WARNING: Removed duplicated region for block: B:23:0x007d  */
-    /* JADX WARNING: Removed duplicated region for block: B:25:0x009d A[RETURN] */
-    /* JADX WARNING: Removed duplicated region for block: B:26:0x009e  */
-    /* JADX WARNING: Removed duplicated region for block: B:28:0x00aa  */
+    /* JADX WARNING: Removed duplicated region for block: B:25:0x009e A[RETURN] */
+    /* JADX WARNING: Removed duplicated region for block: B:26:0x009f  */
+    /* JADX WARNING: Removed duplicated region for block: B:28:0x00ab  */
     /* JADX WARNING: Removed duplicated region for block: B:8:0x0029  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public java.lang.Object run(java.lang.Void r18, kotlin.coroutines.Continuation<? super au.gov.health.covidsafe.interactor.Either<? extends java.lang.Exception, au.gov.health.covidsafe.networking.response.BroadcastMessageResponse>> r19) {
@@ -84,7 +84,7 @@ public final class UpdateBroadcastMessageAndPerformScanWithExponentialBackOff ex
             r1 = r9
             r9 = r8
             r8 = r7
-            goto L_0x009f
+            goto L_0x00a0
         L_0x004a:
             java.lang.IllegalStateException r1 = new java.lang.IllegalStateException
             java.lang.String r2 = "call to 'resume' before 'invoke' with coroutine"
@@ -95,12 +95,12 @@ public final class UpdateBroadcastMessageAndPerformScanWithExponentialBackOff ex
             au.gov.health.covidsafe.Preference r1 = au.gov.health.covidsafe.Preference.INSTANCE
             android.content.Context r4 = r0.context
             java.lang.String r1 = r1.getEncrypterJWTToken(r4)
-            if (r1 == 0) goto L_0x013d
+            if (r1 == 0) goto L_0x0140
             retrofit2.Response r4 = r0.call(r1)
             r10 = r0
             r8 = r1
             r9 = r8
-            r7 = r5
+            r7 = 0
             r1 = r18
         L_0x0069:
             r11 = 1000(0x3e8, float:1.401E-42)
@@ -108,10 +108,10 @@ public final class UpdateBroadcastMessageAndPerformScanWithExponentialBackOff ex
             boolean r12 = r4.isSuccessful()
             if (r12 == 0) goto L_0x0079
             java.lang.Object r12 = r4.body()
-            if (r12 != 0) goto L_0x00aa
+            if (r12 != 0) goto L_0x00ab
         L_0x0079:
             int r12 = r10.RETRIES_LIMIT
-            if (r7 >= r12) goto L_0x00aa
+            if (r7 >= r12) goto L_0x00ab
             r12 = 2
             double r12 = (double) r12
             double r14 = (double) r7
@@ -128,61 +128,61 @@ public final class UpdateBroadcastMessageAndPerformScanWithExponentialBackOff ex
             r2.J$0 = r12
             r2.label = r6
             java.lang.Object r4 = kotlinx.coroutines.DelayKt.delay(r12, r2)
-            if (r4 != r3) goto L_0x009e
+            if (r4 != r3) goto L_0x009f
             return r3
-        L_0x009e:
-            r4 = r7
         L_0x009f:
+            r4 = r7
+        L_0x00a0:
             retrofit2.Response r7 = r10.call(r8)
             int r4 = r4 + r6
             r16 = r7
             r7 = r4
             r4 = r16
             goto L_0x0069
-        L_0x00aa:
-            if (r4 == 0) goto L_0x0130
+        L_0x00ab:
+            if (r4 == 0) goto L_0x0133
             boolean r1 = r4.isSuccessful()
-            if (r1 == 0) goto L_0x0130
+            if (r1 == 0) goto L_0x0133
             java.lang.Object r1 = r4.body()
             au.gov.health.covidsafe.networking.response.BroadcastMessageResponse r1 = (au.gov.health.covidsafe.networking.response.BroadcastMessageResponse) r1
-            if (r1 == 0) goto L_0x0121
+            if (r1 == 0) goto L_0x0124
             java.lang.String r2 = r1.getTempId()
             java.lang.CharSequence r2 = (java.lang.CharSequence) r2
-            if (r2 == 0) goto L_0x00c8
+            if (r2 == 0) goto L_0x00c9
             int r2 = r2.length()
-            if (r2 != 0) goto L_0x00c9
-        L_0x00c8:
-            r5 = r6
+            if (r2 != 0) goto L_0x00ca
         L_0x00c9:
-            if (r5 == 0) goto L_0x00d8
+            r5 = 1
+        L_0x00ca:
+            if (r5 == 0) goto L_0x00d9
             au.gov.health.covidsafe.interactor.Failure r1 = new au.gov.health.covidsafe.interactor.Failure
             java.lang.Exception r2 = new java.lang.Exception
             r2.<init>()
             r1.<init>(r2)
             au.gov.health.covidsafe.interactor.Either r1 = (au.gov.health.covidsafe.interactor.Either) r1
-            goto L_0x013c
-        L_0x00d8:
+            goto L_0x013f
+        L_0x00d9:
             java.lang.String r2 = r1.getExpiryTime()
             r3 = 0
-            if (r2 == 0) goto L_0x00eb
+            if (r2 == 0) goto L_0x00ec
             java.lang.Long r2 = kotlin.text.StringsKt.toLongOrNull(r2)
-            if (r2 == 0) goto L_0x00eb
+            if (r2 == 0) goto L_0x00ec
             long r5 = r2.longValue()
-            goto L_0x00ec
-        L_0x00eb:
-            r5 = r3
+            goto L_0x00ed
         L_0x00ec:
+            r5 = r3
+        L_0x00ed:
             au.gov.health.covidsafe.Preference r2 = au.gov.health.covidsafe.Preference.INSTANCE
             android.content.Context r7 = r10.context
             long r8 = (long) r11
             long r5 = r5 * r8
             r2.putExpiryTimeInMillis(r7, r5)
             java.lang.String r2 = r1.getRefreshTime()
-            if (r2 == 0) goto L_0x0105
+            if (r2 == 0) goto L_0x0107
             java.lang.Long r2 = kotlin.text.StringsKt.toLongOrNull(r2)
-            if (r2 == 0) goto L_0x0105
+            if (r2 == 0) goto L_0x0107
             long r3 = r2.longValue()
-        L_0x0105:
+        L_0x0107:
             au.gov.health.covidsafe.Preference r2 = au.gov.health.covidsafe.Preference.INSTANCE
             android.content.Context r5 = r10.context
             long r3 = r3 * r8
@@ -195,24 +195,24 @@ public final class UpdateBroadcastMessageAndPerformScanWithExponentialBackOff ex
             r2.<init>(r1)
             r1 = r2
             au.gov.health.covidsafe.interactor.Either r1 = (au.gov.health.covidsafe.interactor.Either) r1
-            goto L_0x013c
-        L_0x0121:
+            goto L_0x013f
+        L_0x0124:
             au.gov.health.covidsafe.interactor.usecase.UpdateBroadcastMessageAndPerformScanWithExponentialBackOff r10 = (au.gov.health.covidsafe.interactor.usecase.UpdateBroadcastMessageAndPerformScanWithExponentialBackOff) r10
             au.gov.health.covidsafe.interactor.Failure r1 = new au.gov.health.covidsafe.interactor.Failure
             java.lang.Exception r2 = new java.lang.Exception
             r2.<init>()
             r1.<init>(r2)
             au.gov.health.covidsafe.interactor.Either r1 = (au.gov.health.covidsafe.interactor.Either) r1
-            goto L_0x013c
-        L_0x0130:
+            goto L_0x013f
+        L_0x0133:
             au.gov.health.covidsafe.interactor.Failure r1 = new au.gov.health.covidsafe.interactor.Failure
             java.lang.Exception r2 = new java.lang.Exception
             r2.<init>()
             r1.<init>(r2)
             au.gov.health.covidsafe.interactor.Either r1 = (au.gov.health.covidsafe.interactor.Either) r1
-        L_0x013c:
+        L_0x013f:
             return r1
-        L_0x013d:
+        L_0x0140:
             r1 = r0
             au.gov.health.covidsafe.interactor.usecase.UpdateBroadcastMessageAndPerformScanWithExponentialBackOff r1 = (au.gov.health.covidsafe.interactor.usecase.UpdateBroadcastMessageAndPerformScanWithExponentialBackOff) r1
             au.gov.health.covidsafe.interactor.Failure r1 = new au.gov.health.covidsafe.interactor.Failure

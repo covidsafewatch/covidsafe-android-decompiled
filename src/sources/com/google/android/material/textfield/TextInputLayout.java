@@ -1965,10 +1965,10 @@ public class TextInputLayout extends LinearLayout {
             androidx.core.widget.TextViewCompat.setCompoundDrawablesRelative(r6, r2, r7, r8, r0)
             r10.startIconDummyDrawable = r2
         L_0x0077:
-            r0 = r5
+            r0 = 1
             goto L_0x007a
         L_0x0079:
-            r0 = r1
+            r0 = 0
         L_0x007a:
             com.google.android.material.internal.CheckableImageButton r6 = r10.getEndIconToUpdateDummyDrawable()
             if (r6 == 0) goto L_0x00ca
@@ -2227,10 +2227,10 @@ public class TextInputLayout extends LinearLayout {
             if (r0 == 0) goto L_0x001d
             goto L_0x001f
         L_0x001d:
-            r0 = r1
+            r0 = 0
             goto L_0x0020
         L_0x001f:
-            r0 = r2
+            r0 = 1
         L_0x0020:
             boolean r3 = r5.isHovered()
             if (r3 != 0) goto L_0x0033
@@ -2240,10 +2240,10 @@ public class TextInputLayout extends LinearLayout {
             if (r3 == 0) goto L_0x0031
             goto L_0x0033
         L_0x0031:
-            r3 = r1
+            r3 = 0
             goto L_0x0034
         L_0x0033:
-            r3 = r2
+            r3 = 1
         L_0x0034:
             boolean r4 = r5.isEnabled()
             if (r4 != 0) goto L_0x003f
@@ -2286,10 +2286,10 @@ public class TextInputLayout extends LinearLayout {
             com.google.android.material.textfield.EndIconDelegate r4 = r5.getEndIconDelegate()
             boolean r4 = r4.shouldTintIconOnError()
             if (r4 == 0) goto L_0x0085
-            r4 = r2
+            r4 = 1
             goto L_0x0086
         L_0x0085:
-            r4 = r1
+            r4 = 0
         L_0x0086:
             r5.tintEndIconOnError(r4)
             android.graphics.drawable.Drawable r4 = r5.getErrorIconDrawable()
@@ -2300,7 +2300,7 @@ public class TextInputLayout extends LinearLayout {
             com.google.android.material.textfield.IndicatorViewController r4 = r5.indicatorViewController
             boolean r4 = r4.errorShouldBeShown()
             if (r4 == 0) goto L_0x00a0
-            r1 = r2
+            r1 = 1
         L_0x00a0:
             r5.setErrorIconVisible(r1)
             if (r3 != 0) goto L_0x00a7

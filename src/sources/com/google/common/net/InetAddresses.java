@@ -556,7 +556,7 @@ public final class InetAddresses {
             goto L_0x0007
         L_0x0014:
             if (r1 < 0) goto L_0x0017
-            r3 = r2
+            r3 = 1
         L_0x0017:
             java.lang.String r4 = "Incrementing %s would wrap."
             com.google.common.base.Preconditions.checkArgument((boolean) r3, (java.lang.String) r4, (java.lang.Object) r6)

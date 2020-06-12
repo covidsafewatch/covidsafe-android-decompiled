@@ -331,7 +331,7 @@ public final class MoreExecutors {
             int r0 = r17.size()
             r2 = 1
             if (r0 <= 0) goto L_0x0011
-            r3 = r2
+            r3 = 1
             goto L_0x0012
         L_0x0011:
             r3 = 0
@@ -358,8 +358,8 @@ public final class MoreExecutors {
             r3.add(r10)     // Catch:{ all -> 0x002c }
             int r0 = r0 + -1
             r10 = 0
-            r11 = r2
             r12 = r10
+            r11 = 1
         L_0x0047:
             java.lang.Object r13 = r4.poll()     // Catch:{ all -> 0x002c }
             java.util.concurrent.Future r13 = (java.util.concurrent.Future) r13     // Catch:{ all -> 0x002c }

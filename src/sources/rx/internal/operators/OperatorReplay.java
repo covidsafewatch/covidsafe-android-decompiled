@@ -207,7 +207,7 @@ public final class OperatorReplay<T> extends ConnectableObservable<T> implements
             if (r1 == 0) goto L_0x003d
             goto L_0x003e
         L_0x003d:
-            r2 = r3
+            r2 = 0
         L_0x003e:
             r5.call(r0)
             if (r2 == 0) goto L_0x0048
@@ -488,7 +488,7 @@ public final class OperatorReplay<T> extends ConnectableObservable<T> implements
                 rx.internal.operators.OperatorReplay$InnerProducer[] r10 = r9.copyProducers()
                 int r3 = r10.length
                 r4 = r0
-                r6 = r2
+                r6 = 0
             L_0x003e:
                 if (r6 >= r3) goto L_0x0051
                 r7 = r10[r6]
@@ -541,7 +541,7 @@ public final class OperatorReplay<T> extends ConnectableObservable<T> implements
                 if (r0 == 0) goto L_0x00ad
                 rx.internal.operators.OperatorReplay$InnerProducer[] r10 = r9.copyProducers()
                 int r0 = r10.length
-                r1 = r2
+                r1 = 0
             L_0x009a:
                 if (r1 >= r0) goto L_0x00ad
                 r7 = r10[r1]
@@ -879,7 +879,7 @@ public final class OperatorReplay<T> extends ConnectableObservable<T> implements
                 int r1 = r1.intValue()
                 goto L_0x0025
             L_0x0024:
-                r1 = r2
+                r1 = 0
             L_0x0025:
                 rx.Subscriber<? super T> r3 = r13.child
                 if (r3 != 0) goto L_0x002a
@@ -924,8 +924,8 @@ public final class OperatorReplay<T> extends ConnectableObservable<T> implements
                 java.lang.Integer r0 = java.lang.Integer.valueOf(r1)
                 r13.index = r0
                 r0 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                int r0 = (r4 > r0 ? 1 : (r4 == r0 ? 0 : -1))
-                if (r0 == 0) goto L_0x0084
+                int r3 = (r4 > r0 ? 1 : (r4 == r0 ? 0 : -1))
+                if (r3 == 0) goto L_0x0084
                 r13.produced(r8)
             L_0x0084:
                 monitor-enter(r13)
@@ -1256,8 +1256,8 @@ public final class OperatorReplay<T> extends ConnectableObservable<T> implements
                 if (r1 == 0) goto L_0x0095
                 r12.index = r0
                 r0 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                int r0 = (r2 > r0 ? 1 : (r2 == r0 ? 0 : -1))
-                if (r0 == 0) goto L_0x0095
+                int r4 = (r2 > r0 ? 1 : (r2 == r0 ? 0 : -1))
+                if (r4 == 0) goto L_0x0095
                 r12.produced(r6)
             L_0x0095:
                 monitor-enter(r12)

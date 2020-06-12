@@ -71,10 +71,10 @@ public class ChangeClipBounds extends Transition {
             r2 = 1
             r3 = 0
             if (r1 != 0) goto L_0x002e
-            r4 = r2
+            r4 = 1
             goto L_0x002f
         L_0x002e:
-            r4 = r3
+            r4 = 0
         L_0x002f:
             if (r0 != 0) goto L_0x0034
             if (r1 != 0) goto L_0x0034

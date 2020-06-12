@@ -792,9 +792,9 @@ public final class R {
         public static final int title_template = 2131362269;
         public static final int topPanel = 2131362273;
         public static final int unchecked = 2131362283;
-        public static final int uniform = 2131362290;
-        public static final int up = 2131362292;
-        public static final int wrap_content = 2131362317;
+        public static final int uniform = 2131362289;
+        public static final int up = 2131362291;
+        public static final int wrap_content = 2131362315;
 
         private id() {
         }

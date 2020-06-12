@@ -16,19 +16,22 @@ import java.util.concurrent.ConcurrentMap;
 public final class PrimitiveSet<P> {
     private static final Charset UTF_8 = Charset.forName("UTF-8");
     private Entry<P> primary;
+    private final Class<P> primitiveClass;
     private ConcurrentMap<String, List<Entry<P>>> primitives = new ConcurrentHashMap();
 
     public static final class Entry<P> {
         private final byte[] identifier;
+        private final int keyId;
         private final OutputPrefixType outputPrefixType;
         private final P primitive;
         private final KeyStatusType status;
 
-        public Entry(P p, byte[] bArr, KeyStatusType keyStatusType, OutputPrefixType outputPrefixType2) {
+        Entry(P p, byte[] bArr, KeyStatusType keyStatusType, OutputPrefixType outputPrefixType2, int i) {
             this.primitive = p;
             this.identifier = Arrays.copyOf(bArr, bArr.length);
             this.status = keyStatusType;
             this.outputPrefixType = outputPrefixType2;
+            this.keyId = i;
         }
 
         public P getPrimitive() {
@@ -50,27 +53,23 @@ public final class PrimitiveSet<P> {
             }
             return Arrays.copyOf(bArr, bArr.length);
         }
+
+        public int getKeyId() {
+            return this.keyId;
+        }
     }
 
     public Entry<P> getPrimary() {
         return this.primary;
     }
 
-    public List<Entry<P>> getRawPrimitives() throws GeneralSecurityException {
+    public List<Entry<P>> getRawPrimitives() {
         return getPrimitive(CryptoFormat.RAW_PREFIX);
     }
 
-    public List<Entry<P>> getPrimitive(byte[] bArr) throws GeneralSecurityException {
+    public List<Entry<P>> getPrimitive(byte[] bArr) {
         List<Entry<P>> list = (List) this.primitives.get(new String(bArr, UTF_8));
         return list != null ? list : Collections.emptyList();
-    }
-
-    public Collection<List<Entry<P>>> getAll() throws GeneralSecurityException {
-        return this.primitives.values();
-    }
-
-    protected static <P> PrimitiveSet<P> newPrimitiveSet() {
-        return new PrimitiveSet<>();
     }
 
     /* access modifiers changed from: protected */
@@ -78,24 +77,49 @@ public final class PrimitiveSet<P> {
         return getPrimitive(CryptoFormat.getOutputPrefix(key));
     }
 
-    /* access modifiers changed from: protected */
-    public void setPrimary(Entry<P> entry) {
-        this.primary = entry;
+    public Collection<List<Entry<P>>> getAll() {
+        return this.primitives.values();
     }
 
-    /* access modifiers changed from: protected */
-    public Entry<P> addPrimitive(P p, Keyset.Key key) throws GeneralSecurityException {
-        Entry<P> entry = new Entry<>(p, CryptoFormat.getOutputPrefix(key), key.getStatus(), key.getOutputPrefixType());
-        ArrayList arrayList = new ArrayList();
-        arrayList.add(entry);
-        String str = new String(entry.getIdentifier(), UTF_8);
-        List list = (List) this.primitives.put(str, Collections.unmodifiableList(arrayList));
-        if (list != null) {
-            ArrayList arrayList2 = new ArrayList();
-            arrayList2.addAll(list);
-            arrayList2.add(entry);
-            this.primitives.put(str, Collections.unmodifiableList(arrayList2));
+    private PrimitiveSet(Class<P> cls) {
+        this.primitiveClass = cls;
+    }
+
+    public static <P> PrimitiveSet<P> newPrimitiveSet(Class<P> cls) {
+        return new PrimitiveSet<>(cls);
+    }
+
+    public void setPrimary(Entry<P> entry) {
+        if (entry == null) {
+            throw new IllegalArgumentException("the primary entry must be non-null");
+        } else if (entry.getStatus() != KeyStatusType.ENABLED) {
+            throw new IllegalArgumentException("the primary entry has to be ENABLED");
+        } else if (!getPrimitive(entry.getIdentifier()).isEmpty()) {
+            this.primary = entry;
+        } else {
+            throw new IllegalArgumentException("the primary entry cannot be set to an entry which is not held by this primitive set");
         }
-        return entry;
+    }
+
+    public Entry<P> addPrimitive(P p, Keyset.Key key) throws GeneralSecurityException {
+        if (key.getStatus() == KeyStatusType.ENABLED) {
+            Entry entry = new Entry(p, CryptoFormat.getOutputPrefix(key), key.getStatus(), key.getOutputPrefixType(), key.getKeyId());
+            ArrayList arrayList = new ArrayList();
+            arrayList.add(entry);
+            String str = new String(entry.getIdentifier(), UTF_8);
+            List list = (List) this.primitives.put(str, Collections.unmodifiableList(arrayList));
+            if (list != null) {
+                ArrayList arrayList2 = new ArrayList();
+                arrayList2.addAll(list);
+                arrayList2.add(entry);
+                this.primitives.put(str, Collections.unmodifiableList(arrayList2));
+            }
+            return entry;
+        }
+        throw new GeneralSecurityException("only ENABLED key is allowed");
+    }
+
+    public Class<P> getPrimitiveClass() {
+        return this.primitiveClass;
     }
 }

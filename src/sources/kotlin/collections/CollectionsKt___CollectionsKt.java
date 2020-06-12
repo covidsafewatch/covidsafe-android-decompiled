@@ -331,8 +331,8 @@ class CollectionsKt___CollectionsKt extends CollectionsKt___CollectionsJvmKt {
         boolean z = false;
         for (T next : iterable) {
             if (function1.invoke(next).booleanValue()) {
-                z = true;
                 t = next;
+                z = true;
             }
         }
         if (z) {
@@ -493,8 +493,8 @@ class CollectionsKt___CollectionsKt extends CollectionsKt___CollectionsJvmKt {
         for (T next : iterable) {
             if (function1.invoke(next).booleanValue()) {
                 if (!z) {
-                    z = true;
                     t = next;
+                    z = true;
                 } else {
                     throw new IllegalArgumentException("Collection contains more than one matching element.");
                 }
@@ -1550,7 +1550,7 @@ class CollectionsKt___CollectionsKt extends CollectionsKt___CollectionsJvmKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r8, r0)
             java.util.Iterator r6 = r6.iterator()
             r0 = 0
-            r1 = r0
+            r1 = 0
         L_0x0010:
             boolean r2 = r6.hasNext()
             if (r2 == 0) goto L_0x003e
@@ -1938,7 +1938,7 @@ class CollectionsKt___CollectionsKt extends CollectionsKt___CollectionsJvmKt {
             if (r0 == 0) goto L_0x0049
             java.lang.Object r0 = r6.next()
             r1 = 1
-            r2 = r1
+            r2 = 1
         L_0x001a:
             boolean r3 = r6.hasNext()
             if (r3 == 0) goto L_0x0048
@@ -2225,7 +2225,7 @@ class CollectionsKt___CollectionsKt extends CollectionsKt___CollectionsJvmKt {
             r2.<init>(r6)
             r2.add(r1)
             r6 = 1
-            r3 = r6
+            r3 = 1
         L_0x002d:
             boolean r4 = r0.hasNext()
             if (r4 == 0) goto L_0x0044
@@ -2645,10 +2645,7 @@ class CollectionsKt___CollectionsKt extends CollectionsKt___CollectionsJvmKt {
             charSequence3 = "";
         }
         CharSequence charSequence6 = charSequence3;
-        if ((i2 & 8) != 0) {
-            i = -1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 8) != 0 ? -1 : i;
         if ((i2 & 16) != 0) {
             charSequence4 = "...";
         }

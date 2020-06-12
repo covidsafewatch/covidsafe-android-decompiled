@@ -40,29 +40,31 @@ class Util {
     }
 
     public static void validateKeyset(Keyset keyset) throws GeneralSecurityException {
-        if (keyset.getKeyCount() != 0) {
-            int primaryKeyId = keyset.getPrimaryKeyId();
-            boolean z = true;
-            boolean z2 = false;
-            for (Keyset.Key next : keyset.getKeyList()) {
+        int primaryKeyId = keyset.getPrimaryKeyId();
+        int i = 0;
+        boolean z = false;
+        boolean z2 = true;
+        for (Keyset.Key next : keyset.getKeyList()) {
+            if (next.getStatus() == KeyStatusType.ENABLED) {
                 validateKey(next);
-                if (next.getStatus() == KeyStatusType.ENABLED && next.getKeyId() == primaryKeyId) {
-                    if (!z2) {
-                        z2 = true;
+                if (next.getKeyId() == primaryKeyId) {
+                    if (!z) {
+                        z = true;
                     } else {
                         throw new GeneralSecurityException("keyset contains multiple primary keys");
                     }
                 }
                 if (next.getKeyData().getKeyMaterialType() != KeyData.KeyMaterialType.ASYMMETRIC_PUBLIC) {
-                    z = false;
+                    z2 = false;
                 }
+                i++;
             }
-            if (!z2 && !z) {
-                throw new GeneralSecurityException("keyset doesn't contain a valid primary key");
-            }
-            return;
         }
-        throw new GeneralSecurityException("empty keyset");
+        if (i == 0) {
+            throw new GeneralSecurityException("keyset must contain at least one ENABLED key");
+        } else if (!z && !z2) {
+            throw new GeneralSecurityException("keyset doesn't contain a valid primary key");
+        }
     }
 
     public static byte[] readAll(InputStream inputStream) throws IOException {

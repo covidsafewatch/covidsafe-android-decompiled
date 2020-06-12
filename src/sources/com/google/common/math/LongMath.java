@@ -215,8 +215,8 @@ public final class LongMath {
             int r4 = lessThanBranchFree(r2, r4)
             goto L_0x0026
         L_0x002d:
-            int r4 = (r4 > r2 ? 1 : (r4 == r2 ? 0 : -1))
-            if (r4 != 0) goto L_0x0033
+            int r6 = (r4 > r2 ? 1 : (r4 == r2 ? 0 : -1))
+            if (r6 != 0) goto L_0x0033
             r4 = 1
             goto L_0x0034
         L_0x0033:
@@ -312,10 +312,10 @@ public final class LongMath {
         if (r11 > 0) goto L_0x0062;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:22:0x0054, code lost:
-        if (r9 > 0) goto L_0x0062;
+        if (r10 > 0) goto L_0x0062;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:23:0x0057, code lost:
-        if (r9 < 0) goto L_0x0062;
+        if (r10 < 0) goto L_0x0062;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public static long divide(long r9, long r11, java.math.RoundingMode r13) {
@@ -332,9 +332,9 @@ public final class LongMath {
             long r9 = r9 ^ r11
             r7 = 63
             long r9 = r9 >> r7
-            int r9 = (int) r9
-            r10 = 1
-            r9 = r9 | r10
+            int r10 = (int) r9
+            r9 = 1
+            r10 = r10 | r9
             int[] r7 = com.google.common.math.LongMath.AnonymousClass1.$SwitchMap$java$math$RoundingMode
             int r8 = r13.ordinal()
             r7 = r7[r8]
@@ -363,17 +363,17 @@ public final class LongMath {
             if (r11 != 0) goto L_0x0051
             java.math.RoundingMode r11 = java.math.RoundingMode.HALF_UP
             if (r13 != r11) goto L_0x003d
-            r11 = r10
+            r11 = 1
             goto L_0x003e
         L_0x003d:
-            r11 = r8
+            r11 = 0
         L_0x003e:
             java.math.RoundingMode r12 = java.math.RoundingMode.HALF_EVEN
             if (r13 != r12) goto L_0x0044
-            r12 = r10
+            r12 = 1
             goto L_0x0045
         L_0x0044:
-            r12 = r8
+            r12 = 0
         L_0x0045:
             r2 = 1
             long r2 = r2 & r0
@@ -381,32 +381,32 @@ public final class LongMath {
             if (r13 == 0) goto L_0x004d
             goto L_0x004e
         L_0x004d:
-            r10 = r8
+            r9 = 0
         L_0x004e:
-            r10 = r10 & r12
-            r10 = r10 | r11
+            r9 = r9 & r12
+            r9 = r9 | r11
             goto L_0x0062
         L_0x0051:
             if (r11 <= 0) goto L_0x0061
             goto L_0x0062
         L_0x0054:
-            if (r9 <= 0) goto L_0x0061
+            if (r10 <= 0) goto L_0x0061
             goto L_0x0062
         L_0x0057:
-            if (r9 >= 0) goto L_0x0061
+            if (r10 >= 0) goto L_0x0061
             goto L_0x0062
         L_0x005a:
             if (r6 != 0) goto L_0x005d
             goto L_0x005e
         L_0x005d:
-            r10 = r8
+            r9 = 0
         L_0x005e:
-            com.google.common.math.MathPreconditions.checkRoundingUnnecessary(r10)
+            com.google.common.math.MathPreconditions.checkRoundingUnnecessary(r9)
         L_0x0061:
-            r10 = r8
+            r9 = 0
         L_0x0062:
-            if (r10 == 0) goto L_0x0066
-            long r9 = (long) r9
+            if (r9 == 0) goto L_0x0066
+            long r9 = (long) r10
             long r0 = r0 + r9
         L_0x0066:
             return r0
@@ -472,66 +472,77 @@ public final class LongMath {
     }
 
     public static long checkedMultiply(long j, long j2) {
-        int numberOfLeadingZeros = Long.numberOfLeadingZeros(j) + Long.numberOfLeadingZeros(~j) + Long.numberOfLeadingZeros(j2) + Long.numberOfLeadingZeros(~j2);
+        long j3 = j;
+        long j4 = j2;
+        int numberOfLeadingZeros = Long.numberOfLeadingZeros(j) + Long.numberOfLeadingZeros(~j3) + Long.numberOfLeadingZeros(j2) + Long.numberOfLeadingZeros(~j4);
         if (numberOfLeadingZeros > 65) {
-            return j * j2;
+            return j3 * j4;
         }
         MathPreconditions.checkNoOverflow(numberOfLeadingZeros >= 64, "checkedMultiply", j, j2);
-        int i = (j > 0 ? 1 : (j == 0 ? 0 : -1));
-        MathPreconditions.checkNoOverflow((i >= 0) | (j2 != Long.MIN_VALUE), "checkedMultiply", j, j2);
-        long j3 = j * j2;
-        MathPreconditions.checkNoOverflow(i == 0 || j3 / j == j2, "checkedMultiply", j, j2);
-        return j3;
+        int i = (j3 > 0 ? 1 : (j3 == 0 ? 0 : -1));
+        MathPreconditions.checkNoOverflow((i >= 0) | (j4 != Long.MIN_VALUE), "checkedMultiply", j, j2);
+        long j5 = j3 * j4;
+        MathPreconditions.checkNoOverflow(i == 0 || j5 / j3 == j4, "checkedMultiply", j, j2);
+        return j5;
     }
 
     public static long checkedPow(long j, int i) {
-        MathPreconditions.checkNonNegative("exponent", i);
-        long j2 = 1;
-        if ((j >= -2) && (j <= 2)) {
-            int i2 = (int) j;
-            if (i2 == -2) {
-                MathPreconditions.checkNoOverflow(i < 64, "checkedPow", j, (long) i);
-                return (i & 1) == 0 ? 1 << i : -1 << i;
-            } else if (i2 != -1) {
-                if (i2 != 0) {
-                    if (i2 == 1) {
+        long j2 = j;
+        int i2 = i;
+        MathPreconditions.checkNonNegative("exponent", i2);
+        boolean z = false;
+        if ((j2 >= -2) && (j2 <= 2)) {
+            int i3 = (int) j2;
+            if (i3 == -2) {
+                if (i2 < 64) {
+                    z = true;
+                }
+                MathPreconditions.checkNoOverflow(z, "checkedPow", j, (long) i2);
+                return (i2 & 1) == 0 ? 1 << i2 : -1 << i2;
+            } else if (i3 != -1) {
+                if (i3 != 0) {
+                    if (i3 == 1) {
                         return 1;
                     }
-                    if (i2 == 2) {
-                        MathPreconditions.checkNoOverflow(i < 63, "checkedPow", j, (long) i);
-                        return 1 << i;
+                    if (i3 == 2) {
+                        if (i2 < 63) {
+                            z = true;
+                        }
+                        MathPreconditions.checkNoOverflow(z, "checkedPow", j, (long) i2);
+                        return 1 << i2;
                     }
                     throw new AssertionError();
-                } else if (i == 0) {
+                } else if (i2 == 0) {
                     return 1;
                 } else {
                     return 0;
                 }
-            } else if ((i & 1) == 0) {
+            } else if ((i2 & 1) == 0) {
                 return 1;
             } else {
                 return -1;
             }
         } else {
-            long j3 = j;
-            int i3 = i;
-            while (i3 != 0) {
-                if (i3 == 1) {
-                    return checkedMultiply(j2, j3);
+            long j3 = j2;
+            long j4 = 1;
+            long j5 = j3;
+            while (i2 != 0) {
+                if (i2 == 1) {
+                    return checkedMultiply(j4, j5);
                 }
-                if ((i3 & 1) != 0) {
-                    j2 = checkedMultiply(j2, j3);
+                if ((i2 & 1) != 0) {
+                    j4 = checkedMultiply(j4, j5);
                 }
-                long j4 = j2;
-                int i4 = i3 >> 1;
+                long j6 = j4;
+                int i4 = i2 >> 1;
                 if (i4 > 0) {
-                    MathPreconditions.checkNoOverflow(-3037000499L <= j3 && j3 <= FLOOR_SQRT_MAX_LONG, "checkedPow", j3, (long) i4);
-                    j3 *= j3;
+                    MathPreconditions.checkNoOverflow(-3037000499L <= j5 && j5 <= FLOOR_SQRT_MAX_LONG, "checkedPow", j5, (long) i4);
+                    j5 *= j5;
                 }
-                i3 = i4;
-                j2 = j4;
+                j4 = j6;
+                i2 = i4;
             }
-            return j2;
+            return j4;
         }
     }
 
@@ -640,8 +651,8 @@ public final class LongMath {
             int log2 = log2(j2, RoundingMode.CEILING);
             int i3 = i - 1;
             int i4 = log2;
-            int i5 = 2;
             long j3 = j2;
+            int i5 = 2;
             long j4 = 1;
             while (i5 <= i2) {
                 i4 += log2;

@@ -201,13 +201,10 @@ public final class Multisets {
 
         public int count(@NullableDecl Object obj) {
             int count = this.unfiltered.count(obj);
-            if (count <= 0) {
+            if (count <= 0 || !this.predicate.apply(obj)) {
                 return 0;
             }
-            if (this.predicate.apply(obj)) {
-                return count;
-            }
-            return 0;
+            return count;
         }
 
         public int add(@NullableDecl E e, int i) {

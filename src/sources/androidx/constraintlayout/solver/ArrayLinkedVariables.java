@@ -368,12 +368,12 @@ public class ArrayLinkedVariables {
             r1 = 0
             r2 = 0
             r3 = 0
-            r4 = r2
-            r5 = r4
-            r6 = r5
-            r7 = r3
-            r8 = r7
             r2 = r1
+            r4 = 0
+            r5 = 0
+            r6 = 0
+            r7 = 0
+            r8 = 0
         L_0x000b:
             r9 = -1
             if (r0 == r9) goto L_0x009c
@@ -405,14 +405,14 @@ public class ArrayLinkedVariables {
             androidx.constraintlayout.solver.ArrayRow r9 = r14.mRow
             r11.removeFromRow(r9)
         L_0x0045:
-            r9 = r3
+            r9 = 0
         L_0x0046:
-            int r10 = (r9 > r3 ? 1 : (r9 == r3 ? 0 : -1))
-            r12 = 1
-            if (r10 == 0) goto L_0x0094
-            androidx.constraintlayout.solver.SolverVariable$Type r10 = r11.mType
+            r10 = 1
+            int r12 = (r9 > r3 ? 1 : (r9 == r3 ? 0 : -1))
+            if (r12 == 0) goto L_0x0094
+            androidx.constraintlayout.solver.SolverVariable$Type r12 = r11.mType
             androidx.constraintlayout.solver.SolverVariable$Type r13 = androidx.constraintlayout.solver.SolverVariable.Type.UNRESTRICTED
-            if (r10 != r13) goto L_0x0070
+            if (r12 != r13) goto L_0x0070
             if (r2 != 0) goto L_0x005b
             boolean r2 = r14.isNew(r11, r15)
         L_0x0057:
@@ -421,22 +421,22 @@ public class ArrayLinkedVariables {
             r2 = r11
             goto L_0x0094
         L_0x005b:
-            int r10 = (r7 > r9 ? 1 : (r7 == r9 ? 0 : -1))
-            if (r10 <= 0) goto L_0x0064
+            int r12 = (r7 > r9 ? 1 : (r7 == r9 ? 0 : -1))
+            if (r12 <= 0) goto L_0x0064
             boolean r2 = r14.isNew(r11, r15)
             goto L_0x0057
         L_0x0064:
             if (r5 != 0) goto L_0x0094
-            boolean r10 = r14.isNew(r11, r15)
-            if (r10 == 0) goto L_0x0094
+            boolean r12 = r14.isNew(r11, r15)
+            if (r12 == 0) goto L_0x0094
             r7 = r9
             r2 = r11
-            r5 = r12
+            r5 = 1
             goto L_0x0094
         L_0x0070:
             if (r2 != 0) goto L_0x0094
-            int r10 = (r9 > r3 ? 1 : (r9 == r3 ? 0 : -1))
-            if (r10 >= 0) goto L_0x0094
+            int r12 = (r9 > r3 ? 1 : (r9 == r3 ? 0 : -1))
+            if (r12 >= 0) goto L_0x0094
             if (r1 != 0) goto L_0x0080
             boolean r1 = r14.isNew(r11, r15)
         L_0x007c:
@@ -445,17 +445,17 @@ public class ArrayLinkedVariables {
             r1 = r11
             goto L_0x0094
         L_0x0080:
-            int r10 = (r8 > r9 ? 1 : (r8 == r9 ? 0 : -1))
-            if (r10 <= 0) goto L_0x0089
+            int r12 = (r8 > r9 ? 1 : (r8 == r9 ? 0 : -1))
+            if (r12 <= 0) goto L_0x0089
             boolean r1 = r14.isNew(r11, r15)
             goto L_0x007c
         L_0x0089:
             if (r6 != 0) goto L_0x0094
-            boolean r10 = r14.isNew(r11, r15)
-            if (r10 == 0) goto L_0x0094
+            boolean r12 = r14.isNew(r11, r15)
+            if (r12 == 0) goto L_0x0094
             r8 = r9
             r1 = r11
-            r6 = r12
+            r6 = 1
         L_0x0094:
             int[] r9 = r14.mArrayNextIndices
             r0 = r9[r0]

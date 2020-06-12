@@ -333,10 +333,9 @@ class ActionMenuPresenter extends BaseMenuPresenter implements ActionProvider.Su
         int i2;
         int i3;
         int i4;
-        boolean z;
         ActionMenuPresenter actionMenuPresenter = this;
         View view = null;
-        boolean z2 = false;
+        int i5 = 0;
         if (actionMenuPresenter.mMenu != null) {
             arrayList = actionMenuPresenter.mMenu.getVisibleItems();
             i = arrayList.size();
@@ -344,119 +343,121 @@ class ActionMenuPresenter extends BaseMenuPresenter implements ActionProvider.Su
             arrayList = null;
             i = 0;
         }
-        int i5 = actionMenuPresenter.mMaxItems;
-        int i6 = actionMenuPresenter.mActionItemWidthLimit;
+        int i6 = actionMenuPresenter.mMaxItems;
+        int i7 = actionMenuPresenter.mActionItemWidthLimit;
         int makeMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, 0);
         ViewGroup viewGroup = (ViewGroup) actionMenuPresenter.mMenuView;
-        boolean z3 = false;
-        int i7 = 0;
+        boolean z = false;
         int i8 = 0;
-        for (int i9 = 0; i9 < i; i9++) {
-            MenuItemImpl menuItemImpl = arrayList.get(i9);
+        int i9 = 0;
+        for (int i10 = 0; i10 < i; i10++) {
+            MenuItemImpl menuItemImpl = arrayList.get(i10);
             if (menuItemImpl.requiresActionButton()) {
-                i7++;
-            } else if (menuItemImpl.requestsActionButton()) {
                 i8++;
+            } else if (menuItemImpl.requestsActionButton()) {
+                i9++;
             } else {
-                z3 = true;
+                z = true;
             }
             if (actionMenuPresenter.mExpandedActionViewsExclusive && menuItemImpl.isActionViewExpanded()) {
-                i5 = 0;
+                i6 = 0;
             }
         }
-        if (actionMenuPresenter.mReserveOverflow && (z3 || i8 + i7 > i5)) {
-            i5--;
+        if (actionMenuPresenter.mReserveOverflow && (z || i9 + i8 > i6)) {
+            i6--;
         }
-        int i10 = i5 - i7;
+        int i11 = i6 - i8;
         SparseBooleanArray sparseBooleanArray = actionMenuPresenter.mActionButtonGroups;
         sparseBooleanArray.clear();
         if (actionMenuPresenter.mStrictWidthLimit) {
-            int i11 = actionMenuPresenter.mMinCellSize;
-            i2 = i6 / i11;
-            i3 = i11 + ((i6 % i11) / i2);
+            int i12 = actionMenuPresenter.mMinCellSize;
+            i2 = i7 / i12;
+            i3 = i12 + ((i7 % i12) / i2);
         } else {
             i3 = 0;
             i2 = 0;
         }
-        int i12 = 0;
         int i13 = 0;
-        while (i12 < i) {
-            MenuItemImpl menuItemImpl2 = arrayList.get(i12);
+        int i14 = 0;
+        while (i13 < i) {
+            MenuItemImpl menuItemImpl2 = arrayList.get(i13);
             if (menuItemImpl2.requiresActionButton()) {
                 View itemView = actionMenuPresenter.getItemView(menuItemImpl2, view, viewGroup);
                 if (actionMenuPresenter.mStrictWidthLimit) {
-                    i2 -= ActionMenuView.measureChildForCells(itemView, i3, i2, makeMeasureSpec, z2 ? 1 : 0);
+                    i2 -= ActionMenuView.measureChildForCells(itemView, i3, i2, makeMeasureSpec, i5);
                 } else {
                     itemView.measure(makeMeasureSpec, makeMeasureSpec);
                 }
                 int measuredWidth = itemView.getMeasuredWidth();
-                i6 -= measuredWidth;
-                if (i13 == 0) {
-                    i13 = measuredWidth;
+                i7 -= measuredWidth;
+                if (i14 == 0) {
+                    i14 = measuredWidth;
                 }
                 int groupId = menuItemImpl2.getGroupId();
                 if (groupId != 0) {
                     sparseBooleanArray.put(groupId, true);
                 }
                 menuItemImpl2.setIsActionButton(true);
-                z = z2;
                 i4 = i;
             } else if (menuItemImpl2.requestsActionButton()) {
                 int groupId2 = menuItemImpl2.getGroupId();
-                boolean z4 = sparseBooleanArray.get(groupId2);
-                boolean z5 = (i10 > 0 || z4) && i6 > 0 && (!actionMenuPresenter.mStrictWidthLimit || i2 > 0);
-                boolean z6 = z5;
+                boolean z2 = sparseBooleanArray.get(groupId2);
+                boolean z3 = (i11 > 0 || z2) && i7 > 0 && (!actionMenuPresenter.mStrictWidthLimit || i2 > 0);
+                boolean z4 = z3;
                 i4 = i;
-                if (z5) {
+                if (z3) {
                     View itemView2 = actionMenuPresenter.getItemView(menuItemImpl2, (View) null, viewGroup);
                     if (actionMenuPresenter.mStrictWidthLimit) {
                         int measureChildForCells = ActionMenuView.measureChildForCells(itemView2, i3, i2, makeMeasureSpec, 0);
                         i2 -= measureChildForCells;
                         if (measureChildForCells == 0) {
-                            z6 = false;
+                            z4 = false;
                         }
                     } else {
                         itemView2.measure(makeMeasureSpec, makeMeasureSpec);
                     }
-                    boolean z7 = z6;
+                    boolean z5 = z4;
                     int measuredWidth2 = itemView2.getMeasuredWidth();
-                    i6 -= measuredWidth2;
-                    if (i13 == 0) {
-                        i13 = measuredWidth2;
+                    i7 -= measuredWidth2;
+                    if (i14 == 0) {
+                        i14 = measuredWidth2;
                     }
-                    z5 = z7 & (!actionMenuPresenter.mStrictWidthLimit ? i6 + i13 > 0 : i6 >= 0);
+                    z3 = z5 & (!actionMenuPresenter.mStrictWidthLimit ? i7 + i14 > 0 : i7 >= 0);
                 }
-                if (z5 && groupId2 != 0) {
+                if (z3 && groupId2 != 0) {
                     sparseBooleanArray.put(groupId2, true);
-                } else if (z4) {
+                } else if (z2) {
                     sparseBooleanArray.put(groupId2, false);
-                    int i14 = 0;
-                    while (i14 < i12) {
-                        MenuItemImpl menuItemImpl3 = arrayList.get(i14);
+                    int i15 = 0;
+                    while (i15 < i13) {
+                        MenuItemImpl menuItemImpl3 = arrayList.get(i15);
                         if (menuItemImpl3.getGroupId() == groupId2) {
                             if (menuItemImpl3.isActionButton()) {
-                                i10++;
+                                i11++;
                             }
                             menuItemImpl3.setIsActionButton(false);
                         }
-                        i14++;
+                        i15++;
                     }
                 }
-                if (z5) {
-                    i10--;
+                if (z3) {
+                    i11--;
                 }
-                menuItemImpl2.setIsActionButton(z5);
-                z = false;
+                menuItemImpl2.setIsActionButton(z3);
             } else {
-                z = z2;
                 i4 = i;
-                menuItemImpl2.setIsActionButton(z);
+                menuItemImpl2.setIsActionButton(false);
+                i13++;
+                actionMenuPresenter = this;
+                i = i4;
+                view = null;
+                i5 = 0;
             }
-            i12++;
-            z2 = z;
+            i13++;
+            actionMenuPresenter = this;
             i = i4;
             view = null;
-            actionMenuPresenter = this;
+            i5 = 0;
         }
         return true;
     }

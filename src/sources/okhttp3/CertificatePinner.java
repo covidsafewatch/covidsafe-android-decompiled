@@ -251,9 +251,10 @@ public final class CertificatePinner {
                 if (!StringsKt.regionMatches$default(str, str.length() - length, this.pattern, 3, length, false, 16, (Object) null)) {
                     return false;
                 }
-                if (!(length2 == 0 || str.charAt(length2 - 1) == '.')) {
-                    return false;
+                if (length2 == 0 || str.charAt(length2 - 1) == '.') {
+                    return true;
                 }
+                return false;
             } else if (!StringsKt.startsWith$default(this.pattern, "*.", false, 2, (Object) null)) {
                 return Intrinsics.areEqual((Object) str, (Object) this.pattern);
             } else {

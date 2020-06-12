@@ -60,12 +60,9 @@ public class DatabaseConfiguration {
 
     public boolean isMigrationRequired(int i, int i2) {
         Set<Integer> set;
-        if ((i > i2) && this.allowDestructiveMigrationOnDowngrade) {
-            return false;
+        if ((!(i > i2) || !this.allowDestructiveMigrationOnDowngrade) && this.requireMigration && ((set = this.mMigrationNotRequiredFrom) == null || !set.contains(Integer.valueOf(i)))) {
+            return true;
         }
-        if (!this.requireMigration || ((set = this.mMigrationNotRequiredFrom) != null && set.contains(Integer.valueOf(i)))) {
-            return false;
-        }
-        return true;
+        return false;
     }
 }

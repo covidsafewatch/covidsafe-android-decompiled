@@ -60,7 +60,7 @@ public final class LockFreeTaskQueueCore<E> {
 
     public final int getSize() {
         long j = this._state;
-        return (((int) ((j & TAIL_MASK) >> 30)) - ((int) ((HEAD_MASK & j) >> 0))) & MAX_CAPACITY_MASK;
+        return 1073741823 & (((int) ((j & TAIL_MASK) >> 30)) - ((int) ((HEAD_MASK & j) >> 0)));
     }
 
     private final LockFreeTaskQueueCore<E> fillPlaceholder(int i, E e) {
@@ -180,7 +180,7 @@ public final class LockFreeTaskQueueCore<E> {
     }
 
     /* JADX WARNING: Removed duplicated region for block: B:19:0x006a A[LOOP:1: B:19:0x006a->B:22:0x007c, LOOP_START, PHI: r0 
-      PHI: (r0v14 kotlinx.coroutines.internal.LockFreeTaskQueueCore) = (r0v13 kotlinx.coroutines.internal.LockFreeTaskQueueCore), (r0v16 kotlinx.coroutines.internal.LockFreeTaskQueueCore) binds: [B:18:0x0060, B:22:0x007c] A[DONT_GENERATE, DONT_INLINE]] */
+      PHI: (r0v16 kotlinx.coroutines.internal.LockFreeTaskQueueCore) = (r0v15 kotlinx.coroutines.internal.LockFreeTaskQueueCore), (r0v18 kotlinx.coroutines.internal.LockFreeTaskQueueCore) binds: [B:18:0x0060, B:22:0x007c] A[DONT_GENERATE, DONT_INLINE]] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public final int addLast(E r13) {
         /*
@@ -190,8 +190,8 @@ public final class LockFreeTaskQueueCore<E> {
             r0 = 3458764513820540928(0x3000000000000000, double:1.727233711018889E-77)
             long r0 = r0 & r2
             r6 = 0
-            int r0 = (r0 > r6 ? 1 : (r0 == r6 ? 0 : -1))
-            if (r0 == 0) goto L_0x0012
+            int r4 = (r0 > r6 ? 1 : (r0 == r6 ? 0 : -1))
+            if (r4 == 0) goto L_0x0012
             kotlinx.coroutines.internal.LockFreeTaskQueueCore$Companion r13 = Companion
             int r13 = r13.addFailReason(r2)
             return r13
@@ -200,34 +200,34 @@ public final class LockFreeTaskQueueCore<E> {
             long r0 = r0 & r2
             r8 = 0
             long r0 = r0 >> r8
-            int r0 = (int) r0
+            int r1 = (int) r0
             r4 = 1152921503533105152(0xfffffffc0000000, double:1.2882296003504729E-231)
             long r4 = r4 & r2
-            r1 = 30
-            long r4 = r4 >> r1
+            r0 = 30
+            long r4 = r4 >> r0
             int r9 = (int) r4
             int r10 = r12.mask
-            int r1 = r9 + 2
-            r1 = r1 & r10
-            r4 = r0 & r10
+            int r0 = r9 + 2
+            r0 = r0 & r10
+            r4 = r1 & r10
             r5 = 1
-            if (r1 != r4) goto L_0x002e
+            if (r0 != r4) goto L_0x002e
             return r5
         L_0x002e:
-            boolean r1 = r12.singleConsumer
+            boolean r0 = r12.singleConsumer
             r4 = 1073741823(0x3fffffff, float:1.9999999)
-            if (r1 != 0) goto L_0x004d
-            java.util.concurrent.atomic.AtomicReferenceArray r1 = r12.array
+            if (r0 != 0) goto L_0x004d
+            java.util.concurrent.atomic.AtomicReferenceArray r0 = r12.array
             r11 = r9 & r10
-            java.lang.Object r1 = r1.get(r11)
-            if (r1 == 0) goto L_0x004d
-            int r1 = r12.capacity
+            java.lang.Object r0 = r0.get(r11)
+            if (r0 == 0) goto L_0x004d
+            int r0 = r12.capacity
             r2 = 1024(0x400, float:1.435E-42)
-            if (r1 < r2) goto L_0x004c
-            int r9 = r9 - r0
-            r0 = r9 & r4
-            int r1 = r1 >> 1
-            if (r0 <= r1) goto L_0x0000
+            if (r0 < r2) goto L_0x004c
+            int r9 = r9 - r1
+            r1 = r9 & r4
+            int r0 = r0 >> 1
+            if (r1 <= r0) goto L_0x0000
         L_0x004c:
             return r5
         L_0x004d:
@@ -249,8 +249,8 @@ public final class LockFreeTaskQueueCore<E> {
             long r1 = r0._state
             r3 = 1152921504606846976(0x1000000000000000, double:1.2882297539194267E-231)
             long r1 = r1 & r3
-            int r1 = (r1 > r6 ? 1 : (r1 == r6 ? 0 : -1))
-            if (r1 != 0) goto L_0x0074
+            int r3 = (r1 > r6 ? 1 : (r1 == r6 ? 0 : -1))
+            if (r3 != 0) goto L_0x0074
             goto L_0x007f
         L_0x0074:
             kotlinx.coroutines.internal.LockFreeTaskQueueCore r0 = r0.next()
@@ -270,11 +270,12 @@ public final class LockFreeTaskQueueCore<E> {
                 return REMOVE_FROZEN;
             }
             int i = (int) ((HEAD_MASK & j) >> 0);
-            int i2 = this.mask;
-            if ((((int) ((TAIL_MASK & j) >> 30)) & i2) == (i & i2)) {
+            int i2 = (int) ((TAIL_MASK & j) >> 30);
+            int i3 = this.mask;
+            if ((i2 & i3) == (i & i3)) {
                 return null;
             }
-            Object obj = this.array.get(i2 & i);
+            Object obj = this.array.get(i3 & i);
             if (obj == null) {
                 if (this.singleConsumer) {
                     return null;
@@ -282,14 +283,14 @@ public final class LockFreeTaskQueueCore<E> {
             } else if (obj instanceof Placeholder) {
                 return null;
             } else {
-                int i3 = (i + 1) & MAX_CAPACITY_MASK;
-                if (_state$FU.compareAndSet(this, j, Companion.updateHead(j, i3))) {
+                int i4 = (i + 1) & MAX_CAPACITY_MASK;
+                if (_state$FU.compareAndSet(this, j, Companion.updateHead(j, i4))) {
                     this.array.set(this.mask & i, (Object) null);
                     return obj;
                 } else if (this.singleConsumer) {
                     LockFreeTaskQueueCore lockFreeTaskQueueCore = this;
                     do {
-                        lockFreeTaskQueueCore = lockFreeTaskQueueCore.removeSlowPath(i, i3);
+                        lockFreeTaskQueueCore = lockFreeTaskQueueCore.removeSlowPath(i, i4);
                     } while (lockFreeTaskQueueCore != null);
                     return obj;
                 }

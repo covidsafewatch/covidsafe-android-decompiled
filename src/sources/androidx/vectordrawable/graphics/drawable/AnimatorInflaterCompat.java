@@ -113,29 +113,29 @@ public class AnimatorInflaterCompat {
             r1 = 1
             r2 = 0
             if (r0 == 0) goto L_0x000a
-            r3 = r1
+            r3 = 1
             goto L_0x000b
         L_0x000a:
-            r3 = r2
+            r3 = 0
         L_0x000b:
             if (r3 == 0) goto L_0x0010
             int r0 = r0.type
             goto L_0x0011
         L_0x0010:
-            r0 = r2
+            r0 = 0
         L_0x0011:
             android.util.TypedValue r4 = r11.peekValue(r14)
             if (r4 == 0) goto L_0x0019
-            r5 = r1
+            r5 = 1
             goto L_0x001a
         L_0x0019:
-            r5 = r2
+            r5 = 0
         L_0x001a:
             if (r5 == 0) goto L_0x001f
             int r4 = r4.type
             goto L_0x0020
         L_0x001f:
-            r4 = r2
+            r4 = 0
         L_0x0020:
             r6 = 4
             r7 = 3
@@ -148,16 +148,16 @@ public class AnimatorInflaterCompat {
             boolean r12 = isColorType(r4)
             if (r12 == 0) goto L_0x0036
         L_0x0034:
-            r12 = r7
+            r12 = 3
             goto L_0x0037
         L_0x0036:
-            r12 = r2
+            r12 = 0
         L_0x0037:
             if (r12 != 0) goto L_0x003b
-            r6 = r1
+            r6 = 1
             goto L_0x003c
         L_0x003b:
-            r6 = r2
+            r6 = 0
         L_0x003c:
             r8 = 0
             r9 = 2
@@ -506,7 +506,7 @@ public class AnimatorInflaterCompat {
             android.animation.ValueAnimator r4 = (android.animation.ValueAnimator) r4
             r4.setValues(r1)
         L_0x00b3:
-            r14 = r2
+            r14 = 1
         L_0x00b4:
             if (r11 == 0) goto L_0x000e
             if (r14 != 0) goto L_0x000e
@@ -733,10 +733,10 @@ public class AnimatorInflaterCompat {
             android.animation.Keyframe r12 = (android.animation.Keyframe) r12
             float r0 = r12.getFraction()
             r2 = 1065353216(0x3f800000, float:1.0)
-            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            r5 = 0
-            if (r4 >= 0) goto L_0x0077
-            int r0 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
+            r4 = 0
+            int r5 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r5 >= 0) goto L_0x0077
+            int r0 = (r0 > r4 ? 1 : (r0 == r4 ? 0 : -1))
             if (r0 >= 0) goto L_0x006a
             r12.setFraction(r2)
             goto L_0x0077
@@ -747,14 +747,14 @@ public class AnimatorInflaterCompat {
             int r9 = r9 + 1
         L_0x0077:
             float r12 = r11.getFraction()
-            int r0 = (r12 > r5 ? 1 : (r12 == r5 ? 0 : -1))
+            int r0 = (r12 > r4 ? 1 : (r12 == r4 ? 0 : -1))
             if (r0 == 0) goto L_0x0090
-            int r12 = (r12 > r5 ? 1 : (r12 == r5 ? 0 : -1))
+            int r12 = (r12 > r4 ? 1 : (r12 == r4 ? 0 : -1))
             if (r12 >= 0) goto L_0x0087
-            r11.setFraction(r5)
+            r11.setFraction(r4)
             goto L_0x0090
         L_0x0087:
-            android.animation.Keyframe r11 = createNewKeyframe(r11, r5)
+            android.animation.Keyframe r11 = createNewKeyframe(r11, r4)
             r1.add(r10, r11)
             int r9 = r9 + 1
         L_0x0090:
@@ -764,10 +764,10 @@ public class AnimatorInflaterCompat {
             if (r10 >= r9) goto L_0x00dc
             r12 = r11[r10]
             float r0 = r12.getFraction()
-            int r0 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
+            int r0 = (r0 > r4 ? 1 : (r0 == r4 ? 0 : -1))
             if (r0 >= 0) goto L_0x00d9
             if (r10 != 0) goto L_0x00a7
-            r12.setFraction(r5)
+            r12.setFraction(r4)
             goto L_0x00d9
         L_0x00a7:
             int r0 = r9 + -1
@@ -779,10 +779,10 @@ public class AnimatorInflaterCompat {
             r1 = r10
         L_0x00b2:
             if (r12 >= r0) goto L_0x00c5
-            r4 = r11[r12]
-            float r4 = r4.getFraction()
-            int r4 = (r4 > r5 ? 1 : (r4 == r5 ? 0 : -1))
-            if (r4 < 0) goto L_0x00bf
+            r5 = r11[r12]
+            float r5 = r5.getFraction()
+            int r5 = (r5 > r4 ? 1 : (r5 == r4 ? 0 : -1))
+            if (r5 < 0) goto L_0x00bf
             goto L_0x00c5
         L_0x00bf:
             int r1 = r12 + 1

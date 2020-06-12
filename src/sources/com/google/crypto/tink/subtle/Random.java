@@ -26,4 +26,8 @@ public final class Random {
     public static final int randInt(int i) {
         return localRandom.get().nextInt(i);
     }
+
+    public static final int randInt() {
+        return localRandom.get().nextInt();
+    }
 }

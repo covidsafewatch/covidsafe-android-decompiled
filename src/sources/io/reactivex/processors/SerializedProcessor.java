@@ -115,7 +115,7 @@ final class SerializedProcessor<T> extends FlowableProcessor<T> {
         L_0x002a:
             r0 = 0
             r2.emitting = r1     // Catch:{ all -> 0x003b }
-            r1 = r0
+            r1 = 0
         L_0x002e:
             monitor-exit(r2)     // Catch:{ all -> 0x003b }
             if (r1 == 0) goto L_0x0035

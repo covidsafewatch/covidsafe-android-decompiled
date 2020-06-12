@@ -159,17 +159,17 @@ public final class SegmentedByteString extends ByteString {
                     Object[] objArr = (Object[]) bArr;
                     int[] iArr = new int[(objArr.length * 2)];
                     if (segment <= segment2) {
-                        int i5 = 0;
-                        int i6 = segment;
+                        int i5 = segment;
+                        int i6 = 0;
                         while (true) {
-                            iArr[i5] = Math.min(getDirectory$okio()[i6] - i, i4);
-                            int i7 = i5 + 1;
-                            iArr[i5 + objArr.length] = getDirectory$okio()[((Object[]) getSegments$okio()).length + i6];
-                            if (i6 == segment2) {
+                            iArr[i6] = Math.min(getDirectory$okio()[i5] - i, i4);
+                            int i7 = i6 + 1;
+                            iArr[i6 + objArr.length] = getDirectory$okio()[((Object[]) getSegments$okio()).length + i5];
+                            if (i5 == segment2) {
                                 break;
                             }
-                            i6++;
-                            i5 = i7;
+                            i5++;
+                            i6 = i7;
                         }
                     }
                     if (segment != 0) {
@@ -329,11 +329,8 @@ public final class SegmentedByteString extends ByteString {
         }
         if (obj instanceof ByteString) {
             ByteString byteString = (ByteString) obj;
-            if (byteString.size() == size() && rangeEquals(0, byteString, 0, size())) {
-                return true;
-            }
+            return byteString.size() == size() && rangeEquals(0, byteString, 0, size());
         }
-        return false;
     }
 
     public int hashCode() {

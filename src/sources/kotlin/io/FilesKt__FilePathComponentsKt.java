@@ -84,10 +84,10 @@ class FilesKt__FilePathComponentsKt {
             int r9 = r3.length()
             r0 = 1
             if (r9 != 0) goto L_0x0031
-            r9 = r0
+            r9 = 1
             goto L_0x0032
         L_0x0031:
-            r9 = r1
+            r9 = 0
         L_0x0032:
             if (r9 == 0) goto L_0x0039
             java.util.List r9 = kotlin.collections.CollectionsKt.emptyList()

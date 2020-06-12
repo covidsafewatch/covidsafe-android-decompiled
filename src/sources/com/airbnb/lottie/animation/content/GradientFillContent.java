@@ -154,10 +154,7 @@ public class GradientFillContent implements DrawingContent, BaseKeyframeAnimatio
         float f = value.x;
         float f2 = value.y;
         float hypot = (float) Math.hypot((double) (value2.x - f), (double) (value2.y - f2));
-        if (hypot <= 0.0f) {
-            hypot = 0.001f;
-        }
-        RadialGradient radialGradient2 = new RadialGradient(f, f2, hypot, applyDynamicColorsIfNeeded, positions, Shader.TileMode.CLAMP);
+        RadialGradient radialGradient2 = new RadialGradient(f, f2, hypot <= 0.0f ? 0.001f : hypot, applyDynamicColorsIfNeeded, positions, Shader.TileMode.CLAMP);
         this.radialGradientCache.put(gradientHash, radialGradient2);
         return radialGradient2;
     }

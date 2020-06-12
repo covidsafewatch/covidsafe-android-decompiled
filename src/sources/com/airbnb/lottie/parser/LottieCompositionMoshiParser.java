@@ -38,10 +38,10 @@ public class LottieCompositionMoshiParser {
         SparseArrayCompat sparseArrayCompat = new SparseArrayCompat();
         LottieComposition lottieComposition = new LottieComposition();
         jsonReader.beginObject();
+        int i = 0;
         float f = 0.0f;
         float f2 = 0.0f;
         float f3 = 0.0f;
-        int i = 0;
         int i2 = 0;
         while (jsonReader.hasNext()) {
             switch (jsonReader2.selectName(NAMES)) {
@@ -133,11 +133,11 @@ public class LottieCompositionMoshiParser {
             ArrayList arrayList = new ArrayList();
             LongSparseArray longSparseArray = new LongSparseArray();
             jsonReader.beginObject();
-            int i = 0;
-            int i2 = 0;
             String str = null;
             String str2 = null;
             String str3 = null;
+            int i = 0;
+            int i2 = 0;
             while (jsonReader.hasNext()) {
                 int selectName = jsonReader.selectName(ASSETS_NAMES);
                 if (selectName == 0) {

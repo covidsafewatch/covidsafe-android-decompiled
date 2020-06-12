@@ -215,8 +215,8 @@ class AdapterHelper implements OpReorderer.Callback {
                 if (updateOp.cmd == 4) {
                     i2 += i4;
                 }
-                i4 = 1;
                 updatePositionWithPostponed = updatePositionWithPostponed2;
+                i4 = 1;
             }
         }
         Object obj = updateOp.payload;

@@ -200,11 +200,7 @@ public class AppSettingsDialog implements Parcelable {
                 i = AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE;
             }
             this.mRequestCode = i;
-            int i2 = 0;
-            if (this.mOpenInNewTask) {
-                i2 = 268435456;
-            }
-            return new AppSettingsDialog(this.mActivityOrFragment, this.mThemeResId, this.mRationale, this.mTitle, this.mPositiveButtonText, this.mNegativeButtonText, this.mRequestCode, i2);
+            return new AppSettingsDialog(this.mActivityOrFragment, this.mThemeResId, this.mRationale, this.mTitle, this.mPositiveButtonText, this.mNegativeButtonText, this.mRequestCode, this.mOpenInNewTask ? 268435456 : 0);
         }
     }
 }

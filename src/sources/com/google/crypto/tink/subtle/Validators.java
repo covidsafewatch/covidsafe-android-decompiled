@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 public final class Validators {
     private static final Pattern GCP_KMS_CRYPTO_KEY_PATTERN = Pattern.compile(String.format("^projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s$", new Object[]{URI_UNRESERVED_CHARS, URI_UNRESERVED_CHARS, URI_UNRESERVED_CHARS, URI_UNRESERVED_CHARS}), 2);
     private static final Pattern GCP_KMS_CRYPTO_KEY_VERSION_PATTERN = Pattern.compile(String.format("^projects/%s/locations/%s/keyRings/%s/cryptoKeys/%s/cryptoKeyVersions/%s$", new Object[]{URI_UNRESERVED_CHARS, URI_UNRESERVED_CHARS, URI_UNRESERVED_CHARS, URI_UNRESERVED_CHARS, URI_UNRESERVED_CHARS}), 2);
+    private static final int MIN_RSA_MODULUS_SIZE = 2048;
     private static final String TYPE_URL_PREFIX = "type.googleapis.com/";
     private static final String URI_UNRESERVED_CHARS = "([0-9a-zA-Z\\-\\.\\_~])+";
 
@@ -23,7 +24,7 @@ public final class Validators {
 
     public static void validateAesKeySize(int i) throws InvalidAlgorithmParameterException {
         if (i != 16 && i != 32) {
-            throw new InvalidAlgorithmParameterException("invalid key size; only 128-bit and 256-bit AES keys are supported");
+            throw new InvalidAlgorithmParameterException(String.format("invalid key size %d; only 128-bit and 256-bit AES keys are supported", new Object[]{Integer.valueOf(i * 8)}));
         }
     }
 
@@ -53,13 +54,13 @@ public final class Validators {
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0012 }
             L_0x0012:
                 int[] r0 = $SwitchMap$com$google$crypto$tink$subtle$Enums$HashType     // Catch:{ NoSuchFieldError -> 0x001d }
-                com.google.crypto.tink.subtle.Enums$HashType r1 = com.google.crypto.tink.subtle.Enums.HashType.SHA512     // Catch:{ NoSuchFieldError -> 0x001d }
+                com.google.crypto.tink.subtle.Enums$HashType r1 = com.google.crypto.tink.subtle.Enums.HashType.SHA384     // Catch:{ NoSuchFieldError -> 0x001d }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x001d }
                 r2 = 2
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x001d }
             L_0x001d:
                 int[] r0 = $SwitchMap$com$google$crypto$tink$subtle$Enums$HashType     // Catch:{ NoSuchFieldError -> 0x0028 }
-                com.google.crypto.tink.subtle.Enums$HashType r1 = com.google.crypto.tink.subtle.Enums.HashType.SHA1     // Catch:{ NoSuchFieldError -> 0x0028 }
+                com.google.crypto.tink.subtle.Enums$HashType r1 = com.google.crypto.tink.subtle.Enums.HashType.SHA512     // Catch:{ NoSuchFieldError -> 0x0028 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0028 }
                 r2 = 3
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0028 }
@@ -72,11 +73,14 @@ public final class Validators {
 
     public static void validateSignatureHash(Enums.HashType hashType) throws GeneralSecurityException {
         int i = AnonymousClass1.$SwitchMap$com$google$crypto$tink$subtle$Enums$HashType[hashType.ordinal()];
-        if (i != 1 && i != 2) {
-            if (i != 3) {
-                throw new GeneralSecurityException("Unsupported hash " + hashType);
-            }
-            throw new GeneralSecurityException("SHA1 is not safe for signature");
+        if (i != 1 && i != 2 && i != 3) {
+            throw new GeneralSecurityException("Unsupported hash: " + hashType.name());
+        }
+    }
+
+    public static void validateRsaModulusSize(int i) throws GeneralSecurityException {
+        if (i < 2048) {
+            throw new GeneralSecurityException(String.format("Modulus size is %d; only modulus size >= 2048-bit is supported", new Object[]{Integer.valueOf(i)}));
         }
     }
 

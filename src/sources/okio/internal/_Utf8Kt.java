@@ -39,7 +39,7 @@ public final class _Utf8Kt {
             int r3 = r2 - r1
             char[] r3 = new char[r3]
             r4 = 0
-            r5 = r4
+            r5 = 0
         L_0x0018:
             if (r1 >= r2) goto L_0x01a4
             byte r6 = r0[r1]
@@ -85,7 +85,7 @@ public final class _Utf8Kt {
             r8 = 1
             goto L_0x0059
         L_0x0058:
-            r8 = r4
+            r8 = 0
         L_0x0059:
             if (r8 != 0) goto L_0x0061
             char r6 = (char) r11
@@ -129,7 +129,7 @@ public final class _Utf8Kt {
             r5 = 1
             goto L_0x0097
         L_0x0096:
-            r5 = r4
+            r5 = 0
         L_0x0097:
             if (r5 != 0) goto L_0x0073
             goto L_0x004c
@@ -142,7 +142,7 @@ public final class _Utf8Kt {
             r9 = 1
             goto L_0x00a7
         L_0x00a6:
-            r9 = r4
+            r9 = 0
         L_0x00a7:
             if (r9 != 0) goto L_0x00af
             char r6 = (char) r11
@@ -156,7 +156,7 @@ public final class _Utf8Kt {
             r12 = 1
             goto L_0x00b8
         L_0x00b7:
-            r12 = r4
+            r12 = 0
         L_0x00b8:
             if (r12 != 0) goto L_0x00c0
             char r6 = (char) r11
@@ -190,7 +190,7 @@ public final class _Utf8Kt {
             int r7 = r5 + 1
             r3[r5] = r6
         L_0x00e4:
-            r9 = r15
+            r9 = 3
             goto L_0x0074
         L_0x00e6:
             int r6 = r6 >> 3
@@ -207,7 +207,7 @@ public final class _Utf8Kt {
             r5 = 1
             goto L_0x00ff
         L_0x00fe:
-            r5 = r4
+            r5 = 0
         L_0x00ff:
             if (r5 != 0) goto L_0x0102
             goto L_0x0118
@@ -220,12 +220,12 @@ public final class _Utf8Kt {
             r12 = 1
             goto L_0x010f
         L_0x010e:
-            r12 = r4
+            r12 = 0
         L_0x010f:
             if (r12 != 0) goto L_0x0112
             goto L_0x0115
         L_0x0112:
-            r9 = r15
+            r9 = 3
             goto L_0x0199
         L_0x0115:
             r9 = 2
@@ -242,7 +242,7 @@ public final class _Utf8Kt {
             r9 = 1
             goto L_0x0128
         L_0x0127:
-            r9 = r4
+            r9 = 0
         L_0x0128:
             if (r9 != 0) goto L_0x012f
             int r6 = r5 + 1
@@ -256,7 +256,7 @@ public final class _Utf8Kt {
             r12 = 1
             goto L_0x013a
         L_0x0139:
-            r12 = r4
+            r12 = 0
         L_0x013a:
             if (r12 != 0) goto L_0x0141
             int r6 = r5 + 1
@@ -269,7 +269,7 @@ public final class _Utf8Kt {
             r12 = 1
             goto L_0x014a
         L_0x0149:
-            r12 = r4
+            r12 = 0
         L_0x014a:
             if (r12 != 0) goto L_0x0151
             int r6 = r5 + 1

@@ -970,14 +970,14 @@ public final class ViewPager2 extends ViewGroup {
             int i2;
             if (ViewPager2.this.getAdapter() == null) {
                 i2 = 0;
-                i = 0;
             } else if (ViewPager2.this.getOrientation() == 1) {
                 i2 = ViewPager2.this.getAdapter().getItemCount();
-                i = 0;
             } else {
                 i = ViewPager2.this.getAdapter().getItemCount();
                 i2 = 0;
+                AccessibilityNodeInfoCompat.wrap(accessibilityNodeInfo).setCollectionInfo(AccessibilityNodeInfoCompat.CollectionInfoCompat.obtain(i2, i, false, 0));
             }
+            i = 0;
             AccessibilityNodeInfoCompat.wrap(accessibilityNodeInfo).setCollectionInfo(AccessibilityNodeInfoCompat.CollectionInfoCompat.obtain(i2, i, false, 0));
         }
 

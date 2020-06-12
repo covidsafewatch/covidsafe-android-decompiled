@@ -293,7 +293,7 @@ public class ActionBarContextView extends AbsActionBarView {
             View view2 = this.mCustomView;
             if (view2 != null) {
                 ViewGroup.LayoutParams layoutParams = view2.getLayoutParams();
-                int i6 = layoutParams.width != -2 ? 1073741824 : Integer.MIN_VALUE;
+                int i6 = layoutParams.width != -2 ? Ints.MAX_POWER_OF_TWO : Integer.MIN_VALUE;
                 if (layoutParams.width >= 0) {
                     paddingLeft = Math.min(layoutParams.width, paddingLeft);
                 }

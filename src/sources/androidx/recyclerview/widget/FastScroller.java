@@ -296,7 +296,9 @@ class FastScroller extends RecyclerView.ItemDecoration implements RecyclerView.O
                 this.mVerticalDragY = (float) ((int) motionEvent.getY());
             }
             setState(2);
-        } else if (i != 2) {
+        } else if (i == 2) {
+            return true;
+        } else {
             return false;
         }
         return true;

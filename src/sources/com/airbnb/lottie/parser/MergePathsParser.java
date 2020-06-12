@@ -12,8 +12,8 @@ class MergePathsParser {
 
     static MergePaths parse(JsonReader jsonReader) throws IOException {
         String str = null;
-        boolean z = false;
         MergePaths.MergePathsMode mergePathsMode = null;
+        boolean z = false;
         while (jsonReader.hasNext()) {
             int selectName = jsonReader.selectName(NAMES);
             if (selectName == 0) {

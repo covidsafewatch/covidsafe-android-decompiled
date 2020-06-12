@@ -68,8 +68,8 @@ public interface SupportSQLiteOpenHelper {
          */
         /* JADX WARNING: Failed to process nested try/catch */
         /* JADX WARNING: Missing exception handler attribute for start block: B:8:0x0030 */
-        /* JADX WARNING: Removed duplicated region for block: B:19:0x0058  */
-        /* JADX WARNING: Removed duplicated region for block: B:23:0x0070  */
+        /* JADX WARNING: Removed duplicated region for block: B:19:0x0059  */
+        /* JADX WARNING: Removed duplicated region for block: B:23:0x0071  */
         /* JADX WARNING: Removed duplicated region for block: B:7:0x002e A[ExcHandler: all (r1v3 'th' java.lang.Throwable A[CUSTOM_DECLARE]), PHI: r0 
           PHI: (r0v10 java.util.List<android.util.Pair<java.lang.String, java.lang.String>>) = (r0v3 java.util.List<android.util.Pair<java.lang.String, java.lang.String>>), (r0v4 java.util.List<android.util.Pair<java.lang.String, java.lang.String>>), (r0v4 java.util.List<android.util.Pair<java.lang.String, java.lang.String>>) binds: [B:5:0x0029, B:8:0x0030, B:9:?] A[DONT_GENERATE, DONT_INLINE], Splitter:B:5:0x0029] */
         /* Code decompiled incorrectly, please refer to instructions dump. */
@@ -99,7 +99,7 @@ public interface SupportSQLiteOpenHelper {
                 goto L_0x0034
             L_0x0030:
                 r3.close()     // Catch:{ IOException -> 0x0056, all -> 0x002e }
-                goto L_0x0056
+                goto L_0x0057
             L_0x0034:
                 if (r0 == 0) goto L_0x004e
                 java.util.Iterator r3 = r0.iterator()
@@ -118,21 +118,22 @@ public interface SupportSQLiteOpenHelper {
             L_0x0055:
                 throw r1
             L_0x0056:
-                if (r0 == 0) goto L_0x0070
+            L_0x0057:
+                if (r0 == 0) goto L_0x0071
                 java.util.Iterator r3 = r0.iterator()
-            L_0x005c:
+            L_0x005d:
                 boolean r0 = r3.hasNext()
-                if (r0 == 0) goto L_0x0077
+                if (r0 == 0) goto L_0x0078
                 java.lang.Object r0 = r3.next()
                 android.util.Pair r0 = (android.util.Pair) r0
                 java.lang.Object r0 = r0.second
                 java.lang.String r0 = (java.lang.String) r0
                 r2.deleteDatabaseFile(r0)
-                goto L_0x005c
-            L_0x0070:
+                goto L_0x005d
+            L_0x0071:
                 java.lang.String r3 = r3.getPath()
                 r2.deleteDatabaseFile(r3)
-            L_0x0077:
+            L_0x0078:
                 return
             */
             throw new UnsupportedOperationException("Method not decompiled: androidx.sqlite.db.SupportSQLiteOpenHelper.Callback.onCorruption(androidx.sqlite.db.SupportSQLiteDatabase):void");

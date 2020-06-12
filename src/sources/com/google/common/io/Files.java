@@ -361,14 +361,14 @@ public final class Files {
         L_0x0041:
             boolean r5 = r4.equals(r9)
             if (r5 == 0) goto L_0x0050
-            r5 = r10
+            r5 = 1
             goto L_0x0051
         L_0x0049:
             boolean r7 = r4.equals(r1)
             if (r7 == 0) goto L_0x0050
             goto L_0x0051
         L_0x0050:
-            r5 = r6
+            r5 = -1
         L_0x0051:
             if (r5 == 0) goto L_0x0023
             if (r5 == r10) goto L_0x0059

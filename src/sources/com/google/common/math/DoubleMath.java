@@ -130,7 +130,7 @@ public final class DoubleMath {
         if (roundIntermediate >= 2.147483648E9d) {
             z = false;
         }
-        MathPreconditions.checkInRangeForRoundingInputs(z2 & z, d, roundingMode);
+        MathPreconditions.checkInRangeForRoundingInputs(z & z2, d, roundingMode);
         return (int) roundIntermediate;
     }
 
@@ -152,7 +152,7 @@ public final class DoubleMath {
         if (roundIntermediate >= MAX_LONG_AS_DOUBLE_PLUS_ONE) {
             z = false;
         }
-        if (z2 && z) {
+        if (z && z2) {
             return BigInteger.valueOf((long) roundIntermediate);
         }
         BigInteger shiftLeft = BigInteger.valueOf(DoubleUtils.getSignificand(roundIntermediate)).shiftLeft(Math.getExponent(roundIntermediate) - 52);

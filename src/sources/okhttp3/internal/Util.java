@@ -365,8 +365,8 @@ public final class Util {
 
     public static final int checkDuration(String str, long j, TimeUnit timeUnit) {
         Intrinsics.checkParameterIsNotNull(str, "name");
-        int i = (j > 0 ? 1 : (j == 0 ? 0 : -1));
         boolean z = true;
+        int i = (j > 0 ? 1 : (j == 0 ? 0 : -1));
         if (i >= 0) {
             if (timeUnit != null) {
                 long millis = timeUnit.toMillis(j);
@@ -439,10 +439,10 @@ public final class Util {
     /* JADX WARNING: Code restructure failed: missing block: B:13:0x005b, code lost:
         r11.timeout().deadlineNanoTime(r0 + r5);
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:22:0x007d, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:22:0x007e, code lost:
         if (r5 != kotlin.jvm.internal.LongCompanionObject.MAX_VALUE) goto L_0x005b;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:23:0x0080, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:23:0x0081, code lost:
         return r12;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
@@ -487,12 +487,12 @@ public final class Util {
         L_0x0053:
             okio.Timeout r11 = r11.timeout()
             r11.clearDeadline()
-            goto L_0x0080
+            goto L_0x0081
         L_0x005b:
             okio.Timeout r11 = r11.timeout()
             long r0 = r0 + r5
             r11.deadlineNanoTime(r0)
-            goto L_0x0080
+            goto L_0x0081
         L_0x0064:
             r12 = move-exception
             int r13 = (r5 > r3 ? 1 : (r5 == r3 ? 0 : -1))
@@ -511,7 +511,7 @@ public final class Util {
             int r13 = (r5 > r3 ? 1 : (r5 == r3 ? 0 : -1))
             if (r13 != 0) goto L_0x005b
             goto L_0x0053
-        L_0x0080:
+        L_0x0081:
             return r12
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.Util.skipAll(okio.Source, int, java.util.concurrent.TimeUnit):boolean");

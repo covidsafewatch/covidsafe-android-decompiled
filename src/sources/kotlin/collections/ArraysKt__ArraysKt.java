@@ -43,11 +43,8 @@ class ArraysKt__ArraysKt extends ArraysKt__ArraysJVMKt {
 
     private static final boolean isNullOrEmpty(Object[] objArr) {
         if (objArr != null) {
-            if (!(objArr.length == 0)) {
-                return false;
-            }
+            return objArr.length == 0;
         }
-        return true;
     }
 
     /* JADX WARNING: type inference failed for: r1v0, types: [R, C] */

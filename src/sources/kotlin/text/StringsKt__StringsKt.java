@@ -1034,10 +1034,7 @@ class StringsKt__StringsKt extends StringsKt__StringsJVMKt {
     }
 
     static /* synthetic */ int indexOf$StringsKt__StringsKt$default(CharSequence charSequence, CharSequence charSequence2, int i, int i2, boolean z, boolean z2, int i3, Object obj) {
-        if ((i3 & 16) != 0) {
-            z2 = false;
-        }
-        return indexOf$StringsKt__StringsKt(charSequence, charSequence2, i, i2, z, z2);
+        return indexOf$StringsKt__StringsKt(charSequence, charSequence2, i, i2, z, (i3 & 16) != 0 ? false : z2);
     }
 
     private static final int indexOf$StringsKt__StringsKt(CharSequence charSequence, CharSequence charSequence2, int i, int i2, boolean z, boolean z2) {

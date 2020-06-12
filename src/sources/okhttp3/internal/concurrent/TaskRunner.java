@@ -268,7 +268,7 @@ public final class TaskRunner {
         r0 = move-exception;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:41:0x00cd, code lost:
-        r14.coordinatorWaiting = false;
+        r15.coordinatorWaiting = false;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:42:0x00cf, code lost:
         throw r0;
@@ -278,10 +278,10 @@ public final class TaskRunner {
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public final okhttp3.internal.concurrent.Task awaitTaskToRun() {
         /*
-            r14 = this;
+            r15 = this;
             boolean r0 = okhttp3.internal.Util.assertionsEnabled
             if (r0 == 0) goto L_0x0039
-            boolean r0 = java.lang.Thread.holdsLock(r14)
+            boolean r0 = java.lang.Thread.holdsLock(r15)
             if (r0 == 0) goto L_0x000b
             goto L_0x0039
         L_0x000b:
@@ -297,24 +297,24 @@ public final class TaskRunner {
             r1.append(r2)
             java.lang.String r2 = " MUST hold lock on "
             r1.append(r2)
-            r1.append(r14)
+            r1.append(r15)
             java.lang.String r1 = r1.toString()
             r0.<init>(r1)
             java.lang.Throwable r0 = (java.lang.Throwable) r0
             throw r0
         L_0x0039:
-            java.util.List<okhttp3.internal.concurrent.TaskQueue> r0 = r14.readyQueues
+            java.util.List<okhttp3.internal.concurrent.TaskQueue> r0 = r15.readyQueues
             boolean r0 = r0.isEmpty()
             r1 = 0
             if (r0 == 0) goto L_0x0043
             return r1
         L_0x0043:
-            okhttp3.internal.concurrent.TaskRunner$Backend r0 = r14.backend
+            okhttp3.internal.concurrent.TaskRunner$Backend r0 = r15.backend
             long r2 = r0.nanoTime()
             r4 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
             r0 = r1
             okhttp3.internal.concurrent.Task r0 = (okhttp3.internal.concurrent.Task) r0
-            java.util.List<okhttp3.internal.concurrent.TaskQueue> r6 = r14.readyQueues
+            java.util.List<okhttp3.internal.concurrent.TaskQueue> r6 = r15.readyQueues
             java.util.Iterator r6 = r6.iterator()
         L_0x0057:
             boolean r7 = r6.hasNext()
@@ -330,64 +330,64 @@ public final class TaskRunner {
             long r10 = r10 - r2
             r12 = 0
             long r10 = java.lang.Math.max(r12, r10)
-            int r12 = (r10 > r12 ? 1 : (r10 == r12 ? 0 : -1))
-            if (r12 <= 0) goto L_0x0083
+            int r14 = (r10 > r12 ? 1 : (r10 == r12 ? 0 : -1))
+            if (r14 <= 0) goto L_0x0083
             long r4 = java.lang.Math.min(r10, r4)
             goto L_0x0057
         L_0x0083:
             if (r0 == 0) goto L_0x0087
-            r6 = r8
+            r6 = 1
             goto L_0x008a
         L_0x0087:
             r0 = r7
             goto L_0x0057
         L_0x0089:
-            r6 = r9
+            r6 = 0
         L_0x008a:
             if (r0 == 0) goto L_0x00a8
-            r14.beforeRun(r0)
+            r15.beforeRun(r0)
             if (r6 != 0) goto L_0x00a0
-            boolean r1 = r14.coordinatorWaiting
+            boolean r1 = r15.coordinatorWaiting
             if (r1 != 0) goto L_0x00a7
-            java.util.List<okhttp3.internal.concurrent.TaskQueue> r1 = r14.readyQueues
+            java.util.List<okhttp3.internal.concurrent.TaskQueue> r1 = r15.readyQueues
             java.util.Collection r1 = (java.util.Collection) r1
             boolean r1 = r1.isEmpty()
             r1 = r1 ^ r8
             if (r1 == 0) goto L_0x00a7
         L_0x00a0:
-            okhttp3.internal.concurrent.TaskRunner$Backend r1 = r14.backend
-            java.lang.Runnable r2 = r14.runnable
+            okhttp3.internal.concurrent.TaskRunner$Backend r1 = r15.backend
+            java.lang.Runnable r2 = r15.runnable
             r1.execute(r2)
         L_0x00a7:
             return r0
         L_0x00a8:
-            boolean r0 = r14.coordinatorWaiting
+            boolean r0 = r15.coordinatorWaiting
             if (r0 == 0) goto L_0x00b9
-            long r6 = r14.coordinatorWakeUpAt
+            long r6 = r15.coordinatorWakeUpAt
             long r6 = r6 - r2
             int r0 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
             if (r0 >= 0) goto L_0x00b8
-            okhttp3.internal.concurrent.TaskRunner$Backend r0 = r14.backend
-            r0.coordinatorNotify(r14)
+            okhttp3.internal.concurrent.TaskRunner$Backend r0 = r15.backend
+            r0.coordinatorNotify(r15)
         L_0x00b8:
             return r1
         L_0x00b9:
-            r14.coordinatorWaiting = r8
+            r15.coordinatorWaiting = r8
             long r2 = r2 + r4
-            r14.coordinatorWakeUpAt = r2
-            okhttp3.internal.concurrent.TaskRunner$Backend r0 = r14.backend     // Catch:{ InterruptedException -> 0x00c9 }
-            r0.coordinatorWait(r14, r4)     // Catch:{ InterruptedException -> 0x00c9 }
+            r15.coordinatorWakeUpAt = r2
+            okhttp3.internal.concurrent.TaskRunner$Backend r0 = r15.backend     // Catch:{ InterruptedException -> 0x00c9 }
+            r0.coordinatorWait(r15, r4)     // Catch:{ InterruptedException -> 0x00c9 }
         L_0x00c3:
-            r14.coordinatorWaiting = r9
+            r15.coordinatorWaiting = r9
             goto L_0x0039
         L_0x00c7:
             r0 = move-exception
             goto L_0x00cd
         L_0x00c9:
-            r14.cancelAll()     // Catch:{ all -> 0x00c7 }
+            r15.cancelAll()     // Catch:{ all -> 0x00c7 }
             goto L_0x00c3
         L_0x00cd:
-            r14.coordinatorWaiting = r9
+            r15.coordinatorWaiting = r9
             throw r0
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.concurrent.TaskRunner.awaitTaskToRun():okhttp3.internal.concurrent.Task");

@@ -106,7 +106,7 @@ public abstract class Random {
         return nextDouble(0.0d, d);
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:19:0x0047  */
+    /* JADX WARNING: Removed duplicated region for block: B:19:0x0049  */
     /* JADX WARNING: Removed duplicated region for block: B:21:? A[RETURN, SYNTHETIC] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public double nextDouble(double r7, double r9) {
@@ -115,28 +115,28 @@ public abstract class Random {
             kotlin.random.RandomKt.checkRangeBounds((double) r7, (double) r9)
             double r0 = r9 - r7
             boolean r2 = java.lang.Double.isInfinite(r0)
-            if (r2 == 0) goto L_0x003d
+            if (r2 == 0) goto L_0x003e
             boolean r2 = java.lang.Double.isInfinite(r7)
             r3 = 1
             r4 = 0
             if (r2 != 0) goto L_0x001b
             boolean r2 = java.lang.Double.isNaN(r7)
             if (r2 != 0) goto L_0x001b
-            r2 = r3
+            r2 = 1
             goto L_0x001c
         L_0x001b:
-            r2 = r4
+            r2 = 0
         L_0x001c:
-            if (r2 == 0) goto L_0x003d
+            if (r2 == 0) goto L_0x003e
             boolean r2 = java.lang.Double.isInfinite(r9)
             if (r2 != 0) goto L_0x002b
             boolean r2 = java.lang.Double.isNaN(r9)
             if (r2 != 0) goto L_0x002b
             goto L_0x002c
         L_0x002b:
-            r3 = r4
+            r3 = 0
         L_0x002c:
-            if (r3 == 0) goto L_0x003d
+            if (r3 == 0) goto L_0x003e
             double r0 = r6.nextDouble()
             r2 = 2
             double r2 = (double) r2
@@ -146,18 +146,18 @@ public abstract class Random {
             double r0 = r0 * r4
             double r7 = r7 + r0
             double r7 = r7 + r0
-            goto L_0x0043
-        L_0x003d:
+            goto L_0x0045
+        L_0x003e:
             double r2 = r6.nextDouble()
             double r2 = r2 * r0
             double r7 = r7 + r2
-        L_0x0043:
+        L_0x0045:
             int r0 = (r7 > r9 ? 1 : (r7 == r9 ? 0 : -1))
-            if (r0 < 0) goto L_0x0051
+            if (r0 < 0) goto L_0x0053
             kotlin.jvm.internal.DoubleCompanionObject r7 = kotlin.jvm.internal.DoubleCompanionObject.INSTANCE
             double r7 = r7.getNEGATIVE_INFINITY()
             double r7 = java.lang.Math.nextAfter(r9, r7)
-        L_0x0051:
+        L_0x0053:
             return r7
         */
         throw new UnsupportedOperationException("Method not decompiled: kotlin.random.Random.nextDouble(double, double):double");
@@ -200,22 +200,22 @@ public abstract class Random {
             goto L_0x0015
         L_0x0011:
             if (r0 < r9) goto L_0x0015
-            r0 = r2
+            r0 = 1
             goto L_0x0016
         L_0x0015:
-            r0 = r1
+            r0 = 0
         L_0x0016:
             java.lang.String r3 = "fromIndex ("
             if (r0 == 0) goto L_0x0086
             if (r8 > r9) goto L_0x001d
             goto L_0x001e
         L_0x001d:
-            r2 = r1
+            r2 = 0
         L_0x001e:
             if (r2 == 0) goto L_0x005e
             int r0 = r9 - r8
             int r0 = r0 / 4
-            r2 = r1
+            r2 = 0
         L_0x0025:
             if (r2 >= r0) goto L_0x0048
             int r3 = r6.nextInt()

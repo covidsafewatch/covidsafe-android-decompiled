@@ -130,10 +130,10 @@ public final class ObservableReplay<T> extends ConnectableObservable<T> implemen
             java.util.concurrent.atomic.AtomicBoolean r1 = r0.shouldConnect
             boolean r1 = r1.compareAndSet(r3, r2)
             if (r1 == 0) goto L_0x0039
-            r1 = r2
+            r1 = 1
             goto L_0x003a
         L_0x0039:
-            r1 = r3
+            r1 = 0
         L_0x003a:
             r5.accept(r0)     // Catch:{ all -> 0x0045 }
             if (r1 == 0) goto L_0x0044

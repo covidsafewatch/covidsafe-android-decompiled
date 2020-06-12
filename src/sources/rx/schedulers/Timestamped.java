@@ -31,9 +31,10 @@ public final class Timestamped<T> {
             if (t == t2) {
                 return true;
             }
-            if (t != null && t.equals(t2)) {
-                return true;
+            if (t == null || !t.equals(t2)) {
+                return false;
             }
+            return true;
         }
         return false;
     }

@@ -125,7 +125,7 @@ public final class OperatorOnBackpressureLatest<T> implements Observable.Operato
             if (r2 != Long.MIN_VALUE) goto L_0x001b;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:13:0x001b, code lost:
-            r4 = r8.value.get();
+            r4 = r9.value.get();
          */
         /* JADX WARNING: Code restructure failed: missing block: B:14:0x0025, code lost:
             if (r2 <= 0) goto L_0x003e;
@@ -134,8 +134,8 @@ public final class OperatorOnBackpressureLatest<T> implements Observable.Operato
             if (r4 == EMPTY) goto L_0x003e;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:17:0x002b, code lost:
-            r8.child.onNext(r4);
-            r8.value.compareAndSet(r4, EMPTY);
+            r9.child.onNext(r4);
+            r9.value.compareAndSet(r4, EMPTY);
             produced(1);
             r4 = EMPTY;
          */
@@ -143,37 +143,37 @@ public final class OperatorOnBackpressureLatest<T> implements Observable.Operato
             if (r4 != EMPTY) goto L_0x0055;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:21:0x0044, code lost:
-            if (r8.done == false) goto L_0x0055;
+            if (r9.done == false) goto L_0x0055;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:22:0x0046, code lost:
-            r2 = r8.terminal;
+            r2 = r9.terminal;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:23:0x0048, code lost:
             if (r2 == null) goto L_0x0050;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:24:0x004a, code lost:
-            r8.child.onError(r2);
+            r9.child.onError(r2);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:25:0x0050, code lost:
-            r8.child.onCompleted();
+            r9.child.onCompleted();
          */
         /* JADX WARNING: Code restructure failed: missing block: B:26:0x0055, code lost:
-            monitor-enter(r8);
+            monitor-enter(r9);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:29:0x0058, code lost:
-            if (r8.missed != false) goto L_0x005e;
+            if (r9.missed != false) goto L_0x005e;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:30:0x005a, code lost:
-            r8.emitting = false;
+            r9.emitting = false;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:32:?, code lost:
-            monitor-exit(r8);
+            monitor-exit(r9);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:34:?, code lost:
-            r8.missed = false;
+            r9.missed = false;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:35:0x0060, code lost:
-            monitor-exit(r8);
+            monitor-exit(r9);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:36:0x0062, code lost:
             r2 = th;
@@ -182,7 +182,7 @@ public final class OperatorOnBackpressureLatest<T> implements Observable.Operato
             r1 = false;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:39:?, code lost:
-            monitor-exit(r8);
+            monitor-exit(r9);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:41:?, code lost:
             throw r2;
@@ -191,9 +191,9 @@ public final class OperatorOnBackpressureLatest<T> implements Observable.Operato
             r2 = move-exception;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:43:0x0067, code lost:
-            r7 = r2;
+            r8 = r2;
             r2 = r1;
-            r1 = r7;
+            r1 = r8;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:44:0x006b, code lost:
             r2 = th;
@@ -208,10 +208,10 @@ public final class OperatorOnBackpressureLatest<T> implements Observable.Operato
             if (r2 == false) goto L_0x0071;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:48:0x0071, code lost:
-            monitor-enter(r8);
+            monitor-enter(r9);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:50:?, code lost:
-            r8.emitting = false;
+            r9.emitting = false;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:56:0x0079, code lost:
             throw r1;
@@ -225,99 +225,99 @@ public final class OperatorOnBackpressureLatest<T> implements Observable.Operato
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public void emit() {
             /*
-                r8 = this;
-                monitor-enter(r8)
-                boolean r0 = r8.emitting     // Catch:{ all -> 0x007a }
+                r9 = this;
+                monitor-enter(r9)
+                boolean r0 = r9.emitting     // Catch:{ all -> 0x007a }
                 r1 = 1
                 if (r0 == 0) goto L_0x000a
-                r8.missed = r1     // Catch:{ all -> 0x007a }
-                monitor-exit(r8)     // Catch:{ all -> 0x007a }
+                r9.missed = r1     // Catch:{ all -> 0x007a }
+                monitor-exit(r9)     // Catch:{ all -> 0x007a }
                 return
             L_0x000a:
-                r8.emitting = r1     // Catch:{ all -> 0x007a }
+                r9.emitting = r1     // Catch:{ all -> 0x007a }
                 r0 = 0
-                r8.missed = r0     // Catch:{ all -> 0x007a }
-                monitor-exit(r8)     // Catch:{ all -> 0x007a }
+                r9.missed = r0     // Catch:{ all -> 0x007a }
+                monitor-exit(r9)     // Catch:{ all -> 0x007a }
             L_0x0010:
-                long r2 = r8.get()     // Catch:{ all -> 0x006d }
+                long r2 = r9.get()     // Catch:{ all -> 0x006d }
                 r4 = -9223372036854775808
-                int r4 = (r2 > r4 ? 1 : (r2 == r4 ? 0 : -1))
-                if (r4 != 0) goto L_0x001b
+                int r6 = (r2 > r4 ? 1 : (r2 == r4 ? 0 : -1))
+                if (r6 != 0) goto L_0x001b
                 goto L_0x005d
             L_0x001b:
-                java.util.concurrent.atomic.AtomicReference<java.lang.Object> r4 = r8.value     // Catch:{ all -> 0x006d }
+                java.util.concurrent.atomic.AtomicReference<java.lang.Object> r4 = r9.value     // Catch:{ all -> 0x006d }
                 java.lang.Object r4 = r4.get()     // Catch:{ all -> 0x006d }
                 r5 = 0
-                int r2 = (r2 > r5 ? 1 : (r2 == r5 ? 0 : -1))
-                if (r2 <= 0) goto L_0x003e
+                int r7 = (r2 > r5 ? 1 : (r2 == r5 ? 0 : -1))
+                if (r7 <= 0) goto L_0x003e
                 java.lang.Object r2 = EMPTY     // Catch:{ all -> 0x006d }
                 if (r4 == r2) goto L_0x003e
-                rx.Subscriber<? super T> r2 = r8.child     // Catch:{ all -> 0x006d }
+                rx.Subscriber<? super T> r2 = r9.child     // Catch:{ all -> 0x006d }
                 r2.onNext(r4)     // Catch:{ all -> 0x006d }
-                java.util.concurrent.atomic.AtomicReference<java.lang.Object> r2 = r8.value     // Catch:{ all -> 0x006d }
+                java.util.concurrent.atomic.AtomicReference<java.lang.Object> r2 = r9.value     // Catch:{ all -> 0x006d }
                 java.lang.Object r3 = EMPTY     // Catch:{ all -> 0x006d }
                 r2.compareAndSet(r4, r3)     // Catch:{ all -> 0x006d }
                 r2 = 1
-                r8.produced(r2)     // Catch:{ all -> 0x006d }
+                r9.produced(r2)     // Catch:{ all -> 0x006d }
                 java.lang.Object r4 = EMPTY     // Catch:{ all -> 0x006d }
             L_0x003e:
                 java.lang.Object r2 = EMPTY     // Catch:{ all -> 0x006d }
                 if (r4 != r2) goto L_0x0055
-                boolean r2 = r8.done     // Catch:{ all -> 0x006d }
+                boolean r2 = r9.done     // Catch:{ all -> 0x006d }
                 if (r2 == 0) goto L_0x0055
-                java.lang.Throwable r2 = r8.terminal     // Catch:{ all -> 0x006d }
+                java.lang.Throwable r2 = r9.terminal     // Catch:{ all -> 0x006d }
                 if (r2 == 0) goto L_0x0050
-                rx.Subscriber<? super T> r3 = r8.child     // Catch:{ all -> 0x006d }
+                rx.Subscriber<? super T> r3 = r9.child     // Catch:{ all -> 0x006d }
                 r3.onError(r2)     // Catch:{ all -> 0x006d }
                 goto L_0x0055
             L_0x0050:
-                rx.Subscriber<? super T> r2 = r8.child     // Catch:{ all -> 0x006d }
+                rx.Subscriber<? super T> r2 = r9.child     // Catch:{ all -> 0x006d }
                 r2.onCompleted()     // Catch:{ all -> 0x006d }
             L_0x0055:
-                monitor-enter(r8)     // Catch:{ all -> 0x006d }
-                boolean r2 = r8.missed     // Catch:{ all -> 0x0062 }
+                monitor-enter(r9)     // Catch:{ all -> 0x006d }
+                boolean r2 = r9.missed     // Catch:{ all -> 0x0062 }
                 if (r2 != 0) goto L_0x005e
-                r8.emitting = r0     // Catch:{ all -> 0x0062 }
-                monitor-exit(r8)     // Catch:{ all -> 0x006b }
+                r9.emitting = r0     // Catch:{ all -> 0x0062 }
+                monitor-exit(r9)     // Catch:{ all -> 0x006b }
             L_0x005d:
                 return
             L_0x005e:
-                r8.missed = r0     // Catch:{ all -> 0x0062 }
-                monitor-exit(r8)     // Catch:{ all -> 0x0062 }
+                r9.missed = r0     // Catch:{ all -> 0x0062 }
+                monitor-exit(r9)     // Catch:{ all -> 0x0062 }
                 goto L_0x0010
             L_0x0062:
                 r2 = move-exception
-                r1 = r0
+                r1 = 0
             L_0x0064:
-                monitor-exit(r8)     // Catch:{ all -> 0x006b }
+                monitor-exit(r9)     // Catch:{ all -> 0x006b }
                 throw r2     // Catch:{ all -> 0x0066 }
             L_0x0066:
                 r2 = move-exception
-                r7 = r2
+                r8 = r2
                 r2 = r1
-                r1 = r7
+                r1 = r8
                 goto L_0x006f
             L_0x006b:
                 r2 = move-exception
                 goto L_0x0064
             L_0x006d:
                 r1 = move-exception
-                r2 = r0
+                r2 = 0
             L_0x006f:
                 if (r2 != 0) goto L_0x0079
-                monitor-enter(r8)
-                r8.emitting = r0     // Catch:{ all -> 0x0076 }
-                monitor-exit(r8)     // Catch:{ all -> 0x0076 }
+                monitor-enter(r9)
+                r9.emitting = r0     // Catch:{ all -> 0x0076 }
+                monitor-exit(r9)     // Catch:{ all -> 0x0076 }
                 goto L_0x0079
             L_0x0076:
                 r0 = move-exception
-                monitor-exit(r8)     // Catch:{ all -> 0x0076 }
+                monitor-exit(r9)     // Catch:{ all -> 0x0076 }
                 throw r0
             L_0x0079:
                 throw r1
             L_0x007a:
                 r0 = move-exception
-                monitor-exit(r8)     // Catch:{ all -> 0x007a }
+                monitor-exit(r9)     // Catch:{ all -> 0x007a }
                 throw r0
             */
             throw new UnsupportedOperationException("Method not decompiled: rx.internal.operators.OperatorOnBackpressureLatest.LatestEmitter.emit():void");

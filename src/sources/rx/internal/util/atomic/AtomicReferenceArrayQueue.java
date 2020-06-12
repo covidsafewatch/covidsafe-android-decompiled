@@ -34,7 +34,7 @@ abstract class AtomicReferenceArrayQueue<E> extends AbstractQueue<E> {
 
     /* access modifiers changed from: protected */
     public final int calcElementOffset(long j) {
-        return ((int) j) & this.mask;
+        return this.mask & ((int) j);
     }
 
     /* access modifiers changed from: protected */

@@ -28,15 +28,32 @@ public final class KeysetManager {
         return KeysetHandle.fromKeyset((Keyset) this.keysetBuilder.build());
     }
 
+    @Deprecated
     public synchronized KeysetManager rotate(KeyTemplate keyTemplate) throws GeneralSecurityException {
-        Keyset.Key newKey = newKey(keyTemplate);
-        this.keysetBuilder.addKey(newKey).setPrimaryKeyId(newKey.getKeyId());
+        addNewKey(keyTemplate, true);
+        return this;
+    }
+
+    @Deprecated
+    public synchronized KeysetManager add(KeyTemplate keyTemplate) throws GeneralSecurityException {
+        addNewKey(keyTemplate, false);
         return this;
     }
 
     public synchronized KeysetManager add(KeyTemplate keyTemplate) throws GeneralSecurityException {
-        this.keysetBuilder.addKey(newKey(keyTemplate));
+        addNewKey(keyTemplate.getProto(), false);
         return this;
+    }
+
+    @Deprecated
+    public synchronized int addNewKey(KeyTemplate keyTemplate, boolean z) throws GeneralSecurityException {
+        Keyset.Key newKey;
+        newKey = newKey(keyTemplate);
+        this.keysetBuilder.addKey(newKey);
+        if (z) {
+            this.keysetBuilder.setPrimaryKeyId(newKey.getKeyId());
+        }
+        return newKey.getKeyId();
     }
 
     public synchronized KeysetManager setPrimary(int i) throws GeneralSecurityException {
@@ -152,13 +169,20 @@ public final class KeysetManager {
         return (Keyset.Key) Keyset.Key.newBuilder().setKeyData(newKeyData).setKeyId(newKeyId).setStatus(KeyStatusType.ENABLED).setOutputPrefixType(outputPrefixType).build();
     }
 
+    private synchronized boolean keyIdExists(int i) {
+        for (Keyset.Key keyId : this.keysetBuilder.getKeyList()) {
+            if (keyId.getKeyId() == i) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private synchronized int newKeyId() {
         int randPositiveInt;
         randPositiveInt = randPositiveInt();
-        for (Keyset.Key keyId : this.keysetBuilder.getKeyList()) {
-            if (keyId.getKeyId() == randPositiveInt) {
-                randPositiveInt = randPositiveInt();
-            }
+        while (keyIdExists(randPositiveInt)) {
+            randPositiveInt = randPositiveInt();
         }
         return randPositiveInt;
     }

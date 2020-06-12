@@ -79,13 +79,13 @@ public final class FlowKt__BuildersKt$asFlow$$inlined$unsafeFlow$6 implements Fl
             r5 = 0
             r9 = r10
             r7 = r12
-            r6 = r2
+            r5 = r2
+            r6 = r5
             r12 = r11
             r2 = r1
             r1 = r0
-            r11 = r5
             r0 = r12
-            r5 = r6
+            r11 = 0
         L_0x006c:
             if (r11 >= r4) goto L_0x008f
             r8 = r5[r11]

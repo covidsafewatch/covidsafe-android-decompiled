@@ -86,8 +86,7 @@ public final class UnicastProcessor<T> extends FlowableProcessor<T> {
         int i;
         long j;
         SpscLinkedArrayQueue<T> spscLinkedArrayQueue = this.queue;
-        boolean z = true;
-        boolean z2 = !this.delayError;
+        boolean z = !this.delayError;
         int i2 = 1;
         while (true) {
             long j2 = this.requested.get();
@@ -98,25 +97,24 @@ public final class UnicastProcessor<T> extends FlowableProcessor<T> {
                     j = j3;
                     break;
                 }
-                boolean z3 = this.done;
+                boolean z2 = this.done;
                 T poll = spscLinkedArrayQueue.poll();
-                boolean z4 = poll == null ? z : false;
+                boolean z3 = poll == null;
                 T t = poll;
                 j = j3;
-                if (!checkTerminated(z2, z3, z4, subscriber, spscLinkedArrayQueue)) {
-                    if (z4) {
+                if (!checkTerminated(z, z2, z3, subscriber, spscLinkedArrayQueue)) {
+                    if (z3) {
                         break;
                     }
                     subscriber.onNext(t);
                     j3 = 1 + j;
-                    z = true;
                 } else {
                     return;
                 }
             }
             Subscriber<? super T> subscriber2 = subscriber;
             if (i == 0) {
-                if (checkTerminated(z2, this.done, spscLinkedArrayQueue.isEmpty(), subscriber, spscLinkedArrayQueue)) {
+                if (checkTerminated(z, this.done, spscLinkedArrayQueue.isEmpty(), subscriber, spscLinkedArrayQueue)) {
                     return;
                 }
             }
@@ -124,9 +122,7 @@ public final class UnicastProcessor<T> extends FlowableProcessor<T> {
                 this.requested.addAndGet(-j);
             }
             i2 = this.wip.addAndGet(-i2);
-            if (i2 != 0) {
-                z = true;
-            } else {
+            if (i2 == 0) {
                 return;
             }
         }

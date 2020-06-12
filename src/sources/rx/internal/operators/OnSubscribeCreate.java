@@ -397,8 +397,8 @@ public final class OnSubscribeCreate<T> implements Observable.OnSubscribe<T> {
 
         /* access modifiers changed from: package-private */
         public void drain() {
-            int i;
             boolean z;
+            int i;
             if (this.wip.getAndIncrement() == 0) {
                 Subscriber subscriber = this.actual;
                 AtomicReference<Object> atomicReference = this.queue;
@@ -407,8 +407,8 @@ public final class OnSubscribeCreate<T> implements Observable.OnSubscribe<T> {
                     long j = get();
                     long j2 = 0;
                     while (true) {
-                        i = (j2 > j ? 1 : (j2 == j ? 0 : -1));
                         z = false;
+                        i = (j2 > j ? 1 : (j2 == j ? 0 : -1));
                         if (i == 0) {
                             break;
                         } else if (subscriber.isUnsubscribed()) {

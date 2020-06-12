@@ -65,7 +65,7 @@ final class ReaderInputStream extends InputStream {
             return r0
         L_0x000a:
             boolean r1 = r7.endOfInput
-            r2 = r0
+            r2 = 0
         L_0x000d:
             boolean r3 = r7.draining
             if (r3 == 0) goto L_0x002e
@@ -122,7 +122,7 @@ final class ReaderInputStream extends InputStream {
         L_0x0065:
             boolean r3 = r7.endOfInput
             if (r3 == 0) goto L_0x006b
-            r1 = r5
+            r1 = 1
             goto L_0x002e
         L_0x006b:
             r7.readMoreChars()

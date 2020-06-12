@@ -12,9 +12,9 @@ class MaskParser {
             r12.beginObject()
             r0 = 0
             r1 = 0
-            r4 = r0
             r2 = r1
             r3 = r2
+            r4 = 0
         L_0x0008:
             boolean r5 = r12.hasNext()
             if (r5 == 0) goto L_0x00eb
@@ -37,28 +37,28 @@ class MaskParser {
             java.lang.String r6 = "mode"
             boolean r6 = r5.equals(r6)
             if (r6 == 0) goto L_0x0055
-            r6 = r0
+            r6 = 0
             goto L_0x0056
         L_0x0037:
             java.lang.String r6 = "inv"
             boolean r6 = r5.equals(r6)
             if (r6 == 0) goto L_0x0055
-            r6 = r9
+            r6 = 3
             goto L_0x0056
         L_0x0041:
             java.lang.String r6 = "pt"
             boolean r6 = r5.equals(r6)
             if (r6 == 0) goto L_0x0055
-            r6 = r11
+            r6 = 1
             goto L_0x0056
         L_0x004b:
             java.lang.String r6 = "o"
             boolean r6 = r5.equals(r6)
             if (r6 == 0) goto L_0x0055
-            r6 = r10
+            r6 = 2
             goto L_0x0056
         L_0x0055:
-            r6 = r8
+            r6 = -1
         L_0x0056:
             if (r6 == 0) goto L_0x0071
             if (r6 == r11) goto L_0x006c
@@ -91,25 +91,25 @@ class MaskParser {
             java.lang.String r6 = "s"
             boolean r1 = r1.equals(r6)
             if (r1 == 0) goto L_0x00b1
-            r8 = r11
+            r8 = 1
             goto L_0x00b1
         L_0x0094:
             java.lang.String r6 = "n"
             boolean r1 = r1.equals(r6)
             if (r1 == 0) goto L_0x00b1
-            r8 = r10
+            r8 = 2
             goto L_0x00b1
         L_0x009e:
             java.lang.String r6 = "i"
             boolean r1 = r1.equals(r6)
             if (r1 == 0) goto L_0x00b1
-            r8 = r9
+            r8 = 3
             goto L_0x00b1
         L_0x00a8:
             java.lang.String r6 = "a"
             boolean r1 = r1.equals(r6)
             if (r1 == 0) goto L_0x00b1
-            r8 = r0
+            r8 = 0
         L_0x00b1:
             if (r8 == 0) goto L_0x00e7
             if (r8 == r11) goto L_0x00e3

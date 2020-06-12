@@ -421,163 +421,83 @@ public final class Hpack {
             this.dynamicTableByteCount += i;
         }
 
-        /* JADX WARNING: Removed duplicated region for block: B:22:0x0084  */
-        /* JADX WARNING: Removed duplicated region for block: B:39:0x00ce  */
-        /* JADX WARNING: Removed duplicated region for block: B:40:0x00d6  */
-        /* Code decompiled incorrectly, please refer to instructions dump. */
-        public final void writeHeaders(java.util.List<okhttp3.internal.http2.Header> r14) throws java.io.IOException {
-            /*
-                r13 = this;
-                java.lang.String r0 = "headerBlock"
-                kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r14, r0)
-                boolean r0 = r13.emitDynamicTableSizeUpdate
-                r1 = 0
-                if (r0 == 0) goto L_0x0023
-                int r0 = r13.smallestHeaderTableSizeSetting
-                int r2 = r13.maxDynamicTableByteCount
-                r3 = 32
-                r4 = 31
-                if (r0 >= r2) goto L_0x0017
-                r13.writeInt(r0, r4, r3)
-            L_0x0017:
-                r13.emitDynamicTableSizeUpdate = r1
-                r0 = 2147483647(0x7fffffff, float:NaN)
-                r13.smallestHeaderTableSizeSetting = r0
-                int r0 = r13.maxDynamicTableByteCount
-                r13.writeInt(r0, r4, r3)
-            L_0x0023:
-                int r0 = r14.size()
-                r2 = r1
-            L_0x0028:
-                if (r2 >= r0) goto L_0x0113
-                java.lang.Object r3 = r14.get(r2)
-                okhttp3.internal.http2.Header r3 = (okhttp3.internal.http2.Header) r3
-                okio.ByteString r4 = r3.name
-                okio.ByteString r4 = r4.toAsciiLowercase()
-                okio.ByteString r5 = r3.value
-                okhttp3.internal.http2.Hpack r6 = okhttp3.internal.http2.Hpack.INSTANCE
-                java.util.Map r6 = r6.getNAME_TO_FIRST_INDEX()
-                java.lang.Object r6 = r6.get(r4)
-                java.lang.Integer r6 = (java.lang.Integer) r6
-                r7 = -1
-                if (r6 == 0) goto L_0x0080
-                int r6 = r6.intValue()
-                int r6 = r6 + 1
-                r8 = 7
-                r9 = 2
-                if (r9 <= r6) goto L_0x0052
-                goto L_0x007d
-            L_0x0052:
-                if (r8 < r6) goto L_0x007d
-                okhttp3.internal.http2.Hpack r8 = okhttp3.internal.http2.Hpack.INSTANCE
-                okhttp3.internal.http2.Header[] r8 = r8.getSTATIC_HEADER_TABLE()
-                int r9 = r6 + -1
-                r8 = r8[r9]
-                okio.ByteString r8 = r8.value
-                boolean r8 = kotlin.jvm.internal.Intrinsics.areEqual((java.lang.Object) r8, (java.lang.Object) r5)
-                if (r8 == 0) goto L_0x0067
-                goto L_0x0081
-            L_0x0067:
-                okhttp3.internal.http2.Hpack r8 = okhttp3.internal.http2.Hpack.INSTANCE
-                okhttp3.internal.http2.Header[] r8 = r8.getSTATIC_HEADER_TABLE()
-                r8 = r8[r6]
-                okio.ByteString r8 = r8.value
-                boolean r8 = kotlin.jvm.internal.Intrinsics.areEqual((java.lang.Object) r8, (java.lang.Object) r5)
-                if (r8 == 0) goto L_0x007d
-                int r8 = r6 + 1
-                r12 = r8
-                r8 = r6
-                r6 = r12
-                goto L_0x0082
-            L_0x007d:
-                r8 = r6
-                r6 = r7
-                goto L_0x0082
-            L_0x0080:
-                r6 = r7
-            L_0x0081:
-                r8 = r6
-            L_0x0082:
-                if (r6 != r7) goto L_0x00cc
-                int r9 = r13.nextHeaderIndex
-                int r9 = r9 + 1
-                okhttp3.internal.http2.Header[] r10 = r13.dynamicTable
-                int r10 = r10.length
-            L_0x008b:
-                if (r9 >= r10) goto L_0x00cc
-                okhttp3.internal.http2.Header[] r11 = r13.dynamicTable
-                r11 = r11[r9]
-                if (r11 != 0) goto L_0x0096
-                kotlin.jvm.internal.Intrinsics.throwNpe()
-            L_0x0096:
-                okio.ByteString r11 = r11.name
-                boolean r11 = kotlin.jvm.internal.Intrinsics.areEqual((java.lang.Object) r11, (java.lang.Object) r4)
-                if (r11 == 0) goto L_0x00c9
-                okhttp3.internal.http2.Header[] r11 = r13.dynamicTable
-                r11 = r11[r9]
-                if (r11 != 0) goto L_0x00a7
-                kotlin.jvm.internal.Intrinsics.throwNpe()
-            L_0x00a7:
-                okio.ByteString r11 = r11.value
-                boolean r11 = kotlin.jvm.internal.Intrinsics.areEqual((java.lang.Object) r11, (java.lang.Object) r5)
-                if (r11 == 0) goto L_0x00bb
-                int r6 = r13.nextHeaderIndex
-                int r9 = r9 - r6
-                okhttp3.internal.http2.Hpack r6 = okhttp3.internal.http2.Hpack.INSTANCE
-                okhttp3.internal.http2.Header[] r6 = r6.getSTATIC_HEADER_TABLE()
-                int r6 = r6.length
-                int r6 = r6 + r9
-                goto L_0x00cc
-            L_0x00bb:
-                if (r8 != r7) goto L_0x00c9
-                int r8 = r13.nextHeaderIndex
-                int r8 = r9 - r8
-                okhttp3.internal.http2.Hpack r11 = okhttp3.internal.http2.Hpack.INSTANCE
-                okhttp3.internal.http2.Header[] r11 = r11.getSTATIC_HEADER_TABLE()
-                int r11 = r11.length
-                int r8 = r8 + r11
-            L_0x00c9:
-                int r9 = r9 + 1
-                goto L_0x008b
-            L_0x00cc:
-                if (r6 == r7) goto L_0x00d6
-                r3 = 127(0x7f, float:1.78E-43)
-                r4 = 128(0x80, float:1.794E-43)
-                r13.writeInt(r6, r3, r4)
-                goto L_0x010f
-            L_0x00d6:
-                r6 = 64
-                if (r8 != r7) goto L_0x00e9
-                okio.Buffer r7 = r13.out
-                r7.writeByte((int) r6)
-                r13.writeByteString(r4)
-                r13.writeByteString(r5)
-                r13.insertIntoDynamicTable(r3)
-                goto L_0x010f
-            L_0x00e9:
-                okio.ByteString r7 = okhttp3.internal.http2.Header.PSEUDO_PREFIX
-                boolean r7 = r4.startsWith((okio.ByteString) r7)
-                if (r7 == 0) goto L_0x0104
-                okio.ByteString r7 = okhttp3.internal.http2.Header.TARGET_AUTHORITY
-                boolean r4 = kotlin.jvm.internal.Intrinsics.areEqual((java.lang.Object) r7, (java.lang.Object) r4)
-                r4 = r4 ^ 1
-                if (r4 == 0) goto L_0x0104
-                r3 = 15
-                r13.writeInt(r8, r3, r1)
-                r13.writeByteString(r5)
-                goto L_0x010f
-            L_0x0104:
-                r4 = 63
-                r13.writeInt(r8, r4, r6)
-                r13.writeByteString(r5)
-                r13.insertIntoDynamicTable(r3)
-            L_0x010f:
-                int r2 = r2 + 1
-                goto L_0x0028
-            L_0x0113:
-                return
-            */
-            throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.http2.Hpack.Writer.writeHeaders(java.util.List):void");
+        public final void writeHeaders(List<Header> list) throws IOException {
+            int i;
+            int i2;
+            Intrinsics.checkParameterIsNotNull(list, "headerBlock");
+            if (this.emitDynamicTableSizeUpdate) {
+                int i3 = this.smallestHeaderTableSizeSetting;
+                if (i3 < this.maxDynamicTableByteCount) {
+                    writeInt(i3, 31, 32);
+                }
+                this.emitDynamicTableSizeUpdate = false;
+                this.smallestHeaderTableSizeSetting = Integer.MAX_VALUE;
+                writeInt(this.maxDynamicTableByteCount, 31, 32);
+            }
+            int size = list.size();
+            for (int i4 = 0; i4 < size; i4++) {
+                Header header = list.get(i4);
+                ByteString asciiLowercase = header.name.toAsciiLowercase();
+                ByteString byteString = header.value;
+                Integer num = Hpack.INSTANCE.getNAME_TO_FIRST_INDEX().get(asciiLowercase);
+                if (num != null) {
+                    i2 = num.intValue() + 1;
+                    if (2 <= i2 && 7 >= i2) {
+                        if (Intrinsics.areEqual((Object) Hpack.INSTANCE.getSTATIC_HEADER_TABLE()[i2 - 1].value, (Object) byteString)) {
+                            i = i2;
+                        } else if (Intrinsics.areEqual((Object) Hpack.INSTANCE.getSTATIC_HEADER_TABLE()[i2].value, (Object) byteString)) {
+                            i = i2;
+                            i2++;
+                        }
+                    }
+                    i = i2;
+                    i2 = -1;
+                } else {
+                    i2 = -1;
+                    i = -1;
+                }
+                if (i2 == -1) {
+                    int i5 = this.nextHeaderIndex + 1;
+                    int length = this.dynamicTable.length;
+                    while (true) {
+                        if (i5 >= length) {
+                            break;
+                        }
+                        Header header2 = this.dynamicTable[i5];
+                        if (header2 == null) {
+                            Intrinsics.throwNpe();
+                        }
+                        if (Intrinsics.areEqual((Object) header2.name, (Object) asciiLowercase)) {
+                            Header header3 = this.dynamicTable[i5];
+                            if (header3 == null) {
+                                Intrinsics.throwNpe();
+                            }
+                            if (Intrinsics.areEqual((Object) header3.value, (Object) byteString)) {
+                                i2 = Hpack.INSTANCE.getSTATIC_HEADER_TABLE().length + (i5 - this.nextHeaderIndex);
+                                break;
+                            } else if (i == -1) {
+                                i = (i5 - this.nextHeaderIndex) + Hpack.INSTANCE.getSTATIC_HEADER_TABLE().length;
+                            }
+                        }
+                        i5++;
+                    }
+                }
+                if (i2 != -1) {
+                    writeInt(i2, 127, 128);
+                } else if (i == -1) {
+                    this.out.writeByte(64);
+                    writeByteString(asciiLowercase);
+                    writeByteString(byteString);
+                    insertIntoDynamicTable(header);
+                } else if (!asciiLowercase.startsWith(Header.PSEUDO_PREFIX) || !(!Intrinsics.areEqual((Object) Header.TARGET_AUTHORITY, (Object) asciiLowercase))) {
+                    writeInt(i, 63, 64);
+                    writeByteString(byteString);
+                    insertIntoDynamicTable(header);
+                } else {
+                    writeInt(i, 15, 0);
+                    writeByteString(byteString);
+                }
+            }
         }
 
         public final void writeInt(int i, int i2, int i3) {

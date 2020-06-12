@@ -88,10 +88,10 @@ public final class OperatorMaterialize<T> implements Observable.Operator<Notific
         }
 
         /* JADX WARNING: Code restructure failed: missing block: B:11:0x0015, code lost:
-            if (r6.child.isUnsubscribed() != false) goto L_0x004a;
+            if (r7.child.isUnsubscribed() != false) goto L_0x004a;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:12:0x0017, code lost:
-            r1 = r6.terminalNotification;
+            r1 = r7.terminalNotification;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:13:0x0019, code lost:
             if (r1 == null) goto L_0x003b;
@@ -100,32 +100,32 @@ public final class OperatorMaterialize<T> implements Observable.Operator<Notific
             if (r0.get() <= 0) goto L_0x003b;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:16:0x0025, code lost:
-            r6.terminalNotification = null;
-            r6.child.onNext(r1);
+            r7.terminalNotification = null;
+            r7.child.onNext(r1);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:17:0x0033, code lost:
-            if (r6.child.isUnsubscribed() != false) goto L_?;
+            if (r7.child.isUnsubscribed() != false) goto L_?;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:18:0x0035, code lost:
-            r6.child.onCompleted();
+            r7.child.onCompleted();
          */
         /* JADX WARNING: Code restructure failed: missing block: B:19:0x003b, code lost:
-            monitor-enter(r6);
+            monitor-enter(r7);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:22:0x003e, code lost:
-            if (r6.missed != false) goto L_0x0045;
+            if (r7.missed != false) goto L_0x0045;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:23:0x0040, code lost:
-            r6.busy = false;
+            r7.busy = false;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:24:0x0043, code lost:
-            monitor-exit(r6);
+            monitor-exit(r7);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:25:0x0044, code lost:
             return;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:26:0x0045, code lost:
-            monitor-exit(r6);
+            monitor-exit(r7);
          */
         /* JADX WARNING: Code restructure failed: missing block: B:31:0x004a, code lost:
             return;
@@ -137,64 +137,64 @@ public final class OperatorMaterialize<T> implements Observable.Operator<Notific
             return;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:9:0x000d, code lost:
-            r0 = r6.requested;
+            r0 = r7.requested;
          */
         /* Code decompiled incorrectly, please refer to instructions dump. */
         private void drain() {
             /*
-                r6 = this;
-                monitor-enter(r6)
-                boolean r0 = r6.busy     // Catch:{ all -> 0x004b }
+                r7 = this;
+                monitor-enter(r7)
+                boolean r0 = r7.busy     // Catch:{ all -> 0x004b }
                 r1 = 1
                 if (r0 == 0) goto L_0x000a
-                r6.missed = r1     // Catch:{ all -> 0x004b }
-                monitor-exit(r6)     // Catch:{ all -> 0x004b }
+                r7.missed = r1     // Catch:{ all -> 0x004b }
+                monitor-exit(r7)     // Catch:{ all -> 0x004b }
                 return
             L_0x000a:
-                r6.busy = r1     // Catch:{ all -> 0x004b }
-                monitor-exit(r6)     // Catch:{ all -> 0x004b }
-                java.util.concurrent.atomic.AtomicLong r0 = r6.requested
+                r7.busy = r1     // Catch:{ all -> 0x004b }
+                monitor-exit(r7)     // Catch:{ all -> 0x004b }
+                java.util.concurrent.atomic.AtomicLong r0 = r7.requested
             L_0x000f:
-                rx.Subscriber<? super rx.Notification<T>> r1 = r6.child
+                rx.Subscriber<? super rx.Notification<T>> r1 = r7.child
                 boolean r1 = r1.isUnsubscribed()
                 if (r1 != 0) goto L_0x004a
-                rx.Notification<T> r1 = r6.terminalNotification
+                rx.Notification<T> r1 = r7.terminalNotification
                 if (r1 == 0) goto L_0x003b
                 long r2 = r0.get()
                 r4 = 0
-                int r2 = (r2 > r4 ? 1 : (r2 == r4 ? 0 : -1))
-                if (r2 <= 0) goto L_0x003b
+                int r6 = (r2 > r4 ? 1 : (r2 == r4 ? 0 : -1))
+                if (r6 <= 0) goto L_0x003b
                 r0 = 0
-                r6.terminalNotification = r0
-                rx.Subscriber<? super rx.Notification<T>> r0 = r6.child
+                r7.terminalNotification = r0
+                rx.Subscriber<? super rx.Notification<T>> r0 = r7.child
                 r0.onNext(r1)
-                rx.Subscriber<? super rx.Notification<T>> r0 = r6.child
+                rx.Subscriber<? super rx.Notification<T>> r0 = r7.child
                 boolean r0 = r0.isUnsubscribed()
                 if (r0 != 0) goto L_0x003a
-                rx.Subscriber<? super rx.Notification<T>> r0 = r6.child
+                rx.Subscriber<? super rx.Notification<T>> r0 = r7.child
                 r0.onCompleted()
             L_0x003a:
                 return
             L_0x003b:
-                monitor-enter(r6)
-                boolean r1 = r6.missed     // Catch:{ all -> 0x0047 }
+                monitor-enter(r7)
+                boolean r1 = r7.missed     // Catch:{ all -> 0x0047 }
                 if (r1 != 0) goto L_0x0045
                 r0 = 0
-                r6.busy = r0     // Catch:{ all -> 0x0047 }
-                monitor-exit(r6)     // Catch:{ all -> 0x0047 }
+                r7.busy = r0     // Catch:{ all -> 0x0047 }
+                monitor-exit(r7)     // Catch:{ all -> 0x0047 }
                 return
             L_0x0045:
-                monitor-exit(r6)     // Catch:{ all -> 0x0047 }
+                monitor-exit(r7)     // Catch:{ all -> 0x0047 }
                 goto L_0x000f
             L_0x0047:
                 r0 = move-exception
-                monitor-exit(r6)     // Catch:{ all -> 0x0047 }
+                monitor-exit(r7)     // Catch:{ all -> 0x0047 }
                 throw r0
             L_0x004a:
                 return
             L_0x004b:
                 r0 = move-exception
-                monitor-exit(r6)     // Catch:{ all -> 0x004b }
+                monitor-exit(r7)     // Catch:{ all -> 0x004b }
                 throw r0
             */
             throw new UnsupportedOperationException("Method not decompiled: rx.internal.operators.OperatorMaterialize.ParentSubscriber.drain():void");

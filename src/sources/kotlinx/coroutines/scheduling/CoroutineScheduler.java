@@ -191,7 +191,7 @@ public final class CoroutineScheduler implements Executor, Closeable {
         return controlState$FU.addAndGet(this, 4398046511104L);
     }
 
-    /* JADX WARNING: type inference failed for: r0v0, types: [boolean, int] */
+    /* JADX WARNING: type inference failed for: r0v0, types: [int, boolean] */
     public final boolean isTerminated() {
         return this._isTerminated;
     }
@@ -242,36 +242,36 @@ public final class CoroutineScheduler implements Executor, Closeable {
             long r4 = r8.controlState     // Catch:{ all -> 0x00be }
             r6 = 2097151(0x1fffff, double:1.0361303E-317)
             long r4 = r4 & r6
-            int r4 = (int) r4
+            int r5 = (int) r4
             monitor-exit(r3)
-            if (r2 > r4) goto L_0x0062
-            r3 = r2
+            if (r2 > r5) goto L_0x0062
+            r3 = 1
         L_0x001d:
-            java.util.concurrent.atomic.AtomicReferenceArray<kotlinx.coroutines.scheduling.CoroutineScheduler$Worker> r5 = r8.workers
-            java.lang.Object r5 = r5.get(r3)
-            if (r5 != 0) goto L_0x0028
+            java.util.concurrent.atomic.AtomicReferenceArray<kotlinx.coroutines.scheduling.CoroutineScheduler$Worker> r4 = r8.workers
+            java.lang.Object r4 = r4.get(r3)
+            if (r4 != 0) goto L_0x0028
             kotlin.jvm.internal.Intrinsics.throwNpe()
         L_0x0028:
-            kotlinx.coroutines.scheduling.CoroutineScheduler$Worker r5 = (kotlinx.coroutines.scheduling.CoroutineScheduler.Worker) r5
-            if (r5 == r0) goto L_0x005d
+            kotlinx.coroutines.scheduling.CoroutineScheduler$Worker r4 = (kotlinx.coroutines.scheduling.CoroutineScheduler.Worker) r4
+            if (r4 == r0) goto L_0x005d
         L_0x002c:
-            boolean r6 = r5.isAlive()
+            boolean r6 = r4.isAlive()
             if (r6 == 0) goto L_0x003c
-            r6 = r5
+            r6 = r4
             java.lang.Thread r6 = (java.lang.Thread) r6
             java.util.concurrent.locks.LockSupport.unpark(r6)
-            r5.join(r9)
+            r4.join(r9)
             goto L_0x002c
         L_0x003c:
-            kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState r6 = r5.state
+            kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState r6 = r4.state
             boolean r7 = kotlinx.coroutines.DebugKt.getASSERTIONS_ENABLED()
             if (r7 == 0) goto L_0x0056
             kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState r7 = kotlinx.coroutines.scheduling.CoroutineScheduler.WorkerState.TERMINATED
             if (r6 != r7) goto L_0x004a
-            r6 = r2
+            r6 = 1
             goto L_0x004b
         L_0x004a:
-            r6 = r1
+            r6 = 0
         L_0x004b:
             if (r6 == 0) goto L_0x004e
             goto L_0x0056
@@ -281,11 +281,11 @@ public final class CoroutineScheduler implements Executor, Closeable {
             java.lang.Throwable r9 = (java.lang.Throwable) r9
             throw r9
         L_0x0056:
-            kotlinx.coroutines.scheduling.WorkQueue r5 = r5.localQueue
+            kotlinx.coroutines.scheduling.WorkQueue r4 = r4.localQueue
             kotlinx.coroutines.scheduling.GlobalQueue r6 = r8.globalBlockingQueue
-            r5.offloadAllWorkTo(r6)
+            r4.offloadAllWorkTo(r6)
         L_0x005d:
-            if (r3 == r4) goto L_0x0062
+            if (r3 == r5) goto L_0x0062
             int r3 = r3 + 1
             goto L_0x001d
         L_0x0062:
@@ -325,10 +325,10 @@ public final class CoroutineScheduler implements Executor, Closeable {
             long r9 = r9 & r3
             r0 = 42
             long r9 = r9 >> r0
-            int r9 = (int) r9
-            int r10 = r8.corePoolSize
-            if (r9 != r10) goto L_0x00ac
-            r1 = r2
+            int r10 = (int) r9
+            int r9 = r8.corePoolSize
+            if (r10 != r9) goto L_0x00ac
+            r1 = 1
         L_0x00ac:
             if (r1 == 0) goto L_0x00af
             goto L_0x00b7

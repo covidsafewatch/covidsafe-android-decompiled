@@ -12,6 +12,16 @@ import javax.crypto.spec.SecretKeySpec;
 public final class AesGcmJce implements Aead {
     private static final int IV_SIZE_IN_BYTES = 12;
     private static final int TAG_SIZE_IN_BYTES = 16;
+    private static final ThreadLocal<Cipher> localCipher = new ThreadLocal<Cipher>() {
+        /* access modifiers changed from: protected */
+        public Cipher initialValue() {
+            try {
+                return EngineFactory.CIPHER.getInstance("AES/GCM/NoPadding");
+            } catch (GeneralSecurityException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+    };
     private final SecretKey keySpec;
 
     public AesGcmJce(byte[] bArr) throws GeneralSecurityException {
@@ -19,21 +29,16 @@ public final class AesGcmJce implements Aead {
         this.keySpec = new SecretKeySpec(bArr, "AES");
     }
 
-    private static Cipher instance() throws GeneralSecurityException {
-        return EngineFactory.CIPHER.getInstance("AES/GCM/NoPadding");
-    }
-
     public byte[] encrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
         if (bArr.length <= 2147483619) {
             byte[] bArr3 = new byte[(bArr.length + 12 + 16)];
             byte[] randBytes = Random.randBytes(12);
             System.arraycopy(randBytes, 0, bArr3, 0, 12);
-            Cipher instance = instance();
-            instance.init(1, this.keySpec, getParams(randBytes));
+            localCipher.get().init(1, this.keySpec, getParams(randBytes));
             if (!(bArr2 == null || bArr2.length == 0)) {
-                instance.updateAAD(bArr2);
+                localCipher.get().updateAAD(bArr2);
             }
-            int doFinal = instance.doFinal(bArr, 0, bArr.length, bArr3, 12);
+            int doFinal = localCipher.get().doFinal(bArr, 0, bArr.length, bArr3, 12);
             if (doFinal == bArr.length + 16) {
                 return bArr3;
             }
@@ -44,13 +49,11 @@ public final class AesGcmJce implements Aead {
 
     public byte[] decrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
         if (bArr.length >= 28) {
-            AlgorithmParameterSpec params = getParams(bArr, 0, 12);
-            Cipher instance = instance();
-            instance.init(2, this.keySpec, params);
+            localCipher.get().init(2, this.keySpec, getParams(bArr, 0, 12));
             if (!(bArr2 == null || bArr2.length == 0)) {
-                instance.updateAAD(bArr2);
+                localCipher.get().updateAAD(bArr2);
             }
-            return instance.doFinal(bArr, 12, bArr.length - 12);
+            return localCipher.get().doFinal(bArr, 12, bArr.length - 12);
         }
         throw new GeneralSecurityException("ciphertext too short");
     }

@@ -90,17 +90,17 @@ public final class SegmentedByteStringKt {
                     Object[] objArr = (Object[]) bArr;
                     int[] iArr = new int[(objArr.length * 2)];
                     if (segment <= segment2) {
-                        int i5 = 0;
-                        int i6 = segment;
+                        int i5 = segment;
+                        int i6 = 0;
                         while (true) {
-                            iArr[i5] = Math.min(segmentedByteString.getDirectory$okio()[i6] - i, i4);
-                            int i7 = i5 + 1;
-                            iArr[i5 + objArr.length] = segmentedByteString.getDirectory$okio()[((Object[]) segmentedByteString.getSegments$okio()).length + i6];
-                            if (i6 == segment2) {
+                            iArr[i6] = Math.min(segmentedByteString.getDirectory$okio()[i5] - i, i4);
+                            int i7 = i6 + 1;
+                            iArr[i6 + objArr.length] = segmentedByteString.getDirectory$okio()[((Object[]) segmentedByteString.getSegments$okio()).length + i5];
+                            if (i5 == segment2) {
                                 break;
                             }
-                            i6++;
-                            i5 = i7;
+                            i5++;
+                            i6 = i7;
                         }
                     }
                     if (segment != 0) {
@@ -216,11 +216,8 @@ public final class SegmentedByteStringKt {
         }
         if (obj instanceof ByteString) {
             ByteString byteString = (ByteString) obj;
-            if (byteString.size() == segmentedByteString.size() && segmentedByteString.rangeEquals(0, byteString, 0, segmentedByteString.size())) {
-                return true;
-            }
+            return byteString.size() == segmentedByteString.size() && segmentedByteString.rangeEquals(0, byteString, 0, segmentedByteString.size());
         }
-        return false;
     }
 
     public static final int commonHashCode(SegmentedByteString segmentedByteString) {
@@ -231,22 +228,22 @@ public final class SegmentedByteStringKt {
         }
         int length = ((Object[]) segmentedByteString.getSegments$okio()).length;
         int i = 0;
-        int i2 = 1;
-        int i3 = 0;
+        int i2 = 0;
+        int i3 = 1;
         while (i < length) {
             int i4 = segmentedByteString.getDirectory$okio()[length + i];
             int i5 = segmentedByteString.getDirectory$okio()[i];
             byte[] bArr = segmentedByteString.getSegments$okio()[i];
-            int i6 = (i5 - i3) + i4;
+            int i6 = (i5 - i2) + i4;
             while (i4 < i6) {
-                i2 = (i2 * 31) + bArr[i4];
+                i3 = (i3 * 31) + bArr[i4];
                 i4++;
             }
             i++;
-            i3 = i5;
+            i2 = i5;
         }
-        segmentedByteString.setHashCode$okio(i2);
-        return i2;
+        segmentedByteString.setHashCode$okio(i3);
+        return i3;
     }
 
     public static final void commonWrite(SegmentedByteString segmentedByteString, Buffer buffer, int i, int i2) {

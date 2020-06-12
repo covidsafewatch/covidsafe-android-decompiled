@@ -597,16 +597,16 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             if (r0 < 0) goto L_0x00dd
             r4 = 0
             kotlinx.coroutines.channels.ChannelIterator r8 = r16.iterator()     // Catch:{ all -> 0x00d8 }
+            r4 = r0
             r12 = r1
             r9 = r2
             r10 = r3
             r11 = r8
-            r1 = r16
+            r8 = 0
+            r0 = r16
+            r1 = r0
             r2 = r1
             r3 = r2
-            r8 = r4
-            r4 = r0
-            r0 = r3
         L_0x007b:
             r9.L$0 = r0     // Catch:{ all -> 0x00d6 }
             r9.I$0 = r4     // Catch:{ all -> 0x00d6 }
@@ -3904,7 +3904,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             java.lang.Object r14 = r1.L$0
             kotlinx.coroutines.channels.ReceiveChannel r14 = (kotlinx.coroutines.channels.ReceiveChannel) r14
             kotlin.ResultKt.throwOnFailure(r0)     // Catch:{ all -> 0x00a0 }
-            r0 = r4
+            r0 = 2
             goto L_0x0158
         L_0x0065:
             java.lang.IllegalStateException r0 = new java.lang.IllegalStateException
@@ -4065,8 +4065,8 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r7 = r8
             r8 = r16
         L_0x0177:
-            r4 = r0
             r0 = r14
+            r4 = 2
             r5 = 1
             goto L_0x00c6
         L_0x017c:
@@ -7588,7 +7588,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             java.lang.Object r14 = r1.L$0
             kotlinx.coroutines.channels.ReceiveChannel r14 = (kotlinx.coroutines.channels.ReceiveChannel) r14
             kotlin.ResultKt.throwOnFailure(r0)     // Catch:{ all -> 0x00a2 }
-            r0 = r4
+            r0 = 2
             goto L_0x0156
         L_0x0067:
             java.lang.IllegalStateException r0 = new java.lang.IllegalStateException
@@ -7748,8 +7748,8 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r7 = r8
             r8 = r16
         L_0x0175:
-            r4 = r0
             r0 = r14
+            r4 = 2
             r5 = 1
             goto L_0x00c8
         L_0x017a:
@@ -11020,7 +11020,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r2 = r12
             r12 = r5
             r5 = r13
-            r13 = r4
+            r13 = 1
         L_0x00ae:
             r0.L$0 = r9     // Catch:{ all -> 0x00f7 }
             r0.L$1 = r8     // Catch:{ all -> 0x00f7 }
@@ -11705,7 +11705,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r8.iterator()     // Catch:{ all -> 0x003a }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x003a }
             java.lang.Object r5 = r2.hasNext(r10)     // Catch:{ all -> 0x003a }
@@ -11777,7 +11777,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
         L_0x0019:
             kotlinx.coroutines.channels.ChannelIterator r2 = r7.iterator()     // Catch:{ all -> 0x0053 }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x001f:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0053 }
             java.lang.Object r5 = r2.hasNext(r10)     // Catch:{ all -> 0x0053 }
@@ -12065,7 +12065,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r6.iterator()     // Catch:{ all -> 0x004f }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x004f }
             java.lang.Object r5 = r2.hasNext(r8)     // Catch:{ all -> 0x004f }
@@ -12129,7 +12129,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             kotlinx.coroutines.channels.ChannelIterator r2 = r7.iterator()     // Catch:{ all -> 0x0041 }
             r3 = 0
             r4 = -1
-            r5 = r3
+            r5 = 0
         L_0x000b:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0041 }
             java.lang.Object r6 = r2.hasNext(r9)     // Catch:{ all -> 0x0041 }
@@ -12187,7 +12187,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r2 = 1
             kotlinx.coroutines.channels.ChannelIterator r3 = r8.iterator()     // Catch:{ all -> 0x0048 }
             r4 = 0
-            r5 = r4
+            r5 = 0
         L_0x000b:
             kotlin.jvm.internal.InlineMarker.mark((int) r4)     // Catch:{ all -> 0x0048 }
             java.lang.Object r6 = r3.hasNext(r10)     // Catch:{ all -> 0x0048 }
@@ -12200,8 +12200,8 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             java.lang.Boolean r7 = (java.lang.Boolean) r7     // Catch:{ all -> 0x0048 }
             boolean r7 = r7.booleanValue()     // Catch:{ all -> 0x0048 }
             if (r7 == 0) goto L_0x000b
-            r5 = r2
             r0 = r6
+            r5 = 1
             goto L_0x000b
         L_0x0030:
             kotlin.Unit r9 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0048 }
@@ -12304,7 +12304,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r2 = 1
             kotlinx.coroutines.channels.ChannelIterator r3 = r8.iterator()     // Catch:{ all -> 0x0054 }
             r4 = 0
-            r5 = r4
+            r5 = 0
         L_0x000b:
             kotlin.jvm.internal.InlineMarker.mark((int) r4)     // Catch:{ all -> 0x0054 }
             java.lang.Object r6 = r3.hasNext(r10)     // Catch:{ all -> 0x0054 }
@@ -12318,8 +12318,8 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             boolean r7 = r7.booleanValue()     // Catch:{ all -> 0x0054 }
             if (r7 == 0) goto L_0x000b
             if (r5 != 0) goto L_0x0032
-            r5 = r2
             r0 = r6
+            r5 = 1
             goto L_0x000b
         L_0x0032:
             java.lang.IllegalArgumentException r9 = new java.lang.IllegalArgumentException     // Catch:{ all -> 0x0054 }
@@ -12392,7 +12392,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             kotlinx.coroutines.channels.ChannelIterator r3 = r9.iterator()     // Catch:{ all -> 0x004d }
             r4 = 0
             r6 = r0
-            r5 = r4
+            r5 = 0
         L_0x000c:
             kotlin.jvm.internal.InlineMarker.mark((int) r4)     // Catch:{ all -> 0x004d }
             java.lang.Object r7 = r3.hasNext(r11)     // Catch:{ all -> 0x004d }
@@ -12412,8 +12412,8 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             kotlin.jvm.internal.InlineMarker.finallyEnd(r10)
             return r0
         L_0x003b:
-            r5 = r2
             r6 = r7
+            r5 = 1
             goto L_0x000c
         L_0x003e:
             kotlin.Unit r10 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x004d }
@@ -12457,7 +12457,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r8.iterator()     // Catch:{ all -> 0x0050 }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0050 }
             java.lang.Object r5 = r2.hasNext(r11)     // Catch:{ all -> 0x0050 }
@@ -12519,7 +12519,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r8.iterator()     // Catch:{ all -> 0x005a }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x005a }
             java.lang.Object r5 = r2.hasNext(r11)     // Catch:{ all -> 0x005a }
@@ -13074,7 +13074,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r8.iterator()     // Catch:{ all -> 0x004a }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x004a }
             java.lang.Object r5 = r2.hasNext(r11)     // Catch:{ all -> 0x004a }
@@ -13134,7 +13134,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r8.iterator()     // Catch:{ all -> 0x0054 }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0054 }
             java.lang.Object r5 = r2.hasNext(r11)     // Catch:{ all -> 0x0054 }
@@ -13198,7 +13198,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r7.iterator()     // Catch:{ all -> 0x003b }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x003b }
             java.lang.Object r5 = r2.hasNext(r10)     // Catch:{ all -> 0x003b }
@@ -13252,7 +13252,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r7.iterator()     // Catch:{ all -> 0x0045 }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0045 }
             java.lang.Object r5 = r2.hasNext(r10)     // Catch:{ all -> 0x0045 }
@@ -13636,7 +13636,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r6.iterator()     // Catch:{ all -> 0x003f }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x003f }
             java.lang.Object r5 = r2.hasNext(r8)     // Catch:{ all -> 0x003f }
@@ -13740,7 +13740,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r7.iterator()     // Catch:{ all -> 0x0038 }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0038 }
             java.lang.Object r5 = r2.hasNext(r10)     // Catch:{ all -> 0x0038 }
@@ -14058,7 +14058,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             boolean r4 = r4.booleanValue()     // Catch:{ all -> 0x0056 }
             if (r4 == 0) goto L_0x004c
             java.lang.Object r4 = r2.next()     // Catch:{ all -> 0x0056 }
-            r5 = r1
+            r5 = 1
         L_0x0020:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0056 }
             java.lang.Object r6 = r2.hasNext(r10)     // Catch:{ all -> 0x0056 }
@@ -14116,7 +14116,7 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r1 = 1
             kotlinx.coroutines.channels.ChannelIterator r2 = r6.iterator()     // Catch:{ all -> 0x003c }
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x000a:
             kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x003c }
             java.lang.Object r5 = r2.hasNext(r8)     // Catch:{ all -> 0x003c }

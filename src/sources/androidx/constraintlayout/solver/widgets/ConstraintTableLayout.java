@@ -263,11 +263,13 @@ public class ConstraintTableLayout extends ConstraintWidgetContainer {
         if (this.system != null) {
             int size = this.mVerticalGuidelines.size();
             for (int i = 0; i < size; i++) {
-                this.mVerticalGuidelines.get(i).setDebugSolverName(this.system, getDebugName() + ".VG" + i);
+                LinearSystem linearSystem = this.system;
+                this.mVerticalGuidelines.get(i).setDebugSolverName(linearSystem, getDebugName() + ".VG" + i);
             }
             int size2 = this.mHorizontalGuidelines.size();
             for (int i2 = 0; i2 < size2; i2++) {
-                this.mHorizontalGuidelines.get(i2).setDebugSolverName(this.system, getDebugName() + ".HG" + i2);
+                LinearSystem linearSystem2 = this.system;
+                this.mHorizontalGuidelines.get(i2).setDebugSolverName(linearSystem2, getDebugName() + ".HG" + i2);
             }
         }
     }

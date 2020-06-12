@@ -25,7 +25,7 @@ public final class RealBufferedSourceKt {
         Intrinsics.checkParameterIsNotNull(buffer, "sink");
         if (!(j >= 0)) {
             throw new IllegalArgumentException(("byteCount < 0: " + j).toString());
-        } else if (!(!realBufferedSource.closed)) {
+        } else if (!(true ^ realBufferedSource.closed)) {
             throw new IllegalStateException("closed".toString());
         } else if (realBufferedSource.bufferField.size() == 0 && realBufferedSource.source.read(realBufferedSource.bufferField, (long) 8192) == -1) {
             return -1;

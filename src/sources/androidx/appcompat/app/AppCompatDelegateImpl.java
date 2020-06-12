@@ -902,7 +902,7 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
             if (r6 != 0) goto L_0x00ef
             goto L_0x00f0
         L_0x00ef:
-            r3 = r2
+            r3 = 0
         L_0x00f0:
             r0.<init>(r4, r5, r8, r3)
             android.view.Menu r3 = r0.getMenu()
@@ -1100,7 +1100,8 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
     }
 
     public View createView(View view, String str, Context context, AttributeSet attributeSet) {
-        boolean z = false;
+        boolean z;
+        boolean z2 = false;
         if (this.mAppCompatViewInflater == null) {
             String string = this.mContext.obtainStyledAttributes(R.styleable.AppCompatTheme).getString(R.styleable.AppCompatTheme_viewInflaterClass);
             if (string == null || AppCompatViewInflater.class.getName().equals(string)) {
@@ -1116,10 +1117,13 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
         }
         if (IS_PRE_LOLLIPOP) {
             if (!(attributeSet instanceof XmlPullParser)) {
-                z = shouldInheritContext((ViewParent) view);
+                z2 = shouldInheritContext((ViewParent) view);
             } else if (((XmlPullParser) attributeSet).getDepth() > 1) {
-                z = true;
+                z2 = true;
             }
+            z = z2;
+        } else {
+            z = false;
         }
         return this.mAppCompatViewInflater.createView(view, str, context, attributeSet, z, IS_PRE_LOLLIPOP, true, VectorEnabledTintResources.shouldBeUsed());
     }
@@ -1489,13 +1493,13 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
             boolean r4 = r3.preparePanel(r2, r5)
             goto L_0x005c
         L_0x005b:
-            r4 = r0
+            r4 = 1
         L_0x005c:
             if (r4 == 0) goto L_0x0062
             r3.openPanel(r2, r5)
             goto L_0x006a
         L_0x0062:
-            r0 = r1
+            r0 = 0
             goto L_0x006a
         L_0x0064:
             boolean r4 = r2.isOpen
@@ -2029,13 +2033,10 @@ class AppCompatDelegateImpl extends AppCompatDelegate implements MenuBuilder.Cal
             if (this.shownPanelView == null) {
                 return false;
             }
-            if (this.createdPanelView != null) {
-                return true;
+            if (this.createdPanelView == null && this.listMenuPresenter.getAdapter().getCount() <= 0) {
+                return false;
             }
-            if (this.listMenuPresenter.getAdapter().getCount() > 0) {
-                return true;
-            }
-            return false;
+            return true;
         }
 
         public void clearMenuPresenters() {

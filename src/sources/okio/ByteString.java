@@ -641,11 +641,8 @@ public class ByteString implements Serializable, Comparable<ByteString> {
         }
         if (obj instanceof ByteString) {
             ByteString byteString = (ByteString) obj;
-            if (byteString.size() == getData$okio().length && byteString.rangeEquals(0, getData$okio(), 0, getData$okio().length)) {
-                return true;
-            }
+            return byteString.size() == getData$okio().length && byteString.rangeEquals(0, getData$okio(), 0, getData$okio().length);
         }
-        return false;
     }
 
     public int hashCode() {
@@ -658,18 +655,8 @@ public class ByteString implements Serializable, Comparable<ByteString> {
         return hashCode2;
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:13:?, code lost:
-        return 1;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:14:?, code lost:
-        return -1;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:6:0x0028, code lost:
-        if (r7 < r8) goto L_0x0030;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:8:0x002e, code lost:
-        if (r0 < r1) goto L_0x0030;
-     */
+    /* JADX WARNING: Removed duplicated region for block: B:10:0x0032 A[ORIG_RETURN, RETURN, SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:9:0x0030 A[RETURN, SYNTHETIC] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public int compareTo(okio.ByteString r10) {
         /*
@@ -680,7 +667,7 @@ public class ByteString implements Serializable, Comparable<ByteString> {
             int r1 = r10.size()
             int r2 = java.lang.Math.min(r0, r1)
             r3 = 0
-            r4 = r3
+            r4 = 0
         L_0x0013:
             r5 = -1
             r6 = 1
@@ -701,10 +688,10 @@ public class ByteString implements Serializable, Comparable<ByteString> {
         L_0x002e:
             if (r0 >= r1) goto L_0x0032
         L_0x0030:
-            r3 = r5
+            r3 = -1
             goto L_0x0033
         L_0x0032:
-            r3 = r6
+            r3 = 1
         L_0x0033:
             return r3
         */

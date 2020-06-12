@@ -803,21 +803,21 @@ class FragmentTransition {
         return (PLATFORM_IMPL == null && SUPPORT_IMPL == null) ? false : true;
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:28:0x0039, code lost:
-        if (r0.mAdded != false) goto L_0x008f;
+    /* JADX WARNING: Code restructure failed: missing block: B:29:0x0039, code lost:
+        if (r0.mAdded != false) goto L_0x008e;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:50:0x0071, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:51:0x0070, code lost:
         r9 = true;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:62:0x008d, code lost:
-        if (r0.mHidden == false) goto L_0x008f;
+    /* JADX WARNING: Code restructure failed: missing block: B:63:0x008c, code lost:
+        if (r0.mHidden == false) goto L_0x008e;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:63:0x008f, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:64:0x008e, code lost:
         r9 = true;
      */
-    /* JADX WARNING: Removed duplicated region for block: B:68:0x009e  */
-    /* JADX WARNING: Removed duplicated region for block: B:89:0x00dd A[ADDED_TO_REGION] */
-    /* JADX WARNING: Removed duplicated region for block: B:95:? A[ADDED_TO_REGION, RETURN, SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:69:0x009c  */
+    /* JADX WARNING: Removed duplicated region for block: B:90:0x00db A[ADDED_TO_REGION] */
+    /* JADX WARNING: Removed duplicated region for block: B:96:? A[ADDED_TO_REGION, RETURN, SYNTHETIC] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     private static void addToFirstInLastOut(androidx.fragment.app.BackStackRecord r8, androidx.fragment.app.FragmentTransaction.Op r9, android.util.SparseArray<androidx.fragment.app.FragmentTransition.FragmentContainerTransition> r10, boolean r11, boolean r12) {
         /*
@@ -839,142 +839,142 @@ class FragmentTransition {
         L_0x0015:
             r2 = 0
             r3 = 1
-            if (r9 == r3) goto L_0x0082
+            if (r9 == r3) goto L_0x0081
             r4 = 3
-            if (r9 == r4) goto L_0x0058
+            if (r9 == r4) goto L_0x0057
             r4 = 4
-            if (r9 == r4) goto L_0x0040
+            if (r9 == r4) goto L_0x003f
             r4 = 5
             if (r9 == r4) goto L_0x002d
             r4 = 6
-            if (r9 == r4) goto L_0x0058
+            if (r9 == r4) goto L_0x0057
             r4 = 7
-            if (r9 == r4) goto L_0x0082
-            r9 = r2
-            r4 = r9
-            r5 = r4
-            goto L_0x0096
+            if (r9 == r4) goto L_0x0081
+            r9 = 0
+        L_0x0029:
+            r4 = 0
+            r5 = 0
+            goto L_0x0094
         L_0x002d:
             if (r12 == 0) goto L_0x003c
             boolean r9 = r0.mHiddenChanged
-            if (r9 == 0) goto L_0x0091
+            if (r9 == 0) goto L_0x0090
             boolean r9 = r0.mHidden
-            if (r9 != 0) goto L_0x0091
+            if (r9 != 0) goto L_0x0090
             boolean r9 = r0.mAdded
-            if (r9 == 0) goto L_0x0091
-            goto L_0x008f
+            if (r9 == 0) goto L_0x0090
+            goto L_0x008e
         L_0x003c:
             boolean r9 = r0.mHidden
-            goto L_0x0092
-        L_0x0040:
-            if (r12 == 0) goto L_0x004f
+            goto L_0x0091
+        L_0x003f:
+            if (r12 == 0) goto L_0x004e
             boolean r9 = r0.mHiddenChanged
-            if (r9 == 0) goto L_0x0073
+            if (r9 == 0) goto L_0x0072
             boolean r9 = r0.mAdded
-            if (r9 == 0) goto L_0x0073
+            if (r9 == 0) goto L_0x0072
             boolean r9 = r0.mHidden
-            if (r9 == 0) goto L_0x0073
+            if (r9 == 0) goto L_0x0072
+        L_0x004d:
+            goto L_0x0070
         L_0x004e:
-            goto L_0x0071
-        L_0x004f:
             boolean r9 = r0.mAdded
-            if (r9 == 0) goto L_0x0073
+            if (r9 == 0) goto L_0x0072
             boolean r9 = r0.mHidden
-            if (r9 != 0) goto L_0x0073
-            goto L_0x004e
-        L_0x0058:
-            if (r12 == 0) goto L_0x0075
+            if (r9 != 0) goto L_0x0072
+            goto L_0x004d
+        L_0x0057:
+            if (r12 == 0) goto L_0x0074
             boolean r9 = r0.mAdded
-            if (r9 != 0) goto L_0x0073
+            if (r9 != 0) goto L_0x0072
             android.view.View r9 = r0.mView
-            if (r9 == 0) goto L_0x0073
+            if (r9 == 0) goto L_0x0072
             android.view.View r9 = r0.mView
             int r9 = r9.getVisibility()
-            if (r9 != 0) goto L_0x0073
+            if (r9 != 0) goto L_0x0072
             float r9 = r0.mPostponedAlpha
             r4 = 0
             int r9 = (r9 > r4 ? 1 : (r9 == r4 ? 0 : -1))
-            if (r9 < 0) goto L_0x0073
-        L_0x0071:
-            r9 = r3
-            goto L_0x007e
-        L_0x0073:
-            r9 = r2
-            goto L_0x007e
-        L_0x0075:
+            if (r9 < 0) goto L_0x0072
+        L_0x0070:
+            r9 = 1
+            goto L_0x007d
+        L_0x0072:
+            r9 = 0
+            goto L_0x007d
+        L_0x0074:
             boolean r9 = r0.mAdded
-            if (r9 == 0) goto L_0x0073
+            if (r9 == 0) goto L_0x0072
             boolean r9 = r0.mHidden
-            if (r9 != 0) goto L_0x0073
-            goto L_0x0071
-        L_0x007e:
+            if (r9 != 0) goto L_0x0072
+            goto L_0x0070
+        L_0x007d:
             r5 = r9
-            r9 = r2
-            r4 = r3
-            goto L_0x0096
-        L_0x0082:
-            if (r12 == 0) goto L_0x0087
+            r9 = 0
+            r4 = 1
+            goto L_0x0094
+        L_0x0081:
+            if (r12 == 0) goto L_0x0086
             boolean r9 = r0.mIsNewlyAdded
-            goto L_0x0092
-        L_0x0087:
+            goto L_0x0091
+        L_0x0086:
             boolean r9 = r0.mAdded
-            if (r9 != 0) goto L_0x0091
+            if (r9 != 0) goto L_0x0090
             boolean r9 = r0.mHidden
-            if (r9 != 0) goto L_0x0091
-        L_0x008f:
-            r9 = r3
-            goto L_0x0092
+            if (r9 != 0) goto L_0x0090
+        L_0x008e:
+            r9 = 1
+            goto L_0x0091
+        L_0x0090:
+            r9 = 0
         L_0x0091:
-            r9 = r2
-        L_0x0092:
-            r4 = r2
-            r5 = r4
             r2 = r9
-            r9 = r3
-        L_0x0096:
+            r9 = 1
+            goto L_0x0029
+        L_0x0094:
             java.lang.Object r6 = r10.get(r1)
             androidx.fragment.app.FragmentTransition$FragmentContainerTransition r6 = (androidx.fragment.app.FragmentTransition.FragmentContainerTransition) r6
-            if (r2 == 0) goto L_0x00a8
+            if (r2 == 0) goto L_0x00a6
             androidx.fragment.app.FragmentTransition$FragmentContainerTransition r6 = ensureContainer(r6, r10, r1)
             r6.lastIn = r0
             r6.lastInIsPop = r11
             r6.lastInTransaction = r8
-        L_0x00a8:
+        L_0x00a6:
             r2 = 0
-            if (r12 != 0) goto L_0x00c9
-            if (r9 == 0) goto L_0x00c9
-            if (r6 == 0) goto L_0x00b5
+            if (r12 != 0) goto L_0x00c7
+            if (r9 == 0) goto L_0x00c7
+            if (r6 == 0) goto L_0x00b3
             androidx.fragment.app.Fragment r9 = r6.firstOut
-            if (r9 != r0) goto L_0x00b5
+            if (r9 != r0) goto L_0x00b3
             r6.firstOut = r2
-        L_0x00b5:
+        L_0x00b3:
             androidx.fragment.app.FragmentManager r9 = r8.mManager
             int r7 = r0.mState
-            if (r7 >= r3) goto L_0x00c9
+            if (r7 >= r3) goto L_0x00c7
             int r7 = r9.mCurState
-            if (r7 < r3) goto L_0x00c9
+            if (r7 < r3) goto L_0x00c7
             boolean r7 = r8.mReorderingAllowed
-            if (r7 != 0) goto L_0x00c9
+            if (r7 != 0) goto L_0x00c7
             r9.makeActive(r0)
             r9.moveToState((androidx.fragment.app.Fragment) r0, (int) r3)
-        L_0x00c9:
-            if (r5 == 0) goto L_0x00db
-            if (r6 == 0) goto L_0x00d1
+        L_0x00c7:
+            if (r5 == 0) goto L_0x00d9
+            if (r6 == 0) goto L_0x00cf
             androidx.fragment.app.Fragment r9 = r6.firstOut
-            if (r9 != 0) goto L_0x00db
-        L_0x00d1:
+            if (r9 != 0) goto L_0x00d9
+        L_0x00cf:
             androidx.fragment.app.FragmentTransition$FragmentContainerTransition r6 = ensureContainer(r6, r10, r1)
             r6.firstOut = r0
             r6.firstOutIsPop = r11
             r6.firstOutTransaction = r8
-        L_0x00db:
-            if (r12 != 0) goto L_0x00e7
-            if (r4 == 0) goto L_0x00e7
-            if (r6 == 0) goto L_0x00e7
+        L_0x00d9:
+            if (r12 != 0) goto L_0x00e5
+            if (r4 == 0) goto L_0x00e5
+            if (r6 == 0) goto L_0x00e5
             androidx.fragment.app.Fragment r8 = r6.lastIn
-            if (r8 != r0) goto L_0x00e7
+            if (r8 != r0) goto L_0x00e5
             r6.lastIn = r2
-        L_0x00e7:
+        L_0x00e5:
             return
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.fragment.app.FragmentTransition.addToFirstInLastOut(androidx.fragment.app.BackStackRecord, androidx.fragment.app.FragmentTransaction$Op, android.util.SparseArray, boolean, boolean):void");

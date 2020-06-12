@@ -59,7 +59,7 @@ public class FontsContractCompat {
                 return r5
             L_0x0008:
                 r0 = 0
-                r1 = r0
+                r1 = 0
             L_0x000a:
                 int r2 = r5.length
                 if (r1 >= r2) goto L_0x001b

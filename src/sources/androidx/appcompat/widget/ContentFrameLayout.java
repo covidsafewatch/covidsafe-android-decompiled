@@ -75,10 +75,10 @@ public class ContentFrameLayout extends FrameLayout {
             r3 = 1
             r4 = 0
             if (r1 >= r2) goto L_0x0016
-            r1 = r3
+            r1 = 1
             goto L_0x0017
         L_0x0016:
-            r1 = r4
+            r1 = 0
         L_0x0017:
             int r2 = android.view.View.MeasureSpec.getMode(r14)
             int r5 = android.view.View.MeasureSpec.getMode(r15)
@@ -112,7 +112,7 @@ public class ContentFrameLayout extends FrameLayout {
             float r10 = r10.getFraction(r11, r12)
             goto L_0x003c
         L_0x004d:
-            r10 = r4
+            r10 = 0
         L_0x004e:
             if (r10 <= 0) goto L_0x0068
             android.graphics.Rect r11 = r13.mDecorPadding
@@ -124,10 +124,10 @@ public class ContentFrameLayout extends FrameLayout {
             int r14 = android.view.View.MeasureSpec.getSize(r14)
             int r14 = java.lang.Math.min(r10, r14)
             int r14 = android.view.View.MeasureSpec.makeMeasureSpec(r14, r9)
-            r10 = r3
+            r10 = 1
             goto L_0x0069
         L_0x0068:
-            r10 = r4
+            r10 = 0
         L_0x0069:
             if (r5 != r8) goto L_0x00aa
             if (r1 == 0) goto L_0x0070
@@ -155,7 +155,7 @@ public class ContentFrameLayout extends FrameLayout {
             float r5 = r5.getFraction(r11, r12)
             goto L_0x0080
         L_0x0091:
-            r5 = r4
+            r5 = 0
         L_0x0092:
             if (r5 <= 0) goto L_0x00aa
             android.graphics.Rect r11 = r13.mDecorPadding
@@ -198,7 +198,7 @@ public class ContentFrameLayout extends FrameLayout {
             float r0 = r1.getFraction(r2, r0)
             goto L_0x00ce
         L_0x00df:
-            r0 = r4
+            r0 = 0
         L_0x00e0:
             if (r0 <= 0) goto L_0x00ec
             android.graphics.Rect r1 = r13.mDecorPadding
@@ -212,7 +212,7 @@ public class ContentFrameLayout extends FrameLayout {
             int r5 = android.view.View.MeasureSpec.makeMeasureSpec(r0, r9)
             goto L_0x00f4
         L_0x00f3:
-            r3 = r4
+            r3 = 0
         L_0x00f4:
             if (r3 == 0) goto L_0x00f9
             super.onMeasure(r5, r15)

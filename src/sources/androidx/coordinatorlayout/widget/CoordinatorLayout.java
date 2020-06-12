@@ -453,7 +453,7 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
             if (r3 == 0) goto L_0x002b
             goto L_0x0016
         L_0x0015:
-            r3 = r5
+            r3 = 0
         L_0x0016:
             android.view.View r6 = r0.mBehaviorTouchView
             android.view.ViewGroup$LayoutParams r6 = r6.getLayoutParams()
@@ -464,7 +464,7 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
             boolean r6 = r6.onTouchEvent(r0, r7, r1)
             goto L_0x002c
         L_0x002b:
-            r6 = r5
+            r6 = 0
         L_0x002c:
             android.view.View r7 = r0.mBehaviorTouchView
             r8 = 0
@@ -643,7 +643,7 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
             int r10 = androidx.core.view.ViewCompat.getLayoutDirection(r30)
             r2 = 1
             if (r10 != r2) goto L_0x0021
-            r12 = r2
+            r12 = 1
             goto L_0x0022
         L_0x0021:
             r12 = 0
@@ -660,7 +660,7 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
             if (r3 == 0) goto L_0x004b
             boolean r3 = androidx.core.view.ViewCompat.getFitsSystemWindows(r30)
             if (r3 == 0) goto L_0x004b
-            r19 = r2
+            r19 = 1
             goto L_0x004d
         L_0x004b:
             r19 = 0
@@ -710,8 +710,8 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
             int r2 = r2 - r0
             r0 = 0
             int r2 = java.lang.Math.max(r0, r2)
-            r11 = r0
             r21 = r2
+            r11 = 0
             goto L_0x00c1
         L_0x00aa:
             if (r11 != r2) goto L_0x00ae
@@ -730,7 +730,7 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
             r22 = r2
         L_0x00be:
             r11 = 0
-            r21 = r11
+            r21 = 0
         L_0x00c1:
             if (r19 == 0) goto L_0x00f3
             boolean r0 = androidx.core.view.ViewCompat.getFitsSystemWindows(r20)
@@ -1447,10 +1447,9 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
     public void onNestedScroll(View view, int i, int i2, int i3, int i4, int i5, int[] iArr) {
         Behavior behavior;
         int i6;
-        boolean z;
         int i7;
         int childCount = getChildCount();
-        boolean z2 = false;
+        boolean z = false;
         int i8 = 0;
         int i9 = 0;
         for (int i10 = 0; i10 < childCount; i10++) {
@@ -1470,20 +1469,18 @@ public class CoordinatorLayout extends ViewGroup implements NestedScrollingParen
                     }
                     i8 = i6;
                     if (i4 > 0) {
-                        z = true;
                         i7 = Math.max(i9, this.mBehaviorConsumed[1]);
                     } else {
-                        z = true;
                         i7 = Math.min(i9, this.mBehaviorConsumed[1]);
                     }
                     i9 = i7;
-                    z2 = z;
+                    z = true;
                 }
             }
         }
         iArr[0] = iArr[0] + i8;
         iArr[1] = iArr[1] + i9;
-        if (z2) {
+        if (z) {
             onChildViewsChanged(1);
         }
     }

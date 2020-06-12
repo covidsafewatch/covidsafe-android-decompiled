@@ -233,14 +233,14 @@ class StreamingAeadSeekableDecryptingChannel implements SeekableByteChannel {
             if (r1 <= 0) goto L_0x008c
             long r1 = r6.plaintextPosition     // Catch:{ all -> 0x00a4 }
             long r3 = r6.plaintextSize     // Catch:{ all -> 0x00a4 }
-            int r1 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
-            if (r1 >= 0) goto L_0x008c
+            int r5 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
+            if (r5 >= 0) goto L_0x008c
             long r1 = r6.plaintextPosition     // Catch:{ all -> 0x00a4 }
             int r1 = r6.getSegmentNr(r1)     // Catch:{ all -> 0x00a4 }
             if (r1 != 0) goto L_0x0030
             long r2 = r6.plaintextPosition     // Catch:{ all -> 0x00a4 }
         L_0x002e:
-            int r2 = (int) r2     // Catch:{ all -> 0x00a4 }
+            int r3 = (int) r2     // Catch:{ all -> 0x00a4 }
             goto L_0x003b
         L_0x0030:
             long r2 = r6.plaintextPosition     // Catch:{ all -> 0x00a4 }
@@ -255,7 +255,7 @@ class StreamingAeadSeekableDecryptingChannel implements SeekableByteChannel {
             boolean r1 = r6.tryLoadSegment(r1)     // Catch:{ all -> 0x00a4 }
             if (r1 == 0) goto L_0x008c
             java.nio.ByteBuffer r1 = r6.plaintextSegment     // Catch:{ all -> 0x00a4 }
-            r1.position(r2)     // Catch:{ all -> 0x00a4 }
+            r1.position(r3)     // Catch:{ all -> 0x00a4 }
             java.nio.ByteBuffer r1 = r6.plaintextSegment     // Catch:{ all -> 0x00a4 }
             int r1 = r1.remaining()     // Catch:{ all -> 0x00a4 }
             int r2 = r7.remaining()     // Catch:{ all -> 0x00a4 }

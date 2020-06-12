@@ -194,8 +194,8 @@ public final class OnSubscribeRedo<T> implements Observable.OnSubscribe<T> {
                                 java.util.concurrent.atomic.AtomicLong r0 = r6
                                 long r0 = r0.get()
                                 r2 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                                int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-                                if (r2 == 0) goto L_0x001f
+                                int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+                                if (r4 == 0) goto L_0x001f
                                 rx.internal.operators.OnSubscribeRedo$2 r2 = rx.internal.operators.OnSubscribeRedo.AnonymousClass2.this
                                 java.util.concurrent.atomic.AtomicLong r2 = r6
                                 r3 = 1

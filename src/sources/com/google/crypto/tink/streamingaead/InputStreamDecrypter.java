@@ -55,10 +55,10 @@ final class InputStreamDecrypter extends InputStream {
         return read(bArr, 0, bArr.length);
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:28:0x004f, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:24:0x004f, code lost:
         return r3;
      */
-    /* JADX WARNING: Missing exception handler attribute for start block: B:29:0x0050 */
+    /* JADX WARNING: Missing exception handler attribute for start block: B:25:0x0050 */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public synchronized int read(byte[] r6, int r7, int r8) throws java.io.IOException {
         /*
@@ -69,25 +69,25 @@ final class InputStreamDecrypter extends InputStream {
             monitor-exit(r5)
             return r0
         L_0x0006:
-            java.io.InputStream r1 = r5.matchingStream     // Catch:{ all -> 0x0071 }
+            java.io.InputStream r1 = r5.matchingStream     // Catch:{ all -> 0x0068 }
             if (r1 == 0) goto L_0x0012
-            java.io.InputStream r0 = r5.matchingStream     // Catch:{ all -> 0x0071 }
-            int r6 = r0.read(r6, r7, r8)     // Catch:{ all -> 0x0071 }
+            java.io.InputStream r0 = r5.matchingStream     // Catch:{ all -> 0x0068 }
+            int r6 = r0.read(r6, r7, r8)     // Catch:{ all -> 0x0068 }
             monitor-exit(r5)
             return r6
         L_0x0012:
-            boolean r1 = r5.attemptedMatching     // Catch:{ all -> 0x0071 }
-            if (r1 != 0) goto L_0x0069
+            boolean r1 = r5.attemptedMatching     // Catch:{ all -> 0x0068 }
+            if (r1 != 0) goto L_0x0060
             r1 = 1
-            r5.attemptedMatching = r1     // Catch:{ all -> 0x0071 }
-            com.google.crypto.tink.PrimitiveSet<com.google.crypto.tink.StreamingAead> r1 = r5.primitives     // Catch:{ GeneralSecurityException -> 0x0060 }
-            java.util.List r1 = r1.getRawPrimitives()     // Catch:{ GeneralSecurityException -> 0x0060 }
-            java.util.Iterator r1 = r1.iterator()     // Catch:{ all -> 0x0071 }
+            r5.attemptedMatching = r1     // Catch:{ all -> 0x0068 }
+            com.google.crypto.tink.PrimitiveSet<com.google.crypto.tink.StreamingAead> r1 = r5.primitives     // Catch:{ all -> 0x0068 }
+            java.util.List r1 = r1.getRawPrimitives()     // Catch:{ all -> 0x0068 }
+            java.util.Iterator r1 = r1.iterator()     // Catch:{ all -> 0x0068 }
         L_0x0023:
-            boolean r2 = r1.hasNext()     // Catch:{ all -> 0x0071 }
+            boolean r2 = r1.hasNext()     // Catch:{ all -> 0x0068 }
             if (r2 == 0) goto L_0x0058
-            java.lang.Object r2 = r1.next()     // Catch:{ all -> 0x0071 }
-            com.google.crypto.tink.PrimitiveSet$Entry r2 = (com.google.crypto.tink.PrimitiveSet.Entry) r2     // Catch:{ all -> 0x0071 }
+            java.lang.Object r2 = r1.next()     // Catch:{ all -> 0x0068 }
+            com.google.crypto.tink.PrimitiveSet$Entry r2 = (com.google.crypto.tink.PrimitiveSet.Entry) r2     // Catch:{ all -> 0x0068 }
             java.lang.Object r2 = r2.getPrimitive()     // Catch:{ IOException -> 0x0054, GeneralSecurityException -> 0x0050 }
             com.google.crypto.tink.StreamingAead r2 = (com.google.crypto.tink.StreamingAead) r2     // Catch:{ IOException -> 0x0054, GeneralSecurityException -> 0x0050 }
             java.io.InputStream r3 = r5.ciphertextStream     // Catch:{ IOException -> 0x0054, GeneralSecurityException -> 0x0050 }
@@ -105,28 +105,22 @@ final class InputStreamDecrypter extends InputStream {
             monitor-exit(r5)
             return r3
         L_0x0050:
-            r5.rewind()     // Catch:{ all -> 0x0071 }
+            r5.rewind()     // Catch:{ all -> 0x0068 }
             goto L_0x0023
         L_0x0054:
-            r5.rewind()     // Catch:{ all -> 0x0071 }
+            r5.rewind()     // Catch:{ all -> 0x0068 }
             goto L_0x0023
         L_0x0058:
-            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x0071 }
+            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x0068 }
             java.lang.String r7 = "No matching key found for the ciphertext in the stream."
-            r6.<init>(r7)     // Catch:{ all -> 0x0071 }
-            throw r6     // Catch:{ all -> 0x0071 }
+            r6.<init>(r7)     // Catch:{ all -> 0x0068 }
+            throw r6     // Catch:{ all -> 0x0068 }
         L_0x0060:
-            r6 = move-exception
-            java.io.IOException r7 = new java.io.IOException     // Catch:{ all -> 0x0071 }
-            java.lang.String r8 = "Keyset failure: "
-            r7.<init>(r8, r6)     // Catch:{ all -> 0x0071 }
-            throw r7     // Catch:{ all -> 0x0071 }
-        L_0x0069:
-            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x0071 }
+            java.io.IOException r6 = new java.io.IOException     // Catch:{ all -> 0x0068 }
             java.lang.String r7 = "No matching key found for the ciphertext in the stream."
-            r6.<init>(r7)     // Catch:{ all -> 0x0071 }
-            throw r6     // Catch:{ all -> 0x0071 }
-        L_0x0071:
+            r6.<init>(r7)     // Catch:{ all -> 0x0068 }
+            throw r6     // Catch:{ all -> 0x0068 }
+        L_0x0068:
             r6 = move-exception
             monitor-exit(r5)
             throw r6

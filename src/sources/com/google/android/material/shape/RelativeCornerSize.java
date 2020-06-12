@@ -22,10 +22,7 @@ public final class RelativeCornerSize implements CornerSize {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof RelativeCornerSize)) {
-            return false;
-        }
-        if (this.percent == ((RelativeCornerSize) obj).percent) {
+        if ((obj instanceof RelativeCornerSize) && this.percent == ((RelativeCornerSize) obj).percent) {
             return true;
         }
         return false;

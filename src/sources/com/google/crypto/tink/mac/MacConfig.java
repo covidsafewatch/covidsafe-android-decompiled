@@ -1,21 +1,22 @@
 package com.google.crypto.tink.mac;
 
-import com.google.crypto.tink.Config;
-import com.google.crypto.tink.Registry;
 import com.google.crypto.tink.proto.RegistryConfig;
 import java.security.GeneralSecurityException;
 
 public final class MacConfig {
-    private static final String CATALOGUE_NAME = "TinkMac";
-    public static final String HMAC_TYPE_URL = "type.googleapis.com/google.crypto.tink.HmacKey";
-    public static final RegistryConfig LATEST = ((RegistryConfig) ((RegistryConfig.Builder) RegistryConfig.newBuilder().mergeFrom(TINK_1_0_0)).setConfigName("TINK_MAC").build());
-    private static final String PRIMITIVE_NAME = "Mac";
+    public static final String HMAC_TYPE_URL = new HmacKeyManager().getKeyType();
     @Deprecated
-    public static final RegistryConfig TINK_1_0_0 = ((RegistryConfig) RegistryConfig.newBuilder().setConfigName("TINK_MAC_1_0_0").addEntry(Config.getTinkKeyTypeEntry(CATALOGUE_NAME, PRIMITIVE_NAME, "HmacKey", 0, true)).build());
+    public static final RegistryConfig LATEST;
     @Deprecated
-    public static final RegistryConfig TINK_1_1_0 = ((RegistryConfig) ((RegistryConfig.Builder) RegistryConfig.newBuilder().mergeFrom(TINK_1_0_0)).setConfigName("TINK_MAC_1_1_0").build());
+    public static final RegistryConfig TINK_1_0_0;
+    @Deprecated
+    public static final RegistryConfig TINK_1_1_0;
 
     static {
+        RegistryConfig defaultInstance = RegistryConfig.getDefaultInstance();
+        TINK_1_0_0 = defaultInstance;
+        TINK_1_1_0 = defaultInstance;
+        LATEST = defaultInstance;
         try {
             init();
         } catch (GeneralSecurityException e) {
@@ -29,8 +30,9 @@ public final class MacConfig {
     }
 
     public static void register() throws GeneralSecurityException {
-        Registry.addCatalogue(CATALOGUE_NAME, new MacCatalogue());
-        Config.register(LATEST);
+        HmacKeyManager.register(true);
+        AesCmacKeyManager.register(true);
+        MacWrapper.register();
     }
 
     @Deprecated

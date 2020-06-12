@@ -293,8 +293,8 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
     }
 
     /* access modifiers changed from: package-private */
-    /* JADX WARNING: Removed duplicated region for block: B:46:0x012a  */
-    /* JADX WARNING: Removed duplicated region for block: B:52:0x0136  */
+    /* JADX WARNING: Removed duplicated region for block: B:47:0x012b  */
+    /* JADX WARNING: Removed duplicated region for block: B:53:0x0137  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public void select(androidx.recyclerview.widget.RecyclerView.ViewHolder r24, int r25) {
         /*
@@ -334,12 +334,12 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             int r16 = r0 + -1
             androidx.recyclerview.widget.RecyclerView$ViewHolder r9 = r11.mSelected
             r8 = 0
-            if (r9 == 0) goto L_0x00ed
+            if (r9 == 0) goto L_0x00ee
             android.view.View r0 = r9.itemView
             android.view.ViewParent r0 = r0.getParent()
-            if (r0 == 0) goto L_0x00d9
+            if (r0 == 0) goto L_0x00da
             if (r4 != r15) goto L_0x004a
-            r7 = r8
+            r7 = 0
             goto L_0x004f
         L_0x004a:
             int r0 = r11.swipeIfNecessary(r9)
@@ -348,47 +348,47 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             r23.releaseVelocityTracker()
             r0 = 4
             r1 = 0
-            if (r7 == r14) goto L_0x007c
-            if (r7 == r15) goto L_0x007c
-            if (r7 == r0) goto L_0x0069
-            if (r7 == r10) goto L_0x0069
+            if (r7 == r14) goto L_0x007b
+            if (r7 == r15) goto L_0x007b
+            if (r7 == r0) goto L_0x0067
+            if (r7 == r10) goto L_0x0067
             r2 = 16
-            if (r7 == r2) goto L_0x0069
+            if (r7 == r2) goto L_0x0067
             r2 = 32
-            if (r7 == r2) goto L_0x0069
-            r17 = r1
-            r18 = r17
-            goto L_0x008e
-        L_0x0069:
+            if (r7 == r2) goto L_0x0067
+            r17 = 0
+            goto L_0x0078
+        L_0x0067:
             float r2 = r11.mDx
             float r2 = java.lang.Math.signum(r2)
             androidx.recyclerview.widget.RecyclerView r3 = r11.mRecyclerView
             int r3 = r3.getWidth()
             float r3 = (float) r3
             float r2 = r2 * r3
-            r18 = r1
             r17 = r2
+        L_0x0078:
+            r18 = 0
             goto L_0x008e
-        L_0x007c:
+        L_0x007b:
             float r2 = r11.mDy
             float r2 = java.lang.Math.signum(r2)
             androidx.recyclerview.widget.RecyclerView r3 = r11.mRecyclerView
             int r3 = r3.getHeight()
             float r3 = (float) r3
             float r2 = r2 * r3
-            r17 = r1
             r18 = r2
+            r17 = 0
         L_0x008e:
-            if (r4 != r15) goto L_0x0092
-            r6 = r10
-            goto L_0x0097
-        L_0x0092:
-            if (r7 <= 0) goto L_0x0096
-            r6 = r15
-            goto L_0x0097
-        L_0x0096:
-            r6 = r0
+            if (r4 != r15) goto L_0x0093
+            r6 = 8
+            goto L_0x0098
+        L_0x0093:
+            if (r7 <= 0) goto L_0x0097
+            r6 = 2
+            goto L_0x0098
         L_0x0097:
+            r6 = 4
+        L_0x0098:
             float[] r0 = r11.mTmpPosition
             r11.getSelectedDxDy(r0)
             float[] r0 = r11.mTmpPosition
@@ -408,7 +408,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             r8 = r18
             r22 = r9
             r9 = r21
-            r21 = r10
+            r21 = 8
             r10 = r22
             r0.<init>(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10)
             androidx.recyclerview.widget.ItemTouchHelper$Callback r0 = r11.mCallback
@@ -421,25 +421,25 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             r0.add(r14)
             r14.start()
             r8 = 1
-            goto L_0x00e9
-        L_0x00d9:
+            goto L_0x00ea
+        L_0x00da:
             r0 = r9
-            r21 = r10
+            r21 = 8
             android.view.View r1 = r0.itemView
             r11.removeChildDrawingOrderCallbackIfNecessary(r1)
             androidx.recyclerview.widget.ItemTouchHelper$Callback r1 = r11.mCallback
             androidx.recyclerview.widget.RecyclerView r2 = r11.mRecyclerView
             r1.clearView(r2, r0)
             r8 = 0
-        L_0x00e9:
+        L_0x00ea:
             r0 = 0
             r11.mSelected = r0
-            goto L_0x00f0
-        L_0x00ed:
-            r21 = r10
+            goto L_0x00f1
+        L_0x00ee:
+            r21 = 8
             r8 = 0
-        L_0x00f0:
-            if (r12 == 0) goto L_0x0121
+        L_0x00f1:
+            if (r12 == 0) goto L_0x0122
             androidx.recyclerview.widget.ItemTouchHelper$Callback r0 = r11.mCallback
             androidx.recyclerview.widget.RecyclerView r1 = r11.mRecyclerView
             int r0 = r0.getAbsoluteMovementFlags(r1, r12)
@@ -458,31 +458,31 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             r11.mSelectedStartY = r0
             r11.mSelected = r12
             r0 = 2
-            if (r13 != r0) goto L_0x0121
+            if (r13 != r0) goto L_0x0122
             android.view.View r0 = r12.itemView
             r1 = 0
             r0.performHapticFeedback(r1)
-            goto L_0x0122
-        L_0x0121:
-            r1 = 0
+            goto L_0x0123
         L_0x0122:
+            r1 = 0
+        L_0x0123:
             androidx.recyclerview.widget.RecyclerView r0 = r11.mRecyclerView
             android.view.ViewParent r0 = r0.getParent()
-            if (r0 == 0) goto L_0x0134
+            if (r0 == 0) goto L_0x0135
             androidx.recyclerview.widget.RecyclerView$ViewHolder r2 = r11.mSelected
-            if (r2 == 0) goto L_0x0130
+            if (r2 == 0) goto L_0x0131
             r14 = 1
-            goto L_0x0131
-        L_0x0130:
-            r14 = r1
+            goto L_0x0132
         L_0x0131:
+            r14 = 0
+        L_0x0132:
             r0.requestDisallowInterceptTouchEvent(r14)
-        L_0x0134:
-            if (r8 != 0) goto L_0x013f
+        L_0x0135:
+            if (r8 != 0) goto L_0x0140
             androidx.recyclerview.widget.RecyclerView r0 = r11.mRecyclerView
             androidx.recyclerview.widget.RecyclerView$LayoutManager r0 = r0.getLayoutManager()
             r0.requestSimpleAnimationsInNextLayout()
-        L_0x013f:
+        L_0x0140:
             androidx.recyclerview.widget.ItemTouchHelper$Callback r0 = r11.mCallback
             androidx.recyclerview.widget.RecyclerView$ViewHolder r1 = r11.mSelected
             int r2 = r11.mActionState
@@ -604,7 +604,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             r12 = r9
             goto L_0x0080
         L_0x007f:
-            r12 = r2
+            r12 = 0
         L_0x0080:
             boolean r1 = r1.canScrollVertically()
             if (r1 == 0) goto L_0x00c8
@@ -644,7 +644,7 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration implements Recy
             if (r1 <= 0) goto L_0x00c8
             goto L_0x00c9
         L_0x00c8:
-            r1 = r2
+            r1 = 0
         L_0x00c9:
             if (r12 == 0) goto L_0x00e2
             androidx.recyclerview.widget.ItemTouchHelper$Callback r9 = r0.mCallback

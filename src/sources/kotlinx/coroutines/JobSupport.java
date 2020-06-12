@@ -277,10 +277,10 @@ public class JobSupport implements Job, ChildJob, ParentJob, SelectClause0 {
             if (r4 == r7) goto L_0x0067
             boolean r4 = r4 instanceof kotlinx.coroutines.TimeoutCancellationException
             if (r4 == 0) goto L_0x0067
-            r4 = r3
+            r4 = 1
             goto L_0x0068
         L_0x0067:
-            r4 = r0
+            r4 = 0
         L_0x0068:
             if (r4 == 0) goto L_0x0052
             r1 = r2
@@ -1210,7 +1210,7 @@ public class JobSupport implements Job, ChildJob, ParentJob, SelectClause0 {
             this._rootCause = th;
         }
 
-        /* JADX WARNING: type inference failed for: r0v0, types: [boolean, int] */
+        /* JADX WARNING: type inference failed for: r0v0, types: [int, boolean] */
         public final boolean isCompleting() {
             return this._isCompleting;
         }

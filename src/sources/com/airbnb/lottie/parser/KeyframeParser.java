@@ -59,14 +59,14 @@ class KeyframeParser {
             r3 = 0
             r4 = 0
             r5 = 0
-            r6 = r3
-            r13 = r4
             r7 = r5
             r8 = r7
             r9 = r8
             r10 = r9
             r14 = r10
             r15 = r14
+            r6 = 0
+            r13 = 0
         L_0x0014:
             boolean r11 = r17.hasNext()
             if (r11 == 0) goto L_0x0056
@@ -96,10 +96,10 @@ class KeyframeParser {
             int r6 = r17.nextInt()
             r11 = 1
             if (r6 != r11) goto L_0x003a
-            r6 = r11
+            r6 = 1
             goto L_0x0014
         L_0x003a:
-            r6 = r3
+            r6 = 0
             goto L_0x0014
         L_0x003c:
             android.graphics.PointF r8 = com.airbnb.lottie.parser.JsonUtils.jsonToPoint(r17, r18)

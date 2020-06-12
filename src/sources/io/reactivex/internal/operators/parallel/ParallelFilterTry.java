@@ -230,7 +230,7 @@ public final class ParallelFilterTry<T> extends ParallelFlowable<T> {
                 io.reactivex.internal.fuseable.ConditionalSubscriber<? super T> r2 = r9.downstream
                 boolean r10 = r2.tryOnNext(r10)
                 if (r10 == 0) goto L_0x0019
-                r1 = r0
+                r1 = 1
             L_0x0019:
                 return r1
             L_0x001a:

@@ -349,8 +349,8 @@ public class ISO8601Utils {
                 throw new NumberFormatException("Invalid number: " + str.substring(i, i2));
             }
         } else {
-            i3 = 0;
             i4 = i;
+            i3 = 0;
         }
         while (i4 < i2) {
             int i5 = i4 + 1;

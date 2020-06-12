@@ -53,18 +53,18 @@ public final class TickerChannelsKt {
         throw new IllegalArgumentException(("Expected non-negative delay, but has " + j + " ms").toString());
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:35:0x00ed, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:35:0x00ec, code lost:
         r2 = kotlin.coroutines.jvm.internal.Boxing.boxLong(r2.nanoTime());
      */
-    /* JADX WARNING: Removed duplicated region for block: B:18:0x008e  */
-    /* JADX WARNING: Removed duplicated region for block: B:31:0x00df A[RETURN] */
-    /* JADX WARNING: Removed duplicated region for block: B:32:0x00e0  */
-    /* JADX WARNING: Removed duplicated region for block: B:37:0x00f7  */
-    /* JADX WARNING: Removed duplicated region for block: B:38:0x00fc  */
-    /* JADX WARNING: Removed duplicated region for block: B:43:0x0114  */
-    /* JADX WARNING: Removed duplicated region for block: B:49:0x014f  */
-    /* JADX WARNING: Removed duplicated region for block: B:51:0x0174 A[RETURN] */
-    /* JADX WARNING: Removed duplicated region for block: B:52:0x0175  */
+    /* JADX WARNING: Removed duplicated region for block: B:18:0x008d  */
+    /* JADX WARNING: Removed duplicated region for block: B:31:0x00de A[RETURN] */
+    /* JADX WARNING: Removed duplicated region for block: B:32:0x00df  */
+    /* JADX WARNING: Removed duplicated region for block: B:37:0x00f6  */
+    /* JADX WARNING: Removed duplicated region for block: B:38:0x00fb  */
+    /* JADX WARNING: Removed duplicated region for block: B:43:0x0113  */
+    /* JADX WARNING: Removed duplicated region for block: B:49:0x014e  */
+    /* JADX WARNING: Removed duplicated region for block: B:51:0x0173 A[RETURN] */
+    /* JADX WARNING: Removed duplicated region for block: B:52:0x0174  */
     /* JADX WARNING: Removed duplicated region for block: B:8:0x002b  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     static final /* synthetic */ java.lang.Object fixedPeriodTicker(long r21, long r23, kotlinx.coroutines.channels.SendChannel<? super kotlin.Unit> r25, kotlin.coroutines.Continuation<? super kotlin.Unit> r26) {
@@ -94,11 +94,11 @@ public final class TickerChannelsKt {
             r7 = 3
             r8 = 2
             r9 = 1
-            if (r5 == 0) goto L_0x008e
-            if (r5 == r9) goto L_0x007a
-            if (r5 == r8) goto L_0x0069
-            if (r5 == r7) goto L_0x0051
-            if (r5 != r6) goto L_0x0049
+            if (r5 == 0) goto L_0x008d
+            if (r5 == r9) goto L_0x0079
+            if (r5 == r8) goto L_0x0068
+            if (r5 == r7) goto L_0x0050
+            if (r5 != r6) goto L_0x0048
             long r0 = r3.J$5
             long r0 = r3.J$4
             long r0 = r3.J$3
@@ -108,14 +108,13 @@ public final class TickerChannelsKt {
             long r11 = r3.J$1
             long r13 = r3.J$0
             kotlin.ResultKt.throwOnFailure(r2)
-            r2 = r6
-            goto L_0x0148
-        L_0x0049:
+            goto L_0x0146
+        L_0x0048:
             java.lang.IllegalStateException r0 = new java.lang.IllegalStateException
             java.lang.String r1 = "call to 'resume' before 'invoke' with coroutine"
             r0.<init>(r1)
             throw r0
-        L_0x0051:
+        L_0x0050:
             long r0 = r3.J$6
             long r0 = r3.J$5
             long r0 = r3.J$4
@@ -126,9 +125,9 @@ public final class TickerChannelsKt {
             long r11 = r3.J$1
             long r13 = r3.J$0
             kotlin.ResultKt.throwOnFailure(r2)
-            r8 = r7
-            goto L_0x0147
-        L_0x0069:
+            r8 = 3
+            goto L_0x0146
+        L_0x0068:
             long r0 = r3.J$3
             long r9 = r3.J$2
             java.lang.Object r5 = r3.L$0
@@ -136,8 +135,8 @@ public final class TickerChannelsKt {
             long r11 = r3.J$1
             long r13 = r3.J$0
             kotlin.ResultKt.throwOnFailure(r2)
-            goto L_0x00e7
-        L_0x007a:
+            goto L_0x00e6
+        L_0x0079:
             long r0 = r3.J$2
             java.lang.Object r5 = r3.L$0
             kotlinx.coroutines.channels.SendChannel r5 = (kotlinx.coroutines.channels.SendChannel) r5
@@ -148,19 +147,19 @@ public final class TickerChannelsKt {
             r19 = r0
             r0 = r9
             r9 = r19
-            goto L_0x00c6
-        L_0x008e:
+            goto L_0x00c5
+        L_0x008d:
             kotlin.ResultKt.throwOnFailure(r2)
             kotlinx.coroutines.TimeSource r2 = kotlinx.coroutines.TimeSourceKt.getTimeSource()
-            if (r2 == 0) goto L_0x00a6
+            if (r2 == 0) goto L_0x00a5
             long r10 = r2.nanoTime()
             java.lang.Long r2 = kotlin.coroutines.jvm.internal.Boxing.boxLong(r10)
-            if (r2 == 0) goto L_0x00a6
+            if (r2 == 0) goto L_0x00a5
             long r10 = r2.longValue()
-            goto L_0x00aa
-        L_0x00a6:
+            goto L_0x00a9
+        L_0x00a5:
             long r10 = java.lang.System.nanoTime()
-        L_0x00aa:
+        L_0x00a9:
             long r12 = kotlinx.coroutines.EventLoop_commonKt.delayToNanos(r23)
             long r10 = r10 + r12
             r12 = r21
@@ -171,14 +170,14 @@ public final class TickerChannelsKt {
             r3.J$2 = r10
             r3.label = r9
             java.lang.Object r5 = kotlinx.coroutines.DelayKt.delay(r0, r3)
-            if (r5 != r4) goto L_0x00c4
+            if (r5 != r4) goto L_0x00c3
             return r4
-        L_0x00c4:
+        L_0x00c3:
             r9 = r10
             r11 = r12
-        L_0x00c6:
+        L_0x00c5:
             long r13 = kotlinx.coroutines.EventLoop_commonKt.delayToNanos(r11)
-        L_0x00ca:
+        L_0x00c9:
             long r9 = r9 + r13
             kotlin.Unit r5 = kotlin.Unit.INSTANCE
             r3.J$0 = r11
@@ -188,25 +187,25 @@ public final class TickerChannelsKt {
             r3.J$3 = r13
             r3.label = r8
             java.lang.Object r5 = r2.send(r5, r3)
-            if (r5 != r4) goto L_0x00e0
+            if (r5 != r4) goto L_0x00df
             return r4
-        L_0x00e0:
+        L_0x00df:
             r5 = r2
             r19 = r0
             r0 = r13
             r13 = r11
             r11 = r19
-        L_0x00e7:
+        L_0x00e6:
             kotlinx.coroutines.TimeSource r2 = kotlinx.coroutines.TimeSourceKt.getTimeSource()
-            if (r2 == 0) goto L_0x00fc
+            if (r2 == 0) goto L_0x00fb
             long r15 = r2.nanoTime()
             java.lang.Long r2 = kotlin.coroutines.jvm.internal.Boxing.boxLong(r15)
-            if (r2 == 0) goto L_0x00fc
+            if (r2 == 0) goto L_0x00fb
             long r15 = r2.longValue()
-            goto L_0x0100
-        L_0x00fc:
+            goto L_0x00ff
+        L_0x00fb:
             long r15 = java.lang.System.nanoTime()
-        L_0x0100:
+        L_0x00ff:
             r6 = r15
             r15 = r3
             long r2 = r9 - r6
@@ -214,9 +213,9 @@ public final class TickerChannelsKt {
             r8 = 0
             long r2 = kotlin.ranges.RangesKt.coerceAtLeast((long) r2, (long) r8)
             int r10 = (r2 > r8 ? 1 : (r2 == r8 ? 0 : -1))
-            if (r10 != 0) goto L_0x014f
-            int r8 = (r0 > r8 ? 1 : (r0 == r8 ? 0 : -1))
-            if (r8 == 0) goto L_0x014f
+            if (r10 != 0) goto L_0x014e
+            int r10 = (r0 > r8 ? 1 : (r0 == r8 ? 0 : -1))
+            if (r10 == 0) goto L_0x014e
             long r8 = r6 - r22
             long r8 = r8 % r0
             long r8 = r0 - r8
@@ -239,20 +238,20 @@ public final class TickerChannelsKt {
             r8 = 3
             r10.label = r8
             java.lang.Object r2 = kotlinx.coroutines.DelayKt.delay(r6, r10)
-            if (r2 != r4) goto L_0x0144
+            if (r2 != r4) goto L_0x0143
             return r4
-        L_0x0144:
+        L_0x0143:
             r3 = r10
             r9 = r22
-        L_0x0147:
+        L_0x0146:
             r2 = 4
-        L_0x0148:
+        L_0x0147:
             r19 = r11
             r11 = r13
             r13 = r0
             r0 = r19
-            goto L_0x017a
-        L_0x014f:
+            goto L_0x0179
+        L_0x014e:
             r10 = r15
             r19 = r2
             r2 = r6
@@ -270,19 +269,19 @@ public final class TickerChannelsKt {
             r2 = 4
             r10.label = r2
             java.lang.Object r3 = kotlinx.coroutines.DelayKt.delay(r8, r10)
-            if (r3 != r4) goto L_0x0175
+            if (r3 != r4) goto L_0x0174
             return r4
-        L_0x0175:
+        L_0x0174:
             r3 = r10
             r9 = r11
             r11 = r17
-            goto L_0x0148
-        L_0x017a:
-            r6 = r2
+            goto L_0x0147
+        L_0x0179:
             r2 = r5
+            r6 = 4
             r7 = 3
             r8 = 2
-            goto L_0x00ca
+            goto L_0x00c9
         */
         throw new UnsupportedOperationException("Method not decompiled: kotlinx.coroutines.channels.TickerChannelsKt.fixedPeriodTicker(long, long, kotlinx.coroutines.channels.SendChannel, kotlin.coroutines.Continuation):java.lang.Object");
     }

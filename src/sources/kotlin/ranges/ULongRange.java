@@ -57,7 +57,7 @@ public final class ULongRange extends ULongProgression implements ClosedRange<UL
         if (isEmpty()) {
             return -1;
         }
-        return (((int) ULong.m158constructorimpl(getFirst() ^ ULong.m158constructorimpl(getFirst() >>> 32))) * 31) + ((int) ULong.m158constructorimpl(getLast() ^ ULong.m158constructorimpl(getLast() >>> 32)));
+        return ((int) ULong.m158constructorimpl(getLast() ^ ULong.m158constructorimpl(getLast() >>> 32))) + (((int) ULong.m158constructorimpl(getFirst() ^ ULong.m158constructorimpl(getFirst() >>> 32))) * 31);
     }
 
     public String toString() {

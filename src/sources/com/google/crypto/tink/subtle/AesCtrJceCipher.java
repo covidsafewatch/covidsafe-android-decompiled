@@ -9,6 +9,16 @@ public final class AesCtrJceCipher implements IndCpaCipher {
     private static final String CIPHER_ALGORITHM = "AES/CTR/NoPadding";
     private static final String KEY_ALGORITHM = "AES";
     private static final int MIN_IV_SIZE_IN_BYTES = 12;
+    private static final ThreadLocal<Cipher> localCipher = new ThreadLocal<Cipher>() {
+        /* access modifiers changed from: protected */
+        public Cipher initialValue() {
+            try {
+                return EngineFactory.CIPHER.getInstance(AesCtrJceCipher.CIPHER_ALGORITHM);
+            } catch (GeneralSecurityException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+    };
     private final int blockSize;
     private final int ivSize;
     private final SecretKeySpec keySpec;
@@ -16,7 +26,7 @@ public final class AesCtrJceCipher implements IndCpaCipher {
     public AesCtrJceCipher(byte[] bArr, int i) throws GeneralSecurityException {
         Validators.validateAesKeySize(bArr.length);
         this.keySpec = new SecretKeySpec(bArr, KEY_ALGORITHM);
-        int blockSize2 = EngineFactory.CIPHER.getInstance(CIPHER_ALGORITHM).getBlockSize();
+        int blockSize2 = localCipher.get().getBlockSize();
         this.blockSize = blockSize2;
         if (i < 12 || i > blockSize2) {
             throw new GeneralSecurityException("invalid IV size");
@@ -53,16 +63,16 @@ public final class AesCtrJceCipher implements IndCpaCipher {
     }
 
     private void doCtr(byte[] bArr, int i, int i2, byte[] bArr2, int i3, byte[] bArr3, boolean z) throws GeneralSecurityException {
-        Cipher instance = EngineFactory.CIPHER.getInstance(CIPHER_ALGORITHM);
+        Cipher cipher = localCipher.get();
         byte[] bArr4 = new byte[this.blockSize];
         System.arraycopy(bArr3, 0, bArr4, 0, this.ivSize);
         IvParameterSpec ivParameterSpec = new IvParameterSpec(bArr4);
         if (z) {
-            instance.init(1, this.keySpec, ivParameterSpec);
+            cipher.init(1, this.keySpec, ivParameterSpec);
         } else {
-            instance.init(2, this.keySpec, ivParameterSpec);
+            cipher.init(2, this.keySpec, ivParameterSpec);
         }
-        if (instance.doFinal(bArr, i, i2, bArr2, i3) != i2) {
+        if (cipher.doFinal(bArr, i, i2, bArr2, i3) != i2) {
             throw new GeneralSecurityException("stored output's length does not match input's length");
         }
     }

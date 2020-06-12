@@ -89,60 +89,90 @@ class StringsKt__StringNumberConversionsKt extends StringsKt__StringNumberConver
         return StringsKt.toLongOrNull(str, 10);
     }
 
-    public static final Long toLongOrNull(String str, int i) {
-        String str2 = str;
-        int i2 = i;
-        Intrinsics.checkParameterIsNotNull(str2, "$this$toLongOrNull");
-        CharsKt.checkRadix(i);
-        int length = str.length();
-        if (length == 0) {
-            return null;
-        }
-        int i3 = 0;
-        char charAt = str2.charAt(0);
-        long j = -9223372036854775807L;
-        boolean z = true;
-        if (charAt >= '0') {
-            z = false;
-        } else if (length == 1) {
-            return null;
-        } else {
-            if (charAt == '-') {
-                j = Long.MIN_VALUE;
-                i3 = 1;
-            } else if (charAt != '+') {
-                return null;
-            } else {
-                z = false;
-                i3 = 1;
-            }
-        }
-        long j2 = -256204778801521550L;
-        long j3 = 0;
-        long j4 = -256204778801521550L;
-        while (i3 < length) {
-            int digitOf = CharsKt.digitOf(str2.charAt(i3), i2);
-            if (digitOf < 0) {
-                return null;
-            }
-            if (j3 < j4) {
-                if (j4 == j2) {
-                    j4 = j / ((long) i2);
-                    if (j3 < j4) {
-                    }
-                }
-                return null;
-            }
-            long j5 = j3 * ((long) i2);
-            long j6 = (long) digitOf;
-            if (j5 < j + j6) {
-                return null;
-            }
-            j3 = j5 - j6;
-            i3++;
-            j2 = -256204778801521550L;
-        }
-        return z ? Long.valueOf(j3) : Long.valueOf(-j3);
+    /* JADX WARNING: Removed duplicated region for block: B:17:0x0040  */
+    /* JADX WARNING: Removed duplicated region for block: B:32:0x0071  */
+    /* JADX WARNING: Removed duplicated region for block: B:33:0x0076  */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public static final java.lang.Long toLongOrNull(java.lang.String r18, int r19) {
+        /*
+            r0 = r18
+            r1 = r19
+            java.lang.String r2 = "$this$toLongOrNull"
+            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r0, r2)
+            kotlin.text.CharsKt.checkRadix(r19)
+            int r2 = r18.length()
+            r3 = 0
+            if (r2 != 0) goto L_0x0014
+            return r3
+        L_0x0014:
+            r4 = 0
+            char r5 = r0.charAt(r4)
+            r6 = 48
+            r7 = -9223372036854775807(0x8000000000000001, double:-4.9E-324)
+            r9 = 1
+            if (r5 >= r6) goto L_0x0035
+            if (r2 != r9) goto L_0x0026
+            return r3
+        L_0x0026:
+            r6 = 45
+            if (r5 != r6) goto L_0x002e
+            r7 = -9223372036854775808
+            r4 = 1
+            goto L_0x0036
+        L_0x002e:
+            r6 = 43
+            if (r5 != r6) goto L_0x0034
+            r4 = 1
+            goto L_0x0035
+        L_0x0034:
+            return r3
+        L_0x0035:
+            r9 = 0
+        L_0x0036:
+            r5 = -256204778801521550(0xfc71c71c71c71c72, double:-2.772000429909333E291)
+            r10 = 0
+            r12 = r5
+        L_0x003e:
+            if (r4 >= r2) goto L_0x006f
+            char r14 = r0.charAt(r4)
+            int r14 = kotlin.text.CharsKt.digitOf(r14, r1)
+            if (r14 >= 0) goto L_0x004b
+            return r3
+        L_0x004b:
+            int r15 = (r10 > r12 ? 1 : (r10 == r12 ? 0 : -1))
+            if (r15 >= 0) goto L_0x005b
+            int r15 = (r12 > r5 ? 1 : (r12 == r5 ? 0 : -1))
+            if (r15 != 0) goto L_0x005a
+            long r12 = (long) r1
+            long r12 = r7 / r12
+            int r15 = (r10 > r12 ? 1 : (r10 == r12 ? 0 : -1))
+            if (r15 >= 0) goto L_0x005b
+        L_0x005a:
+            return r3
+        L_0x005b:
+            long r5 = (long) r1
+            long r10 = r10 * r5
+            long r5 = (long) r14
+            long r16 = r7 + r5
+            int r14 = (r10 > r16 ? 1 : (r10 == r16 ? 0 : -1))
+            if (r14 >= 0) goto L_0x0066
+            return r3
+        L_0x0066:
+            long r10 = r10 - r5
+            int r4 = r4 + 1
+            r5 = -256204778801521550(0xfc71c71c71c71c72, double:-2.772000429909333E291)
+            goto L_0x003e
+        L_0x006f:
+            if (r9 == 0) goto L_0x0076
+            java.lang.Long r0 = java.lang.Long.valueOf(r10)
+            goto L_0x007b
+        L_0x0076:
+            long r0 = -r10
+            java.lang.Long r0 = java.lang.Long.valueOf(r0)
+        L_0x007b:
+            return r0
+        */
+        throw new UnsupportedOperationException("Method not decompiled: kotlin.text.StringsKt__StringNumberConversionsKt.toLongOrNull(java.lang.String, int):java.lang.Long");
     }
 
     public static final Void numberFormatError(String str) {

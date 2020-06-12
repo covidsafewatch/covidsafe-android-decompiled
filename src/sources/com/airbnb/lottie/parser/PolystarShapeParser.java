@@ -15,7 +15,6 @@ class PolystarShapeParser {
     }
 
     static PolystarShape parse(JsonReader jsonReader, LottieComposition lottieComposition) throws IOException {
-        boolean z = false;
         String str = null;
         PolystarShape.Type type = null;
         AnimatableFloatValue animatableFloatValue = null;
@@ -25,6 +24,7 @@ class PolystarShapeParser {
         AnimatableFloatValue animatableFloatValue4 = null;
         AnimatableFloatValue animatableFloatValue5 = null;
         AnimatableFloatValue animatableFloatValue6 = null;
+        boolean z = false;
         while (jsonReader.hasNext()) {
             switch (jsonReader.selectName(NAMES)) {
                 case 0:

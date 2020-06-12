@@ -20,6 +20,10 @@ public final class JsonKeysetWriter implements KeysetWriter {
     private static final Charset UTF_8 = Charset.forName("UTF-8");
     private final OutputStream outputStream;
 
+    private long toUnsignedLong(int i) {
+        return ((long) i) & 4294967295L;
+    }
+
     private JsonKeysetWriter(OutputStream outputStream2) {
         this.outputStream = outputStream2;
     }
@@ -58,7 +62,7 @@ public final class JsonKeysetWriter implements KeysetWriter {
 
     private JSONObject toJson(Keyset keyset) throws JSONException {
         JSONObject jSONObject = new JSONObject();
-        jSONObject.put("primaryKeyId", keyset.getPrimaryKeyId());
+        jSONObject.put("primaryKeyId", toUnsignedLong(keyset.getPrimaryKeyId()));
         JSONArray jSONArray = new JSONArray();
         for (Keyset.Key json : keyset.getKeyList()) {
             jSONArray.put(toJson(json));
@@ -68,11 +72,11 @@ public final class JsonKeysetWriter implements KeysetWriter {
     }
 
     private JSONObject toJson(Keyset.Key key) throws JSONException {
-        return new JSONObject().put("keyData", toJson(key.getKeyData())).put(NotificationCompat.CATEGORY_STATUS, key.getStatus().toString()).put("keyId", key.getKeyId()).put("outputPrefixType", key.getOutputPrefixType().toString());
+        return new JSONObject().put("keyData", toJson(key.getKeyData())).put(NotificationCompat.CATEGORY_STATUS, key.getStatus().name()).put("keyId", toUnsignedLong(key.getKeyId())).put("outputPrefixType", key.getOutputPrefixType().name());
     }
 
     private JSONObject toJson(KeyData keyData) throws JSONException {
-        return new JSONObject().put("typeUrl", keyData.getTypeUrl()).put("value", Base64.encode(keyData.getValue().toByteArray())).put("keyMaterialType", keyData.getKeyMaterialType().toString());
+        return new JSONObject().put("typeUrl", keyData.getTypeUrl()).put("value", Base64.encode(keyData.getValue().toByteArray())).put("keyMaterialType", keyData.getKeyMaterialType().name());
     }
 
     private JSONObject toJson(EncryptedKeyset encryptedKeyset) throws JSONException {
@@ -81,7 +85,7 @@ public final class JsonKeysetWriter implements KeysetWriter {
 
     private JSONObject toJson(KeysetInfo keysetInfo) throws JSONException {
         JSONObject jSONObject = new JSONObject();
-        jSONObject.put("primaryKeyId", keysetInfo.getPrimaryKeyId());
+        jSONObject.put("primaryKeyId", toUnsignedLong(keysetInfo.getPrimaryKeyId()));
         JSONArray jSONArray = new JSONArray();
         for (KeysetInfo.KeyInfo json : keysetInfo.getKeyInfoList()) {
             jSONArray.put(toJson(json));
@@ -91,6 +95,6 @@ public final class JsonKeysetWriter implements KeysetWriter {
     }
 
     private JSONObject toJson(KeysetInfo.KeyInfo keyInfo) throws JSONException {
-        return new JSONObject().put("typeUrl", keyInfo.getTypeUrl()).put(NotificationCompat.CATEGORY_STATUS, keyInfo.getStatus().toString()).put("keyId", keyInfo.getKeyId()).put("outputPrefixType", keyInfo.getOutputPrefixType().toString());
+        return new JSONObject().put("typeUrl", keyInfo.getTypeUrl()).put(NotificationCompat.CATEGORY_STATUS, keyInfo.getStatus().name()).put("keyId", keyInfo.getKeyId()).put("outputPrefixType", keyInfo.getOutputPrefixType().name());
     }
 }

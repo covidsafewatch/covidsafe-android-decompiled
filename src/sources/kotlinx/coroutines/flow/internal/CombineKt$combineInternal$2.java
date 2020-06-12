@@ -102,7 +102,7 @@ final class CombineKt$combineInternal$2 extends SuspendLambda implements Functio
             kotlinx.coroutines.flow.Flow[] r5 = r1.$flows
             int r5 = r5.length
             kotlinx.coroutines.channels.ReceiveChannel[] r6 = new kotlinx.coroutines.channels.ReceiveChannel[r5]
-            r7 = r3
+            r7 = 0
         L_0x0050:
             if (r7 >= r5) goto L_0x0069
             java.lang.Integer r8 = kotlin.coroutines.jvm.internal.Boxing.boxInt(r7)
@@ -117,7 +117,7 @@ final class CombineKt$combineInternal$2 extends SuspendLambda implements Functio
         L_0x0069:
             java.lang.Object[] r7 = new java.lang.Object[r5]
             java.lang.Boolean[] r8 = new java.lang.Boolean[r5]
-            r9 = r3
+            r9 = 0
         L_0x006e:
             if (r9 >= r5) goto L_0x0082
             java.lang.Integer r10 = kotlin.coroutines.jvm.internal.Boxing.boxInt(r9)
@@ -161,7 +161,7 @@ final class CombineKt$combineInternal$2 extends SuspendLambda implements Functio
             r6.<init>(r7)
             r0 = r6
             kotlinx.coroutines.selects.SelectBuilder r0 = (kotlinx.coroutines.selects.SelectBuilder) r0     // Catch:{ all -> 0x0146 }
-            r5 = r3
+            r5 = 0
         L_0x00bb:
             if (r5 >= r10) goto L_0x0132
             r16 = r13[r5]     // Catch:{ all -> 0x0146 }

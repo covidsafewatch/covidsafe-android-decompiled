@@ -20,7 +20,7 @@ public final class KmsEnvelopeAead implements Aead {
 
     public byte[] encrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
         byte[] byteArray = Registry.newKey(this.dekTemplate).toByteArray();
-        return buildCiphertext(this.remote.encrypt(byteArray, EMPTY_AAD), ((Aead) Registry.getPrimitive(this.dekTemplate.getTypeUrl(), byteArray)).encrypt(bArr, bArr2));
+        return buildCiphertext(this.remote.encrypt(byteArray, EMPTY_AAD), ((Aead) Registry.getPrimitive(this.dekTemplate.getTypeUrl(), byteArray, Aead.class)).encrypt(bArr, bArr2));
     }
 
     public byte[] decrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
@@ -34,7 +34,7 @@ public final class KmsEnvelopeAead implements Aead {
             wrap.get(bArr3, 0, i);
             byte[] bArr4 = new byte[wrap.remaining()];
             wrap.get(bArr4, 0, wrap.remaining());
-            return ((Aead) Registry.getPrimitive(this.dekTemplate.getTypeUrl(), this.remote.decrypt(bArr3, EMPTY_AAD))).decrypt(bArr4, bArr2);
+            return ((Aead) Registry.getPrimitive(this.dekTemplate.getTypeUrl(), this.remote.decrypt(bArr3, EMPTY_AAD), Aead.class)).decrypt(bArr4, bArr2);
         } catch (IndexOutOfBoundsException | NegativeArraySizeException | BufferUnderflowException e) {
             throw new GeneralSecurityException("invalid ciphertext", e);
         }

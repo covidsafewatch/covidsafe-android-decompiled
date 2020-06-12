@@ -2,37 +2,29 @@ package com.google.crypto.tink.streamingaead;
 
 import com.google.crypto.tink.KeyManager;
 import com.google.crypto.tink.KeysetHandle;
-import com.google.crypto.tink.PrimitiveSet;
-import com.google.crypto.tink.Registry;
 import com.google.crypto.tink.StreamingAead;
 import java.security.GeneralSecurityException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Logger;
 
+@Deprecated
 public final class StreamingAeadFactory {
-    private static final Logger logger = Logger.getLogger(StreamingAeadFactory.class.getName());
-
     public static StreamingAead getPrimitive(KeysetHandle keysetHandle) throws GeneralSecurityException {
         return getPrimitive(keysetHandle, (KeyManager<StreamingAead>) null);
     }
 
-    public static StreamingAead getPrimitive(KeysetHandle keysetHandle, KeyManager<StreamingAead> keyManager) throws GeneralSecurityException {
-        PrimitiveSet<StreamingAead> primitives = Registry.getPrimitives(keysetHandle, keyManager);
-        validate(primitives);
-        return new StreamingAeadHelper(primitives);
-    }
-
-    private static void validate(PrimitiveSet<StreamingAead> primitiveSet) throws GeneralSecurityException {
-        for (List<PrimitiveSet.Entry<StreamingAead>> it : primitiveSet.getAll()) {
-            Iterator it2 = it.iterator();
-            while (true) {
-                if (it2.hasNext()) {
-                    if (!(((PrimitiveSet.Entry) it2.next()).getPrimitive() instanceof StreamingAead)) {
-                        throw new GeneralSecurityException("invalid StreamingAead key material");
-                    }
-                }
-            }
-        }
+    /* JADX WARNING: type inference failed for: r2v0, types: [com.google.crypto.tink.KeyManager, com.google.crypto.tink.KeyManager<com.google.crypto.tink.StreamingAead>] */
+    /* JADX WARNING: Unknown variable types count: 1 */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public static com.google.crypto.tink.StreamingAead getPrimitive(com.google.crypto.tink.KeysetHandle r1, com.google.crypto.tink.KeyManager<com.google.crypto.tink.StreamingAead> r2) throws java.security.GeneralSecurityException {
+        /*
+            com.google.crypto.tink.streamingaead.StreamingAeadWrapper r0 = new com.google.crypto.tink.streamingaead.StreamingAeadWrapper
+            r0.<init>()
+            com.google.crypto.tink.Registry.registerPrimitiveWrapper(r0)
+            java.lang.Class<com.google.crypto.tink.StreamingAead> r0 = com.google.crypto.tink.StreamingAead.class
+            com.google.crypto.tink.PrimitiveSet r1 = com.google.crypto.tink.Registry.getPrimitives(r1, r2, r0)
+            java.lang.Object r1 = com.google.crypto.tink.Registry.wrap(r1)
+            com.google.crypto.tink.StreamingAead r1 = (com.google.crypto.tink.StreamingAead) r1
+            return r1
+        */
+        throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.streamingaead.StreamingAeadFactory.getPrimitive(com.google.crypto.tink.KeysetHandle, com.google.crypto.tink.KeyManager):com.google.crypto.tink.StreamingAead");
     }
 }

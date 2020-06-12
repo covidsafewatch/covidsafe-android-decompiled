@@ -1,7 +1,7 @@
 package com.google.crypto.tink.proto;
 
 import com.google.crypto.tink.proto.Keyset;
-import com.google.protobuf.MessageLiteOrBuilder;
+import com.google.crypto.tink.shaded.protobuf.MessageLiteOrBuilder;
 import java.util.List;
 
 public interface KeysetOrBuilder extends MessageLiteOrBuilder {

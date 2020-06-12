@@ -61,10 +61,7 @@ public final class DispatchedContinuation<T> extends DispatchedTask<T> implement
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof CancellableContinuationImpl)) {
-            return true;
-        }
-        if (obj == cancellableContinuationImpl) {
+        if (!(obj instanceof CancellableContinuationImpl) || obj == cancellableContinuationImpl) {
             return true;
         }
         return false;

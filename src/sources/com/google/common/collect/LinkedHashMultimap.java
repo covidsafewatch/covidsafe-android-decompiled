@@ -451,7 +451,8 @@ public final class LinkedHashMultimap<K, V> extends LinkedHashMultimapGwtSeriali
         }
         int readInt2 = objectInputStream.readInt();
         for (int i2 = 0; i2 < readInt2; i2++) {
-            ((Collection) newLinkedHashMapWithExpectedSize.get(objectInputStream.readObject())).add(objectInputStream.readObject());
+            Object readObject2 = objectInputStream.readObject();
+            ((Collection) newLinkedHashMapWithExpectedSize.get(readObject2)).add(objectInputStream.readObject());
         }
         setMap(newLinkedHashMapWithExpectedSize);
     }

@@ -29,7 +29,6 @@ import androidx.core.view.ViewCompat;
 import com.google.android.material.R;
 import com.google.android.material.animation.MotionSpec;
 import com.google.android.material.canvas.CanvasCompat;
-import com.google.android.material.color.MaterialColors;
 import com.google.android.material.drawable.DrawableUtils;
 import com.google.android.material.internal.TextDrawableHelper;
 import com.google.android.material.internal.ThemeEnforcement;
@@ -587,90 +586,217 @@ public class ChipDrawable extends MaterialShapeDrawable implements TintAwareDraw
         return onStateChange(iArr, getCloseIconState());
     }
 
-    private boolean onStateChange(int[] iArr, int[] iArr2) {
-        boolean z;
-        boolean onStateChange = super.onStateChange(iArr);
-        ColorStateList colorStateList = this.chipSurfaceColor;
-        int colorForState = colorStateList != null ? colorStateList.getColorForState(iArr, this.currentChipSurfaceColor) : 0;
-        boolean z2 = true;
-        if (this.currentChipSurfaceColor != colorForState) {
-            this.currentChipSurfaceColor = colorForState;
-            onStateChange = true;
-        }
-        ColorStateList colorStateList2 = this.chipBackgroundColor;
-        int colorForState2 = colorStateList2 != null ? colorStateList2.getColorForState(iArr, this.currentChipBackgroundColor) : 0;
-        if (this.currentChipBackgroundColor != colorForState2) {
-            this.currentChipBackgroundColor = colorForState2;
-            onStateChange = true;
-        }
-        int layer = MaterialColors.layer(colorForState, colorForState2);
-        if ((this.currentCompositeSurfaceBackgroundColor != layer) || (getFillColor() == null)) {
-            this.currentCompositeSurfaceBackgroundColor = layer;
-            setFillColor(ColorStateList.valueOf(layer));
-            onStateChange = true;
-        }
-        ColorStateList colorStateList3 = this.chipStrokeColor;
-        int colorForState3 = colorStateList3 != null ? colorStateList3.getColorForState(iArr, this.currentChipStrokeColor) : 0;
-        if (this.currentChipStrokeColor != colorForState3) {
-            this.currentChipStrokeColor = colorForState3;
-            onStateChange = true;
-        }
-        int colorForState4 = (this.compatRippleColor == null || !RippleUtils.shouldDrawRippleCompat(iArr)) ? 0 : this.compatRippleColor.getColorForState(iArr, this.currentCompatRippleColor);
-        if (this.currentCompatRippleColor != colorForState4) {
-            this.currentCompatRippleColor = colorForState4;
-            if (this.useCompatRipple) {
-                onStateChange = true;
-            }
-        }
-        int colorForState5 = (this.textDrawableHelper.getTextAppearance() == null || this.textDrawableHelper.getTextAppearance().textColor == null) ? 0 : this.textDrawableHelper.getTextAppearance().textColor.getColorForState(iArr, this.currentTextColor);
-        if (this.currentTextColor != colorForState5) {
-            this.currentTextColor = colorForState5;
-            onStateChange = true;
-        }
-        boolean z3 = hasState(getState(), 16842912) && this.checkable;
-        if (this.currentChecked == z3 || this.checkedIcon == null) {
-            z = false;
-        } else {
-            float calculateChipIconWidth = calculateChipIconWidth();
-            this.currentChecked = z3;
-            if (calculateChipIconWidth != calculateChipIconWidth()) {
-                onStateChange = true;
-                z = true;
-            } else {
-                z = false;
-                onStateChange = true;
-            }
-        }
-        ColorStateList colorStateList4 = this.tint;
-        int colorForState6 = colorStateList4 != null ? colorStateList4.getColorForState(iArr, this.currentTint) : 0;
-        if (this.currentTint != colorForState6) {
-            this.currentTint = colorForState6;
-            this.tintFilter = DrawableUtils.updateTintFilter(this, this.tint, this.tintMode);
-        } else {
-            z2 = onStateChange;
-        }
-        if (isStateful(this.chipIcon)) {
-            z2 |= this.chipIcon.setState(iArr);
-        }
-        if (isStateful(this.checkedIcon)) {
-            z2 |= this.checkedIcon.setState(iArr);
-        }
-        if (isStateful(this.closeIcon)) {
-            int[] iArr3 = new int[(iArr.length + iArr2.length)];
-            System.arraycopy(iArr, 0, iArr3, 0, iArr.length);
-            System.arraycopy(iArr2, 0, iArr3, iArr.length, iArr2.length);
-            z2 |= this.closeIcon.setState(iArr3);
-        }
-        if (RippleUtils.USE_FRAMEWORK_RIPPLE && isStateful(this.closeIconRipple)) {
-            z2 |= this.closeIconRipple.setState(iArr2);
-        }
-        if (z2) {
-            invalidateSelf();
-        }
-        if (z) {
-            onSizeChange();
-        }
-        return z2;
+    /* JADX WARNING: Removed duplicated region for block: B:69:0x00db  */
+    /* JADX WARNING: Removed duplicated region for block: B:70:0x00e2  */
+    /* JADX WARNING: Removed duplicated region for block: B:73:0x00e7  */
+    /* JADX WARNING: Removed duplicated region for block: B:74:0x00f4  */
+    /* JADX WARNING: Removed duplicated region for block: B:77:0x00fd  */
+    /* JADX WARNING: Removed duplicated region for block: B:80:0x010c  */
+    /* JADX WARNING: Removed duplicated region for block: B:83:0x011b  */
+    /* JADX WARNING: Removed duplicated region for block: B:90:0x0145  */
+    /* JADX WARNING: Removed duplicated region for block: B:92:0x014a  */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    private boolean onStateChange(int[] r7, int[] r8) {
+        /*
+            r6 = this;
+            boolean r0 = super.onStateChange(r7)
+            android.content.res.ColorStateList r1 = r6.chipSurfaceColor
+            r2 = 0
+            if (r1 == 0) goto L_0x0010
+            int r3 = r6.currentChipSurfaceColor
+            int r1 = r1.getColorForState(r7, r3)
+            goto L_0x0011
+        L_0x0010:
+            r1 = 0
+        L_0x0011:
+            int r3 = r6.currentChipSurfaceColor
+            r4 = 1
+            if (r3 == r1) goto L_0x0019
+            r6.currentChipSurfaceColor = r1
+            r0 = 1
+        L_0x0019:
+            android.content.res.ColorStateList r3 = r6.chipBackgroundColor
+            if (r3 == 0) goto L_0x0024
+            int r5 = r6.currentChipBackgroundColor
+            int r3 = r3.getColorForState(r7, r5)
+            goto L_0x0025
+        L_0x0024:
+            r3 = 0
+        L_0x0025:
+            int r5 = r6.currentChipBackgroundColor
+            if (r5 == r3) goto L_0x002c
+            r6.currentChipBackgroundColor = r3
+            r0 = 1
+        L_0x002c:
+            int r1 = com.google.android.material.color.MaterialColors.layer(r1, r3)
+            int r3 = r6.currentCompositeSurfaceBackgroundColor
+            if (r3 == r1) goto L_0x0036
+            r3 = 1
+            goto L_0x0037
+        L_0x0036:
+            r3 = 0
+        L_0x0037:
+            android.content.res.ColorStateList r5 = r6.getFillColor()
+            if (r5 != 0) goto L_0x003f
+            r5 = 1
+            goto L_0x0040
+        L_0x003f:
+            r5 = 0
+        L_0x0040:
+            r3 = r3 | r5
+            if (r3 == 0) goto L_0x004d
+            r6.currentCompositeSurfaceBackgroundColor = r1
+            android.content.res.ColorStateList r0 = android.content.res.ColorStateList.valueOf(r1)
+            r6.setFillColor(r0)
+            r0 = 1
+        L_0x004d:
+            android.content.res.ColorStateList r1 = r6.chipStrokeColor
+            if (r1 == 0) goto L_0x0058
+            int r3 = r6.currentChipStrokeColor
+            int r1 = r1.getColorForState(r7, r3)
+            goto L_0x0059
+        L_0x0058:
+            r1 = 0
+        L_0x0059:
+            int r3 = r6.currentChipStrokeColor
+            if (r3 == r1) goto L_0x0060
+            r6.currentChipStrokeColor = r1
+            r0 = 1
+        L_0x0060:
+            android.content.res.ColorStateList r1 = r6.compatRippleColor
+            if (r1 == 0) goto L_0x0073
+            boolean r1 = com.google.android.material.ripple.RippleUtils.shouldDrawRippleCompat(r7)
+            if (r1 == 0) goto L_0x0073
+            android.content.res.ColorStateList r1 = r6.compatRippleColor
+            int r3 = r6.currentCompatRippleColor
+            int r1 = r1.getColorForState(r7, r3)
+            goto L_0x0074
+        L_0x0073:
+            r1 = 0
+        L_0x0074:
+            int r3 = r6.currentCompatRippleColor
+            if (r3 == r1) goto L_0x007f
+            r6.currentCompatRippleColor = r1
+            boolean r1 = r6.useCompatRipple
+            if (r1 == 0) goto L_0x007f
+            r0 = 1
+        L_0x007f:
+            com.google.android.material.internal.TextDrawableHelper r1 = r6.textDrawableHelper
+            com.google.android.material.resources.TextAppearance r1 = r1.getTextAppearance()
+            if (r1 == 0) goto L_0x00a0
+            com.google.android.material.internal.TextDrawableHelper r1 = r6.textDrawableHelper
+            com.google.android.material.resources.TextAppearance r1 = r1.getTextAppearance()
+            android.content.res.ColorStateList r1 = r1.textColor
+            if (r1 == 0) goto L_0x00a0
+            com.google.android.material.internal.TextDrawableHelper r1 = r6.textDrawableHelper
+            com.google.android.material.resources.TextAppearance r1 = r1.getTextAppearance()
+            android.content.res.ColorStateList r1 = r1.textColor
+            int r3 = r6.currentTextColor
+            int r1 = r1.getColorForState(r7, r3)
+            goto L_0x00a1
+        L_0x00a0:
+            r1 = 0
+        L_0x00a1:
+            int r3 = r6.currentTextColor
+            if (r3 == r1) goto L_0x00a8
+            r6.currentTextColor = r1
+            r0 = 1
+        L_0x00a8:
+            int[] r1 = r6.getState()
+            r3 = 16842912(0x10100a0, float:2.3694006E-38)
+            boolean r1 = hasState(r1, r3)
+            if (r1 == 0) goto L_0x00bb
+            boolean r1 = r6.checkable
+            if (r1 == 0) goto L_0x00bb
+            r1 = 1
+            goto L_0x00bc
+        L_0x00bb:
+            r1 = 0
+        L_0x00bc:
+            boolean r3 = r6.currentChecked
+            if (r3 == r1) goto L_0x00d6
+            android.graphics.drawable.Drawable r3 = r6.checkedIcon
+            if (r3 == 0) goto L_0x00d6
+            float r0 = r6.calculateChipIconWidth()
+            r6.currentChecked = r1
+            float r1 = r6.calculateChipIconWidth()
+            int r0 = (r0 > r1 ? 1 : (r0 == r1 ? 0 : -1))
+            if (r0 == 0) goto L_0x00d5
+            r0 = 1
+            r1 = 1
+            goto L_0x00d7
+        L_0x00d5:
+            r0 = 1
+        L_0x00d6:
+            r1 = 0
+        L_0x00d7:
+            android.content.res.ColorStateList r3 = r6.tint
+            if (r3 == 0) goto L_0x00e2
+            int r5 = r6.currentTint
+            int r3 = r3.getColorForState(r7, r5)
+            goto L_0x00e3
+        L_0x00e2:
+            r3 = 0
+        L_0x00e3:
+            int r5 = r6.currentTint
+            if (r5 == r3) goto L_0x00f4
+            r6.currentTint = r3
+            android.content.res.ColorStateList r0 = r6.tint
+            android.graphics.PorterDuff$Mode r3 = r6.tintMode
+            android.graphics.PorterDuffColorFilter r0 = com.google.android.material.drawable.DrawableUtils.updateTintFilter(r6, r0, r3)
+            r6.tintFilter = r0
+            goto L_0x00f5
+        L_0x00f4:
+            r4 = r0
+        L_0x00f5:
+            android.graphics.drawable.Drawable r0 = r6.chipIcon
+            boolean r0 = isStateful((android.graphics.drawable.Drawable) r0)
+            if (r0 == 0) goto L_0x0104
+            android.graphics.drawable.Drawable r0 = r6.chipIcon
+            boolean r0 = r0.setState(r7)
+            r4 = r4 | r0
+        L_0x0104:
+            android.graphics.drawable.Drawable r0 = r6.checkedIcon
+            boolean r0 = isStateful((android.graphics.drawable.Drawable) r0)
+            if (r0 == 0) goto L_0x0113
+            android.graphics.drawable.Drawable r0 = r6.checkedIcon
+            boolean r0 = r0.setState(r7)
+            r4 = r4 | r0
+        L_0x0113:
+            android.graphics.drawable.Drawable r0 = r6.closeIcon
+            boolean r0 = isStateful((android.graphics.drawable.Drawable) r0)
+            if (r0 == 0) goto L_0x0130
+            int r0 = r7.length
+            int r3 = r8.length
+            int r0 = r0 + r3
+            int[] r0 = new int[r0]
+            int r3 = r7.length
+            java.lang.System.arraycopy(r7, r2, r0, r2, r3)
+            int r7 = r7.length
+            int r3 = r8.length
+            java.lang.System.arraycopy(r8, r2, r0, r7, r3)
+            android.graphics.drawable.Drawable r7 = r6.closeIcon
+            boolean r7 = r7.setState(r0)
+            r4 = r4 | r7
+        L_0x0130:
+            boolean r7 = com.google.android.material.ripple.RippleUtils.USE_FRAMEWORK_RIPPLE
+            if (r7 == 0) goto L_0x0143
+            android.graphics.drawable.Drawable r7 = r6.closeIconRipple
+            boolean r7 = isStateful((android.graphics.drawable.Drawable) r7)
+            if (r7 == 0) goto L_0x0143
+            android.graphics.drawable.Drawable r7 = r6.closeIconRipple
+            boolean r7 = r7.setState(r8)
+            r4 = r4 | r7
+        L_0x0143:
+            if (r4 == 0) goto L_0x0148
+            r6.invalidateSelf()
+        L_0x0148:
+            if (r1 == 0) goto L_0x014d
+            r6.onSizeChange()
+        L_0x014d:
+            return r4
+        */
+        throw new UnsupportedOperationException("Method not decompiled: com.google.android.material.chip.ChipDrawable.onStateChange(int[], int[]):boolean");
     }
 
     private static boolean isStateful(ColorStateList colorStateList) {

@@ -893,16 +893,15 @@ public class AppBarLayout extends LinearLayout {
             int i5;
             if (i2 != 0) {
                 if (i2 < 0) {
-                    i5 = -t.getTotalScrollRange();
-                    i4 = t.getDownNestedPreScrollRange() + i5;
+                    int i6 = -t.getTotalScrollRange();
+                    i5 = i6;
+                    i4 = t.getDownNestedPreScrollRange() + i6;
                 } else {
                     i5 = -t.getUpNestedPreScrollRange();
                     i4 = 0;
                 }
-                int i6 = i5;
-                int i7 = i4;
-                if (i6 != i7) {
-                    iArr[1] = scroll(coordinatorLayout, t, i2, i6, i7);
+                if (i5 != i4) {
+                    iArr[1] = scroll(coordinatorLayout, t, i2, i5, i4);
                 }
             }
             if (t.isLiftOnScroll()) {

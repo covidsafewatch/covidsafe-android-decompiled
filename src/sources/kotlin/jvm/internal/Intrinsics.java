@@ -150,14 +150,12 @@ public class Intrinsics {
     }
 
     public static boolean areEqual(Double d, Double d2) {
-        if (d == null) {
-            if (d2 == null) {
-                return true;
-            }
-        } else if (d2 != null && d.doubleValue() == d2.doubleValue()) {
+        if (d != null) {
+            return d2 != null && d.doubleValue() == d2.doubleValue();
+        }
+        if (d2 == null) {
             return true;
         }
-        return false;
     }
 
     public static boolean areEqual(Double d, double d2) {
@@ -169,14 +167,12 @@ public class Intrinsics {
     }
 
     public static boolean areEqual(Float f, Float f2) {
-        if (f == null) {
-            if (f2 == null) {
-                return true;
-            }
-        } else if (f2 != null && f.floatValue() == f2.floatValue()) {
+        if (f != null) {
+            return f2 != null && f.floatValue() == f2.floatValue();
+        }
+        if (f2 == null) {
             return true;
         }
-        return false;
     }
 
     public static boolean areEqual(Float f, float f2) {

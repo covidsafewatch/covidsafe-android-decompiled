@@ -812,7 +812,7 @@ public class Toolbar extends ViewGroup {
             r0 = 1
             goto L_0x0014
         L_0x0013:
-            r0 = r1
+            r0 = 0
         L_0x0014:
             if (r0 == 0) goto L_0x0025
             int r0 = r3.getContentInsetEnd()
@@ -1020,8 +1020,8 @@ public class Toolbar extends ViewGroup {
             c2 = 1;
             c = 0;
         } else {
-            c = 1;
             c2 = 0;
+            c = 1;
         }
         if (shouldLayout(this.mNavButtonView)) {
             measureChildConstrained(this.mNavButtonView, i, 0, i2, 0, this.mMaxButtonHeight);
@@ -1081,16 +1081,17 @@ public class Toolbar extends ViewGroup {
             i9 = View.combineMeasuredStates(i3, this.mTitleTextView.getMeasuredState());
             i8 = measuredWidth;
         } else {
-            i7 = 0;
             i9 = i3;
             i8 = 0;
+            i7 = 0;
         }
         if (shouldLayout(this.mSubtitleTextView)) {
-            i8 = Math.max(i8, measureChildCollapseMargins(this.mSubtitleTextView, i, max2 + i13, i2, i7 + i12, iArr));
+            int i14 = i7 + i12;
+            i8 = Math.max(i8, measureChildCollapseMargins(this.mSubtitleTextView, i, max2 + i13, i2, i14, iArr));
             i7 += this.mSubtitleTextView.getMeasuredHeight() + getVerticalMargins(this.mSubtitleTextView);
             i9 = View.combineMeasuredStates(i9, this.mSubtitleTextView.getMeasuredState());
         } else {
-            int i14 = i9;
+            int i15 = i9;
         }
         int max3 = Math.max(i4, i7);
         int paddingLeft = max2 + i8 + getPaddingLeft() + getPaddingRight();
@@ -1133,10 +1134,10 @@ public class Toolbar extends ViewGroup {
             r2 = 1
             r3 = 0
             if (r1 != r2) goto L_0x000c
-            r1 = r2
+            r1 = 1
             goto L_0x000d
         L_0x000c:
-            r1 = r3
+            r1 = 0
         L_0x000d:
             int r4 = r19.getWidth()
             int r5 = r19.getHeight()
@@ -1154,7 +1155,7 @@ public class Toolbar extends ViewGroup {
             int r12 = java.lang.Math.min(r12, r13)
             goto L_0x003b
         L_0x003a:
-            r12 = r3
+            r12 = 0
         L_0x003b:
             android.widget.ImageButton r13 = r0.mNavButtonView
             boolean r13 = r0.shouldLayout(r13)
@@ -1492,7 +1493,7 @@ public class Toolbar extends ViewGroup {
             r0.addCustomViewsWithGravity(r3, r4)
             java.util.ArrayList<android.view.View> r3 = r0.mTempViews
             int r3 = r3.size()
-            r7 = r1
+            r7 = 0
         L_0x029d:
             if (r7 >= r3) goto L_0x02b0
             java.util.ArrayList<android.view.View> r4 = r0.mTempViews
@@ -1509,7 +1510,7 @@ public class Toolbar extends ViewGroup {
             r0.addCustomViewsWithGravity(r3, r4)
             java.util.ArrayList<android.view.View> r3 = r0.mTempViews
             int r3 = r3.size()
-            r7 = r1
+            r7 = 0
         L_0x02bf:
             if (r7 >= r3) goto L_0x02d0
             java.util.ArrayList<android.view.View> r4 = r0.mTempViews

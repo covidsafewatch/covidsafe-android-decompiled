@@ -196,8 +196,8 @@ public abstract class HashCode {
             if (this.bytes.length != hashCode.getBytesInternal().length) {
                 return false;
             }
-            boolean z = true;
             int i = 0;
+            boolean z = true;
             while (true) {
                 byte[] bArr = this.bytes;
                 if (i >= bArr.length) {

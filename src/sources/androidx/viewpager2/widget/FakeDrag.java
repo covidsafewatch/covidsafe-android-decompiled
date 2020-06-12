@@ -46,13 +46,14 @@ final class FakeDrag {
 
     /* access modifiers changed from: package-private */
     public boolean fakeDragBy(float f) {
+        float f2;
         int i = 0;
         if (!this.mScrollEventAdapter.isFakeDragging()) {
             return false;
         }
-        float f2 = this.mRequestedDragDistance - f;
-        this.mRequestedDragDistance = f2;
-        int round = Math.round(f2 - ((float) this.mActualDraggedDistance));
+        float f3 = this.mRequestedDragDistance - f;
+        this.mRequestedDragDistance = f3;
+        int round = Math.round(f3 - ((float) this.mActualDraggedDistance));
         this.mActualDraggedDistance += round;
         long uptimeMillis = SystemClock.uptimeMillis();
         boolean z = this.mViewPager.getOrientation() == 0;
@@ -60,13 +61,14 @@ final class FakeDrag {
         if (!z) {
             i = round;
         }
-        float f3 = 0.0f;
         float f4 = z ? this.mRequestedDragDistance : 0.0f;
-        if (!z) {
-            f3 = this.mRequestedDragDistance;
+        if (z) {
+            f2 = 0.0f;
+        } else {
+            f2 = this.mRequestedDragDistance;
         }
         this.mRecyclerView.scrollBy(i2, i);
-        addFakeMotionEvent(uptimeMillis, 2, f4, f3);
+        addFakeMotionEvent(uptimeMillis, 2, f4, f2);
         return true;
     }
 

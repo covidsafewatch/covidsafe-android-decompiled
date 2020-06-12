@@ -56,8 +56,8 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
         	at jadx.core.utils.ErrorsCounter.methodError(ErrorsCounter.java:81)
         */
     /* JADX WARNING: Removed duplicated region for block: B:22:0x006c  */
-    /* JADX WARNING: Removed duplicated region for block: B:24:0x008a A[RETURN] */
-    /* JADX WARNING: Removed duplicated region for block: B:26:0x0093 A[RETURN] */
+    /* JADX WARNING: Removed duplicated region for block: B:24:0x008b A[RETURN] */
+    /* JADX WARNING: Removed duplicated region for block: B:26:0x0094 A[RETURN] */
     protected final <S> java.lang.Object retryRetrofitCall(kotlin.jvm.functions.Function0<retrofit2.Response<S>> r11, kotlin.coroutines.Continuation<? super retrofit2.Response<S>> r12) {
         /*
             r10 = this;
@@ -95,7 +95,7 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
             r9 = r2
             r2 = r11
             r11 = r9
-            goto L_0x008b
+            goto L_0x008c
         L_0x003d:
             java.lang.IllegalStateException r11 = new java.lang.IllegalStateException
             java.lang.String r12 = "call to 'resume' before 'invoke' with coroutine"
@@ -116,10 +116,10 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
             if (r5 != r6) goto L_0x0066
         L_0x0060:
             java.lang.Object r5 = r12.body()
-            if (r5 != 0) goto L_0x0093
+            if (r5 != 0) goto L_0x0094
         L_0x0066:
             int r5 = au.gov.health.covidsafe.interactor.UseCaseKt.access$getRETRIES_LIMIT$p()
-            if (r2 >= r5) goto L_0x0093
+            if (r2 >= r5) goto L_0x0094
             r5 = 2
             double r5 = (double) r5
             double r7 = (double) r2
@@ -135,14 +135,14 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
             r0.J$0 = r5
             r0.label = r3
             java.lang.Object r12 = kotlinx.coroutines.DelayKt.delay(r5, r0)
-            if (r12 != r1) goto L_0x008b
+            if (r12 != r1) goto L_0x008c
             return r1
-        L_0x008b:
+        L_0x008c:
             java.lang.Object r12 = r11.invoke()
             retrofit2.Response r12 = (retrofit2.Response) r12
             int r2 = r2 + r3
             goto L_0x0050
-        L_0x0093:
+        L_0x0094:
             return r12
         */
         throw new UnsupportedOperationException("Method not decompiled: au.gov.health.covidsafe.interactor.UseCase.retryRetrofitCall(kotlin.jvm.functions.Function0, kotlin.coroutines.Continuation):java.lang.Object");
@@ -154,8 +154,8 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
         	at jadx.core.utils.ErrorsCounter.methodError(ErrorsCounter.java:81)
         */
     /* JADX WARNING: Removed duplicated region for block: B:20:0x0064  */
-    /* JADX WARNING: Removed duplicated region for block: B:22:0x0082 A[RETURN] */
-    /* JADX WARNING: Removed duplicated region for block: B:24:0x008b  */
+    /* JADX WARNING: Removed duplicated region for block: B:22:0x0083 A[RETURN] */
+    /* JADX WARNING: Removed duplicated region for block: B:24:0x008c  */
     protected final java.lang.Object retryOkhttpCall(kotlin.jvm.functions.Function0<okhttp3.Response> r11, kotlin.coroutines.Continuation<? super okhttp3.Response> r12) {
         /*
             r10 = this;
@@ -193,7 +193,7 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
             r9 = r2
             r2 = r11
             r11 = r9
-            goto L_0x0083
+            goto L_0x0084
         L_0x003d:
             java.lang.IllegalStateException r11 = new java.lang.IllegalStateException
             java.lang.String r12 = "call to 'resume' before 'invoke' with coroutine"
@@ -210,10 +210,10 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
             boolean r5 = r12.isSuccessful()
             if (r5 == 0) goto L_0x005e
             okhttp3.ResponseBody r5 = r12.body()
-            if (r5 != 0) goto L_0x008b
+            if (r5 != 0) goto L_0x008c
         L_0x005e:
             int r5 = au.gov.health.covidsafe.interactor.UseCaseKt.access$getRETRIES_LIMIT$p()
-            if (r2 >= r5) goto L_0x008b
+            if (r2 >= r5) goto L_0x008c
             r5 = 2
             double r5 = (double) r5
             double r7 = (double) r2
@@ -229,21 +229,21 @@ public abstract class UseCase<Type, Params> implements CoroutineScope, Lifecycle
             r0.J$0 = r5
             r0.label = r3
             java.lang.Object r12 = kotlinx.coroutines.DelayKt.delay(r5, r0)
-            if (r12 != r1) goto L_0x0083
+            if (r12 != r1) goto L_0x0084
             return r1
-        L_0x0083:
+        L_0x0084:
             java.lang.Object r12 = r11.invoke()
             okhttp3.Response r12 = (okhttp3.Response) r12
             int r2 = r2 + r3
             goto L_0x0050
-        L_0x008b:
-            if (r12 == 0) goto L_0x0094
+        L_0x008c:
+            if (r12 == 0) goto L_0x0095
             boolean r11 = r12.isSuccessful()
-            if (r11 == 0) goto L_0x0094
-            goto L_0x0095
-        L_0x0094:
-            r12 = 0
+            if (r11 == 0) goto L_0x0095
+            goto L_0x0096
         L_0x0095:
+            r12 = 0
+        L_0x0096:
             return r12
         */
         throw new UnsupportedOperationException("Method not decompiled: au.gov.health.covidsafe.interactor.UseCase.retryOkhttpCall(kotlin.jvm.functions.Function0, kotlin.coroutines.Continuation):java.lang.Object");

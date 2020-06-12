@@ -37,10 +37,7 @@ public final class BroadcastKt {
             coroutineContext = EmptyCoroutineContext.INSTANCE;
         }
         CoroutineContext coroutineContext2 = coroutineContext;
-        if ((i2 & 2) != 0) {
-            i = 1;
-        }
-        int i3 = i;
+        int i3 = (i2 & 2) != 0 ? 1 : i;
         if ((i2 & 4) != 0) {
             coroutineStart = CoroutineStart.LAZY;
         }

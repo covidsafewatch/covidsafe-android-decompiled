@@ -142,7 +142,8 @@ public class NavController {
             }
         }
         if (!z2) {
-            Log.i(TAG, "Ignoring popBackStack to destination " + NavDestination.getDisplayName(this.mContext, i) + " as it was not found on the current back stack");
+            String displayName = NavDestination.getDisplayName(this.mContext, i);
+            Log.i(TAG, "Ignoring popBackStack to destination " + displayName + " as it was not found on the current back stack");
             return false;
         }
         Iterator it = arrayList.iterator();

@@ -109,7 +109,7 @@ public final class RealConnectionPool {
             r2 = 0
             r3 = -9223372036854775808
             r4 = r3
-            r3 = r2
+            r3 = 0
         L_0x000f:
             boolean r6 = r1.hasNext()     // Catch:{ all -> 0x0078 }
             if (r6 == 0) goto L_0x0038
@@ -132,8 +132,8 @@ public final class RealConnectionPool {
             goto L_0x000f
         L_0x0038:
             long r11 = r10.keepAliveDurationNs     // Catch:{ all -> 0x0078 }
-            int r11 = (r4 > r11 ? 1 : (r4 == r11 ? 0 : -1))
-            if (r11 >= 0) goto L_0x0054
+            int r1 = (r4 > r11 ? 1 : (r4 == r11 ? 0 : -1))
+            if (r1 >= 0) goto L_0x0054
             int r11 = r10.maxIdleConnections     // Catch:{ all -> 0x0078 }
             if (r2 <= r11) goto L_0x0043
             goto L_0x0054

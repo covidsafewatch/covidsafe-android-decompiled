@@ -155,10 +155,7 @@ public final class TaskQueue {
         if ((i & 2) != 0) {
             j = 0;
         }
-        if ((i & 4) != 0) {
-            z = true;
-        }
-        boolean z2 = z;
+        boolean z2 = (i & 4) != 0 ? true : z;
         Intrinsics.checkParameterIsNotNull(str, "name");
         Intrinsics.checkParameterIsNotNull(function0, "block");
         taskQueue.schedule(new TaskQueue$execute$1(function0, str, z2, str, z2), j);

@@ -213,7 +213,7 @@ public class TypefaceCompatApi26Impl extends TypefaceCompatApi21Impl {
         L_0x0063:
             int r0 = r13.length
             r3 = 0
-            r9 = r3
+            r9 = 0
         L_0x0066:
             if (r9 >= r0) goto L_0x0093
             r4 = r13[r9]
@@ -233,7 +233,7 @@ public class TypefaceCompatApi26Impl extends TypefaceCompatApi21Impl {
             r10.abortCreation(r12)
             return r2
         L_0x008f:
-            r3 = r1
+            r3 = 1
         L_0x0090:
             int r9 = r9 + 1
             goto L_0x0066

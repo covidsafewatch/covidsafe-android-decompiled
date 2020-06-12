@@ -596,7 +596,7 @@ public class ViewDragHelper {
             if (r7 == 0) goto L_0x00b0
             boolean r8 = r0.checkTouchSlop(r7, r9, r10)
             if (r8 == 0) goto L_0x00b0
-            r8 = r6
+            r8 = 1
             goto L_0x00b1
         L_0x00b0:
             r8 = 0
@@ -669,7 +669,7 @@ public class ViewDragHelper {
         L_0x0135:
             int r1 = r0.mDragState
             if (r1 != r6) goto L_0x013a
-            r5 = r6
+            r5 = 1
         L_0x013a:
             return r5
         */

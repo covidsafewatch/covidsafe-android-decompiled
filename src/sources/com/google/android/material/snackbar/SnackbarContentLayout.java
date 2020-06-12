@@ -84,10 +84,10 @@ public class SnackbarContentLayout extends LinearLayout implements ContentViewCa
             r3 = 0
             r4 = 1
             if (r2 <= r4) goto L_0x003c
-            r2 = r4
+            r2 = 1
             goto L_0x003d
         L_0x003c:
-            r2 = r3
+            r2 = 0
         L_0x003d:
             if (r2 == 0) goto L_0x0056
             int r5 = r7.maxInlineActionWidth
@@ -109,7 +109,7 @@ public class SnackbarContentLayout extends LinearLayout implements ContentViewCa
             boolean r0 = r7.updateViewsWithinLayout(r3, r0, r0)
             if (r0 == 0) goto L_0x0061
         L_0x0060:
-            r3 = r4
+            r3 = 1
         L_0x0061:
             if (r3 == 0) goto L_0x0066
             super.onMeasure(r8, r9)

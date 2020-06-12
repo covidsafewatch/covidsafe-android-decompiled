@@ -32,7 +32,7 @@ public final class CharProgressionIterator extends CharIterator {
             if (r3 < r4) goto L_0x0011
             goto L_0x0012
         L_0x0011:
-            r0 = r1
+            r0 = 0
         L_0x0012:
             r2.hasNext = r0
             if (r0 == 0) goto L_0x0017

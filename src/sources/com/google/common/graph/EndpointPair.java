@@ -95,13 +95,10 @@ public abstract class EndpointPair<N> implements Iterable<N> {
                 return false;
             }
             EndpointPair endpointPair = (EndpointPair) obj;
-            if (isOrdered() != endpointPair.isOrdered()) {
-                return false;
+            if (isOrdered() == endpointPair.isOrdered() && source().equals(endpointPair.source()) && target().equals(endpointPair.target())) {
+                return true;
             }
-            if (!source().equals(endpointPair.source()) || !target().equals(endpointPair.target())) {
-                return false;
-            }
-            return true;
+            return false;
         }
 
         public int hashCode() {

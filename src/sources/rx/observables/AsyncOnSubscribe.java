@@ -245,11 +245,11 @@ public abstract class AsyncOnSubscribe<S, T> implements Observable.OnSubscribe<T
             /*
                 r4 = this;
                 r0 = 0
-                int r0 = (r5 > r0 ? 1 : (r5 == r0 ? 0 : -1))
-                if (r0 != 0) goto L_0x0007
+                int r2 = (r5 > r0 ? 1 : (r5 == r0 ? 0 : -1))
+                if (r2 != 0) goto L_0x0007
                 return
             L_0x0007:
-                if (r0 < 0) goto L_0x0064
+                if (r2 < 0) goto L_0x0064
                 monitor-enter(r4)
                 boolean r0 = r4.emitting     // Catch:{ all -> 0x0061 }
                 r1 = 1
@@ -266,7 +266,7 @@ public abstract class AsyncOnSubscribe<S, T> implements Observable.OnSubscribe<T
                 goto L_0x0026
             L_0x0023:
                 r4.emitting = r1     // Catch:{ all -> 0x0061 }
-                r1 = r2
+                r1 = 0
             L_0x0026:
                 monitor-exit(r4)     // Catch:{ all -> 0x0061 }
                 rx.Producer r0 = r4.concatProducer
@@ -367,11 +367,11 @@ public abstract class AsyncOnSubscribe<S, T> implements Observable.OnSubscribe<T
             /*
                 r3 = this;
                 r0 = 0
-                int r0 = (r4 > r0 ? 1 : (r4 == r0 ? 0 : -1))
-                if (r0 != 0) goto L_0x0007
+                int r2 = (r4 > r0 ? 1 : (r4 == r0 ? 0 : -1))
+                if (r2 != 0) goto L_0x0007
                 return
             L_0x0007:
-                if (r0 < 0) goto L_0x005c
+                if (r2 < 0) goto L_0x005c
                 monitor-enter(r3)
                 boolean r0 = r3.emitting     // Catch:{ all -> 0x0059 }
                 if (r0 == 0) goto L_0x0022

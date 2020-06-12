@@ -147,7 +147,7 @@ public class OperatorOnBackpressureBuffer<T> implements Observable.Operator<T, T
                 if (r4 == 0) goto L_0x0034
                 java.lang.Object r4 = r6.poll()     // Catch:{ MissingBackpressureException -> 0x0023 }
                 if (r4 == 0) goto L_0x0034
-                r4 = r1
+                r4 = 1
                 goto L_0x0035
             L_0x0023:
                 r4 = move-exception
@@ -158,7 +158,7 @@ public class OperatorOnBackpressureBuffer<T> implements Observable.Operator<T, T
                 rx.Subscriber<? super T> r5 = r6.child
                 r5.onError(r4)
             L_0x0034:
-                r4 = r0
+                r4 = 0
             L_0x0035:
                 rx.functions.Action0 r5 = r6.onOverflow
                 if (r5 == 0) goto L_0x0047

@@ -1,15 +1,15 @@
 package com.google.crypto.tink.proto;
 
 import com.google.crypto.tink.proto.KeyTemplate;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.CodedInputStream;
-import com.google.protobuf.CodedOutputStream;
-import com.google.protobuf.ExtensionRegistryLite;
-import com.google.protobuf.GeneratedMessageLite;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Parser;
+import com.google.crypto.tink.shaded.protobuf.ByteString;
+import com.google.crypto.tink.shaded.protobuf.CodedInputStream;
+import com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite;
+import com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite;
+import com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException;
+import com.google.crypto.tink.shaded.protobuf.Parser;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnvelopeAeadKeyFormat, Builder> implements KmsEnvelopeAeadKeyFormatOrBuilder {
     /* access modifiers changed from: private */
@@ -33,11 +33,8 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
 
     /* access modifiers changed from: private */
     public void setKekUri(String str) {
-        if (str != null) {
-            this.kekUri_ = str;
-            return;
-        }
-        throw null;
+        str.getClass();
+        this.kekUri_ = str;
     }
 
     /* access modifiers changed from: private */
@@ -47,12 +44,8 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
 
     /* access modifiers changed from: private */
     public void setKekUriBytes(ByteString byteString) {
-        if (byteString != null) {
-            checkByteStringIsUtf8(byteString);
-            this.kekUri_ = byteString.toStringUtf8();
-            return;
-        }
-        throw null;
+        checkByteStringIsUtf8(byteString);
+        this.kekUri_ = byteString.toStringUtf8();
     }
 
     public boolean hasDekTemplate() {
@@ -66,20 +59,13 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
 
     /* access modifiers changed from: private */
     public void setDekTemplate(KeyTemplate keyTemplate) {
-        if (keyTemplate != null) {
-            this.dekTemplate_ = keyTemplate;
-            return;
-        }
-        throw null;
-    }
-
-    /* access modifiers changed from: private */
-    public void setDekTemplate(KeyTemplate.Builder builder) {
-        this.dekTemplate_ = (KeyTemplate) builder.build();
+        keyTemplate.getClass();
+        this.dekTemplate_ = keyTemplate;
     }
 
     /* access modifiers changed from: private */
     public void mergeDekTemplate(KeyTemplate keyTemplate) {
+        keyTemplate.getClass();
         KeyTemplate keyTemplate2 = this.dekTemplate_;
         if (keyTemplate2 == null || keyTemplate2 == KeyTemplate.getDefaultInstance()) {
             this.dekTemplate_ = keyTemplate;
@@ -93,29 +79,12 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
         this.dekTemplate_ = null;
     }
 
-    public void writeTo(CodedOutputStream codedOutputStream) throws IOException {
-        if (!this.kekUri_.isEmpty()) {
-            codedOutputStream.writeString(1, getKekUri());
-        }
-        if (this.dekTemplate_ != null) {
-            codedOutputStream.writeMessage(2, getDekTemplate());
-        }
+    public static KmsEnvelopeAeadKeyFormat parseFrom(ByteBuffer byteBuffer) throws InvalidProtocolBufferException {
+        return (KmsEnvelopeAeadKeyFormat) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer);
     }
 
-    public int getSerializedSize() {
-        int i = this.memoizedSerializedSize;
-        if (i != -1) {
-            return i;
-        }
-        int i2 = 0;
-        if (!this.kekUri_.isEmpty()) {
-            i2 = 0 + CodedOutputStream.computeStringSize(1, getKekUri());
-        }
-        if (this.dekTemplate_ != null) {
-            i2 += CodedOutputStream.computeMessageSize(2, getDekTemplate());
-        }
-        this.memoizedSerializedSize = i2;
-        return i2;
+    public static KmsEnvelopeAeadKeyFormat parseFrom(ByteBuffer byteBuffer, ExtensionRegistryLite extensionRegistryLite) throws InvalidProtocolBufferException {
+        return (KmsEnvelopeAeadKeyFormat) GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, byteBuffer, extensionRegistryLite);
     }
 
     public static KmsEnvelopeAeadKeyFormat parseFrom(ByteString byteString) throws InvalidProtocolBufferException {
@@ -159,11 +128,11 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
     }
 
     public static Builder newBuilder() {
-        return (Builder) DEFAULT_INSTANCE.toBuilder();
+        return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
 
     public static Builder newBuilder(KmsEnvelopeAeadKeyFormat kmsEnvelopeAeadKeyFormat) {
-        return (Builder) ((Builder) DEFAULT_INSTANCE.toBuilder()).mergeFrom(kmsEnvelopeAeadKeyFormat);
+        return (Builder) DEFAULT_INSTANCE.createBuilder(kmsEnvelopeAeadKeyFormat);
     }
 
     public static final class Builder extends GeneratedMessageLite.Builder<KmsEnvelopeAeadKeyFormat, Builder> implements KmsEnvelopeAeadKeyFormatOrBuilder {
@@ -217,7 +186,7 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
 
         public Builder setDekTemplate(KeyTemplate.Builder builder) {
             copyOnWrite();
-            ((KmsEnvelopeAeadKeyFormat) this.instance).setDekTemplate(builder);
+            ((KmsEnvelopeAeadKeyFormat) this.instance).setDekTemplate((KeyTemplate) builder.build());
             return this;
         }
 
@@ -238,71 +207,62 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
     static /* synthetic */ class AnonymousClass1 {
         static final /* synthetic */ int[] $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke;
 
-        /* JADX WARNING: Can't wrap try/catch for region: R(18:0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|18) */
-        /* JADX WARNING: Code restructure failed: missing block: B:19:?, code lost:
-            return;
-         */
+        /* JADX WARNING: Can't wrap try/catch for region: R(14:0|1|2|3|4|5|6|7|8|9|10|11|12|(3:13|14|16)) */
+        /* JADX WARNING: Can't wrap try/catch for region: R(16:0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|16) */
         /* JADX WARNING: Failed to process nested try/catch */
         /* JADX WARNING: Missing exception handler attribute for start block: B:11:0x003e */
         /* JADX WARNING: Missing exception handler attribute for start block: B:13:0x0049 */
-        /* JADX WARNING: Missing exception handler attribute for start block: B:15:0x0054 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:3:0x0012 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:5:0x001d */
         /* JADX WARNING: Missing exception handler attribute for start block: B:7:0x0028 */
         /* JADX WARNING: Missing exception handler attribute for start block: B:9:0x0033 */
         static {
             /*
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke[] r0 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.values()
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke[] r0 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.values()
                 int r0 = r0.length
                 int[] r0 = new int[r0]
                 $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke = r0
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_MUTABLE_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0012 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_MUTABLE_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0012 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0012 }
                 r2 = 1
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0012 }
             L_0x0012:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x001d }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x001d }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_BUILDER     // Catch:{ NoSuchFieldError -> 0x001d }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x001d }
                 r2 = 2
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x001d }
             L_0x001d:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0028 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.MAKE_IMMUTABLE     // Catch:{ NoSuchFieldError -> 0x0028 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.BUILD_MESSAGE_INFO     // Catch:{ NoSuchFieldError -> 0x0028 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0028 }
                 r2 = 3
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0028 }
             L_0x0028:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0033 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.NEW_BUILDER     // Catch:{ NoSuchFieldError -> 0x0033 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_DEFAULT_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0033 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0033 }
                 r2 = 4
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0033 }
             L_0x0033:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x003e }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.VISIT     // Catch:{ NoSuchFieldError -> 0x003e }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_PARSER     // Catch:{ NoSuchFieldError -> 0x003e }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x003e }
                 r2 = 5
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x003e }
             L_0x003e:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0049 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.MERGE_FROM_STREAM     // Catch:{ NoSuchFieldError -> 0x0049 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.GET_MEMOIZED_IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x0049 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0049 }
                 r2 = 6
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0049 }
             L_0x0049:
                 int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0054 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.GET_DEFAULT_INSTANCE     // Catch:{ NoSuchFieldError -> 0x0054 }
+                com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite.MethodToInvoke.SET_MEMOIZED_IS_INITIALIZED     // Catch:{ NoSuchFieldError -> 0x0054 }
                 int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0054 }
                 r2 = 7
                 r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0054 }
             L_0x0054:
-                int[] r0 = $SwitchMap$com$google$protobuf$GeneratedMessageLite$MethodToInvoke     // Catch:{ NoSuchFieldError -> 0x0060 }
-                com.google.protobuf.GeneratedMessageLite$MethodToInvoke r1 = com.google.protobuf.GeneratedMessageLite.MethodToInvoke.GET_PARSER     // Catch:{ NoSuchFieldError -> 0x0060 }
-                int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0060 }
-                r2 = 8
-                r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0060 }
-            L_0x0060:
                 return
             */
             throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.proto.KmsEnvelopeAeadKeyFormat.AnonymousClass1.<clinit>():void");
@@ -315,68 +275,36 @@ public final class KmsEnvelopeAeadKeyFormat extends GeneratedMessageLite<KmsEnve
             case 1:
                 return new KmsEnvelopeAeadKeyFormat();
             case 2:
-                return DEFAULT_INSTANCE;
-            case 3:
-                return null;
-            case 4:
                 return new Builder((AnonymousClass1) null);
+            case 3:
+                return newMessageInfo(DEFAULT_INSTANCE, "\u0000\u0002\u0000\u0000\u0001\u0002\u0002\u0000\u0000\u0000\u0001Ȉ\u0002\t", new Object[]{"kekUri_", "dekTemplate_"});
+            case 4:
+                return DEFAULT_INSTANCE;
             case 5:
-                GeneratedMessageLite.Visitor visitor = (GeneratedMessageLite.Visitor) obj;
-                KmsEnvelopeAeadKeyFormat kmsEnvelopeAeadKeyFormat = (KmsEnvelopeAeadKeyFormat) obj2;
-                this.kekUri_ = visitor.visitString(!this.kekUri_.isEmpty(), this.kekUri_, true ^ kmsEnvelopeAeadKeyFormat.kekUri_.isEmpty(), kmsEnvelopeAeadKeyFormat.kekUri_);
-                this.dekTemplate_ = (KeyTemplate) visitor.visitMessage(this.dekTemplate_, kmsEnvelopeAeadKeyFormat.dekTemplate_);
-                GeneratedMessageLite.MergeFromVisitor mergeFromVisitor = GeneratedMessageLite.MergeFromVisitor.INSTANCE;
-                return this;
-            case 6:
-                CodedInputStream codedInputStream = (CodedInputStream) obj;
-                ExtensionRegistryLite extensionRegistryLite = (ExtensionRegistryLite) obj2;
-                boolean z = false;
-                while (!z) {
-                    try {
-                        int readTag = codedInputStream.readTag();
-                        if (readTag != 0) {
-                            if (readTag == 10) {
-                                this.kekUri_ = codedInputStream.readStringRequireUtf8();
-                            } else if (readTag == 18) {
-                                KeyTemplate.Builder builder = this.dekTemplate_ != null ? (KeyTemplate.Builder) this.dekTemplate_.toBuilder() : null;
-                                KeyTemplate keyTemplate = (KeyTemplate) codedInputStream.readMessage(KeyTemplate.parser(), extensionRegistryLite);
-                                this.dekTemplate_ = keyTemplate;
-                                if (builder != null) {
-                                    builder.mergeFrom(keyTemplate);
-                                    this.dekTemplate_ = (KeyTemplate) builder.buildPartial();
-                                }
-                            } else if (!codedInputStream.skipField(readTag)) {
-                            }
-                        }
-                        z = true;
-                    } catch (InvalidProtocolBufferException e) {
-                        throw new RuntimeException(e.setUnfinishedMessage(this));
-                    } catch (IOException e2) {
-                        throw new RuntimeException(new InvalidProtocolBufferException(e2.getMessage()).setUnfinishedMessage(this));
-                    }
-                }
-                break;
-            case 7:
-                break;
-            case 8:
-                if (PARSER == null) {
+                Parser<KmsEnvelopeAeadKeyFormat> parser = PARSER;
+                if (parser == null) {
                     synchronized (KmsEnvelopeAeadKeyFormat.class) {
-                        if (PARSER == null) {
-                            PARSER = new GeneratedMessageLite.DefaultInstanceBasedParser(DEFAULT_INSTANCE);
+                        parser = PARSER;
+                        if (parser == null) {
+                            parser = new GeneratedMessageLite.DefaultInstanceBasedParser<>(DEFAULT_INSTANCE);
+                            PARSER = parser;
                         }
                     }
                 }
-                return PARSER;
+                return parser;
+            case 6:
+                return (byte) 1;
+            case 7:
+                return null;
             default:
                 throw new UnsupportedOperationException();
         }
-        return DEFAULT_INSTANCE;
     }
 
     static {
         KmsEnvelopeAeadKeyFormat kmsEnvelopeAeadKeyFormat = new KmsEnvelopeAeadKeyFormat();
         DEFAULT_INSTANCE = kmsEnvelopeAeadKeyFormat;
-        kmsEnvelopeAeadKeyFormat.makeImmutable();
+        GeneratedMessageLite.registerDefaultInstance(KmsEnvelopeAeadKeyFormat.class, kmsEnvelopeAeadKeyFormat);
     }
 
     public static KmsEnvelopeAeadKeyFormat getDefaultInstance() {

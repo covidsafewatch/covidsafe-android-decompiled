@@ -61,13 +61,10 @@ public final class KotlinVersion implements Comparable<KotlinVersion> {
             obj = null;
         }
         KotlinVersion kotlinVersion = (KotlinVersion) obj;
-        if (kotlinVersion == null) {
+        if (kotlinVersion == null || this.version != kotlinVersion.version) {
             return false;
         }
-        if (this.version == kotlinVersion.version) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     public int hashCode() {

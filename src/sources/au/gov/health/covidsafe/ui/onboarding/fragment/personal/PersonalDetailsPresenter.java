@@ -46,10 +46,10 @@ public final class PersonalDetailsPresenter {
             if (r2 == 0) goto L_0x0023
             goto L_0x0025
         L_0x0023:
-            r2 = r4
+            r2 = 0
             goto L_0x0026
         L_0x0025:
-            r2 = r3
+            r2 = 1
         L_0x0026:
             r2 = r2 ^ r3
             r5 = r9
@@ -59,18 +59,18 @@ public final class PersonalDetailsPresenter {
             if (r5 == 0) goto L_0x0033
             goto L_0x0035
         L_0x0033:
-            r5 = r4
+            r5 = 0
             goto L_0x0036
         L_0x0035:
-            r5 = r3
+            r5 = 1
         L_0x0036:
             if (r5 != 0) goto L_0x0040
             boolean r5 = r7.isPostCodeValid(r9)
             if (r5 == 0) goto L_0x0040
-            r5 = r3
+            r5 = 1
             goto L_0x0041
         L_0x0040:
-            r5 = r4
+            r5 = 0
         L_0x0041:
             r6 = r10
             java.lang.CharSequence r6 = (java.lang.CharSequence) r6
@@ -79,10 +79,10 @@ public final class PersonalDetailsPresenter {
             if (r6 == 0) goto L_0x004d
             goto L_0x004f
         L_0x004d:
-            r6 = r4
+            r6 = 0
             goto L_0x0050
         L_0x004f:
-            r6 = r3
+            r6 = 1
         L_0x0050:
             r6 = r6 ^ r3
             if (r2 == 0) goto L_0x00b0
@@ -95,7 +95,7 @@ public final class PersonalDetailsPresenter {
             boolean r8 = r5.putName(r0, r8)
             goto L_0x0066
         L_0x0065:
-            r8 = r4
+            r8 = 0
         L_0x0066:
             if (r8 == 0) goto L_0x0088
             if (r10 == 0) goto L_0x0074
@@ -104,7 +104,7 @@ public final class PersonalDetailsPresenter {
             boolean r8 = r8.putAge(r0, r10)
             goto L_0x0075
         L_0x0074:
-            r8 = r4
+            r8 = 0
         L_0x0075:
             if (r8 == 0) goto L_0x0088
             if (r9 == 0) goto L_0x0083
@@ -113,13 +113,13 @@ public final class PersonalDetailsPresenter {
             boolean r8 = r8.putPostCode(r0, r9)
             goto L_0x0084
         L_0x0083:
-            r8 = r4
+            r8 = 0
         L_0x0084:
             if (r8 == 0) goto L_0x0088
-            r8 = r3
+            r8 = 1
             goto L_0x0089
         L_0x0088:
-            r8 = r4
+            r8 = 0
         L_0x0089:
             if (r8 == 0) goto L_0x00a5
             au.gov.health.covidsafe.ui.onboarding.fragment.personal.PersonalDetailsFragment r8 = r7.personalDetailsFragment
@@ -132,7 +132,7 @@ public final class PersonalDetailsPresenter {
             if (r9 >= r10) goto L_0x009f
             goto L_0x00a0
         L_0x009f:
-            r3 = r4
+            r3 = 0
         L_0x00a0:
             r4 = r3
         L_0x00a1:

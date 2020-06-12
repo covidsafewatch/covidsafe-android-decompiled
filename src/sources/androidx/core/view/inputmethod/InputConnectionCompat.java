@@ -40,7 +40,7 @@ public final class InputConnectionCompat {
             java.lang.String r1 = "androidx.core.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT"
             boolean r1 = android.text.TextUtils.equals(r1, r7)
             if (r1 == 0) goto L_0x000e
-            r7 = r0
+            r7 = 0
             goto L_0x0017
         L_0x000e:
             java.lang.String r1 = "android.support.v13.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT"

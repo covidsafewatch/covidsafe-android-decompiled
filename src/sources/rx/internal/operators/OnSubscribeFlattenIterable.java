@@ -127,8 +127,8 @@ public final class OnSubscribeFlattenIterable<T, R> implements Observable.OnSubs
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public void drain() {
             /*
-                r16 = this;
-                r1 = r16
+                r17 = this;
+                r1 = r17
                 java.util.concurrent.atomic.AtomicInteger r0 = r1.wip
                 int r0 = r0.getAndIncrement()
                 if (r0 == 0) goto L_0x000b
@@ -149,7 +149,7 @@ public final class OnSubscribeFlattenIterable<T, R> implements Observable.OnSubs
                 r13 = 1
                 goto L_0x0024
             L_0x0023:
-                r13 = r10
+                r13 = 0
             L_0x0024:
                 boolean r11 = r1.checkTerminated(r11, r13, r2, r3)
                 if (r11 == 0) goto L_0x002b
@@ -192,44 +192,44 @@ public final class OnSubscribeFlattenIterable<T, R> implements Observable.OnSubs
                 long r4 = r4.get()
                 r12 = r8
             L_0x006d:
-                int r14 = (r12 > r4 ? 1 : (r12 == r4 ? 0 : -1))
-                r11 = 0
-                if (r14 == 0) goto L_0x00ab
-                boolean r14 = r1.done
-                boolean r14 = r1.checkTerminated(r14, r10, r2, r3)
-                if (r14 == 0) goto L_0x007b
+                r14 = 0
+                int r16 = (r12 > r4 ? 1 : (r12 == r4 ? 0 : -1))
+                if (r16 == 0) goto L_0x00ab
+                boolean r11 = r1.done
+                boolean r11 = r1.checkTerminated(r11, r10, r2, r3)
+                if (r11 == 0) goto L_0x007b
                 return
             L_0x007b:
-                java.lang.Object r14 = r0.next()     // Catch:{ all -> 0x00a0 }
-                r2.onNext(r14)
-                boolean r14 = r1.done
-                boolean r14 = r1.checkTerminated(r14, r10, r2, r3)
-                if (r14 == 0) goto L_0x008b
+                java.lang.Object r11 = r0.next()     // Catch:{ all -> 0x00a0 }
+                r2.onNext(r11)
+                boolean r11 = r1.done
+                boolean r11 = r1.checkTerminated(r11, r10, r2, r3)
+                if (r11 == 0) goto L_0x008b
                 return
             L_0x008b:
                 long r12 = r12 + r6
-                boolean r14 = r0.hasNext()     // Catch:{ all -> 0x0095 }
-                if (r14 != 0) goto L_0x006d
-                r1.active = r11
+                boolean r11 = r0.hasNext()     // Catch:{ all -> 0x0095 }
+                if (r11 != 0) goto L_0x006d
+                r1.active = r14
                 goto L_0x00aa
             L_0x0095:
                 r0 = move-exception
                 r6 = r0
                 rx.exceptions.Exceptions.throwIfFatal(r6)
-                r1.active = r11
+                r1.active = r14
                 r1.onError(r6)
                 goto L_0x00aa
             L_0x00a0:
                 r0 = move-exception
                 r6 = r0
                 rx.exceptions.Exceptions.throwIfFatal(r6)
-                r1.active = r11
+                r1.active = r14
                 r1.onError(r6)
             L_0x00aa:
-                r0 = r11
+                r0 = r14
             L_0x00ab:
-                int r4 = (r12 > r4 ? 1 : (r12 == r4 ? 0 : -1))
-                if (r4 != 0) goto L_0x00c1
+                int r6 = (r12 > r4 ? 1 : (r12 == r4 ? 0 : -1))
+                if (r6 != 0) goto L_0x00c1
                 boolean r4 = r1.done
                 boolean r5 = r3.isEmpty()
                 if (r5 == 0) goto L_0x00ba

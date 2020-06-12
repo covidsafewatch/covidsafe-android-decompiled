@@ -102,9 +102,9 @@ public final class HostnamesKt {
             byte[] r9 = new byte[r8]
             r11 = -1
             r12 = r19
-            r14 = r11
-            r15 = r14
             r13 = 0
+            r14 = -1
+            r15 = -1
         L_0x000e:
             r16 = 0
             if (r12 >= r7) goto L_0x0097

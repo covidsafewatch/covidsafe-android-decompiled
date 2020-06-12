@@ -133,11 +133,11 @@ public final class AesCtrHmacStreaming extends NonceBasedStreamingAead {
     }
 
     /* access modifiers changed from: private */
-    public byte[] nonceForSegment(byte[] bArr, int i, boolean z) {
+    public byte[] nonceForSegment(byte[] bArr, long j, boolean z) throws GeneralSecurityException {
         ByteBuffer allocate = ByteBuffer.allocate(16);
         allocate.order(ByteOrder.BIG_ENDIAN);
         allocate.put(bArr);
-        allocate.putInt(i);
+        SubtleUtil.putAsUnsigedInt(allocate, j);
         allocate.put(z ? (byte) 1 : 0);
         allocate.putInt(0);
         return allocate.array();
@@ -165,7 +165,7 @@ public final class AesCtrHmacStreaming extends NonceBasedStreamingAead {
 
     class AesCtrHmacStreamEncrypter implements StreamSegmentEncrypter {
         private final Cipher cipher = AesCtrHmacStreaming.cipherInstance();
-        private int encryptedSegments = 0;
+        private long encryptedSegments = 0;
         private ByteBuffer header;
         private final SecretKeySpec hmacKeySpec;
         private final SecretKeySpec keySpec;
@@ -222,10 +222,6 @@ public final class AesCtrHmacStreaming extends NonceBasedStreamingAead {
             this.mac.update(duplicate);
             byteBuffer3.put(this.mac.doFinal(), 0, AesCtrHmacStreaming.this.tagSizeInBytes);
         }
-
-        public synchronized int getEncryptedSegments() {
-            return this.encryptedSegments;
-        }
     }
 
     class AesCtrHmacStreamDecrypter implements StreamSegmentDecrypter {
@@ -263,7 +259,7 @@ public final class AesCtrHmacStreaming extends NonceBasedStreamingAead {
 
         public synchronized void decryptSegment(ByteBuffer byteBuffer, int i, boolean z, ByteBuffer byteBuffer2) throws GeneralSecurityException {
             int position = byteBuffer.position();
-            byte[] access$700 = AesCtrHmacStreaming.this.nonceForSegment(this.noncePrefix, i, z);
+            byte[] access$700 = AesCtrHmacStreaming.this.nonceForSegment(this.noncePrefix, (long) i, z);
             int remaining = byteBuffer.remaining();
             if (remaining >= AesCtrHmacStreaming.this.tagSizeInBytes) {
                 int access$800 = position + (remaining - AesCtrHmacStreaming.this.tagSizeInBytes);

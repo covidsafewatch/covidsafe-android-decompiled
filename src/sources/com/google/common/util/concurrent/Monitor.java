@@ -81,7 +81,7 @@ public final class Monitor {
             return r8
         L_0x002b:
             long r4 = remainingNanos(r2, r8)     // Catch:{ all -> 0x0031 }
-            r0 = r1
+            r0 = 1
             goto L_0x001b
         L_0x0031:
             r8 = move-exception
@@ -294,8 +294,8 @@ public final class Monitor {
             r15.unlock()     // Catch:{ all -> 0x0073 }
             throw r12     // Catch:{ all -> 0x0073 }
         L_0x005d:
-            r1 = r2
-            r0 = r4
+            r0 = 0
+            r1 = 1
             goto L_0x0030
         L_0x0060:
             if (r1 == 0) goto L_0x0069
@@ -305,11 +305,11 @@ public final class Monitor {
             return r4
         L_0x006a:
             long r9 = remainingNanos(r7, r13)     // Catch:{ all -> 0x0070 }
-            r1 = r2
+            r1 = 1
             goto L_0x0028
         L_0x0070:
             r12 = move-exception
-            r1 = r2
+            r1 = 1
             goto L_0x0074
         L_0x0073:
             r12 = move-exception
@@ -457,10 +457,10 @@ public final class Monitor {
             r0 = 0
             r1 = 1
             if (r11 != r7) goto L_0x000c
-            r11 = r1
+            r11 = 1
             goto L_0x000d
         L_0x000c:
-            r11 = r0
+            r11 = 0
         L_0x000d:
             java.util.concurrent.locks.ReentrantLock r2 = r7.lock
             boolean r2 = r2.isHeldByCurrentThread()
@@ -473,7 +473,7 @@ public final class Monitor {
             long r2 = initNanoTime(r9)
             boolean r11 = java.lang.Thread.interrupted()
             r4 = r9
-            r6 = r1
+            r6 = 1
         L_0x0027:
             boolean r8 = r7.awaitNanos(r8, r4, r6)     // Catch:{ InterruptedException -> 0x0038, all -> 0x0035 }
             if (r11 == 0) goto L_0x0034
@@ -493,8 +493,8 @@ public final class Monitor {
             return r1
         L_0x0046:
             long r4 = remainingNanos(r2, r9)     // Catch:{ all -> 0x004d }
-            r6 = r0
-            r11 = r1
+            r11 = 1
+            r6 = 0
             goto L_0x0027
         L_0x004d:
             r8 = move-exception

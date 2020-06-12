@@ -1062,10 +1062,10 @@ public final class HttpUrl {
                 r2 = 1
                 r3 = 0
                 if (r1 <= 0) goto L_0x0025
-                r1 = r2
+                r1 = 1
                 goto L_0x0026
             L_0x0025:
-                r1 = r3
+                r1 = 0
             L_0x0026:
                 r4 = 58
                 if (r1 != 0) goto L_0x0039
@@ -1073,10 +1073,10 @@ public final class HttpUrl {
                 java.lang.CharSequence r1 = (java.lang.CharSequence) r1
                 int r1 = r1.length()
                 if (r1 <= 0) goto L_0x0036
-                r1 = r2
+                r1 = 1
                 goto L_0x0037
             L_0x0036:
-                r1 = r3
+                r1 = 0
             L_0x0037:
                 if (r1 == 0) goto L_0x0059
             L_0x0039:
@@ -1088,7 +1088,7 @@ public final class HttpUrl {
                 if (r1 <= 0) goto L_0x0049
                 goto L_0x004a
             L_0x0049:
-                r2 = r3
+                r2 = 0
             L_0x004a:
                 if (r2 == 0) goto L_0x0054
                 r0.append(r4)
@@ -1175,10 +1175,9 @@ public final class HttpUrl {
             String str2;
             String str3;
             int i3;
-            boolean z;
             int i4;
+            boolean z;
             boolean z2;
-            boolean z3;
             String str4 = str;
             Intrinsics.checkParameterIsNotNull(str4, "input");
             int indexOfFirstNonAsciiWhitespace$default = Util.indexOfFirstNonAsciiWhitespace$default(str4, 0, 0, 3, (Object) null);
@@ -1186,7 +1185,6 @@ public final class HttpUrl {
             int access$schemeDelimiterOffset = Companion.schemeDelimiterOffset(str4, indexOfFirstNonAsciiWhitespace$default, indexOfLastNonAsciiWhitespace$default);
             String str5 = "(this as java.lang.Strin…ing(startIndex, endIndex)";
             char c = 65535;
-            boolean z4 = true;
             if (access$schemeDelimiterOffset != -1) {
                 if (StringsKt.startsWith(str4, "https:", indexOfFirstNonAsciiWhitespace$default, true)) {
                     this.scheme = "https";
@@ -1213,13 +1211,12 @@ public final class HttpUrl {
             char c3 = '#';
             if (access$slashCount >= 2 || httpUrl == null || (!Intrinsics.areEqual((Object) httpUrl.scheme(), (Object) this.scheme))) {
                 int i5 = indexOfFirstNonAsciiWhitespace$default + access$slashCount;
-                boolean z5 = false;
-                boolean z6 = false;
+                boolean z3 = false;
+                boolean z4 = false;
                 while (true) {
                     delimiterOffset = Util.delimiterOffset(str4, "@/\\?#", i5, indexOfLastNonAsciiWhitespace$default);
-                    char charAt = delimiterOffset != indexOfLastNonAsciiWhitespace$default ? str4.charAt(delimiterOffset) : c;
+                    char charAt = delimiterOffset != indexOfLastNonAsciiWhitespace$default ? str4.charAt(delimiterOffset) : 65535;
                     if (charAt == c || charAt == c3 || charAt == '/' || charAt == '\\' || charAt == c2) {
-                        boolean z7 = z4;
                         String str6 = str5;
                         i = indexOfLastNonAsciiWhitespace$default;
                         int i6 = delimiterOffset;
@@ -1227,20 +1224,18 @@ public final class HttpUrl {
                         int i7 = access$portColonOffset + 1;
                     } else {
                         if (charAt != '@') {
-                            z = z4;
                             str3 = str5;
                             i3 = indexOfLastNonAsciiWhitespace$default;
                         } else {
-                            if (!z5) {
+                            if (!z3) {
                                 int delimiterOffset2 = Util.delimiterOffset(str4, ':', i5, delimiterOffset);
                                 String str7 = "%40";
                                 int i8 = delimiterOffset;
                                 int i9 = delimiterOffset2;
-                                z = z4;
                                 i3 = indexOfLastNonAsciiWhitespace$default;
                                 String str8 = str5;
                                 String canonicalize$okhttp$default = Companion.canonicalize$okhttp$default(HttpUrl.Companion, str, i5, delimiterOffset2, " \"':;<=>@[]^`{}|/\\?#", true, false, false, false, (Charset) null, 240, (Object) null);
-                                if (z6) {
+                                if (z4) {
                                     canonicalize$okhttp$default = this.encodedUsername + str7 + canonicalize$okhttp$default;
                                 }
                                 this.encodedUsername = canonicalize$okhttp$default;
@@ -1248,16 +1243,15 @@ public final class HttpUrl {
                                 int i11 = i9;
                                 if (i11 != i10) {
                                     this.encodedPassword = Companion.canonicalize$okhttp$default(HttpUrl.Companion, str, i11 + 1, i10, " \"':;<=>@[]^`{}|/\\?#", true, false, false, false, (Charset) null, 240, (Object) null);
-                                    z3 = z;
+                                    z2 = true;
                                 } else {
-                                    z3 = z5;
+                                    z2 = z3;
                                 }
-                                z5 = z3;
+                                z3 = z2;
                                 str3 = str8;
-                                z2 = z;
+                                z = true;
                                 i4 = i10;
                             } else {
-                                z = z4;
                                 i3 = indexOfLastNonAsciiWhitespace$default;
                                 String str9 = str5;
                                 int i12 = delimiterOffset;
@@ -1269,12 +1263,11 @@ public final class HttpUrl {
                                 i4 = i12;
                                 sb3.append(Companion.canonicalize$okhttp$default(HttpUrl.Companion, str, i5, i12, " \"':;<=>@[]^`{}|/\\?#", true, false, false, false, (Charset) null, 240, (Object) null));
                                 this.encodedPassword = sb3.toString();
-                                z2 = z6;
+                                z = z4;
                             }
                             i5 = i4 + 1;
-                            z6 = z2;
+                            z4 = z;
                         }
-                        z4 = z;
                         indexOfLastNonAsciiWhitespace$default = i3;
                         str5 = str3;
                         c3 = '#';
@@ -1282,7 +1275,6 @@ public final class HttpUrl {
                         c = 65535;
                     }
                 }
-                boolean z72 = z4;
                 String str62 = str5;
                 i = indexOfLastNonAsciiWhitespace$default;
                 int i62 = delimiterOffset;
@@ -1293,7 +1285,7 @@ public final class HttpUrl {
                     this.host = HostnamesKt.toCanonicalHost(Companion.percentDecode$okhttp$default(HttpUrl.Companion, str, i5, access$portColonOffset2, false, 4, (Object) null));
                     int access$parsePort = Companion.parsePort(str4, i72, i62);
                     this.port = access$parsePort;
-                    if (access$parsePort != -1 ? z72 : false) {
+                    if (access$parsePort != -1) {
                         str2 = str62;
                     } else {
                         StringBuilder sb4 = new StringBuilder();
@@ -1315,7 +1307,7 @@ public final class HttpUrl {
                     }
                     this.port = companion.defaultPort(str10);
                 }
-                if (this.host != null ? z72 : false) {
+                if (this.host != null) {
                     indexOfFirstNonAsciiWhitespace$default = i62;
                 } else {
                     StringBuilder sb5 = new StringBuilder();
@@ -1391,7 +1383,7 @@ public final class HttpUrl {
                 java.lang.String r12 = "/\\"
                 int r12 = okhttp3.internal.Util.delimiterOffset((java.lang.String) r11, (java.lang.String) r12, (int) r6, (int) r13)
                 if (r12 >= r13) goto L_0x0036
-                r0 = r3
+                r0 = 1
                 goto L_0x0037
             L_0x0036:
                 r0 = 0

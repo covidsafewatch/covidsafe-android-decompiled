@@ -2,17 +2,21 @@ package au.gov.health.covidsafe;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import androidx.security.crypto.EncryptedSharedPreferences;
-import androidx.security.crypto.MasterKeys;
+import android.os.Build;
+import au.gov.health.covidsafe.security.crypto.AESEncryptionForPreAndroidM;
+import au.gov.health.covidsafe.security.crypto.EncryptedSharedPreferences;
+import au.gov.health.covidsafe.security.crypto.MasterKeys;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u00002\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0010\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0002\b\u0007\n\u0002\u0010\u000b\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0002\b\u0011\bÆ\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002J\u0010\u0010\u0013\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0014\u001a\u00020\u0015J\u000e\u0010\u0016\u001a\u00020\u00172\u0006\u0010\u0014\u001a\u00020\u0015J\u0010\u0010\u0018\u001a\u00020\u00042\b\u0010\u0014\u001a\u0004\u0018\u00010\u0015J\u0012\u0010\u0019\u001a\u0004\u0018\u00010\u00042\b\u0010\u0014\u001a\u0004\u0018\u00010\u0015J\u000e\u0010\u001a\u001a\u00020\u00172\u0006\u0010\u0014\u001a\u00020\u0015J\u0010\u0010\u001b\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0014\u001a\u00020\u0015J\u000e\u0010\u001c\u001a\u00020\u00172\u0006\u0010\u0014\u001a\u00020\u0015J\u0010\u0010\u001d\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0014\u001a\u00020\u0015J\u000e\u0010\u001e\u001a\u00020\u001f2\u0006\u0010\u0014\u001a\u00020\u0015J\u000e\u0010 \u001a\u00020\u001f2\u0006\u0010\u0014\u001a\u00020\u0015J\u000e\u0010!\u001a\u00020\u001f2\u0006\u0010\u0014\u001a\u00020\u0015J\u0016\u0010\"\u001a\u00020\u001f2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010#\u001a\u00020\u0004J\u0016\u0010$\u001a\u00020%2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010&\u001a\u00020\u0004J\u001a\u0010'\u001a\u00020%2\b\u0010\u0014\u001a\u0004\u0018\u00010\u00152\b\u0010(\u001a\u0004\u0018\u00010\u0004J\u0016\u0010)\u001a\u00020%2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010*\u001a\u00020\u0017J\u001a\u0010+\u001a\u00020%2\b\u0010\u0014\u001a\u0004\u0018\u00010\u00152\b\u0010&\u001a\u0004\u0018\u00010\u0004J\u0016\u0010,\u001a\u00020\u001f2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010-\u001a\u00020\u001fJ\u0016\u0010.\u001a\u00020%2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010&\u001a\u00020\u001fJ\u0016\u0010/\u001a\u00020\u001f2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u00100\u001a\u00020\u0004J\u0016\u00101\u001a\u00020%2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010*\u001a\u00020\u0017J\u0016\u00102\u001a\u00020%2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010&\u001a\u00020\u0004J\u0016\u00103\u001a\u00020\u001f2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u00104\u001a\u00020\u0004J\u0016\u00105\u001a\u00020%2\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010&\u001a\u00020\u001fR\u000e\u0010\u0003\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u000f\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0010\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0011\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0012\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000¨\u00066"}, d2 = {"Lau/gov/health/covidsafe/Preference;", "", "()V", "AGE", "", "DATA_UPLOADED_DATE_MS", "DEVICE_ID", "EXPIRY_TIME", "HANDSHAKE_PIN", "IS_DATA_UPLOADED", "IS_MINOR", "IS_ONBOARDED", "JWT_TOKEN", "NAME", "NEXT_FETCH_TIME", "PHONE_NUMBER", "POST_CODE", "PREF_ID", "UPLOADED_MORE_THAN_24_HRS", "getAge", "context", "Landroid/content/Context;", "getDataUploadedDateMs", "", "getDeviceID", "getEncrypterJWTToken", "getExpiryTimeInMillis", "getName", "getNextFetchTimeInMillis", "getPostCode", "isDataUploaded", "", "isMinor", "isOnBoarded", "putAge", "age", "putDeviceID", "", "value", "putEncrypterJWTToken", "jwtToken", "putExpiryTimeInMillis", "time", "putHandShakePin", "putIsMinor", "minor", "putIsOnBoarded", "putName", "name", "putNextFetchTimeInMillis", "putPhoneNumber", "putPostCode", "state", "setDataIsUploaded", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u00002\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0012\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0002\b\t\n\u0002\u0010\u000b\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0002\b\u0013\bÆ\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002J\u0010\u0010\u0015\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0016\u001a\u00020\u0017J\u000e\u0010\u0018\u001a\u00020\u00192\u0006\u0010\u0016\u001a\u00020\u0017J\u0010\u0010\u001a\u001a\u00020\u00042\b\u0010\u0016\u001a\u0004\u0018\u00010\u0017J\u0010\u0010\u001b\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0016\u001a\u00020\u0017J\u0010\u0010\u001c\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0016\u001a\u00020\u0017J\u0012\u0010\u001d\u001a\u0004\u0018\u00010\u00042\b\u0010\u0016\u001a\u0004\u0018\u00010\u0017J\u000e\u0010\u001e\u001a\u00020\u00192\u0006\u0010\u0016\u001a\u00020\u0017J\u0010\u0010\u001f\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0016\u001a\u00020\u0017J\u000e\u0010 \u001a\u00020\u00192\u0006\u0010\u0016\u001a\u00020\u0017J\u0010\u0010!\u001a\u0004\u0018\u00010\u00042\u0006\u0010\u0016\u001a\u00020\u0017J\u000e\u0010\"\u001a\u00020#2\u0006\u0010\u0016\u001a\u00020\u0017J\u000e\u0010$\u001a\u00020#2\u0006\u0010\u0016\u001a\u00020\u0017J\u000e\u0010%\u001a\u00020#2\u0006\u0010\u0016\u001a\u00020\u0017J\u0016\u0010&\u001a\u00020#2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010'\u001a\u00020\u0004J\u0016\u0010(\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010*\u001a\u00020\u0004J\u0016\u0010+\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010*\u001a\u00020\u0004J\u0016\u0010,\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010*\u001a\u00020\u0004J\u001a\u0010-\u001a\u00020)2\b\u0010\u0016\u001a\u0004\u0018\u00010\u00172\b\u0010.\u001a\u0004\u0018\u00010\u0004J\u0016\u0010/\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u00100\u001a\u00020\u0019J\u001a\u00101\u001a\u00020)2\b\u0010\u0016\u001a\u0004\u0018\u00010\u00172\b\u0010*\u001a\u0004\u0018\u00010\u0004J\u0016\u00102\u001a\u00020#2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u00103\u001a\u00020#J\u0016\u00104\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010*\u001a\u00020#J\u0016\u00105\u001a\u00020#2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u00106\u001a\u00020\u0004J\u0016\u00107\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u00100\u001a\u00020\u0019J\u0016\u00108\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010*\u001a\u00020\u0004J\u0016\u00109\u001a\u00020#2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010:\u001a\u00020\u0004J\u0016\u0010;\u001a\u00020)2\u0006\u0010\u0016\u001a\u00020\u00172\u0006\u0010*\u001a\u00020#R\u000e\u0010\u0003\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u000f\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0010\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0011\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0012\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0013\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0014\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000¨\u0006<"}, d2 = {"Lau/gov/health/covidsafe/Preference;", "", "()V", "AES_IV", "", "AGE", "DATA_UPLOADED_DATE_MS", "DEVICE_ID", "ENCRYPTED_AES_KEY", "EXPIRY_TIME", "HANDSHAKE_PIN", "IS_DATA_UPLOADED", "IS_MINOR", "IS_ONBOARDED", "JWT_TOKEN", "NAME", "NEXT_FETCH_TIME", "PHONE_NUMBER", "POST_CODE", "PREF_ID", "UPLOADED_MORE_THAN_24_HRS", "getAge", "context", "Landroid/content/Context;", "getDataUploadedDateMs", "", "getDeviceID", "getEncodedAESInitialisationVector", "getEncodedRSAEncryptedAESKey", "getEncrypterJWTToken", "getExpiryTimeInMillis", "getName", "getNextFetchTimeInMillis", "getPostCode", "isDataUploaded", "", "isMinor", "isOnBoarded", "putAge", "age", "putDeviceID", "", "value", "putEncodedAESInitialisationVector", "putEncodedRSAEncryptedAESKey", "putEncrypterJWTToken", "jwtToken", "putExpiryTimeInMillis", "time", "putHandShakePin", "putIsMinor", "minor", "putIsOnBoarded", "putName", "name", "putNextFetchTimeInMillis", "putPhoneNumber", "putPostCode", "state", "setDataIsUploaded", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: Preference.kt */
 public final class Preference {
+    private static final String AES_IV = "AES_IV";
     private static final String AGE = "AGE";
     private static final String DATA_UPLOADED_DATE_MS = "DATA_UPLOADED_DATE_MS";
     private static final String DEVICE_ID = "DEVICE_ID";
+    private static final String ENCRYPTED_AES_KEY = "ENCRYPTED_AES_KEY";
     private static final String EXPIRY_TIME = "EXPIRY_TIME";
     private static final String HANDSHAKE_PIN = "HANDSHAKE_PIN";
     public static final Preference INSTANCE = new Preference();
@@ -48,25 +52,79 @@ public final class Preference {
         return string;
     }
 
+    public final void putEncodedAESInitialisationVector(Context context, String str) {
+        Intrinsics.checkParameterIsNotNull(context, "context");
+        Intrinsics.checkParameterIsNotNull(str, "value");
+        SharedPreferences.Editor putString = context.getSharedPreferences(PREF_ID, 0).edit().putString(AES_IV, str);
+        if (putString != null) {
+            putString.apply();
+        }
+    }
+
+    public final String getEncodedAESInitialisationVector(Context context) {
+        Intrinsics.checkParameterIsNotNull(context, "context");
+        return context.getSharedPreferences(PREF_ID, 0).getString(AES_IV, (String) null);
+    }
+
+    public final void putEncodedRSAEncryptedAESKey(Context context, String str) {
+        Intrinsics.checkParameterIsNotNull(context, "context");
+        Intrinsics.checkParameterIsNotNull(str, "value");
+        SharedPreferences.Editor putString = context.getSharedPreferences(PREF_ID, 0).edit().putString(ENCRYPTED_AES_KEY, str);
+        if (putString != null) {
+            putString.apply();
+        }
+    }
+
+    public final String getEncodedRSAEncryptedAESKey(Context context) {
+        Intrinsics.checkParameterIsNotNull(context, "context");
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_ID, 0);
+        if (sharedPreferences != null) {
+            return sharedPreferences.getString(ENCRYPTED_AES_KEY, (String) null);
+        }
+        return null;
+    }
+
     public final void putEncrypterJWTToken(Context context, String str) {
         SharedPreferences.Editor putString;
-        if (context != null) {
+        if (context == null) {
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= 23) {
             String orCreate = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
             Intrinsics.checkExpressionValueIsNotNull(orCreate, "MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)");
             SharedPreferences.Editor edit = EncryptedSharedPreferences.create(PREF_ID, orCreate, context, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV, EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM).edit();
             if (edit != null && (putString = edit.putString(JWT_TOKEN, str)) != null) {
                 putString.apply();
+                return;
             }
+            return;
+        }
+        SharedPreferences.Editor putString2 = context.getSharedPreferences(PREF_ID, 0).edit().putString(JWT_TOKEN, str != null ? AESEncryptionForPreAndroidM.INSTANCE.encrypt(str) : null);
+        if (putString2 != null) {
+            putString2.apply();
         }
     }
 
     public final String getEncrypterJWTToken(Context context) {
+        String string;
+        String decrypt;
         if (context == null) {
             return null;
         }
-        String orCreate = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-        Intrinsics.checkExpressionValueIsNotNull(orCreate, "MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)");
-        return EncryptedSharedPreferences.create(PREF_ID, orCreate, context, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV, EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM).getString(JWT_TOKEN, (String) null);
+        if (Build.VERSION.SDK_INT >= 23) {
+            String orCreate = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+            Intrinsics.checkExpressionValueIsNotNull(orCreate, "MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)");
+            decrypt = EncryptedSharedPreferences.create(PREF_ID, orCreate, context, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV, EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM).getString(JWT_TOKEN, (String) null);
+        } else {
+            SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_ID, 0);
+            if (sharedPreferences == null || (string = sharedPreferences.getString(JWT_TOKEN, (String) null)) == null) {
+                return null;
+            }
+            AESEncryptionForPreAndroidM aESEncryptionForPreAndroidM = AESEncryptionForPreAndroidM.INSTANCE;
+            Intrinsics.checkExpressionValueIsNotNull(string, "it");
+            decrypt = aESEncryptionForPreAndroidM.decrypt(string);
+        }
+        return decrypt;
     }
 
     public final void putHandShakePin(Context context, String str) {

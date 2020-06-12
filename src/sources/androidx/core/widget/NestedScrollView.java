@@ -707,48 +707,121 @@ public class NestedScrollView extends FrameLayout implements NestedScrollingPare
     }
 
     /* access modifiers changed from: package-private */
-    public boolean overScrollByCompat(int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, boolean z) {
-        boolean z2;
-        boolean z3;
-        int overScrollMode = getOverScrollMode();
-        boolean z4 = computeHorizontalScrollRange() > computeHorizontalScrollExtent();
-        boolean z5 = computeVerticalScrollRange() > computeVerticalScrollExtent();
-        boolean z6 = overScrollMode == 0 || (overScrollMode == 1 && z4);
-        boolean z7 = overScrollMode == 0 || (overScrollMode == 1 && z5);
-        int i9 = i3 + i;
-        int i10 = !z6 ? 0 : i7;
-        int i11 = i4 + i2;
-        int i12 = !z7 ? 0 : i8;
-        int i13 = -i10;
-        int i14 = i10 + i5;
-        int i15 = -i12;
-        int i16 = i12 + i6;
-        if (i9 > i14) {
-            i9 = i14;
-            z2 = true;
-        } else if (i9 < i13) {
-            z2 = true;
-            i9 = i13;
-        } else {
-            z2 = false;
-        }
-        if (i11 > i16) {
-            i11 = i16;
-            z3 = true;
-        } else if (i11 < i15) {
-            z3 = true;
-            i11 = i15;
-        } else {
-            z3 = false;
-        }
-        if (z3 && !hasNestedScrollingParent(1)) {
-            this.mScroller.springBack(i9, i11, 0, 0, 0, getScrollRange());
-        }
-        onOverScrolled(i9, i11, z2, z3);
-        if (z2 || z3) {
-            return true;
-        }
-        return false;
+    /* JADX WARNING: Removed duplicated region for block: B:34:0x0057  */
+    /* JADX WARNING: Removed duplicated region for block: B:36:0x005a  */
+    /* JADX WARNING: Removed duplicated region for block: B:45:0x0083 A[ADDED_TO_REGION] */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public boolean overScrollByCompat(int r13, int r14, int r15, int r16, int r17, int r18, int r19, int r20, boolean r21) {
+        /*
+            r12 = this;
+            r0 = r12
+            int r1 = r12.getOverScrollMode()
+            int r2 = r12.computeHorizontalScrollRange()
+            int r3 = r12.computeHorizontalScrollExtent()
+            r4 = 0
+            r5 = 1
+            if (r2 <= r3) goto L_0x0013
+            r2 = 1
+            goto L_0x0014
+        L_0x0013:
+            r2 = 0
+        L_0x0014:
+            int r3 = r12.computeVerticalScrollRange()
+            int r6 = r12.computeVerticalScrollExtent()
+            if (r3 <= r6) goto L_0x0020
+            r3 = 1
+            goto L_0x0021
+        L_0x0020:
+            r3 = 0
+        L_0x0021:
+            if (r1 == 0) goto L_0x002a
+            if (r1 != r5) goto L_0x0028
+            if (r2 == 0) goto L_0x0028
+            goto L_0x002a
+        L_0x0028:
+            r2 = 0
+            goto L_0x002b
+        L_0x002a:
+            r2 = 1
+        L_0x002b:
+            if (r1 == 0) goto L_0x0034
+            if (r1 != r5) goto L_0x0032
+            if (r3 == 0) goto L_0x0032
+            goto L_0x0034
+        L_0x0032:
+            r1 = 0
+            goto L_0x0035
+        L_0x0034:
+            r1 = 1
+        L_0x0035:
+            int r3 = r15 + r13
+            if (r2 != 0) goto L_0x003b
+            r2 = 0
+            goto L_0x003d
+        L_0x003b:
+            r2 = r19
+        L_0x003d:
+            int r6 = r16 + r14
+            if (r1 != 0) goto L_0x0043
+            r1 = 0
+            goto L_0x0045
+        L_0x0043:
+            r1 = r20
+        L_0x0045:
+            int r7 = -r2
+            int r2 = r2 + r17
+            int r8 = -r1
+            int r1 = r1 + r18
+            if (r3 <= r2) goto L_0x0050
+            r3 = r2
+        L_0x004e:
+            r2 = 1
+            goto L_0x0055
+        L_0x0050:
+            if (r3 >= r7) goto L_0x0054
+            r3 = r7
+            goto L_0x004e
+        L_0x0054:
+            r2 = 0
+        L_0x0055:
+            if (r6 <= r1) goto L_0x005a
+            r6 = r1
+        L_0x0058:
+            r1 = 1
+            goto L_0x005f
+        L_0x005a:
+            if (r6 >= r8) goto L_0x005e
+            r6 = r8
+            goto L_0x0058
+        L_0x005e:
+            r1 = 0
+        L_0x005f:
+            if (r1 == 0) goto L_0x007e
+            boolean r7 = r12.hasNestedScrollingParent(r5)
+            if (r7 != 0) goto L_0x007e
+            android.widget.OverScroller r7 = r0.mScroller
+            r8 = 0
+            r9 = 0
+            r10 = 0
+            int r11 = r12.getScrollRange()
+            r13 = r7
+            r14 = r3
+            r15 = r6
+            r16 = r8
+            r17 = r9
+            r18 = r10
+            r19 = r11
+            r13.springBack(r14, r15, r16, r17, r18, r19)
+        L_0x007e:
+            r12.onOverScrolled(r3, r6, r2, r1)
+            if (r2 != 0) goto L_0x0085
+            if (r1 == 0) goto L_0x0086
+        L_0x0085:
+            r4 = 1
+        L_0x0086:
+            return r4
+        */
+        throw new UnsupportedOperationException("Method not decompiled: androidx.core.widget.NestedScrollView.overScrollByCompat(int, int, int, int, int, int, int, int, boolean):boolean");
     }
 
     /* access modifiers changed from: package-private */

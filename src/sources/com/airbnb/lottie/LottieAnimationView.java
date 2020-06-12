@@ -136,7 +136,8 @@ public class LottieAnimationView extends AppCompatImageView {
         setProgress(obtainStyledAttributes.getFloat(R.styleable.LottieAnimationView_lottie_progress, 0.0f));
         enableMergePathsForKitKatAndAbove(obtainStyledAttributes.getBoolean(R.styleable.LottieAnimationView_lottie_enableMergePathsForKitKatAndAbove, false));
         if (obtainStyledAttributes.hasValue(R.styleable.LottieAnimationView_lottie_colorFilter)) {
-            addValueCallback(new KeyPath("**"), LottieProperty.COLOR_FILTER, new LottieValueCallback(new SimpleColorFilter(obtainStyledAttributes.getColor(R.styleable.LottieAnimationView_lottie_colorFilter, 0))));
+            SimpleColorFilter simpleColorFilter = new SimpleColorFilter(obtainStyledAttributes.getColor(R.styleable.LottieAnimationView_lottie_colorFilter, 0));
+            addValueCallback(new KeyPath("**"), LottieProperty.COLOR_FILTER, new LottieValueCallback(simpleColorFilter));
         }
         if (obtainStyledAttributes.hasValue(R.styleable.LottieAnimationView_lottie_scale)) {
             this.lottieDrawable.setScale(obtainStyledAttributes.getFloat(R.styleable.LottieAnimationView_lottie_scale, 1.0f));
@@ -688,7 +689,7 @@ public class LottieAnimationView extends AppCompatImageView {
             r3 = 3
             if (r0 == r3) goto L_0x0015
         L_0x0013:
-            r1 = r2
+            r1 = 1
             goto L_0x003d
         L_0x0015:
             com.airbnb.lottie.LottieComposition r0 = r5.composition
@@ -713,7 +714,7 @@ public class LottieAnimationView extends AppCompatImageView {
             if (r0 >= r4) goto L_0x003a
             goto L_0x003b
         L_0x003a:
-            r3 = r2
+            r3 = 1
         L_0x003b:
             if (r3 == 0) goto L_0x0013
         L_0x003d:

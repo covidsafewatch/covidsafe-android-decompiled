@@ -68,7 +68,7 @@ public final class ObservablePublish<T> extends ConnectableObservable<T> impleme
             if (r1 == 0) goto L_0x0034
             goto L_0x0035
         L_0x0034:
-            r2 = r3
+            r2 = 0
         L_0x0035:
             r5.accept(r0)     // Catch:{ all -> 0x0040 }
             if (r2 == 0) goto L_0x003f

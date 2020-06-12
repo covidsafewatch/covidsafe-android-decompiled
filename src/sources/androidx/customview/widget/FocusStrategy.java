@@ -175,13 +175,10 @@ class FocusStrategy {
         if (beamsOverlap(i, rect, rect3) || !beamsOverlap) {
             return false;
         }
-        if (!isToDirectionOf(i, rect, rect3) || i == 17 || i == 66) {
-            return true;
+        if (isToDirectionOf(i, rect, rect3) && i != 17 && i != 66 && majorAxisDistance(i, rect, rect2) >= majorAxisDistanceToFarEdge(i, rect, rect3)) {
+            return false;
         }
-        if (majorAxisDistance(i, rect, rect2) < majorAxisDistanceToFarEdge(i, rect, rect3)) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private static boolean isCandidate(Rect rect, Rect rect2, int i) {

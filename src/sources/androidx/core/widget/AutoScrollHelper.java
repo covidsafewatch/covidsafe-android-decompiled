@@ -156,8 +156,8 @@ public abstract class AutoScrollHelper implements View.OnTouchListener {
     /* JADX WARNING: Code restructure failed: missing block: B:9:0x0013, code lost:
         if (r0 != 3) goto L_0x0058;
      */
-    /* JADX WARNING: Removed duplicated region for block: B:21:0x0060  */
-    /* JADX WARNING: Removed duplicated region for block: B:24:? A[RETURN, SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:21:0x0060 A[ORIG_RETURN, RETURN, SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:23:? A[RETURN, SYNTHETIC] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public boolean onTouch(android.view.View r6, android.view.MotionEvent r7) {
         /*
@@ -209,7 +209,7 @@ public abstract class AutoScrollHelper implements View.OnTouchListener {
             if (r6 == 0) goto L_0x0061
             boolean r6 = r5.mAnimating
             if (r6 == 0) goto L_0x0061
-            r1 = r2
+            r1 = 1
         L_0x0061:
             return r1
         */

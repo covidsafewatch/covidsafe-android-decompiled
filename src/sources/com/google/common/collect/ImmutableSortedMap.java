@@ -103,8 +103,7 @@ public final class ImmutableSortedMap<K, V> extends ImmutableSortedMapFauxveride
     }
 
     private static <K, V> ImmutableSortedMap<K, V> copyOfInternal(Map<? extends K, ? extends V> map, Comparator<? super K> comparator) {
-        boolean z;
-        boolean z2 = false;
+        boolean z = false;
         if (map instanceof SortedMap) {
             Comparator comparator2 = ((SortedMap) map).comparator();
             if (comparator2 != null) {
@@ -112,15 +111,14 @@ public final class ImmutableSortedMap<K, V> extends ImmutableSortedMapFauxveride
             } else if (comparator == NATURAL_ORDER) {
                 z = true;
             }
-            z2 = z;
         }
-        if (z2 && (map instanceof ImmutableSortedMap)) {
+        if (z && (map instanceof ImmutableSortedMap)) {
             ImmutableSortedMap<K, V> immutableSortedMap = (ImmutableSortedMap) map;
             if (!immutableSortedMap.isPartialView()) {
                 return immutableSortedMap;
             }
         }
-        return fromEntries(comparator, z2, map.entrySet());
+        return fromEntries(comparator, z, map.entrySet());
     }
 
     private static <K, V> ImmutableSortedMap<K, V> fromEntries(Comparator<? super K> comparator, boolean z, Iterable<? extends Map.Entry<? extends K, ? extends V>> iterable) {

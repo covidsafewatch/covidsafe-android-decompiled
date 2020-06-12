@@ -18,7 +18,6 @@ class ShapeStrokeParser {
             java.util.ArrayList r3 = new java.util.ArrayList
             r3.<init>()
             r4 = 0
-            r11 = r4
             r4 = 0
             r5 = 0
             r6 = 0
@@ -26,6 +25,7 @@ class ShapeStrokeParser {
             r8 = 0
             r9 = 0
             r10 = 0
+            r11 = 0
             r12 = 0
         L_0x0011:
             boolean r13 = r17.hasNext()
@@ -95,7 +95,7 @@ class ShapeStrokeParser {
             java.lang.String r1 = "g"
             boolean r1 = r13.equals(r1)
             if (r1 == 0) goto L_0x008a
-            r2 = r14
+            r2 = 2
             goto L_0x008b
         L_0x0080:
             java.lang.String r1 = "d"
@@ -122,11 +122,11 @@ class ShapeStrokeParser {
             r1 = 1
             r5 = r15
         L_0x00a2:
-            r14 = r1
+            r14 = 1
             goto L_0x002b
         L_0x00a4:
             r2 = r18
-            r1 = r14
+            r1 = 1
             r17.endArray()
             int r13 = r3.size()
             if (r13 != r1) goto L_0x00ba

@@ -387,11 +387,11 @@ public class JsonReader implements Closeable {
         int i = this.pos;
         int i2 = this.limit;
         int i3 = 0;
-        boolean z = true;
         int i4 = 0;
         char c2 = 0;
-        boolean z2 = false;
+        boolean z = true;
         long j = 0;
+        boolean z2 = false;
         while (true) {
             if (i + i4 == i2) {
                 if (i4 == cArr.length) {
@@ -404,9 +404,7 @@ public class JsonReader implements Closeable {
                 i2 = this.limit;
             }
             c = cArr[i + i4];
-            char c3 = 3;
             if (c == '+') {
-                c3 = 6;
                 i3 = 0;
                 if (c2 != 5) {
                     return 0;
@@ -418,46 +416,48 @@ public class JsonReader implements Closeable {
                 }
                 c2 = 5;
                 i4++;
-            } else if (c == '-') {
-                c3 = 6;
-                i3 = 0;
-                if (c2 == 0) {
-                    c2 = 1;
-                    z2 = true;
-                    i4++;
-                } else if (c2 != 5) {
-                    return 0;
-                }
-            } else if (c == '.') {
-                i3 = 0;
-                if (c2 != 2) {
-                    return 0;
-                }
-            } else if (c >= '0' && c <= '9') {
-                if (c2 == 1 || c2 == 0) {
-                    j = (long) (-(c - '0'));
-                    c2 = 2;
-                } else if (c2 != 2) {
-                    if (c2 == 3) {
-                        i3 = 0;
-                        c2 = 4;
-                    } else if (c2 == 5 || c2 == 6) {
-                        i3 = 0;
-                        c2 = 7;
+            } else {
+                if (c == '-') {
+                    i3 = 0;
+                    if (c2 == 0) {
+                        c2 = 1;
+                        z2 = true;
+                    } else if (c2 != 5) {
+                        return 0;
                     }
-                    i4++;
-                } else if (j == 0) {
-                    return 0;
-                } else {
-                    long j2 = (10 * j) - ((long) (c - '0'));
-                    int i5 = (j > -922337203685477580L ? 1 : (j == -922337203685477580L ? 0 : -1));
-                    z &= i5 > 0 || (i5 == 0 && j2 < j);
-                    j = j2;
+                } else if (c == '.') {
+                    i3 = 0;
+                    if (c2 != 2) {
+                        return 0;
+                    }
+                    c2 = 3;
+                } else if (c >= '0' && c <= '9') {
+                    if (c2 == 1 || c2 == 0) {
+                        j = (long) (-(c - '0'));
+                        i3 = 0;
+                        c2 = 2;
+                    } else {
+                        if (c2 == 2) {
+                            if (j == 0) {
+                                return 0;
+                            }
+                            long j2 = (10 * j) - ((long) (c - '0'));
+                            int i5 = (j > -922337203685477580L ? 1 : (j == -922337203685477580L ? 0 : -1));
+                            z &= i5 > 0 || (i5 == 0 && j2 < j);
+                            j = j2;
+                        } else if (c2 == 3) {
+                            i3 = 0;
+                            c2 = 4;
+                        } else if (c2 == 5 || c2 == 6) {
+                            i3 = 0;
+                            c2 = 7;
+                        }
+                        i3 = 0;
+                    }
                 }
-                i3 = 0;
                 i4++;
             }
-            c2 = c3;
+            c2 = 6;
             i4++;
         }
         if (isLiteral(c)) {
@@ -781,7 +781,7 @@ public class JsonReader implements Closeable {
             r0 = 0
             r1 = 0
         L_0x0002:
-            r2 = r0
+            r2 = 0
         L_0x0003:
             int r3 = r6.pos
             int r4 = r3 + r2

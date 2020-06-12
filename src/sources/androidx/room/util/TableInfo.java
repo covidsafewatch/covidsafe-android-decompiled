@@ -288,10 +288,7 @@ public class TableInfo {
                 return false;
             }
             int i = this.mCreatedFrom;
-            if (i != 0 && i == column.mCreatedFrom && ((str = this.defaultValue) == null ? column.defaultValue != null : !str.equals(column.defaultValue))) {
-                return false;
-            }
-            if (this.affinity == column.affinity) {
+            if ((i == 0 || i != column.mCreatedFrom || ((str = this.defaultValue) == null ? column.defaultValue == null : str.equals(column.defaultValue))) && this.affinity == column.affinity) {
                 return true;
             }
             return false;

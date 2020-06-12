@@ -19,10 +19,7 @@ public final class ActorKt {
             coroutineContext = EmptyCoroutineContext.INSTANCE;
         }
         CoroutineContext coroutineContext2 = coroutineContext;
-        if ((i2 & 2) != 0) {
-            i = 0;
-        }
-        int i3 = i;
+        int i3 = (i2 & 2) != 0 ? 0 : i;
         if ((i2 & 4) != 0) {
             coroutineStart = CoroutineStart.DEFAULT;
         }

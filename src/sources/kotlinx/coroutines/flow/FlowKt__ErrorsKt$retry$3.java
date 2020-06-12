@@ -42,54 +42,54 @@ final class FlowKt__ErrorsKt$retry$3 extends SuspendLambda implements Function4<
     }
 
     /* JADX WARNING: Code restructure failed: missing block: B:12:0x0045, code lost:
-        if (((java.lang.Boolean) r8).booleanValue() != false) goto L_0x0049;
+        if (((java.lang.Boolean) r9).booleanValue() != false) goto L_0x0049;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public final java.lang.Object invokeSuspend(java.lang.Object r8) {
+    public final java.lang.Object invokeSuspend(java.lang.Object r9) {
         /*
-            r7 = this;
+            r8 = this;
             java.lang.Object r0 = kotlin.coroutines.intrinsics.IntrinsicsKt.getCOROUTINE_SUSPENDED()
-            int r1 = r7.label
+            int r1 = r8.label
             r2 = 1
             if (r1 == 0) goto L_0x001f
             if (r1 != r2) goto L_0x0017
-            java.lang.Object r0 = r7.L$1
+            java.lang.Object r0 = r8.L$1
             java.lang.Throwable r0 = (java.lang.Throwable) r0
-            java.lang.Object r0 = r7.L$0
+            java.lang.Object r0 = r8.L$0
             kotlinx.coroutines.flow.FlowCollector r0 = (kotlinx.coroutines.flow.FlowCollector) r0
-            kotlin.ResultKt.throwOnFailure(r8)
+            kotlin.ResultKt.throwOnFailure(r9)
             goto L_0x003f
         L_0x0017:
-            java.lang.IllegalStateException r8 = new java.lang.IllegalStateException
+            java.lang.IllegalStateException r9 = new java.lang.IllegalStateException
             java.lang.String r0 = "call to 'resume' before 'invoke' with coroutine"
-            r8.<init>(r0)
-            throw r8
+            r9.<init>(r0)
+            throw r9
         L_0x001f:
-            kotlin.ResultKt.throwOnFailure(r8)
-            kotlinx.coroutines.flow.FlowCollector r8 = r7.p$
-            java.lang.Throwable r1 = r7.p$0
-            long r3 = r7.p$1
-            long r5 = r7.$retries
-            int r5 = (r3 > r5 ? 1 : (r3 == r5 ? 0 : -1))
-            if (r5 >= 0) goto L_0x0048
-            kotlin.jvm.functions.Function2 r5 = r7.$predicate
-            r7.L$0 = r8
-            r7.L$1 = r1
-            r7.J$0 = r3
-            r7.label = r2
-            java.lang.Object r8 = r5.invoke(r1, r7)
-            if (r8 != r0) goto L_0x003f
+            kotlin.ResultKt.throwOnFailure(r9)
+            kotlinx.coroutines.flow.FlowCollector r9 = r8.p$
+            java.lang.Throwable r1 = r8.p$0
+            long r3 = r8.p$1
+            long r5 = r8.$retries
+            int r7 = (r3 > r5 ? 1 : (r3 == r5 ? 0 : -1))
+            if (r7 >= 0) goto L_0x0048
+            kotlin.jvm.functions.Function2 r5 = r8.$predicate
+            r8.L$0 = r9
+            r8.L$1 = r1
+            r8.J$0 = r3
+            r8.label = r2
+            java.lang.Object r9 = r5.invoke(r1, r8)
+            if (r9 != r0) goto L_0x003f
             return r0
         L_0x003f:
-            java.lang.Boolean r8 = (java.lang.Boolean) r8
-            boolean r8 = r8.booleanValue()
-            if (r8 == 0) goto L_0x0048
+            java.lang.Boolean r9 = (java.lang.Boolean) r9
+            boolean r9 = r9.booleanValue()
+            if (r9 == 0) goto L_0x0048
             goto L_0x0049
         L_0x0048:
             r2 = 0
         L_0x0049:
-            java.lang.Boolean r8 = kotlin.coroutines.jvm.internal.Boxing.boxBoolean(r2)
-            return r8
+            java.lang.Boolean r9 = kotlin.coroutines.jvm.internal.Boxing.boxBoolean(r2)
+            return r9
         */
         throw new UnsupportedOperationException("Method not decompiled: kotlinx.coroutines.flow.FlowKt__ErrorsKt$retry$3.invokeSuspend(java.lang.Object):java.lang.Object");
     }

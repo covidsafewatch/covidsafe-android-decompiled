@@ -205,7 +205,7 @@ public final class RealConnection extends Http2Connection.Listener implements Co
             okhttp3.Protocol r0 = r7.protocol
             r10 = 1
             if (r0 != 0) goto L_0x0017
-            r0 = r10
+            r0 = 1
             goto L_0x0018
         L_0x0017:
             r0 = 0

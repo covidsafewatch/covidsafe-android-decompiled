@@ -15,7 +15,7 @@ public final class BuildConfig {
     public static final String ENCRYPTION_PUBLIC_KEY = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENBs4ziXF4rp531uvbqq9zCxiBpQr3DcKjMgc/WA6FHv6rBvu+uHSRJJRS2xrJ6Rqt30QcSUD1E2f/d0lb2Gvsg==";
     public static final String END_POINT_PREFIX = "/prod";
     public static final String FLAVOR = "";
-    public static final String GITHASH = "292bf7c";
+    public static final String GITHASH = "ae177e0";
     public static final long HEALTH_CHECK_INTERVAL = 900000;
     public static final String IOS_BACKGROUND_UUID = "AQEAAAAAAAAAAAAAAAAAAAA=";
     public static final long MAX_QUEUE_TIME = 7000;
@@ -29,6 +29,6 @@ public final class BuildConfig {
     public static final String SERVICE_FOREGROUND_CHANNEL_ID = "COVIDSafe Updates";
     public static final String SERVICE_FOREGROUND_CHANNEL_NAME = "Foreground Service";
     public static final int SERVICE_FOREGROUND_NOTIFICATION_ID = 771579;
-    public static final int VERSION_CODE = 18;
-    public static final String VERSION_NAME = "1.0.18";
+    public static final int VERSION_CODE = 21;
+    public static final String VERSION_NAME = "1.0.21";
 }

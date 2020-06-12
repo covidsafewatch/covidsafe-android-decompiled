@@ -320,7 +320,7 @@ public final class BehaviorSubject<T> extends Subject<T> {
                 r1.unlock()     // Catch:{ all -> 0x003e }
                 r1 = 1
                 if (r0 == 0) goto L_0x002b
-                r2 = r1
+                r2 = 1
                 goto L_0x002c
             L_0x002b:
                 r2 = 0
@@ -346,54 +346,54 @@ public final class BehaviorSubject<T> extends Subject<T> {
 
         /* access modifiers changed from: package-private */
         /* JADX WARNING: Code restructure failed: missing block: B:25:0x0031, code lost:
-            r2.fastPath = true;
+            r3.fastPath = true;
          */
         /* Code decompiled incorrectly, please refer to instructions dump. */
-        public void emitNext(java.lang.Object r3, long r4) {
+        public void emitNext(java.lang.Object r4, long r5) {
             /*
-                r2 = this;
-                boolean r0 = r2.cancelled
+                r3 = this;
+                boolean r0 = r3.cancelled
                 if (r0 == 0) goto L_0x0005
                 return
             L_0x0005:
-                boolean r0 = r2.fastPath
+                boolean r0 = r3.fastPath
                 if (r0 != 0) goto L_0x0037
-                monitor-enter(r2)
-                boolean r0 = r2.cancelled     // Catch:{ all -> 0x0034 }
+                monitor-enter(r3)
+                boolean r0 = r3.cancelled     // Catch:{ all -> 0x0034 }
                 if (r0 == 0) goto L_0x0010
-                monitor-exit(r2)     // Catch:{ all -> 0x0034 }
+                monitor-exit(r3)     // Catch:{ all -> 0x0034 }
                 return
             L_0x0010:
-                long r0 = r2.index     // Catch:{ all -> 0x0034 }
-                int r4 = (r0 > r4 ? 1 : (r0 == r4 ? 0 : -1))
-                if (r4 != 0) goto L_0x0018
-                monitor-exit(r2)     // Catch:{ all -> 0x0034 }
+                long r0 = r3.index     // Catch:{ all -> 0x0034 }
+                int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
+                if (r2 != 0) goto L_0x0018
+                monitor-exit(r3)     // Catch:{ all -> 0x0034 }
                 return
             L_0x0018:
-                boolean r4 = r2.emitting     // Catch:{ all -> 0x0034 }
-                if (r4 == 0) goto L_0x002d
-                io.reactivex.internal.util.AppendOnlyLinkedArrayList<java.lang.Object> r4 = r2.queue     // Catch:{ all -> 0x0034 }
-                if (r4 != 0) goto L_0x0028
-                io.reactivex.internal.util.AppendOnlyLinkedArrayList r4 = new io.reactivex.internal.util.AppendOnlyLinkedArrayList     // Catch:{ all -> 0x0034 }
-                r5 = 4
-                r4.<init>(r5)     // Catch:{ all -> 0x0034 }
-                r2.queue = r4     // Catch:{ all -> 0x0034 }
+                boolean r5 = r3.emitting     // Catch:{ all -> 0x0034 }
+                if (r5 == 0) goto L_0x002d
+                io.reactivex.internal.util.AppendOnlyLinkedArrayList<java.lang.Object> r5 = r3.queue     // Catch:{ all -> 0x0034 }
+                if (r5 != 0) goto L_0x0028
+                io.reactivex.internal.util.AppendOnlyLinkedArrayList r5 = new io.reactivex.internal.util.AppendOnlyLinkedArrayList     // Catch:{ all -> 0x0034 }
+                r6 = 4
+                r5.<init>(r6)     // Catch:{ all -> 0x0034 }
+                r3.queue = r5     // Catch:{ all -> 0x0034 }
             L_0x0028:
-                r4.add(r3)     // Catch:{ all -> 0x0034 }
-                monitor-exit(r2)     // Catch:{ all -> 0x0034 }
+                r5.add(r4)     // Catch:{ all -> 0x0034 }
+                monitor-exit(r3)     // Catch:{ all -> 0x0034 }
                 return
             L_0x002d:
-                r4 = 1
-                r2.next = r4     // Catch:{ all -> 0x0034 }
-                monitor-exit(r2)     // Catch:{ all -> 0x0034 }
-                r2.fastPath = r4
+                r5 = 1
+                r3.next = r5     // Catch:{ all -> 0x0034 }
+                monitor-exit(r3)     // Catch:{ all -> 0x0034 }
+                r3.fastPath = r5
                 goto L_0x0037
             L_0x0034:
-                r3 = move-exception
-                monitor-exit(r2)     // Catch:{ all -> 0x0034 }
-                throw r3
+                r4 = move-exception
+                monitor-exit(r3)     // Catch:{ all -> 0x0034 }
+                throw r4
             L_0x0037:
-                r2.test(r3)
+                r3.test(r4)
                 return
             */
             throw new UnsupportedOperationException("Method not decompiled: io.reactivex.subjects.BehaviorSubject.BehaviorDisposable.emitNext(java.lang.Object, long):void");

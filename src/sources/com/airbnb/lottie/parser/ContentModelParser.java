@@ -17,7 +17,7 @@ class ContentModelParser {
         /*
             r7.beginObject()
             r0 = 2
-            r1 = r0
+            r1 = 2
         L_0x0005:
             boolean r2 = r7.hasNext()
             r3 = 1
@@ -78,7 +78,7 @@ class ContentModelParser {
             java.lang.String r0 = "st"
             boolean r0 = r2.equals(r0)
             if (r0 == 0) goto L_0x00bf
-            r0 = r3
+            r0 = 1
             goto L_0x00c0
         L_0x0058:
             java.lang.String r0 = "sr"
@@ -140,7 +140,7 @@ class ContentModelParser {
             r0 = 7
             goto L_0x00c0
         L_0x00bf:
-            r0 = r5
+            r0 = -1
         L_0x00c0:
             switch(r0) {
                 case 0: goto L_0x0119;

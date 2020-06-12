@@ -620,7 +620,7 @@ public class ListPopupWindow implements ShowableListMenu {
             r2 = -1
             r3 = 1
             r4 = 0
-            if (r0 != 0) goto L_0x00be
+            if (r0 != 0) goto L_0x00bf
             android.content.Context r0 = r12.mContext
             androidx.appcompat.widget.ListPopupWindow$2 r5 = new androidx.appcompat.widget.ListPopupWindow$2
             r5.<init>()
@@ -657,7 +657,7 @@ public class ListPopupWindow implements ShowableListMenu {
         L_0x0054:
             androidx.appcompat.widget.DropDownListView r5 = r12.mDropDownList
             android.view.View r6 = r12.mPromptView
-            if (r6 == 0) goto L_0x00b7
+            if (r6 == 0) goto L_0x00b8
             android.widget.LinearLayout r7 = new android.widget.LinearLayout
             r7.<init>(r0)
             r7.setOrientation(r3)
@@ -686,13 +686,13 @@ public class ListPopupWindow implements ShowableListMenu {
             r7.addView(r5, r0)
         L_0x0095:
             int r0 = r12.mDropDownWidth
-            if (r0 < 0) goto L_0x009b
-            r5 = r1
-            goto L_0x009d
-        L_0x009b:
-            r0 = r4
-            r5 = r0
-        L_0x009d:
+            if (r0 < 0) goto L_0x009c
+            r5 = -2147483648(0xffffffff80000000, float:-0.0)
+            goto L_0x009e
+        L_0x009c:
+            r0 = 0
+            r5 = 0
+        L_0x009e:
             int r0 = android.view.View.MeasureSpec.makeMeasureSpec(r0, r5)
             r6.measure(r0, r4)
             android.view.ViewGroup$LayoutParams r0 = r6.getLayoutParams()
@@ -704,19 +704,19 @@ public class ListPopupWindow implements ShowableListMenu {
             int r5 = r5 + r0
             r0 = r5
             r5 = r7
-            goto L_0x00b8
-        L_0x00b7:
-            r0 = r4
+            goto L_0x00b9
         L_0x00b8:
+            r0 = 0
+        L_0x00b9:
             android.widget.PopupWindow r6 = r12.mPopup
             r6.setContentView(r5)
-            goto L_0x00dc
-        L_0x00be:
+            goto L_0x00dd
+        L_0x00bf:
             android.widget.PopupWindow r0 = r12.mPopup
             android.view.View r0 = r0.getContentView()
             android.view.ViewGroup r0 = (android.view.ViewGroup) r0
             android.view.View r0 = r12.mPromptView
-            if (r0 == 0) goto L_0x00db
+            if (r0 == 0) goto L_0x00dc
             android.view.ViewGroup$LayoutParams r5 = r0.getLayoutParams()
             android.widget.LinearLayout$LayoutParams r5 = (android.widget.LinearLayout.LayoutParams) r5
             int r0 = r0.getMeasuredHeight()
@@ -724,13 +724,13 @@ public class ListPopupWindow implements ShowableListMenu {
             int r0 = r0 + r6
             int r5 = r5.bottomMargin
             int r0 = r0 + r5
-            goto L_0x00dc
-        L_0x00db:
-            r0 = r4
+            goto L_0x00dd
         L_0x00dc:
+            r0 = 0
+        L_0x00dd:
             android.widget.PopupWindow r5 = r12.mPopup
             android.graphics.drawable.Drawable r5 = r5.getBackground()
-            if (r5 == 0) goto L_0x00fe
+            if (r5 == 0) goto L_0x00ff
             android.graphics.Rect r6 = r12.mTempRect
             r5.getPadding(r6)
             android.graphics.Rect r5 = r12.mTempRect
@@ -739,42 +739,42 @@ public class ListPopupWindow implements ShowableListMenu {
             int r6 = r6.bottom
             int r5 = r5 + r6
             boolean r6 = r12.mDropDownVerticalOffsetSet
-            if (r6 != 0) goto L_0x0104
+            if (r6 != 0) goto L_0x0105
             android.graphics.Rect r6 = r12.mTempRect
             int r6 = r6.top
             int r6 = -r6
             r12.mDropDownVerticalOffset = r6
-            goto L_0x0104
-        L_0x00fe:
+            goto L_0x0105
+        L_0x00ff:
             android.graphics.Rect r5 = r12.mTempRect
             r5.setEmpty()
-            r5 = r4
-        L_0x0104:
+            r5 = 0
+        L_0x0105:
             android.widget.PopupWindow r6 = r12.mPopup
             int r6 = r6.getInputMethodMode()
             r7 = 2
-            if (r6 != r7) goto L_0x010e
-            goto L_0x010f
-        L_0x010e:
-            r3 = r4
+            if (r6 != r7) goto L_0x010f
+            goto L_0x0110
         L_0x010f:
+            r3 = 0
+        L_0x0110:
             android.view.View r4 = r12.getAnchorView()
             int r6 = r12.mDropDownVerticalOffset
             int r3 = r12.getMaxAvailableHeight(r4, r6, r3)
             boolean r4 = r12.mDropDownAlwaysVisible
-            if (r4 != 0) goto L_0x0184
+            if (r4 != 0) goto L_0x0185
             int r4 = r12.mDropDownHeight
-            if (r4 != r2) goto L_0x0122
-            goto L_0x0184
-        L_0x0122:
+            if (r4 != r2) goto L_0x0123
+            goto L_0x0185
+        L_0x0123:
             int r4 = r12.mDropDownWidth
             r6 = -2
-            if (r4 == r6) goto L_0x014b
+            if (r4 == r6) goto L_0x014c
             r1 = 1073741824(0x40000000, float:2.0)
-            if (r4 == r2) goto L_0x0130
+            if (r4 == r2) goto L_0x0131
             int r1 = android.view.View.MeasureSpec.makeMeasureSpec(r4, r1)
-            goto L_0x0165
-        L_0x0130:
+            goto L_0x0166
+        L_0x0131:
             android.content.Context r2 = r12.mContext
             android.content.res.Resources r2 = r2.getResources()
             android.util.DisplayMetrics r2 = r2.getDisplayMetrics()
@@ -786,8 +786,8 @@ public class ListPopupWindow implements ShowableListMenu {
             int r4 = r4 + r6
             int r2 = r2 - r4
             int r1 = android.view.View.MeasureSpec.makeMeasureSpec(r2, r1)
-            goto L_0x0165
-        L_0x014b:
+            goto L_0x0166
+        L_0x014c:
             android.content.Context r2 = r12.mContext
             android.content.res.Resources r2 = r2.getResources()
             android.util.DisplayMetrics r2 = r2.getDisplayMetrics()
@@ -799,7 +799,7 @@ public class ListPopupWindow implements ShowableListMenu {
             int r4 = r4 + r6
             int r2 = r2 - r4
             int r1 = android.view.View.MeasureSpec.makeMeasureSpec(r2, r1)
-        L_0x0165:
+        L_0x0166:
             r7 = r1
             androidx.appcompat.widget.DropDownListView r6 = r12.mDropDownList
             r8 = 0
@@ -807,7 +807,7 @@ public class ListPopupWindow implements ShowableListMenu {
             int r10 = r3 - r0
             r11 = -1
             int r1 = r6.measureHeightOfChildrenCompat(r7, r8, r9, r10, r11)
-            if (r1 <= 0) goto L_0x0182
+            if (r1 <= 0) goto L_0x0183
             androidx.appcompat.widget.DropDownListView r2 = r12.mDropDownList
             int r2 = r2.getPaddingTop()
             androidx.appcompat.widget.DropDownListView r3 = r12.mDropDownList
@@ -815,10 +815,10 @@ public class ListPopupWindow implements ShowableListMenu {
             int r2 = r2 + r3
             int r5 = r5 + r2
             int r0 = r0 + r5
-        L_0x0182:
+        L_0x0183:
             int r1 = r1 + r0
             return r1
-        L_0x0184:
+        L_0x0185:
             int r3 = r3 + r5
             return r3
         */

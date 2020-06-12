@@ -339,189 +339,94 @@ final class JsonUtf8Reader extends JsonReader {
         return i;
     }
 
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r6v6, resolved type: boolean} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r6v7, resolved type: boolean} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r6v10, resolved type: boolean} */
-    /* JADX WARNING: Multi-variable type inference failed */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    private int peekNumber() throws java.io.IOException {
-        /*
-            r16 = this;
-            r0 = r16
-            r1 = 0
-            r3 = 1
-            r4 = 0
-            r8 = r1
-            r7 = r3
-            r5 = r4
-            r6 = r5
-            r10 = r6
-        L_0x000b:
-            okio.BufferedSource r11 = r0.source
-            int r12 = r5 + 1
-            long r13 = (long) r12
-            boolean r11 = r11.request(r13)
-            r15 = 2
-            if (r11 != 0) goto L_0x0019
-            goto L_0x0084
-        L_0x0019:
-            okio.Buffer r11 = r0.buffer
-            long r13 = (long) r5
-            byte r11 = r11.getByte(r13)
-            r13 = 43
-            r14 = 5
-            if (r11 == r13) goto L_0x00d3
-            r13 = 69
-            if (r11 == r13) goto L_0x00ca
-            r13 = 101(0x65, float:1.42E-43)
-            if (r11 == r13) goto L_0x00ca
-            r13 = 45
-            if (r11 == r13) goto L_0x00c0
-            r13 = 46
-            if (r11 == r13) goto L_0x00bb
-            r13 = 48
-            if (r11 < r13) goto L_0x007e
-            r13 = 57
-            if (r11 <= r13) goto L_0x003e
-            goto L_0x007e
-        L_0x003e:
-            if (r6 == r3) goto L_0x0077
-            if (r6 != 0) goto L_0x0043
-            goto L_0x0077
-        L_0x0043:
-            if (r6 != r15) goto L_0x0067
-            int r5 = (r8 > r1 ? 1 : (r8 == r1 ? 0 : -1))
-            if (r5 != 0) goto L_0x004a
-            return r4
-        L_0x004a:
-            r13 = 10
-            long r13 = r13 * r8
-            int r11 = r11 + -48
-            long r3 = (long) r11
-            long r13 = r13 - r3
-            r3 = -922337203685477580(0xf333333333333334, double:-8.390303882365713E246)
-            int r3 = (r8 > r3 ? 1 : (r8 == r3 ? 0 : -1))
-            if (r3 > 0) goto L_0x0063
-            if (r3 != 0) goto L_0x0061
-            int r3 = (r13 > r8 ? 1 : (r13 == r8 ? 0 : -1))
-            if (r3 >= 0) goto L_0x0061
-            goto L_0x0063
-        L_0x0061:
-            r3 = 0
-            goto L_0x0064
-        L_0x0063:
-            r3 = 1
-        L_0x0064:
-            r7 = r7 & r3
-            r8 = r13
-            goto L_0x007c
-        L_0x0067:
-            r3 = 3
-            if (r6 != r3) goto L_0x006e
-            r4 = 0
-            r6 = 4
-            goto L_0x00d7
-        L_0x006e:
-            if (r6 == r14) goto L_0x0073
-            r3 = 6
-            if (r6 != r3) goto L_0x007c
-        L_0x0073:
-            r4 = 0
-            r6 = 7
-            goto L_0x00d7
-        L_0x0077:
-            int r11 = r11 + -48
-            int r3 = -r11
-            long r8 = (long) r3
-            r6 = r15
-        L_0x007c:
-            r4 = 0
-            goto L_0x00d7
-        L_0x007e:
-            boolean r3 = r0.isLiteral(r11)
-            if (r3 != 0) goto L_0x00b9
-        L_0x0084:
-            if (r6 != r15) goto L_0x00a7
-            if (r7 == 0) goto L_0x00a7
-            r3 = -9223372036854775808
-            int r3 = (r8 > r3 ? 1 : (r8 == r3 ? 0 : -1))
-            if (r3 != 0) goto L_0x0090
-            if (r10 == 0) goto L_0x00a7
-        L_0x0090:
-            int r1 = (r8 > r1 ? 1 : (r8 == r1 ? 0 : -1))
-            if (r1 != 0) goto L_0x0096
-            if (r10 != 0) goto L_0x00a7
-        L_0x0096:
-            if (r10 == 0) goto L_0x0099
-            goto L_0x009a
-        L_0x0099:
-            long r8 = -r8
-        L_0x009a:
-            r0.peekedLong = r8
-            okio.Buffer r1 = r0.buffer
-            long r2 = (long) r5
-            r1.skip(r2)
-            r1 = 16
-            r0.peeked = r1
-            return r1
-        L_0x00a7:
-            if (r6 == r15) goto L_0x00b2
-            r1 = 4
-            if (r6 == r1) goto L_0x00b2
-            r1 = 7
-            if (r6 != r1) goto L_0x00b0
-            goto L_0x00b2
-        L_0x00b0:
-            r4 = 0
-            return r4
-        L_0x00b2:
-            r0.peekedNumberLength = r5
-            r1 = 17
-            r0.peeked = r1
-            return r1
-        L_0x00b9:
-            r4 = 0
-            return r4
-        L_0x00bb:
-            r3 = 3
-            if (r6 != r15) goto L_0x00bf
-            goto L_0x00d6
-        L_0x00bf:
-            return r4
-        L_0x00c0:
-            r3 = 6
-            if (r6 != 0) goto L_0x00c6
-            r6 = 1
-            r10 = 1
-            goto L_0x00d7
-        L_0x00c6:
-            if (r6 != r14) goto L_0x00c9
-            goto L_0x00d6
-        L_0x00c9:
-            return r4
-        L_0x00ca:
-            if (r6 == r15) goto L_0x00d1
-            r3 = 4
-            if (r6 != r3) goto L_0x00d0
-            goto L_0x00d1
-        L_0x00d0:
-            return r4
-        L_0x00d1:
-            r6 = r14
-            goto L_0x00d7
-        L_0x00d3:
-            r3 = 6
-            if (r6 != r14) goto L_0x00db
-        L_0x00d6:
-            r6 = r3
-        L_0x00d7:
-            r5 = r12
-            r3 = 1
-            goto L_0x000b
-        L_0x00db:
-            return r4
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.airbnb.lottie.parser.moshi.JsonUtf8Reader.peekNumber():int");
+    private int peekNumber() throws IOException {
+        byte b;
+        boolean z = true;
+        int i = 0;
+        long j = 0;
+        int i2 = 0;
+        char c = 0;
+        boolean z2 = true;
+        boolean z3 = false;
+        while (true) {
+            int i3 = i2 + 1;
+            if (!this.source.request((long) i3)) {
+                break;
+            }
+            b = this.buffer.getByte((long) i2);
+            if (b != 43) {
+                if (b != 69 && b != 101) {
+                    if (b != 45) {
+                        if (b != 46) {
+                            if (b >= 48 && b <= 57) {
+                                if (c == z || c == 0) {
+                                    j = (long) (-(b - 48));
+                                    i = 0;
+                                    c = 2;
+                                } else {
+                                    if (c == 2) {
+                                        if (j == 0) {
+                                            return i;
+                                        }
+                                        long j2 = (10 * j) - ((long) (b - 48));
+                                        int i4 = (j > -922337203685477580L ? 1 : (j == -922337203685477580L ? 0 : -1));
+                                        z2 &= i4 > 0 || (i4 == 0 && j2 < j);
+                                        j = j2;
+                                    } else if (c == 3) {
+                                        i = 0;
+                                        c = 4;
+                                    } else if (c == 5 || c == 6) {
+                                        i = 0;
+                                        c = 7;
+                                    }
+                                    i = 0;
+                                }
+                            }
+                        } else if (c != 2) {
+                            return i;
+                        } else {
+                            c = 3;
+                        }
+                    } else if (c == 0) {
+                        c = 1;
+                        z3 = true;
+                    } else if (c != 5) {
+                        return i;
+                    }
+                    i2 = i3;
+                    z = true;
+                } else if (c != 2 && c != 4) {
+                    return i;
+                } else {
+                    c = 5;
+                    i2 = i3;
+                    z = true;
+                }
+            } else if (c != 5) {
+                return i;
+            }
+            c = 6;
+            i2 = i3;
+            z = true;
+        }
+        if (isLiteral(b)) {
+            return 0;
+        }
+        if (c == 2 && z2 && ((j != Long.MIN_VALUE || z3) && (j != 0 || !z3))) {
+            if (!z3) {
+                j = -j;
+            }
+            this.peekedLong = j;
+            this.buffer.skip((long) i2);
+            this.peeked = 16;
+            return 16;
+        } else if (c != 2 && c != 4 && c != 7) {
+            return 0;
+        } else {
+            this.peekedNumberLength = i2;
+            this.peeked = 17;
+            return 17;
+        }
     }
 
     private boolean isLiteral(int i) throws IOException {
@@ -969,7 +874,7 @@ final class JsonUtf8Reader extends JsonReader {
             r6 = this;
             r0 = 0
         L_0x0001:
-            r1 = r0
+            r1 = 0
         L_0x0002:
             okio.BufferedSource r2 = r6.source
             int r3 = r1 + 1

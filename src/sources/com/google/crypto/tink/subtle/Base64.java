@@ -90,8 +90,8 @@ public final class Base64 {
                 int r5 = r0.value
                 byte[] r6 = r0.output
                 int[] r7 = r0.alphabet
-                r9 = r2
                 r8 = r5
+                r9 = 0
                 r5 = r1
                 r1 = r18
             L_0x0016:
@@ -200,7 +200,7 @@ public final class Base64 {
                 byte r1 = (byte) r1
                 r6[r9] = r1
                 int r9 = r9 + 2
-                r5 = r15
+                r5 = 5
                 goto L_0x00ed
             L_0x00bb:
                 if (r1 == r2) goto L_0x00ed
@@ -218,7 +218,7 @@ public final class Base64 {
                 byte r2 = (byte) r2
                 r6[r9] = r2
                 r9 = r1
-                r5 = r11
+                r5 = 4
                 goto L_0x00ed
             L_0x00d0:
                 if (r1 == r2) goto L_0x00ed
@@ -442,7 +442,7 @@ public final class Base64 {
                 goto L_0x0053
             L_0x0050:
                 r11 = r19
-                r10 = r6
+                r10 = -1
             L_0x0053:
                 r12 = 4
                 r13 = 13
@@ -472,7 +472,7 @@ public final class Base64 {
                 r2[r12] = r13
                 goto L_0x0086
             L_0x0085:
-                r3 = r12
+                r3 = 4
             L_0x0086:
                 int r6 = r3 + 1
                 r2[r3] = r14
@@ -480,10 +480,10 @@ public final class Base64 {
                 r3 = 19
                 goto L_0x0090
             L_0x008d:
-                r6 = r12
+                r6 = 4
                 goto L_0x0090
             L_0x008f:
-                r6 = r7
+                r6 = 0
             L_0x0090:
                 int r10 = r11 + 3
                 if (r10 > r4) goto L_0x00e6
@@ -544,7 +544,7 @@ public final class Base64 {
                 if (r5 <= 0) goto L_0x00fa
                 byte[] r4 = r0.tail
                 byte r4 = r4[r7]
-                r7 = r9
+                r7 = 1
                 goto L_0x00fc
             L_0x00fa:
                 byte r4 = r18[r11]
@@ -590,7 +590,7 @@ public final class Base64 {
                 if (r5 <= r9) goto L_0x0143
                 byte[] r4 = r0.tail
                 byte r4 = r4[r7]
-                r7 = r9
+                r7 = 1
                 goto L_0x0149
             L_0x0143:
                 int r4 = r11 + 1

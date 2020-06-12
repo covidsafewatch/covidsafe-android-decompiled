@@ -253,8 +253,8 @@ public final class FlowableSwitchMap<T, R> extends AbstractFlowableWithUpstream<
                 r10 = 0
                 r12 = r10
             L_0x00b6:
-                int r0 = (r12 > r8 ? 1 : (r12 == r8 ? 0 : -1))
                 r14 = 0
+                int r0 = (r12 > r8 ? 1 : (r12 == r8 ? 0 : -1))
                 if (r0 == 0) goto L_0x011b
                 boolean r0 = r1.cancelled
                 if (r0 == 0) goto L_0x00c0
@@ -277,7 +277,7 @@ public final class FlowableSwitchMap<T, R> extends AbstractFlowableWithUpstream<
                 r16 = 1
                 goto L_0x00dd
             L_0x00db:
-                r16 = r14
+                r16 = 0
             L_0x00dd:
                 java.util.concurrent.atomic.AtomicReference<io.reactivex.internal.operators.flowable.FlowableSwitchMap$SwitchMapInnerSubscriber<T, R>> r3 = r1.active
                 java.lang.Object r3 = r3.get()

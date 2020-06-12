@@ -40,7 +40,7 @@ public class TypefaceCompatApi29Impl extends TypefaceCompatBaseImpl {
             r1 = 0
             r2 = 0
             r4 = r1
-            r3 = r2
+            r3 = 0
         L_0x0009:
             r5 = 1
             if (r3 >= r0) goto L_0x0065
@@ -62,7 +62,7 @@ public class TypefaceCompatApi29Impl extends TypefaceCompatBaseImpl {
             if (r9 == 0) goto L_0x0034
             goto L_0x0035
         L_0x0034:
-            r5 = r2
+            r5 = 0
         L_0x0035:
             android.graphics.fonts.Font$Builder r5 = r8.setSlant(r5)     // Catch:{ all -> 0x0054 }
             int r6 = r6.getTtcIndex()     // Catch:{ all -> 0x0054 }
@@ -108,7 +108,7 @@ public class TypefaceCompatApi29Impl extends TypefaceCompatBaseImpl {
         L_0x0073:
             r13 = r14 & 2
             if (r13 == 0) goto L_0x0078
-            r2 = r5
+            r2 = 1
         L_0x0078:
             r11.<init>(r12, r2)
             android.graphics.Typeface$CustomFallbackBuilder r12 = new android.graphics.Typeface$CustomFallbackBuilder

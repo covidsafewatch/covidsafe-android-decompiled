@@ -252,8 +252,8 @@ public final class FlowableFlatMapMaybe<T, R> extends AbstractFlowableWithUpstre
 
         /* access modifiers changed from: package-private */
         public void drainLoop() {
-            int i;
             boolean z;
+            int i;
             Subscriber<? super R> subscriber = this.downstream;
             AtomicInteger atomicInteger = this.active;
             AtomicReference<SpscLinkedArrayQueue<R>> atomicReference = this.queue;
@@ -262,8 +262,8 @@ public final class FlowableFlatMapMaybe<T, R> extends AbstractFlowableWithUpstre
                 long j = this.requested.get();
                 long j2 = 0;
                 while (true) {
-                    i = (j2 > j ? 1 : (j2 == j ? 0 : -1));
                     z = false;
+                    i = (j2 > j ? 1 : (j2 == j ? 0 : -1));
                     if (i == 0) {
                         break;
                     } else if (this.cancelled) {

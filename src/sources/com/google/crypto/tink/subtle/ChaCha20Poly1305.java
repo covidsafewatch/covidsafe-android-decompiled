@@ -3,7 +3,7 @@ package com.google.crypto.tink.subtle;
 import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 
-public final class ChaCha20Poly1305 extends SnufflePoly1305 {
+public final class ChaCha20Poly1305 extends ChaCha20Poly1305Base {
     public /* bridge */ /* synthetic */ byte[] decrypt(byte[] bArr, byte[] bArr2) throws GeneralSecurityException {
         return super.decrypt(bArr, bArr2);
     }
@@ -17,7 +17,7 @@ public final class ChaCha20Poly1305 extends SnufflePoly1305 {
     }
 
     /* access modifiers changed from: package-private */
-    public Snuffle createSnuffleInstance(byte[] bArr, int i) throws InvalidKeyException {
+    public ChaCha20Base newChaCha20Instance(byte[] bArr, int i) throws InvalidKeyException {
         return new ChaCha20(bArr, i);
     }
 }

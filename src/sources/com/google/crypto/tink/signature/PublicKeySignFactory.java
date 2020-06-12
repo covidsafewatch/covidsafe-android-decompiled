@@ -2,43 +2,31 @@ package com.google.crypto.tink.signature;
 
 import com.google.crypto.tink.KeyManager;
 import com.google.crypto.tink.KeysetHandle;
-import com.google.crypto.tink.PrimitiveSet;
 import com.google.crypto.tink.PublicKeySign;
-import com.google.crypto.tink.Registry;
-import com.google.crypto.tink.proto.OutputPrefixType;
-import com.google.crypto.tink.subtle.Bytes;
 import java.security.GeneralSecurityException;
-import java.util.Iterator;
-import java.util.List;
 
+@Deprecated
 public final class PublicKeySignFactory {
+    @Deprecated
     public static PublicKeySign getPrimitive(KeysetHandle keysetHandle) throws GeneralSecurityException {
         return getPrimitive(keysetHandle, (KeyManager<PublicKeySign>) null);
     }
 
-    public static PublicKeySign getPrimitive(KeysetHandle keysetHandle, KeyManager<PublicKeySign> keyManager) throws GeneralSecurityException {
-        final PrimitiveSet<PublicKeySign> primitives = Registry.getPrimitives(keysetHandle, keyManager);
-        validate(primitives);
-        return new PublicKeySign() {
-            public byte[] sign(byte[] bArr) throws GeneralSecurityException {
-                if (PrimitiveSet.this.getPrimary().getOutputPrefixType().equals(OutputPrefixType.LEGACY)) {
-                    return Bytes.concat(PrimitiveSet.this.getPrimary().getIdentifier(), ((PublicKeySign) PrimitiveSet.this.getPrimary().getPrimitive()).sign(Bytes.concat(bArr, new byte[]{0})));
-                }
-                return Bytes.concat(PrimitiveSet.this.getPrimary().getIdentifier(), ((PublicKeySign) PrimitiveSet.this.getPrimary().getPrimitive()).sign(bArr));
-            }
-        };
-    }
-
-    private static void validate(PrimitiveSet<PublicKeySign> primitiveSet) throws GeneralSecurityException {
-        for (List<PrimitiveSet.Entry<PublicKeySign>> it : primitiveSet.getAll()) {
-            Iterator it2 = it.iterator();
-            while (true) {
-                if (it2.hasNext()) {
-                    if (!(((PrimitiveSet.Entry) it2.next()).getPrimitive() instanceof PublicKeySign)) {
-                        throw new GeneralSecurityException("invalid PublicKeySign key material");
-                    }
-                }
-            }
-        }
+    /* JADX WARNING: type inference failed for: r2v0, types: [com.google.crypto.tink.KeyManager, com.google.crypto.tink.KeyManager<com.google.crypto.tink.PublicKeySign>] */
+    /* JADX WARNING: Unknown variable types count: 1 */
+    @java.lang.Deprecated
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    public static com.google.crypto.tink.PublicKeySign getPrimitive(com.google.crypto.tink.KeysetHandle r1, com.google.crypto.tink.KeyManager<com.google.crypto.tink.PublicKeySign> r2) throws java.security.GeneralSecurityException {
+        /*
+            com.google.crypto.tink.signature.PublicKeySignWrapper r0 = new com.google.crypto.tink.signature.PublicKeySignWrapper
+            r0.<init>()
+            com.google.crypto.tink.Registry.registerPrimitiveWrapper(r0)
+            java.lang.Class<com.google.crypto.tink.PublicKeySign> r0 = com.google.crypto.tink.PublicKeySign.class
+            com.google.crypto.tink.PrimitiveSet r1 = com.google.crypto.tink.Registry.getPrimitives(r1, r2, r0)
+            java.lang.Object r1 = com.google.crypto.tink.Registry.wrap(r1)
+            com.google.crypto.tink.PublicKeySign r1 = (com.google.crypto.tink.PublicKeySign) r1
+            return r1
+        */
+        throw new UnsupportedOperationException("Method not decompiled: com.google.crypto.tink.signature.PublicKeySignFactory.getPrimitive(com.google.crypto.tink.KeysetHandle, com.google.crypto.tink.KeyManager):com.google.crypto.tink.PublicKeySign");
     }
 }

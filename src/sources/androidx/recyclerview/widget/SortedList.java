@@ -173,29 +173,29 @@ public class SortedList<T> {
             return 0;
         }
         Arrays.sort(tArr, this.mCallback);
-        int i = 0;
-        int i2 = 1;
+        int i = 1;
+        int i2 = 0;
         for (int i3 = 1; i3 < tArr.length; i3++) {
             T t = tArr[i3];
-            if (this.mCallback.compare(tArr[i], t) == 0) {
-                int findSameItem = findSameItem(t, tArr, i, i2);
+            if (this.mCallback.compare(tArr[i2], t) == 0) {
+                int findSameItem = findSameItem(t, tArr, i2, i);
                 if (findSameItem != -1) {
                     tArr[findSameItem] = t;
                 } else {
-                    if (i2 != i3) {
-                        tArr[i2] = t;
+                    if (i != i3) {
+                        tArr[i] = t;
                     }
-                    i2++;
+                    i++;
                 }
             } else {
-                if (i2 != i3) {
-                    tArr[i2] = t;
+                if (i != i3) {
+                    tArr[i] = t;
                 }
-                i = i2;
-                i2++;
+                i2 = i;
+                i++;
             }
         }
-        return i2;
+        return i;
     }
 
     private int findSameItem(T t, T[] tArr, int i, int i2) {

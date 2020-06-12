@@ -35,18 +35,18 @@ public final class PeekSource implements Source {
             java.lang.String r0 = "sink"
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r9, r0)
             r0 = 0
-            int r2 = (r10 > r0 ? 1 : (r10 == r0 ? 0 : -1))
-            r3 = 0
-            r4 = 1
-            if (r2 < 0) goto L_0x000f
-            r5 = r4
+            r1 = 0
+            r3 = 1
+            int r4 = (r10 > r1 ? 1 : (r10 == r1 ? 0 : -1))
+            if (r4 < 0) goto L_0x000f
+            r5 = 1
             goto L_0x0010
         L_0x000f:
-            r5 = r3
+            r5 = 0
         L_0x0010:
             if (r5 == 0) goto L_0x009b
             boolean r5 = r8.closed
-            r5 = r5 ^ r4
+            r5 = r5 ^ r3
             if (r5 == 0) goto L_0x008d
             okio.Segment r5 = r8.expectedSegment
             if (r5 == 0) goto L_0x0030
@@ -62,11 +62,11 @@ public final class PeekSource implements Source {
             int r6 = r6.pos
             if (r5 != r6) goto L_0x0031
         L_0x0030:
-            r3 = r4
+            r0 = 1
         L_0x0031:
-            if (r3 == 0) goto L_0x007f
-            if (r2 != 0) goto L_0x0036
-            return r0
+            if (r0 == 0) goto L_0x007f
+            if (r4 != 0) goto L_0x0036
+            return r1
         L_0x0036:
             okio.BufferedSource r0 = r8.upstream
             long r1 = r8.pos

@@ -145,17 +145,17 @@ class MapMakerInternalMap<K, V, E extends InternalEntry<K, V, E>, S extends Segm
         int min = Math.min(mapMaker.getInitialCapacity(), 1073741824);
         int i = 0;
         int i2 = 1;
-        int i3 = 0;
-        int i4 = 1;
-        while (i4 < this.concurrencyLevel) {
-            i3++;
-            i4 <<= 1;
+        int i3 = 1;
+        int i4 = 0;
+        while (i3 < this.concurrencyLevel) {
+            i4++;
+            i3 <<= 1;
         }
-        this.segmentShift = 32 - i3;
-        this.segmentMask = i4 - 1;
-        this.segments = newSegmentArray(i4);
-        int i5 = min / i4;
-        while (i2 < (i4 * i5 < min ? i5 + 1 : i5)) {
+        this.segmentShift = 32 - i4;
+        this.segmentMask = i3 - 1;
+        this.segments = newSegmentArray(i3);
+        int i5 = min / i3;
+        while (i2 < (i3 * i5 < min ? i5 + 1 : i5)) {
             i2 <<= 1;
         }
         while (true) {
@@ -1755,7 +1755,6 @@ class MapMakerInternalMap<K, V, E extends InternalEntry<K, V, E>, S extends Segm
 
     public boolean containsValue(@NullableDecl Object obj) {
         Object obj2 = obj;
-        boolean z = false;
         if (obj2 == null) {
             return false;
         }
@@ -1764,14 +1763,11 @@ class MapMakerInternalMap<K, V, E extends InternalEntry<K, V, E>, S extends Segm
         int i = 0;
         while (i < 3) {
             long j2 = 0;
-            int length = segmentArr.length;
-            int i2 = z;
-            while (i2 < length) {
-                Segment<K, V, E, S> segment = segmentArr[i2];
-                int i3 = segment.count;
+            for (Segment<K, V, E, S> segment : segmentArr) {
+                int i2 = segment.count;
                 AtomicReferenceArray<E> atomicReferenceArray = segment.table;
-                for (int i4 = z; i4 < atomicReferenceArray.length(); i4++) {
-                    for (InternalEntry internalEntry = (InternalEntry) atomicReferenceArray.get(i4); internalEntry != null; internalEntry = internalEntry.getNext()) {
+                for (int i3 = 0; i3 < atomicReferenceArray.length(); i3++) {
+                    for (InternalEntry internalEntry = (InternalEntry) atomicReferenceArray.get(i3); internalEntry != null; internalEntry = internalEntry.getNext()) {
                         V liveValue = segment.getLiveValue(internalEntry);
                         if (liveValue != null && valueEquivalence().equivalent(obj2, liveValue)) {
                             return true;
@@ -1779,17 +1775,14 @@ class MapMakerInternalMap<K, V, E extends InternalEntry<K, V, E>, S extends Segm
                     }
                 }
                 j2 += (long) segment.modCount;
-                i2++;
-                z = false;
             }
             if (j2 == j) {
                 return false;
             }
             i++;
             j = j2;
-            z = false;
         }
-        return z;
+        return false;
     }
 
     public V put(K k, V v) {

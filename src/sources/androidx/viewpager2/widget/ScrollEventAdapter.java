@@ -106,20 +106,20 @@ final class ScrollEventAdapter extends RecyclerView.OnScrollListener {
             if (r6 > 0) goto L_0x0022
             if (r6 != 0) goto L_0x0020
             if (r5 >= 0) goto L_0x0016
-            r5 = r4
+            r5 = 1
             goto L_0x0017
         L_0x0016:
-            r5 = r2
+            r5 = 0
         L_0x0017:
             androidx.viewpager2.widget.ViewPager2 r6 = r3.mViewPager
             boolean r6 = r6.isRtl()
             if (r5 != r6) goto L_0x0020
             goto L_0x0022
         L_0x0020:
-            r5 = r2
+            r5 = 0
             goto L_0x0023
         L_0x0022:
-            r5 = r4
+            r5 = 1
         L_0x0023:
             if (r5 == 0) goto L_0x0031
             androidx.viewpager2.widget.ScrollEventAdapter$ScrollEventValues r5 = r3.mScrollValues
@@ -144,14 +144,14 @@ final class ScrollEventAdapter extends RecyclerView.OnScrollListener {
             androidx.viewpager2.widget.ScrollEventAdapter$ScrollEventValues r5 = r3.mScrollValues
             int r5 = r5.mPosition
             if (r5 != r1) goto L_0x004a
-            r5 = r2
+            r5 = 0
         L_0x004a:
             r3.dispatchSelected(r5)
         L_0x004d:
             androidx.viewpager2.widget.ScrollEventAdapter$ScrollEventValues r5 = r3.mScrollValues
             int r5 = r5.mPosition
             if (r5 != r1) goto L_0x0055
-            r5 = r2
+            r5 = 0
             goto L_0x0059
         L_0x0055:
             androidx.viewpager2.widget.ScrollEventAdapter$ScrollEventValues r5 = r3.mScrollValues

@@ -94,25 +94,25 @@ public class FragmentNavigator extends Navigator<Destination> {
             int r4 = r11.getEnterAnim()
             goto L_0x004d
         L_0x004c:
-            r4 = r3
+            r4 = -1
         L_0x004d:
             if (r11 == 0) goto L_0x0054
             int r5 = r11.getExitAnim()
             goto L_0x0055
         L_0x0054:
-            r5 = r3
+            r5 = -1
         L_0x0055:
             if (r11 == 0) goto L_0x005c
             int r6 = r11.getPopEnterAnim()
             goto L_0x005d
         L_0x005c:
-            r6 = r3
+            r6 = -1
         L_0x005d:
             if (r11 == 0) goto L_0x0064
             int r7 = r11.getPopExitAnim()
             goto L_0x0065
         L_0x0064:
-            r7 = r3
+            r7 = -1
         L_0x0065:
             if (r4 != r3) goto L_0x006d
             if (r5 != r3) goto L_0x006d
@@ -122,22 +122,22 @@ public class FragmentNavigator extends Navigator<Destination> {
             if (r4 == r3) goto L_0x0070
             goto L_0x0071
         L_0x0070:
-            r4 = r2
+            r4 = 0
         L_0x0071:
             if (r5 == r3) goto L_0x0074
             goto L_0x0075
         L_0x0074:
-            r5 = r2
+            r5 = 0
         L_0x0075:
             if (r6 == r3) goto L_0x0078
             goto L_0x0079
         L_0x0078:
-            r6 = r2
+            r6 = 0
         L_0x0079:
             if (r7 == r3) goto L_0x007c
             goto L_0x007d
         L_0x007c:
-            r7 = r2
+            r7 = 0
         L_0x007d:
             r10.setCustomAnimations(r4, r5, r6, r7)
         L_0x0080:
@@ -157,14 +157,14 @@ public class FragmentNavigator extends Navigator<Destination> {
             java.lang.Integer r11 = (java.lang.Integer) r11
             int r11 = r11.intValue()
             if (r11 != r0) goto L_0x00ad
-            r11 = r4
+            r11 = 1
             goto L_0x00ae
         L_0x00ad:
-            r11 = r2
+            r11 = 0
         L_0x00ae:
             if (r3 == 0) goto L_0x00b2
         L_0x00b0:
-            r2 = r4
+            r2 = 1
             goto L_0x00f4
         L_0x00b2:
             if (r11 == 0) goto L_0x00e5

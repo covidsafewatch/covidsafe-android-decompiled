@@ -1,9 +1,10 @@
 package com.google.crypto.tink.proto;
 
-import com.google.protobuf.ByteString;
-import com.google.protobuf.MessageLiteOrBuilder;
+import com.google.crypto.tink.shaded.protobuf.ByteString;
+import com.google.crypto.tink.shaded.protobuf.MessageLiteOrBuilder;
 import java.util.List;
 
+@Deprecated
 public interface RegistryConfigOrBuilder extends MessageLiteOrBuilder {
     String getConfigName();
 

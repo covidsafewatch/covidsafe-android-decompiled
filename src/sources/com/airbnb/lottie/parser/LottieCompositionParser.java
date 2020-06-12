@@ -30,10 +30,10 @@ public class LottieCompositionParser {
         SparseArrayCompat sparseArrayCompat = new SparseArrayCompat();
         LottieComposition lottieComposition = new LottieComposition();
         jsonReader.beginObject();
+        int i = 0;
         float f = 0.0f;
         float f2 = 0.0f;
         float f3 = 0.0f;
-        int i = 0;
         int i2 = 0;
         while (jsonReader.hasNext()) {
             switch (jsonReader2.selectName(NAMES)) {

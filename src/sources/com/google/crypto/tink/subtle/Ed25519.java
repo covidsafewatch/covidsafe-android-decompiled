@@ -87,6 +87,7 @@ final class Ed25519 {
             Field25519.mult(jArr6, jArr, jArr2);
             Field25519.mult(jArr6, jArr6, Ed25519Constants.D);
             Field25519.sum(jArr6, jArr4);
+            Field25519.reduce(jArr6, jArr6);
             return Bytes.equal(Field25519.contract(jArr5), Field25519.contract(jArr6));
         }
     }

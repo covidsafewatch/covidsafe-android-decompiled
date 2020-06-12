@@ -368,7 +368,7 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
             java.util.Map<N, java.lang.Object> r0 = r3.adjacentNodeValues
             r0.remove(r4)
         L_0x0010:
-            r0 = r2
+            r0 = 1
             goto L_0x0023
         L_0x0012:
             boolean r1 = r0 instanceof com.google.common.graph.DirectedGraphConnections.PredAndSucc
@@ -433,7 +433,7 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
             r1 = 1
             if (r5 != 0) goto L_0x000e
         L_0x000c:
-            r0 = r1
+            r0 = 1
             goto L_0x0027
         L_0x000e:
             boolean r2 = r5 instanceof com.google.common.graph.DirectedGraphConnections.PredAndSucc

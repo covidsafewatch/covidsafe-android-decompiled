@@ -727,9 +727,9 @@ public final class R {
         public static final int title_template = 2131362269;
         public static final int top = 2131362271;
         public static final int topPanel = 2131362273;
-        public static final int uniform = 2131362290;
-        public static final int up = 2131362292;
-        public static final int wrap_content = 2131362317;
+        public static final int uniform = 2131362289;
+        public static final int up = 2131362291;
+        public static final int wrap_content = 2131362315;
 
         private id() {
         }
@@ -818,8 +818,8 @@ public final class R {
         public static final int abc_shareactionprovider_share_with = 2131951640;
         public static final int abc_shareactionprovider_share_with_application = 2131951641;
         public static final int abc_toolbar_collapse_description = 2131951642;
-        public static final int rationale_ask = 2131951836;
-        public static final int rationale_ask_again = 2131951837;
+        public static final int rationale_ask = 2131951838;
+        public static final int rationale_ask_again = 2131951839;
         public static final int search_menu_title = 2131951845;
         public static final int status_bar_notification_info_overflow = 2131951851;
         public static final int title_settings_dialog = 2131951853;

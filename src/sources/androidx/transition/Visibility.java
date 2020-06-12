@@ -211,7 +211,7 @@ public abstract class Visibility extends Transition {
             r5 = 1
             if (r3 == 0) goto L_0x0023
             r2 = r1
-            r6 = r5
+            r6 = 1
             goto L_0x0089
         L_0x0023:
             if (r2 == 0) goto L_0x0036
@@ -226,18 +226,18 @@ public abstract class Visibility extends Transition {
             if (r13 != r2) goto L_0x003b
         L_0x0032:
             r3 = r2
-            r6 = r4
+            r6 = 0
             r2 = r1
             goto L_0x003e
         L_0x0036:
             if (r2 == 0) goto L_0x003b
             r3 = r1
-            r6 = r4
+            r6 = 0
             goto L_0x003e
         L_0x003b:
             r2 = r1
             r3 = r2
-            r6 = r5
+            r6 = 1
         L_0x003e:
             if (r6 == 0) goto L_0x0085
             android.view.ViewParent r6 = r13.getParent()
@@ -268,11 +268,11 @@ public abstract class Visibility extends Transition {
             if (r6 == 0) goto L_0x0085
         L_0x0081:
             r2 = r3
-            r6 = r4
+            r6 = 0
             r3 = r13
             goto L_0x0089
         L_0x0085:
-            r6 = r4
+            r6 = 0
             r9 = r3
             r3 = r2
             r2 = r9

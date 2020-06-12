@@ -365,24 +365,24 @@ public class ViewCompat {
 
     private static int getAvailableActionIdFromResources(View view) {
         List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> actionList = getActionList(view);
-        int i = -1;
-        int i2 = 0;
+        int i = 0;
+        int i2 = -1;
         while (true) {
             int[] iArr = ACCESSIBILITY_ACTIONS_RESOURCE_IDS;
-            if (i2 >= iArr.length || i != -1) {
-                return i;
+            if (i >= iArr.length || i2 != -1) {
+                return i2;
             }
-            int i3 = iArr[i2];
+            int i3 = iArr[i];
             boolean z = true;
             for (int i4 = 0; i4 < actionList.size(); i4++) {
                 z &= actionList.get(i4).getId() != i3;
             }
             if (z) {
-                i = i3;
+                i2 = i3;
             }
-            i2++;
+            i++;
         }
-        return i;
+        return i2;
     }
 
     public static void replaceAccessibilityAction(View view, AccessibilityNodeInfoCompat.AccessibilityActionCompat accessibilityActionCompat, CharSequence charSequence, AccessibilityViewCommand accessibilityViewCommand) {

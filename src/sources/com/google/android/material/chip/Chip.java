@@ -507,8 +507,8 @@ public class Chip extends AppCompatCheckBox implements ChipDrawable.Delegate, Sh
     /* JADX WARNING: Code restructure failed: missing block: B:6:0x001e, code lost:
         if (r0 != 3) goto L_0x0040;
      */
-    /* JADX WARNING: Removed duplicated region for block: B:23:0x0049  */
-    /* JADX WARNING: Removed duplicated region for block: B:25:? A[RETURN, SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:23:0x0049 A[ORIG_RETURN, RETURN, SYNTHETIC] */
+    /* JADX WARNING: Removed duplicated region for block: B:24:? A[RETURN, SYNTHETIC] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public boolean onTouchEvent(android.view.MotionEvent r6) {
         /*
@@ -537,10 +537,10 @@ public class Chip extends AppCompatCheckBox implements ChipDrawable.Delegate, Sh
             boolean r0 = r5.closeIconPressed
             if (r0 == 0) goto L_0x0034
             r5.performCloseIconClick()
-            r0 = r3
+            r0 = 1
             goto L_0x0035
         L_0x0034:
-            r0 = r2
+            r0 = 0
         L_0x0035:
             r5.setCloseIconPressed(r2)
             goto L_0x0041
@@ -548,16 +548,16 @@ public class Chip extends AppCompatCheckBox implements ChipDrawable.Delegate, Sh
             if (r1 == 0) goto L_0x0040
             r5.setCloseIconPressed(r3)
         L_0x003e:
-            r0 = r3
+            r0 = 1
             goto L_0x0041
         L_0x0040:
-            r0 = r2
+            r0 = 0
         L_0x0041:
             if (r0 != 0) goto L_0x0049
             boolean r6 = super.onTouchEvent(r6)
             if (r6 == 0) goto L_0x004a
         L_0x0049:
-            r2 = r3
+            r2 = 1
         L_0x004a:
             return r2
         */

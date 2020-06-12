@@ -58,9 +58,9 @@ public final class EllipticCurves {
         BigInteger affineY = eCPoint.getAffineY();
         if (affineX == null || affineY == null) {
             throw new GeneralSecurityException("point is at infinity");
-        } else if (affineX.signum() == -1 || affineX.compareTo(modulus) != -1) {
+        } else if (affineX.signum() == -1 || affineX.compareTo(modulus) >= 0) {
             throw new GeneralSecurityException("x is out of range");
-        } else if (affineY.signum() == -1 || affineY.compareTo(modulus) != -1) {
+        } else if (affineY.signum() == -1 || affineY.compareTo(modulus) >= 0) {
             throw new GeneralSecurityException("y is out of range");
         } else if (!affineY.multiply(affineY).mod(modulus).equals(affineX.multiply(affineX).add(ellipticCurve.getA()).multiply(affineX).add(ellipticCurve.getB()).mod(modulus))) {
             throw new GeneralSecurityException("Point is not on curve");
@@ -71,6 +71,14 @@ public final class EllipticCurves {
         checkPointOnCurve(eCPublicKey.getW(), eCPublicKey.getParams().getCurve());
     }
 
+    public static boolean isNistEcParameterSpec(ECParameterSpec eCParameterSpec) {
+        return isSameEcParameterSpec(eCParameterSpec, getNistP256Params()) || isSameEcParameterSpec(eCParameterSpec, getNistP384Params()) || isSameEcParameterSpec(eCParameterSpec, getNistP521Params());
+    }
+
+    public static boolean isSameEcParameterSpec(ECParameterSpec eCParameterSpec, ECParameterSpec eCParameterSpec2) {
+        return eCParameterSpec.getCurve().equals(eCParameterSpec2.getCurve()) && eCParameterSpec.getGenerator().equals(eCParameterSpec2.getGenerator()) && eCParameterSpec.getOrder().equals(eCParameterSpec2.getOrder()) && eCParameterSpec.getCofactor() == eCParameterSpec2.getCofactor();
+    }
+
     public static void validatePublicKey(ECPublicKey eCPublicKey, ECPrivateKey eCPrivateKey) throws GeneralSecurityException {
         validatePublicKeySpec(eCPublicKey, eCPrivateKey);
         checkPointOnCurve(eCPublicKey.getW(), eCPrivateKey.getParams().getCurve());
@@ -78,9 +86,7 @@ public final class EllipticCurves {
 
     static void validatePublicKeySpec(ECPublicKey eCPublicKey, ECPrivateKey eCPrivateKey) throws GeneralSecurityException {
         try {
-            ECParameterSpec params = eCPublicKey.getParams();
-            ECParameterSpec params2 = eCPrivateKey.getParams();
-            if (!params.getCurve().equals(params2.getCurve()) || !params.getGenerator().equals(params2.getGenerator()) || !params.getOrder().equals(params2.getOrder()) || params.getCofactor() != params2.getCofactor()) {
+            if (!isSameEcParameterSpec(eCPublicKey.getParams(), eCPrivateKey.getParams())) {
                 throw new GeneralSecurityException("invalid public key spec");
             }
         } catch (IllegalArgumentException | NullPointerException e) {
@@ -96,7 +102,7 @@ public final class EllipticCurves {
         throw new GeneralSecurityException("Only curves over prime order fields are supported");
     }
 
-    private static int fieldSizeInBits(EllipticCurve ellipticCurve) throws GeneralSecurityException {
+    static int fieldSizeInBits(EllipticCurve ellipticCurve) throws GeneralSecurityException {
         return getModulus(ellipticCurve).subtract(BigInteger.ONE).bitLength();
     }
 
@@ -330,7 +336,7 @@ public final class EllipticCurves {
                             }
                         }
                         BigInteger bigInteger = new BigInteger(1, Arrays.copyOfRange(bArr, 1, bArr.length));
-                        if (bigInteger.signum() != -1 && bigInteger.compareTo(modulus) == -1) {
+                        if (bigInteger.signum() != -1 && bigInteger.compareTo(modulus) < 0) {
                             return new ECPoint(bigInteger, getY(bigInteger, z, ellipticCurve));
                         }
                         throw new GeneralSecurityException("x is out of range");
@@ -520,7 +526,7 @@ public final class EllipticCurves {
     private static void validateSharedSecret(byte[] bArr, ECPrivateKey eCPrivateKey) throws GeneralSecurityException {
         EllipticCurve curve = eCPrivateKey.getParams().getCurve();
         BigInteger bigInteger = new BigInteger(1, bArr);
-        if (bigInteger.signum() == -1 || bigInteger.compareTo(getModulus(curve)) != -1) {
+        if (bigInteger.signum() == -1 || bigInteger.compareTo(getModulus(curve)) >= 0) {
             throw new GeneralSecurityException("shared secret is out of range");
         }
         getY(bigInteger, true, curve);

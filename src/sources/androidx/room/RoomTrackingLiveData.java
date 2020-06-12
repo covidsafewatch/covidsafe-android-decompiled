@@ -49,7 +49,7 @@ class RoomTrackingLiveData<T> extends LiveData<T> {
                 boolean r0 = r0.compareAndSet(r2, r1)
                 if (r0 == 0) goto L_0x005c
                 r0 = 0
-                r3 = r2
+                r3 = 0
             L_0x0027:
                 androidx.room.RoomTrackingLiveData r4 = androidx.room.RoomTrackingLiveData.this     // Catch:{ all -> 0x0053 }
                 java.util.concurrent.atomic.AtomicBoolean r4 = r4.mInvalid     // Catch:{ all -> 0x0053 }
@@ -58,7 +58,7 @@ class RoomTrackingLiveData<T> extends LiveData<T> {
                 androidx.room.RoomTrackingLiveData r0 = androidx.room.RoomTrackingLiveData.this     // Catch:{ Exception -> 0x003b }
                 java.util.concurrent.Callable<T> r0 = r0.mComputeFunction     // Catch:{ Exception -> 0x003b }
                 java.lang.Object r0 = r0.call()     // Catch:{ Exception -> 0x003b }
-                r3 = r1
+                r3 = 1
                 goto L_0x0027
             L_0x003b:
                 r0 = move-exception
@@ -82,7 +82,7 @@ class RoomTrackingLiveData<T> extends LiveData<T> {
                 r1.set(r2)
                 throw r0
             L_0x005c:
-                r3 = r2
+                r3 = 0
             L_0x005d:
                 if (r3 == 0) goto L_0x0069
                 androidx.room.RoomTrackingLiveData r0 = androidx.room.RoomTrackingLiveData.this

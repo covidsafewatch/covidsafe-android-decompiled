@@ -13,12 +13,12 @@ class ShapeTrimPathParser {
     }
 
     static ShapeTrimPath parse(JsonReader jsonReader, LottieComposition lottieComposition) throws IOException {
-        boolean z = false;
         String str = null;
         ShapeTrimPath.Type type = null;
         AnimatableFloatValue animatableFloatValue = null;
         AnimatableFloatValue animatableFloatValue2 = null;
         AnimatableFloatValue animatableFloatValue3 = null;
+        boolean z = false;
         while (jsonReader.hasNext()) {
             int selectName = jsonReader.selectName(NAMES);
             if (selectName == 0) {

@@ -124,7 +124,7 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
             if (r1 == 0) goto L_0x0037
             goto L_0x0038
         L_0x0037:
-            r2 = r3
+            r2 = 0
         L_0x0038:
             r5.call(r0)
             if (r2 == 0) goto L_0x0042
@@ -337,7 +337,7 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
             if (r1.queue.poll() != null) goto L_0x0063;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:29:0x0061, code lost:
-            r4 = r2;
+            r4 = true;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:30:0x0063, code lost:
             r4 = false;
@@ -368,7 +368,7 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
             if (r4 != null) goto L_0x0081;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:40:0x007f, code lost:
-            r15 = r2;
+            r15 = true;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:41:0x0081, code lost:
             r15 = false;
@@ -415,7 +415,6 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
         /* JADX WARNING: Code restructure failed: missing block: B:59:0x00b5, code lost:
             r10 = r10 + 1;
             r4 = r15;
-            r2 = true;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:60:0x00ba, code lost:
             if (r10 <= 0) goto L_0x00bf;
@@ -455,9 +454,6 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
          */
         /* JADX WARNING: Code restructure failed: missing block: B:78:0x00d4, code lost:
             monitor-exit(r18);
-         */
-        /* JADX WARNING: Code restructure failed: missing block: B:79:0x00d5, code lost:
-            r2 = true;
          */
         /* JADX WARNING: Code restructure failed: missing block: B:80:0x00d8, code lost:
             r0 = th;
@@ -528,21 +524,21 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
                 int r0 = r5.length     // Catch:{ all -> 0x00e0 }
                 r6 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
                 int r8 = r5.length     // Catch:{ all -> 0x00e0 }
-                r9 = r3
-                r10 = r9
+                r9 = 0
+                r10 = 0
             L_0x0035:
                 r11 = 0
                 if (r9 >= r8) goto L_0x0053
                 r13 = r5[r9]     // Catch:{ all -> 0x00e0 }
                 long r13 = r13.get()     // Catch:{ all -> 0x00e0 }
-                int r11 = (r13 > r11 ? 1 : (r13 == r11 ? 0 : -1))
-                if (r11 < 0) goto L_0x0048
+                int r15 = (r13 > r11 ? 1 : (r13 == r11 ? 0 : -1))
+                if (r15 < 0) goto L_0x0048
                 long r6 = java.lang.Math.min(r6, r13)     // Catch:{ all -> 0x00e0 }
                 goto L_0x0050
             L_0x0048:
                 r11 = -9223372036854775808
-                int r11 = (r13 > r11 ? 1 : (r13 == r11 ? 0 : -1))
-                if (r11 != 0) goto L_0x0050
+                int r15 = (r13 > r11 ? 1 : (r13 == r11 ? 0 : -1))
+                if (r15 != 0) goto L_0x0050
                 int r10 = r10 + 1
             L_0x0050:
                 int r9 = r9 + 1
@@ -554,10 +550,10 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
                 java.util.Queue<java.lang.Object> r4 = r1.queue     // Catch:{ all -> 0x00e0 }
                 java.lang.Object r4 = r4.poll()     // Catch:{ all -> 0x00e0 }
                 if (r4 != 0) goto L_0x0063
-                r4 = r2
+                r4 = 1
                 goto L_0x0064
             L_0x0063:
-                r4 = r3
+                r4 = 0
             L_0x0064:
                 boolean r0 = r1.checkTerminated(r0, r4)     // Catch:{ all -> 0x00e0 }
                 if (r0 == 0) goto L_0x006b
@@ -566,7 +562,7 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
                 r1.request(r8)     // Catch:{ all -> 0x00e0 }
                 goto L_0x0012
             L_0x006f:
-                r10 = r3
+                r10 = 0
             L_0x0070:
                 long r13 = (long) r10     // Catch:{ all -> 0x00e0 }
                 int r0 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
@@ -575,10 +571,10 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
                 java.util.Queue<java.lang.Object> r4 = r1.queue     // Catch:{ all -> 0x00e0 }
                 java.lang.Object r4 = r4.poll()     // Catch:{ all -> 0x00e0 }
                 if (r4 != 0) goto L_0x0081
-                r15 = r2
+                r15 = 1
                 goto L_0x0082
             L_0x0081:
-                r15 = r3
+                r15 = 0
             L_0x0082:
                 boolean r0 = r1.checkTerminated(r0, r15)     // Catch:{ all -> 0x00e0 }
                 if (r0 == 0) goto L_0x0089
@@ -590,7 +586,7 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
             L_0x008d:
                 java.lang.Object r4 = rx.internal.operators.NotificationLite.getValue(r4)     // Catch:{ all -> 0x00e0 }
                 int r13 = r5.length     // Catch:{ all -> 0x00e0 }
-                r14 = r3
+                r14 = 0
             L_0x0093:
                 if (r14 >= r13) goto L_0x00b5
                 r2 = r5[r14]     // Catch:{ all -> 0x00e0 }
@@ -642,7 +638,7 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
                 goto L_0x0012
             L_0x00d8:
                 r0 = move-exception
-                r2 = r3
+                r2 = 0
             L_0x00da:
                 monitor-exit(r18)     // Catch:{ all -> 0x00de }
                 throw r0     // Catch:{ all -> 0x00dc }
@@ -654,7 +650,7 @@ public final class OperatorPublish<T> extends ConnectableObservable<T> {
                 goto L_0x00da
             L_0x00e0:
                 r0 = move-exception
-                r2 = r3
+                r2 = 0
             L_0x00e2:
                 if (r2 != 0) goto L_0x00ec
                 monitor-enter(r18)

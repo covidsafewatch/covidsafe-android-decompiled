@@ -114,27 +114,27 @@ public class LinearSnapHelper extends SnapHelper {
             return 1.0f;
         }
         View view = null;
-        int i = Integer.MIN_VALUE;
-        int i2 = Integer.MAX_VALUE;
         View view2 = null;
+        int i = Integer.MAX_VALUE;
+        int i2 = Integer.MIN_VALUE;
         for (int i3 = 0; i3 < childCount; i3++) {
             View childAt = layoutManager.getChildAt(i3);
             int position = layoutManager.getPosition(childAt);
             if (position != -1) {
-                if (position < i2) {
+                if (position < i) {
                     view = childAt;
-                    i2 = position;
-                }
-                if (position > i) {
-                    view2 = childAt;
                     i = position;
+                }
+                if (position > i2) {
+                    view2 = childAt;
+                    i2 = position;
                 }
             }
         }
         if (view == null || view2 == null || (max = Math.max(orientationHelper.getDecoratedEnd(view), orientationHelper.getDecoratedEnd(view2)) - Math.min(orientationHelper.getDecoratedStart(view), orientationHelper.getDecoratedStart(view2))) == 0) {
             return 1.0f;
         }
-        return (((float) max) * 1.0f) / ((float) ((i - i2) + 1));
+        return (((float) max) * 1.0f) / ((float) ((i2 - i) + 1));
     }
 
     private OrientationHelper getVerticalHelper(RecyclerView.LayoutManager layoutManager) {

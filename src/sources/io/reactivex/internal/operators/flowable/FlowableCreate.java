@@ -568,8 +568,8 @@ public final class FlowableCreate<T> extends Flowable<T> {
 
         /* access modifiers changed from: package-private */
         public void drain() {
-            int i;
             boolean z;
+            int i;
             if (this.wip.getAndIncrement() == 0) {
                 Subscriber subscriber = this.downstream;
                 AtomicReference<T> atomicReference = this.queue;
@@ -578,8 +578,8 @@ public final class FlowableCreate<T> extends Flowable<T> {
                     long j = get();
                     long j2 = 0;
                     while (true) {
-                        i = (j2 > j ? 1 : (j2 == j ? 0 : -1));
                         z = false;
+                        i = (j2 > j ? 1 : (j2 == j ? 0 : -1));
                         if (i == 0) {
                             break;
                         } else if (isCancelled()) {

@@ -283,57 +283,71 @@ public final class BidiFormatter {
         }
 
         /* access modifiers changed from: package-private */
+        /* JADX WARNING: Code restructure failed: missing block: B:18:0x002b, code lost:
+            r1 = r1 - 1;
+         */
+        /* Code decompiled incorrectly, please refer to instructions dump. */
         public int getExitDir() {
-            this.charIndex = this.length;
-            int i = 0;
-            while (true) {
-                int i2 = i;
-                while (this.charIndex > 0) {
-                    byte dirTypeBackward = dirTypeBackward();
-                    if (dirTypeBackward != 0) {
-                        if (dirTypeBackward == 1 || dirTypeBackward == 2) {
-                            if (i == 0) {
-                                return 1;
-                            }
-                            if (i2 == 0) {
-                            }
-                        } else if (dirTypeBackward != 9) {
-                            switch (dirTypeBackward) {
-                                case 14:
-                                case 15:
-                                    if (i2 == i) {
-                                        return -1;
-                                    }
-                                    break;
-                                case 16:
-                                case 17:
-                                    if (i2 == i) {
-                                        return 1;
-                                    }
-                                    break;
-                                case 18:
-                                    i++;
-                                    break;
-                                default:
-                                    if (i2 != 0) {
-                                        break;
-                                    } else {
-                                        continue;
-                                    }
-                            }
-                            i--;
-                        } else {
-                            continue;
-                        }
-                    } else if (i == 0) {
-                        return -1;
-                    } else {
-                        if (i2 == 0) {
-                        }
-                    }
+            /*
+                r7 = this;
+                int r0 = r7.length
+                r7.charIndex = r0
+                r0 = 0
+                r1 = 0
+                r2 = 0
+            L_0x0007:
+                int r3 = r7.charIndex
+                if (r3 <= 0) goto L_0x003b
+                byte r3 = r7.dirTypeBackward()
+                r4 = -1
+                if (r3 == 0) goto L_0x0034
+                r5 = 1
+                if (r3 == r5) goto L_0x002e
+                r6 = 2
+                if (r3 == r6) goto L_0x002e
+                r6 = 9
+                if (r3 == r6) goto L_0x0007
+                switch(r3) {
+                    case 14: goto L_0x0028;
+                    case 15: goto L_0x0028;
+                    case 16: goto L_0x0025;
+                    case 17: goto L_0x0025;
+                    case 18: goto L_0x0022;
+                    default: goto L_0x001f;
                 }
-                return 0;
-            }
+            L_0x001f:
+                if (r2 != 0) goto L_0x0007
+                goto L_0x0039
+            L_0x0022:
+                int r1 = r1 + 1
+                goto L_0x0007
+            L_0x0025:
+                if (r2 != r1) goto L_0x002b
+                return r5
+            L_0x0028:
+                if (r2 != r1) goto L_0x002b
+                return r4
+            L_0x002b:
+                int r1 = r1 + -1
+                goto L_0x0007
+            L_0x002e:
+                if (r1 != 0) goto L_0x0031
+                return r5
+            L_0x0031:
+                if (r2 != 0) goto L_0x0007
+                goto L_0x0039
+            L_0x0034:
+                if (r1 != 0) goto L_0x0037
+                return r4
+            L_0x0037:
+                if (r2 != 0) goto L_0x0007
+            L_0x0039:
+                r2 = r1
+                goto L_0x0007
+            L_0x003b:
+                return r0
+            */
+            throw new UnsupportedOperationException("Method not decompiled: androidx.core.text.BidiFormatter.DirectionalityEstimator.getExitDir():int");
         }
 
         private static byte getCachedDirectionality(char c) {

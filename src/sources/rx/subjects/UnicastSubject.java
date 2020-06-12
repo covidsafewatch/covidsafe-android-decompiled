@@ -322,12 +322,12 @@ public final class UnicastSubject<T> extends Subject<T, T> {
             L_0x0029:
                 long r5 = r15.get()
                 r7 = 9223372036854775807(0x7fffffffffffffff, double:NaN)
-                int r7 = (r5 > r7 ? 1 : (r5 == r7 ? 0 : -1))
-                if (r7 != 0) goto L_0x0038
-                r7 = r1
+                int r9 = (r5 > r7 ? 1 : (r5 == r7 ? 0 : -1))
+                if (r9 != 0) goto L_0x0038
+                r7 = 1
                 goto L_0x0039
             L_0x0038:
-                r7 = r4
+                r7 = 0
             L_0x0039:
                 r8 = 0
                 r10 = r8
@@ -337,10 +337,10 @@ public final class UnicastSubject<T> extends Subject<T, T> {
                 boolean r12 = r15.done
                 java.lang.Object r13 = r0.poll()
                 if (r13 != 0) goto L_0x004a
-                r14 = r1
+                r14 = 1
                 goto L_0x004b
             L_0x004a:
-                r14 = r4
+                r14 = 0
             L_0x004b:
                 boolean r12 = r15.checkTerminated(r12, r14, r2, r3)
                 if (r12 == 0) goto L_0x0052
@@ -370,7 +370,7 @@ public final class UnicastSubject<T> extends Subject<T, T> {
                 r15.addAndGet(r5)
                 goto L_0x007c
             L_0x007b:
-                r7 = r4
+                r7 = 0
             L_0x007c:
                 monitor-enter(r15)
                 boolean r3 = r15.missed     // Catch:{ all -> 0x0094 }

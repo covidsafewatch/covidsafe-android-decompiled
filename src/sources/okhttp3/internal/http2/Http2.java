@@ -61,16 +61,17 @@ public final class Http2 {
             int i5 = iArr2[i4];
             for (int i6 = 0; i6 < 1; i6++) {
                 int i7 = iArr[i6];
+                String[] strArr5 = FLAGS;
                 int i8 = i7 | i5;
-                FLAGS[i8] = FLAGS[i7] + "|" + FLAGS[i5];
+                strArr5[i8] = FLAGS[i7] + "|" + FLAGS[i5];
                 FLAGS[i8 | 8] = FLAGS[i7] + "|" + FLAGS[i5] + "|PADDED";
             }
         }
         int length = FLAGS.length;
         for (int i9 = 0; i9 < length; i9++) {
-            String[] strArr5 = FLAGS;
-            if (strArr5[i9] == null) {
-                strArr5[i9] = BINARY[i9];
+            String[] strArr6 = FLAGS;
+            if (strArr6[i9] == null) {
+                strArr6[i9] = BINARY[i9];
             }
         }
     }

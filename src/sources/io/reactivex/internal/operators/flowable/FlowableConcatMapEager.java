@@ -173,7 +173,6 @@ public final class FlowableConcatMapEager<T, R> extends AbstractFlowableWithUpst
             InnerQueuedSubscriber<R> innerQueuedSubscriber;
             int i;
             long j;
-            long j2;
             boolean z;
             SimpleQueue<R> queue;
             int i2;
@@ -183,7 +182,7 @@ public final class FlowableConcatMapEager<T, R> extends AbstractFlowableWithUpst
                 ErrorMode errorMode2 = this.errorMode;
                 int i3 = 1;
                 while (true) {
-                    long j3 = this.requested.get();
+                    long j2 = this.requested.get();
                     if (innerQueuedSubscriber2 != null) {
                         innerQueuedSubscriber = innerQueuedSubscriber2;
                     } else if (errorMode2 == ErrorMode.END || ((Throwable) this.errors.get()) == null) {
@@ -208,14 +207,13 @@ public final class FlowableConcatMapEager<T, R> extends AbstractFlowableWithUpst
                     }
                     if (innerQueuedSubscriber == null || (queue = innerQueuedSubscriber.queue()) == null) {
                         i = i3;
-                        z = false;
-                        j2 = 0;
                         j = 0;
+                        z = false;
                     } else {
+                        i = i3;
                         j = 0;
                         while (true) {
-                            i2 = (j > j3 ? 1 : (j == j3 ? 0 : -1));
-                            i = i3;
+                            i2 = (j > j2 ? 1 : (j == j2 ? 0 : -1));
                             if (i2 == 0) {
                                 break;
                             } else if (this.cancelled) {
@@ -238,7 +236,6 @@ public final class FlowableConcatMapEager<T, R> extends AbstractFlowableWithUpst
                                         subscriber.onNext(poll);
                                         j++;
                                         innerQueuedSubscriber.requestOne();
-                                        i3 = i;
                                     }
                                 } catch (Throwable th) {
                                     Throwable th2 = th;
@@ -279,9 +276,8 @@ public final class FlowableConcatMapEager<T, R> extends AbstractFlowableWithUpst
                                 return;
                             }
                         }
-                        j2 = 0;
                     }
-                    if (!(j == j2 || j3 == LongCompanionObject.MAX_VALUE)) {
+                    if (!(j == 0 || j2 == LongCompanionObject.MAX_VALUE)) {
                         this.requested.addAndGet(-j);
                     }
                     if (z) {

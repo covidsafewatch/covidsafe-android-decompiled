@@ -8,7 +8,5 @@ public interface StreamSegmentEncrypter {
 
     void encryptSegment(ByteBuffer byteBuffer, boolean z, ByteBuffer byteBuffer2) throws GeneralSecurityException;
 
-    int getEncryptedSegments();
-
     ByteBuffer getHeader();
 }

@@ -25,7 +25,6 @@ class GradientStrokeParser {
         JsonReader jsonReader2 = jsonReader;
         LottieComposition lottieComposition2 = lottieComposition;
         ArrayList arrayList = new ArrayList();
-        float f = 0.0f;
         String str = null;
         GradientType gradientType = null;
         AnimatableGradientColorValue animatableGradientColorValue2 = null;
@@ -35,6 +34,7 @@ class GradientStrokeParser {
         AnimatableFloatValue animatableFloatValue = null;
         ShapeStroke.LineCapType lineCapType = null;
         ShapeStroke.LineJoinType lineJoinType = null;
+        float f = 0.0f;
         AnimatableFloatValue animatableFloatValue2 = null;
         boolean z = false;
         while (jsonReader.hasNext()) {

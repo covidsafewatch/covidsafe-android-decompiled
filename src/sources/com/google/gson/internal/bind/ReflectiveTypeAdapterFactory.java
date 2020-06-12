@@ -142,10 +142,10 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
                     List<String> fieldNames = getFieldNames(field);
                     int size = fieldNames.size();
                     BoundField boundField = null;
-                    int i2 = z;
+                    int i2 = 0;
                     while (i2 < size) {
                         String str = fieldNames.get(i2);
-                        boolean z2 = i2 != 0 ? z : excludeField;
+                        boolean z2 = i2 != 0 ? false : excludeField;
                         String str2 = str;
                         int i3 = i2;
                         BoundField boundField2 = boundField;
@@ -158,7 +158,6 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
                         fieldNames = list;
                         size = i4;
                         field = field2;
-                        z = false;
                     }
                     BoundField boundField3 = boundField;
                     if (boundField3 != null) {

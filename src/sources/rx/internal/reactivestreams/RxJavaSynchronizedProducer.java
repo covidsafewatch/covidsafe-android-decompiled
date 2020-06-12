@@ -160,8 +160,8 @@ public final class RxJavaSynchronizedProducer implements Producer, Subscription 
             java.lang.Object r9 = r8.next()     // Catch:{ all -> 0x0075 }
             java.lang.Long r9 = (java.lang.Long) r9     // Catch:{ all -> 0x0075 }
             long r4 = r9.longValue()     // Catch:{ all -> 0x0075 }
-            int r4 = (r4 > r0 ? 1 : (r4 == r0 ? 0 : -1))
-            if (r4 != 0) goto L_0x0063
+            int r6 = (r4 > r0 ? 1 : (r4 == r0 ? 0 : -1))
+            if (r6 != 0) goto L_0x0063
             r7.unsubscribed = r2     // Catch:{ all -> 0x0075 }
             org.reactivestreams.Subscription r8 = r7.subscription     // Catch:{ all -> 0x0075 }
             r8.cancel()     // Catch:{ all -> 0x0075 }
@@ -173,7 +173,7 @@ public final class RxJavaSynchronizedProducer implements Producer, Subscription 
             goto L_0x0047
         L_0x006d:
             r8 = move-exception
-            r2 = r3
+            r2 = 0
         L_0x006f:
             monitor-exit(r7)     // Catch:{ all -> 0x0073 }
             throw r8     // Catch:{ all -> 0x0071 }
@@ -185,7 +185,7 @@ public final class RxJavaSynchronizedProducer implements Producer, Subscription 
             goto L_0x006f
         L_0x0075:
             r8 = move-exception
-            r2 = r3
+            r2 = 0
         L_0x0077:
             if (r2 != 0) goto L_0x0081
             monitor-enter(r7)

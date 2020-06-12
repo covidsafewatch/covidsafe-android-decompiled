@@ -169,12 +169,12 @@ public final class AesGcmHkdfStreaming extends NonceBasedStreamingAead {
         public synchronized void encryptSegment(ByteBuffer byteBuffer, ByteBuffer byteBuffer2, boolean z, ByteBuffer byteBuffer3) throws GeneralSecurityException {
             this.cipher.init(1, this.keySpec, AesGcmHkdfStreaming.this.paramsForSegment(this.noncePrefix, this.encryptedSegments, z));
             this.encryptedSegments++;
-            this.cipher.update(byteBuffer, byteBuffer3);
-            this.cipher.doFinal(byteBuffer2, byteBuffer3);
-        }
-
-        public synchronized int getEncryptedSegments() {
-            return this.encryptedSegments;
+            if (byteBuffer2.hasRemaining()) {
+                this.cipher.update(byteBuffer, byteBuffer3);
+                this.cipher.doFinal(byteBuffer2, byteBuffer3);
+            } else {
+                this.cipher.doFinal(byteBuffer, byteBuffer3);
+            }
         }
     }
 

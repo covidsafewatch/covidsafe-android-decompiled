@@ -360,8 +360,8 @@ public final class PublicSuffixDatabase {
                             break;
                         } else {
                             i9++;
-                            i10 = -1;
                             z2 = true;
+                            i10 = -1;
                         }
                     } else {
                         break;

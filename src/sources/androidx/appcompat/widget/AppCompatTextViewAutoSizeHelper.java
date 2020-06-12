@@ -57,9 +57,9 @@ class AppCompatTextViewAutoSizeHelper {
         if (obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizeTextType)) {
             this.mAutoSizeTextType = obtainStyledAttributes.getInt(R.styleable.AppCompatTextView_autoSizeTextType, 0);
         }
-        float dimension = obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizeStepGranularity) ? obtainStyledAttributes.getDimension(R.styleable.AppCompatTextView_autoSizeStepGranularity, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : -1.0f;
-        float dimension2 = obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizeMinTextSize) ? obtainStyledAttributes.getDimension(R.styleable.AppCompatTextView_autoSizeMinTextSize, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : -1.0f;
-        float dimension3 = obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizeMaxTextSize) ? obtainStyledAttributes.getDimension(R.styleable.AppCompatTextView_autoSizeMaxTextSize, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : -1.0f;
+        float dimension = obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizeStepGranularity) ? obtainStyledAttributes.getDimension(R.styleable.AppCompatTextView_autoSizeStepGranularity, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
+        float dimension2 = obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizeMinTextSize) ? obtainStyledAttributes.getDimension(R.styleable.AppCompatTextView_autoSizeMinTextSize, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
+        float dimension3 = obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizeMaxTextSize) ? obtainStyledAttributes.getDimension(R.styleable.AppCompatTextView_autoSizeMaxTextSize, UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE) : UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE;
         if (obtainStyledAttributes.hasValue(R.styleable.AppCompatTextView_autoSizePresetSizes) && (resourceId = obtainStyledAttributes.getResourceId(R.styleable.AppCompatTextView_autoSizePresetSizes, 0)) > 0) {
             TypedArray obtainTypedArray = obtainStyledAttributes.getResources().obtainTypedArray(resourceId);
             setupAutoSizeUniformPresetSizes(obtainTypedArray);
@@ -335,24 +335,21 @@ class AppCompatTextViewAutoSizeHelper {
     private int findLargestTextSizeWhichFits(RectF rectF) {
         int length = this.mAutoSizeTextSizesInPx.length;
         if (length != 0) {
-            int i = 0;
+            int i = length - 1;
             int i2 = 1;
-            int i3 = length - 1;
-            while (true) {
-                int i4 = i2;
-                int i5 = i;
-                i = i4;
-                while (i <= i3) {
-                    int i6 = (i + i3) / 2;
-                    if (suggestedSizeFitsInSpace(this.mAutoSizeTextSizesInPx[i6], rectF)) {
-                        i2 = i6 + 1;
-                    } else {
-                        i5 = i6 - 1;
-                        i3 = i5;
-                    }
+            int i3 = 0;
+            while (i2 <= i) {
+                int i4 = (i2 + i) / 2;
+                if (suggestedSizeFitsInSpace(this.mAutoSizeTextSizesInPx[i4], rectF)) {
+                    int i5 = i4 + 1;
+                    i3 = i2;
+                    i2 = i5;
+                } else {
+                    i3 = i4 - 1;
+                    i = i3;
                 }
-                return this.mAutoSizeTextSizesInPx[i5];
             }
+            return this.mAutoSizeTextSizesInPx[i3];
         }
         throw new IllegalStateException("No available text sizes to choose from.");
     }

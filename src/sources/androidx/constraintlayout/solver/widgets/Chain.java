@@ -53,15 +53,15 @@ class Chain {
     /* JADX WARNING: Removed duplicated region for block: B:199:0x03ad  */
     /* JADX WARNING: Removed duplicated region for block: B:200:0x03b0  */
     /* JADX WARNING: Removed duplicated region for block: B:203:0x03b6  */
-    /* JADX WARNING: Removed duplicated region for block: B:251:0x0486  */
-    /* JADX WARNING: Removed duplicated region for block: B:256:0x04bb  */
-    /* JADX WARNING: Removed duplicated region for block: B:265:0x04e0  */
-    /* JADX WARNING: Removed duplicated region for block: B:266:0x04e5  */
-    /* JADX WARNING: Removed duplicated region for block: B:269:0x04eb  */
-    /* JADX WARNING: Removed duplicated region for block: B:270:0x04f0  */
-    /* JADX WARNING: Removed duplicated region for block: B:272:0x04f4  */
-    /* JADX WARNING: Removed duplicated region for block: B:276:0x0505  */
-    /* JADX WARNING: Removed duplicated region for block: B:278:0x0508  */
+    /* JADX WARNING: Removed duplicated region for block: B:251:0x0488  */
+    /* JADX WARNING: Removed duplicated region for block: B:256:0x04bd  */
+    /* JADX WARNING: Removed duplicated region for block: B:265:0x04e2  */
+    /* JADX WARNING: Removed duplicated region for block: B:266:0x04e7  */
+    /* JADX WARNING: Removed duplicated region for block: B:269:0x04ed  */
+    /* JADX WARNING: Removed duplicated region for block: B:270:0x04f2  */
+    /* JADX WARNING: Removed duplicated region for block: B:272:0x04f6  */
+    /* JADX WARNING: Removed duplicated region for block: B:276:0x0507  */
+    /* JADX WARNING: Removed duplicated region for block: B:278:0x050a  */
     /* JADX WARNING: Removed duplicated region for block: B:293:0x0395 A[SYNTHETIC] */
     /* JADX WARNING: Removed duplicated region for block: B:82:0x015f  */
     /* JADX WARNING: Removed duplicated region for block: B:91:0x018c  */
@@ -86,7 +86,7 @@ class Chain {
             androidx.constraintlayout.solver.widgets.ConstraintWidget$DimensionBehaviour r5 = androidx.constraintlayout.solver.widgets.ConstraintWidget.DimensionBehaviour.WRAP_CONTENT
             r7 = 1
             if (r4 != r5) goto L_0x0021
-            r4 = r7
+            r4 = 1
             goto L_0x0022
         L_0x0021:
             r4 = 0
@@ -95,14 +95,14 @@ class Chain {
             if (r39 != 0) goto L_0x0038
             int r8 = r2.mHorizontalChainStyle
             if (r8 != 0) goto L_0x002b
-            r8 = r7
+            r8 = 1
             goto L_0x002c
         L_0x002b:
             r8 = 0
         L_0x002c:
             int r14 = r2.mHorizontalChainStyle
             if (r14 != r7) goto L_0x0032
-            r14 = r7
+            r14 = 1
             goto L_0x0033
         L_0x0032:
             r14 = 0
@@ -113,14 +113,14 @@ class Chain {
         L_0x0038:
             int r8 = r2.mVerticalChainStyle
             if (r8 != 0) goto L_0x003e
-            r8 = r7
+            r8 = 1
             goto L_0x003f
         L_0x003e:
             r8 = 0
         L_0x003f:
             int r14 = r2.mVerticalChainStyle
             if (r14 != r7) goto L_0x0045
-            r14 = r7
+            r14 = 1
             goto L_0x0046
         L_0x0045:
             r14 = 0
@@ -128,7 +128,7 @@ class Chain {
             int r15 = r2.mVerticalChainStyle
             if (r15 != r5) goto L_0x004c
         L_0x004a:
-            r5 = r7
+            r5 = 1
             goto L_0x004d
         L_0x004c:
             r5 = 0
@@ -327,9 +327,9 @@ class Chain {
             r4 = r25
         L_0x0192:
             r6 = 0
-            r29 = r6
             r14 = r21
             r8 = 0
+            r29 = 0
         L_0x0198:
             if (r8 >= r2) goto L_0x0231
             java.lang.Object r15 = r0.get(r8)
@@ -350,8 +350,8 @@ class Chain {
             r6 = 0
             r7 = 4
             r9.addEquality(r3, r15, r6, r7)
-            r7 = r6
             r6 = 6
+            r7 = 0
             goto L_0x01df
         L_0x01c2:
             r7 = 4
@@ -462,8 +462,8 @@ class Chain {
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r1 = r12.mListAnchors
             r1 = r1[r2]
         L_0x0272:
-            if (r3 == 0) goto L_0x04cc
-            if (r5 == 0) goto L_0x04cc
+            if (r3 == 0) goto L_0x04ce
+            if (r5 == 0) goto L_0x04ce
             if (r39 != 0) goto L_0x027d
             r2 = r27
             float r2 = r2.mHorizontalBiasPercent
@@ -485,7 +485,7 @@ class Chain {
             r6 = r8
             r8 = r10
             r0.addCentering(r1, r2, r3, r4, r5, r6, r7, r8)
-            goto L_0x04cc
+            goto L_0x04ce
         L_0x029b:
             if (r26 == 0) goto L_0x0399
             if (r12 == 0) goto L_0x0399
@@ -502,7 +502,7 @@ class Chain {
             r14 = r12
             r15 = r14
         L_0x02b0:
-            if (r14 == 0) goto L_0x04cc
+            if (r14 == 0) goto L_0x04ce
             androidx.constraintlayout.solver.widgets.ConstraintWidget[] r0 = r14.mNextChainWidget
             r0 = r0[r39]
             r8 = r0
@@ -646,8 +646,8 @@ class Chain {
             r8 = 8
             r18 = 4
             r20 = 6
-            if (r23 == 0) goto L_0x04cc
-            if (r12 == 0) goto L_0x04cc
+            if (r23 == 0) goto L_0x04ce
+            if (r12 == 0) goto L_0x04ce
             int r0 = r1.mWidgetsMatchCount
             if (r0 <= 0) goto L_0x03b0
             int r0 = r1.mWidgetsCount
@@ -661,7 +661,7 @@ class Chain {
             r14 = r12
             r15 = r14
         L_0x03b4:
-            if (r14 == 0) goto L_0x046e
+            if (r14 == 0) goto L_0x0470
             androidx.constraintlayout.solver.widgets.ConstraintWidget[] r0 = r14.mNextChainWidget
             r0 = r0[r39]
         L_0x03ba:
@@ -736,10 +736,10 @@ class Chain {
         L_0x0430:
             r3 = r0
             if (r16 == 0) goto L_0x0436
-            r22 = r20
+            r22 = 6
             goto L_0x0438
         L_0x0436:
-            r22 = r18
+            r22 = 4
         L_0x0438:
             if (r1 == 0) goto L_0x0454
             if (r2 == 0) goto L_0x0454
@@ -762,22 +762,22 @@ class Chain {
             r15 = 8
         L_0x045a:
             r0 = r19
-            goto L_0x0460
+            goto L_0x0461
         L_0x045d:
             r17 = r15
-            r15 = r8
-        L_0x0460:
+            r15 = 8
+        L_0x0461:
             int r1 = r14.getVisibility()
-            if (r1 == r15) goto L_0x0467
-            goto L_0x0469
-        L_0x0467:
+            if (r1 == r15) goto L_0x0468
+            goto L_0x046a
+        L_0x0468:
             r14 = r17
-        L_0x0469:
-            r8 = r15
+        L_0x046a:
             r15 = r14
+            r8 = 8
             r14 = r0
             goto L_0x03b4
-        L_0x046e:
+        L_0x0470:
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r0 = r12.mListAnchors
             r0 = r0[r40]
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r1 = r10.mListAnchors
@@ -789,17 +789,17 @@ class Chain {
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r2 = r11.mListAnchors
             r2 = r2[r3]
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r14 = r2.mTarget
-            if (r1 == 0) goto L_0x04bb
-            if (r12 == r13) goto L_0x0495
+            if (r1 == 0) goto L_0x04bd
+            if (r12 == r13) goto L_0x0497
             androidx.constraintlayout.solver.SolverVariable r2 = r0.mSolverVariable
             androidx.constraintlayout.solver.SolverVariable r1 = r1.mSolverVariable
             int r0 = r0.getMargin()
             r15 = 5
             r9.addEquality(r2, r1, r0, r15)
-            goto L_0x04bc
-        L_0x0495:
+            goto L_0x04be
+        L_0x0497:
             r15 = 5
-            if (r14 == 0) goto L_0x04bc
+            if (r14 == 0) goto L_0x04be
             androidx.constraintlayout.solver.SolverVariable r2 = r0.mSolverVariable
             androidx.constraintlayout.solver.SolverVariable r3 = r1.mSolverVariable
             int r4 = r0.getMargin()
@@ -818,72 +818,72 @@ class Chain {
             r7 = r8
             r8 = r16
             r0.addCentering(r1, r2, r3, r4, r5, r6, r7, r8)
-            goto L_0x04bc
-        L_0x04bb:
+            goto L_0x04be
+        L_0x04bd:
             r15 = 5
-        L_0x04bc:
-            if (r14 == 0) goto L_0x04cc
-            if (r12 == r13) goto L_0x04cc
+        L_0x04be:
+            if (r14 == 0) goto L_0x04ce
+            if (r12 == r13) goto L_0x04ce
             androidx.constraintlayout.solver.SolverVariable r0 = r10.mSolverVariable
             androidx.constraintlayout.solver.SolverVariable r1 = r14.mSolverVariable
             int r2 = r10.getMargin()
             int r2 = -r2
             r9.addEquality(r0, r1, r2, r15)
-        L_0x04cc:
-            if (r26 != 0) goto L_0x04d0
-            if (r23 == 0) goto L_0x0535
-        L_0x04d0:
-            if (r12 == 0) goto L_0x0535
+        L_0x04ce:
+            if (r26 != 0) goto L_0x04d2
+            if (r23 == 0) goto L_0x0537
+        L_0x04d2:
+            if (r12 == 0) goto L_0x0537
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r0 = r12.mListAnchors
             r0 = r0[r40]
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r1 = r13.mListAnchors
             int r2 = r40 + 1
             r1 = r1[r2]
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r3 = r0.mTarget
-            if (r3 == 0) goto L_0x04e5
+            if (r3 == 0) goto L_0x04e7
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r3 = r0.mTarget
             androidx.constraintlayout.solver.SolverVariable r3 = r3.mSolverVariable
-            goto L_0x04e7
-        L_0x04e5:
-            r3 = r21
+            goto L_0x04e9
         L_0x04e7:
+            r3 = r21
+        L_0x04e9:
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r4 = r1.mTarget
-            if (r4 == 0) goto L_0x04f0
+            if (r4 == 0) goto L_0x04f2
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r4 = r1.mTarget
             androidx.constraintlayout.solver.SolverVariable r4 = r4.mSolverVariable
-            goto L_0x04f2
-        L_0x04f0:
-            r4 = r21
+            goto L_0x04f4
         L_0x04f2:
-            if (r11 == r13) goto L_0x0505
+            r4 = r21
+        L_0x04f4:
+            if (r11 == r13) goto L_0x0507
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r4 = r11.mListAnchors
             r4 = r4[r2]
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r5 = r4.mTarget
-            if (r5 == 0) goto L_0x0502
+            if (r5 == 0) goto L_0x0504
             androidx.constraintlayout.solver.widgets.ConstraintAnchor r4 = r4.mTarget
             androidx.constraintlayout.solver.SolverVariable r4 = r4.mSolverVariable
             r21 = r4
-        L_0x0502:
+        L_0x0504:
             r5 = r21
-            goto L_0x0506
-        L_0x0505:
+            goto L_0x0508
+        L_0x0507:
             r5 = r4
-        L_0x0506:
-            if (r12 != r13) goto L_0x0510
+        L_0x0508:
+            if (r12 != r13) goto L_0x0512
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r0 = r12.mListAnchors
             r0 = r0[r40]
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r1 = r12.mListAnchors
             r1 = r1[r2]
-        L_0x0510:
-            if (r3 == 0) goto L_0x0535
-            if (r5 == 0) goto L_0x0535
+        L_0x0512:
+            if (r3 == 0) goto L_0x0537
+            if (r5 == 0) goto L_0x0537
             r4 = 1056964608(0x3f000000, float:0.5)
             int r6 = r0.getMargin()
-            if (r13 != 0) goto L_0x051d
-            goto L_0x051e
-        L_0x051d:
+            if (r13 != 0) goto L_0x051f
+            goto L_0x0520
+        L_0x051f:
             r11 = r13
-        L_0x051e:
+        L_0x0520:
             androidx.constraintlayout.solver.widgets.ConstraintAnchor[] r7 = r11.mListAnchors
             r2 = r7[r2]
             int r7 = r2.getMargin()
@@ -897,7 +897,7 @@ class Chain {
             r6 = r8
             r8 = r10
             r0.addCentering(r1, r2, r3, r4, r5, r6, r7, r8)
-        L_0x0535:
+        L_0x0537:
             return
         */
         throw new UnsupportedOperationException("Method not decompiled: androidx.constraintlayout.solver.widgets.Chain.applyChainConstraints(androidx.constraintlayout.solver.widgets.ConstraintWidgetContainer, androidx.constraintlayout.solver.LinearSystem, int, int, androidx.constraintlayout.solver.widgets.ChainHead):void");

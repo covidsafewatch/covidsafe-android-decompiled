@@ -111,25 +111,25 @@ public class WidgetContainer extends ConstraintWidget {
         }
         int size = arrayList.size();
         int i = Integer.MAX_VALUE;
-        int i2 = 0;
+        int i2 = Integer.MAX_VALUE;
         int i3 = 0;
-        int i4 = Integer.MAX_VALUE;
+        int i4 = 0;
         for (int i5 = 0; i5 < size; i5++) {
             ConstraintWidget constraintWidget = arrayList.get(i5);
             if (constraintWidget.getX() < i) {
                 i = constraintWidget.getX();
             }
-            if (constraintWidget.getY() < i4) {
-                i4 = constraintWidget.getY();
+            if (constraintWidget.getY() < i2) {
+                i2 = constraintWidget.getY();
             }
-            if (constraintWidget.getRight() > i2) {
-                i2 = constraintWidget.getRight();
+            if (constraintWidget.getRight() > i3) {
+                i3 = constraintWidget.getRight();
             }
-            if (constraintWidget.getBottom() > i3) {
-                i3 = constraintWidget.getBottom();
+            if (constraintWidget.getBottom() > i4) {
+                i4 = constraintWidget.getBottom();
             }
         }
-        rectangle.setBounds(i, i4, i2 - i, i3 - i4);
+        rectangle.setBounds(i, i2, i3 - i, i4 - i2);
         return rectangle;
     }
 

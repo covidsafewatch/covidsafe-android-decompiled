@@ -4,6 +4,8 @@ import com.google.crypto.tink.proto.EcdsaParams;
 import com.google.crypto.tink.proto.EcdsaSignatureEncoding;
 import com.google.crypto.tink.proto.EllipticCurveType;
 import com.google.crypto.tink.proto.HashType;
+import com.google.crypto.tink.proto.RsaSsaPkcs1Params;
+import com.google.crypto.tink.proto.RsaSsaPssParams;
 import com.google.crypto.tink.subtle.EllipticCurves;
 import com.google.crypto.tink.subtle.Enums;
 import java.security.GeneralSecurityException;
@@ -22,9 +24,13 @@ final class SigUtil {
         if (i == 1 || i == 2) {
             int i2 = AnonymousClass1.$SwitchMap$com$google$crypto$tink$proto$EllipticCurveType[curve.ordinal()];
             if (i2 != 1) {
-                if (i2 != 2 && i2 != 3) {
-                    throw new GeneralSecurityException(INVALID_PARAMS);
-                } else if (hashType != HashType.SHA512) {
+                if (i2 != 2) {
+                    if (i2 != 3) {
+                        throw new GeneralSecurityException(INVALID_PARAMS);
+                    } else if (hashType != HashType.SHA512) {
+                        throw new GeneralSecurityException(INVALID_PARAMS);
+                    }
+                } else if (hashType != HashType.SHA384 && hashType != HashType.SHA512) {
                     throw new GeneralSecurityException(INVALID_PARAMS);
                 }
             } else if (hashType != HashType.SHA256) {
@@ -32,6 +38,17 @@ final class SigUtil {
             }
         } else {
             throw new GeneralSecurityException("unsupported signature encoding");
+        }
+    }
+
+    public static void validateRsaSsaPkcs1Params(RsaSsaPkcs1Params rsaSsaPkcs1Params) throws GeneralSecurityException {
+        toHashType(rsaSsaPkcs1Params.getHashType());
+    }
+
+    public static void validateRsaSsaPssParams(RsaSsaPssParams rsaSsaPssParams) throws GeneralSecurityException {
+        toHashType(rsaSsaPssParams.getSigHash());
+        if (rsaSsaPssParams.getSigHash() != rsaSsaPssParams.getMgf1Hash()) {
+            throw new GeneralSecurityException("MGF1 hash is different from signature hash");
         }
     }
 
@@ -54,13 +71,13 @@ final class SigUtil {
                 int[] r0 = new int[r0]
                 $SwitchMap$com$google$crypto$tink$proto$HashType = r0
                 r1 = 1
-                com.google.crypto.tink.proto.HashType r2 = com.google.crypto.tink.proto.HashType.SHA1     // Catch:{ NoSuchFieldError -> 0x0012 }
+                com.google.crypto.tink.proto.HashType r2 = com.google.crypto.tink.proto.HashType.SHA256     // Catch:{ NoSuchFieldError -> 0x0012 }
                 int r2 = r2.ordinal()     // Catch:{ NoSuchFieldError -> 0x0012 }
                 r0[r2] = r1     // Catch:{ NoSuchFieldError -> 0x0012 }
             L_0x0012:
                 r0 = 2
                 int[] r2 = $SwitchMap$com$google$crypto$tink$proto$HashType     // Catch:{ NoSuchFieldError -> 0x001d }
-                com.google.crypto.tink.proto.HashType r3 = com.google.crypto.tink.proto.HashType.SHA256     // Catch:{ NoSuchFieldError -> 0x001d }
+                com.google.crypto.tink.proto.HashType r3 = com.google.crypto.tink.proto.HashType.SHA384     // Catch:{ NoSuchFieldError -> 0x001d }
                 int r3 = r3.ordinal()     // Catch:{ NoSuchFieldError -> 0x001d }
                 r2[r3] = r0     // Catch:{ NoSuchFieldError -> 0x001d }
             L_0x001d:
@@ -110,15 +127,15 @@ final class SigUtil {
     public static Enums.HashType toHashType(HashType hashType) throws GeneralSecurityException {
         int i = AnonymousClass1.$SwitchMap$com$google$crypto$tink$proto$HashType[hashType.ordinal()];
         if (i == 1) {
-            return Enums.HashType.SHA1;
+            return Enums.HashType.SHA256;
         }
         if (i == 2) {
-            return Enums.HashType.SHA256;
+            return Enums.HashType.SHA384;
         }
         if (i == 3) {
             return Enums.HashType.SHA512;
         }
-        throw new GeneralSecurityException("unknown hash type: " + hashType);
+        throw new GeneralSecurityException("unsupported hash type: " + hashType.name());
     }
 
     public static EllipticCurves.CurveType toCurveType(EllipticCurveType ellipticCurveType) throws GeneralSecurityException {

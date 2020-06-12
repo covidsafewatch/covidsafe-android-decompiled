@@ -521,7 +521,7 @@ public class SwitchCompat extends CompoundButton {
     }
 
     /* JADX WARNING: Code restructure failed: missing block: B:6:0x0012, code lost:
-        if (r0 != 3) goto L_0x00b7;
+        if (r0 != 3) goto L_0x00b9;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public boolean onTouchEvent(android.view.MotionEvent r7) {
@@ -531,18 +531,18 @@ public class SwitchCompat extends CompoundButton {
             r0.addMovement(r7)
             int r0 = r7.getActionMasked()
             r1 = 1
-            if (r0 == 0) goto L_0x009d
+            if (r0 == 0) goto L_0x009f
             r2 = 2
-            if (r0 == r1) goto L_0x0089
+            if (r0 == r1) goto L_0x008b
             if (r0 == r2) goto L_0x0016
             r3 = 3
-            if (r0 == r3) goto L_0x0089
-            goto L_0x00b7
+            if (r0 == r3) goto L_0x008b
+            goto L_0x00b9
         L_0x0016:
             int r0 = r6.mTouchMode
-            if (r0 == r1) goto L_0x0055
+            if (r0 == r1) goto L_0x0057
             if (r0 == r2) goto L_0x001e
-            goto L_0x00b7
+            goto L_0x00b9
         L_0x001e:
             float r7 = r7.getX()
             int r0 = r6.getThumbScrollRange()
@@ -553,31 +553,31 @@ public class SwitchCompat extends CompoundButton {
             if (r0 == 0) goto L_0x0032
             float r0 = (float) r0
             float r2 = r2 / r0
-            goto L_0x003b
+            goto L_0x003d
         L_0x0032:
             int r0 = (r2 > r4 ? 1 : (r2 == r4 ? 0 : -1))
-            if (r0 <= 0) goto L_0x0038
-            r2 = r3
-            goto L_0x003b
-        L_0x0038:
+            if (r0 <= 0) goto L_0x0039
+            r2 = 1065353216(0x3f800000, float:1.0)
+            goto L_0x003d
+        L_0x0039:
             r0 = -1082130432(0xffffffffbf800000, float:-1.0)
-            r2 = r0
-        L_0x003b:
+            r2 = -1082130432(0xffffffffbf800000, float:-1.0)
+        L_0x003d:
             boolean r0 = androidx.appcompat.widget.ViewUtils.isLayoutRtl(r6)
-            if (r0 == 0) goto L_0x0042
+            if (r0 == 0) goto L_0x0044
             float r2 = -r2
-        L_0x0042:
+        L_0x0044:
             float r0 = r6.mThumbPosition
             float r0 = r0 + r2
             float r0 = constrain(r0, r4, r3)
             float r2 = r6.mThumbPosition
             int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r2 == 0) goto L_0x0054
+            if (r2 == 0) goto L_0x0056
             r6.mTouchX = r7
             r6.setThumbPosition(r0)
-        L_0x0054:
+        L_0x0056:
             return r1
-        L_0x0055:
+        L_0x0057:
             float r0 = r7.getX()
             float r3 = r7.getY()
             float r4 = r6.mTouchX
@@ -586,44 +586,44 @@ public class SwitchCompat extends CompoundButton {
             int r5 = r6.mTouchSlop
             float r5 = (float) r5
             int r4 = (r4 > r5 ? 1 : (r4 == r5 ? 0 : -1))
-            if (r4 > 0) goto L_0x007b
+            if (r4 > 0) goto L_0x007d
             float r4 = r6.mTouchY
             float r4 = r3 - r4
             float r4 = java.lang.Math.abs(r4)
             int r5 = r6.mTouchSlop
             float r5 = (float) r5
             int r4 = (r4 > r5 ? 1 : (r4 == r5 ? 0 : -1))
-            if (r4 <= 0) goto L_0x00b7
-        L_0x007b:
+            if (r4 <= 0) goto L_0x00b9
+        L_0x007d:
             r6.mTouchMode = r2
             android.view.ViewParent r7 = r6.getParent()
             r7.requestDisallowInterceptTouchEvent(r1)
             r6.mTouchX = r0
             r6.mTouchY = r3
             return r1
-        L_0x0089:
+        L_0x008b:
             int r0 = r6.mTouchMode
-            if (r0 != r2) goto L_0x0094
+            if (r0 != r2) goto L_0x0096
             r6.stopDrag(r7)
             super.onTouchEvent(r7)
             return r1
-        L_0x0094:
+        L_0x0096:
             r0 = 0
             r6.mTouchMode = r0
             android.view.VelocityTracker r0 = r6.mVelocityTracker
             r0.clear()
-            goto L_0x00b7
-        L_0x009d:
+            goto L_0x00b9
+        L_0x009f:
             float r0 = r7.getX()
             float r2 = r7.getY()
             boolean r3 = r6.isEnabled()
-            if (r3 == 0) goto L_0x00b7
+            if (r3 == 0) goto L_0x00b9
             boolean r3 = r6.hitThumb(r0, r2)
-            if (r3 == 0) goto L_0x00b7
+            if (r3 == 0) goto L_0x00b9
             r6.mTouchMode = r1
             r6.mTouchX = r0
             r6.mTouchY = r2
-        L_0x00b7:
+        L_0x00b9:
             boolean r7 = super.onTouchEvent(r7)
             return r7
         */

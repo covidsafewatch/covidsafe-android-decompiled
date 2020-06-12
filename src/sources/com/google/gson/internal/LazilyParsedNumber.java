@@ -28,8 +28,8 @@ public final class LazilyParsedNumber extends Number {
         L_0x0007:
             java.lang.String r0 = r2.value     // Catch:{ NumberFormatException -> 0x000f }
             long r0 = java.lang.Long.parseLong(r0)     // Catch:{ NumberFormatException -> 0x000f }
-            int r0 = (int) r0
-            return r0
+            int r1 = (int) r0
+            return r1
         L_0x000f:
             java.math.BigDecimal r0 = new java.math.BigDecimal
             java.lang.String r1 = r2.value

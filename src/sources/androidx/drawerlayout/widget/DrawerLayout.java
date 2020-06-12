@@ -34,7 +34,7 @@ import java.util.List;
 
 public class DrawerLayout extends ViewGroup {
     private static final boolean ALLOW_EDGE_LOCK = false;
-    static final boolean CAN_HIDE_DESCENDANTS = (Build.VERSION.SDK_INT >= 19);
+    static final boolean CAN_HIDE_DESCENDANTS = (Build.VERSION.SDK_INT >= 19 ? CHILDREN_DISALLOW_INTERCEPT : false);
     private static final boolean CHILDREN_DISALLOW_INTERCEPT = true;
     private static final int DEFAULT_SCRIM_COLOR = -1728053248;
     private static final int DRAWER_ELEVATION = 10;
@@ -668,9 +668,9 @@ public class DrawerLayout extends ViewGroup {
                         }
                     }
                     int drawerViewAbsoluteGravity = getDrawerViewAbsoluteGravity(childAt) & 7;
-                    int i5 = drawerViewAbsoluteGravity == 3 ? 1 : i3;
-                    if ((i5 == 0 || !z2) && (i5 != 0 || !z3)) {
-                        if (i5 != 0) {
+                    boolean z4 = drawerViewAbsoluteGravity == 3 ? CHILDREN_DISALLOW_INTERCEPT : false;
+                    if ((!z4 || !z2) && (z4 || !z3)) {
+                        if (z4) {
                             z2 = CHILDREN_DISALLOW_INTERCEPT;
                         } else {
                             z3 = CHILDREN_DISALLOW_INTERCEPT;
@@ -685,8 +685,8 @@ public class DrawerLayout extends ViewGroup {
                     throw new IllegalStateException("Child " + childAt + " at index " + i4 + " does not have a valid layout_gravity - must be Gravity.LEFT, " + "Gravity.RIGHT or Gravity.NO_GRAVITY");
                 }
             }
-            int i6 = i;
-            int i7 = i2;
+            int i5 = i;
+            int i6 = i2;
             i4++;
             i3 = 0;
         }
@@ -747,12 +747,10 @@ public class DrawerLayout extends ViewGroup {
     public void onLayout(boolean z, int i, int i2, int i3, int i4) {
         float f;
         int i5;
-        boolean z2 = CHILDREN_DISALLOW_INTERCEPT;
         this.mInLayout = CHILDREN_DISALLOW_INTERCEPT;
         int i6 = i3 - i;
         int childCount = getChildCount();
-        int i7 = 0;
-        while (i7 < childCount) {
+        for (int i7 = 0; i7 < childCount; i7++) {
             View childAt = getChildAt(i7);
             if (childAt.getVisibility() != 8) {
                 LayoutParams layoutParams = (LayoutParams) childAt.getLayoutParams();
@@ -771,7 +769,7 @@ public class DrawerLayout extends ViewGroup {
                         f = ((float) (i6 - i8)) / f3;
                         i5 = i8;
                     }
-                    boolean z3 = f != layoutParams.onScreen ? z2 : false;
+                    boolean z2 = f != layoutParams.onScreen ? CHILDREN_DISALLOW_INTERCEPT : false;
                     int i9 = layoutParams.gravity & 112;
                     if (i9 == 16) {
                         int i10 = i4 - i2;
@@ -788,7 +786,7 @@ public class DrawerLayout extends ViewGroup {
                         int i12 = i4 - i2;
                         childAt.layout(i5, (i12 - layoutParams.bottomMargin) - childAt.getMeasuredHeight(), measuredWidth + i5, i12 - layoutParams.bottomMargin);
                     }
-                    if (z3) {
+                    if (z2) {
                         setDrawerViewOffset(childAt, f);
                     }
                     int i13 = layoutParams.onScreen > 0.0f ? 0 : 4;
@@ -797,8 +795,6 @@ public class DrawerLayout extends ViewGroup {
                     }
                 }
             }
-            i7++;
-            z2 = CHILDREN_DISALLOW_INTERCEPT;
         }
         this.mInLayout = false;
         this.mFirstLayout = false;
@@ -877,7 +873,7 @@ public class DrawerLayout extends ViewGroup {
             int r0 = r0.getSystemWindowInsetTop()
             goto L_0x001e
         L_0x001d:
-            r0 = r2
+            r0 = 0
         L_0x001e:
             if (r0 <= 0) goto L_0x002e
             android.graphics.drawable.Drawable r1 = r4.mStatusBarBackground
@@ -1003,7 +999,7 @@ public class DrawerLayout extends ViewGroup {
             r6.mDisallowInterceptRequested = r3
             r6.mChildrenCanceledTouch = r3
         L_0x0038:
-            r7 = r3
+            r7 = 0
             goto L_0x0064
         L_0x003a:
             float r0 = r7.getX()
@@ -1021,10 +1017,10 @@ public class DrawerLayout extends ViewGroup {
             if (r7 == 0) goto L_0x005f
             boolean r7 = r6.isContentView(r7)
             if (r7 == 0) goto L_0x005f
-            r7 = r2
+            r7 = 1
             goto L_0x0060
         L_0x005f:
-            r7 = r3
+            r7 = 0
         L_0x0060:
             r6.mDisallowInterceptRequested = r3
             r6.mChildrenCanceledTouch = r3
@@ -1037,7 +1033,7 @@ public class DrawerLayout extends ViewGroup {
             if (r7 == 0) goto L_0x0073
             goto L_0x0074
         L_0x0073:
-            r2 = r3
+            r2 = 0
         L_0x0074:
             return r2
         */
@@ -1090,7 +1086,7 @@ public class DrawerLayout extends ViewGroup {
                     this.mDisallowInterceptRequested = false;
                 }
             }
-            z = true;
+            z = CHILDREN_DISALLOW_INTERCEPT;
             closeDrawers(z);
             this.mDisallowInterceptRequested = false;
         } else if (action == 3) {
@@ -1412,7 +1408,7 @@ public class DrawerLayout extends ViewGroup {
             LayoutParams layoutParams = (LayoutParams) getChildAt(i).getLayoutParams();
             int i2 = layoutParams.openState;
             boolean z = CHILDREN_DISALLOW_INTERCEPT;
-            boolean z2 = i2 == 1;
+            boolean z2 = i2 == 1 ? CHILDREN_DISALLOW_INTERCEPT : false;
             if (layoutParams.openState != 2) {
                 z = false;
             }
@@ -1585,7 +1581,7 @@ public class DrawerLayout extends ViewGroup {
             int i;
             int edgeSize = this.mDragger.getEdgeSize();
             int i2 = 0;
-            boolean z = this.mAbsGravity == 3;
+            boolean z = this.mAbsGravity == 3 ? DrawerLayout.CHILDREN_DISALLOW_INTERCEPT : false;
             if (z) {
                 view = DrawerLayout.this.findDrawerWithGravity(3);
                 if (view != null) {

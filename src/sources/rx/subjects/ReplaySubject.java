@@ -325,7 +325,6 @@ public final class ReplaySubject<T> extends Subject<T, T> {
 
         public void drain(ReplayProducer<T> replayProducer) {
             int i;
-            boolean z;
             ReplayProducer<T> replayProducer2 = replayProducer;
             if (replayProducer.getAndIncrement() == 0) {
                 Subscriber<? super T> subscriber = replayProducer2.actual;
@@ -342,16 +341,15 @@ public final class ReplaySubject<T> extends Subject<T, T> {
                     long j2 = 0;
                     while (true) {
                         i = (j2 > j ? 1 : (j2 == j ? 0 : -1));
-                        z = false;
                         if (i == 0) {
                             break;
                         } else if (subscriber.isUnsubscribed()) {
                             replayProducer2.node = null;
                             return;
                         } else {
-                            boolean z2 = this.done;
-                            boolean z3 = i5 == this.size;
-                            if (z2 && z3) {
+                            boolean z = this.done;
+                            boolean z2 = i5 == this.size;
+                            if (z && z2) {
                                 replayProducer2.node = null;
                                 Throwable th = this.error;
                                 if (th != null) {
@@ -361,7 +359,7 @@ public final class ReplaySubject<T> extends Subject<T, T> {
                                     subscriber.onCompleted();
                                     return;
                                 }
-                            } else if (z3) {
+                            } else if (z2) {
                                 break;
                             } else {
                                 if (i4 == i2) {
@@ -380,11 +378,9 @@ public final class ReplaySubject<T> extends Subject<T, T> {
                             replayProducer2.node = null;
                             return;
                         }
-                        boolean z4 = this.done;
-                        if (i5 == this.size) {
-                            z = true;
-                        }
-                        if (z4 && z) {
+                        boolean z3 = this.done;
+                        boolean z4 = i5 == this.size;
+                        if (z3 && z4) {
                             replayProducer2.node = null;
                             Throwable th2 = this.error;
                             if (th2 != null) {
@@ -524,13 +520,13 @@ public final class ReplaySubject<T> extends Subject<T, T> {
             L_0x001e:
                 r10 = r8
             L_0x001f:
-                int r12 = (r10 > r5 ? 1 : (r10 == r5 ? 0 : -1))
+                r12 = 0
                 r13 = 0
-                r14 = 0
-                if (r12 == 0) goto L_0x005e
+                int r14 = (r10 > r5 ? 1 : (r10 == r5 ? 0 : -1))
+                if (r14 == 0) goto L_0x005e
                 boolean r15 = r2.isUnsubscribed()
                 if (r15 == 0) goto L_0x002e
-                r1.node = r14
+                r1.node = r13
                 return
             L_0x002e:
                 boolean r15 = r0.done
@@ -541,11 +537,11 @@ public final class ReplaySubject<T> extends Subject<T, T> {
                 r16 = 1
                 goto L_0x003f
             L_0x003d:
-                r16 = r13
+                r16 = 0
             L_0x003f:
                 if (r15 == 0) goto L_0x0051
                 if (r16 == 0) goto L_0x0051
-                r1.node = r14
+                r1.node = r13
                 java.lang.Throwable r1 = r0.error
                 if (r1 == 0) goto L_0x004d
                 r2.onError(r1)
@@ -565,20 +561,20 @@ public final class ReplaySubject<T> extends Subject<T, T> {
                 r7 = r3
                 goto L_0x001f
             L_0x005e:
-                if (r12 != 0) goto L_0x0084
+                if (r14 != 0) goto L_0x0084
                 boolean r3 = r2.isUnsubscribed()
                 if (r3 == 0) goto L_0x0069
-                r1.node = r14
+                r1.node = r13
                 return
             L_0x0069:
                 boolean r3 = r0.done
-                java.lang.Object r12 = r7.get()
-                if (r12 != 0) goto L_0x0072
-                r13 = 1
+                java.lang.Object r14 = r7.get()
+                if (r14 != 0) goto L_0x0072
+                r12 = 1
             L_0x0072:
                 if (r3 == 0) goto L_0x0084
-                if (r13 == 0) goto L_0x0084
-                r1.node = r14
+                if (r12 == 0) goto L_0x0084
+                r1.node = r13
                 java.lang.Throwable r1 = r0.error
                 if (r1 == 0) goto L_0x0080
                 r2.onError(r1)
@@ -722,27 +718,27 @@ public final class ReplaySubject<T> extends Subject<T, T> {
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public void evictFinal() {
             /*
-                r7 = this;
-                rx.Scheduler r0 = r7.scheduler
+                r8 = this;
+                rx.Scheduler r0 = r8.scheduler
                 long r0 = r0.now()
-                long r2 = r7.maxAgeMillis
+                long r2 = r8.maxAgeMillis
                 long r0 = r0 - r2
-                rx.subjects.ReplaySubject$ReplaySizeAndTimeBoundBuffer$TimedNode<T> r2 = r7.head
+                rx.subjects.ReplaySubject$ReplaySizeAndTimeBoundBuffer$TimedNode<T> r2 = r8.head
                 r3 = r2
             L_0x000c:
                 java.lang.Object r4 = r3.get()
                 rx.subjects.ReplaySubject$ReplaySizeAndTimeBoundBuffer$TimedNode r4 = (rx.subjects.ReplaySubject.ReplaySizeAndTimeBoundBuffer.TimedNode) r4
                 if (r4 == 0) goto L_0x001d
                 long r5 = r4.timestamp
-                int r5 = (r5 > r0 ? 1 : (r5 == r0 ? 0 : -1))
-                if (r5 <= 0) goto L_0x001b
+                int r7 = (r5 > r0 ? 1 : (r5 == r0 ? 0 : -1))
+                if (r7 <= 0) goto L_0x001b
                 goto L_0x001d
             L_0x001b:
                 r3 = r4
                 goto L_0x000c
             L_0x001d:
                 if (r2 == r3) goto L_0x0021
-                r7.head = r3
+                r8.head = r3
             L_0x0021:
                 return
             */
@@ -789,13 +785,13 @@ public final class ReplaySubject<T> extends Subject<T, T> {
             L_0x0020:
                 r10 = r8
             L_0x0021:
-                int r12 = (r10 > r5 ? 1 : (r10 == r5 ? 0 : -1))
+                r12 = 0
                 r13 = 0
-                r14 = 0
-                if (r12 == 0) goto L_0x0060
+                int r14 = (r10 > r5 ? 1 : (r10 == r5 ? 0 : -1))
+                if (r14 == 0) goto L_0x0060
                 boolean r15 = r2.isUnsubscribed()
                 if (r15 == 0) goto L_0x0030
-                r1.node = r14
+                r1.node = r13
                 return
             L_0x0030:
                 boolean r15 = r0.done
@@ -806,11 +802,11 @@ public final class ReplaySubject<T> extends Subject<T, T> {
                 r16 = 1
                 goto L_0x0041
             L_0x003f:
-                r16 = r13
+                r16 = 0
             L_0x0041:
                 if (r15 == 0) goto L_0x0053
                 if (r16 == 0) goto L_0x0053
-                r1.node = r14
+                r1.node = r13
                 java.lang.Throwable r1 = r0.error
                 if (r1 == 0) goto L_0x004f
                 r2.onError(r1)
@@ -830,20 +826,20 @@ public final class ReplaySubject<T> extends Subject<T, T> {
                 r7 = r3
                 goto L_0x0021
             L_0x0060:
-                if (r12 != 0) goto L_0x0086
+                if (r14 != 0) goto L_0x0086
                 boolean r3 = r2.isUnsubscribed()
                 if (r3 == 0) goto L_0x006b
-                r1.node = r14
+                r1.node = r13
                 return
             L_0x006b:
                 boolean r3 = r0.done
-                java.lang.Object r12 = r7.get()
-                if (r12 != 0) goto L_0x0074
-                r13 = 1
+                java.lang.Object r14 = r7.get()
+                if (r14 != 0) goto L_0x0074
+                r12 = 1
             L_0x0074:
                 if (r3 == 0) goto L_0x0086
-                if (r13 == 0) goto L_0x0086
-                r1.node = r14
+                if (r12 == 0) goto L_0x0086
+                r1.node = r13
                 java.lang.Throwable r1 = r0.error
                 if (r1 == 0) goto L_0x0082
                 r2.onError(r1)

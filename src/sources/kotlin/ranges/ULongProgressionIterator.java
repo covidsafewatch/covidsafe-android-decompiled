@@ -16,8 +16,8 @@ final class ULongProgressionIterator extends ULongIterator {
 
     private ULongProgressionIterator(long j, long j2, long j3) {
         this.finalElement = j2;
-        int i = (j3 > 0 ? 1 : (j3 == 0 ? 0 : -1));
         boolean z = true;
+        int i = (j3 > 0 ? 1 : (j3 == 0 ? 0 : -1));
         int ulongCompare = UnsignedKt.ulongCompare(j, j2);
         if (i <= 0 ? ulongCompare < 0 : ulongCompare > 0) {
             z = false;

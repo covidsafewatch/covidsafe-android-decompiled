@@ -38,8 +38,10 @@ final class ChannelsKt__Channels_commonKt$filterIndexed$1 extends SuspendLambda 
         return ((ChannelsKt__Channels_commonKt$filterIndexed$1) create(obj, (Continuation) obj2)).invokeSuspend(Unit.INSTANCE);
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:17:0x0080  */
-    /* JADX WARNING: Removed duplicated region for block: B:23:0x00a8  */
+    /* JADX WARNING: Removed duplicated region for block: B:14:0x006e A[RETURN] */
+    /* JADX WARNING: Removed duplicated region for block: B:15:0x006f  */
+    /* JADX WARNING: Removed duplicated region for block: B:18:0x007e  */
+    /* JADX WARNING: Removed duplicated region for block: B:24:0x00a6  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public final java.lang.Object invokeSuspend(java.lang.Object r12) {
         /*
@@ -49,24 +51,23 @@ final class ChannelsKt__Channels_commonKt$filterIndexed$1 extends SuspendLambda 
             r2 = 3
             r3 = 2
             r4 = 1
-            if (r1 == 0) goto L_0x0051
-            if (r1 == r4) goto L_0x003e
-            if (r1 == r3) goto L_0x0028
-            if (r1 != r2) goto L_0x0020
+            if (r1 == 0) goto L_0x0050
+            if (r1 == r4) goto L_0x003d
+            if (r1 == r3) goto L_0x0027
+            if (r1 != r2) goto L_0x001f
             java.lang.Object r1 = r11.L$2
             kotlinx.coroutines.channels.ChannelIterator r1 = (kotlinx.coroutines.channels.ChannelIterator) r1
             int r5 = r11.I$0
             java.lang.Object r6 = r11.L$0
             kotlinx.coroutines.channels.ProducerScope r6 = (kotlinx.coroutines.channels.ProducerScope) r6
             kotlin.ResultKt.throwOnFailure(r12)
-            r12 = r11
-            goto L_0x0062
-        L_0x0020:
+            goto L_0x005f
+        L_0x001f:
             java.lang.IllegalStateException r12 = new java.lang.IllegalStateException
             java.lang.String r0 = "call to 'resume' before 'invoke' with coroutine"
             r12.<init>(r0)
             throw r12
-        L_0x0028:
+        L_0x0027:
             java.lang.Object r1 = r11.L$2
             kotlinx.coroutines.channels.ChannelIterator r1 = (kotlinx.coroutines.channels.ChannelIterator) r1
             java.lang.Object r5 = r11.L$1
@@ -79,8 +80,8 @@ final class ChannelsKt__Channels_commonKt$filterIndexed$1 extends SuspendLambda 
             r5 = r1
             r1 = r0
             r0 = r11
-            goto L_0x00a0
-        L_0x003e:
+            goto L_0x009e
+        L_0x003d:
             java.lang.Object r1 = r11.L$1
             kotlinx.coroutines.channels.ChannelIterator r1 = (kotlinx.coroutines.channels.ChannelIterator) r1
             int r5 = r11.I$0
@@ -92,27 +93,27 @@ final class ChannelsKt__Channels_commonKt$filterIndexed$1 extends SuspendLambda 
             r5 = r1
             r1 = r0
             r0 = r11
-            goto L_0x0078
-        L_0x0051:
+            goto L_0x0076
+        L_0x0050:
             kotlin.ResultKt.throwOnFailure(r12)
             kotlinx.coroutines.channels.ProducerScope r12 = r11.p$
             r1 = 0
             kotlinx.coroutines.channels.ReceiveChannel r5 = r11.$this_filterIndexed
             kotlinx.coroutines.channels.ChannelIterator r5 = r5.iterator()
             r6 = r12
+            r1 = r5
+            r5 = 0
+        L_0x005f:
             r12 = r11
-            r10 = r5
-            r5 = r1
-            r1 = r10
-        L_0x0062:
+        L_0x0060:
             r12.L$0 = r6
             r12.I$0 = r5
             r12.L$1 = r1
             r12.label = r4
             java.lang.Object r7 = r1.hasNext(r12)
-            if (r7 != r0) goto L_0x0071
+            if (r7 != r0) goto L_0x006f
             return r0
-        L_0x0071:
+        L_0x006f:
             r10 = r0
             r0 = r12
             r12 = r7
@@ -120,10 +121,10 @@ final class ChannelsKt__Channels_commonKt$filterIndexed$1 extends SuspendLambda 
             r6 = r5
             r5 = r1
             r1 = r10
-        L_0x0078:
+        L_0x0076:
             java.lang.Boolean r12 = (java.lang.Boolean) r12
             boolean r12 = r12.booleanValue()
-            if (r12 == 0) goto L_0x00bf
+            if (r12 == 0) goto L_0x00bd
             java.lang.Object r12 = r5.next()
             kotlin.jvm.functions.Function3 r8 = r0.$predicate
             java.lang.Integer r9 = kotlin.coroutines.jvm.internal.Boxing.boxInt(r6)
@@ -134,33 +135,33 @@ final class ChannelsKt__Channels_commonKt$filterIndexed$1 extends SuspendLambda 
             r0.L$2 = r5
             r0.label = r3
             java.lang.Object r8 = r8.invoke(r9, r12, r0)
-            if (r8 != r1) goto L_0x009c
+            if (r8 != r1) goto L_0x009a
             return r1
-        L_0x009c:
+        L_0x009a:
             r10 = r7
             r7 = r12
             r12 = r8
             r8 = r10
-        L_0x00a0:
+        L_0x009e:
             java.lang.Boolean r12 = (java.lang.Boolean) r12
             boolean r12 = r12.booleanValue()
-            if (r12 == 0) goto L_0x00b9
+            if (r12 == 0) goto L_0x00b7
             r0.L$0 = r8
             r0.I$0 = r6
             r0.L$1 = r7
             r0.L$2 = r5
             r0.label = r2
             java.lang.Object r12 = r8.send(r7, r0)
-            if (r12 != r1) goto L_0x00b9
+            if (r12 != r1) goto L_0x00b7
             return r1
-        L_0x00b9:
+        L_0x00b7:
             r12 = r0
             r0 = r1
             r1 = r5
             r5 = r6
             r6 = r8
-            goto L_0x0062
-        L_0x00bf:
+            goto L_0x0060
+        L_0x00bd:
             kotlin.Unit r12 = kotlin.Unit.INSTANCE
             return r12
         */

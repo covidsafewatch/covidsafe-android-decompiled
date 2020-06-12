@@ -88,15 +88,15 @@ public class MpmcArrayQueue<E> extends MpmcArrayQueueConsumerField<E> {
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public E peek() {
         /*
-            r5 = this;
+            r6 = this;
         L_0x0000:
-            long r0 = r5.lvConsumerIndex()
-            long r2 = r5.calcElementOffset(r0)
-            java.lang.Object r2 = r5.lpElement(r2)
+            long r0 = r6.lvConsumerIndex()
+            long r2 = r6.calcElementOffset(r0)
+            java.lang.Object r2 = r6.lpElement(r2)
             if (r2 != 0) goto L_0x0016
-            long r3 = r5.lvProducerIndex()
-            int r0 = (r0 > r3 ? 1 : (r0 == r3 ? 0 : -1))
-            if (r0 != 0) goto L_0x0000
+            long r3 = r6.lvProducerIndex()
+            int r5 = (r0 > r3 ? 1 : (r0 == r3 ? 0 : -1))
+            if (r5 != 0) goto L_0x0000
         L_0x0016:
             return r2
         */

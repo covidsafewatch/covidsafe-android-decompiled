@@ -210,7 +210,7 @@ public final class DiskLruCache implements Closeable, Flushable {
             if (r6 <= 0) goto L_0x0062
             goto L_0x0063
         L_0x0062:
-            r10 = r9
+            r10 = 0
         L_0x0063:
             if (r10 != 0) goto L_0x008e
         L_0x0065:
@@ -537,90 +537,90 @@ public final class DiskLruCache implements Closeable, Flushable {
         return null;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public final synchronized okhttp3.internal.cache.DiskLruCache.Editor edit(java.lang.String r10, long r11) throws java.io.IOException {
+    public final synchronized okhttp3.internal.cache.DiskLruCache.Editor edit(java.lang.String r11, long r12) throws java.io.IOException {
         /*
-            r9 = this;
-            monitor-enter(r9)
+            r10 = this;
+            monitor-enter(r10)
             java.lang.String r0 = "key"
-            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r10, r0)     // Catch:{ all -> 0x008c }
-            r9.initialize()     // Catch:{ all -> 0x008c }
-            r9.checkNotClosed()     // Catch:{ all -> 0x008c }
-            r9.validateKey(r10)     // Catch:{ all -> 0x008c }
-            java.util.LinkedHashMap<java.lang.String, okhttp3.internal.cache.DiskLruCache$Entry> r0 = r9.lruEntries     // Catch:{ all -> 0x008c }
-            java.lang.Object r0 = r0.get(r10)     // Catch:{ all -> 0x008c }
+            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r11, r0)     // Catch:{ all -> 0x008c }
+            r10.initialize()     // Catch:{ all -> 0x008c }
+            r10.checkNotClosed()     // Catch:{ all -> 0x008c }
+            r10.validateKey(r11)     // Catch:{ all -> 0x008c }
+            java.util.LinkedHashMap<java.lang.String, okhttp3.internal.cache.DiskLruCache$Entry> r0 = r10.lruEntries     // Catch:{ all -> 0x008c }
+            java.lang.Object r0 = r0.get(r11)     // Catch:{ all -> 0x008c }
             okhttp3.internal.cache.DiskLruCache$Entry r0 = (okhttp3.internal.cache.DiskLruCache.Entry) r0     // Catch:{ all -> 0x008c }
             long r1 = ANY_SEQUENCE_NUMBER     // Catch:{ all -> 0x008c }
-            int r1 = (r11 > r1 ? 1 : (r11 == r1 ? 0 : -1))
-            r2 = 0
-            if (r1 == 0) goto L_0x002a
+            r3 = 0
+            int r4 = (r12 > r1 ? 1 : (r12 == r1 ? 0 : -1))
+            if (r4 == 0) goto L_0x002a
             if (r0 == 0) goto L_0x0028
-            long r3 = r0.getSequenceNumber$okhttp()     // Catch:{ all -> 0x008c }
-            int r11 = (r3 > r11 ? 1 : (r3 == r11 ? 0 : -1))
-            if (r11 == 0) goto L_0x002a
+            long r1 = r0.getSequenceNumber$okhttp()     // Catch:{ all -> 0x008c }
+            int r4 = (r1 > r12 ? 1 : (r1 == r12 ? 0 : -1))
+            if (r4 == 0) goto L_0x002a
         L_0x0028:
-            monitor-exit(r9)
-            return r2
+            monitor-exit(r10)
+            return r3
         L_0x002a:
             if (r0 == 0) goto L_0x0031
-            okhttp3.internal.cache.DiskLruCache$Editor r11 = r0.getCurrentEditor$okhttp()     // Catch:{ all -> 0x008c }
+            okhttp3.internal.cache.DiskLruCache$Editor r12 = r0.getCurrentEditor$okhttp()     // Catch:{ all -> 0x008c }
             goto L_0x0032
         L_0x0031:
-            r11 = r2
+            r12 = r3
         L_0x0032:
-            if (r11 == 0) goto L_0x0036
-            monitor-exit(r9)
-            return r2
+            if (r12 == 0) goto L_0x0036
+            monitor-exit(r10)
+            return r3
         L_0x0036:
-            boolean r11 = r9.mostRecentTrimFailed     // Catch:{ all -> 0x008c }
-            if (r11 != 0) goto L_0x007c
-            boolean r11 = r9.mostRecentRebuildFailed     // Catch:{ all -> 0x008c }
-            if (r11 == 0) goto L_0x003f
+            boolean r12 = r10.mostRecentTrimFailed     // Catch:{ all -> 0x008c }
+            if (r12 != 0) goto L_0x007c
+            boolean r12 = r10.mostRecentRebuildFailed     // Catch:{ all -> 0x008c }
+            if (r12 == 0) goto L_0x003f
             goto L_0x007c
         L_0x003f:
-            okio.BufferedSink r11 = r9.journalWriter     // Catch:{ all -> 0x008c }
-            if (r11 != 0) goto L_0x0046
+            okio.BufferedSink r12 = r10.journalWriter     // Catch:{ all -> 0x008c }
+            if (r12 != 0) goto L_0x0046
             kotlin.jvm.internal.Intrinsics.throwNpe()     // Catch:{ all -> 0x008c }
         L_0x0046:
-            java.lang.String r12 = DIRTY     // Catch:{ all -> 0x008c }
-            okio.BufferedSink r12 = r11.writeUtf8(r12)     // Catch:{ all -> 0x008c }
+            java.lang.String r13 = DIRTY     // Catch:{ all -> 0x008c }
+            okio.BufferedSink r13 = r12.writeUtf8(r13)     // Catch:{ all -> 0x008c }
             r1 = 32
-            okio.BufferedSink r12 = r12.writeByte(r1)     // Catch:{ all -> 0x008c }
-            okio.BufferedSink r12 = r12.writeUtf8(r10)     // Catch:{ all -> 0x008c }
+            okio.BufferedSink r13 = r13.writeByte(r1)     // Catch:{ all -> 0x008c }
+            okio.BufferedSink r13 = r13.writeUtf8(r11)     // Catch:{ all -> 0x008c }
             r1 = 10
-            r12.writeByte(r1)     // Catch:{ all -> 0x008c }
-            r11.flush()     // Catch:{ all -> 0x008c }
-            boolean r11 = r9.hasJournalErrors     // Catch:{ all -> 0x008c }
-            if (r11 == 0) goto L_0x0064
-            monitor-exit(r9)
-            return r2
+            r13.writeByte(r1)     // Catch:{ all -> 0x008c }
+            r12.flush()     // Catch:{ all -> 0x008c }
+            boolean r12 = r10.hasJournalErrors     // Catch:{ all -> 0x008c }
+            if (r12 == 0) goto L_0x0064
+            monitor-exit(r10)
+            return r3
         L_0x0064:
             if (r0 != 0) goto L_0x0072
             okhttp3.internal.cache.DiskLruCache$Entry r0 = new okhttp3.internal.cache.DiskLruCache$Entry     // Catch:{ all -> 0x008c }
-            r0.<init>(r9, r10)     // Catch:{ all -> 0x008c }
-            java.util.LinkedHashMap<java.lang.String, okhttp3.internal.cache.DiskLruCache$Entry> r11 = r9.lruEntries     // Catch:{ all -> 0x008c }
-            java.util.Map r11 = (java.util.Map) r11     // Catch:{ all -> 0x008c }
-            r11.put(r10, r0)     // Catch:{ all -> 0x008c }
+            r0.<init>(r10, r11)     // Catch:{ all -> 0x008c }
+            java.util.LinkedHashMap<java.lang.String, okhttp3.internal.cache.DiskLruCache$Entry> r12 = r10.lruEntries     // Catch:{ all -> 0x008c }
+            java.util.Map r12 = (java.util.Map) r12     // Catch:{ all -> 0x008c }
+            r12.put(r11, r0)     // Catch:{ all -> 0x008c }
         L_0x0072:
-            okhttp3.internal.cache.DiskLruCache$Editor r10 = new okhttp3.internal.cache.DiskLruCache$Editor     // Catch:{ all -> 0x008c }
-            r10.<init>(r9, r0)     // Catch:{ all -> 0x008c }
-            r0.setCurrentEditor$okhttp(r10)     // Catch:{ all -> 0x008c }
-            monitor-exit(r9)
-            return r10
+            okhttp3.internal.cache.DiskLruCache$Editor r11 = new okhttp3.internal.cache.DiskLruCache$Editor     // Catch:{ all -> 0x008c }
+            r11.<init>(r10, r0)     // Catch:{ all -> 0x008c }
+            r0.setCurrentEditor$okhttp(r11)     // Catch:{ all -> 0x008c }
+            monitor-exit(r10)
+            return r11
         L_0x007c:
-            okhttp3.internal.concurrent.TaskQueue r3 = r9.cleanupQueue     // Catch:{ all -> 0x008c }
-            okhttp3.internal.cache.DiskLruCache$cleanupTask$1 r10 = r9.cleanupTask     // Catch:{ all -> 0x008c }
-            r4 = r10
-            okhttp3.internal.concurrent.Task r4 = (okhttp3.internal.concurrent.Task) r4     // Catch:{ all -> 0x008c }
-            r5 = 0
-            r7 = 2
-            r8 = 0
-            okhttp3.internal.concurrent.TaskQueue.schedule$default(r3, r4, r5, r7, r8)     // Catch:{ all -> 0x008c }
-            monitor-exit(r9)
-            return r2
+            okhttp3.internal.concurrent.TaskQueue r4 = r10.cleanupQueue     // Catch:{ all -> 0x008c }
+            okhttp3.internal.cache.DiskLruCache$cleanupTask$1 r11 = r10.cleanupTask     // Catch:{ all -> 0x008c }
+            r5 = r11
+            okhttp3.internal.concurrent.Task r5 = (okhttp3.internal.concurrent.Task) r5     // Catch:{ all -> 0x008c }
+            r6 = 0
+            r8 = 2
+            r9 = 0
+            okhttp3.internal.concurrent.TaskQueue.schedule$default(r4, r5, r6, r8, r9)     // Catch:{ all -> 0x008c }
+            monitor-exit(r10)
+            return r3
         L_0x008c:
-            r10 = move-exception
-            monitor-exit(r9)
-            throw r10
+            r11 = move-exception
+            monitor-exit(r10)
+            throw r11
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.cache.DiskLruCache.edit(java.lang.String, long):okhttp3.internal.cache.DiskLruCache$Editor");
     }
@@ -649,7 +649,7 @@ public final class DiskLruCache implements Closeable, Flushable {
             boolean r2 = r0.getReadable$okhttp()     // Catch:{ all -> 0x013e }
             if (r2 != 0) goto L_0x0065
             int r2 = r8.valueCount     // Catch:{ all -> 0x013e }
-            r3 = r1
+            r3 = 0
         L_0x0020:
             if (r3 >= r2) goto L_0x0065
             boolean[] r4 = r9.getWritten$okhttp()     // Catch:{ all -> 0x013e }
@@ -763,8 +763,8 @@ public final class DiskLruCache implements Closeable, Flushable {
             r9.flush()     // Catch:{ all -> 0x013e }
             long r9 = r8.size     // Catch:{ all -> 0x013e }
             long r0 = r8.maxSize     // Catch:{ all -> 0x013e }
-            int r9 = (r9 > r0 ? 1 : (r9 == r0 ? 0 : -1))
-            if (r9 > 0) goto L_0x0120
+            int r2 = (r9 > r0 ? 1 : (r9 == r0 ? 0 : -1))
+            if (r2 > 0) goto L_0x0120
             boolean r9 = r8.journalRebuildRequired()     // Catch:{ all -> 0x013e }
             if (r9 == 0) goto L_0x012e
         L_0x0120:
@@ -801,42 +801,42 @@ public final class DiskLruCache implements Closeable, Flushable {
     }
 
     /* JADX WARNING: Code restructure failed: missing block: B:11:0x0030, code lost:
-        return r6;
+        return r7;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public final synchronized boolean remove(java.lang.String r6) throws java.io.IOException {
+    public final synchronized boolean remove(java.lang.String r7) throws java.io.IOException {
         /*
-            r5 = this;
-            monitor-enter(r5)
+            r6 = this;
+            monitor-enter(r6)
             java.lang.String r0 = "key"
-            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r6, r0)     // Catch:{ all -> 0x0033 }
-            r5.initialize()     // Catch:{ all -> 0x0033 }
-            r5.checkNotClosed()     // Catch:{ all -> 0x0033 }
-            r5.validateKey(r6)     // Catch:{ all -> 0x0033 }
-            java.util.LinkedHashMap<java.lang.String, okhttp3.internal.cache.DiskLruCache$Entry> r0 = r5.lruEntries     // Catch:{ all -> 0x0033 }
-            java.lang.Object r6 = r0.get(r6)     // Catch:{ all -> 0x0033 }
-            okhttp3.internal.cache.DiskLruCache$Entry r6 = (okhttp3.internal.cache.DiskLruCache.Entry) r6     // Catch:{ all -> 0x0033 }
+            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r7, r0)     // Catch:{ all -> 0x0033 }
+            r6.initialize()     // Catch:{ all -> 0x0033 }
+            r6.checkNotClosed()     // Catch:{ all -> 0x0033 }
+            r6.validateKey(r7)     // Catch:{ all -> 0x0033 }
+            java.util.LinkedHashMap<java.lang.String, okhttp3.internal.cache.DiskLruCache$Entry> r0 = r6.lruEntries     // Catch:{ all -> 0x0033 }
+            java.lang.Object r7 = r0.get(r7)     // Catch:{ all -> 0x0033 }
+            okhttp3.internal.cache.DiskLruCache$Entry r7 = (okhttp3.internal.cache.DiskLruCache.Entry) r7     // Catch:{ all -> 0x0033 }
             r0 = 0
-            if (r6 == 0) goto L_0x0031
+            if (r7 == 0) goto L_0x0031
             java.lang.String r1 = "lruEntries[key] ?: return false"
-            kotlin.jvm.internal.Intrinsics.checkExpressionValueIsNotNull(r6, r1)     // Catch:{ all -> 0x0033 }
-            boolean r6 = r5.removeEntry$okhttp(r6)     // Catch:{ all -> 0x0033 }
-            if (r6 == 0) goto L_0x002f
-            long r1 = r5.size     // Catch:{ all -> 0x0033 }
-            long r3 = r5.maxSize     // Catch:{ all -> 0x0033 }
-            int r1 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
-            if (r1 > 0) goto L_0x002f
-            r5.mostRecentTrimFailed = r0     // Catch:{ all -> 0x0033 }
+            kotlin.jvm.internal.Intrinsics.checkExpressionValueIsNotNull(r7, r1)     // Catch:{ all -> 0x0033 }
+            boolean r7 = r6.removeEntry$okhttp(r7)     // Catch:{ all -> 0x0033 }
+            if (r7 == 0) goto L_0x002f
+            long r1 = r6.size     // Catch:{ all -> 0x0033 }
+            long r3 = r6.maxSize     // Catch:{ all -> 0x0033 }
+            int r5 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
+            if (r5 > 0) goto L_0x002f
+            r6.mostRecentTrimFailed = r0     // Catch:{ all -> 0x0033 }
         L_0x002f:
-            monitor-exit(r5)
-            return r6
+            monitor-exit(r6)
+            return r7
         L_0x0031:
-            monitor-exit(r5)
+            monitor-exit(r6)
             return r0
         L_0x0033:
-            r6 = move-exception
-            monitor-exit(r5)
-            throw r6
+            r7 = move-exception
+            monitor-exit(r6)
+            throw r7
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.cache.DiskLruCache.remove(java.lang.String):boolean");
     }

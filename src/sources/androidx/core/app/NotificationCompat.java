@@ -661,7 +661,7 @@ public class NotificationCompat {
         /* JADX WARNING: Removed duplicated region for block: B:85:0x0233  */
         /* JADX WARNING: Removed duplicated region for block: B:88:0x0238  */
         /* JADX WARNING: Removed duplicated region for block: B:89:0x023a  */
-        /* JADX WARNING: Removed duplicated region for block: B:92:0x0243  */
+        /* JADX WARNING: Removed duplicated region for block: B:92:0x0244  */
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public android.widget.RemoteViews applyStandardTemplate(boolean r13, int r14, boolean r15) {
             /*
@@ -680,10 +680,10 @@ public class NotificationCompat {
                 r8 = 1
                 r9 = 0
                 if (r14 >= r1) goto L_0x0022
-                r14 = r8
+                r14 = 1
                 goto L_0x0023
             L_0x0022:
-                r14 = r9
+                r14 = 0
             L_0x0023:
                 int r2 = android.os.Build.VERSION.SDK_INT
                 r3 = 21
@@ -807,20 +807,20 @@ public class NotificationCompat {
                 androidx.core.app.NotificationCompat$Builder r14 = r12.mBuilder
                 java.lang.CharSequence r14 = r14.mContentText
                 r7.setTextViewText(r13, r14)
-                r13 = r8
+                r13 = 1
                 goto L_0x0125
             L_0x0124:
-                r13 = r9
+                r13 = 0
             L_0x0125:
                 int r14 = android.os.Build.VERSION.SDK_INT
                 if (r14 >= r3) goto L_0x0131
                 androidx.core.app.NotificationCompat$Builder r14 = r12.mBuilder
                 android.graphics.Bitmap r14 = r14.mLargeIcon
                 if (r14 == 0) goto L_0x0131
-                r14 = r8
+                r14 = 1
                 goto L_0x0132
             L_0x0131:
-                r14 = r9
+                r14 = 0
             L_0x0132:
                 androidx.core.app.NotificationCompat$Builder r1 = r12.mBuilder
                 java.lang.CharSequence r1 = r1.mContentInfo
@@ -832,8 +832,8 @@ public class NotificationCompat {
                 int r13 = androidx.core.R.id.info
                 r7.setViewVisibility(r13, r9)
             L_0x0146:
-                r13 = r8
-                r14 = r13
+                r13 = 1
+                r14 = 1
                 goto L_0x0184
             L_0x0149:
                 androidx.core.app.NotificationCompat$Builder r1 = r12.mBuilder
@@ -883,13 +883,13 @@ public class NotificationCompat {
                 r7.setTextViewText(r1, r2)
                 int r1 = androidx.core.R.id.text2
                 r7.setViewVisibility(r1, r9)
-                r1 = r8
+                r1 = 1
                 goto L_0x01b3
             L_0x01ad:
                 int r1 = androidx.core.R.id.text2
                 r7.setViewVisibility(r1, r11)
             L_0x01b2:
-                r1 = r9
+                r1 = 0
             L_0x01b3:
                 if (r1 == 0) goto L_0x01d1
                 int r1 = android.os.Build.VERSION.SDK_INT
@@ -958,18 +958,18 @@ public class NotificationCompat {
             L_0x0234:
                 int r14 = androidx.core.R.id.right_side
                 if (r8 == 0) goto L_0x023a
-                r15 = r9
-                goto L_0x023b
+                r15 = 0
+                goto L_0x023c
             L_0x023a:
-                r15 = r11
-            L_0x023b:
+                r15 = 8
+            L_0x023c:
                 r7.setViewVisibility(r14, r15)
                 int r14 = androidx.core.R.id.line3
-                if (r13 == 0) goto L_0x0243
-                goto L_0x0244
-            L_0x0243:
-                r9 = r11
+                if (r13 == 0) goto L_0x0244
+                goto L_0x0246
             L_0x0244:
+                r9 = 8
+            L_0x0246:
                 r7.setViewVisibility(r14, r9)
                 return r7
             */
@@ -2590,23 +2590,22 @@ public class NotificationCompat {
                 return null;
             }
             Parcelable[] parcelableArray = bundle2.getParcelableArray(KEY_MESSAGES);
-            int i = 0;
             if (parcelableArray != null) {
                 int length = parcelableArray.length;
                 String[] strArr2 = new String[length];
-                int i2 = 0;
+                int i = 0;
                 while (true) {
-                    if (i2 >= length) {
+                    if (i >= length) {
                         z = true;
                         break;
-                    } else if (!(parcelableArray[i2] instanceof Bundle)) {
+                    } else if (!(parcelableArray[i] instanceof Bundle)) {
                         break;
                     } else {
-                        strArr2[i2] = ((Bundle) parcelableArray[i2]).getString(KEY_TEXT);
-                        if (strArr2[i2] == null) {
+                        strArr2[i] = ((Bundle) parcelableArray[i]).getString(KEY_TEXT);
+                        if (strArr2[i] == null) {
                             break;
                         }
-                        i2++;
+                        i++;
                     }
                 }
                 z = false;
@@ -2625,14 +2624,7 @@ public class NotificationCompat {
                 return null;
             }
             if (remoteInput2 != null) {
-                String resultKey = remoteInput2.getResultKey();
-                CharSequence label = remoteInput2.getLabel();
-                CharSequence[] choices = remoteInput2.getChoices();
-                boolean allowFreeFormInput = remoteInput2.getAllowFreeFormInput();
-                if (Build.VERSION.SDK_INT >= 29) {
-                    i = remoteInput2.getEditChoicesBeforeSending();
-                }
-                remoteInput = new RemoteInput(resultKey, label, choices, allowFreeFormInput, i, remoteInput2.getExtras(), (Set<String>) null);
+                remoteInput = new RemoteInput(remoteInput2.getResultKey(), remoteInput2.getLabel(), remoteInput2.getChoices(), remoteInput2.getAllowFreeFormInput(), Build.VERSION.SDK_INT >= 29 ? remoteInput2.getEditChoicesBeforeSending() : 0, remoteInput2.getExtras(), (Set<String>) null);
             }
             return new UnreadConversation(strArr, remoteInput, pendingIntent2, pendingIntent, stringArray, bundle2.getLong(KEY_TIMESTAMP));
         }
@@ -3049,7 +3041,6 @@ public class NotificationCompat {
         Notification.Action action2 = action;
         RemoteInput[] remoteInputs = action.getRemoteInputs();
         IconCompat iconCompat = null;
-        boolean z2 = false;
         if (remoteInputs == null) {
             remoteInputArr = null;
         } else {
@@ -3065,28 +3056,25 @@ public class NotificationCompat {
         } else {
             z = action.getExtras().getBoolean("android.support.allowGeneratedReplies");
         }
-        boolean z3 = z;
-        boolean z4 = action.getExtras().getBoolean("android.support.action.showsUserInterface", true);
+        boolean z2 = z;
+        boolean z3 = action.getExtras().getBoolean("android.support.action.showsUserInterface", true);
         if (Build.VERSION.SDK_INT >= 28) {
             i = action.getSemanticAction();
         } else {
             i = action.getExtras().getInt("android.support.action.semanticAction", 0);
         }
         int i3 = i;
-        if (Build.VERSION.SDK_INT >= 29) {
-            z2 = action.isContextual();
-        }
-        boolean z5 = z2;
+        boolean isContextual = Build.VERSION.SDK_INT >= 29 ? action.isContextual() : false;
         if (Build.VERSION.SDK_INT < 23) {
-            return new Action(action2.icon, action2.title, action2.actionIntent, action.getExtras(), remoteInputArr, (RemoteInput[]) null, z3, i3, z4, z5);
+            return new Action(action2.icon, action2.title, action2.actionIntent, action.getExtras(), remoteInputArr, (RemoteInput[]) null, z2, i3, z3, isContextual);
         }
         if (action.getIcon() == null && action2.icon != 0) {
-            return new Action(action2.icon, action2.title, action2.actionIntent, action.getExtras(), remoteInputArr, (RemoteInput[]) null, z3, i3, z4, z5);
+            return new Action(action2.icon, action2.title, action2.actionIntent, action.getExtras(), remoteInputArr, (RemoteInput[]) null, z2, i3, z3, isContextual);
         }
         if (action.getIcon() != null) {
             iconCompat = IconCompat.createFromIconOrNullIfZeroResId(action.getIcon());
         }
-        return new Action(iconCompat, action2.title, action2.actionIntent, action.getExtras(), remoteInputArr, (RemoteInput[]) null, z3, i3, z4, z5);
+        return new Action(iconCompat, action2.title, action2.actionIntent, action.getExtras(), remoteInputArr, (RemoteInput[]) null, z2, i3, z3, isContextual);
     }
 
     public static List<Action> getInvisibleActions(Notification notification) {

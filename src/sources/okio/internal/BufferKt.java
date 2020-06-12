@@ -8,6 +8,7 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.LongCompanionObject;
 import kotlin.text.Typography;
+import okhttp3.internal.connection.RealConnection;
 import okio.Buffer;
 import okio.ByteString;
 import okio.Options;
@@ -128,16 +129,16 @@ public final class BufferKt {
             int i6 = segment2.limit;
             int[] trie$okio = options.getTrie$okio();
             Segment segment3 = segment2;
-            int i7 = -1;
-            int i8 = 0;
+            int i7 = 0;
+            int i8 = -1;
             loop0:
             while (true) {
-                int i9 = i8 + 1;
-                int i10 = trie$okio[i8];
+                int i9 = i7 + 1;
+                int i10 = trie$okio[i7];
                 int i11 = i9 + 1;
                 int i12 = trie$okio[i9];
                 if (i12 != -1) {
-                    i7 = i12;
+                    i8 = i12;
                 }
                 if (segment3 == null) {
                     break;
@@ -148,7 +149,7 @@ public final class BufferKt {
                         int i14 = i5 + 1;
                         int i15 = i11 + 1;
                         if ((bArr[i5] & 255) != trie$okio[i11]) {
-                            return i7;
+                            return i8;
                         }
                         boolean z2 = i15 == i13;
                         if (i14 == i6) {
@@ -215,18 +216,18 @@ public final class BufferKt {
                             i11++;
                         }
                     }
-                    return i7;
+                    return i8;
                 }
                 if (i2 >= 0) {
                     return i2;
                 }
-                i8 = -i2;
+                i7 = -i2;
                 i5 = i;
             }
             if (z) {
                 return -2;
             }
-            return i7;
+            return i8;
         } else if (z) {
             return -2;
         } else {
@@ -398,13 +399,15 @@ public final class BufferKt {
             int i3 = i + 1;
             int i4 = i3 + 1;
             int i5 = i4 + 1;
+            long j = ((((long) bArr[i]) & 255) << 56) | ((((long) bArr[i3]) & 255) << 48) | ((((long) bArr[i4]) & 255) << 40);
             int i6 = i5 + 1;
+            long j2 = ((((long) bArr[i5]) & 255) << 32) | j;
             int i7 = i6 + 1;
             int i8 = i7 + 1;
-            long j = ((((long) bArr[i]) & 255) << 56) | ((((long) bArr[i3]) & 255) << 48) | ((((long) bArr[i4]) & 255) << 40) | ((((long) bArr[i5]) & 255) << 32) | ((((long) bArr[i6]) & 255) << 24) | ((((long) bArr[i7]) & 255) << 16);
+            long j3 = j2 | ((((long) bArr[i6]) & 255) << 24) | ((((long) bArr[i7]) & 255) << 16);
             int i9 = i8 + 1;
             int i10 = i9 + 1;
-            long j2 = j | ((((long) bArr[i8]) & 255) << 8) | (((long) bArr[i9]) & 255);
+            long j4 = j3 | ((((long) bArr[i8]) & 255) << 8) | (((long) bArr[i9]) & 255);
             buffer.setSize$okio(buffer.size() - 8);
             if (i10 == i2) {
                 buffer.head = segment.pop();
@@ -412,7 +415,7 @@ public final class BufferKt {
             } else {
                 segment.pos = i10;
             }
-            return j2;
+            return j4;
         }
         throw new EOFException();
     }
@@ -503,181 +506,48 @@ public final class BufferKt {
         return buffer;
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:67:0x00e6  */
-    /* JADX WARNING: Removed duplicated region for block: B:71:0x00f5 A[LOOP:0: B:69:0x00f1->B:71:0x00f5, LOOP_END] */
-    /* JADX WARNING: Removed duplicated region for block: B:73:0x0107  */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static final okio.Buffer commonWriteDecimalLong(okio.Buffer r12, long r13) {
-        /*
-            java.lang.String r0 = "$this$commonWriteDecimalLong"
-            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r12, r0)
-            r0 = 0
-            int r2 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
-            if (r2 != 0) goto L_0x0012
-            r13 = 48
-            okio.Buffer r12 = r12.writeByte((int) r13)
-            return r12
-        L_0x0012:
-            r3 = 0
-            r4 = 1
-            if (r2 >= 0) goto L_0x0023
-            long r13 = -r13
-            int r2 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0022
-            java.lang.String r13 = "-9223372036854775808"
-            okio.Buffer r12 = r12.writeUtf8((java.lang.String) r13)
-            return r12
-        L_0x0022:
-            r3 = r4
-        L_0x0023:
-            r5 = 100000000(0x5f5e100, double:4.94065646E-316)
-            int r2 = (r13 > r5 ? 1 : (r13 == r5 ? 0 : -1))
-            r5 = 10
-            if (r2 >= 0) goto L_0x006d
-            r6 = 10000(0x2710, double:4.9407E-320)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x004f
-            r6 = 100
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0043
-            r6 = 10
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0040
-            goto L_0x00e4
-        L_0x0040:
-            r4 = 2
-            goto L_0x00e4
-        L_0x0043:
-            r6 = 1000(0x3e8, double:4.94E-321)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x004b
-            r2 = 3
-            goto L_0x004c
-        L_0x004b:
-            r2 = 4
-        L_0x004c:
-            r4 = r2
-            goto L_0x00e4
-        L_0x004f:
-            r6 = 1000000(0xf4240, double:4.940656E-318)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0061
-            r6 = 100000(0x186a0, double:4.94066E-319)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x005f
-            r2 = 5
-            goto L_0x004c
-        L_0x005f:
-            r2 = 6
-            goto L_0x004c
-        L_0x0061:
-            r6 = 10000000(0x989680, double:4.9406565E-317)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x006a
-            r2 = 7
-            goto L_0x004c
-        L_0x006a:
-            r2 = 8
-            goto L_0x004c
-        L_0x006d:
-            r6 = 1000000000000(0xe8d4a51000, double:4.94065645841E-312)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x009a
-            r6 = 10000000000(0x2540be400, double:4.9406564584E-314)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x008b
-            r6 = 1000000000(0x3b9aca00, double:4.94065646E-315)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0089
-            r4 = 9
-            goto L_0x00e4
-        L_0x0089:
-            r4 = r5
-            goto L_0x00e4
-        L_0x008b:
-            r6 = 100000000000(0x174876e800, double:4.9406564584E-313)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0097
-            r2 = 11
-            goto L_0x004c
-        L_0x0097:
-            r2 = 12
-            goto L_0x004c
-        L_0x009a:
-            r6 = 1000000000000000(0x38d7ea4c68000, double:4.940656458412465E-309)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00be
-            r6 = 10000000000000(0x9184e72a000, double:4.9406564584125E-311)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00af
-            r4 = 13
-            goto L_0x00e4
-        L_0x00af:
-            r6 = 100000000000000(0x5af3107a4000, double:4.94065645841247E-310)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00bb
-            r2 = 14
-            goto L_0x004c
-        L_0x00bb:
-            r2 = 15
-            goto L_0x004c
-        L_0x00be:
-            r6 = 100000000000000000(0x16345785d8a0000, double:5.620395787888205E-302)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00d6
-            r6 = 10000000000000000(0x2386f26fc10000, double:5.431165199810528E-308)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00d3
-            r4 = 16
-            goto L_0x00e4
-        L_0x00d3:
-            r4 = 17
-            goto L_0x00e4
-        L_0x00d6:
-            r6 = 1000000000000000000(0xde0b6b3a7640000, double:7.832953389245686E-242)
-            int r2 = (r13 > r6 ? 1 : (r13 == r6 ? 0 : -1))
-            if (r2 >= 0) goto L_0x00e2
-            r4 = 18
-            goto L_0x00e4
-        L_0x00e2:
-            r4 = 19
-        L_0x00e4:
-            if (r3 == 0) goto L_0x00e8
-            int r4 = r4 + 1
-        L_0x00e8:
-            okio.Segment r2 = r12.writableSegment$okio(r4)
-            byte[] r6 = r2.data
-            int r7 = r2.limit
-            int r7 = r7 + r4
-        L_0x00f1:
-            int r8 = (r13 > r0 ? 1 : (r13 == r0 ? 0 : -1))
-            if (r8 == 0) goto L_0x0105
-            long r8 = (long) r5
-            long r10 = r13 % r8
-            int r10 = (int) r10
-            int r7 = r7 + -1
-            byte[] r11 = getHEX_DIGIT_BYTES()
-            byte r10 = r11[r10]
-            r6[r7] = r10
-            long r13 = r13 / r8
-            goto L_0x00f1
-        L_0x0105:
-            if (r3 == 0) goto L_0x010e
-            int r7 = r7 + -1
-            r13 = 45
-            byte r13 = (byte) r13
-            r6[r7] = r13
-        L_0x010e:
-            int r13 = r2.limit
-            int r13 = r13 + r4
-            r2.limit = r13
-            long r13 = r12.size()
-            long r0 = (long) r4
-            long r13 = r13 + r0
-            r12.setSize$okio(r13)
-            return r12
-        */
-        throw new UnsupportedOperationException("Method not decompiled: okio.internal.BufferKt.commonWriteDecimalLong(okio.Buffer, long):okio.Buffer");
+    public static final Buffer commonWriteDecimalLong(Buffer buffer, long j) {
+        Intrinsics.checkParameterIsNotNull(buffer, "$this$commonWriteDecimalLong");
+        int i = (j > 0 ? 1 : (j == 0 ? 0 : -1));
+        if (i == 0) {
+            return buffer.writeByte(48);
+        }
+        boolean z = false;
+        int i2 = 1;
+        if (i < 0) {
+            j = -j;
+            if (j < 0) {
+                return buffer.writeUtf8("-9223372036854775808");
+            }
+            z = true;
+        }
+        if (j >= 100000000) {
+            i2 = j < 1000000000000L ? j < RealConnection.IDLE_CONNECTION_HEALTHY_NS ? j < 1000000000 ? 9 : 10 : j < 100000000000L ? 11 : 12 : j < 1000000000000000L ? j < 10000000000000L ? 13 : j < 100000000000000L ? 14 : 15 : j < 100000000000000000L ? j < 10000000000000000L ? 16 : 17 : j < 1000000000000000000L ? 18 : 19;
+        } else if (j >= 10000) {
+            i2 = j < 1000000 ? j < 100000 ? 5 : 6 : j < 10000000 ? 7 : 8;
+        } else if (j >= 100) {
+            i2 = j < 1000 ? 3 : 4;
+        } else if (j >= 10) {
+            i2 = 2;
+        }
+        if (z) {
+            i2++;
+        }
+        Segment writableSegment$okio = buffer.writableSegment$okio(i2);
+        byte[] bArr = writableSegment$okio.data;
+        int i3 = writableSegment$okio.limit + i2;
+        while (j != 0) {
+            long j2 = (long) 10;
+            i3--;
+            bArr[i3] = getHEX_DIGIT_BYTES()[(int) (j % j2)];
+            j /= j2;
+        }
+        if (z) {
+            bArr[i3 - 1] = (byte) 45;
+        }
+        writableSegment$okio.limit += i2;
+        buffer.setSize$okio(buffer.size() + ((long) i2));
+        return buffer;
     }
 
     public static final Buffer commonWriteHexadecimalUnsignedLong(Buffer buffer, long j) {
@@ -817,18 +687,18 @@ public final class BufferKt {
         return min;
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:35:0x00b6, code lost:
-        if (r10 != r11) goto L_0x00c6;
+    /* JADX WARNING: Code restructure failed: missing block: B:35:0x00b7, code lost:
+        if (r10 != r11) goto L_0x00c7;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:36:0x00b8, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:36:0x00b9, code lost:
         r0.head = r16.pop();
         okio.SegmentPool.INSTANCE.recycle(r16);
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:37:0x00c6, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:37:0x00c7, code lost:
         r16.pos = r10;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:38:0x00ca, code lost:
-        if (r7 != false) goto L_0x00d0;
+    /* JADX WARNING: Code restructure failed: missing block: B:38:0x00cb, code lost:
+        if (r7 != false) goto L_0x00d1;
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public static final long commonReadDecimalLong(okio.Buffer r17) {
@@ -838,12 +708,12 @@ public final class BufferKt {
             kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r0, r1)
             long r1 = r17.size()
             r3 = 0
-            int r1 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
-            if (r1 == 0) goto L_0x00de
+            int r5 = (r1 > r3 ? 1 : (r1 == r3 ? 0 : -1))
+            if (r5 == 0) goto L_0x00df
             r1 = -7
             r5 = 0
-            r6 = r5
-            r7 = r6
+            r6 = 0
+            r7 = 0
         L_0x0016:
             okio.Segment r8 = r0.head
             if (r8 != 0) goto L_0x001d
@@ -854,39 +724,39 @@ public final class BufferKt {
             int r11 = r8.limit
         L_0x0023:
             r12 = 1
-            if (r10 >= r11) goto L_0x00b3
+            if (r10 >= r11) goto L_0x00b4
             byte r13 = r9[r10]
             r14 = 48
             byte r14 = (byte) r14
-            if (r13 < r14) goto L_0x007c
+            if (r13 < r14) goto L_0x007d
             r15 = 57
             byte r15 = (byte) r15
-            if (r13 > r15) goto L_0x007c
+            if (r13 > r15) goto L_0x007d
             int r14 = r14 - r13
             r15 = -922337203685477580(0xf333333333333334, double:-8.390303882365713E246)
             int r12 = (r3 > r15 ? 1 : (r3 == r15 ? 0 : -1))
-            if (r12 < 0) goto L_0x004d
+            if (r12 < 0) goto L_0x004e
             r15 = r7
             r16 = r8
             if (r12 != 0) goto L_0x0047
             long r7 = (long) r14
-            int r7 = (r7 > r1 ? 1 : (r7 == r1 ? 0 : -1))
-            if (r7 >= 0) goto L_0x0047
-            goto L_0x004d
+            int r12 = (r7 > r1 ? 1 : (r7 == r1 ? 0 : -1))
+            if (r12 >= 0) goto L_0x0047
+            goto L_0x004e
         L_0x0047:
             r7 = 10
             long r3 = r3 * r7
             long r7 = (long) r14
             long r3 = r3 + r7
-            goto L_0x008a
-        L_0x004d:
+            goto L_0x008b
+        L_0x004e:
             okio.Buffer r0 = new okio.Buffer
             r0.<init>()
             okio.Buffer r0 = r0.writeDecimalLong((long) r3)
             okio.Buffer r0 = r0.writeByte((int) r13)
-            if (r6 != 0) goto L_0x005f
+            if (r6 != 0) goto L_0x0060
             r0.readByte()
-        L_0x005f:
+        L_0x0060:
             java.lang.NumberFormatException r1 = new java.lang.NumberFormatException
             java.lang.StringBuilder r2 = new java.lang.StringBuilder
             r2.<init>()
@@ -898,27 +768,27 @@ public final class BufferKt {
             r1.<init>(r0)
             java.lang.Throwable r1 = (java.lang.Throwable) r1
             throw r1
-        L_0x007c:
+        L_0x007d:
             r15 = r7
             r16 = r8
             r7 = 45
             byte r7 = (byte) r7
-            if (r13 != r7) goto L_0x0092
-            if (r5 != 0) goto L_0x0092
+            if (r13 != r7) goto L_0x0093
+            if (r5 != 0) goto L_0x0093
             r6 = 1
             long r1 = r1 - r6
-            r6 = r12
-        L_0x008a:
+            r6 = 1
+        L_0x008b:
             int r10 = r10 + 1
             int r5 = r5 + 1
             r7 = r15
             r8 = r16
             goto L_0x0023
-        L_0x0092:
-            if (r5 == 0) goto L_0x0096
-            r7 = r12
-            goto L_0x00b6
-        L_0x0096:
+        L_0x0093:
+            if (r5 == 0) goto L_0x0097
+            r7 = 1
+            goto L_0x00b7
+        L_0x0097:
             java.lang.NumberFormatException r0 = new java.lang.NumberFormatException
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
@@ -930,36 +800,36 @@ public final class BufferKt {
             r0.<init>(r1)
             java.lang.Throwable r0 = (java.lang.Throwable) r0
             throw r0
-        L_0x00b3:
+        L_0x00b4:
             r15 = r7
             r16 = r8
-        L_0x00b6:
-            if (r10 != r11) goto L_0x00c6
+        L_0x00b7:
+            if (r10 != r11) goto L_0x00c7
             okio.Segment r8 = r16.pop()
             r0.head = r8
             okio.SegmentPool r8 = okio.SegmentPool.INSTANCE
             r9 = r16
             r8.recycle(r9)
-            goto L_0x00ca
-        L_0x00c6:
+            goto L_0x00cb
+        L_0x00c7:
             r9 = r16
             r9.pos = r10
-        L_0x00ca:
-            if (r7 != 0) goto L_0x00d0
+        L_0x00cb:
+            if (r7 != 0) goto L_0x00d1
             okio.Segment r8 = r0.head
             if (r8 != 0) goto L_0x0016
-        L_0x00d0:
+        L_0x00d1:
             long r1 = r17.size()
             long r7 = (long) r5
             long r1 = r1 - r7
             r0.setSize$okio(r1)
-            if (r6 == 0) goto L_0x00dc
-            goto L_0x00dd
-        L_0x00dc:
-            long r3 = -r3
+            if (r6 == 0) goto L_0x00dd
+            goto L_0x00de
         L_0x00dd:
-            return r3
+            long r3 = -r3
         L_0x00de:
+            return r3
+        L_0x00df:
             java.io.EOFException r0 = new java.io.EOFException
             r0.<init>()
             java.lang.Throwable r0 = (java.lang.Throwable) r0
@@ -974,19 +844,19 @@ public final class BufferKt {
     /* JADX WARNING: Removed duplicated region for block: B:5:0x0016  */
     /* JADX WARNING: Removed duplicated region for block: B:8:0x0021  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static final long commonReadHexadecimalUnsignedLong(okio.Buffer r14) {
+    public static final long commonReadHexadecimalUnsignedLong(okio.Buffer r15) {
         /*
             java.lang.String r0 = "$this$commonReadHexadecimalUnsignedLong"
-            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r14, r0)
-            long r0 = r14.size()
+            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r15, r0)
+            long r0 = r15.size()
             r2 = 0
-            int r0 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r0 == 0) goto L_0x00c5
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 == 0) goto L_0x00c5
             r0 = 0
-            r1 = r0
             r4 = r2
+            r1 = 0
         L_0x0012:
-            okio.Segment r6 = r14.head
+            okio.Segment r6 = r15.head
             if (r6 != 0) goto L_0x0019
             kotlin.jvm.internal.Intrinsics.throwNpe()
         L_0x0019:
@@ -1026,8 +896,8 @@ public final class BufferKt {
         L_0x004a:
             r12 = -1152921504606846976(0xf000000000000000, double:-3.105036184601418E231)
             long r12 = r12 & r4
-            int r12 = (r12 > r2 ? 1 : (r12 == r2 ? 0 : -1))
-            if (r12 != 0) goto L_0x005a
+            int r14 = (r12 > r2 ? 1 : (r12 == r2 ? 0 : -1))
+            if (r14 != 0) goto L_0x005a
             r10 = 4
             long r4 = r4 << r10
             long r10 = (long) r11
@@ -1036,19 +906,19 @@ public final class BufferKt {
             int r0 = r0 + 1
             goto L_0x001f
         L_0x005a:
-            okio.Buffer r14 = new okio.Buffer
-            r14.<init>()
-            okio.Buffer r14 = r14.writeHexadecimalUnsignedLong((long) r4)
-            okio.Buffer r14 = r14.writeByte((int) r10)
+            okio.Buffer r15 = new okio.Buffer
+            r15.<init>()
+            okio.Buffer r15 = r15.writeHexadecimalUnsignedLong((long) r4)
+            okio.Buffer r15 = r15.writeByte((int) r10)
             java.lang.NumberFormatException r0 = new java.lang.NumberFormatException
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
             r1.<init>()
             java.lang.String r2 = "Number too large: "
             r1.append(r2)
-            java.lang.String r14 = r14.readUtf8()
-            r1.append(r14)
-            java.lang.String r14 = r1.toString()
-            r0.<init>(r14)
+            java.lang.String r15 = r15.readUtf8()
+            r1.append(r15)
+            java.lang.String r15 = r1.toString()
+            r0.<init>(r15)
             java.lang.Throwable r0 = (java.lang.Throwable) r0
             throw r0
         L_0x0084:
@@ -1056,7 +926,7 @@ public final class BufferKt {
             r1 = 1
             goto L_0x00a5
         L_0x0088:
-            java.lang.NumberFormatException r14 = new java.lang.NumberFormatException
+            java.lang.NumberFormatException r15 = new java.lang.NumberFormatException
             java.lang.StringBuilder r0 = new java.lang.StringBuilder
             r0.<init>()
             java.lang.String r1 = "Expected leading [0-9a-fA-F] character but was 0x"
@@ -1064,13 +934,13 @@ public final class BufferKt {
             java.lang.String r1 = okio.Util.toHexString((byte) r10)
             r0.append(r1)
             java.lang.String r0 = r0.toString()
-            r14.<init>(r0)
-            java.lang.Throwable r14 = (java.lang.Throwable) r14
-            throw r14
+            r15.<init>(r0)
+            java.lang.Throwable r15 = (java.lang.Throwable) r15
+            throw r15
         L_0x00a5:
             if (r8 != r9) goto L_0x00b3
             okio.Segment r7 = r6.pop()
-            r14.head = r7
+            r15.head = r7
             okio.SegmentPool r7 = okio.SegmentPool.INSTANCE
             r7.recycle(r6)
             goto L_0x00b5
@@ -1078,19 +948,19 @@ public final class BufferKt {
             r6.pos = r8
         L_0x00b5:
             if (r1 != 0) goto L_0x00bb
-            okio.Segment r6 = r14.head
+            okio.Segment r6 = r15.head
             if (r6 != 0) goto L_0x0012
         L_0x00bb:
-            long r1 = r14.size()
+            long r1 = r15.size()
             long r6 = (long) r0
             long r1 = r1 - r6
-            r14.setSize$okio(r1)
+            r15.setSize$okio(r1)
             return r4
         L_0x00c5:
-            java.io.EOFException r14 = new java.io.EOFException
-            r14.<init>()
-            java.lang.Throwable r14 = (java.lang.Throwable) r14
-            throw r14
+            java.io.EOFException r15 = new java.io.EOFException
+            r15.<init>()
+            java.lang.Throwable r15 = (java.lang.Throwable) r15
+            throw r15
         */
         throw new UnsupportedOperationException("Method not decompiled: okio.internal.BufferKt.commonReadHexadecimalUnsignedLong(okio.Buffer):long");
     }
@@ -1220,8 +1090,8 @@ public final class BufferKt {
             int i2 = 1;
             if ((b3 & 128) == 0) {
                 b2 = b3 & Byte.MAX_VALUE;
-                b = 0;
                 i = 1;
+                b = 0;
             } else if ((b3 & 224) == 192) {
                 b2 = b3 & Ascii.US;
                 i = 2;
@@ -1639,98 +1509,99 @@ public final class BufferKt {
     }
 
     public static final long commonIndexOf(Buffer buffer, ByteString byteString, long j) {
+        long j2;
+        int i;
         Buffer buffer2 = buffer;
-        long j2 = j;
+        long j3 = j;
         Intrinsics.checkParameterIsNotNull(buffer2, "$this$commonIndexOf");
         Intrinsics.checkParameterIsNotNull(byteString, "bytes");
-        boolean z = true;
         if (byteString.size() > 0) {
-            long j3 = 0;
-            if (j2 >= 0) {
+            long j4 = 0;
+            if (j3 >= 0) {
                 Segment segment = buffer2.head;
-                if (segment == null) {
-                    Segment segment2 = null;
-                    return -1;
-                } else if (buffer.size() - j2 < j2) {
-                    long size = buffer.size();
-                    while (size > j2) {
-                        segment = segment.prev;
-                        if (segment == null) {
-                            Intrinsics.throwNpe();
+                if (segment != null) {
+                    if (buffer.size() - j3 < j3) {
+                        j2 = buffer.size();
+                        while (j2 > j3) {
+                            segment = segment.prev;
+                            if (segment == null) {
+                                Intrinsics.throwNpe();
+                            }
+                            j2 -= (long) (segment.limit - segment.pos);
                         }
-                        size -= (long) (segment.limit - segment.pos);
-                    }
-                    if (segment == null) {
+                        if (segment == null) {
+                            return -1;
+                        }
+                        byte[] internalArray$okio = byteString.internalArray$okio();
+                        byte b = internalArray$okio[0];
+                        int size = byteString.size();
+                        long size2 = (buffer.size() - ((long) size)) + 1;
+                        while (j2 < size2) {
+                            byte[] bArr = segment.data;
+                            int min = (int) Math.min((long) segment.limit, (((long) segment.pos) + size2) - j2);
+                            i = (int) ((((long) segment.pos) + j3) - j2);
+                            while (i < min) {
+                                if (bArr[i] != b || !rangeEquals(segment, i + 1, internalArray$okio, 1, size)) {
+                                    i++;
+                                }
+                            }
+                            j2 += (long) (segment.limit - segment.pos);
+                            segment = segment.next;
+                            if (segment == null) {
+                                Intrinsics.throwNpe();
+                            }
+                            j3 = j2;
+                        }
                         return -1;
                     }
-                    byte[] internalArray$okio = byteString.internalArray$okio();
-                    byte b = internalArray$okio[0];
-                    int size2 = byteString.size();
-                    long size3 = (buffer.size() - ((long) size2)) + 1;
-                    while (size < size3) {
-                        byte[] bArr = segment.data;
-                        int min = (int) Math.min((long) segment.limit, (((long) segment.pos) + size3) - size);
-                        for (int i = (int) ((((long) segment.pos) + j2) - size); i < min; i++) {
-                            if (bArr[i] == b && rangeEquals(segment, i + 1, internalArray$okio, 1, size2)) {
-                                return ((long) (i - segment.pos)) + size;
-                            }
-                        }
-                        size += (long) (segment.limit - segment.pos);
-                        segment = segment.next;
-                        if (segment == null) {
-                            Intrinsics.throwNpe();
-                        }
-                        j2 = size;
-                    }
-                    return -1;
-                } else {
                     while (true) {
-                        long j4 = ((long) (segment.limit - segment.pos)) + j3;
-                        if (j4 > j2) {
+                        long j5 = ((long) (segment.limit - segment.pos)) + j4;
+                        if (j5 > j3) {
                             break;
                         }
-                        boolean z2 = z;
                         segment = segment.next;
                         if (segment == null) {
                             Intrinsics.throwNpe();
                         }
-                        z = z2;
-                        j3 = j4;
+                        j4 = j5;
                     }
                     if (segment == null) {
                         return -1;
                     }
                     byte[] internalArray$okio2 = byteString.internalArray$okio();
                     byte b2 = internalArray$okio2[0];
-                    int size4 = byteString.size();
-                    long size5 = (buffer.size() - ((long) size4)) + 1;
-                    while (j3 < size5) {
+                    int size3 = byteString.size();
+                    long size4 = (buffer.size() - ((long) size3)) + 1;
+                    long j6 = j4;
+                    while (j2 < size4) {
                         byte[] bArr2 = segment.data;
-                        long j5 = j3;
-                        int min2 = (int) Math.min((long) segment.limit, (((long) segment.pos) + size5) - j3);
-                        for (int i2 = (int) ((((long) segment.pos) + j2) - j5); i2 < min2; i2++) {
-                            if (bArr2[i2] == b2) {
-                                if (rangeEquals(segment, i2 + 1, internalArray$okio2, 1, size4)) {
-                                    return ((long) (i2 - segment.pos)) + j5;
+                        long j7 = size4;
+                        int min2 = (int) Math.min((long) segment.limit, (((long) segment.pos) + size4) - j2);
+                        int i2 = (int) ((((long) segment.pos) + j3) - j2);
+                        while (i < min2) {
+                            if (bArr2[i] == b2) {
+                                if (rangeEquals(segment, i + 1, internalArray$okio2, 1, size3)) {
                                 }
                             }
+                            i2 = i + 1;
                         }
-                        long j6 = j5 + ((long) (segment.limit - segment.pos));
+                        j6 = j2 + ((long) (segment.limit - segment.pos));
                         segment = segment.next;
                         if (segment == null) {
                             Intrinsics.throwNpe();
                         }
+                        size4 = j7;
                         j3 = j6;
-                        j2 = j3;
                     }
                     return -1;
+                    return ((long) (i - segment.pos)) + j2;
                 }
-            } else {
-                throw new IllegalArgumentException(("fromIndex < 0: " + j2).toString());
+                Segment segment2 = null;
+                return -1;
             }
-        } else {
-            throw new IllegalArgumentException("bytes is empty".toString());
+            throw new IllegalArgumentException(("fromIndex < 0: " + j3).toString());
         }
+        throw new IllegalArgumentException("bytes is empty".toString());
     }
 
     public static final boolean commonRangeEquals(Buffer buffer, long j, ByteString byteString, int i, int i2) {
@@ -1791,8 +1662,8 @@ public final class BufferKt {
             r9 = r7
         L_0x0040:
             long r11 = r18.size()
-            int r11 = (r9 > r11 ? 1 : (r9 == r11 ? 0 : -1))
-            if (r11 >= 0) goto L_0x008b
+            int r13 = (r9 > r11 ? 1 : (r9 == r11 ? 0 : -1))
+            if (r13 >= 0) goto L_0x008b
             int r11 = r3.limit
             int r11 = r11 - r5
             int r12 = r1.limit

@@ -83,10 +83,7 @@ class TwilightManager {
         twilightCalculator.calculateTwilight(currentTimeMillis - 86400000, location.getLatitude(), location.getLongitude());
         long j2 = instance.sunset;
         twilightCalculator.calculateTwilight(currentTimeMillis, location.getLatitude(), location.getLongitude());
-        boolean z = true;
-        if (instance.state != 1) {
-            z = false;
-        }
+        boolean z = instance.state == 1;
         long j3 = instance.sunrise;
         long j4 = j2;
         long j5 = instance.sunset;

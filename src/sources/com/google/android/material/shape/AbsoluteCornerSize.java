@@ -22,10 +22,7 @@ public final class AbsoluteCornerSize implements CornerSize {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof AbsoluteCornerSize)) {
-            return false;
-        }
-        if (this.size == ((AbsoluteCornerSize) obj).size) {
+        if ((obj instanceof AbsoluteCornerSize) && this.size == ((AbsoluteCornerSize) obj).size) {
             return true;
         }
         return false;

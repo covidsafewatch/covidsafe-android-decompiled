@@ -448,17 +448,15 @@ public class NavigationMenuPresenter implements MenuPresenter {
 
         private void prepareMenuItems() {
             if (!this.updateSuspended) {
-                boolean z = true;
                 this.updateSuspended = true;
                 this.items.clear();
                 this.items.add(new NavigationMenuHeaderItem());
                 int i = -1;
                 int size = NavigationMenuPresenter.this.menu.getVisibleItems().size();
+                boolean z = false;
                 int i2 = 0;
-                boolean z2 = false;
-                int i3 = 0;
-                while (i2 < size) {
-                    MenuItemImpl menuItemImpl = NavigationMenuPresenter.this.menu.getVisibleItems().get(i2);
+                for (int i3 = 0; i3 < size; i3++) {
+                    MenuItemImpl menuItemImpl = NavigationMenuPresenter.this.menu.getVisibleItems().get(i3);
                     if (menuItemImpl.isChecked()) {
                         setCheckedItem(menuItemImpl);
                     }
@@ -468,19 +466,18 @@ public class NavigationMenuPresenter implements MenuPresenter {
                     if (menuItemImpl.hasSubMenu()) {
                         SubMenu subMenu = menuItemImpl.getSubMenu();
                         if (subMenu.hasVisibleItems()) {
-                            if (i2 != 0) {
+                            if (i3 != 0) {
                                 this.items.add(new NavigationMenuSeparatorItem(NavigationMenuPresenter.this.paddingSeparator, 0));
                             }
                             this.items.add(new NavigationMenuTextItem(menuItemImpl));
                             int size2 = this.items.size();
                             int size3 = subMenu.size();
-                            int i4 = 0;
-                            boolean z3 = false;
-                            while (i4 < size3) {
+                            boolean z2 = false;
+                            for (int i4 = 0; i4 < size3; i4++) {
                                 MenuItemImpl menuItemImpl2 = (MenuItemImpl) subMenu.getItem(i4);
                                 if (menuItemImpl2.isVisible()) {
-                                    if (!z3 && menuItemImpl2.getIcon() != null) {
-                                        z3 = z;
+                                    if (!z2 && menuItemImpl2.getIcon() != null) {
+                                        z2 = true;
                                     }
                                     if (menuItemImpl2.isCheckable()) {
                                         menuItemImpl2.setExclusiveCheckable(false);
@@ -490,33 +487,29 @@ public class NavigationMenuPresenter implements MenuPresenter {
                                     }
                                     this.items.add(new NavigationMenuTextItem(menuItemImpl2));
                                 }
-                                i4++;
-                                z = true;
                             }
-                            if (z3) {
+                            if (z2) {
                                 appendTransparentIconIfMissing(size2, this.items.size());
                             }
                         }
                     } else {
                         int groupId = menuItemImpl.getGroupId();
                         if (groupId != i) {
-                            i3 = this.items.size();
-                            z2 = menuItemImpl.getIcon() != null;
-                            if (i2 != 0) {
-                                i3++;
+                            i2 = this.items.size();
+                            z = menuItemImpl.getIcon() != null;
+                            if (i3 != 0) {
+                                i2++;
                                 this.items.add(new NavigationMenuSeparatorItem(NavigationMenuPresenter.this.paddingSeparator, NavigationMenuPresenter.this.paddingSeparator));
                             }
-                        } else if (!z2 && menuItemImpl.getIcon() != null) {
-                            appendTransparentIconIfMissing(i3, this.items.size());
-                            z2 = true;
+                        } else if (!z && menuItemImpl.getIcon() != null) {
+                            appendTransparentIconIfMissing(i2, this.items.size());
+                            z = true;
                         }
                         NavigationMenuTextItem navigationMenuTextItem = new NavigationMenuTextItem(menuItemImpl);
-                        navigationMenuTextItem.needsEmptyIcon = z2;
+                        navigationMenuTextItem.needsEmptyIcon = z;
                         this.items.add(navigationMenuTextItem);
                         i = groupId;
                     }
-                    i2++;
-                    z = true;
                 }
                 this.updateSuspended = false;
             }

@@ -28,7 +28,7 @@ final class TrieParser {
             int r0 = r10.length()
             r1 = 0
             r2 = r11
-            r3 = r1
+            r3 = 0
         L_0x0007:
             r4 = 58
             r5 = 33

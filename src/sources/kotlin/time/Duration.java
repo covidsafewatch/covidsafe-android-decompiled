@@ -302,8 +302,8 @@ public final class Duration implements Comparable<Duration> {
         return m994toLongimpl(d, TimeUnit.MILLISECONDS);
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:38:0x009b  */
-    /* JADX WARNING: Removed duplicated region for block: B:39:0x00a0  */
+    /* JADX WARNING: Removed duplicated region for block: B:38:0x009a  */
+    /* JADX WARNING: Removed duplicated region for block: B:39:0x009f  */
     /* renamed from: toString-impl  reason: not valid java name */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public static java.lang.String m997toStringimpl(double r8) {
@@ -311,101 +311,101 @@ public final class Duration implements Comparable<Duration> {
             boolean r0 = m979isInfiniteimpl(r8)
             if (r0 == 0) goto L_0x000c
             java.lang.String r8 = java.lang.String.valueOf(r8)
-            goto L_0x00c1
+            goto L_0x00c0
         L_0x000c:
             r0 = 0
-            int r0 = (r8 > r0 ? 1 : (r8 == r0 ? 0 : -1))
-            if (r0 != 0) goto L_0x0016
+            int r2 = (r8 > r0 ? 1 : (r8 == r0 ? 0 : -1))
+            if (r2 != 0) goto L_0x0016
             java.lang.String r8 = "0s"
-            goto L_0x00c1
+            goto L_0x00c0
         L_0x0016:
             double r0 = m965getAbsoluteValueimpl(r8)
             double r0 = m972getInNanosecondsimpl(r0)
             r2 = 4517329193108106637(0x3eb0c6f7a0b5ed8d, double:1.0E-6)
-            int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            r3 = 0
-            r4 = 1
-            if (r2 >= 0) goto L_0x002f
+            r4 = 0
+            r5 = 1
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x002e
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.SECONDS
         L_0x002b:
-            r1 = r3
-            r3 = r4
-            goto L_0x0090
-        L_0x002f:
-            double r5 = (double) r4
-            int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0038
+            r1 = 0
+            r4 = 1
+            goto L_0x008f
+        L_0x002e:
+            double r2 = (double) r5
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x0037
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.NANOSECONDS
             r1 = 7
-            goto L_0x0090
-        L_0x0038:
-            r5 = 4652007308841189376(0x408f400000000000, double:1000.0)
-            int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0045
+            goto L_0x008f
+        L_0x0037:
+            r2 = 4652007308841189376(0x408f400000000000, double:1000.0)
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x0044
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.NANOSECONDS
-        L_0x0043:
-            r1 = r3
-            goto L_0x0090
-        L_0x0045:
-            r5 = 4696837146684686336(0x412e848000000000, double:1000000.0)
-            int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0051
+        L_0x0042:
+            r1 = 0
+            goto L_0x008f
+        L_0x0044:
+            r2 = 4696837146684686336(0x412e848000000000, double:1000000.0)
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x0050
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.MICROSECONDS
-            goto L_0x0043
-        L_0x0051:
-            r5 = 4741671816366391296(0x41cdcd6500000000, double:1.0E9)
-            int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r2 >= 0) goto L_0x005d
+            goto L_0x0042
+        L_0x0050:
+            r2 = 4741671816366391296(0x41cdcd6500000000, double:1.0E9)
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x005c
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.MILLISECONDS
-            goto L_0x0043
-        L_0x005d:
-            r5 = 4786511204640096256(0x426d1a94a2000000, double:1.0E12)
-            int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0069
+            goto L_0x0042
+        L_0x005c:
+            r2 = 4786511204640096256(0x426d1a94a2000000, double:1.0E12)
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x0068
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.SECONDS
-            goto L_0x0043
-        L_0x0069:
-            r5 = 4813020802404319232(0x42cb48eb57e00000, double:6.0E13)
-            int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0075
+            goto L_0x0042
+        L_0x0068:
+            r2 = 4813020802404319232(0x42cb48eb57e00000, double:6.0E13)
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x0074
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.MINUTES
-            goto L_0x0043
-        L_0x0075:
-            r5 = 4839562400168542208(0x4329945ca2620000, double:3.6E15)
-            int r2 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r2 >= 0) goto L_0x0081
+            goto L_0x0042
+        L_0x0074:
+            r2 = 4839562400168542208(0x4329945ca2620000, double:3.6E15)
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x0080
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.HOURS
-            goto L_0x0043
-        L_0x0081:
-            r5 = 4920018990336211136(0x44476b344f2a78c0, double:8.64E20)
-            int r0 = (r0 > r5 ? 1 : (r0 == r5 ? 0 : -1))
-            if (r0 >= 0) goto L_0x008d
+            goto L_0x0042
+        L_0x0080:
+            r2 = 4920018990336211136(0x44476b344f2a78c0, double:8.64E20)
+            int r6 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r6 >= 0) goto L_0x008c
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.DAYS
-            goto L_0x0043
-        L_0x008d:
+            goto L_0x0042
+        L_0x008c:
             java.util.concurrent.TimeUnit r0 = java.util.concurrent.TimeUnit.DAYS
             goto L_0x002b
-        L_0x0090:
-            double r4 = m991toDoubleimpl(r8, r0)
-            java.lang.StringBuilder r2 = new java.lang.StringBuilder
-            r2.<init>()
-            if (r3 == 0) goto L_0x00a0
-            java.lang.String r8 = kotlin.time.FormatToDecimalsKt.formatScientific(r4)
-            goto L_0x00b3
-        L_0x00a0:
-            if (r1 <= 0) goto L_0x00a7
-            java.lang.String r8 = kotlin.time.FormatToDecimalsKt.formatUpToDecimals(r4, r1)
-            goto L_0x00b3
-        L_0x00a7:
-            double r6 = java.lang.Math.abs(r4)
+        L_0x008f:
+            double r2 = m991toDoubleimpl(r8, r0)
+            java.lang.StringBuilder r5 = new java.lang.StringBuilder
+            r5.<init>()
+            if (r4 == 0) goto L_0x009f
+            java.lang.String r8 = kotlin.time.FormatToDecimalsKt.formatScientific(r2)
+            goto L_0x00b2
+        L_0x009f:
+            if (r1 <= 0) goto L_0x00a6
+            java.lang.String r8 = kotlin.time.FormatToDecimalsKt.formatUpToDecimals(r2, r1)
+            goto L_0x00b2
+        L_0x00a6:
+            double r6 = java.lang.Math.abs(r2)
             int r8 = m984precisionimpl(r8, r6)
-            java.lang.String r8 = kotlin.time.FormatToDecimalsKt.formatToExactDecimals(r4, r8)
-        L_0x00b3:
-            r2.append(r8)
+            java.lang.String r8 = kotlin.time.FormatToDecimalsKt.formatToExactDecimals(r2, r8)
+        L_0x00b2:
+            r5.append(r8)
             java.lang.String r8 = kotlin.time.DurationUnitKt.shortName(r0)
-            r2.append(r8)
-            java.lang.String r8 = r2.toString()
-        L_0x00c1:
+            r5.append(r8)
+            java.lang.String r8 = r5.toString()
+        L_0x00c0:
             return r8
         */
         throw new UnsupportedOperationException("Method not decompiled: kotlin.time.Duration.m997toStringimpl(double):java.lang.String");
@@ -428,12 +428,12 @@ public final class Duration implements Comparable<Duration> {
         } else if (m979isInfiniteimpl(d)) {
             return String.valueOf(d);
         } else {
-            double r5 = m991toDoubleimpl(d, timeUnit);
+            double r6 = m991toDoubleimpl(d, timeUnit);
             StringBuilder sb = new StringBuilder();
-            if (Math.abs(r5) < 1.0E14d) {
-                str = FormatToDecimalsKt.formatToExactDecimals(r5, RangesKt.coerceAtMost(i, 12));
+            if (Math.abs(r6) < 1.0E14d) {
+                str = FormatToDecimalsKt.formatToExactDecimals(r6, RangesKt.coerceAtMost(i, 12));
             } else {
-                str = FormatToDecimalsKt.formatScientific(r5);
+                str = FormatToDecimalsKt.formatScientific(r6);
             }
             sb.append(str);
             sb.append(DurationUnitKt.shortName(timeUnit));

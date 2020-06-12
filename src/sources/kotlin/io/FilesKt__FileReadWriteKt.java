@@ -115,60 +115,60 @@ class FilesKt__FileReadWriteKt extends FilesKt__FilePathComponentsKt {
             long r4 = r12.length()     // Catch:{ all -> 0x00b8 }
             r6 = 2147483647(0x7fffffff, float:NaN)
             long r6 = (long) r6
-            int r6 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
-            java.lang.String r7 = "File "
-            if (r6 > 0) goto L_0x0094
-            int r4 = (int) r4
-            byte[] r5 = new byte[r4]     // Catch:{ all -> 0x00b8 }
+            java.lang.String r8 = "File "
+            int r9 = (r4 > r6 ? 1 : (r4 == r6 ? 0 : -1))
+            if (r9 > 0) goto L_0x0094
+            int r5 = (int) r4
+            byte[] r4 = new byte[r5]     // Catch:{ all -> 0x00b8 }
             r6 = 0
-            r8 = r4
-            r9 = r6
+            r7 = r5
+            r9 = 0
         L_0x0027:
-            if (r8 <= 0) goto L_0x0033
-            int r10 = r3.read(r5, r9, r8)     // Catch:{ all -> 0x00b8 }
+            if (r7 <= 0) goto L_0x0033
+            int r10 = r3.read(r4, r9, r7)     // Catch:{ all -> 0x00b8 }
             if (r10 >= 0) goto L_0x0030
             goto L_0x0033
         L_0x0030:
-            int r8 = r8 - r10
+            int r7 = r7 - r10
             int r9 = r9 + r10
             goto L_0x0027
         L_0x0033:
             java.lang.String r10 = "java.util.Arrays.copyOf(this, newSize)"
-            if (r8 <= 0) goto L_0x003f
-            byte[] r5 = java.util.Arrays.copyOf(r5, r9)     // Catch:{ all -> 0x00b8 }
-            kotlin.jvm.internal.Intrinsics.checkExpressionValueIsNotNull(r5, r10)     // Catch:{ all -> 0x00b8 }
+            if (r7 <= 0) goto L_0x003f
+            byte[] r4 = java.util.Arrays.copyOf(r4, r9)     // Catch:{ all -> 0x00b8 }
+            kotlin.jvm.internal.Intrinsics.checkExpressionValueIsNotNull(r4, r10)     // Catch:{ all -> 0x00b8 }
             goto L_0x0074
         L_0x003f:
-            int r8 = r3.read()     // Catch:{ all -> 0x00b8 }
+            int r7 = r3.read()     // Catch:{ all -> 0x00b8 }
             r9 = -1
-            if (r8 != r9) goto L_0x0047
+            if (r7 != r9) goto L_0x0047
             goto L_0x0074
         L_0x0047:
             kotlin.io.ExposingBufferByteArrayOutputStream r9 = new kotlin.io.ExposingBufferByteArrayOutputStream     // Catch:{ all -> 0x00b8 }
             r11 = 8193(0x2001, float:1.1481E-41)
             r9.<init>(r11)     // Catch:{ all -> 0x00b8 }
-            r9.write(r8)     // Catch:{ all -> 0x00b8 }
+            r9.write(r7)     // Catch:{ all -> 0x00b8 }
             java.io.InputStream r3 = (java.io.InputStream) r3     // Catch:{ all -> 0x00b8 }
-            r8 = r9
-            java.io.OutputStream r8 = (java.io.OutputStream) r8     // Catch:{ all -> 0x00b8 }
+            r7 = r9
+            java.io.OutputStream r7 = (java.io.OutputStream) r7     // Catch:{ all -> 0x00b8 }
             r11 = 2
-            kotlin.io.ByteStreamsKt.copyTo$default(r3, r8, r6, r11, r1)     // Catch:{ all -> 0x00b8 }
+            kotlin.io.ByteStreamsKt.copyTo$default(r3, r7, r6, r11, r1)     // Catch:{ all -> 0x00b8 }
             int r1 = r9.size()     // Catch:{ all -> 0x00b8 }
-            int r1 = r1 + r4
+            int r1 = r1 + r5
             if (r1 < 0) goto L_0x0078
             byte[] r12 = r9.getBuffer()     // Catch:{ all -> 0x00b8 }
-            byte[] r1 = java.util.Arrays.copyOf(r5, r1)     // Catch:{ all -> 0x00b8 }
+            byte[] r1 = java.util.Arrays.copyOf(r4, r1)     // Catch:{ all -> 0x00b8 }
             kotlin.jvm.internal.Intrinsics.checkExpressionValueIsNotNull(r1, r10)     // Catch:{ all -> 0x00b8 }
             int r3 = r9.size()     // Catch:{ all -> 0x00b8 }
-            byte[] r5 = kotlin.collections.ArraysKt.copyInto((byte[]) r12, (byte[]) r1, (int) r4, (int) r6, (int) r3)     // Catch:{ all -> 0x00b8 }
+            byte[] r4 = kotlin.collections.ArraysKt.copyInto((byte[]) r12, (byte[]) r1, (int) r5, (int) r6, (int) r3)     // Catch:{ all -> 0x00b8 }
         L_0x0074:
             kotlin.io.CloseableKt.closeFinally(r0, r2)
-            return r5
+            return r4
         L_0x0078:
             java.lang.OutOfMemoryError r1 = new java.lang.OutOfMemoryError     // Catch:{ all -> 0x00b8 }
             java.lang.StringBuilder r2 = new java.lang.StringBuilder     // Catch:{ all -> 0x00b8 }
             r2.<init>()     // Catch:{ all -> 0x00b8 }
-            r2.append(r7)     // Catch:{ all -> 0x00b8 }
+            r2.append(r8)     // Catch:{ all -> 0x00b8 }
             r2.append(r12)     // Catch:{ all -> 0x00b8 }
             java.lang.String r12 = " is too big to fit in memory."
             r2.append(r12)     // Catch:{ all -> 0x00b8 }
@@ -180,7 +180,7 @@ class FilesKt__FileReadWriteKt extends FilesKt__FilePathComponentsKt {
             java.lang.OutOfMemoryError r1 = new java.lang.OutOfMemoryError     // Catch:{ all -> 0x00b8 }
             java.lang.StringBuilder r2 = new java.lang.StringBuilder     // Catch:{ all -> 0x00b8 }
             r2.<init>()     // Catch:{ all -> 0x00b8 }
-            r2.append(r7)     // Catch:{ all -> 0x00b8 }
+            r2.append(r8)     // Catch:{ all -> 0x00b8 }
             r2.append(r12)     // Catch:{ all -> 0x00b8 }
             java.lang.String r12 = " is too big ("
             r2.append(r12)     // Catch:{ all -> 0x00b8 }

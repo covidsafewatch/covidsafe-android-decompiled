@@ -97,8 +97,8 @@ public abstract class ResponseBody implements Closeable {
             long r0 = r5.contentLength()
             r2 = 2147483647(0x7fffffff, float:NaN)
             long r2 = (long) r2
-            int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r2 > 0) goto L_0x006d
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 > 0) goto L_0x006d
             okio.BufferedSource r2 = r5.source()
             java.io.Closeable r2 = (java.io.Closeable) r2
             r3 = 0
@@ -112,11 +112,11 @@ public abstract class ResponseBody implements Closeable {
             java.lang.Number r7 = (java.lang.Number) r7
             int r7 = r7.intValue()
             r2 = -1
-            int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r2 == 0) goto L_0x005f
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 == 0) goto L_0x005f
             long r2 = (long) r7
-            int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r2 != 0) goto L_0x0039
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 != 0) goto L_0x0039
             goto L_0x005f
         L_0x0039:
             java.io.IOException r6 = new java.io.IOException
@@ -386,8 +386,8 @@ public abstract class ResponseBody implements Closeable {
             long r0 = r7.contentLength()
             r2 = 2147483647(0x7fffffff, float:NaN)
             long r2 = (long) r2
-            int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r2 > 0) goto L_0x005a
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 > 0) goto L_0x005a
             okio.BufferedSource r2 = r7.source()
             java.io.Closeable r2 = (java.io.Closeable) r2
             r3 = 0
@@ -460,8 +460,8 @@ public abstract class ResponseBody implements Closeable {
             long r0 = r7.contentLength()
             r2 = 2147483647(0x7fffffff, float:NaN)
             long r2 = (long) r2
-            int r2 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
-            if (r2 > 0) goto L_0x005d
+            int r4 = (r0 > r2 ? 1 : (r0 == r2 ? 0 : -1))
+            if (r4 > 0) goto L_0x005d
             okio.BufferedSource r2 = r7.source()
             java.io.Closeable r2 = (java.io.Closeable) r2
             r3 = 0

@@ -876,7 +876,7 @@ public abstract class FragmentManager {
             if (r2 == 0) goto L_0x01ca
             boolean r2 = r13.isInBackStack()
             if (r2 != 0) goto L_0x01ca
-            r8 = r1
+            r8 = 1
         L_0x01ca:
             if (r8 != 0) goto L_0x01ea
             androidx.fragment.app.FragmentManagerViewModel r2 = r12.mNonConfig

@@ -429,7 +429,7 @@ public final class ArrayBroadcastChannel<E> extends AbstractSendChannel<E> imple
                 r6 = 1
                 long r4 = r4 + r6
                 r8.setSubHead(r4)     // Catch:{ all -> 0x0047 }
-                r2 = r3
+                r2 = 1
             L_0x0022:
                 r0.unlock()
                 boolean r0 = r1 instanceof kotlinx.coroutines.channels.Closed

@@ -381,7 +381,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 throw r5     // Catch:{ all -> 0x0017 }
             L_0x0046:
                 r5 = move-exception
-                r0 = r1
+                r0 = 0
             L_0x0048:
                 if (r0 != 0) goto L_0x0052
                 monitor-enter(r4)
@@ -534,7 +534,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 throw r5     // Catch:{ all -> 0x0017 }
             L_0x0051:
                 r5 = move-exception
-                r0 = r1
+                r0 = 0
             L_0x0053:
                 if (r0 != 0) goto L_0x005d
                 monitor-enter(r4)
@@ -590,16 +590,16 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 r10 = 1
                 goto L_0x0020
             L_0x001f:
-                r10 = r3
+                r10 = 0
             L_0x0020:
                 r11 = 1
                 r14 = 0
                 if (r5 == 0) goto L_0x0089
-                r0 = r3
+                r0 = 0
             L_0x0027:
                 r16 = r6
+                r7 = 0
                 r6 = r0
-                r7 = r3
                 r0 = 0
             L_0x002c:
                 int r18 = (r16 > r14 ? 1 : (r16 == r14 ? 0 : -1))
@@ -659,7 +659,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 goto L_0x0027
             L_0x0089:
                 r16 = r6
-                r6 = r3
+                r6 = 0
             L_0x008c:
                 boolean r0 = r1.done     // Catch:{ all -> 0x0197 }
                 java.util.Queue<java.lang.Object> r2 = r1.queue     // Catch:{ all -> 0x0197 }
@@ -694,20 +694,20 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 if (r2 == 0) goto L_0x00e1
             L_0x00c2:
                 if (r7 > r0) goto L_0x00c5
-                r0 = r3
+                r0 = 0
             L_0x00c5:
-                r2 = r3
+                r2 = 0
             L_0x00c6:
                 if (r2 >= r7) goto L_0x00d9
                 r11 = r5[r0]     // Catch:{ all -> 0x0197 }
                 long r11 = r11.id     // Catch:{ all -> 0x0197 }
-                int r11 = (r11 > r8 ? 1 : (r11 == r8 ? 0 : -1))
-                if (r11 != 0) goto L_0x00d1
+                int r18 = (r11 > r8 ? 1 : (r11 == r8 ? 0 : -1))
+                if (r18 != 0) goto L_0x00d1
                 goto L_0x00d9
             L_0x00d1:
                 int r0 = r0 + 1
                 if (r0 != r7) goto L_0x00d6
-                r0 = r3
+                r0 = 0
             L_0x00d6:
                 int r2 = r2 + 1
                 goto L_0x00c6
@@ -717,8 +717,8 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 long r8 = r2.id     // Catch:{ all -> 0x0197 }
                 r1.lastId = r8     // Catch:{ all -> 0x0197 }
             L_0x00e1:
-                r2 = r3
-                r8 = r2
+                r2 = 0
+                r8 = 0
             L_0x00e3:
                 if (r2 >= r7) goto L_0x016a
                 boolean r9 = r22.checkTerminate()     // Catch:{ all -> 0x0197 }
@@ -728,7 +728,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 r9 = r5[r0]     // Catch:{ all -> 0x0197 }
                 r11 = 0
             L_0x00ef:
-                r12 = r3
+                r12 = 0
             L_0x00f0:
                 int r18 = (r16 > r14 ? 1 : (r16 == r14 ? 0 : -1))
                 if (r18 <= 0) goto L_0x0106
@@ -800,7 +800,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
             L_0x0161:
                 int r0 = r0 + 1
                 if (r0 != r7) goto L_0x0166
-                r0 = r3
+                r0 = 0
             L_0x0166:
                 int r2 = r2 + 1
                 goto L_0x00e3
@@ -811,7 +811,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 r1.lastId = r9     // Catch:{ all -> 0x0197 }
                 goto L_0x0174
             L_0x0173:
-                r8 = r3
+                r8 = 0
             L_0x0174:
                 if (r6 <= 0) goto L_0x017a
                 long r5 = (long) r6     // Catch:{ all -> 0x0197 }
@@ -836,7 +836,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 goto L_0x0005
             L_0x018f:
                 r0 = move-exception
-                r2 = r3
+                r2 = 0
             L_0x0191:
                 monitor-exit(r22)     // Catch:{ all -> 0x0195 }
                 throw r0     // Catch:{ all -> 0x0193 }
@@ -848,7 +848,7 @@ public final class OperatorMerge<T> implements Observable.Operator<T, Observable
                 goto L_0x0191
             L_0x0197:
                 r0 = move-exception
-                r2 = r3
+                r2 = 0
             L_0x0199:
                 if (r2 != 0) goto L_0x01a3
                 monitor-enter(r22)

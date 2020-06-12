@@ -248,8 +248,8 @@ public final class Pipe$sink$1 implements Sink {
             okio.Buffer r2 = r2.getBuffer$okio()     // Catch:{ all -> 0x00f7 }
             long r2 = r2.size()     // Catch:{ all -> 0x00f7 }
             r4 = 0
-            int r2 = (r2 > r4 ? 1 : (r2 == r4 ? 0 : -1))
-            if (r2 > 0) goto L_0x0037
+            int r6 = (r2 > r4 ? 1 : (r2 == r4 ? 0 : -1))
+            if (r6 > 0) goto L_0x0037
             goto L_0x0041
         L_0x0037:
             java.io.IOException r0 = new java.io.IOException     // Catch:{ all -> 0x00f7 }
