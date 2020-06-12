@@ -1,6 +1,7 @@
 package au.gov.health.covidsafe.streetpass.persistence;
 
 import android.content.Context;
+import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecordDatabase;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -12,7 +13,7 @@ import kotlin.jvm.internal.Intrinsics;
 /* compiled from: StreetPassRecordStorage.kt */
 public final class StreetPassRecordStorage {
     private final Context context;
-    private final StreetPassRecordDao recordDao = StreetPassRecordDatabase.Companion.getDatabase(this.context).recordDao();
+    private final StreetPassRecordDao recordDao = StreetPassRecordDatabase.Companion.getDatabase$default(StreetPassRecordDatabase.Companion, this.context, (MigrationCallBack) null, 2, (Object) null).recordDao();
 
     public StreetPassRecordStorage(Context context2) {
         Intrinsics.checkParameterIsNotNull(context2, "context");

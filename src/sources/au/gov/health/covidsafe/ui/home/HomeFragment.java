@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +30,18 @@ import au.gov.health.covidsafe.ui.BaseFragment;
 import au.gov.health.covidsafe.ui.home.view.ExternalLinkCard;
 import au.gov.health.covidsafe.ui.home.view.PermissionStatusCard;
 import com.airbnb.lottie.LottieAnimationView;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import kotlin.Metadata;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.Intrinsics;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000j\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0006\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0010!\n\u0002\b\u0003\n\u0002\u0010\u0011\n\u0000\n\u0002\u0010\u0015\n\u0002\b\f\u0018\u00002\u00020\u00012\u00020\u0002B\u0005¢\u0006\u0002\u0010\u0003J\b\u0010\f\u001a\u00020\tH\u0002J\u0010\u0010\r\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0010\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0011\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0012\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0013\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\b\u0010\u0014\u001a\u00020\u0015H\u0002J\b\u0010\u0016\u001a\u00020\u0015H\u0002J&\u0010\u0017\u001a\u0004\u0018\u00010\u00182\u0006\u0010\u0019\u001a\u00020\u001a2\b\u0010\u001b\u001a\u0004\u0018\u00010\u001c2\b\u0010\u001d\u001a\u0004\u0018\u00010\u001eH\u0016J\b\u0010\u001f\u001a\u00020\u0015H\u0016J\b\u0010 \u001a\u00020\u0015H\u0016J\u001e\u0010!\u001a\u00020\u00152\u0006\u0010\"\u001a\u00020\u00052\f\u0010#\u001a\b\u0012\u0004\u0012\u00020\u000e0$H\u0016J\u001e\u0010%\u001a\u00020\u00152\u0006\u0010\"\u001a\u00020\u00052\f\u0010#\u001a\b\u0012\u0004\u0012\u00020\u000e0$H\u0016J-\u0010&\u001a\u00020\u00152\u0006\u0010\"\u001a\u00020\u00052\u000e\u0010'\u001a\n\u0012\u0006\b\u0001\u0012\u00020\u000e0(2\u0006\u0010)\u001a\u00020*H\u0016¢\u0006\u0002\u0010+J\b\u0010,\u001a\u00020\u0015H\u0016J\u001a\u0010-\u001a\u00020\u00152\u0006\u0010.\u001a\u00020\u00182\b\u0010\u001d\u001a\u0004\u0018\u00010\u001eH\u0016J\b\u0010/\u001a\u00020\u0015H\u0002J\b\u00100\u001a\u00020\u0015H\u0002J\b\u00101\u001a\u00020\u0015H\u0002J\b\u00102\u001a\u00020\u0015H\u0002J\b\u00103\u001a\u00020\u0015H\u0002J\b\u00104\u001a\u00020\u0015H\u0002J\b\u00105\u001a\u00020\u0015H\u0002R\u000e\u0010\u0004\u001a\u00020\u0005X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\tX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000¨\u00066"}, d2 = {"Lau/gov/health/covidsafe/ui/home/HomeFragment;", "Lau/gov/health/covidsafe/ui/BaseFragment;", "Lpub/devrel/easypermissions/EasyPermissions$PermissionCallbacks;", "()V", "counter", "", "mBroadcastListener", "Landroid/content/BroadcastReceiver;", "mIsBroadcastListenerRegistered", "", "presenter", "Lau/gov/health/covidsafe/ui/home/HomePresenter;", "allPermissionsEnabled", "formatBlueToothTitle", "", "on", "formatLocationTitle", "formatNonBatteryOptimizationTitle", "formatPushNotificationTitle", "getPermissionEnabledTitle", "goToCovidApp", "", "goToNewsWebsite", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPause", "onPermissionsDenied", "requestCode", "perms", "", "onPermissionsGranted", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onViewCreated", "view", "refreshSetupCompleteOrIncompleteUi", "registerBroadcast", "shareThisApp", "updateBatteryOptimizationStatus", "updateBlueToothStatus", "updateLocationStatus", "updatePushNotificationStatus", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000r\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0006\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0010!\n\u0002\b\u0003\n\u0002\u0010\u0011\n\u0000\n\u0002\u0010\u0015\n\u0002\b\f\u0018\u00002\u00020\u00012\u00020\u0002B\u0005¢\u0006\u0002\u0010\u0003J\b\u0010\f\u001a\u00020\tH\u0002J\u0010\u0010\r\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0010\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0011\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0012\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\u0010\u0010\u0013\u001a\u00020\u000e2\u0006\u0010\u0014\u001a\u00020\u0015H\u0002J\u0010\u0010\u0016\u001a\u00020\u000e2\u0006\u0010\u000f\u001a\u00020\tH\u0002J\b\u0010\u0017\u001a\u00020\u0018H\u0002J\b\u0010\u0019\u001a\u00020\u0018H\u0002J\u0010\u0010\u001a\u001a\u00020\t2\u0006\u0010\u0014\u001a\u00020\u0015H\u0002J&\u0010\u001b\u001a\u0004\u0018\u00010\u001c2\u0006\u0010\u001d\u001a\u00020\u001e2\b\u0010\u001f\u001a\u0004\u0018\u00010 2\b\u0010!\u001a\u0004\u0018\u00010\"H\u0016J\b\u0010#\u001a\u00020\u0018H\u0016J\b\u0010$\u001a\u00020\u0018H\u0016J\u001e\u0010%\u001a\u00020\u00182\u0006\u0010&\u001a\u00020\u00052\f\u0010'\u001a\b\u0012\u0004\u0012\u00020\u000e0(H\u0016J\u001e\u0010)\u001a\u00020\u00182\u0006\u0010&\u001a\u00020\u00052\f\u0010'\u001a\b\u0012\u0004\u0012\u00020\u000e0(H\u0016J-\u0010*\u001a\u00020\u00182\u0006\u0010&\u001a\u00020\u00052\u000e\u0010+\u001a\n\u0012\u0006\b\u0001\u0012\u00020\u000e0,2\u0006\u0010-\u001a\u00020.H\u0016¢\u0006\u0002\u0010/J\b\u00100\u001a\u00020\u0018H\u0016J\u001a\u00101\u001a\u00020\u00182\u0006\u00102\u001a\u00020\u001c2\b\u0010!\u001a\u0004\u0018\u00010\"H\u0016J\b\u00103\u001a\u00020\u0018H\u0003J\b\u00104\u001a\u00020\u0018H\u0002J\b\u00105\u001a\u00020\u0018H\u0002J\b\u00106\u001a\u00020\u0018H\u0002J\b\u00107\u001a\u00020\u0018H\u0002J\b\u00108\u001a\u00020\u0018H\u0002J\b\u00109\u001a\u00020\u0018H\u0002R\u000e\u0010\u0004\u001a\u00020\u0005X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\tX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000¨\u0006:"}, d2 = {"Lau/gov/health/covidsafe/ui/home/HomeFragment;", "Lau/gov/health/covidsafe/ui/BaseFragment;", "Lpub/devrel/easypermissions/EasyPermissions$PermissionCallbacks;", "()V", "counter", "", "mBroadcastListener", "Landroid/content/BroadcastReceiver;", "mIsBroadcastListenerRegistered", "", "presenter", "Lau/gov/health/covidsafe/ui/home/HomePresenter;", "allPermissionsEnabled", "formatBlueToothTitle", "", "on", "formatLocationTitle", "formatNonBatteryOptimizationTitle", "formatPushNotificationTitle", "getDataUploadDateHtmlString", "context", "Landroid/content/Context;", "getPermissionEnabledTitle", "goToCovidApp", "", "goToNewsWebsite", "isDataUploadedInPast14Days", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroyView", "onPause", "onPermissionsDenied", "requestCode", "perms", "", "onPermissionsGranted", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onViewCreated", "view", "refreshSetupCompleteOrIncompleteUi", "registerBroadcast", "shareThisApp", "updateBatteryOptimizationStatus", "updateBlueToothStatus", "updateLocationStatus", "updatePushNotificationStatus", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: HomeFragment.kt */
 public final class HomeFragment extends BaseFragment implements EasyPermissions.PermissionCallbacks {
     private HashMap _$_findViewCache;
@@ -98,6 +104,9 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
             registerBroadcast();
         }
         refreshSetupCompleteOrIncompleteUi();
+        TextView textView = (TextView) _$_findCachedViewById(R.id.home_header_no_bluetooth_pairing);
+        Intrinsics.checkExpressionValueIsNotNull(textView, "home_header_no_bluetooth_pairing");
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     public void onPause() {
@@ -123,92 +132,74 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
         _$_clearFindViewByIdCache();
     }
 
+    private final boolean isDataUploadedInPast14Days(Context context) {
+        if (Preference.INSTANCE.isDataUploaded(context) && System.currentTimeMillis() - Preference.INSTANCE.getDataUploadedDateMs(context) < 1209600000) {
+            return true;
+        }
+        return false;
+    }
+
+    private final String getDataUploadDateHtmlString(Context context) {
+        String format = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH).format(new Date(Preference.INSTANCE.getDataUploadedDateMs(context)));
+        return "<b>" + format + "</b>";
+    }
+
     /* access modifiers changed from: private */
     public final void refreshSetupCompleteOrIncompleteUi() {
-        boolean z;
+        String str;
+        CharSequence charSequence;
         Context context = getContext();
         if (context != null) {
-            Preference preference = Preference.INSTANCE;
+            boolean allPermissionsEnabled = allPermissionsEnabled();
             Intrinsics.checkExpressionValueIsNotNull(context, "it");
-            z = preference.isDataUploaded(context);
-        } else {
-            HomeFragment homeFragment = this;
-            z = false;
-        }
-        ExternalLinkCard externalLinkCard = (ExternalLinkCard) _$_findCachedViewById(R.id.home_been_tested_button);
-        Intrinsics.checkExpressionValueIsNotNull(externalLinkCard, "home_been_tested_button");
-        externalLinkCard.setVisibility(z ? 8 : 0);
-        if (!allPermissionsEnabled()) {
-            TextView textView = (TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header_uploaded);
-            Intrinsics.checkExpressionValueIsNotNull(textView, "home_header_setup_complete_header_uploaded");
-            textView.setVisibility(8);
-            View _$_findCachedViewById = _$_findCachedViewById(R.id.home_header_setup_complete_header_divider);
-            Intrinsics.checkExpressionValueIsNotNull(_$_findCachedViewById, "home_header_setup_complete_header_divider");
-            _$_findCachedViewById.setVisibility(8);
-            ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header)).setText(R.string.home_header_inactive_title);
-            ((LottieAnimationView) _$_findCachedViewById(R.id.home_header_picture_setup_complete)).setImageResource(R.drawable.ic_logo_home_inactive);
-            ((ImageView) _$_findCachedViewById(R.id.home_header_help)).setImageResource(R.drawable.ic_help_outline_black);
-            Context context2 = getContext();
-            if (context2 != null) {
-                int color = ContextCompat.getColor(context2, R.color.grey);
+            boolean isDataUploadedInPast14Days = isDataUploadedInPast14Days(context);
+            String string = context.getString(allPermissionsEnabled ? R.string.home_header_active_title : R.string.home_header_inactive_title);
+            Intrinsics.checkExpressionValueIsNotNull(string, "it.getString(\n          …          }\n            )");
+            int i = 0;
+            if (isDataUploadedInPast14Days) {
+                str = "<br/><br/>" + context.getString(R.string.home_header_uploaded_on_date, new Object[]{getDataUploadDateHtmlString(context)});
+            } else {
+                str = "";
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append("<br/>");
+            sb.append(context.getString(allPermissionsEnabled ? R.string.home_header_active_no_action_required : R.string.home_header_inactive_check_your_permissions));
+            String str2 = string + str + sb.toString();
+            TextView textView = (TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header);
+            Intrinsics.checkExpressionValueIsNotNull(textView, "home_header_setup_complete_header");
+            if (Build.VERSION.SDK_INT >= 24) {
+                charSequence = Html.fromHtml(str2, 63);
+            } else {
+                charSequence = Html.fromHtml(str2);
+            }
+            textView.setText(charSequence);
+            if (allPermissionsEnabled) {
+                ((LottieAnimationView) _$_findCachedViewById(R.id.home_header_picture_setup_complete)).setAnimation("spinner_home.json");
+                Group group = (Group) _$_findCachedViewById(R.id.content_setup_incomplete_group);
+                Intrinsics.checkExpressionValueIsNotNull(group, "content_setup_incomplete_group");
+                group.setVisibility(8);
+                int color = ContextCompat.getColor(context, R.color.lighter_green);
                 _$_findCachedViewById(R.id.header_background).setBackgroundColor(color);
                 _$_findCachedViewById(R.id.header_background_overlap).setBackgroundColor(color);
-                int color2 = ContextCompat.getColor(context2, R.color.slack_black);
-                ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header_uploaded)).setTextColor(color2);
-                ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header)).setTextColor(color2);
+            } else {
+                ((LottieAnimationView) _$_findCachedViewById(R.id.home_header_picture_setup_complete)).setImageResource(R.drawable.ic_logo_home_inactive);
+                Group group2 = (Group) _$_findCachedViewById(R.id.content_setup_incomplete_group);
+                Intrinsics.checkExpressionValueIsNotNull(group2, "content_setup_incomplete_group");
+                group2.setVisibility(0);
+                updateBlueToothStatus();
+                updatePushNotificationStatus();
+                updateBatteryOptimizationStatus();
+                updateLocationStatus();
+                int color2 = ContextCompat.getColor(context, R.color.grey);
+                _$_findCachedViewById(R.id.header_background).setBackgroundColor(color2);
+                _$_findCachedViewById(R.id.header_background_overlap).setBackgroundColor(color2);
             }
-            Group group = (Group) _$_findCachedViewById(R.id.content_setup_incomplete_group);
-            Intrinsics.checkExpressionValueIsNotNull(group, "content_setup_incomplete_group");
-            group.setVisibility(0);
-            updateBlueToothStatus();
-            updatePushNotificationStatus();
-            updateBatteryOptimizationStatus();
-            updateLocationStatus();
-        } else if (z) {
-            TextView textView2 = (TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header_uploaded);
-            Intrinsics.checkExpressionValueIsNotNull(textView2, "home_header_setup_complete_header_uploaded");
-            textView2.setVisibility(0);
-            View _$_findCachedViewById2 = _$_findCachedViewById(R.id.home_header_setup_complete_header_divider);
-            Intrinsics.checkExpressionValueIsNotNull(_$_findCachedViewById2, "home_header_setup_complete_header_divider");
-            _$_findCachedViewById2.setVisibility(0);
-            ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header)).setText(R.string.home_header_active_title);
-            ((LottieAnimationView) _$_findCachedViewById(R.id.home_header_picture_setup_complete)).setImageResource(R.drawable.ic_logo_home_uploaded);
-            ((LottieAnimationView) _$_findCachedViewById(R.id.home_header_picture_setup_complete)).setAnimation("spinner_home_upload_complete.json");
-            ((ImageView) _$_findCachedViewById(R.id.home_header_help)).setImageResource(R.drawable.ic_help_outline_white);
-            Group group2 = (Group) _$_findCachedViewById(R.id.content_setup_incomplete_group);
-            Intrinsics.checkExpressionValueIsNotNull(group2, "content_setup_incomplete_group");
-            group2.setVisibility(8);
-            Context context3 = getContext();
-            if (context3 != null) {
-                int color3 = ContextCompat.getColor(context3, R.color.dark_green);
-                _$_findCachedViewById(R.id.header_background).setBackgroundColor(color3);
-                _$_findCachedViewById(R.id.header_background_overlap).setBackgroundColor(color3);
-                int color4 = ContextCompat.getColor(context3, R.color.white);
-                ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header_uploaded)).setTextColor(color4);
-                ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header)).setTextColor(color4);
+            ExternalLinkCard externalLinkCard = (ExternalLinkCard) _$_findCachedViewById(R.id.home_been_tested_button);
+            Intrinsics.checkExpressionValueIsNotNull(externalLinkCard, "home_been_tested_button");
+            if (isDataUploadedInPast14Days) {
+                i = 8;
             }
-        } else {
-            TextView textView3 = (TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header_uploaded);
-            Intrinsics.checkExpressionValueIsNotNull(textView3, "home_header_setup_complete_header_uploaded");
-            textView3.setVisibility(8);
-            View _$_findCachedViewById3 = _$_findCachedViewById(R.id.home_header_setup_complete_header_divider);
-            Intrinsics.checkExpressionValueIsNotNull(_$_findCachedViewById3, "home_header_setup_complete_header_divider");
-            _$_findCachedViewById3.setVisibility(8);
-            ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header)).setText(R.string.home_header_active_title);
-            ((ImageView) _$_findCachedViewById(R.id.home_header_help)).setImageResource(R.drawable.ic_help_outline_black);
-            ((LottieAnimationView) _$_findCachedViewById(R.id.home_header_picture_setup_complete)).setAnimation("spinner_home.json");
-            Group group3 = (Group) _$_findCachedViewById(R.id.content_setup_incomplete_group);
-            Intrinsics.checkExpressionValueIsNotNull(group3, "content_setup_incomplete_group");
-            group3.setVisibility(8);
-            Context context4 = getContext();
-            if (context4 != null) {
-                int color5 = ContextCompat.getColor(context4, R.color.lighter_green);
-                _$_findCachedViewById(R.id.header_background).setBackgroundColor(color5);
-                _$_findCachedViewById(R.id.header_background_overlap).setBackgroundColor(color5);
-                int color6 = ContextCompat.getColor(context4, R.color.slack_black);
-                ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header_uploaded)).setTextColor(color6);
-                ((TextView) _$_findCachedViewById(R.id.home_header_setup_complete_header)).setTextColor(color6);
-            }
+            externalLinkCard.setVisibility(i);
         }
     }
 

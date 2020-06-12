@@ -1,6 +1,7 @@
 package au.gov.health.covidsafe.status.persistence;
 
 import android.content.Context;
+import au.gov.health.covidsafe.streetpass.persistence.MigrationCallBack;
 import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecordDatabase;
 import java.util.List;
 import kotlin.Metadata;
@@ -13,7 +14,7 @@ import kotlin.jvm.internal.Intrinsics;
 /* compiled from: StatusRecordStorage.kt */
 public final class StatusRecordStorage {
     private final Context context;
-    private final StatusRecordDao statusDao = StreetPassRecordDatabase.Companion.getDatabase(this.context).statusDao();
+    private final StatusRecordDao statusDao = StreetPassRecordDatabase.Companion.getDatabase$default(StreetPassRecordDatabase.Companion, this.context, (MigrationCallBack) null, 2, (Object) null).statusDao();
 
     public StatusRecordStorage(Context context2) {
         Intrinsics.checkParameterIsNotNull(context2, "context");

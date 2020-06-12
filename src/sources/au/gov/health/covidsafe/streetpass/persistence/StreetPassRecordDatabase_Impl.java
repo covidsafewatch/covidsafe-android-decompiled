@@ -21,15 +21,15 @@ public final class StreetPassRecordDatabase_Impl extends StreetPassRecordDatabas
 
     /* access modifiers changed from: protected */
     public SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration databaseConfiguration) {
-        return databaseConfiguration.sqliteOpenHelperFactory.create(SupportSQLiteOpenHelper.Configuration.builder(databaseConfiguration.context).name(databaseConfiguration.name).callback(new RoomOpenHelper(databaseConfiguration, new RoomOpenHelper.Delegate(2) {
+        return databaseConfiguration.sqliteOpenHelperFactory.create(SupportSQLiteOpenHelper.Configuration.builder(databaseConfiguration.context).name(databaseConfiguration.name).callback(new RoomOpenHelper(databaseConfiguration, new RoomOpenHelper.Delegate(3) {
             public void onPostMigrate(SupportSQLiteDatabase supportSQLiteDatabase) {
             }
 
             public void createAllTables(SupportSQLiteDatabase supportSQLiteDatabase) {
-                supportSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS `record_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `v` INTEGER NOT NULL, `msg` TEXT NOT NULL, `org` TEXT NOT NULL, `modelP` TEXT NOT NULL, `modelC` TEXT NOT NULL, `rssi` INTEGER NOT NULL, `txPower` INTEGER)");
+                supportSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS `record_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `v` INTEGER NOT NULL, `org` TEXT NOT NULL, `localBlob` TEXT NOT NULL, `remoteBlob` TEXT NOT NULL)");
                 supportSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS `status_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `msg` TEXT NOT NULL)");
                 supportSQLiteDatabase.execSQL(RoomMasterTable.CREATE_QUERY);
-                supportSQLiteDatabase.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9a95fc8ad88c160bf76c0ba4747db316')");
+                supportSQLiteDatabase.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2ed007d1cd0adc4260d0d97c5e768be2')");
             }
 
             public void dropAllTables(SupportSQLiteDatabase supportSQLiteDatabase) {
@@ -71,16 +71,13 @@ public final class StreetPassRecordDatabase_Impl extends StreetPassRecordDatabas
             /* access modifiers changed from: protected */
             public RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase supportSQLiteDatabase) {
                 SupportSQLiteDatabase supportSQLiteDatabase2 = supportSQLiteDatabase;
-                HashMap hashMap = new HashMap(9);
+                HashMap hashMap = new HashMap(6);
                 hashMap.put("id", new TableInfo.Column("id", "INTEGER", true, 1, (String) null, 1));
                 hashMap.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, (String) null, 1));
                 hashMap.put("v", new TableInfo.Column("v", "INTEGER", true, 0, (String) null, 1));
-                hashMap.put(NotificationCompat.CATEGORY_MESSAGE, new TableInfo.Column(NotificationCompat.CATEGORY_MESSAGE, "TEXT", true, 0, (String) null, 1));
                 hashMap.put("org", new TableInfo.Column("org", "TEXT", true, 0, (String) null, 1));
-                hashMap.put("modelP", new TableInfo.Column("modelP", "TEXT", true, 0, (String) null, 1));
-                hashMap.put("modelC", new TableInfo.Column("modelC", "TEXT", true, 0, (String) null, 1));
-                hashMap.put("rssi", new TableInfo.Column("rssi", "INTEGER", true, 0, (String) null, 1));
-                hashMap.put("txPower", new TableInfo.Column("txPower", "INTEGER", false, 0, (String) null, 1));
+                hashMap.put("localBlob", new TableInfo.Column("localBlob", "TEXT", true, 0, (String) null, 1));
+                hashMap.put("remoteBlob", new TableInfo.Column("remoteBlob", "TEXT", true, 0, (String) null, 1));
                 TableInfo tableInfo = new TableInfo("record_table", hashMap, new HashSet(0), new HashSet(0));
                 TableInfo read = TableInfo.read(supportSQLiteDatabase2, "record_table");
                 if (!tableInfo.equals(read)) {
@@ -97,7 +94,7 @@ public final class StreetPassRecordDatabase_Impl extends StreetPassRecordDatabas
                 }
                 return new RoomOpenHelper.ValidationResult(false, "status_table(au.gov.health.covidsafe.status.persistence.StatusRecord).\n Expected:\n" + tableInfo2 + "\n Found:\n" + read2);
             }
-        }, "9a95fc8ad88c160bf76c0ba4747db316", "336ef522c4c1738f91b0cd0ef01687c8")).build());
+        }, "2ed007d1cd0adc4260d0d97c5e768be2", "d39b8e988523835bb661ec2754b955f8")).build());
     }
 
     /* access modifiers changed from: protected */

@@ -15,6 +15,7 @@ import android.os.PowerManager;
 import androidx.lifecycle.LifecycleService;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import au.gov.health.covidsafe.BuildConfig;
+import au.gov.health.covidsafe.LocalBlobV2;
 import au.gov.health.covidsafe.Utils;
 import au.gov.health.covidsafe.bluetooth.BLEAdvertiser;
 import au.gov.health.covidsafe.bluetooth.gatt.GATTKt;
@@ -30,9 +31,14 @@ import au.gov.health.covidsafe.streetpass.ConnectionRecord;
 import au.gov.health.covidsafe.streetpass.StreetPassScanner;
 import au.gov.health.covidsafe.streetpass.StreetPassServer;
 import au.gov.health.covidsafe.streetpass.StreetPassWorker;
+import au.gov.health.covidsafe.streetpass.persistence.Encryption;
 import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecord;
+import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecordDatabase;
 import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecordStorage;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.lang.ref.WeakReference;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -48,6 +54,7 @@ import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.ranges.RangesKt;
+import kotlin.text.Charsets;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.CoroutineStart;
 import kotlinx.coroutines.Dispatchers;
@@ -55,7 +62,7 @@ import kotlinx.coroutines.Job;
 import kotlinx.coroutines.JobKt;
 import pub.devrel.easypermissions.EasyPermissions;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000«\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0006\n\u0002\u0010\t\n\u0002\b\u0007\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0002\b\u0011*\u0001\r\b\u0007\u0018\u0000 U2\u00020\u00012\u00020\u0002:\u0005STUVWB\u0005¢\u0006\u0002\u0010\u0003J\b\u0010-\u001a\u00020.H\u0002J\b\u0010/\u001a\u00020.H\u0002J\b\u00100\u001a\u00020.H\u0002J\b\u00101\u001a\u00020.H\u0002J\b\u00102\u001a\u00020.H\u0002J\b\u00103\u001a\u00020.H\u0002J\u0018\u00104\u001a\u0002052\u0006\u00106\u001a\u0002052\u0006\u00107\u001a\u000205H\u0002J\b\u00108\u001a\u00020\u0018H\u0002J\b\u00109\u001a\u00020\u0018H\u0002J\b\u0010:\u001a\u00020.H\u0016J\b\u0010;\u001a\u00020.H\u0016J\"\u0010<\u001a\u00020=2\b\u0010>\u001a\u0004\u0018\u00010?2\u0006\u0010@\u001a\u00020=2\u0006\u0010A\u001a\u00020=H\u0016J\b\u0010B\u001a\u00020.H\u0002J\b\u0010C\u001a\u00020.H\u0002J\b\u0010D\u001a\u00020.H\u0002J\u0010\u0010E\u001a\u00020.2\b\u0010F\u001a\u0004\u0018\u00010GJ\b\u0010H\u001a\u00020.H\u0002J\b\u0010I\u001a\u00020.H\u0002J\b\u0010J\u001a\u00020.H\u0002J\b\u0010K\u001a\u00020.H\u0002J\b\u0010L\u001a\u00020.H\u0002J\b\u0010M\u001a\u00020.H\u0002J\b\u0010N\u001a\u00020.H\u0002J\b\u0010O\u001a\u00020.H\u0002J\b\u0010P\u001a\u00020.H\u0002J\u0006\u0010Q\u001a\u00020.J\b\u0010R\u001a\u00020.H\u0002R\u0010\u0010\u0004\u001a\u0004\u0018\u00010\u0005X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0004¢\u0006\u0002\n\u0000R\u0012\u0010\b\u001a\u00060\tR\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u0010\u0010\f\u001a\u00020\rX\u0004¢\u0006\u0004\n\u0002\u0010\u000eR\u0014\u0010\u000f\u001a\u00020\u00108VX\u0004¢\u0006\u0006\u001a\u0004\b\u0011\u0010\u0012R\u000e\u0010\u0013\u001a\u00020\u0014X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0015\u001a\u00020\u0016X.¢\u0006\u0002\n\u0000R\u000e\u0010\u0017\u001a\u00020\u0018X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\u0019\u001a\u0004\u0018\u00010\u001aX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u001b\u001a\u00020\u001cX.¢\u0006\u0002\n\u0000R\u0012\u0010\u001d\u001a\u00020\u001e8\u0002@\u0002X.¢\u0006\u0002\n\u0000R\u0012\u0010\u001f\u001a\u00060 R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010!\u001a\u00020\"X.¢\u0006\u0002\n\u0000R\u0012\u0010#\u001a\u00060$R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010%\u001a\u00020&X.¢\u0006\u0002\n\u0000R\u0010\u0010'\u001a\u0004\u0018\u00010(X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010)\u001a\u0004\u0018\u00010*X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010+\u001a\u0004\u0018\u00010,X\u000e¢\u0006\u0002\n\u0000¨\u0006X"}, d2 = {"Lau/gov/health/covidsafe/services/BluetoothMonitoringService;", "Landroidx/lifecycle/LifecycleService;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "advertiser", "Lau/gov/health/covidsafe/bluetooth/BLEAdvertiser;", "awsClient", "Lau/gov/health/covidsafe/networking/service/AwsClient;", "bluetoothStatusReceiver", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$BluetoothStatusReceiver;", "commandHandler", "Lau/gov/health/covidsafe/services/CommandHandler;", "connection", "au/gov/health/covidsafe/services/BluetoothMonitoringService$connection$1", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$connection$1;", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "job", "Lkotlinx/coroutines/Job;", "localBroadcastManager", "Landroidx/localbroadcastmanager/content/LocalBroadcastManager;", "mBound", "", "mNotificationManager", "Landroid/app/NotificationManager;", "mService", "Lau/gov/health/covidsafe/services/SensorMonitoringService;", "serviceUUID", "", "statusReceiver", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$StatusReceiver;", "statusRecordStorage", "Lau/gov/health/covidsafe/status/persistence/StatusRecordStorage;", "streetPassReceiver", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$StreetPassReceiver;", "streetPassRecordStorage", "Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecordStorage;", "streetPassScanner", "Lau/gov/health/covidsafe/streetpass/StreetPassScanner;", "streetPassServer", "Lau/gov/health/covidsafe/streetpass/StreetPassServer;", "worker", "Lau/gov/health/covidsafe/streetpass/StreetPassWorker;", "actionAdvertise", "", "actionHealthCheck", "actionScan", "actionStart", "actionStop", "actionUpdateBm", "calcPhaseShift", "", "min", "max", "hasLocationPermissions", "isBluetoothEnabled", "onCreate", "onDestroy", "onStartCommand", "", "intent", "Landroid/content/Intent;", "flags", "startId", "performHealthCheck", "performScanAndScheduleNextScan", "registerReceivers", "runService", "cmd", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$Command;", "setup", "setupAdvertiser", "setupAdvertisingCycles", "setupCycles", "setupNotifications", "setupScanCycles", "setupScanner", "setupService", "startScan", "teardown", "unregisterReceivers", "BluetoothStatusReceiver", "Command", "Companion", "StatusReceiver", "StreetPassReceiver", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000±\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0006\n\u0002\u0010\t\n\u0002\b\u0007\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0002\b\u0011*\u0001\r\b\u0007\u0018\u0000 W2\u00020\u00012\u00020\u0002:\u0005UVWXYB\u0005¢\u0006\u0002\u0010\u0003J\b\u0010/\u001a\u000200H\u0002J\b\u00101\u001a\u000200H\u0002J\b\u00102\u001a\u000200H\u0002J\b\u00103\u001a\u000200H\u0002J\b\u00104\u001a\u000200H\u0002J\b\u00105\u001a\u000200H\u0002J\u0018\u00106\u001a\u0002072\u0006\u00108\u001a\u0002072\u0006\u00109\u001a\u000207H\u0002J\b\u0010:\u001a\u00020\u001aH\u0002J\b\u0010;\u001a\u00020\u001aH\u0002J\b\u0010<\u001a\u000200H\u0016J\b\u0010=\u001a\u000200H\u0016J\"\u0010>\u001a\u00020?2\b\u0010@\u001a\u0004\u0018\u00010A2\u0006\u0010B\u001a\u00020?2\u0006\u0010C\u001a\u00020?H\u0016J\b\u0010D\u001a\u000200H\u0002J\b\u0010E\u001a\u000200H\u0002J\b\u0010F\u001a\u000200H\u0002J\u0010\u0010G\u001a\u0002002\b\u0010H\u001a\u0004\u0018\u00010IJ\b\u0010J\u001a\u000200H\u0002J\b\u0010K\u001a\u000200H\u0002J\b\u0010L\u001a\u000200H\u0002J\b\u0010M\u001a\u000200H\u0002J\b\u0010N\u001a\u000200H\u0002J\b\u0010O\u001a\u000200H\u0002J\b\u0010P\u001a\u000200H\u0002J\b\u0010Q\u001a\u000200H\u0002J\b\u0010R\u001a\u000200H\u0002J\u0006\u0010S\u001a\u000200J\b\u0010T\u001a\u000200H\u0002R\u0010\u0010\u0004\u001a\u0004\u0018\u00010\u0005X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0004¢\u0006\u0002\n\u0000R\u0012\u0010\b\u001a\u00060\tR\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u0010\u0010\f\u001a\u00020\rX\u0004¢\u0006\u0004\n\u0002\u0010\u000eR\u0014\u0010\u000f\u001a\u00020\u00108VX\u0004¢\u0006\u0006\u001a\u0004\b\u0011\u0010\u0012R\u000e\u0010\u0013\u001a\u00020\u0014X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0015\u001a\u00020\u0016X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0017\u001a\u00020\u0018X.¢\u0006\u0002\n\u0000R\u000e\u0010\u0019\u001a\u00020\u001aX\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\u001b\u001a\u0004\u0018\u00010\u001cX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u001d\u001a\u00020\u001eX.¢\u0006\u0002\n\u0000R\u0012\u0010\u001f\u001a\u00020 8\u0002@\u0002X.¢\u0006\u0002\n\u0000R\u0012\u0010!\u001a\u00060\"R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010#\u001a\u00020$X.¢\u0006\u0002\n\u0000R\u0012\u0010%\u001a\u00060&R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010'\u001a\u00020(X.¢\u0006\u0002\n\u0000R\u0010\u0010)\u001a\u0004\u0018\u00010*X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010+\u001a\u0004\u0018\u00010,X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010-\u001a\u0004\u0018\u00010.X\u000e¢\u0006\u0002\n\u0000¨\u0006Z"}, d2 = {"Lau/gov/health/covidsafe/services/BluetoothMonitoringService;", "Landroidx/lifecycle/LifecycleService;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "advertiser", "Lau/gov/health/covidsafe/bluetooth/BLEAdvertiser;", "awsClient", "Lau/gov/health/covidsafe/networking/service/AwsClient;", "bluetoothStatusReceiver", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$BluetoothStatusReceiver;", "commandHandler", "Lau/gov/health/covidsafe/services/CommandHandler;", "connection", "au/gov/health/covidsafe/services/BluetoothMonitoringService$connection$1", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$connection$1;", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "gson", "Lcom/google/gson/Gson;", "job", "Lkotlinx/coroutines/Job;", "localBroadcastManager", "Landroidx/localbroadcastmanager/content/LocalBroadcastManager;", "mBound", "", "mNotificationManager", "Landroid/app/NotificationManager;", "mService", "Lau/gov/health/covidsafe/services/SensorMonitoringService;", "serviceUUID", "", "statusReceiver", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$StatusReceiver;", "statusRecordStorage", "Lau/gov/health/covidsafe/status/persistence/StatusRecordStorage;", "streetPassReceiver", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$StreetPassReceiver;", "streetPassRecordStorage", "Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecordStorage;", "streetPassScanner", "Lau/gov/health/covidsafe/streetpass/StreetPassScanner;", "streetPassServer", "Lau/gov/health/covidsafe/streetpass/StreetPassServer;", "worker", "Lau/gov/health/covidsafe/streetpass/StreetPassWorker;", "actionAdvertise", "", "actionHealthCheck", "actionScan", "actionStart", "actionStop", "actionUpdateBm", "calcPhaseShift", "", "min", "max", "hasLocationPermissions", "isBluetoothEnabled", "onCreate", "onDestroy", "onStartCommand", "", "intent", "Landroid/content/Intent;", "flags", "startId", "performHealthCheck", "performScanAndScheduleNextScan", "registerReceivers", "runService", "cmd", "Lau/gov/health/covidsafe/services/BluetoothMonitoringService$Command;", "setup", "setupAdvertiser", "setupAdvertisingCycles", "setupCycles", "setupNotifications", "setupScanCycles", "setupScanner", "setupService", "startScan", "teardown", "unregisterReceivers", "BluetoothStatusReceiver", "Command", "Companion", "StatusReceiver", "StreetPassReceiver", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: BluetoothMonitoringService.kt */
 public final class BluetoothMonitoringService extends LifecycleService implements CoroutineScope {
     private static final String CHANNEL_ID = "COVIDSafe Updates";
@@ -89,7 +96,9 @@ public final class BluetoothMonitoringService extends LifecycleService implement
     private final AwsClient awsClient = NetworkFactory.Companion.getAwsClient();
     private final BluetoothStatusReceiver bluetoothStatusReceiver = new BluetoothStatusReceiver();
     private CommandHandler commandHandler;
-    private final BluetoothMonitoringService$connection$1 connection = new BluetoothMonitoringService$connection$1(this);
+    private final BluetoothMonitoringService$connection$1 connection;
+    /* access modifiers changed from: private */
+    public final Gson gson;
     private Job job = JobKt.Job$default((Job) null, 1, (Object) null);
     private LocalBroadcastManager localBroadcastManager;
     /* access modifiers changed from: private */
@@ -122,6 +131,13 @@ public final class BluetoothMonitoringService extends LifecycleService implement
             $EnumSwitchMapping$0[Command.ACTION_STOP.ordinal()] = 5;
             $EnumSwitchMapping$0[Command.ACTION_SELF_CHECK.ordinal()] = 6;
         }
+    }
+
+    public BluetoothMonitoringService() {
+        Gson create = new GsonBuilder().disableHtmlEscaping().create();
+        Intrinsics.checkExpressionValueIsNotNull(create, "GsonBuilder().disableHtmlEscaping().create()");
+        this.gson = create;
+        this.connection = new BluetoothMonitoringService$connection$1(this);
     }
 
     public static final /* synthetic */ SensorMonitoringService access$getMService$p(BluetoothMonitoringService bluetoothMonitoringService) {
@@ -778,25 +794,58 @@ public final class BluetoothMonitoringService extends LifecycleService implement
         }
 
         public void onReceive(Context context, Intent intent) {
-            Intent intent2 = intent;
+            String str;
+            String str2;
             Intrinsics.checkParameterIsNotNull(context, "context");
-            Intrinsics.checkParameterIsNotNull(intent2, "intent");
+            Intrinsics.checkParameterIsNotNull(intent, "intent");
             if (Intrinsics.areEqual((Object) GATTKt.ACTION_RECEIVED_STREETPASS, (Object) intent.getAction())) {
-                Parcelable parcelableExtra = intent2.getParcelableExtra(GATTKt.STREET_PASS);
-                Intrinsics.checkExpressionValueIsNotNull(parcelableExtra, "intent.getParcelableExtra(STREET_PASS)");
-                ConnectionRecord connectionRecord = (ConnectionRecord) parcelableExtra;
+                ConnectionRecord connectionRecord = (ConnectionRecord) intent.getParcelableExtra(GATTKt.STREET_PASS);
                 CentralLog.Companion companion = CentralLog.Companion;
-                String str = this.TAG;
-                companion.d(str, "StreetPass received: " + connectionRecord);
-                if (connectionRecord.getMsg().length() > 0) {
-                    if (BluetoothMonitoringService.this.mBound) {
-                        float proximity = BluetoothMonitoringService.access$getMService$p(BluetoothMonitoringService.this).getProximity();
-                        float light = BluetoothMonitoringService.access$getMService$p(BluetoothMonitoringService.this).getLight();
-                        CentralLog.Companion companion2 = CentralLog.Companion;
-                        String str2 = this.TAG;
-                        companion2.d(str2, "Sensor values just before saving StreetPassRecord: proximity=" + proximity + " light=" + light);
+                String str3 = this.TAG;
+                companion.d(str3, "StreetPass received: " + connectionRecord);
+                if (connectionRecord != null) {
+                    if (connectionRecord.getMsg().length() > 0) {
+                        if (BluetoothMonitoringService.this.mBound) {
+                            float proximity = BluetoothMonitoringService.access$getMService$p(BluetoothMonitoringService.this).getProximity();
+                            float light = BluetoothMonitoringService.access$getMService$p(BluetoothMonitoringService.this).getLight();
+                            CentralLog.Companion companion2 = CentralLog.Companion;
+                            String str4 = this.TAG;
+                            companion2.d(str4, "Sensor values just before saving StreetPassRecord: proximity=" + proximity + " light=" + light);
+                        }
+                        if (connectionRecord.getVersion() == 1) {
+                            String json = BluetoothMonitoringService.this.gson.toJson((Object) new StreetPassRecordDatabase.Companion.EncryptedRecord(connectionRecord.getPeripheral().getModelP(), connectionRecord.getCentral().getModelC(), connectionRecord.getRssi(), connectionRecord.getTxPower(), connectionRecord.getMsg()));
+                            Intrinsics.checkExpressionValueIsNotNull(json, "gson.toJson(StreetPassRe…ssi, txPower, msg = msg))");
+                            Charset charset = Charsets.UTF_8;
+                            if (json != null) {
+                                byte[] bytes = json.getBytes(charset);
+                                Intrinsics.checkExpressionValueIsNotNull(bytes, "(this as java.lang.String).getBytes(charset)");
+                                str = Encryption.INSTANCE.encryptPayload(bytes);
+                            } else {
+                                throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+                            }
+                        } else {
+                            str = connectionRecord.getMsg();
+                        }
+                        if (connectionRecord.getVersion() == 1) {
+                            str2 = StreetPassRecordDatabase.Companion.getENCRYPTED_EMPTY_DICT();
+                        } else {
+                            String modelP = Intrinsics.areEqual((Object) "", (Object) connectionRecord.getPeripheral().getModelP()) ? null : connectionRecord.getPeripheral().getModelP();
+                            String modelC = Intrinsics.areEqual((Object) "", (Object) connectionRecord.getCentral().getModelC()) ? null : connectionRecord.getCentral().getModelC();
+                            Integer valueOf = connectionRecord.getRssi() == 999 ? null : Integer.valueOf(connectionRecord.getRssi());
+                            Integer txPower = connectionRecord.getTxPower();
+                            String json2 = BluetoothMonitoringService.this.gson.toJson((Object) new LocalBlobV2(modelP, modelC, valueOf, (txPower != null && txPower.intValue() == 999) ? null : connectionRecord.getTxPower()));
+                            Intrinsics.checkExpressionValueIsNotNull(json2, "gson.toJson(LocalBlobV2(…, modelC, rssi, txPower))");
+                            Charset charset2 = Charsets.UTF_8;
+                            if (json2 != null) {
+                                byte[] bytes2 = json2.getBytes(charset2);
+                                Intrinsics.checkExpressionValueIsNotNull(bytes2, "(this as java.lang.String).getBytes(charset)");
+                                str2 = Encryption.INSTANCE.encryptPayload(bytes2);
+                            } else {
+                                throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+                            }
+                        }
+                        Job unused = BuildersKt__Builders_commonKt.launch$default(BluetoothMonitoringService.this, (CoroutineContext) null, (CoroutineStart) null, new BluetoothMonitoringService$StreetPassReceiver$onReceive$1(this, new StreetPassRecord(connectionRecord.getVersion() == 1 ? 2 : connectionRecord.getVersion(), connectionRecord.getOrg(), str2, str), (Continuation) null), 3, (Object) null);
                     }
-                    Job unused = BuildersKt__Builders_commonKt.launch$default(BluetoothMonitoringService.this, (CoroutineContext) null, (CoroutineStart) null, new BluetoothMonitoringService$StreetPassReceiver$onReceive$1(this, new StreetPassRecord(connectionRecord.getVersion(), connectionRecord.getMsg(), connectionRecord.getOrg(), connectionRecord.getPeripheral().getModelP(), connectionRecord.getCentral().getModelC(), connectionRecord.getRssi(), connectionRecord.getTxPower()), (Continuation) null), 3, (Object) null);
                 }
             }
         }

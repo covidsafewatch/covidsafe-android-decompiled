@@ -21,7 +21,10 @@
         <action android:id="@+id/action_underSixteenFragment_to_enterNumberFragment" app:destination="@+id/nav_register" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment android:label="PermissionFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.permission.PermissionFragment" android:id="@+id/permissionFragment">
-        <action android:id="@+id/action_permissionFragment_to_permissionSuccessFragment" app:destination="@+id/permissionSuccessFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
+        <action android:id="@+id/action_permissionFragment_to_permissionDeviceNameFragment" app:destination="@+id/permissionDeviceNameFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment android:label="PermissionDeviceNameFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.permission.PermissionDeviceNameFragment" android:id="@+id/permissionDeviceNameFragment">
+        <action android:id="@+id/action_permissionDeviceNameFragment_to_permissionSuccessFragment" app:destination="@+id/permissionSuccessFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment android:label="PermissionSuccessFragment" android:name="au.gov.health.covidsafe.ui.onboarding.fragment.permissionsuccess.PermissionSuccessFragment" android:id="@+id/permissionSuccessFragment" app:enterAnim="@anim/slide_in_right" app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left" app:popExitAnim="@anim/slide_out_right"/>
 </navigation>

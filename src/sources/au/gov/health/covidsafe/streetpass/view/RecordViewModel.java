@@ -3,6 +3,7 @@ package au.gov.health.covidsafe.streetpass.view;
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import au.gov.health.covidsafe.streetpass.persistence.MigrationCallBack;
 import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecord;
 import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecordDatabase;
 import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecordRepository;
@@ -20,7 +21,7 @@ public final class RecordViewModel extends AndroidViewModel {
     public RecordViewModel(Application application) {
         super(application);
         Intrinsics.checkParameterIsNotNull(application, "app");
-        StreetPassRecordRepository streetPassRecordRepository = new StreetPassRecordRepository(StreetPassRecordDatabase.Companion.getDatabase(application).recordDao());
+        StreetPassRecordRepository streetPassRecordRepository = new StreetPassRecordRepository(StreetPassRecordDatabase.Companion.getDatabase$default(StreetPassRecordDatabase.Companion, application, (MigrationCallBack) null, 2, (Object) null).recordDao());
         this.repo = streetPassRecordRepository;
         this.allRecords = streetPassRecordRepository.getAllRecords();
     }

@@ -74,6 +74,7 @@ public final class UploadStepFourFragment extends PagerChildFragment {
     public void onResume() {
         super.onResume();
         ((MaterialCheckBox) _$_findCachedViewById(R.id.upload_consent_checkbox)).setOnCheckedChangeListener(new UploadStepFourFragment$onResume$1(this));
+        ((TextView) _$_findCachedViewById(R.id.header)).sendAccessibilityEvent(8);
     }
 
     public void updateButtonState() {
@@ -91,7 +92,7 @@ public final class UploadStepFourFragment extends PagerChildFragment {
     }
 
     public UploadButtonLayout.ContinueLayout getUploadButtonLayout() {
-        return new UploadButtonLayout.ContinueLayout(R.string.action_agree, new UploadStepFourFragment$getUploadButtonLayout$1(this));
+        return new UploadButtonLayout.ContinueLayout(R.string.action_continue, new UploadStepFourFragment$getUploadButtonLayout$1(this));
     }
 
     /* access modifiers changed from: private */

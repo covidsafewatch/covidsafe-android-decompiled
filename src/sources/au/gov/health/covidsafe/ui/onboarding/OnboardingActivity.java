@@ -119,6 +119,18 @@ public final class OnboardingActivity extends FragmentActivity implements HasBlo
         if (uploadButtonLayout instanceof UploadButtonLayout.ContinueLayout) {
             ((Button) _$_findCachedViewById(R.id.onboarding_next)).setText(((UploadButtonLayout.ContinueLayout) uploadButtonLayout).getButtonText());
             ((Button) _$_findCachedViewById(R.id.onboarding_next)).setOnClickListener(new OnboardingActivity$refreshButton$1(uploadButtonLayout));
+            TextView textView = (TextView) _$_findCachedViewById(R.id.onboarding_next_secondary);
+            Intrinsics.checkExpressionValueIsNotNull(textView, "onboarding_next_secondary");
+            textView.setVisibility(8);
+        } else if (uploadButtonLayout instanceof UploadButtonLayout.TwoChoiceContinueLayout) {
+            UploadButtonLayout.TwoChoiceContinueLayout twoChoiceContinueLayout = (UploadButtonLayout.TwoChoiceContinueLayout) uploadButtonLayout;
+            ((Button) _$_findCachedViewById(R.id.onboarding_next)).setText(twoChoiceContinueLayout.getPrimaryButtonText());
+            ((Button) _$_findCachedViewById(R.id.onboarding_next)).setOnClickListener(new OnboardingActivity$refreshButton$2(uploadButtonLayout));
+            ((TextView) _$_findCachedViewById(R.id.onboarding_next_secondary)).setText(twoChoiceContinueLayout.getSecondaryButtonText());
+            ((TextView) _$_findCachedViewById(R.id.onboarding_next_secondary)).setOnClickListener(new OnboardingActivity$refreshButton$3(uploadButtonLayout));
+            TextView textView2 = (TextView) _$_findCachedViewById(R.id.onboarding_next_secondary);
+            Intrinsics.checkExpressionValueIsNotNull(textView2, "onboarding_next_secondary");
+            textView2.setVisibility(0);
         }
     }
 

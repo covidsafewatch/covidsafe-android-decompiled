@@ -18,7 +18,7 @@ public final class TracerApp extends Application {
     public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
     public static final String ORG = "AU_DTA";
     private static final String TAG = "TracerApp";
-    public static final int protocolVersion = 1;
+    public static final int protocolVersion = 2;
 
     public void onCreate() {
         super.onCreate();

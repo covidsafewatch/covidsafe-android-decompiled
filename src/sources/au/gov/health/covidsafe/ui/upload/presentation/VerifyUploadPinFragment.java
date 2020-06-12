@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.os.BundleKt;
 import androidx.fragment.app.FragmentActivity;
@@ -104,6 +105,7 @@ public final class VerifyUploadPinFragment extends PagerChildFragment {
     public void onResume() {
         super.onResume();
         ((PinInputView) _$_findCachedViewById(R.id.pin)).setOnPinChanged(new VerifyUploadPinFragment$onResume$1(this));
+        ((TextView) _$_findCachedViewById(R.id.header)).sendAccessibilityEvent(8);
     }
 
     public void onPause() {

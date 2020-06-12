@@ -5,12 +5,15 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattServerCallback;
 import android.content.Context;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.InputDeviceCompat;
 import au.gov.health.covidsafe.TracerApp;
 import au.gov.health.covidsafe.Utils;
 import au.gov.health.covidsafe.logging.CentralLog;
 import au.gov.health.covidsafe.streetpass.CentralDevice;
 import au.gov.health.covidsafe.streetpass.ConnectionRecord;
+import au.gov.health.covidsafe.streetpass.persistence.Encryption;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 import kotlin.Metadata;
@@ -20,7 +23,7 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.TypeIntrinsics;
 import kotlin.text.Charsets;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000?\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010%\n\u0002\u0010\u000e\n\u0002\u0010\u0012\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\t*\u0001\u0000\b\n\u0018\u00002\u00020\u0001J,\u0010\n\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u000f2\b\u0010\u0011\u001a\u0004\u0018\u00010\u0012H\u0016JD\u0010\u0013\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0011\u001a\u00020\u00122\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u00152\u0006\u0010\u0010\u001a\u00020\u000f2\b\u0010\u0017\u001a\u0004\u0018\u00010\u0005H\u0016J\"\u0010\u0018\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u0019\u001a\u00020\u000f2\u0006\u0010\u001a\u001a\u00020\u000fH\u0016J \u0010\u001b\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u001c\u001a\u00020\u0015H\u0016J\u000e\u0010\u001d\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\rR\u001d\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001d\u0010\b\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0003¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\u0007¨\u0006\u001e"}, d2 = {"au/gov/health/covidsafe/bluetooth/gatt/GattServer$gattServerCallback$1", "Landroid/bluetooth/BluetoothGattServerCallback;", "readPayloadMap", "", "", "", "getReadPayloadMap", "()Ljava/util/Map;", "writeDataPayload", "getWriteDataPayload", "onCharacteristicReadRequest", "", "device", "Landroid/bluetooth/BluetoothDevice;", "requestId", "", "offset", "characteristic", "Landroid/bluetooth/BluetoothGattCharacteristic;", "onCharacteristicWriteRequest", "preparedWrite", "", "responseNeeded", "value", "onConnectionStateChange", "status", "newState", "onExecuteWrite", "execute", "saveDataSaved", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000?\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010%\n\u0002\u0010\u000e\n\u0002\u0010\u0012\n\u0002\b\u0005\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\n*\u0001\u0000\b\n\u0018\u00002\u00020\u0001:\u0001\u001eJ,\u0010\n\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u000f2\b\u0010\u0011\u001a\u0004\u0018\u00010\u0012H\u0016JD\u0010\u0013\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0011\u001a\u00020\u00122\u0006\u0010\u0014\u001a\u00020\u00152\u0006\u0010\u0016\u001a\u00020\u00152\u0006\u0010\u0010\u001a\u00020\u000f2\b\u0010\u0017\u001a\u0004\u0018\u00010\u0005H\u0016J\"\u0010\u0018\u001a\u00020\u000b2\b\u0010\f\u001a\u0004\u0018\u00010\r2\u0006\u0010\u0019\u001a\u00020\u000f2\u0006\u0010\u001a\u001a\u00020\u000fH\u0016J \u0010\u001b\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\r2\u0006\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u001c\u001a\u00020\u0015H\u0016J\u000e\u0010\u001d\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\rR\u001d\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001d\u0010\b\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00050\u0003¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\u0007¨\u0006\u001f"}, d2 = {"au/gov/health/covidsafe/bluetooth/gatt/GattServer$gattServerCallback$1", "Landroid/bluetooth/BluetoothGattServerCallback;", "readPayloadMap", "", "", "", "getReadPayloadMap", "()Ljava/util/Map;", "writeDataPayload", "getWriteDataPayload", "onCharacteristicReadRequest", "", "device", "Landroid/bluetooth/BluetoothDevice;", "requestId", "", "offset", "characteristic", "Landroid/bluetooth/BluetoothGattCharacteristic;", "onCharacteristicWriteRequest", "preparedWrite", "", "responseNeeded", "value", "onConnectionStateChange", "status", "newState", "onExecuteWrite", "execute", "saveDataSaved", "ReadRequestEncryptedPayload", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: GattServer.kt */
 public final class GattServer$gattServerCallback$1 extends BluetoothGattServerCallback {
     private final Map<String, byte[]> readPayloadMap = new HashMap();
@@ -90,6 +93,8 @@ public final class GattServer$gattServerCallback$1 extends BluetoothGattServerCa
     }
 
     public void onCharacteristicReadRequest(BluetoothDevice bluetoothDevice, int i, int i2, BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+        int i3 = i;
+        int i4 = i2;
         if (bluetoothDevice != null) {
             CentralLog.Companion companion = CentralLog.Companion;
             String access$getTAG$p = this.this$0.TAG;
@@ -103,27 +108,37 @@ public final class GattServer$gattServerCallback$1 extends BluetoothGattServerCa
                     bluetoothGattServer.sendResponse(bluetoothDevice, i, 0, 0, (byte[]) null);
                 }
             } else if (Utils.INSTANCE.bmValid(this.this$0.getContext())) {
-                Map<String, byte[]> map = this.readPayloadMap;
-                String address = bluetoothDevice.getAddress();
-                Intrinsics.checkExpressionValueIsNotNull(address, "device.address");
-                byte[] bArr = map.get(address);
-                if (bArr == null) {
-                    bArr = new ReadRequestPayload(1, TracerApp.Companion.thisDeviceMsg(), "AU_DTA", TracerApp.Companion.asPeripheralDevice()).getPayload();
-                    map.put(address, bArr);
-                }
-                byte[] bArr2 = bArr;
-                byte[] copyOfRange = ArraysKt.copyOfRange(bArr2, i2, bArr2.length);
-                CentralLog.Companion companion3 = CentralLog.Companion;
-                String access$getTAG$p3 = this.this$0.TAG;
-                companion3.i(access$getTAG$p3, "onCharacteristicReadRequest from " + bluetoothDevice.getAddress() + " - " + i + "- " + i2 + " - " + new String(copyOfRange, Charsets.UTF_8));
-                BluetoothGattServer bluetoothGattServer2 = this.this$0.getBluetoothGattServer();
-                if (bluetoothGattServer2 != null) {
-                    bluetoothGattServer2.sendResponse(bluetoothDevice, i, 0, 0, copyOfRange);
+                String json = this.this$0.getGson().toJson((Object) new ReadRequestEncryptedPayload(this, TracerApp.Companion.asPeripheralDevice().getModelP(), TracerApp.Companion.thisDeviceMsg()));
+                Intrinsics.checkExpressionValueIsNotNull(json, "plainRecord");
+                Charset charset = Charsets.UTF_8;
+                if (json != null) {
+                    byte[] bytes = json.getBytes(charset);
+                    Intrinsics.checkExpressionValueIsNotNull(bytes, "(this as java.lang.String).getBytes(charset)");
+                    String encryptPayload = Encryption.INSTANCE.encryptPayload(bytes);
+                    Map<String, byte[]> map = this.readPayloadMap;
+                    String address = bluetoothDevice.getAddress();
+                    Intrinsics.checkExpressionValueIsNotNull(address, "device.address");
+                    byte[] bArr = map.get(address);
+                    if (bArr == null) {
+                        bArr = new ReadRequestPayload(2, encryptPayload, "AU_DTA", (String) null).getPayload();
+                        map.put(address, bArr);
+                    }
+                    byte[] bArr2 = bArr;
+                    byte[] copyOfRange = ArraysKt.copyOfRange(bArr2, i4, bArr2.length);
+                    CentralLog.Companion companion3 = CentralLog.Companion;
+                    String access$getTAG$p3 = this.this$0.TAG;
+                    companion3.i(access$getTAG$p3, "onCharacteristicReadRequest from " + bluetoothDevice.getAddress() + " - " + i + "- " + i4 + " - " + new String(copyOfRange, Charsets.UTF_8));
+                    BluetoothGattServer bluetoothGattServer2 = this.this$0.getBluetoothGattServer();
+                    if (bluetoothGattServer2 != null) {
+                        bluetoothGattServer2.sendResponse(bluetoothDevice, i, 0, 0, copyOfRange);
+                    }
+                } else {
+                    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
                 }
             } else {
                 CentralLog.Companion companion4 = CentralLog.Companion;
                 String access$getTAG$p4 = this.this$0.TAG;
-                companion4.i(access$getTAG$p4, "onCharacteristicReadRequest from " + bluetoothDevice.getAddress() + " - " + i + "- " + i2 + " - BM Expired");
+                companion4.i(access$getTAG$p4, "onCharacteristicReadRequest from " + bluetoothDevice.getAddress() + " - " + i + "- " + i4 + " - BM Expired");
                 BluetoothGattServer bluetoothGattServer3 = this.this$0.getBluetoothGattServer();
                 if (bluetoothGattServer3 != null) {
                     bluetoothGattServer3.sendResponse(bluetoothDevice, i, InputDeviceCompat.SOURCE_KEYBOARD, 0, new byte[0]);
@@ -132,6 +147,30 @@ public final class GattServer$gattServerCallback$1 extends BluetoothGattServerCa
         }
         if (bluetoothDevice == null) {
             CentralLog.Companion.i(this.this$0.TAG, "No device");
+        }
+    }
+
+    @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u0013\n\u0000\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0006*\u0001\u0000\b\u0004\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0002\u0010\u0005R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u0011\u0010\u0004\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\b\u0010\u0007¨\u0006\t"}, d2 = {"au/gov/health/covidsafe/bluetooth/gatt/GattServer$gattServerCallback$1.ReadRequestEncryptedPayload", "", "modelP", "", "msg", "(Lau/gov/health/covidsafe/bluetooth/gatt/GattServer$gattServerCallback$1;Ljava/lang/String;Ljava/lang/String;)V", "getModelP", "()Ljava/lang/String;", "getMsg", "app_release"}, k = 1, mv = {1, 1, 16})
+    /* compiled from: GattServer.kt */
+    public final class ReadRequestEncryptedPayload {
+        private final String modelP;
+        private final String msg;
+        final /* synthetic */ GattServer$gattServerCallback$1 this$0;
+
+        public ReadRequestEncryptedPayload(GattServer$gattServerCallback$1 gattServer$gattServerCallback$1, String str, String str2) {
+            Intrinsics.checkParameterIsNotNull(str, "modelP");
+            Intrinsics.checkParameterIsNotNull(str2, NotificationCompat.CATEGORY_MESSAGE);
+            this.this$0 = gattServer$gattServerCallback$1;
+            this.modelP = str;
+            this.msg = str2;
+        }
+
+        public final String getModelP() {
+            return this.modelP;
+        }
+
+        public final String getMsg() {
+            return this.msg;
         }
     }
 

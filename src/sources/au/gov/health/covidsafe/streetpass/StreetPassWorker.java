@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
+import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import au.gov.health.covidsafe.BuildConfig;
 import au.gov.health.covidsafe.TracerApp;
@@ -20,6 +21,10 @@ import au.gov.health.covidsafe.bluetooth.gatt.ReadRequestPayload;
 import au.gov.health.covidsafe.bluetooth.gatt.WriteRequestPayload;
 import au.gov.health.covidsafe.logging.CentralLog;
 import au.gov.health.covidsafe.streetpass.Work;
+import au.gov.health.covidsafe.streetpass.persistence.Encryption;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,8 +33,9 @@ import java.util.concurrent.PriorityBlockingQueue;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.Charsets;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000v\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010!\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\t\b\u0007\u0018\u00002\u00020\u0001:\u0003012B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004J\u000e\u0010\"\u001a\u00020#2\u0006\u0010$\u001a\u00020\u0011J\u0006\u0010%\u001a\u00020&J\u000e\u0010'\u001a\u00020&2\u0006\u0010$\u001a\u00020\u0011J\u0010\u0010(\u001a\u00020#2\u0006\u0010)\u001a\u00020*H\u0002J\u0010\u0010+\u001a\u00020#2\b\u0010,\u001a\u0004\u0018\u00010\u0006J\b\u0010-\u001a\u00020&H\u0002J\u0006\u0010.\u001a\u00020&J\u0006\u0010/\u001a\u00020&R\u000e\u0010\u0005\u001a\u00020\u0006XD¢\u0006\u0002\n\u0000R\u0014\u0010\u0007\u001a\b\u0012\u0004\u0012\u00020\t0\bX\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\rX\u0004¢\u0006\u0002\n\u0000R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u000e\u0010\u000fR\u0010\u0010\u0010\u001a\u0004\u0018\u00010\u0011X\u000e¢\u0006\u0002\n\u0000R\u0012\u0010\u0012\u001a\u00060\u0013R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0014\u001a\u00020\u0015X\u000e¢\u0006\u0002\n\u0000R\u0011\u0010\u0016\u001a\u00020\u0017¢\u0006\b\n\u0000\u001a\u0004\b\u0018\u0010\u0019R\u000e\u0010\u001a\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u000e\u0010\u001b\u001a\u00020\u001cX\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u001d\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u0014\u0010\u001e\u001a\b\u0012\u0004\u0012\u00020\u00110\u001fX\u0004¢\u0006\u0002\n\u0000R\u0012\u0010 \u001a\u00060!R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000¨\u00063"}, d2 = {"Lau/gov/health/covidsafe/streetpass/StreetPassWorker;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "blacklist", "", "Lau/gov/health/covidsafe/streetpass/BlacklistEntry;", "blacklistHandler", "Landroid/os/Handler;", "bluetoothManager", "Landroid/bluetooth/BluetoothManager;", "getContext", "()Landroid/content/Context;", "currentPendingConnection", "Lau/gov/health/covidsafe/streetpass/Work;", "deviceProcessedReceiver", "Lau/gov/health/covidsafe/streetpass/StreetPassWorker$DeviceProcessedReceiver;", "localBroadcastManager", "Landroidx/localbroadcastmanager/content/LocalBroadcastManager;", "onWorkTimeoutListener", "Lau/gov/health/covidsafe/streetpass/Work$OnWorkTimeoutListener;", "getOnWorkTimeoutListener", "()Lau/gov/health/covidsafe/streetpass/Work$OnWorkTimeoutListener;", "queueHandler", "serviceUUID", "Ljava/util/UUID;", "timeoutHandler", "workQueue", "Ljava/util/concurrent/PriorityBlockingQueue;", "workReceiver", "Lau/gov/health/covidsafe/streetpass/StreetPassWorker$StreetPassWorkReceiver;", "addWork", "", "work", "doWork", "", "finishWork", "getConnectionStatus", "device", "Landroid/bluetooth/BluetoothDevice;", "isCurrentlyWorkedOn", "address", "prepare", "terminateConnections", "unregisterReceivers", "DeviceProcessedReceiver", "StreetPassGattCallback", "StreetPassWorkReceiver", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000~\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010!\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\t\b\u0007\u0018\u00002\u00020\u0001:\u0003345B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004J\u000e\u0010%\u001a\u00020&2\u0006\u0010'\u001a\u00020\u0011J\u0006\u0010(\u001a\u00020)J\u000e\u0010*\u001a\u00020)2\u0006\u0010'\u001a\u00020\u0011J\u0010\u0010+\u001a\u00020&2\u0006\u0010,\u001a\u00020-H\u0002J\u0010\u0010.\u001a\u00020&2\b\u0010/\u001a\u0004\u0018\u00010\u0006J\b\u00100\u001a\u00020)H\u0002J\u0006\u00101\u001a\u00020)J\u0006\u00102\u001a\u00020)R\u000e\u0010\u0005\u001a\u00020\u0006XD¢\u0006\u0002\n\u0000R\u0014\u0010\u0007\u001a\b\u0012\u0004\u0012\u00020\t0\bX\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\rX\u0004¢\u0006\u0002\n\u0000R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u000e\u0010\u000fR\u0010\u0010\u0010\u001a\u0004\u0018\u00010\u0011X\u000e¢\u0006\u0002\n\u0000R\u0012\u0010\u0012\u001a\u00060\u0013R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000R\u0016\u0010\u0014\u001a\n \u0016*\u0004\u0018\u00010\u00150\u0015X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0017\u001a\u00020\u0018X\u000e¢\u0006\u0002\n\u0000R\u0011\u0010\u0019\u001a\u00020\u001a¢\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u001cR\u000e\u0010\u001d\u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u000e\u0010\u001e\u001a\u00020\u001fX\u0004¢\u0006\u0002\n\u0000R\u000e\u0010 \u001a\u00020\u000bX.¢\u0006\u0002\n\u0000R\u0014\u0010!\u001a\b\u0012\u0004\u0012\u00020\u00110\"X\u0004¢\u0006\u0002\n\u0000R\u0012\u0010#\u001a\u00060$R\u00020\u0000X\u0004¢\u0006\u0002\n\u0000¨\u00066"}, d2 = {"Lau/gov/health/covidsafe/streetpass/StreetPassWorker;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "blacklist", "", "Lau/gov/health/covidsafe/streetpass/BlacklistEntry;", "blacklistHandler", "Landroid/os/Handler;", "bluetoothManager", "Landroid/bluetooth/BluetoothManager;", "getContext", "()Landroid/content/Context;", "currentPendingConnection", "Lau/gov/health/covidsafe/streetpass/Work;", "deviceProcessedReceiver", "Lau/gov/health/covidsafe/streetpass/StreetPassWorker$DeviceProcessedReceiver;", "gson", "Lcom/google/gson/Gson;", "kotlin.jvm.PlatformType", "localBroadcastManager", "Landroidx/localbroadcastmanager/content/LocalBroadcastManager;", "onWorkTimeoutListener", "Lau/gov/health/covidsafe/streetpass/Work$OnWorkTimeoutListener;", "getOnWorkTimeoutListener", "()Lau/gov/health/covidsafe/streetpass/Work$OnWorkTimeoutListener;", "queueHandler", "serviceUUID", "Ljava/util/UUID;", "timeoutHandler", "workQueue", "Ljava/util/concurrent/PriorityBlockingQueue;", "workReceiver", "Lau/gov/health/covidsafe/streetpass/StreetPassWorker$StreetPassWorkReceiver;", "addWork", "", "work", "doWork", "", "finishWork", "getConnectionStatus", "device", "Landroid/bluetooth/BluetoothDevice;", "isCurrentlyWorkedOn", "address", "prepare", "terminateConnections", "unregisterReceivers", "DeviceProcessedReceiver", "StreetPassGattCallback", "StreetPassWorkReceiver", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: StreetPassWorker.kt */
 public final class StreetPassWorker {
     /* access modifiers changed from: private */
@@ -43,6 +49,8 @@ public final class StreetPassWorker {
     /* access modifiers changed from: private */
     public Work currentPendingConnection;
     private final DeviceProcessedReceiver deviceProcessedReceiver;
+    /* access modifiers changed from: private */
+    public final Gson gson;
     private LocalBroadcastManager localBroadcastManager;
     private final Work.OnWorkTimeoutListener onWorkTimeoutListener;
     private Handler queueHandler;
@@ -72,6 +80,7 @@ public final class StreetPassWorker {
             LocalBroadcastManager instance = LocalBroadcastManager.getInstance(this.context);
             Intrinsics.checkExpressionValueIsNotNull(instance, "LocalBroadcastManager.getInstance(context)");
             this.localBroadcastManager = instance;
+            this.gson = new GsonBuilder().disableHtmlEscaping().create();
             this.onWorkTimeoutListener = new StreetPassWorker$onWorkTimeoutListener$1(this);
             prepare();
             return;
@@ -708,7 +717,7 @@ public final class StreetPassWorker {
         doWork();
     }
 
-    @Metadata(bv = {1, 0, 3}, d1 = {"\u0000.\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\b\u0004\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004J\u0010\u0010\u0005\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\bH\u0002J \u0010\t\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\b2\u0006\u0010\n\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\rH\u0016J \u0010\u000e\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\b2\u0006\u0010\n\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\rH\u0016J\"\u0010\u000f\u001a\u00020\u00062\b\u0010\u0007\u001a\u0004\u0018\u00010\b2\u0006\u0010\f\u001a\u00020\r2\u0006\u0010\u0010\u001a\u00020\rH\u0016J\"\u0010\u0011\u001a\u00020\u00062\b\u0010\u0007\u001a\u0004\u0018\u00010\b2\u0006\u0010\u0012\u001a\u00020\r2\u0006\u0010\f\u001a\u00020\rH\u0016J\u0018\u0010\u0013\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\b2\u0006\u0010\f\u001a\u00020\rH\u0016R\u000e\u0010\u0002\u001a\u00020\u0003X\u0004¢\u0006\u0002\n\u0000¨\u0006\u0014"}, d2 = {"Lau/gov/health/covidsafe/streetpass/StreetPassWorker$StreetPassGattCallback;", "Landroid/bluetooth/BluetoothGattCallback;", "work", "Lau/gov/health/covidsafe/streetpass/Work;", "(Lau/gov/health/covidsafe/streetpass/StreetPassWorker;Lau/gov/health/covidsafe/streetpass/Work;)V", "endWorkConnection", "", "gatt", "Landroid/bluetooth/BluetoothGatt;", "onCharacteristicRead", "characteristic", "Landroid/bluetooth/BluetoothGattCharacteristic;", "status", "", "onCharacteristicWrite", "onConnectionStateChange", "newState", "onMtuChanged", "mtu", "onServicesDiscovered", "app_release"}, k = 1, mv = {1, 1, 16})
+    @Metadata(bv = {1, 0, 3}, d1 = {"\u0000.\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\b\b\u0004\u0018\u00002\u00020\u0001:\u0001\u0014B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004J\u0010\u0010\u0005\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\bH\u0002J \u0010\t\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\b2\u0006\u0010\n\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\rH\u0016J \u0010\u000e\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\b2\u0006\u0010\n\u001a\u00020\u000b2\u0006\u0010\f\u001a\u00020\rH\u0016J\"\u0010\u000f\u001a\u00020\u00062\b\u0010\u0007\u001a\u0004\u0018\u00010\b2\u0006\u0010\f\u001a\u00020\r2\u0006\u0010\u0010\u001a\u00020\rH\u0016J\"\u0010\u0011\u001a\u00020\u00062\b\u0010\u0007\u001a\u0004\u0018\u00010\b2\u0006\u0010\u0012\u001a\u00020\r2\u0006\u0010\f\u001a\u00020\rH\u0016J\u0018\u0010\u0013\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\b2\u0006\u0010\f\u001a\u00020\rH\u0016R\u000e\u0010\u0002\u001a\u00020\u0003X\u0004¢\u0006\u0002\n\u0000¨\u0006\u0015"}, d2 = {"Lau/gov/health/covidsafe/streetpass/StreetPassWorker$StreetPassGattCallback;", "Landroid/bluetooth/BluetoothGattCallback;", "work", "Lau/gov/health/covidsafe/streetpass/Work;", "(Lau/gov/health/covidsafe/streetpass/StreetPassWorker;Lau/gov/health/covidsafe/streetpass/Work;)V", "endWorkConnection", "", "gatt", "Landroid/bluetooth/BluetoothGatt;", "onCharacteristicRead", "characteristic", "Landroid/bluetooth/BluetoothGattCharacteristic;", "status", "", "onCharacteristicWrite", "onConnectionStateChange", "newState", "onMtuChanged", "mtu", "onServicesDiscovered", "EncryptedWriteRequestPayload", "app_release"}, k = 1, mv = {1, 1, 16})
     /* compiled from: StreetPassWorker.kt */
     public final class StreetPassGattCallback extends BluetoothGattCallback {
         final /* synthetic */ StreetPassWorker this$0;
@@ -967,6 +976,7 @@ public final class StreetPassWorker {
             if (service != null) {
                 BluetoothGattCharacteristic characteristic = service.getCharacteristic(this.this$0.serviceUUID);
                 if (characteristic != null) {
+                    StreetPassPairingFix.INSTANCE.bypassAuthenticationRetry(bluetoothGatt);
                     boolean readCharacteristic = bluetoothGatt.readCharacteristic(characteristic);
                     CentralLog.Companion companion4 = CentralLog.Companion;
                     String access$getTAG$p4 = this.this$0.TAG;
@@ -1051,19 +1061,28 @@ public final class StreetPassWorker {
                 this.work.getChecklist().getReadCharacteristic().setTimePerformed(System.currentTimeMillis());
             }
             if (Utils.INSTANCE.bmValid(this.this$0.getContext())) {
-                bluetoothGattCharacteristic.setValue(new WriteRequestPayload(1, TracerApp.Companion.thisDeviceMsg(), "AU_DTA", TracerApp.Companion.asCentralDevice().getModelC(), this.work.getConnectable().getRssi(), this.work.getConnectable().getTransmissionPower()).getPayload());
-                boolean writeCharacteristic = bluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
-                CentralLog.Companion companion7 = CentralLog.Companion;
-                String access$getTAG$p6 = this.this$0.TAG;
-                StringBuilder sb3 = new StringBuilder();
-                sb3.append("Attempt to write characteristic to our service on ");
-                BluetoothDevice device3 = bluetoothGatt.getDevice();
-                Intrinsics.checkExpressionValueIsNotNull(device3, "gatt.device");
-                sb3.append(device3.getAddress());
-                sb3.append(": ");
-                sb3.append(writeCharacteristic);
-                companion7.i(access$getTAG$p6, sb3.toString());
-                return;
+                String json = this.this$0.gson.toJson((Object) new EncryptedWriteRequestPayload(this, TracerApp.Companion.asCentralDevice().getModelC(), this.work.getConnectable().getRssi(), this.work.getConnectable().getTransmissionPower(), TracerApp.Companion.thisDeviceMsg()));
+                Intrinsics.checkExpressionValueIsNotNull(json, "gson.toJson(EncryptedWri…acerApp.thisDeviceMsg()))");
+                Charset charset = Charsets.UTF_8;
+                if (json != null) {
+                    byte[] bytes = json.getBytes(charset);
+                    Intrinsics.checkExpressionValueIsNotNull(bytes, "(this as java.lang.String).getBytes(charset)");
+                    bluetoothGattCharacteristic.setValue(new WriteRequestPayload(2, Encryption.INSTANCE.encryptPayload(bytes), "AU_DTA", "", 999, 999).getPayload());
+                    StreetPassPairingFix.INSTANCE.bypassAuthenticationRetry(bluetoothGatt);
+                    boolean writeCharacteristic = bluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
+                    CentralLog.Companion companion7 = CentralLog.Companion;
+                    String access$getTAG$p6 = this.this$0.TAG;
+                    StringBuilder sb3 = new StringBuilder();
+                    sb3.append("Attempt to write characteristic to our service on ");
+                    BluetoothDevice device3 = bluetoothGatt.getDevice();
+                    Intrinsics.checkExpressionValueIsNotNull(device3, "gatt.device");
+                    sb3.append(device3.getAddress());
+                    sb3.append(": ");
+                    sb3.append(writeCharacteristic);
+                    companion7.i(access$getTAG$p6, sb3.toString());
+                    return;
+                }
+                throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
             }
             CentralLog.Companion companion8 = CentralLog.Companion;
             String access$getTAG$p7 = this.this$0.TAG;
@@ -1074,6 +1093,42 @@ public final class StreetPassWorker {
             sb4.append(device4.getAddress());
             companion8.i(access$getTAG$p7, sb4.toString());
             endWorkConnection(bluetoothGatt);
+        }
+
+        @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u0018\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\b\n\u0002\b\f\b\u0004\u0018\u00002\u00020\u0001B'\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\b\u0010\u0006\u001a\u0004\u0018\u00010\u0005\u0012\u0006\u0010\u0007\u001a\u00020\u0003¢\u0006\u0002\u0010\bR\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\nR\u0011\u0010\u0004\u001a\u00020\u0005¢\u0006\b\n\u0000\u001a\u0004\b\f\u0010\rR\u0015\u0010\u0006\u001a\u0004\u0018\u00010\u0005¢\u0006\n\n\u0002\u0010\u0010\u001a\u0004\b\u000e\u0010\u000f¨\u0006\u0011"}, d2 = {"Lau/gov/health/covidsafe/streetpass/StreetPassWorker$StreetPassGattCallback$EncryptedWriteRequestPayload;", "", "modelC", "", "rssi", "", "txPower", "msg", "(Lau/gov/health/covidsafe/streetpass/StreetPassWorker$StreetPassGattCallback;Ljava/lang/String;ILjava/lang/Integer;Ljava/lang/String;)V", "getModelC", "()Ljava/lang/String;", "getMsg", "getRssi", "()I", "getTxPower", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "app_release"}, k = 1, mv = {1, 1, 16})
+        /* compiled from: StreetPassWorker.kt */
+        public final class EncryptedWriteRequestPayload {
+            private final String modelC;
+            private final String msg;
+            private final int rssi;
+            final /* synthetic */ StreetPassGattCallback this$0;
+            private final Integer txPower;
+
+            public EncryptedWriteRequestPayload(StreetPassGattCallback streetPassGattCallback, String str, int i, Integer num, String str2) {
+                Intrinsics.checkParameterIsNotNull(str, "modelC");
+                Intrinsics.checkParameterIsNotNull(str2, NotificationCompat.CATEGORY_MESSAGE);
+                this.this$0 = streetPassGattCallback;
+                this.modelC = str;
+                this.rssi = i;
+                this.txPower = num;
+                this.msg = str2;
+            }
+
+            public final String getModelC() {
+                return this.modelC;
+            }
+
+            public final String getMsg() {
+                return this.msg;
+            }
+
+            public final int getRssi() {
+                return this.rssi;
+            }
+
+            public final Integer getTxPower() {
+                return this.txPower;
+            }
         }
 
         public void onCharacteristicWrite(BluetoothGatt bluetoothGatt, BluetoothGattCharacteristic bluetoothGattCharacteristic, int i) {

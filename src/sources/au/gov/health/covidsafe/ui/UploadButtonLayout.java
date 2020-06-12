@@ -5,7 +5,7 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\b6\u0018\u00002\u00020\u0001:\u0002\u0003\u0004B\u0007\b\u0002¢\u0006\u0002\u0010\u0002\u0001\u0002\u0005\u0006¨\u0006\u0007"}, d2 = {"Lau/gov/health/covidsafe/ui/UploadButtonLayout;", "", "()V", "ContinueLayout", "QuestionLayout", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$ContinueLayout;", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$QuestionLayout;", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\b6\u0018\u00002\u00020\u0001:\u0003\u0003\u0004\u0005B\u0007\b\u0002¢\u0006\u0002\u0010\u0002\u0001\u0003\u0006\u0007\b¨\u0006\t"}, d2 = {"Lau/gov/health/covidsafe/ui/UploadButtonLayout;", "", "()V", "ContinueLayout", "QuestionLayout", "TwoChoiceContinueLayout", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$ContinueLayout;", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$TwoChoiceContinueLayout;", "Lau/gov/health/covidsafe/ui/UploadButtonLayout$QuestionLayout;", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: PagerChildFragment.kt */
 public abstract class UploadButtonLayout {
 
@@ -35,6 +35,39 @@ public abstract class UploadButtonLayout {
 
     public /* synthetic */ UploadButtonLayout(DefaultConstructorMarker defaultConstructorMarker) {
         this();
+    }
+
+    @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u001c\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0002\b\n\u0018\u00002\u00020\u0001B9\u0012\b\b\u0001\u0010\u0002\u001a\u00020\u0003\u0012\u000e\u0010\u0004\u001a\n\u0012\u0004\u0012\u00020\u0006\u0018\u00010\u0005\u0012\b\b\u0001\u0010\u0007\u001a\u00020\u0003\u0012\u000e\u0010\b\u001a\n\u0012\u0004\u0012\u00020\u0006\u0018\u00010\u0005¢\u0006\u0002\u0010\tR\u0019\u0010\u0004\u001a\n\u0012\u0004\u0012\u00020\u0006\u0018\u00010\u0005¢\u0006\b\n\u0000\u001a\u0004\b\n\u0010\u000bR\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\f\u0010\rR\u0019\u0010\b\u001a\n\u0012\u0004\u0012\u00020\u0006\u0018\u00010\u0005¢\u0006\b\n\u0000\u001a\u0004\b\u000e\u0010\u000bR\u0011\u0010\u0007\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\r¨\u0006\u0010"}, d2 = {"Lau/gov/health/covidsafe/ui/UploadButtonLayout$TwoChoiceContinueLayout;", "Lau/gov/health/covidsafe/ui/UploadButtonLayout;", "primaryButtonText", "", "primaryButtonListener", "Lkotlin/Function0;", "", "secondaryButtonText", "secondaryButtonListener", "(ILkotlin/jvm/functions/Function0;ILkotlin/jvm/functions/Function0;)V", "getPrimaryButtonListener", "()Lkotlin/jvm/functions/Function0;", "getPrimaryButtonText", "()I", "getSecondaryButtonListener", "getSecondaryButtonText", "app_release"}, k = 1, mv = {1, 1, 16})
+    /* compiled from: PagerChildFragment.kt */
+    public static final class TwoChoiceContinueLayout extends UploadButtonLayout {
+        private final Function0<Unit> primaryButtonListener;
+        private final int primaryButtonText;
+        private final Function0<Unit> secondaryButtonListener;
+        private final int secondaryButtonText;
+
+        public final int getPrimaryButtonText() {
+            return this.primaryButtonText;
+        }
+
+        public final Function0<Unit> getPrimaryButtonListener() {
+            return this.primaryButtonListener;
+        }
+
+        public final int getSecondaryButtonText() {
+            return this.secondaryButtonText;
+        }
+
+        public final Function0<Unit> getSecondaryButtonListener() {
+            return this.secondaryButtonListener;
+        }
+
+        public TwoChoiceContinueLayout(int i, Function0<Unit> function0, int i2, Function0<Unit> function02) {
+            super((DefaultConstructorMarker) null);
+            this.primaryButtonText = i;
+            this.primaryButtonListener = function0;
+            this.secondaryButtonText = i2;
+            this.secondaryButtonListener = function02;
+        }
     }
 
     @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0002\b\u0006\u0018\u00002\u00020\u0001B!\u0012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003\u0012\f\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0006R\u0017\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0007\u0010\bR\u0017\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\b¨\u0006\n"}, d2 = {"Lau/gov/health/covidsafe/ui/UploadButtonLayout$QuestionLayout;", "Lau/gov/health/covidsafe/ui/UploadButtonLayout;", "buttonYesListener", "Lkotlin/Function0;", "", "buttonNoListener", "(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)V", "getButtonNoListener", "()Lkotlin/jvm/functions/Function0;", "getButtonYesListener", "app_release"}, k = 1, mv = {1, 1, 16})

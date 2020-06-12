@@ -4,7 +4,7 @@ import au.gov.health.covidsafe.streetpass.persistence.StreetPassRecord;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000*\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\r\n\u0002\u0010\t\n\u0002\b\t\u0018\u00002\u00020\u0001B\u000f\b\u0016\u0012\u0006\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0005\u001a\u00020\u0006¢\u0006\u0002\u0010\u0007R\u0011\u0010\b\u001a\u00020\t¢\u0006\b\n\u0000\u001a\u0004\b\n\u0010\u000bR\u0011\u0010\f\u001a\u00020\t¢\u0006\b\n\u0000\u001a\u0004\b\r\u0010\u000bR\u0011\u0010\u000e\u001a\u00020\t¢\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\u000bR\u0011\u0010\u0005\u001a\u00020\u0006¢\u0006\b\n\u0000\u001a\u0004\b\u0010\u0010\u0011R\u0011\u0010\u0012\u001a\u00020\t¢\u0006\b\n\u0000\u001a\u0004\b\u0013\u0010\u000bR\u0011\u0010\u0014\u001a\u00020\u0006¢\u0006\b\n\u0000\u001a\u0004\b\u0015\u0010\u0011R\u0011\u0010\u0016\u001a\u00020\u0017¢\u0006\b\n\u0000\u001a\u0004\b\u0018\u0010\u0019R\u0015\u0010\u001a\u001a\u0004\u0018\u00010\u0006¢\u0006\n\n\u0002\u0010\u001d\u001a\u0004\b\u001b\u0010\u001cR\u0011\u0010\u001e\u001a\u00020\u0006¢\u0006\b\n\u0000\u001a\u0004\b\u001f\u0010\u0011¨\u0006 "}, d2 = {"Lau/gov/health/covidsafe/streetpass/view/StreetPassRecordViewModel;", "", "record", "Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecord;", "(Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecord;)V", "number", "", "(Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecord;I)V", "modelC", "", "getModelC", "()Ljava/lang/String;", "modelP", "getModelP", "msg", "getMsg", "getNumber", "()I", "org", "getOrg", "rssi", "getRssi", "timeStamp", "", "getTimeStamp", "()J", "transmissionPower", "getTransmissionPower", "()Ljava/lang/Integer;", "Ljava/lang/Integer;", "version", "getVersion", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000*\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\r\n\u0002\u0010\t\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u000f\b\u0016\u0012\u0006\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0005\u001a\u00020\u0006¢\u0006\u0002\u0010\u0007R\u0014\u0010\b\u001a\u00020\tXD¢\u0006\b\n\u0000\u001a\u0004\b\n\u0010\u000bR\u0014\u0010\f\u001a\u00020\tXD¢\u0006\b\n\u0000\u001a\u0004\b\r\u0010\u000bR\u0011\u0010\u000e\u001a\u00020\t¢\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\u000bR\u0011\u0010\u0005\u001a\u00020\u0006¢\u0006\b\n\u0000\u001a\u0004\b\u0010\u0010\u0011R\u0011\u0010\u0012\u001a\u00020\t¢\u0006\b\n\u0000\u001a\u0004\b\u0013\u0010\u000bR\u0014\u0010\u0014\u001a\u00020\u0006XD¢\u0006\b\n\u0000\u001a\u0004\b\u0015\u0010\u0011R\u0011\u0010\u0016\u001a\u00020\u0017¢\u0006\b\n\u0000\u001a\u0004\b\u0018\u0010\u0019R\u0014\u0010\u001a\u001a\u00020\u0006XD¢\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0011R\u0011\u0010\u001c\u001a\u00020\u0006¢\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0011¨\u0006\u001e"}, d2 = {"Lau/gov/health/covidsafe/streetpass/view/StreetPassRecordViewModel;", "", "record", "Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecord;", "(Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecord;)V", "number", "", "(Lau/gov/health/covidsafe/streetpass/persistence/StreetPassRecord;I)V", "modelC", "", "getModelC", "()Ljava/lang/String;", "modelP", "getModelP", "msg", "getMsg", "getNumber", "()I", "org", "getOrg", "rssi", "getRssi", "timeStamp", "", "getTimeStamp", "()J", "transmissionPower", "getTransmissionPower", "version", "getVersion", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: StreetPassRecordViewModel.kt */
 public final class StreetPassRecordViewModel {
     private final String modelC;
@@ -16,19 +16,17 @@ public final class StreetPassRecordViewModel {
     private final String f9org;
     private final int rssi;
     private final long timeStamp;
-    private final Integer transmissionPower;
+    private final int transmissionPower;
     private final int version;
 
     public StreetPassRecordViewModel(StreetPassRecord streetPassRecord, int i) {
         Intrinsics.checkParameterIsNotNull(streetPassRecord, "record");
         this.number = i;
         this.version = streetPassRecord.getV();
-        this.modelC = streetPassRecord.getModelC();
-        this.modelP = streetPassRecord.getModelP();
-        this.msg = streetPassRecord.getMsg();
+        this.modelC = "Encrypted";
+        this.modelP = "Encrypted";
+        this.msg = streetPassRecord.getRemoteBlob();
         this.timeStamp = streetPassRecord.getTimestamp();
-        this.rssi = streetPassRecord.getRssi();
-        this.transmissionPower = streetPassRecord.getTxPower();
         this.f9org = streetPassRecord.getOrg();
     }
 
@@ -60,7 +58,7 @@ public final class StreetPassRecordViewModel {
         return this.rssi;
     }
 
-    public final Integer getTransmissionPower() {
+    public final int getTransmissionPower() {
         return this.transmissionPower;
     }
 

@@ -35,7 +35,7 @@ public final class PermissionFragment extends PagerChildFragment implements Easy
     private final Integer navigationIcon = Integer.valueOf(R.drawable.ic_up);
     /* access modifiers changed from: private */
     public boolean navigationStarted;
-    private Integer stepProgress = 5;
+    private Integer stepProgress = 4;
 
     public void _$_clearFindViewByIdCache() {
         HashMap hashMap = this._$_findViewCache;
@@ -111,7 +111,7 @@ public final class PermissionFragment extends PagerChildFragment implements Easy
     public final void navigateToNextPage() {
         this.navigationStarted = false;
         if (hasAllPermissionsAndBluetoothOn()) {
-            BaseFragment.navigateTo$default(this, R.id.action_permissionFragment_to_permissionSuccessFragment, (Bundle) null, (Navigator.Extras) null, 6, (Object) null);
+            BaseFragment.navigateTo$default(this, R.id.action_permissionFragment_to_permissionDeviceNameFragment, (Bundle) null, (Navigator.Extras) null, 6, (Object) null);
         } else {
             navigateToMainActivity();
         }
