@@ -22,7 +22,7 @@ import kotlin.collections.ArraysKt;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.ranges.IntRange;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000V\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u0012\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0010\t\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0007\bÆ\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002J\u0018\u0010\u0014\u001a\u00020\u00062\u0006\u0010\u0015\u001a\u00020\n2\u0006\u0010\u0016\u001a\u00020\u0006H\u0002J\u0010\u0010\u0017\u001a\u00020\u00062\u0006\u0010\r\u001a\u00020\u0004H\u0002J\u0010\u0010\u0018\u001a\u00020\u00192\u0006\u0010\u001a\u001a\u00020\u001bH\u0002J\u000e\u0010\u001c\u001a\u00020\b2\u0006\u0010\u0016\u001a\u00020\u0006J\b\u0010\u001d\u001a\u00020\u001eH\u0002J\b\u0010\u001f\u001a\u00020 H\u0002J\u0010\u0010!\u001a\u00020\u00062\u0006\u0010\u001a\u001a\u00020\u001bH\u0002J\u0010\u0010\"\u001a\u00020\u00062\u0006\u0010#\u001a\u00020\u0006H\u0002J\b\u0010$\u001a\u00020\u001bH\u0002J\b\u0010%\u001a\u00020\u0013H\u0002J\b\u0010&\u001a\u00020\u0011H\u0002R\u000e\u0010\u0003\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\bX\u0004¢\u0006\u0002\n\u0000R\u0010\u0010\t\u001a\u0004\u0018\u00010\nX\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\u000b\u001a\u0004\u0018\u00010\u0006X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\f\u001a\u0004\u0018\u00010\nX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u0004X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u000fX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0010\u001a\u00020\u0011X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0012\u001a\u00020\u0013X\u0004¢\u0006\u0002\n\u0000¨\u0006'"}, d2 = {"Lau/gov/health/covidsafe/streetpass/persistence/Encryption;", "", "()V", "KEY_GEN_TIME_DELTA", "", "NONCE_PADDING", "", "TAG", "", "cachedAesKey", "Ljavax/crypto/SecretKey;", "cachedEphPubKey", "cachedMacKey", "counter", "keyGenTime", "", "serverPubKey", "Ljava/security/PublicKey;", "symCipher", "Ljavax/crypto/Cipher;", "computeMAC", "key", "data", "counterBytes", "doKeyAgreement", "Ljavax/crypto/KeyAgreement;", "kp", "Ljava/security/KeyPair;", "encryptPayload", "encryptionKeys", "Lau/gov/health/covidsafe/streetpass/persistence/EncryptionKeys;", "generateKeys", "", "getPublicKey", "hash", "content", "makeECKeys", "makeSymCipher", "readKey", "app_release"}, k = 1, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000X\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u0012\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0010\t\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0002\bÆ\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002J\u0018\u0010\u0012\u001a\u00020\u00062\u0006\u0010\u0013\u001a\u00020\n2\u0006\u0010\u0014\u001a\u00020\u0006H\u0002J\u0010\u0010\u0015\u001a\u00020\u00062\u0006\u0010\r\u001a\u00020\u0004H\u0002J\u0010\u0010\u0016\u001a\u00020\u00172\u0006\u0010\u0018\u001a\u00020\u0019H\u0002J\u000e\u0010\u001a\u001a\u00020\b2\u0006\u0010\u0014\u001a\u00020\u0006J\b\u0010\u001b\u001a\u00020\u001cH\u0002J\b\u0010\u001d\u001a\u00020\u001eH\u0002J\u0010\u0010\u001f\u001a\u00020\u00062\u0006\u0010\u0018\u001a\u00020\u0019H\u0002J\u0010\u0010 \u001a\u00020\u00062\u0006\u0010!\u001a\u00020\u0006H\u0002J\b\u0010\"\u001a\u00020\u0019H\u0002J\b\u0010#\u001a\u00020$H\u0002J\b\u0010%\u001a\u00020\u0011H\u0002R\u000e\u0010\u0003\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\bX\u0004¢\u0006\u0002\n\u0000R\u0010\u0010\t\u001a\u0004\u0018\u00010\nX\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\u000b\u001a\u0004\u0018\u00010\u0006X\u000e¢\u0006\u0002\n\u0000R\u0010\u0010\f\u001a\u0004\u0018\u00010\nX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\r\u001a\u00020\u0004X\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u000fX\u000e¢\u0006\u0002\n\u0000R\u000e\u0010\u0010\u001a\u00020\u0011X\u0004¢\u0006\u0002\n\u0000¨\u0006&"}, d2 = {"Lau/gov/health/covidsafe/streetpass/persistence/Encryption;", "", "()V", "KEY_GEN_TIME_DELTA", "", "NONCE_PADDING", "", "TAG", "", "cachedAesKey", "Ljavax/crypto/SecretKey;", "cachedEphPubKey", "cachedMacKey", "counter", "keyGenTime", "", "serverPubKey", "Ljava/security/PublicKey;", "computeMAC", "key", "data", "counterBytes", "doKeyAgreement", "Ljavax/crypto/KeyAgreement;", "kp", "Ljava/security/KeyPair;", "encryptPayload", "encryptionKeys", "Lau/gov/health/covidsafe/streetpass/persistence/EncryptionKeys;", "generateKeys", "", "getPublicKey", "hash", "content", "makeECKeys", "makeSymCipher", "Ljavax/crypto/Cipher;", "readKey", "app_release"}, k = 1, mv = {1, 1, 16})
 /* compiled from: Encryption.kt */
 public final class Encryption {
     public static final Encryption INSTANCE;
@@ -35,7 +35,6 @@ public final class Encryption {
     private static int counter;
     private static long keyGenTime = Long.MIN_VALUE;
     private static final PublicKey serverPubKey;
-    private static final Cipher symCipher;
 
     private final byte[] counterBytes(int i) {
         return new byte[]{(byte) ((65280 & i) >> 8), (byte) (i & 255)};
@@ -53,7 +52,6 @@ public final class Encryption {
         }
         NONCE_PADDING = bArr;
         serverPubKey = encryption.readKey();
-        symCipher = encryption.makeSymCipher();
     }
 
     private Encryption() {
@@ -160,8 +158,10 @@ public final class Encryption {
         Intrinsics.checkParameterIsNotNull(bArr, "data");
         EncryptionKeys encryptionKeys = encryptionKeys();
         byte[] plus = ArraysKt.plus(encryptionKeys.getEphPubKey(), encryptionKeys.getNonce());
-        symCipher.init(1, encryptionKeys.getAesKey(), new IvParameterSpec(new byte[16]));
-        byte[] doFinal = symCipher.doFinal(ArraysKt.plus(ArraysKt.plus(encryptionKeys.getNonce(), NONCE_PADDING), bArr));
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(new byte[16]);
+        Cipher makeSymCipher = makeSymCipher();
+        makeSymCipher.init(1, encryptionKeys.getAesKey(), ivParameterSpec);
+        byte[] doFinal = makeSymCipher.doFinal(ArraysKt.plus(ArraysKt.plus(encryptionKeys.getNonce(), NONCE_PADDING), bArr));
         Intrinsics.checkExpressionValueIsNotNull(doFinal, "symCipher.doFinal(keys.n…ONCE_PADDING).plus(data))");
         byte[] plus2 = ArraysKt.plus(plus, ArraysKt.sliceArray(doFinal, new IntRange(16, doFinal.length - 1)));
         String encodeToString = Base64.encodeToString(ArraysKt.plus(plus2, computeMAC(encryptionKeys.getMacKey(), plus2)), 0);

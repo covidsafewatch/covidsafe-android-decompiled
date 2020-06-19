@@ -13,6 +13,6 @@ final class HomeFragment$onResume$6 implements View.OnClickListener {
     }
 
     public final void onClick(View view) {
-        this.this$0.goToNewsWebsite();
+        this.this$0.shareThisApp();
     }
 }

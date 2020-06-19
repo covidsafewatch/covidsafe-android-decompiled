@@ -97,19 +97,19 @@ public final class FastServiceLoader {
     }
 
     /* JADX WARNING: Code restructure failed: missing block: B:18:0x0058, code lost:
-        r1 = move-exception;
+        r2 = move-exception;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:20:?, code lost:
         kotlin.io.CloseableKt.closeFinally(r6, r0);
      */
     /* JADX WARNING: Code restructure failed: missing block: B:21:0x005c, code lost:
-        throw r1;
+        throw r2;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:25:0x005f, code lost:
         r0 = move-exception;
      */
     /* JADX WARNING: Code restructure failed: missing block: B:27:?, code lost:
-        r2.close();
+        r1.close();
      */
     /* JADX WARNING: Code restructure failed: missing block: B:28:0x0063, code lost:
         throw r0;
@@ -137,39 +137,39 @@ public final class FastServiceLoader {
         /*
             r5 = this;
             java.lang.String r0 = r6.toString()
-            r1 = 0
-            r2 = 2
-            r3 = 0
-            java.lang.String r4 = "jar"
-            boolean r4 = kotlin.text.StringsKt.startsWith$default(r0, r4, r1, r2, r3)
-            if (r4 == 0) goto L_0x0069
+            java.lang.String r1 = "jar"
+            r2 = 0
+            r3 = 2
+            r4 = 0
+            boolean r1 = kotlin.text.StringsKt.startsWith$default(r0, r1, r2, r3, r4)
+            if (r1 == 0) goto L_0x0069
             java.lang.String r6 = "jar:file:"
-            java.lang.String r6 = kotlin.text.StringsKt.substringAfter$default((java.lang.String) r0, (java.lang.String) r6, (java.lang.String) r3, (int) r2, (java.lang.Object) r3)
-            r4 = 33
-            java.lang.String r6 = kotlin.text.StringsKt.substringBefore$default((java.lang.String) r6, (char) r4, (java.lang.String) r3, (int) r2, (java.lang.Object) r3)
-            java.lang.String r4 = "!/"
-            java.lang.String r0 = kotlin.text.StringsKt.substringAfter$default((java.lang.String) r0, (java.lang.String) r4, (java.lang.String) r3, (int) r2, (java.lang.Object) r3)
-            java.util.jar.JarFile r2 = new java.util.jar.JarFile
-            r2.<init>(r6, r1)
-            r6 = r3
+            java.lang.String r6 = kotlin.text.StringsKt.substringAfter$default((java.lang.String) r0, (java.lang.String) r6, (java.lang.String) r4, (int) r3, (java.lang.Object) r4)
+            r1 = 33
+            java.lang.String r6 = kotlin.text.StringsKt.substringBefore$default((java.lang.String) r6, (char) r1, (java.lang.String) r4, (int) r3, (java.lang.Object) r4)
+            java.lang.String r1 = "!/"
+            java.lang.String r0 = kotlin.text.StringsKt.substringAfter$default((java.lang.String) r0, (java.lang.String) r1, (java.lang.String) r4, (int) r3, (java.lang.Object) r4)
+            java.util.jar.JarFile r1 = new java.util.jar.JarFile
+            r1.<init>(r6, r2)
+            r6 = r4
             java.lang.Throwable r6 = (java.lang.Throwable) r6
             java.io.BufferedReader r6 = new java.io.BufferedReader     // Catch:{ all -> 0x005d }
-            java.io.InputStreamReader r1 = new java.io.InputStreamReader     // Catch:{ all -> 0x005d }
-            java.util.zip.ZipEntry r4 = new java.util.zip.ZipEntry     // Catch:{ all -> 0x005d }
-            r4.<init>(r0)     // Catch:{ all -> 0x005d }
-            java.io.InputStream r0 = r2.getInputStream(r4)     // Catch:{ all -> 0x005d }
-            java.lang.String r4 = "UTF-8"
-            r1.<init>(r0, r4)     // Catch:{ all -> 0x005d }
-            java.io.Reader r1 = (java.io.Reader) r1     // Catch:{ all -> 0x005d }
-            r6.<init>(r1)     // Catch:{ all -> 0x005d }
+            java.io.InputStreamReader r2 = new java.io.InputStreamReader     // Catch:{ all -> 0x005d }
+            java.util.zip.ZipEntry r3 = new java.util.zip.ZipEntry     // Catch:{ all -> 0x005d }
+            r3.<init>(r0)     // Catch:{ all -> 0x005d }
+            java.io.InputStream r0 = r1.getInputStream(r3)     // Catch:{ all -> 0x005d }
+            java.lang.String r3 = "UTF-8"
+            r2.<init>(r0, r3)     // Catch:{ all -> 0x005d }
+            java.io.Reader r2 = (java.io.Reader) r2     // Catch:{ all -> 0x005d }
+            r6.<init>(r2)     // Catch:{ all -> 0x005d }
             java.io.Closeable r6 = (java.io.Closeable) r6     // Catch:{ all -> 0x005d }
-            java.lang.Throwable r3 = (java.lang.Throwable) r3     // Catch:{ all -> 0x005d }
+            java.lang.Throwable r4 = (java.lang.Throwable) r4     // Catch:{ all -> 0x005d }
             r0 = r6
             java.io.BufferedReader r0 = (java.io.BufferedReader) r0     // Catch:{ all -> 0x0056 }
-            kotlinx.coroutines.internal.FastServiceLoader r1 = INSTANCE     // Catch:{ all -> 0x0056 }
-            java.util.List r0 = r1.parseFile(r0)     // Catch:{ all -> 0x0056 }
-            kotlin.io.CloseableKt.closeFinally(r6, r3)     // Catch:{ all -> 0x005d }
-            r2.close()     // Catch:{ all -> 0x0054 }
+            kotlinx.coroutines.internal.FastServiceLoader r2 = INSTANCE     // Catch:{ all -> 0x0056 }
+            java.util.List r0 = r2.parseFile(r0)     // Catch:{ all -> 0x0056 }
+            kotlin.io.CloseableKt.closeFinally(r6, r4)     // Catch:{ all -> 0x005d }
+            r1.close()     // Catch:{ all -> 0x0054 }
             return r0
         L_0x0054:
             r6 = move-exception
@@ -178,15 +178,15 @@ public final class FastServiceLoader {
             r0 = move-exception
             throw r0     // Catch:{ all -> 0x0058 }
         L_0x0058:
-            r1 = move-exception
+            r2 = move-exception
             kotlin.io.CloseableKt.closeFinally(r6, r0)     // Catch:{ all -> 0x005d }
-            throw r1     // Catch:{ all -> 0x005d }
+            throw r2     // Catch:{ all -> 0x005d }
         L_0x005d:
             r6 = move-exception
             throw r6     // Catch:{ all -> 0x005f }
         L_0x005f:
             r0 = move-exception
-            r2.close()     // Catch:{ all -> 0x0064 }
+            r1.close()     // Catch:{ all -> 0x0064 }
             throw r0
         L_0x0064:
             r0 = move-exception
@@ -200,12 +200,12 @@ public final class FastServiceLoader {
             java.io.Reader r1 = (java.io.Reader) r1
             r0.<init>(r1)
             java.io.Closeable r0 = (java.io.Closeable) r0
-            java.lang.Throwable r3 = (java.lang.Throwable) r3
+            java.lang.Throwable r4 = (java.lang.Throwable) r4
             r6 = r0
             java.io.BufferedReader r6 = (java.io.BufferedReader) r6     // Catch:{ all -> 0x008a }
             kotlinx.coroutines.internal.FastServiceLoader r1 = INSTANCE     // Catch:{ all -> 0x008a }
             java.util.List r6 = r1.parseFile(r6)     // Catch:{ all -> 0x008a }
-            kotlin.io.CloseableKt.closeFinally(r0, r3)
+            kotlin.io.CloseableKt.closeFinally(r0, r4)
             return r6
         L_0x008a:
             r6 = move-exception

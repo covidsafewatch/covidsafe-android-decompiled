@@ -595,12 +595,12 @@ public final class Relay {
                 monitor-exit(r8)
                 throw r0
             L_0x01cc:
-                java.lang.IllegalStateException r0 = new java.lang.IllegalStateException
-                java.lang.String r2 = "Check failed."
-                java.lang.String r2 = r2.toString()
-                r0.<init>(r2)
-                java.lang.Throwable r0 = (java.lang.Throwable) r0
-                throw r0
+                java.lang.String r0 = "Check failed."
+                java.lang.IllegalStateException r2 = new java.lang.IllegalStateException
+                java.lang.String r0 = r0.toString()
+                r2.<init>(r0)
+                java.lang.Throwable r2 = (java.lang.Throwable) r2
+                throw r2
             */
             throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.cache2.Relay.RelaySource.read(okio.Buffer, long):long");
         }

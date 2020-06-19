@@ -95,11 +95,12 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
         ((PermissionStatusCard) _$_findCachedViewById(R.id.bluetooth_card_view)).setOnClickListener(new HomeFragment$onResume$1(this));
         ((PermissionStatusCard) _$_findCachedViewById(R.id.location_card_view)).setOnClickListener(new HomeFragment$onResume$2(this));
         ((PermissionStatusCard) _$_findCachedViewById(R.id.battery_card_view)).setOnClickListener(new HomeFragment$onResume$3(this));
-        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_been_tested_button)).setOnClickListener(new HomeFragment$onResume$4(this));
-        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_share)).setOnClickListener(new HomeFragment$onResume$5(this));
-        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_news)).setOnClickListener(new HomeFragment$onResume$6(this));
-        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_app)).setOnClickListener(new HomeFragment$onResume$7(this));
-        ((ExternalLinkCard) _$_findCachedViewById(R.id.help_topics_link)).setOnClickListener(new HomeFragment$onResume$8(this));
+        ((PermissionStatusCard) _$_findCachedViewById(R.id.push_card_view)).setOnClickListener(new HomeFragment$onResume$4(this));
+        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_been_tested_button)).setOnClickListener(new HomeFragment$onResume$5(this));
+        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_share)).setOnClickListener(new HomeFragment$onResume$6(this));
+        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_news)).setOnClickListener(new HomeFragment$onResume$7(this));
+        ((ExternalLinkCard) _$_findCachedViewById(R.id.home_setup_complete_app)).setOnClickListener(new HomeFragment$onResume$8(this));
+        ((ExternalLinkCard) _$_findCachedViewById(R.id.help_topics_link)).setOnClickListener(new HomeFragment$onResume$9(this));
         if (!this.mIsBroadcastListenerRegistered) {
             registerBroadcast();
         }
@@ -245,7 +246,7 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
             PermissionStatusCard permissionStatusCard = (PermissionStatusCard) _$_findCachedViewById(R.id.bluetooth_card_view);
             Intrinsics.checkExpressionValueIsNotNull(permissionStatusCard, "bluetooth_card_view");
             permissionStatusCard.setVisibility(0);
-            ((PermissionStatusCard) _$_findCachedViewById(R.id.bluetooth_card_view)).render(formatBlueToothTitle(booleanValue), booleanValue);
+            PermissionStatusCard.render$default((PermissionStatusCard) _$_findCachedViewById(R.id.bluetooth_card_view), formatBlueToothTitle(booleanValue), booleanValue, (String) null, 4, (Object) null);
             return;
         }
         PermissionStatusCard permissionStatusCard2 = (PermissionStatusCard) _$_findCachedViewById(R.id.bluetooth_card_view);
@@ -260,7 +261,7 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
             PermissionStatusCard permissionStatusCard = (PermissionStatusCard) _$_findCachedViewById(R.id.push_card_view);
             Intrinsics.checkExpressionValueIsNotNull(permissionStatusCard, "push_card_view");
             permissionStatusCard.setVisibility(0);
-            ((PermissionStatusCard) _$_findCachedViewById(R.id.push_card_view)).render(formatPushNotificationTitle(booleanValue), booleanValue);
+            ((PermissionStatusCard) _$_findCachedViewById(R.id.push_card_view)).render(formatPushNotificationTitle(booleanValue), booleanValue, getString(R.string.home_app_permission_push_notification_prompt));
             return;
         }
         PermissionStatusCard permissionStatusCard2 = (PermissionStatusCard) _$_findCachedViewById(R.id.push_card_view);
@@ -275,7 +276,7 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
             PermissionStatusCard permissionStatusCard = (PermissionStatusCard) _$_findCachedViewById(R.id.battery_card_view);
             Intrinsics.checkExpressionValueIsNotNull(permissionStatusCard, "battery_card_view");
             permissionStatusCard.setVisibility(0);
-            ((PermissionStatusCard) _$_findCachedViewById(R.id.battery_card_view)).render(formatNonBatteryOptimizationTitle(!booleanValue), booleanValue);
+            PermissionStatusCard.render$default((PermissionStatusCard) _$_findCachedViewById(R.id.battery_card_view), formatNonBatteryOptimizationTitle(!booleanValue), booleanValue, (String) null, 4, (Object) null);
             return;
         }
         PermissionStatusCard permissionStatusCard2 = (PermissionStatusCard) _$_findCachedViewById(R.id.battery_card_view);
@@ -290,7 +291,7 @@ public final class HomeFragment extends BaseFragment implements EasyPermissions.
             PermissionStatusCard permissionStatusCard = (PermissionStatusCard) _$_findCachedViewById(R.id.location_card_view);
             Intrinsics.checkExpressionValueIsNotNull(permissionStatusCard, "location_card_view");
             permissionStatusCard.setVisibility(0);
-            ((PermissionStatusCard) _$_findCachedViewById(R.id.location_card_view)).render(formatLocationTitle(booleanValue), booleanValue);
+            PermissionStatusCard.render$default((PermissionStatusCard) _$_findCachedViewById(R.id.location_card_view), formatLocationTitle(booleanValue), booleanValue, (String) null, 4, (Object) null);
             return;
         }
         PermissionStatusCard permissionStatusCard2 = (PermissionStatusCard) _$_findCachedViewById(R.id.location_card_view);

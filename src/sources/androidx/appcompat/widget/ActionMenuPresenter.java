@@ -448,15 +448,15 @@ class ActionMenuPresenter extends BaseMenuPresenter implements ActionProvider.Su
                 i4 = i;
                 menuItemImpl2.setIsActionButton(false);
                 i13++;
+                view = null;
                 actionMenuPresenter = this;
                 i = i4;
-                view = null;
                 i5 = 0;
             }
             i13++;
+            view = null;
             actionMenuPresenter = this;
             i = i4;
-            view = null;
             i5 = 0;
         }
         return true;

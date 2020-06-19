@@ -194,8 +194,8 @@ final class FlowKt__DelayKt$debounce$2 extends SuspendLambda implements Function
         L_0x00d2:
             r11 = r19
         L_0x00d4:
-            r3 = 1
             r1 = r20
+            r3 = 1
             goto L_0x005a
         L_0x00d8:
             kotlin.Unit r0 = kotlin.Unit.INSTANCE

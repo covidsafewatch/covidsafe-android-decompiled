@@ -1,7 +1,7 @@
 package au.gov.health.covidsafe.ui.onboarding.fragment.personal;
 
-import android.widget.EditText;
-import au.gov.health.covidsafe.R;
+import android.content.Context;
+import au.gov.health.covidsafe.Preference;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -20,12 +20,12 @@ final class PersonalDetailsFragment$getUploadButtonLayout$1 extends Lambda imple
     }
 
     public final void invoke() {
-        PersonalDetailsPresenter access$getPresenter$p = this.this$0.presenter;
-        EditText editText = (EditText) this.this$0._$_findCachedViewById(R.id.personal_details_name);
-        Intrinsics.checkExpressionValueIsNotNull(editText, "personal_details_name");
-        String obj = editText.getText().toString();
-        EditText editText2 = (EditText) this.this$0._$_findCachedViewById(R.id.personal_details_post_code);
-        Intrinsics.checkExpressionValueIsNotNull(editText2, "personal_details_post_code");
-        access$getPresenter$p.saveInfos(obj, editText2.getText().toString(), this.this$0.getMidAgeToSend());
+        Context requireContext = this.this$0.requireContext();
+        Intrinsics.checkExpressionValueIsNotNull(requireContext, "this.requireContext()");
+        Preference.INSTANCE.putName(requireContext, PersonalDetailsFragment.access$getName$p(this.this$0));
+        Preference.INSTANCE.putAge(requireContext, String.valueOf(this.this$0.age));
+        Preference.INSTANCE.putPostCode(requireContext, PersonalDetailsFragment.access$getPostcode$p(this.this$0));
+        PersonalDetailsFragment personalDetailsFragment = this.this$0;
+        personalDetailsFragment.navigateToNextPage(personalDetailsFragment.age < 16);
     }
 }

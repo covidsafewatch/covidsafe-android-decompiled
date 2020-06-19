@@ -1,5 +1,6 @@
 package com.google.crypto.tink.subtle;
 
+import au.gov.health.covidsafe.ui.onboarding.fragment.enternumber.EnterNumberPresenterKt;
 import java.math.BigInteger;
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
@@ -112,7 +113,7 @@ public final class EllipticCurves {
 
     private static ECParameterSpec getNistCurveSpec(String str, String str2, String str3, String str4, String str5) {
         BigInteger bigInteger = new BigInteger(str);
-        return new ECParameterSpec(new EllipticCurve(new ECFieldFp(bigInteger), bigInteger.subtract(new BigInteger("3")), new BigInteger(str3, 16)), new ECPoint(new BigInteger(str4, 16), new BigInteger(str5, 16)), new BigInteger(str2), 1);
+        return new ECParameterSpec(new EllipticCurve(new ECFieldFp(bigInteger), bigInteger.subtract(new BigInteger(EnterNumberPresenterKt.NORFOLK_ISLAND_MOBILE_PREFIX_DIGIT)), new BigInteger(str3, 16)), new ECPoint(new BigInteger(str4, 16), new BigInteger(str5, 16)), new BigInteger(str2), 1);
     }
 
     protected static BigInteger modSqrt(BigInteger bigInteger, BigInteger bigInteger2) throws GeneralSecurityException {

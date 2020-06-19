@@ -6545,8 +6545,8 @@ final class MessageSchema<T> implements Schema<T> {
         r8 = r13;
      */
     /* JADX WARNING: Multi-variable type inference failed */
-    /* JADX WARNING: Removed duplicated region for block: B:136:0x03d9  */
-    /* JADX WARNING: Removed duplicated region for block: B:137:0x03eb  */
+    /* JADX WARNING: Removed duplicated region for block: B:136:0x03d8  */
+    /* JADX WARNING: Removed duplicated region for block: B:137:0x03ea  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public int parseProto2Message(T r30, byte[] r31, int r32, int r33, int r34, com.google.crypto.tink.shaded.protobuf.ArrayDecoders.Registers r35) throws java.io.IOException {
         /*
@@ -6566,7 +6566,7 @@ final class MessageSchema<T> implements Schema<T> {
             r6 = 0
             r7 = -1
         L_0x0017:
-            if (r0 >= r13) goto L_0x040e
+            if (r0 >= r13) goto L_0x040d
             int r3 = r0 + 1
             byte r0 = r12[r0]
             if (r0 >= 0) goto L_0x0028
@@ -7107,25 +7107,24 @@ final class MessageSchema<T> implements Schema<T> {
             r8 = r18
             r0 = r34
         L_0x03b9:
-            if (r8 != r0) goto L_0x03c8
-            if (r0 == 0) goto L_0x03c8
-            r1 = -1
+            if (r8 != r0) goto L_0x03c7
+            if (r0 == 0) goto L_0x03c7
             r9 = r29
             r10 = r0
             r0 = r2
             r3 = r8
             r7 = r19
             r6 = r22
-            goto L_0x0417
-        L_0x03c8:
+            goto L_0x0415
+        L_0x03c7:
             r9 = r29
             r10 = r0
             boolean r0 = r9.hasExtensions
             r11 = r35
-            if (r0 == 0) goto L_0x03eb
+            if (r0 == 0) goto L_0x03ea
             com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite r0 = r11.extensionRegistry
             com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite r1 = com.google.crypto.tink.shaded.protobuf.ExtensionRegistryLite.getEmptyRegistry()
-            if (r0 == r1) goto L_0x03eb
+            if (r0 == r1) goto L_0x03ea
             com.google.crypto.tink.shaded.protobuf.MessageLite r5 = r9.defaultInstance
             com.google.crypto.tink.shaded.protobuf.UnknownFieldSchema<?, ?> r6 = r9.unknownFieldSchema
             r0 = r8
@@ -7134,15 +7133,15 @@ final class MessageSchema<T> implements Schema<T> {
             r4 = r30
             r7 = r35
             int r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeExtensionOrUnknownField(r0, r1, r2, r3, r4, r5, r6, r7)
-            goto L_0x03fa
-        L_0x03eb:
+            goto L_0x03f9
+        L_0x03ea:
             com.google.crypto.tink.shaded.protobuf.UnknownFieldSetLite r4 = getMutableUnknownFields(r30)
             r0 = r8
             r1 = r31
             r3 = r33
             r5 = r35
             int r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeUnknownField(r0, r1, r2, r3, r4, r5)
-        L_0x03fa:
+        L_0x03f9:
             r14 = r30
             r12 = r31
             r13 = r33
@@ -7155,54 +7154,54 @@ final class MessageSchema<T> implements Schema<T> {
             r6 = r22
             r11 = r10
             goto L_0x035d
-        L_0x040e:
+        L_0x040d:
             r22 = r6
             r19 = r7
             r28 = r10
             r10 = r11
             r9 = r15
+        L_0x0415:
             r1 = -1
-        L_0x0417:
-            if (r7 == r1) goto L_0x0422
+            if (r7 == r1) goto L_0x0421
             long r1 = (long) r7
             r4 = r30
             r5 = r28
             r5.putInt(r4, r1, r6)
-            goto L_0x0424
-        L_0x0422:
+            goto L_0x0423
+        L_0x0421:
             r4 = r30
-        L_0x0424:
+        L_0x0423:
             r1 = 0
             int r2 = r9.checkInitializedCount
-        L_0x0427:
+        L_0x0426:
             int r5 = r9.repeatedFieldOffsetStart
-            if (r2 >= r5) goto L_0x043a
+            if (r2 >= r5) goto L_0x0439
             int[] r5 = r9.intArray
             r5 = r5[r2]
             com.google.crypto.tink.shaded.protobuf.UnknownFieldSchema<?, ?> r6 = r9.unknownFieldSchema
             java.lang.Object r1 = r9.filterMapUnknownEnumValues(r4, r5, r1, r6)
             com.google.crypto.tink.shaded.protobuf.UnknownFieldSetLite r1 = (com.google.crypto.tink.shaded.protobuf.UnknownFieldSetLite) r1
             int r2 = r2 + 1
-            goto L_0x0427
-        L_0x043a:
-            if (r1 == 0) goto L_0x0441
+            goto L_0x0426
+        L_0x0439:
+            if (r1 == 0) goto L_0x0440
             com.google.crypto.tink.shaded.protobuf.UnknownFieldSchema<?, ?> r2 = r9.unknownFieldSchema
             r2.setBuilderToMessage(r4, r1)
-        L_0x0441:
-            if (r10 != 0) goto L_0x044d
+        L_0x0440:
+            if (r10 != 0) goto L_0x044c
             r1 = r33
-            if (r0 != r1) goto L_0x0448
-            goto L_0x0453
-        L_0x0448:
+            if (r0 != r1) goto L_0x0447
+            goto L_0x0452
+        L_0x0447:
             com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException r0 = com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException.parseFailure()
             throw r0
-        L_0x044d:
+        L_0x044c:
             r1 = r33
-            if (r0 > r1) goto L_0x0454
-            if (r3 != r10) goto L_0x0454
-        L_0x0453:
+            if (r0 > r1) goto L_0x0453
+            if (r3 != r10) goto L_0x0453
+        L_0x0452:
             return r0
-        L_0x0454:
+        L_0x0453:
             com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException r0 = com.google.crypto.tink.shaded.protobuf.InvalidProtocolBufferException.parseFailure()
             throw r0
         */
@@ -7227,19 +7226,19 @@ final class MessageSchema<T> implements Schema<T> {
         r1 = r7;
         r2 = r10;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:70:0x015a, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:69:0x0159, code lost:
         r24 = r7;
         r15 = r8;
         r18 = r9;
         r19 = r10;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:87:0x01dc, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:86:0x01dc, code lost:
         if (r0 != r15) goto L_0x023d;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:93:0x020a, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:92:0x020a, code lost:
         if (r0 != r15) goto L_0x023d;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:96:0x0229, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:95:0x0229, code lost:
         if (r0 != r15) goto L_0x023d;
      */
     /* JADX WARNING: Multi-variable type inference failed */
@@ -7297,7 +7296,7 @@ final class MessageSchema<T> implements Schema<T> {
             long r1 = offset(r5)
             r0 = 17
             r10 = 2
-            if (r3 > r0) goto L_0x0162
+            if (r3 > r0) goto L_0x0161
             r0 = 1
             switch(r3) {
                 case 0: goto L_0x0148;
@@ -7337,7 +7336,7 @@ final class MessageSchema<T> implements Schema<T> {
         L_0x007b:
             r2 = r1
             r10 = r4
-            if (r6 != 0) goto L_0x015a
+            if (r6 != 0) goto L_0x0159
             int r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeVarint32(r12, r8, r11)
             int r1 = r11.int1
             int r1 = com.google.crypto.tink.shaded.protobuf.CodedInputStream.decodeZigZag32(r1)
@@ -7346,7 +7345,7 @@ final class MessageSchema<T> implements Schema<T> {
         L_0x008e:
             r2 = r1
             r10 = r4
-            if (r6 != 0) goto L_0x015a
+            if (r6 != 0) goto L_0x0159
             int r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeVarint32(r12, r8, r11)
             int r1 = r11.int1
             r9.putInt(r14, r2, r1)
@@ -7412,7 +7411,7 @@ final class MessageSchema<T> implements Schema<T> {
         L_0x0105:
             r2 = r4
             r1 = r7
-            goto L_0x0157
+            goto L_0x024d
         L_0x0109:
             r2 = r1
             if (r6 != r0) goto L_0x019e
@@ -7426,7 +7425,7 @@ final class MessageSchema<T> implements Schema<T> {
         L_0x0119:
             r2 = r1
             r10 = r4
-            if (r6 != 0) goto L_0x015a
+            if (r6 != 0) goto L_0x0159
             int r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeVarint32(r12, r8, r11)
             int r1 = r11.int1
             r9.putInt(r14, r2, r1)
@@ -7434,7 +7433,7 @@ final class MessageSchema<T> implements Schema<T> {
         L_0x0127:
             r2 = r1
             r10 = r4
-            if (r6 != 0) goto L_0x015a
+            if (r6 != 0) goto L_0x0159
             int r6 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeVarint64(r12, r8, r11)
             long r4 = r11.long1
             r0 = r9
@@ -7447,7 +7446,7 @@ final class MessageSchema<T> implements Schema<T> {
             r2 = r1
             r10 = r4
             r0 = 5
-            if (r6 != r0) goto L_0x015a
+            if (r6 != r0) goto L_0x0159
             float r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeFloat(r12, r8)
             com.google.crypto.tink.shaded.protobuf.UnsafeUtil.putFloat((java.lang.Object) r14, (long) r2, (float) r0)
             int r0 = r8 + 4
@@ -7455,7 +7454,7 @@ final class MessageSchema<T> implements Schema<T> {
         L_0x0148:
             r2 = r1
             r10 = r4
-            if (r6 != r0) goto L_0x015a
+            if (r6 != r0) goto L_0x0159
             double r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeDouble(r12, r8)
             com.google.crypto.tink.shaded.protobuf.UnsafeUtil.putDouble((java.lang.Object) r14, (long) r2, (double) r0)
         L_0x0153:
@@ -7463,33 +7462,31 @@ final class MessageSchema<T> implements Schema<T> {
         L_0x0155:
             r1 = r7
             r2 = r10
-        L_0x0157:
-            r10 = -1
-            goto L_0x0013
-        L_0x015a:
+            goto L_0x024d
+        L_0x0159:
             r24 = r7
             r15 = r8
             r18 = r9
             r19 = r10
             goto L_0x01a5
-        L_0x0162:
+        L_0x0161:
             r0 = 27
             if (r3 != r0) goto L_0x01a9
             if (r6 != r10) goto L_0x019e
             java.lang.Object r0 = r9.getObject(r14, r1)
             com.google.crypto.tink.shaded.protobuf.Internal$ProtobufList r0 = (com.google.crypto.tink.shaded.protobuf.Internal.ProtobufList) r0
             boolean r3 = r0.isModifiable()
-            if (r3 != 0) goto L_0x0186
+            if (r3 != 0) goto L_0x0185
             int r3 = r0.size()
-            if (r3 != 0) goto L_0x017d
+            if (r3 != 0) goto L_0x017c
             r3 = 10
-            goto L_0x017f
-        L_0x017d:
+            goto L_0x017e
+        L_0x017c:
             int r3 = r3 * 2
-        L_0x017f:
+        L_0x017e:
             com.google.crypto.tink.shaded.protobuf.Internal$ProtobufList r0 = r0.mutableCopyWithCapacity(r3)
             r9.putObject(r14, r1, r0)
-        L_0x0186:
+        L_0x0185:
             r5 = r0
             com.google.crypto.tink.shaded.protobuf.Schema r0 = r15.getMessageFieldSchema(r4)
             r1 = r17
@@ -7501,7 +7498,7 @@ final class MessageSchema<T> implements Schema<T> {
             int r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeMessageList(r0, r1, r2, r3, r4, r5, r6)
             r1 = r7
             r2 = r19
-            goto L_0x0157
+            goto L_0x024d
         L_0x019e:
             r19 = r4
             r24 = r7
@@ -7594,7 +7591,6 @@ final class MessageSchema<T> implements Schema<T> {
             r5 = r32
             int r0 = com.google.crypto.tink.shaded.protobuf.ArrayDecoders.decodeUnknownField(r0, r1, r2, r3, r4, r5)
         L_0x023d:
-            r10 = -1
             r15 = r27
             r14 = r28
             r12 = r29
@@ -7603,6 +7599,8 @@ final class MessageSchema<T> implements Schema<T> {
             r9 = r18
             r2 = r19
             r1 = r24
+        L_0x024d:
+            r10 = -1
             goto L_0x0013
         L_0x0250:
             r1 = r13

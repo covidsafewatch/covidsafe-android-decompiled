@@ -35,7 +35,7 @@ public final class GetOnboardingOtp extends UseCase<OTPChallengeResponse, GetOtp
 
     public Object run(GetOtpParams getOtpParams, Continuation<? super Either<? extends Exception, OTPChallengeResponse>> continuation) {
         try {
-            Response<OTPChallengeResponse> execute = this.awsClient.initiateAuth(new OTPChallengeRequest(getOtpParams.getPhoneNumber$app_release(), getOtpParams.getDeviceId$app_release(), getOtpParams.getPostCode$app_release(), getOtpParams.getAge$app_release(), getOtpParams.getName$app_release())).execute();
+            Response<OTPChallengeResponse> execute = this.awsClient.initiateAuth(new OTPChallengeRequest(getOtpParams.getCountryCode$app_release(), getOtpParams.getPhoneNumber$app_release(), getOtpParams.getDeviceId$app_release(), getOtpParams.getPostCode$app_release(), getOtpParams.getAge$app_release(), getOtpParams.getName$app_release())).execute();
             if (execute.code() == 200) {
                 OTPChallengeResponse body = execute.body();
                 if (body != null) {

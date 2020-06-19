@@ -33,9 +33,9 @@ class RoomTrackingLiveData<T> extends LiveData<T> {
                 r5 = this;
                 androidx.room.RoomTrackingLiveData r0 = androidx.room.RoomTrackingLiveData.this
                 java.util.concurrent.atomic.AtomicBoolean r0 = r0.mRegisteredObserver
-                r1 = 1
-                r2 = 0
-                boolean r0 = r0.compareAndSet(r2, r1)
+                r1 = 0
+                r2 = 1
+                boolean r0 = r0.compareAndSet(r1, r2)
                 if (r0 == 0) goto L_0x001b
                 androidx.room.RoomTrackingLiveData r0 = androidx.room.RoomTrackingLiveData.this
                 androidx.room.RoomDatabase r0 = r0.mDatabase
@@ -46,14 +46,14 @@ class RoomTrackingLiveData<T> extends LiveData<T> {
             L_0x001b:
                 androidx.room.RoomTrackingLiveData r0 = androidx.room.RoomTrackingLiveData.this
                 java.util.concurrent.atomic.AtomicBoolean r0 = r0.mComputing
-                boolean r0 = r0.compareAndSet(r2, r1)
+                boolean r0 = r0.compareAndSet(r1, r2)
                 if (r0 == 0) goto L_0x005c
                 r0 = 0
                 r3 = 0
             L_0x0027:
                 androidx.room.RoomTrackingLiveData r4 = androidx.room.RoomTrackingLiveData.this     // Catch:{ all -> 0x0053 }
                 java.util.concurrent.atomic.AtomicBoolean r4 = r4.mInvalid     // Catch:{ all -> 0x0053 }
-                boolean r4 = r4.compareAndSet(r1, r2)     // Catch:{ all -> 0x0053 }
+                boolean r4 = r4.compareAndSet(r2, r1)     // Catch:{ all -> 0x0053 }
                 if (r4 == 0) goto L_0x0044
                 androidx.room.RoomTrackingLiveData r0 = androidx.room.RoomTrackingLiveData.this     // Catch:{ Exception -> 0x003b }
                 java.util.concurrent.Callable<T> r0 = r0.mComputeFunction     // Catch:{ Exception -> 0x003b }
@@ -62,10 +62,10 @@ class RoomTrackingLiveData<T> extends LiveData<T> {
                 goto L_0x0027
             L_0x003b:
                 r0 = move-exception
-                java.lang.RuntimeException r1 = new java.lang.RuntimeException     // Catch:{ all -> 0x0053 }
+                java.lang.RuntimeException r2 = new java.lang.RuntimeException     // Catch:{ all -> 0x0053 }
                 java.lang.String r3 = "Exception while computing database live data."
-                r1.<init>(r3, r0)     // Catch:{ all -> 0x0053 }
-                throw r1     // Catch:{ all -> 0x0053 }
+                r2.<init>(r3, r0)     // Catch:{ all -> 0x0053 }
+                throw r2     // Catch:{ all -> 0x0053 }
             L_0x0044:
                 if (r3 == 0) goto L_0x004b
                 androidx.room.RoomTrackingLiveData r4 = androidx.room.RoomTrackingLiveData.this     // Catch:{ all -> 0x0053 }
@@ -73,13 +73,13 @@ class RoomTrackingLiveData<T> extends LiveData<T> {
             L_0x004b:
                 androidx.room.RoomTrackingLiveData r0 = androidx.room.RoomTrackingLiveData.this
                 java.util.concurrent.atomic.AtomicBoolean r0 = r0.mComputing
-                r0.set(r2)
+                r0.set(r1)
                 goto L_0x005d
             L_0x0053:
                 r0 = move-exception
-                androidx.room.RoomTrackingLiveData r1 = androidx.room.RoomTrackingLiveData.this
-                java.util.concurrent.atomic.AtomicBoolean r1 = r1.mComputing
-                r1.set(r2)
+                androidx.room.RoomTrackingLiveData r2 = androidx.room.RoomTrackingLiveData.this
+                java.util.concurrent.atomic.AtomicBoolean r2 = r2.mComputing
+                r2.set(r1)
                 throw r0
             L_0x005c:
                 r3 = 0

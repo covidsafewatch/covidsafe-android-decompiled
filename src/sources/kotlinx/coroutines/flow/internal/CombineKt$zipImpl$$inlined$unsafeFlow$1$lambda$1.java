@@ -449,8 +449,8 @@ final class CombineKt$zipImpl$$inlined$unsafeFlow$1$lambda$1 extends SuspendLamb
             r14 = r6
             r6 = r19
         L_0x0259:
-            r7 = 0
             r9 = r1
+            r7 = 0
             r1 = r21
             goto L_0x0160
         L_0x025f:

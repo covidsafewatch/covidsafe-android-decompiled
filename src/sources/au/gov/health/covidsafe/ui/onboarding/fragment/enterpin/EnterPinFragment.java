@@ -2,6 +2,7 @@ package au.gov.health.covidsafe.ui.onboarding.fragment.enterpin;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.method.LinkMovementMethod;
@@ -31,6 +32,7 @@ import kotlin.jvm.internal.Intrinsics;
 /* compiled from: EnterPinFragment.kt */
 public final class EnterPinFragment extends PagerChildFragment {
     public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
+    public static final String ENTER_PIN_CALLING_CODE = "calling_code";
     public static final String ENTER_PIN_CHALLENGE_NAME = "challenge_name";
     public static final String ENTER_PIN_DESTINATION_ID = "destination_id";
     public static final String ENTER_PIN_PHONE_NUMBER = "phone_number";
@@ -81,7 +83,7 @@ public final class EnterPinFragment extends PagerChildFragment {
         return enterPinPresenter;
     }
 
-    @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0005\b\u0003\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002R\u000e\u0010\u0003\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000¨\u0006\t"}, d2 = {"Lau/gov/health/covidsafe/ui/onboarding/fragment/enterpin/EnterPinFragment$Companion;", "", "()V", "ENTER_PIN_CHALLENGE_NAME", "", "ENTER_PIN_DESTINATION_ID", "ENTER_PIN_PHONE_NUMBER", "ENTER_PIN_PROGRESS", "ENTER_PIN_SESSION", "app_release"}, k = 1, mv = {1, 1, 16})
+    @Metadata(bv = {1, 0, 3}, d1 = {"\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0006\b\u0003\u0018\u00002\u00020\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002R\u000e\u0010\u0003\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\u0004XT¢\u0006\u0002\n\u0000¨\u0006\n"}, d2 = {"Lau/gov/health/covidsafe/ui/onboarding/fragment/enterpin/EnterPinFragment$Companion;", "", "()V", "ENTER_PIN_CALLING_CODE", "", "ENTER_PIN_CHALLENGE_NAME", "ENTER_PIN_DESTINATION_ID", "ENTER_PIN_PHONE_NUMBER", "ENTER_PIN_PROGRESS", "ENTER_PIN_SESSION", "app_release"}, k = 1, mv = {1, 1, 16})
     /* compiled from: EnterPinFragment.kt */
     public static final class Companion {
         private Companion() {
@@ -116,13 +118,18 @@ public final class EnterPinFragment extends PagerChildFragment {
         if (arguments != null) {
             String string = arguments.getString(ENTER_PIN_SESSION);
             String string2 = arguments.getString(ENTER_PIN_CHALLENGE_NAME);
+            int i = arguments.getInt(ENTER_PIN_CALLING_CODE);
             String string3 = arguments.getString(ENTER_PIN_PHONE_NUMBER);
             this.destinationId = Integer.valueOf(arguments.getInt("destination_id"));
             setStepProgress(arguments.containsKey("progress") ? Integer.valueOf(arguments.getInt("progress")) : null);
             TextView textView = (TextView) _$_findCachedViewById(R.id.enter_pin_headline);
             Intrinsics.checkExpressionValueIsNotNull(textView, "enter_pin_headline");
-            textView.setText(getResources().getString(R.string.enter_pin_headline, new Object[]{getResources().getString(R.string.enter_number_prefix), string3}));
-            this.presenter = new EnterPinPresenter(this, string, string2, string3);
+            Resources resources = getResources();
+            StringBuilder sb = new StringBuilder();
+            sb.append('+');
+            sb.append(i);
+            textView.setText(resources.getString(R.string.enter_pin_headline, new Object[]{sb.toString(), string3}));
+            this.presenter = new EnterPinPresenter(this, string, string2, i, string3);
         }
         TextView textView2 = (TextView) _$_findCachedViewById(R.id.enter_pin_wrong_number);
         Intrinsics.checkExpressionValueIsNotNull(textView2, "enter_pin_wrong_number");

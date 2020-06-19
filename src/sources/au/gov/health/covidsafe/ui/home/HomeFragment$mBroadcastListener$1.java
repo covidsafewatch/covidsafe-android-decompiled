@@ -23,13 +23,13 @@ public final class HomeFragment$mBroadcastListener$1 extends BroadcastReceiver {
         if (Intrinsics.areEqual((Object) intent.getAction(), (Object) "android.bluetooth.adapter.action.STATE_CHANGED")) {
             int intExtra = intent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
             if (intExtra == 10) {
-                ((PermissionStatusCard) this.this$0._$_findCachedViewById(R.id.bluetooth_card_view)).render(this.this$0.formatBlueToothTitle(false), false);
+                PermissionStatusCard.render$default((PermissionStatusCard) this.this$0._$_findCachedViewById(R.id.bluetooth_card_view), this.this$0.formatBlueToothTitle(false), false, (String) null, 4, (Object) null);
                 this.this$0.refreshSetupCompleteOrIncompleteUi();
             } else if (intExtra == 12) {
-                ((PermissionStatusCard) this.this$0._$_findCachedViewById(R.id.bluetooth_card_view)).render(this.this$0.formatBlueToothTitle(true), true);
+                PermissionStatusCard.render$default((PermissionStatusCard) this.this$0._$_findCachedViewById(R.id.bluetooth_card_view), this.this$0.formatBlueToothTitle(true), true, (String) null, 4, (Object) null);
                 this.this$0.refreshSetupCompleteOrIncompleteUi();
             } else if (intExtra == 13) {
-                ((PermissionStatusCard) this.this$0._$_findCachedViewById(R.id.bluetooth_card_view)).render(this.this$0.formatBlueToothTitle(false), false);
+                PermissionStatusCard.render$default((PermissionStatusCard) this.this$0._$_findCachedViewById(R.id.bluetooth_card_view), this.this$0.formatBlueToothTitle(false), false, (String) null, 4, (Object) null);
                 this.this$0.refreshSetupCompleteOrIncompleteUi();
             }
         }

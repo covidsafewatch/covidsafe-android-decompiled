@@ -24,6 +24,7 @@ import android.widget.TextView;
 import androidx.appcompat.R;
 import androidx.core.content.ContextCompat;
 import androidx.cursoradapter.widget.ResourceCursorAdapter;
+import au.gov.health.covidsafe.ui.onboarding.fragment.enternumber.EnterNumberPresenterKt;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.WeakHashMap;
@@ -303,7 +304,7 @@ class SuggestionsAdapter extends ResourceCursorAdapter implements View.OnClickLi
     }
 
     private Drawable getDrawableFromResourceValue(String str) {
-        if (str == null || str.isEmpty() || "0".equals(str)) {
+        if (str == null || str.isEmpty() || EnterNumberPresenterKt.AUSTRALIA_MOBILE_NUMBER_PREFIX_DIGIT.equals(str)) {
             return null;
         }
         try {

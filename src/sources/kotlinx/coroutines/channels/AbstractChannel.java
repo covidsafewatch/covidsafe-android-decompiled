@@ -218,16 +218,16 @@ public abstract class AbstractChannel<E> extends AbstractSendChannel<E> implemen
     public void onCancelIdempotent(boolean z) {
         Closed<?> closedForSend = getClosedForSend();
         if (closedForSend != null) {
-            Object r1 = InlineList.m1035constructorimpl$default((Object) null, 1, (DefaultConstructorMarker) null);
+            Object r0 = InlineList.m1035constructorimpl$default((Object) null, 1, (DefaultConstructorMarker) null);
             while (true) {
                 LockFreeLinkedListNode prevNode = closedForSend.getPrevNode();
                 if (prevNode instanceof LockFreeLinkedListHead) {
-                    if (r1 != null) {
-                        if (!(r1 instanceof ArrayList)) {
-                            ((Send) r1).resumeSendClosed(closedForSend);
+                    if (r0 != null) {
+                        if (!(r0 instanceof ArrayList)) {
+                            ((Send) r0).resumeSendClosed(closedForSend);
                             return;
-                        } else if (r1 != null) {
-                            ArrayList arrayList = (ArrayList) r1;
+                        } else if (r0 != null) {
+                            ArrayList arrayList = (ArrayList) r0;
                             for (int size = arrayList.size() - 1; size >= 0; size--) {
                                 ((Send) arrayList.get(size)).resumeSendClosed(closedForSend);
                             }
@@ -243,7 +243,7 @@ public abstract class AbstractChannel<E> extends AbstractSendChannel<E> implemen
                 } else if (!prevNode.remove()) {
                     prevNode.helpRemove();
                 } else if (prevNode != null) {
-                    r1 = InlineList.m1040plusimpl(r1, (Send) prevNode);
+                    r0 = InlineList.m1040plusimpl(r0, (Send) prevNode);
                 } else {
                     throw new TypeCastException("null cannot be cast to non-null type kotlinx.coroutines.channels.Send");
                 }

@@ -295,8 +295,8 @@ final class CombineKt$combineTransformInternal$2 extends SuspendLambda implement
             r11 = r23
             r12 = r24
         L_0x0165:
-            r3 = 1
             r1 = r26
+            r3 = 1
             goto L_0x007a
         */
         throw new UnsupportedOperationException("Method not decompiled: kotlinx.coroutines.flow.internal.CombineKt$combineTransformInternal$2.invokeSuspend(java.lang.Object):java.lang.Object");

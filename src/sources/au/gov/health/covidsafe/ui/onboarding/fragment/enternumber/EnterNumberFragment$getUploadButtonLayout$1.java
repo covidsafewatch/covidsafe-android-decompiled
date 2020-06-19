@@ -23,11 +23,12 @@ final class EnterNumberFragment$getUploadButtonLayout$1 extends Lambda implement
 
     public final void invoke() {
         EnterNumberPresenter access$getEnterNumberPresenter$p = this.this$0.enterNumberPresenter;
+        int access$getCallingCode$p = this.this$0.callingCode;
         EditText editText = (EditText) this.this$0._$_findCachedViewById(R.id.enter_number_phone_number);
         Intrinsics.checkExpressionValueIsNotNull(editText, "enter_number_phone_number");
         String obj = editText.getText().toString();
         if (obj != null) {
-            access$getEnterNumberPresenter$p.requestOTP$app_release(StringsKt.trim((CharSequence) obj).toString());
+            access$getEnterNumberPresenter$p.requestOTP(access$getCallingCode$p, StringsKt.trim((CharSequence) obj).toString());
             return;
         }
         throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");

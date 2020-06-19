@@ -103,11 +103,11 @@ public final class ObservableFlatMapSingle<T, R> extends AbstractObservableWithU
         public void innerSuccess(FlatMapSingleObserver<T, R>.InnerObserver innerObserver, R r) {
             this.set.delete(innerObserver);
             if (get() == 0) {
-                boolean z = true;
+                boolean z = false;
                 if (compareAndSet(0, 1)) {
                     this.downstream.onNext(r);
-                    if (this.active.decrementAndGet() != 0) {
-                        z = false;
+                    if (this.active.decrementAndGet() == 0) {
+                        z = true;
                     }
                     SpscLinkedArrayQueue spscLinkedArrayQueue = this.queue.get();
                     if (!z || (spscLinkedArrayQueue != null && !spscLinkedArrayQueue.isEmpty())) {

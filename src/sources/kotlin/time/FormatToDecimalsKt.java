@@ -1,5 +1,6 @@
 package kotlin.time;
 
+import au.gov.health.covidsafe.ui.onboarding.fragment.enternumber.EnterNumberPresenterKt;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -30,7 +31,7 @@ public final class FormatToDecimalsKt {
     }
 
     private static final DecimalFormat createFormatForDecimals(int i) {
-        DecimalFormat decimalFormat = new DecimalFormat("0", rootNegativeExpFormatSymbols);
+        DecimalFormat decimalFormat = new DecimalFormat(EnterNumberPresenterKt.AUSTRALIA_MOBILE_NUMBER_PREFIX_DIGIT, rootNegativeExpFormatSymbols);
         if (i > 0) {
             decimalFormat.setMinimumFractionDigits(i);
         }

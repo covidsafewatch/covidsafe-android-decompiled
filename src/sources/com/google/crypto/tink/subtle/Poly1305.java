@@ -43,7 +43,7 @@ class Poly1305 {
         if (bArr3.length == 32) {
             int i = 0;
             long load26 = load26(bArr3, 0, 0) & 67108863;
-            int i2 = 2;
+            int i2 = 3;
             long load262 = load26(bArr3, 3, 2) & 67108611;
             long load263 = load26(bArr3, 6, 4) & 67092735;
             long load264 = load26(bArr3, 9, 6) & 66076671;
@@ -62,7 +62,7 @@ class Poly1305 {
             while (i3 < bArr4.length) {
                 copyBlockSize(bArr5, bArr4, i3);
                 long load266 = j9 + load26(bArr5, i, i);
-                long load267 = j5 + load26(bArr5, 3, i2);
+                long load267 = j5 + load26(bArr5, i2, 2);
                 long load268 = j6 + load26(bArr5, 6, 4);
                 long load269 = j7 + load26(bArr5, 9, 6);
                 long load2610 = j8 + (load26(bArr5, 12, 8) | ((long) (bArr5[16] << Ascii.CAN)));
@@ -77,7 +77,7 @@ class Poly1305 {
                 j6 = j12 & 67108863;
                 j7 = j13 & 67108863;
                 j8 = j14 & 67108863;
-                i2 = 2;
+                i2 = 3;
                 j9 = j15 & 67108863;
                 i = 0;
             }
@@ -107,10 +107,11 @@ class Poly1305 {
             long j39 = (j28 & 67108863 & j37) | j34;
             long j40 = (j29 & 67108863 & j37) | j35;
             long load32 = ((j32 | (j26 & j37) | (j38 << 26)) & 4294967295L) + load32(bArr3, 16);
+            long j41 = load32 & 4294967295L;
             long load322 = (((j38 >> 6) | (j39 << 20)) & 4294967295L) + load32(bArr3, 20) + (load32 >> 32);
             long load323 = (((j39 >> 12) | (j40 << 14)) & 4294967295L) + load32(bArr3, 24) + (load322 >> 32);
             byte[] bArr6 = new byte[16];
-            toByteArray(bArr6, load32 & 4294967295L, 0);
+            toByteArray(bArr6, j41, 0);
             toByteArray(bArr6, load322 & 4294967295L, 4);
             toByteArray(bArr6, load323 & 4294967295L, 8);
             toByteArray(bArr6, ((((j40 >> 18) | (((j30 & j37) | j36) << 8)) & 4294967295L) + load32(bArr3, 28) + (load323 >> 32)) & 4294967295L, 12);

@@ -38,52 +38,52 @@ public final class Huffman {
     /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r2v9, resolved type: byte} */
     /* JADX WARNING: Multi-variable type inference failed */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public final void encode(okio.ByteString r10, okio.BufferedSink r11) throws java.io.IOException {
+    public final void encode(okio.ByteString r9, okio.BufferedSink r10) throws java.io.IOException {
         /*
-            r9 = this;
+            r8 = this;
             java.lang.String r0 = "source"
-            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r10, r0)
+            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r9, r0)
             java.lang.String r0 = "sink"
-            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r11, r0)
-            int r0 = r10.size()
+            kotlin.jvm.internal.Intrinsics.checkParameterIsNotNull(r10, r0)
+            int r0 = r9.size()
             r1 = 0
             r2 = 0
             r3 = r2
             r2 = 0
         L_0x0013:
-            r5 = 8
             if (r1 >= r0) goto L_0x003b
-            byte r6 = r10.getByte(r1)
-            r7 = 255(0xff, float:3.57E-43)
-            int r6 = okhttp3.internal.Util.and((byte) r6, (int) r7)
-            int[] r7 = CODES
-            r7 = r7[r6]
-            byte[] r8 = CODE_BIT_COUNTS
-            byte r6 = r8[r6]
-            long r3 = r3 << r6
-            long r7 = (long) r7
-            long r3 = r3 | r7
-            int r2 = r2 + r6
-        L_0x002d:
+            byte r5 = r9.getByte(r1)
+            r6 = 255(0xff, float:3.57E-43)
+            int r5 = okhttp3.internal.Util.and((byte) r5, (int) r6)
+            int[] r6 = CODES
+            r6 = r6[r5]
+            byte[] r7 = CODE_BIT_COUNTS
+            byte r5 = r7[r5]
+            long r3 = r3 << r5
+            long r6 = (long) r6
+            long r3 = r3 | r6
+            int r2 = r2 + r5
+        L_0x002b:
+            r5 = 8
             if (r2 < r5) goto L_0x0038
             int r2 = r2 + -8
-            long r6 = r3 >> r2
-            int r7 = (int) r6
-            r11.writeByte(r7)
-            goto L_0x002d
+            long r5 = r3 >> r2
+            int r6 = (int) r5
+            r10.writeByte(r6)
+            goto L_0x002b
         L_0x0038:
             int r1 = r1 + 1
             goto L_0x0013
         L_0x003b:
-            if (r2 <= 0) goto L_0x0049
-            int r5 = r5 - r2
-            long r0 = r3 << r5
+            if (r2 <= 0) goto L_0x004a
+            int r9 = 8 - r2
+            long r0 = r3 << r9
             r3 = 255(0xff, double:1.26E-321)
             long r2 = r3 >>> r2
             long r0 = r0 | r2
-            int r10 = (int) r0
-            r11.writeByte(r10)
-        L_0x0049:
+            int r9 = (int) r0
+            r10.writeByte(r9)
+        L_0x004a:
             return
         */
         throw new UnsupportedOperationException("Method not decompiled: okhttp3.internal.http2.Huffman.encode(okio.ByteString, okio.BufferedSink):void");

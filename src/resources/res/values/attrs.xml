@@ -87,9 +87,9 @@
     </attr>
     <attr name="alphabeticModifiers">
         <flag name="ALT" value="2" />
-        <flag name="CTRL" value="4096" />
+        <flag name="CTRL" value="1000" />
         <flag name="FUNCTION" value="8" />
-        <flag name="META" value="65536" />
+        <flag name="META" value="10000" />
         <flag name="SHIFT" value="1" />
         <flag name="SYM" value="4" />
     </attr>
@@ -244,9 +244,9 @@
     <attr name="buttonCompat" format="reference">
     </attr>
     <attr name="buttonGravity">
-        <flag name="bottom" value="80" />
-        <flag name="center_vertical" value="16" />
-        <flag name="top" value="48" />
+        <flag name="bottom" value="50" />
+        <flag name="center_vertical" value="10" />
+        <flag name="top" value="30" />
     </attr>
     <attr name="buttonIconDimen" format="dimension">
     </attr>
@@ -361,16 +361,16 @@
     <attr name="collapseIcon" format="reference">
     </attr>
     <attr name="collapsedTitleGravity">
-        <flag name="bottom" value="80" />
-        <flag name="center" value="17" />
+        <flag name="bottom" value="50" />
+        <flag name="center" value="11" />
         <flag name="center_horizontal" value="1" />
-        <flag name="center_vertical" value="16" />
-        <flag name="end" value="8388613" />
-        <flag name="fill_vertical" value="112" />
+        <flag name="center_vertical" value="10" />
+        <flag name="end" value="800005" />
+        <flag name="fill_vertical" value="70" />
         <flag name="left" value="3" />
         <flag name="right" value="5" />
-        <flag name="start" value="8388611" />
-        <flag name="top" value="48" />
+        <flag name="start" value="800003" />
+        <flag name="top" value="30" />
     </attr>
     <attr name="collapsedTitleTextAppearance" format="reference">
     </attr>
@@ -527,10 +527,10 @@
     <attr name="dialogTheme" format="reference">
     </attr>
     <attr name="displayOptions">
-        <flag name="disableHome" value="32" />
+        <flag name="disableHome" value="20" />
         <flag name="homeAsUp" value="4" />
         <flag name="none" value="0" />
-        <flag name="showCustom" value="16" />
+        <flag name="showCustom" value="10" />
         <flag name="showHome" value="2" />
         <flag name="showTitle" value="8" />
         <flag name="useLogo" value="1" />
@@ -643,16 +643,16 @@
     <attr name="expanded" format="boolean">
     </attr>
     <attr name="expandedTitleGravity">
-        <flag name="bottom" value="80" />
-        <flag name="center" value="17" />
+        <flag name="bottom" value="50" />
+        <flag name="center" value="11" />
         <flag name="center_horizontal" value="1" />
-        <flag name="center_vertical" value="16" />
-        <flag name="end" value="8388613" />
-        <flag name="fill_vertical" value="112" />
+        <flag name="center_vertical" value="10" />
+        <flag name="end" value="800005" />
+        <flag name="fill_vertical" value="70" />
         <flag name="left" value="3" />
         <flag name="right" value="5" />
-        <flag name="start" value="8388611" />
-        <flag name="top" value="48" />
+        <flag name="start" value="800003" />
+        <flag name="top" value="30" />
     </attr>
     <attr name="expandedTitleMargin" format="dimension">
     </attr>
@@ -890,20 +890,20 @@
     <attr name="layout_anchor" format="reference">
     </attr>
     <attr name="layout_anchorGravity">
-        <flag name="bottom" value="80" />
-        <flag name="center" value="17" />
+        <flag name="bottom" value="50" />
+        <flag name="center" value="11" />
         <flag name="center_horizontal" value="1" />
-        <flag name="center_vertical" value="16" />
+        <flag name="center_vertical" value="10" />
         <flag name="clip_horizontal" value="8" />
-        <flag name="clip_vertical" value="128" />
-        <flag name="end" value="8388613" />
-        <flag name="fill" value="119" />
+        <flag name="clip_vertical" value="80" />
+        <flag name="end" value="800005" />
+        <flag name="fill" value="77" />
         <flag name="fill_horizontal" value="7" />
-        <flag name="fill_vertical" value="112" />
+        <flag name="fill_vertical" value="70" />
         <flag name="left" value="3" />
         <flag name="right" value="5" />
-        <flag name="start" value="8388611" />
-        <flag name="top" value="48" />
+        <flag name="start" value="800003" />
+        <flag name="top" value="30" />
     </attr>
     <attr name="layout_behavior" format="string">
     </attr>
@@ -1026,14 +1026,14 @@
     <attr name="layout_constraintWidth_percent" format="float">
     </attr>
     <attr name="layout_dodgeInsetEdges">
-        <flag name="all" value="119" />
-        <flag name="bottom" value="80" />
-        <flag name="end" value="8388613" />
+        <flag name="all" value="77" />
+        <flag name="bottom" value="50" />
+        <flag name="end" value="800005" />
         <flag name="left" value="3" />
         <flag name="none" value="0" />
         <flag name="right" value="5" />
-        <flag name="start" value="8388611" />
-        <flag name="top" value="48" />
+        <flag name="start" value="800003" />
+        <flag name="top" value="30" />
     </attr>
     <attr name="layout_editor_absoluteX" format="dimension">
     </attr>
@@ -1052,13 +1052,13 @@
     <attr name="layout_goneMarginTop" format="dimension">
     </attr>
     <attr name="layout_insetEdge">
-        <enum name="bottom" value="80" />
-        <enum name="end" value="8388613" />
+        <enum name="bottom" value="50" />
+        <enum name="end" value="800005" />
         <enum name="left" value="3" />
         <enum name="none" value="0" />
         <enum name="right" value="5" />
-        <enum name="start" value="8388611" />
-        <enum name="top" value="48" />
+        <enum name="start" value="800003" />
+        <enum name="top" value="30" />
     </attr>
     <attr name="layout_keyline" format="integer">
     </attr>
@@ -1077,8 +1077,8 @@
         <flag name="exitUntilCollapsed" value="2" />
         <flag name="noScroll" value="0" />
         <flag name="scroll" value="1" />
-        <flag name="snap" value="16" />
-        <flag name="snapMargins" value="32" />
+        <flag name="snap" value="10" />
+        <flag name="snapMargins" value="20" />
     </attr>
     <attr name="layout_scrollInterpolator" format="reference">
     </attr>
@@ -1236,9 +1236,9 @@
     </attr>
     <attr name="numericModifiers">
         <flag name="ALT" value="2" />
-        <flag name="CTRL" value="4096" />
+        <flag name="CTRL" value="1000" />
         <flag name="FUNCTION" value="8" />
-        <flag name="META" value="65536" />
+        <flag name="META" value="10000" />
         <flag name="SHIFT" value="1" />
         <flag name="SYM" value="4" />
     </attr>

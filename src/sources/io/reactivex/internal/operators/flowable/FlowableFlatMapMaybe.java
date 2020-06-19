@@ -122,10 +122,10 @@ public final class FlowableFlatMapMaybe<T, R> extends AbstractFlowableWithUpstre
         public void innerSuccess(FlatMapMaybeSubscriber<T, R>.InnerObserver innerObserver, R r) {
             this.set.delete(innerObserver);
             if (get() == 0) {
-                boolean z = true;
+                boolean z = false;
                 if (compareAndSet(0, 1)) {
-                    if (this.active.decrementAndGet() != 0) {
-                        z = false;
+                    if (this.active.decrementAndGet() == 0) {
+                        z = true;
                     }
                     if (this.requested.get() != 0) {
                         this.downstream.onNext(r);
@@ -202,10 +202,10 @@ public final class FlowableFlatMapMaybe<T, R> extends AbstractFlowableWithUpstre
         public void innerComplete(FlatMapMaybeSubscriber<T, R>.InnerObserver innerObserver) {
             this.set.delete(innerObserver);
             if (get() == 0) {
-                boolean z = true;
+                boolean z = false;
                 if (compareAndSet(0, 1)) {
-                    if (this.active.decrementAndGet() != 0) {
-                        z = false;
+                    if (this.active.decrementAndGet() == 0) {
+                        z = true;
                     }
                     SpscLinkedArrayQueue spscLinkedArrayQueue = this.queue.get();
                     if (!z || (spscLinkedArrayQueue != null && !spscLinkedArrayQueue.isEmpty())) {

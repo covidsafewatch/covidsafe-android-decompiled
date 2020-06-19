@@ -1,5 +1,6 @@
 package com.google.common.net;
 
+import au.gov.health.covidsafe.ui.onboarding.fragment.enternumber.EnterNumberPresenterKt;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
@@ -180,7 +181,7 @@ public final class InetAddresses {
 
     private static byte parseOctet(String str) {
         int parseInt = Integer.parseInt(str);
-        if (parseInt <= 255 && (!str.startsWith("0") || str.length() <= 1)) {
+        if (parseInt <= 255 && (!str.startsWith(EnterNumberPresenterKt.AUSTRALIA_MOBILE_NUMBER_PREFIX_DIGIT) || str.length() <= 1)) {
             return (byte) parseInt;
         }
         throw new NumberFormatException();

@@ -2589,11 +2589,11 @@ public class ConstraintWidget {
             r1 = 0
             goto L_0x028c
         L_0x0284:
+            r6 = r23
             r8 = r1
             r5 = r22
             r7 = 6
             r14 = 1
-            r6 = r23
             r1 = 1
         L_0x028c:
             r13 = 0

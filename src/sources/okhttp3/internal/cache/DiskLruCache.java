@@ -82,11 +82,11 @@ public final class DiskLruCache implements Closeable, Flushable {
         this.appVersion = i;
         this.valueCount = i2;
         this.maxSize = j;
-        boolean z = true;
+        boolean z = false;
         this.cleanupQueue = taskRunner.newQueue();
         this.cleanupTask = new DiskLruCache$cleanupTask$1(this, Util.okHttpName + " Cache");
         if (j > 0) {
-            if (this.valueCount <= 0 ? false : z) {
+            if (this.valueCount > 0 ? true : z) {
                 this.journalFile = new File(this.directory, JOURNAL_FILE);
                 this.journalFileTmp = new File(this.directory, JOURNAL_FILE_TEMP);
                 this.journalFileBackup = new File(this.directory, JOURNAL_FILE_BACKUP);

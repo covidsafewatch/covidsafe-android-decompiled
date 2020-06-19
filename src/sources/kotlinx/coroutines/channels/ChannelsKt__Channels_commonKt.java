@@ -12108,15 +12108,15 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
         throw new UnsupportedOperationException("Method not decompiled: kotlinx.coroutines.channels.ChannelsKt__Channels_commonKt.indexOfFirst$$forInline(kotlinx.coroutines.channels.ReceiveChannel, kotlin.jvm.functions.Function1, kotlin.coroutines.Continuation):java.lang.Object");
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0043, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0042, code lost:
         r9 = move-exception;
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:16:0x0044, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:16:0x0043, code lost:
         kotlin.jvm.internal.InlineMarker.finallyStart(1);
         kotlinx.coroutines.channels.ChannelsKt.cancelConsumed(r7, r8);
         kotlin.jvm.internal.InlineMarker.finallyEnd(1);
      */
-    /* JADX WARNING: Code restructure failed: missing block: B:17:0x004d, code lost:
+    /* JADX WARNING: Code restructure failed: missing block: B:17:0x004c, code lost:
         throw r9;
      */
     @kotlin.Deprecated(level = kotlin.DeprecationLevel.WARNING, message = "Channel operators are deprecated in favour of Flow and will be removed in 1.4")
@@ -12126,37 +12126,37 @@ final /* synthetic */ class ChannelsKt__Channels_commonKt {
             r0 = 0
             java.lang.Throwable r0 = (java.lang.Throwable) r0
             r1 = 1
-            kotlinx.coroutines.channels.ChannelIterator r2 = r7.iterator()     // Catch:{ all -> 0x0041 }
+            kotlinx.coroutines.channels.ChannelIterator r2 = r7.iterator()     // Catch:{ all -> 0x0040 }
             r3 = 0
             r4 = -1
             r5 = 0
         L_0x000b:
-            kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0041 }
-            java.lang.Object r6 = r2.hasNext(r9)     // Catch:{ all -> 0x0041 }
-            kotlin.jvm.internal.InlineMarker.mark((int) r1)     // Catch:{ all -> 0x0041 }
-            java.lang.Boolean r6 = (java.lang.Boolean) r6     // Catch:{ all -> 0x0041 }
-            boolean r6 = r6.booleanValue()     // Catch:{ all -> 0x0041 }
-            if (r6 == 0) goto L_0x0031
-            java.lang.Object r6 = r2.next()     // Catch:{ all -> 0x0041 }
-            java.lang.Object r6 = r8.invoke(r6)     // Catch:{ all -> 0x0041 }
-            java.lang.Boolean r6 = (java.lang.Boolean) r6     // Catch:{ all -> 0x0041 }
-            boolean r6 = r6.booleanValue()     // Catch:{ all -> 0x0041 }
+            kotlin.jvm.internal.InlineMarker.mark((int) r3)     // Catch:{ all -> 0x0040 }
+            java.lang.Object r6 = r2.hasNext(r9)     // Catch:{ all -> 0x0040 }
+            kotlin.jvm.internal.InlineMarker.mark((int) r1)     // Catch:{ all -> 0x0040 }
+            java.lang.Boolean r6 = (java.lang.Boolean) r6     // Catch:{ all -> 0x0040 }
+            boolean r6 = r6.booleanValue()     // Catch:{ all -> 0x0040 }
+            if (r6 == 0) goto L_0x0030
+            java.lang.Object r6 = r2.next()     // Catch:{ all -> 0x0040 }
+            java.lang.Object r6 = r8.invoke(r6)     // Catch:{ all -> 0x0040 }
+            java.lang.Boolean r6 = (java.lang.Boolean) r6     // Catch:{ all -> 0x0040 }
+            boolean r6 = r6.booleanValue()     // Catch:{ all -> 0x0040 }
             if (r6 == 0) goto L_0x002e
             r4 = r5
         L_0x002e:
-            int r5 = r5 + 1
+            int r5 = r5 + r1
             goto L_0x000b
-        L_0x0031:
-            kotlin.Unit r8 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0041 }
+        L_0x0030:
+            kotlin.Unit r8 = kotlin.Unit.INSTANCE     // Catch:{ all -> 0x0040 }
             kotlin.jvm.internal.InlineMarker.finallyStart(r1)
             kotlinx.coroutines.channels.ChannelsKt.cancelConsumed(r7, r0)
             kotlin.jvm.internal.InlineMarker.finallyEnd(r1)
             java.lang.Integer r7 = java.lang.Integer.valueOf(r4)
             return r7
-        L_0x0041:
+        L_0x0040:
             r8 = move-exception
-            throw r8     // Catch:{ all -> 0x0043 }
-        L_0x0043:
+            throw r8     // Catch:{ all -> 0x0042 }
+        L_0x0042:
             r9 = move-exception
             kotlin.jvm.internal.InlineMarker.finallyStart(r1)
             kotlinx.coroutines.channels.ChannelsKt.cancelConsumed(r7, r8)

@@ -2,6 +2,7 @@ package au.gov.health.covidsafe.extensions;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.PowerManager;
@@ -21,7 +22,7 @@ import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 import pub.devrel.easypermissions.PermissionRequest;
 
-@Metadata(bv = {1, 0, 3}, d1 = {"\u0000$\n\u0000\n\u0002\u0010\b\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\b\u001a\n\u0010\u0004\u001a\u00020\u0005*\u00020\u0006\u001a\n\u0010\u0007\u001a\u00020\u0005*\u00020\u0006\u001a\u001c\u0010\b\u001a\u00020\u0005*\u00020\u00062\u0010\b\u0002\u0010\t\u001a\n\u0012\u0004\u0012\u00020\u0005\u0018\u00010\n\u001a\u0011\u0010\u000b\u001a\u0004\u0018\u00010\f*\u00020\u0006¢\u0006\u0002\u0010\r\u001a\u0011\u0010\u000e\u001a\u0004\u0018\u00010\f*\u00020\u0006¢\u0006\u0002\u0010\r\u001a\u0011\u0010\u000f\u001a\u0004\u0018\u00010\f*\u00020\u0006¢\u0006\u0002\u0010\r\u001a\u0011\u0010\u0010\u001a\u0004\u0018\u00010\f*\u00020\u0006¢\u0006\u0002\u0010\r\u001a\u0018\u0010\u0011\u001a\u00020\u0005*\u00020\u00062\f\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00050\n\u001a\n\u0010\u0012\u001a\u00020\u0005*\u00020\u0006\u001a\u001a\u0010\u0013\u001a\u00020\u0005*\u00020\u00062\f\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00050\nH\u0002\"\u000e\u0010\u0000\u001a\u00020\u0001XT¢\u0006\u0002\n\u0000\"\u000e\u0010\u0002\u001a\u00020\u0001XT¢\u0006\u0002\n\u0000\"\u000e\u0010\u0003\u001a\u00020\u0001XT¢\u0006\u0002\n\u0000¨\u0006\u0014"}, d2 = {"BATTERY_OPTIMISER", "", "LOCATION", "REQUEST_ENABLE_BT", "askForLocationPermission", "", "Landroidx/fragment/app/Fragment;", "checkBLESupport", "excludeFromBatteryOptimization", "onEndCallback", "Lkotlin/Function0;", "isBlueToothEnabled", "", "(Landroidx/fragment/app/Fragment;)Ljava/lang/Boolean;", "isFineLocationEnabled", "isNonBatteryOptimizationAllowed", "isPushNotificationEnabled", "requestAllPermissions", "requestBlueToothPermissionThenNextPermission", "requestFineLocationAndCheckBleSupportThenNextPermission", "app_release"}, k = 2, mv = {1, 1, 16})
+@Metadata(bv = {1, 0, 3}, d1 = {"\u0000&\n\u0000\n\u0002\u0010\b\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\b\u001a\n\u0010\u0004\u001a\u00020\u0005*\u00020\u0006\u001a\n\u0010\u0007\u001a\u00020\u0005*\u00020\u0006\u001a\u001c\u0010\b\u001a\u00020\u0005*\u00020\u00062\u0010\b\u0002\u0010\t\u001a\n\u0012\u0004\u0012\u00020\u0005\u0018\u00010\n\u001a\n\u0010\u000b\u001a\u00020\u0005*\u00020\u0006\u001a\u0011\u0010\f\u001a\u0004\u0018\u00010\r*\u00020\u0006¢\u0006\u0002\u0010\u000e\u001a\u0011\u0010\u000f\u001a\u0004\u0018\u00010\r*\u00020\u0006¢\u0006\u0002\u0010\u000e\u001a\u0011\u0010\u0010\u001a\u0004\u0018\u00010\r*\u00020\u0006¢\u0006\u0002\u0010\u000e\u001a\u0011\u0010\u0011\u001a\u0004\u0018\u00010\r*\u00020\u0006¢\u0006\u0002\u0010\u000e\u001a\u0018\u0010\u0012\u001a\u00020\u0005*\u00020\u00062\f\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00050\n\u001a\n\u0010\u0013\u001a\u00020\u0005*\u00020\u0006\u001a\u001a\u0010\u0014\u001a\u00020\u0005*\u00020\u00062\f\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00050\nH\u0002\"\u000e\u0010\u0000\u001a\u00020\u0001XT¢\u0006\u0002\n\u0000\"\u000e\u0010\u0002\u001a\u00020\u0001XT¢\u0006\u0002\n\u0000\"\u000e\u0010\u0003\u001a\u00020\u0001XT¢\u0006\u0002\n\u0000¨\u0006\u0015"}, d2 = {"BATTERY_OPTIMISER", "", "LOCATION", "REQUEST_ENABLE_BT", "askForLocationPermission", "", "Landroidx/fragment/app/Fragment;", "checkBLESupport", "excludeFromBatteryOptimization", "onEndCallback", "Lkotlin/Function0;", "gotoPushNotificationSettings", "isBlueToothEnabled", "", "(Landroidx/fragment/app/Fragment;)Ljava/lang/Boolean;", "isFineLocationEnabled", "isNonBatteryOptimizationAllowed", "isPushNotificationEnabled", "requestAllPermissions", "requestBlueToothPermissionThenNextPermission", "requestFineLocationAndCheckBleSupportThenNextPermission", "app_release"}, k = 2, mv = {1, 1, 16})
 /* compiled from: PermissionExtensions.kt */
 public final class PermissionExtensionsKt {
     public static final int BATTERY_OPTIMISER = 789;
@@ -110,6 +111,22 @@ public final class PermissionExtensionsKt {
                 throw new TypeCastException("null cannot be cast to non-null type android.os.PowerManager");
             }
         }
+    }
+
+    public static final void gotoPushNotificationSettings(Fragment fragment) {
+        Intrinsics.checkParameterIsNotNull(fragment, "$this$gotoPushNotificationSettings");
+        Context requireContext = fragment.requireContext();
+        Intrinsics.checkExpressionValueIsNotNull(requireContext, "requireContext()");
+        Intent intent = new Intent();
+        if (Build.VERSION.SDK_INT >= 26) {
+            intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+            Intrinsics.checkExpressionValueIsNotNull(intent.putExtra("android.provider.extra.APP_PACKAGE", requireContext.getPackageName()), "intent.putExtra(Settings…AGE, context.packageName)");
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+            intent.putExtra("app_package", requireContext.getPackageName());
+            intent.putExtra("app_uid", requireContext.getApplicationInfo().uid);
+        }
+        requireContext.startActivity(intent);
     }
 
     public static final Boolean isBlueToothEnabled(Fragment fragment) {

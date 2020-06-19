@@ -1,5 +1,6 @@
 package com.google.common.primitives;
 
+import au.gov.health.covidsafe.ui.onboarding.fragment.enternumber.EnterNumberPresenterKt;
 import com.google.common.base.Preconditions;
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -223,24 +224,23 @@ public final class UnsignedLongs {
     }
 
     public static String toString(long j, int i) {
-        int i2;
         long j2;
         Preconditions.checkArgument(i >= 2 && i <= 36, "radix (%s) must be between Character.MIN_RADIX and Character.MAX_RADIX", i);
-        int i3 = (j > 0 ? 1 : (j == 0 ? 0 : -1));
-        if (i3 == 0) {
-            return "0";
+        int i2 = (j > 0 ? 1 : (j == 0 ? 0 : -1));
+        if (i2 == 0) {
+            return EnterNumberPresenterKt.AUSTRALIA_MOBILE_NUMBER_PREFIX_DIGIT;
         }
-        if (i3 > 0) {
+        if (i2 > 0) {
             return Long.toString(j, i);
         }
+        int i3 = 64;
         char[] cArr = new char[64];
         int i4 = i - 1;
         if ((i & i4) == 0) {
             int numberOfTrailingZeros = Integer.numberOfTrailingZeros(i);
-            i2 = 64;
             do {
-                i2--;
-                cArr[i2] = Character.forDigit(((int) j) & i4, i);
+                i3--;
+                cArr[i3] = Character.forDigit(((int) j) & i4, i);
                 j >>>= numberOfTrailingZeros;
             } while (j != 0);
         } else {
@@ -250,14 +250,14 @@ public final class UnsignedLongs {
                 j2 = divide(j, (long) i);
             }
             long j3 = (long) i;
-            i2 = 63;
             cArr[63] = Character.forDigit((int) (j - (j2 * j3)), i);
+            i3 = 63;
             while (j2 > 0) {
-                i2--;
-                cArr[i2] = Character.forDigit((int) (j2 % j3), i);
+                i3--;
+                cArr[i3] = Character.forDigit((int) (j2 % j3), i);
                 j2 /= j3;
             }
         }
-        return new String(cArr, i2, 64 - i2);
+        return new String(cArr, i3, 64 - i3);
     }
 }

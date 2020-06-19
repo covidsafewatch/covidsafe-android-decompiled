@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar android:id="@+id/countrySelectionToolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toTopOf="0" app:navigationContentDescription="@string/navigation_back_button_content_description" app:navigationIcon="@drawable/ic_up"/>
+    <TextView android:layout_width="match_parent" android:layout_height="@dimen/keyline_6" android:text="@string/search" android:layout_marginStart="@dimen/keyline_1"/>
+    <FrameLayout android:background="@drawable/edit_text_black_background" android:paddingTop="@dimen/keyline_0" android:paddingBottom="@dimen/keyline_0" android:layout_width="match_parent" android:layout_height="@dimen/keyline_8" android:paddingStart="@dimen/keyline_1" android:paddingEnd="@dimen/keyline_0" android:layout_marginStart="@dimen/keyline_1" android:layout_marginEnd="@dimen/keyline_1">
+        <ImageView android:layout_gravity="left|center_vertical|center_horizontal|center|start" android:id="@+id/countrySearchImageView" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_search"/>
+        <EditText android:id="@+id/countryRegionNameEditText" android:background="@android:color/transparent" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <ImageView android:layout_gravity="end" android:id="@+id/microphoneImageView" android:layout_width="@dimen/keyline_6" android:layout_height="match_parent" android:src="@drawable/ic_microphone" android:paddingStart="@dimen/keyline_1" android:paddingEnd="@dimen/keyline_1"/>
+    </FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="@dimen/keyline_4">
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/countryListRecyclerView" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView android:layout_gravity="right" android:id="@+id/countryInitialLetterRecyclerView" android:layout_width="@dimen/keyline_8" android:layout_height="match_parent"/>
+    </FrameLayout>
+</LinearLayout>

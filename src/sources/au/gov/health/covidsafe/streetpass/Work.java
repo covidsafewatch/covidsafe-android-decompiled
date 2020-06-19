@@ -3,6 +3,7 @@ package au.gov.health.covidsafe.streetpass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.content.Context;
+import android.os.Build;
 import au.gov.health.covidsafe.logging.CentralLog;
 import au.gov.health.covidsafe.streetpass.StreetPassWorker;
 import com.google.gson.Gson;
@@ -114,11 +115,16 @@ public final class Work implements Comparable<Work> {
     }
 
     public final void startWork(Context context, StreetPassWorker.StreetPassGattCallback streetPassGattCallback) {
+        BluetoothGatt bluetoothGatt;
         Intrinsics.checkParameterIsNotNull(context, "context");
         Intrinsics.checkParameterIsNotNull(streetPassGattCallback, "gattCallback");
-        BluetoothGatt connectGatt = this.device.connectGatt(context, false, streetPassGattCallback);
-        this.gatt = connectGatt;
-        if (connectGatt == null) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            bluetoothGatt = this.device.connectGatt(context, false, streetPassGattCallback, 2);
+        } else {
+            bluetoothGatt = this.device.connectGatt(context, false, streetPassGattCallback);
+        }
+        this.gatt = bluetoothGatt;
+        if (bluetoothGatt == null) {
             CentralLog.Companion companion = CentralLog.Companion;
             String str = this.TAG;
             companion.e(str, "Unable to connect to " + this.device.getAddress());

@@ -122,10 +122,10 @@ public final class FlowableFlatMapSingle<T, R> extends AbstractFlowableWithUpstr
         public void innerSuccess(FlatMapSingleSubscriber<T, R>.InnerObserver innerObserver, R r) {
             this.set.delete(innerObserver);
             if (get() == 0) {
-                boolean z = true;
+                boolean z = false;
                 if (compareAndSet(0, 1)) {
-                    if (this.active.decrementAndGet() != 0) {
-                        z = false;
+                    if (this.active.decrementAndGet() == 0) {
+                        z = true;
                     }
                     if (this.requested.get() != 0) {
                         this.downstream.onNext(r);
